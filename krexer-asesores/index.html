@@ -24,10 +24,7 @@
 <link rel="icon" href="assets/img/favicon-192x192.jpg" sizes="192x192">
 <link rel="apple-touch-icon" href="assets/img/favicon-180x180.jpg">
 <script>
-  /* Caducidad: la propuesta se ve 10 días desde su envío (el día de envío cuenta). Envío previsto el
-     miércoles 11-nov-2026: visible hasta el viernes 20 de noviembre de 2026 a las 23:59 de Madrid
-     (21-nov 00:00 CET = 20-nov 23:00 UTC). Si se envía otro día, ajustar aquí y en la lámina de la propuesta.
-     En local no caduca; ?caducada lo simula. */
+  /* Caducidad: a partir de esta fecha la página lleva al aviso. En local no caduca; ?caducada lo simula. */
   (function () {
     var fin = Date.UTC(2026, 10, 20, 23, 0);
     if (/[?&]caducada\b/.test(location.search) || (location.protocol !== 'file:' && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && Date.now() >= fin)) {
@@ -45,11 +42,11 @@
     d.classList.add(quiet ? 'quieto' : 'anima');
     if (ss) d.classList.add('captura');
     d.classList.add('js');
-    setTimeout(function () { if (!window.KREXER) { d.classList.remove('anima'); d.classList.add('quieto'); } }, 4000);
+    setTimeout(function () { if (!window.KREXER) { d.classList.remove('anima'); d.classList.add('quieto'); var c = document.querySelector('[data-cab]'); if (c) c.classList.remove('sobre'); } }, 4000);
   })(document.documentElement);
 </script>
 <link rel="preload" href="assets/fonts/mona-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/home.css?v=5">
+<link rel="stylesheet" href="assets/css/home.css?v=6">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -96,7 +93,7 @@
 
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-<header class="cab" data-cab>
+<header class="cab sobre" data-cab>
   <div class="envoltura cab__dentro">
     <a class="logo" href="https://krexerasesores.es/" aria-label="Krexer Asesores, inicio">
       <svg class="logo__k" viewBox="0 0 672 672" aria-hidden="true"><use href="#k-logo"/></svg>
@@ -140,29 +137,21 @@
   <!-- ═══════════ PRIMERA PANTALLA: HERO + FRANJA DE VALORES ═══════════ -->
   <div class="primera">
   <section class="hero" data-hero aria-labelledby="t-hero">
-    <div class="envoltura hero__dentro">
-      <h1 id="t-hero" class="hero__titulo" data-titulo>Reinventamos el concepto de asesoría<span class="punto">.</span></h1>
-      <div class="hero__lado">
+    <!-- Su titular en grande sobre la foto de su sala de espera (sesión de fotos de su web), a sangre en un marco -->
+    <div class="hero__marco">
+      <img class="hero__foto" src="assets/img/sala-1440.webp" srcset="assets/img/sala-960.webp 960w, assets/img/sala-1440.webp 1440w, assets/img/sala-1899.webp 1899w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="1899" height="1266" alt="La sala de espera de Krexer Asesores en Pinto: una mesa de mármol con libros de economía y una planta" fetchpriority="high">
+      <div class="envoltura hero__dentro">
+        <h1 id="t-hero" class="hero__titulo" data-titulo>Reinventamos el concepto de asesoría<span class="punto">.</span></h1>
         <p class="hero__lead" data-sub>Generamos un impacto positivo en tu negocio. <span class="hero__lugar">Asesoría y gestoría en Pinto.</span></p>
         <div class="hero__botones">
-          <a class="boton boton--negro" href="#contacto" data-interes=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__txt" data-t="Contacta">Contacta</span><span class="boton__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg><svg><use href="#i-flecha"/></svg></span></a>
-          <a class="boton boton--negro boton--sec" href="tel:+34916910308"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__txt" data-t="916 91 03 08">916 91 03 08</span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg></span></a>
+          <a class="boton boton--blanco" href="#contacto" data-interes=""><span class="boton__fondo" aria-hidden="true"></span><span class="boton__txt" data-t="Contacta">Contacta</span><span class="boton__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg><svg><use href="#i-flecha"/></svg></span></a>
+          <a class="boton boton--claro boton--sec" href="tel:+34916910308"><span class="boton__fondo" aria-hidden="true"></span><span class="boton__txt" data-t="916 91 03 08">916 91 03 08</span><span class="boton__ico boton__ico--tel" aria-hidden="true"><svg><use href="#i-tel"/></svg></span></a>
         </div>
-      </div>
-    </div>
-
-    <!-- Su gente y su oficina (la sesión de fotos de su web), en una cinta que avanza sola -->
-    <div class="cinta" data-cinta data-carril role="group" aria-label="El equipo y la oficina de Krexer Asesores en Pinto">
-      <div class="cinta__pista" data-cinta-pista>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/equipo-hero-720.webp" srcset="assets/img/equipo-hero-720.webp 720w, assets/img/equipo-hero-1080.webp 1080w" sizes="(min-width: 1024px) 48vh, 260px" width="1600" height="1066" alt="El equipo de Krexer Asesores en su oficina de Pinto" fetchpriority="high"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/laboral-480.webp" srcset="assets/img/laboral-480.webp 480w, assets/img/laboral-800.webp 800w" sizes="(min-width: 1024px) 48vh, 260px" width="1200" height="800" alt="La oficina abierta de Krexer Asesores, con el equipo trabajando" fetchpriority="high"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/consultoria-480.webp" srcset="assets/img/consultoria-480.webp 480w, assets/img/consultoria-800.webp 800w" sizes="(min-width: 1024px) 48vh, 260px" width="1200" height="800" alt="Una asesora de Krexer reunida con un cliente" fetchpriority="high"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/recepcion-640.webp" srcset="assets/img/recepcion-640.webp 640w, assets/img/recepcion-960.webp 960w" sizes="(min-width: 1024px) 48vh, 260px" width="1400" height="933" alt="La sala de espera de Krexer Asesores, con la pared de madera"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/fiscal-480.webp" srcset="assets/img/fiscal-480.webp 480w, assets/img/fiscal-800.webp 800w" sizes="(min-width: 1024px) 48vh, 260px" width="1200" height="800" alt="Una asesora de Krexer al teclado, con el teléfono en la mesa"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/pymes-640.webp" srcset="assets/img/pymes-640.webp 640w, assets/img/pymes-960.webp 960w" sizes="(min-width: 1024px) 48vh, 260px" width="1400" height="933" alt="Puestos de trabajo en la oficina de Krexer Asesores"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/equipo-720.webp" srcset="assets/img/equipo-720.webp 720w, assets/img/equipo-1080.webp 1080w" sizes="(min-width: 1024px) 48vh, 260px" width="1600" height="1066" alt="El equipo de Krexer Asesores, sentado y de pie"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/contable-480.webp" srcset="assets/img/contable-480.webp 480w, assets/img/contable-800.webp 800w" sizes="(min-width: 1024px) 48vh, 260px" width="1200" height="800" alt="Teclado y ratón en un puesto de trabajo de Krexer Asesores"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
-        <figure class="cinta__foto foto-marco"><img data-foto src="assets/img/sala-640.webp" srcset="assets/img/sala-640.webp 640w, assets/img/sala-960.webp 960w" sizes="(min-width: 1024px) 48vh, 260px" width="960" height="640" alt="Mesa de la sala de espera de Krexer Asesores"><span class="encuadre" aria-hidden="true"><i></i><i></i><i></i><i></i></span></figure>
+        <ul class="hero__datos">
+          <li><a href="#donde" data-gesto="bota"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>C/ Perales, 1, Pinto (Madrid)</span></a></li>
+          <li><a href="mailto:krexer@krexer.com" data-gesto="bota"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>krexer@krexer.com</span></a></li>
+          <li><a href="tel:+34636126458" data-gesto="suena"><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg><span>636 126 458</span></a></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -636,6 +625,6 @@
   <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Calle%20Perales%201%2C%2028320%20Pinto%2C%20Madrid" target="_blank" rel="noopener"><span class="barra-movil__ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><span>Cómo llegar</span></a>
 </nav>
 
-<script src="assets/js/home.js?v=6" defer></script>
+<script src="assets/js/home.js?v=7" defer></script>
 </body>
 </html>

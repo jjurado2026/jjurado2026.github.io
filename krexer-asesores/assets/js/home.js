@@ -1,4 +1,4 @@
-/* Krexer Asesores — propuesta de homepage (ronda 2). JavaScript puro, sin dependencias.
+/* Krexer Asesores — homepage. JavaScript puro, sin dependencias.
    «quieto» (reducir movimiento o ?ss): nada se mueve solo y todo queda a la vista. */
 (() => {
   'use strict';
@@ -96,18 +96,23 @@
     });
   });
 
-  /* ─── Cabecera ─── */
+  /* ─── Cabecera: arriba del todo va dentro del marco del hero, sin fondo y en blanco ─── */
   const cab = $('[data-cab]');
-  const sombra = () => cab.classList.toggle('con-sombra', scrollY > 8);
+  const hamb = $('.hamburguesa');
+  const menuMovil = $('#menu-movil');
+  const sombra = () => {
+    const arriba = scrollY <= 8;
+    cab.classList.toggle('con-sombra', !arriba);
+    cab.classList.toggle('sobre', arriba && menuMovil.hidden);
+  };
   addEventListener('scroll', sombra, { passive: true });
   sombra();
 
-  const hamb = $('.hamburguesa');
-  const menuMovil = $('#menu-movil');
   const cierraMenu = () => {
     hamb.setAttribute('aria-expanded', 'false');
     hamb.setAttribute('aria-label', 'Abrir el menú');
     menuMovil.hidden = true;
+    sombra();
   };
   hamb.addEventListener('click', () => {
     if (hamb.getAttribute('aria-expanded') === 'true') return cierraMenu();
@@ -115,11 +120,12 @@
     hamb.setAttribute('aria-label', 'Cerrar el menú');
     $$('li', menuMovil).forEach((li, i) => li.style.setProperty('--i', i));
     menuMovil.hidden = false;
+    sombra();
   });
   menuMovil.addEventListener('click', (e) => { if (e.target.closest('a')) cierraMenu(); });
   d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menuMovil.hidden) { cierraMenu(); hamb.focus(); } });
 
-  /* ─── Hero: titular, entradilla y la cinta con su gente y su oficina ─── */
+  /* ─── Hero: la foto se asienta, el corte barre el titular y sigue la entradilla ─── */
   const hero = $('[data-hero]');
   const h1 = $('.hero__titulo');
   const lead = $('.hero__lead');
@@ -131,28 +137,6 @@
   };
   const listoFuentes = d.fonts && d.fonts.ready ? Promise.race([d.fonts.ready, espera(1200)]) : espera(200);
   listoFuentes.then(() => requestAnimationFrame(arrancaHero));
-
-  // La cinta se duplica para dar la vuelta sin saltos; avanza a velocidad constante y se para fuera de pantalla
-  const cinta = $('[data-cinta]');
-  if (cinta) {
-    const pista = $('[data-cinta-pista]', cinta);
-    const originales = [...pista.children];
-    originales.forEach((f, i) => f.style.setProperty('--i', i));
-    if (!quieto) {
-      originales.forEach((f, i) => {
-        const copia = f.cloneNode(true);
-        copia.setAttribute('aria-hidden', 'true');
-        copia.style.setProperty('--i', i + originales.length);
-        $$('img', copia).forEach((img) => { img.alt = ''; img.removeAttribute('data-foto'); });
-        pista.append(copia);
-      });
-      const velocidad = () => pista.style.setProperty('--dur', `${Math.max(30, Math.round(pista.scrollWidth / 2 / 36))}s`);
-      velocidad();
-      let tAncho = null;
-      addEventListener('resize', () => { clearTimeout(tAncho); tAncho = setTimeout(velocidad, 250); });
-      enPantalla(cinta, (si) => cinta.classList.toggle('parada', !si));
-    }
-  }
 
   /* ─── Valores: los pictogramas hacen su gesto por turnos ─── */
   const valores = $$('.valor');
