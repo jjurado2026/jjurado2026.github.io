@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quorum Asesores</title>
+<meta name="description" content="Asesoría fiscal, contable, laboral y jurídico-mercantil para profesionales, pequeñas y medianas empresas. Despacho en Pozuelo de Alarcón, Madrid.">
+<meta name="theme-color" content="#061349">
+<meta property="og:title" content="Quorum Asesores">
+<meta property="og:description" content="Asesoría fiscal, contable, laboral y jurídico-mercantil para profesionales, pequeñas y medianas empresas. Despacho en Pozuelo de Alarcón, Madrid.">
+<meta property="og:image" content="assets/equipo1-1200.jpg">
+<link rel="icon" href="favicon.ico" sizes="16x16">
+<script>
+(function(){try{
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');
+  setTimeout(function(){ if(!window.__ncBooted) document.documentElement.classList.remove('anim'); }, 3000);
+}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Sofia+Sans+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#061349 !important;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);-webkit-font-smoothing:antialiased;color:#071654;}
+*{box-sizing:border-box;}
+a{color:inherit;text-decoration:none;}
+a:hover{color:#8ec5ff;}                      /* global — specific hovers below override it */
+input::placeholder{color:rgba(255,255,255,.55);}
+:focus-visible{outline:2px solid #4d8dff;outline-offset:3px;}
+main{background:#061349;display:flex;flex-direction:column;}
+.sec{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;}
+h1,h2{margin:0;}
+h2{font-size:var(--h2);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;}
+h1 strong,h2 strong{font-weight:700;}
+.fx{position:absolute;pointer-events:none;z-index:0;opacity:0;transition:opacity 1200ms var(--ease-expo);}  /* every canvas */
+.fx.is-live{opacity:1;}                                                                                        /* added after its first drawn frame (section 9a) */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+.hero{height:100vh;overflow:hidden;color:#ffffff;padding:clamp(20px,3.5vw,44px) var(--gutter);
+  background:
+    radial-gradient(60% 55% at 0% 0%,rgba(2,7,32,.85),rgba(2,7,32,0) 70%),
+    radial-gradient(55% 60% at 100% 100%,rgba(2,7,32,.8),rgba(2,7,32,0) 70%),
+    radial-gradient(45% 50% at 15% 100%,rgba(2,7,32,.6),rgba(2,7,32,0) 70%),
+    radial-gradient(50% 45% at 70% 35%,rgba(32,65,192,.35),rgba(32,65,192,0) 70%),
+    linear-gradient(180deg,#0d217d 0%,#081969 45%,#071654 100%);}
+@supports (height:100dvh){.hero{height:100dvh;min-height:100dvh;}}
+.hero__fx{inset:0;width:100%;height:100%;}
+
+.hdr{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;letter-spacing:-.01em;}
+.brand__mark{width:18px;height:18px;border-radius:50% 50% 50% 4px;background:linear-gradient(160deg,#d6e8ff,#4d8dff);}
+.nav{display:flex;gap:clamp(16px,2.5vw,36px);font-size:14px;color:rgba(255,255,255,.82);flex-wrap:wrap;align-items:center;}
+.nav__cta{border:1px solid rgba(255,255,255,.35);padding:8px 14px;border-radius:3px;}
+
+/* floating card A — glass "Proyecto activo" */
+.float-a{position:absolute;z-index:2;right:clamp(20px,6vw,120px);top:24%;width:280px;color:#ffffff;
+  background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.22);border-top:3px solid #6aa8ff;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  transform:translate(var(--px,0px),var(--py,0px)) scale(var(--cs,1));transform-origin:right top;will-change:transform;}
+.fa__head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.12);}
+.fa__live{display:flex;align-items:center;gap:8px;font-size:12px;color:#d6e8ff;}
+.fa__dot{width:7px;height:7px;border-radius:50%;background:#6aa8ff;box-shadow:0 0 0 4px rgba(106,168,255,.25);}
+.fa__week{font-size:11px;color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums;}
+.fa__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:14px;}
+.fa__row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+.fa__row>div{display:flex;flex-direction:column;gap:3px;}
+.fa__k{font-size:11px;color:rgba(255,255,255,.55);}  .fa__v{font-size:16px;font-weight:600;}
+.fa__pct{font-size:32px;font-weight:300;letter-spacing:-.03em;line-height:1;}
+.fa__pct span{font-size:14px;color:#8ec5ff;}
+.fa__bar{display:flex;gap:3px;height:6px;}
+.fa__bar>span{flex:1;background:rgba(255,255,255,.14);position:relative;overflow:hidden;}
+.fa__bar>.seg--done{background:#d6e8ff;}
+.seg__fill{position:absolute;inset:0 28% 0 0;background:linear-gradient(90deg,#8ec5ff,#4d8dff);}
+.fa__labels{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.55);}
+.fa__labels .is-now{color:#ffffff;}
+
+/* floating card B — solid "4x" */
+.float-b{position:absolute;z-index:2;right:clamp(160px,30vw,540px);bottom:20%;width:230px;
+  background:rgba(255,255,255,.94);color:#071654;border-top:3px solid #2041c0;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.6);padding:16px 18px;display:flex;flex-direction:column;gap:10px;
+  transform:translate(var(--px,0px),var(--py,0px)) scale(var(--cs,1));transform-origin:right top;will-change:transform;}
+.fb__label{font-size:11px;letter-spacing:.04em;color:#425481;}
+.fb__row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;}
+.fb__num{font-size:44px;font-weight:300;letter-spacing:-.04em;line-height:.9;}
+.fb__num span{color:#2041c0;}
+.fb__bars{display:flex;align-items:flex-end;gap:4px;height:36px;}
+.fb__bars span{width:8px;}
+.fb__bars span:nth-child(1){height:25%;background:#c2d8ff;}
+.fb__bars span:nth-child(2){height:45%;background:#8ec5ff;}
+.fb__bars span:nth-child(3){height:70%;background:#4d8dff;}
+.fb__bars span:nth-child(4){height:100%;background:#2041c0;}
+
+/* copy */
+.hero__copy{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;
+  max-width:min(680px,calc(100% - 340px));padding:clamp(20px,4vh,64px) 0;}   /* 340 = 300×1 + 40; tiers in §8 */
+.hero__h1{font-size:clamp(40px,min(7vw,9.5vh),96px);line-height:.98;letter-spacing:-.035em;font-weight:300;}
+.hero__rot{display:inline-block;color:#8ec5ff;font-weight:500;transition:opacity .45s ease,transform .45s ease;}
+.hero__rot.is-out{opacity:0;transform:translateY(-12px);}
+.hero__lede{margin:clamp(16px,2.6vh,28px) 0 0;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:rgba(255,255,255,.78);max-width:480px;text-wrap:pretty;}
+.hero__ctas{display:flex;gap:12px;margin-top:clamp(20px,3.4vh,36px);flex-wrap:wrap;}
+.btn{padding:15px 24px;border-radius:3px;font-size:15px;}
+.btn--solid{background:#ffffff;color:#071654;font-weight:600;transition:transform .2s;}
+.btn--solid:hover{background:#d6e8ff;color:#071654;transform:translateY(-2px);}
+.btn--ghost{border:1px solid rgba(255,255,255,.35);color:#ffffff;font-weight:500;}
+.btn--ghost:hover{border-color:#ffffff;color:#ffffff;}
+
+/* foot + marquee */
+.hero__foot{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;flex:none;}
+.hero__meta{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.6);}
+.hero__proof{max-width:320px;line-height:1.5;}
+.hero__trust{letter-spacing:.08em;text-transform:uppercase;}
+.mq{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000000 8%,#000000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000000 8%,#000000 92%,transparent);}
+.mq__track{display:flex;width:max-content;will-change:transform;}
+.mq__group{display:flex;align-items:center;gap:clamp(40px,4.5vw,72px);padding:0 clamp(40px,4.5vw,72px) 0 0;margin:0;list-style:none;}
+.logo{display:flex;align-items:center;justify-content:center;gap:10px;height:40px;flex:none;color:rgba(255,255,255,.72);transition:color .3s;}
+.logo:hover{color:#ffffff;}
+
+.svc{overflow:hidden;background:linear-gradient(180deg,#ffffff 0%,#f0f6ff 55%,#d9e8ff 100%);padding:var(--sec-pt) var(--gutter) 0;}
+.svc__inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;}
+.svc__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;padding-bottom:clamp(20px,3.5vh,32px);}
+.svc__h2{font-size:clamp(30px,min(3.6vw,6vh),52px);font-weight:400;color:#071654;max-width:620px;}
+.svc__head p{margin:0;font-size:15px;line-height:1.55;color:#32446f;max-width:380px;text-wrap:pretty;}
+.svc__row{flex:1;min-height:clamp(340px,52vh,520px);display:flex;gap:8px;}
+.svc-p{all:unset;box-sizing:border-box;position:relative;overflow:hidden;cursor:pointer;min-width:0;
+  flex:1 1 0%;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,2.4vw,30px);
+  color:#071654;font-family:var(--font);
+  transition:flex .7s var(--ease),background .5s;}
+.svc-p:nth-child(1){background:#eaf2ff;} .svc-p:nth-child(2){background:#dde9ff;}
+.svc-p:nth-child(3){background:#d0e2ff;} .svc-p:nth-child(4){background:#c2d8ff;}
+.svc-p.is-on{flex:3.2 1 0%;color:#ffffff;background:linear-gradient(160deg,#2a50d1 0%,#11288a 60%,#071654 100%);}
+.svc-p:focus-visible{outline:2px solid #4d8dff;outline-offset:-4px;}
+.svc-p__top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.svc-p__num{font-size:clamp(40px,5vw,72px);font-weight:200;letter-spacing:-.05em;line-height:.85;opacity:.9;}
+.svc-p__arrow{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;transform:rotate(0deg);transition:transform .4s;}
+.svc-p.is-on .svc-p__arrow{transform:rotate(-45deg);}
+.svc-p__full{display:flex;flex-direction:column;gap:14px;max-width:520px;}
+.svc-p__full .svc-p__name{font-size:clamp(26px,2.8vw,40px);font-weight:600;letter-spacing:-.025em;line-height:1.05;}
+.svc-p__desc{font-size:15px;line-height:1.55;color:#d6e8ff;text-wrap:pretty;}
+.svc-p__stats{display:flex;gap:clamp(20px,3vw,44px);flex-wrap:wrap;padding-top:14px;border-top:1px solid rgba(255,255,255,.2);}
+.svc-p__stats>span{display:flex;flex-direction:column;gap:4px;justify-content:flex-end;}
+.svc-p__stats>span:first-child{gap:2px;justify-content:flex-start;}
+.svc-p__stats .kpi{font-size:clamp(28px,3vw,40px);font-weight:300;letter-spacing:-.03em;color:#8ec5ff;}
+.svc-p__stats .kpi-l,.svc-p__stats .k{font-size:12px;color:#c2dcff;}
+.svc-p__stats .v{font-size:15px;font-weight:600;}
+.svc-p__mini{display:flex;flex-direction:column;gap:6px;}
+.svc-p__mini .svc-p__name{font-size:clamp(16px,1.5vw,20px);font-weight:600;letter-spacing:-.01em;line-height:1.15;}
+.svc-p__short{font-size:12px;line-height:1.4;opacity:.75;}
+
+.imp{overflow:hidden;color:#ffffff;padding:var(--sec-pt) var(--gutter);background:linear-gradient(180deg,#2041c0 0%,#11288a 50%,#071654 100%);}
+.imp__fx{right:12%;top:5%;width:min(66%,960px);height:100%;}
+.imp__grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,64px);}
+.imp__intro{display:flex;flex-direction:column;justify-content:space-between;gap:40px;}
+.imp__intro h2{font-weight:300;}
+.imp__intro p{margin:0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.72);max-width:340px;text-wrap:pretty;}
+.bento{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 56px;grid-template-rows:minmax(180px,1fr) minmax(120px,.5fr);gap:4px;min-height:clamp(380px,38vw,500px);}
+.tile{padding:18px;display:flex;flex-direction:column;justify-content:space-between;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.tile>span:first-child{font-size:clamp(15px,1.3vw,18px);line-height:1.25;}
+.tile .num{font-size:clamp(48px,6vw,84px);font-weight:300;letter-spacing:-.03em;line-height:1;}
+.tile--a{grid-row:1 / 3;background:linear-gradient(180deg,rgba(77,141,255,.82),rgba(17,40,138,.82));}
+.tile--b{background:linear-gradient(180deg,rgba(214,232,255,.88),rgba(106,168,255,.88));color:#071654;}
+.tile--b .num{color:#ffffff;}
+.tile--c{background:rgba(255,255,255,.9);color:#11288a;align-items:flex-start;gap:8px;min-width:0;}
+.tile--c>span:first-child{font-size:14px;line-height:1.25;}
+.tile--c .num{font-size:clamp(32px,3.6vw,56px);}
+.prod{grid-column:3;grid-row:1 / 3;display:flex;flex-direction:column;gap:4px;}
+.prod__top{flex:28;background:rgba(42,80,209,.6);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-size:11px;}
+.prod__fill{flex:72;background:linear-gradient(180deg,rgba(214,232,255,.92),rgba(77,141,255,.92));}
+.prod__cap{font-size:10px;line-height:1.3;color:rgba(255,255,255,.7);padding-top:4px;}
+
+.cas{overflow:hidden;padding:var(--sec-pt) var(--gutter);background:linear-gradient(180deg,#f6faff 0%,#ffffff 100%);}
+.cas__fx{right:-2%;top:4%;width:min(72%,1040px);height:96%;}
+.cas__h2{position:relative;z-index:2;font-weight:400;color:#071654;max-width:720px;}
+.cas__grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,56px);margin-top:clamp(32px,4vw,56px);align-items:stretch;}
+.cas__list{display:flex;flex-direction:column;gap:6px;}
+.case-btn{all:unset;box-sizing:border-box;cursor:pointer;text-align:left;font-family:var(--font);
+  border-left:3px solid #c2d8ff;background:rgba(255,255,255,.6);padding:20px 22px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background .3s,border-color .3s;}
+.case-btn:hover{background:#e8f2fd;}
+.case-btn.is-on{border-left-color:#2a50d1;background:rgba(221,233,255,.9);}
+.case-btn__l{display:flex;align-items:center;gap:18px;min-width:0;}
+.case-btn__l>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.case-logo{flex:none;width:108px;height:56px;display:flex;align-items:center;justify-content:center;gap:6px;background:#ffffff;border:1px solid #dde9ff;color:#071654;}
+.case-sector{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#425481;}
+.case-client{font-size:18px;font-weight:600;color:#071654;}
+.case-arrow{font-size:22px;color:#2a50d1;}
+.case-detail{background:rgba(255,255,255,.55);border:1px solid rgba(106,168,255,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:360px;}
+.case-detail__body{transition:opacity .4s,transform .4s;}
+.case-detail__body.is-out{opacity:0;transform:translateY(12px);}
+.cd-meta{font-size:13px;color:#2a50d1;}
+.cd-metric{font-size:clamp(64px,8vw,120px);font-weight:300;letter-spacing:-.04em;line-height:1;color:#11288a;margin-top:16px;}
+.cd-label{font-size:16px;color:#071654;margin-top:8px;}
+.cd-text{margin:24px 0 0;font-size:15px;line-height:1.6;color:#32446f;max-width:520px;text-wrap:pretty;}
+.case-progress{display:flex;gap:4px;}
+.cp{flex:1;height:3px;background:rgba(42,80,209,.15);overflow:hidden;}
+.cp__fill{height:100%;width:0;background:#2a50d1;}
+
+.pan{overflow:hidden;padding:var(--sec-pt) var(--gutter) clamp(40px,5vw,64px);
+  background:radial-gradient(80% 60% at 85% 10%,rgba(32,65,192,.45),rgba(32,65,192,0) 70%),linear-gradient(180deg,#071654 0%,#081969 55%,#071654 100%);}
+.pan__head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+.pan__head h2{font-size:clamp(28px,min(3.4vw,5.5vh),48px);font-weight:400;color:#ffffff;max-width:680px;}
+.pan__head p{margin:0;font-size:15px;line-height:1.6;color:#c2dcff;max-width:360px;text-wrap:pretty;}
+.pan__grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,300px),calc((100% - 28px) / 3)),1fr));
+  grid-auto-flow:dense;gap:10px;margin-top:clamp(14px,2.5vh,28px);flex:1;}
+
+.w{background:rgba(255,255,255,.96);border-top:4px solid #6aa8ff;padding:clamp(14px,2vh,20px);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;min-width:0;transition:transform .35s var(--ease),box-shadow .35s;}
+.w:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(7,22,84,.35);}
+.w__head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.w__lead{display:flex;align-items:center;gap:12px;}   /* icon + title group — explicit class, never a structural selector (W4 has no icon) */
+.w__icon{width:38px;height:38px;background:#eaf2ff;display:flex;align-items:center;justify-content:center;}
+.w__title{font-size:17px;font-weight:600;color:#071654;}
+.seg{display:flex;gap:4px;background:#eaf2ff;padding:3px;}
+.seg button{border:0;font:inherit;font-size:12px;cursor:pointer;padding:5px 10px;border-radius:3px;background:transparent;color:#071654;transition:background .25s,color .25s;}
+.seg button[aria-pressed="true"]{background:#2041c0;color:#ffffff;}
+
+/* W1 */
+.w--proj{gap:20px;}
+.proj-icon{width:14px;height:14px;border:2px solid #2041c0;border-radius:3px;transform:rotate(var(--rot,225deg));transition:transform .6s var(--ease);}
+.proj__cols{display:grid;grid-template-columns:1.6fr 1fr;flex:1;}
+.proj__cols>div{display:flex;flex-direction:column;padding:14px 0 0 12px;}
+.proj__a{border-left:2px solid #2041c0;background:linear-gradient(180deg,rgba(221,233,255,0),rgba(221,233,255,.9));}
+.proj__b{border-left:1px solid #c2d8ff;}
+.proj__cols .k{font-size:12px;color:#425481;}
+.proj__cols>div>span:nth-child(2){display:flex;align-items:baseline;gap:8px;margin-top:6px;}
+.proj__cols .big{font-size:clamp(28px,4.5vh,38px);font-weight:400;letter-spacing:-.03em;color:#071654;font-variant-numeric:tabular-nums;}
+.proj__a .delta{font-size:12px;color:#2041c0;} .proj__b .delta{font-size:12px;color:#4d8dff;}
+.proj__cols .foot{font-size:11px;color:#425481;margin-top:auto;padding:10px 0;}
+.proj__bar{display:flex;height:10px;gap:3px;margin-top:-20px;}
+.proj__fill{background:#2041c0;border-radius:2px;transition:width .7s var(--ease);}
+.proj__rest{flex:1;background:#c2d8ff;border-radius:2px;}
+
+/* W2 */
+.w--adopt{gap:14px;}
+.adopt-icon{width:14px;height:14px;border-radius:50%;border:2px solid #2041c0;}
+.adopt-people{font-size:18px;font-weight:600;color:#071654;font-variant-numeric:tabular-nums;}
+.adopt-people span{font-size:12px;font-weight:400;color:#2041c0;}
+.adopt__row,.adopt__scale{display:flex;justify-content:space-between;color:#425481;}
+.adopt__row{font-size:12px;} .adopt__scale{font-size:11px;margin-top:auto;}
+.adopt-label{color:#425481;} .adopt-label.is-sim{color:#2041c0;}
+.adopt-pct{font-size:clamp(40px,min(4.4vw,7vh),60px);font-weight:300;letter-spacing:-.04em;line-height:1;color:#071654;font-variant-numeric:tabular-nums;}
+.ticks{display:flex;gap:3px;height:34px;cursor:ew-resize;touch-action:pan-y;}
+.tick{flex:1;border-radius:2px;background:#e3ecfb;transform-origin:bottom;transition:background .2s,transform .2s;}
+.tick.is-fill{background:#2041c0;}
+.ticks.is-sim .tick.is-fill{background:#6aa8ff;}
+.ticks.is-sim .tick.is-head{transform:scaleY(1.15);}
+
+/* W3 — slides (blue, spans two rows) */
+.w--slides{grid-row:span 2;position:relative;overflow:hidden;color:#ffffff;padding:26px;display:flex;flex-direction:column;min-height:0;
+  background:linear-gradient(165deg,#2a50d1 0%,#1d3cae 45%,#071654 100%);}
+.slides__fx{right:-30%;bottom:-18%;width:130%;height:75%;}
+.sl__top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;}
+.sl__top>div:last-child{display:flex;gap:6px;}
+.sl__num{font-size:30px;font-weight:300;font-variant-numeric:tabular-nums;}
+.sl__num span{font-size:13px;opacity:.7;}
+.sl__btn{width:34px;height:34px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#ffffff;cursor:pointer;border-radius:3px;font:inherit;}
+.sl__btn:hover{background:rgba(255,255,255,.12);}
+.sl__body{position:relative;z-index:1;transition:opacity .4s,transform .4s;}
+.sl__body.is-out{opacity:0;transform:translateY(10px);}
+.sl__title{font-size:clamp(24px,2.2vw,30px);line-height:1.15;letter-spacing:-.02em;margin-top:20px;max-width:300px;}
+.sl__text{margin:14px 0 0;font-size:13px;line-height:1.55;color:#dde9ff;max-width:300px;}
+.sl__cta{position:relative;z-index:1;align-self:flex-start;margin-top:26px;background:#ffffff;color:#071654;padding:12px 20px;border-radius:3px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center;}
+.sl__cta:hover{background:#dde9ff;color:#071654;}
+.sl__dots{position:relative;z-index:1;display:flex;gap:4px;margin-top:auto;}
+.sl__dot{flex:1;height:14px;padding:5px 0;border:0;background:transparent;cursor:pointer;}
+.dot__track{display:block;height:3px;background:rgba(255,255,255,.25);overflow:hidden;}
+.dot__fill{display:block;height:100%;width:0;background:#ffffff;}
+
+/* W4 */
+.w--save{gap:16px;}
+.save__track{position:relative;height:clamp(52px,8vh,80px);}
+.save__glow{position:absolute;left:0;width:var(--p);top:8px;bottom:8px;background:linear-gradient(90deg,rgba(194,220,255,0),rgba(106,168,255,.4));filter:blur(14px);transition:width .8s var(--ease);}
+.save__base{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:#e8eef9;border-radius:2px;}
+.save__fill{position:absolute;left:0;width:var(--p);top:50%;height:4px;margin-top:-2px;background:linear-gradient(90deg,#c2dcff,#6aa8ff,#2041c0);border-radius:2px;transition:width .8s var(--ease);}
+.save__mark{position:absolute;left:var(--p);top:0;bottom:0;width:1px;background:#c2d8ff;transition:left .8s var(--ease);}
+.save__pill{position:absolute;left:var(--p);top:50%;transform:translate(-50%,-50%);background:#ffffff;border-radius:3px;padding:6px 10px;font-size:12px;font-weight:600;color:#071654;box-shadow:0 4px 14px rgba(7,22,84,.18);white-space:nowrap;transition:left .8s var(--ease);}
+.save__min,.save__max{position:absolute;bottom:-6px;font-size:11px;color:#425481;}
+.save__min{left:0;} .save__max{right:0;}
+.save__foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;gap:12px;}
+.save__foot>div{display:flex;flex-direction:column;gap:8px;}
+.save__foot .k{font-size:12px;color:#425481;}
+.save__who{display:flex;align-items:center;gap:12px;}
+.stack{display:flex;}
+.stack .av{width:34px;height:34px;border-radius:50%;background-position:center;background-size:cover;box-shadow:0 0 0 3px #ffffff;}
+.stack .av+.av{margin-left:-10px;}
+.save__who .n{font-size:20px;font-weight:600;color:#071654;line-height:1;}
+.save__who>span:last-child{display:flex;flex-direction:column;} .save__who>span:last-child .k{font-size:11px;}
+.save__rate{display:flex;align-items:center;gap:8px;font-size:13px;color:#071654;}
+.save__gem{width:32px;height:32px;background:#eaf2ff;display:flex;align-items:center;justify-content:center;color:#2041c0;font-size:13px;}
+
+/* W5 */
+.w--team{gap:4px;overflow:hidden;}
+.who{font-size:13px;color:#2041c0;font-weight:500;min-height:18px;}
+.who__role{color:#425481;font-weight:400;}
+.orbit{position:relative;flex:1;min-height:200px;margin-top:4px;}
+.ring{position:absolute;left:50%;top:100%;border-radius:50%;border:1px dashed #c2d8ff;}
+.ring--outer{width:300px;height:300px;margin:-150px 0 0 -150px;transform:rotate(var(--o,0deg));}
+.ring--inner{width:180px;height:180px;margin:-90px 0 0 -90px;transform:rotate(var(--oi,0deg));}
+.orb{position:absolute;width:34px;height:34px;padding:0;border:0;cursor:pointer;border-radius:50%;background-position:center;background-size:cover;
+  box-shadow:0 0 0 3px #ffffff,0 6px 14px rgba(7,22,84,.2);transform:scale(1);transition:transform .35s var(--ease),box-shadow .35s;}
+.orb.is-on{transform:scale(1.25);box-shadow:0 0 0 3px #ffffff,0 0 0 6px #6aa8ff,0 10px 22px rgba(32,65,192,.35);}
+.orbit__cta{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;background:#2041c0;color:#ffffff;
+  display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 10px 24px rgba(32,65,192,.45);}
+.orbit__cta:hover{background:#071654;color:#ffffff;}
+
+.met{overflow:hidden;background:#ffffff;padding:var(--sec-pt) 0 0;}
+.met__top{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,56px);align-items:start;padding:0 var(--gutter) clamp(40px,5vw,64px);}
+.met__top h2{font-weight:400;color:#071654;}
+.met__copy{font-size:14px;line-height:1.6;color:#32446f;display:flex;flex-direction:column;gap:14px;max-width:360px;}
+.met__copy p{margin:0;text-wrap:pretty;}
+.met__stat{background:linear-gradient(180deg,#eaf2ff,#d6e8ff);padding:22px 24px;max-width:340px;}
+.met__stat>div{display:flex;align-items:baseline;gap:12px;}
+.met__num{font-size:48px;font-weight:300;letter-spacing:-.03em;color:#11288a;line-height:1;}
+.met__stat>div>span:last-child{font-size:13px;color:#2a50d1;}
+.met__stat p{margin:12px 0 0;font-size:13px;line-height:1.5;color:#32446f;}
+.met__band{position:relative;z-index:2;margin-top:auto;padding:clamp(32px,4vw,56px) var(--gutter) clamp(24px,3vw,36px);
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(222,236,255,.7) 40%,#c2dcff 100%);}
+.gantt{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,auto) auto;row-gap:clamp(18px,2.5vw,32px);}
+.gantt__guides{position:absolute;inset:0 0 28px 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));pointer-events:none;}
+.gantt__guides div{border-left:1px solid rgba(42,80,209,.18);}
+.gantt__guides div:last-child{border-right:1px solid rgba(42,80,209,.18);}
+.bar{display:flex;min-height:46px;box-shadow:0 8px 24px rgba(17,40,138,.12);}
+.bar--1{grid-column:1 / 3;grid-row:1;margin-left:6px;}
+.bar--2{grid-column:3 / 5;grid-row:2;}
+.bar--3{grid-column:5 / 7;grid-row:3;margin-right:6px;}
+.bar__chip{flex:none;background:linear-gradient(180deg,#8ec5ff,#4d8dff);color:#071654;font-size:14px;font-weight:600;padding:0 16px;display:flex;align-items:center;}
+.bar__body{flex:1;min-width:0;background:linear-gradient(90deg,rgba(106,168,255,.9),rgba(42,80,209,.9));color:#ffffff;font-size:13px;padding:8px 14px;display:flex;align-items:center;}
+.bar--3 .bar__body{background:linear-gradient(90deg,rgba(106,168,255,.9),rgba(17,40,138,.92));}
+.gantt__months{grid-column:1 / 7;grid-row:4;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));font-size:11px;color:#32446f;padding-top:12px;}
+.gantt__months span{padding-left:6px;}
+
+/* CRITICAL: never overflow:hidden here — it kills position:sticky. Use overflow-x:clip. */
+.pri{overflow-x:clip;color:#ffffff;padding:var(--sec-pt) var(--gutter) clamp(48px,6vw,88px);
+  background:linear-gradient(180deg,#071654 0%,#11288a 60%,#2041c0 100%);}
+.pri__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5vw,72px);align-items:start;}
+.pri__left{position:sticky;top:40px;}
+.pri__left h2{font-weight:300;}
+.pri__fx{display:block;position:static;width:135%;margin-left:-17%;height:clamp(380px,46vw,640px);pointer-events:none;}
+.pri__stack{display:flex;flex-direction:column;gap:clamp(60px,10vh,120px);padding:20px 0 40px;}
+.pcard{position:sticky;margin-top:40px;}
+.pcard--1{top:80px;} .pcard--2{top:100px;} .pcard--3{top:120px;}
+.pcard__tab{position:absolute;top:-38px;width:34%;height:39px;clip-path:polygon(0 0,86% 0,100% 100%,0 100%);display:flex;align-items:center;gap:10px;padding:0 18px;}
+.pcard__tab span{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pcard--1 .pcard__tab{left:0%;background:#d6e8ff;} .pcard--1 .pcard__tab span{color:#071654;}
+.pcard--2 .pcard__tab{left:33%;background:#6aa8ff;} .pcard--2 .pcard__tab span{color:#ffffff;}
+.pcard--3 .pcard__tab{left:66%;background:#2041c0;} .pcard--3 .pcard__tab span{color:#ffffff;}
+.pcard__body{padding:clamp(24px,3vw,40px);min-height:320px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;
+  box-shadow:0 -12px 30px -18px rgba(3,10,46,.55),0 30px 60px -30px rgba(3,10,46,.6);}
+.pcard--1 .pcard__body{background:linear-gradient(180deg,#d6e8ff 0%,#8ec5ff 100%);color:#071654;}
+.pcard--2 .pcard__body{background:linear-gradient(180deg,#6aa8ff 0%,#3157d6 100%);color:#ffffff;}
+.pcard--3 .pcard__body{background:linear-gradient(180deg,#2041c0 0%,#071654 100%);color:#ffffff;}
+.pcard__meta{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:14px;font-size:13px;font-weight:500;letter-spacing:0;}
+.pcard--1 .pcard__meta{color:#11288a;border-bottom:1px solid rgba(7,22,84,.15);}
+.pcard--2 .pcard__meta{color:#e3eeff;border-bottom:1px solid rgba(255,255,255,.22);}
+.pcard--3 .pcard__meta{color:#c2dcff;border-bottom:1px solid rgba(255,255,255,.22);}
+.pcard__title{font-size:clamp(26px,2.8vw,38px);font-weight:600;letter-spacing:-.02em;line-height:1.1;}
+.pcard__text{margin:14px 0 0;font-size:15px;line-height:1.6;max-width:460px;}
+.pcard--1 .pcard__text{color:#11288a;} .pcard--2 .pcard__text{color:#e3eeff;} .pcard--3 .pcard__text{color:#c2dcff;}
+
+.team{overflow:hidden;padding:var(--sec-pt) 0 clamp(40px,5vw,64px);
+  background:linear-gradient(180deg,#f6faff 0%,#eef2f8 40%,#e6ecf5 85%,#f6faff 100%);}
+.team__fx{left:0;right:0;bottom:4%;width:100%;height:62%;z-index:1;}
+.team__head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding:0 var(--gutter);}
+.team__head h2{font-weight:400;color:#071654;max-width:620px;}
+.arrows{display:flex;gap:6px;}
+.arw{width:40px;height:40px;border:0;background:#dde5f2;color:#071654;cursor:pointer;border-radius:3px;font:inherit;font-size:16px;transition:background .2s;}
+.arw:hover{background:#2041c0;color:#ffffff;}
+.team__track{position:relative;z-index:2;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;
+  margin-top:clamp(36px,5vw,64px);padding:0 var(--gutter);scroll-padding:0 var(--gutter);}
+.team__track::-webkit-scrollbar{display:none;}
+.member{flex:none;width:clamp(260px,30vw,420px);scroll-snap-align:start;display:flex;flex-direction:column;padding-right:clamp(12px,1.6vw,24px);margin:0;}
+.member__label{border-left:1px solid #b9c8e0;padding:6px 0 6px 12px;display:flex;justify-content:space-between;gap:12px;font-size:13px;letter-spacing:0;font-weight:500;}
+.member__label .n{color:#071654;} .member__label .r{color:#425481;}
+.member__fig{position:relative;height:clamp(340px,36vw,500px);margin-top:16px;transition:transform .5s var(--ease);}
+.member__fig:hover{transform:translateY(-6px);}
+.member__glow{position:absolute;left:8%;right:8%;bottom:0;height:55%;background:radial-gradient(50% 60% at 50% 70%,rgba(106,168,255,.35),rgba(106,168,255,0));pointer-events:none;}
+.member__fig img{position:relative;display:block;width:100%;height:100%;object-fit:contain;object-position:bottom center;}
+
+.tst{overflow:hidden;padding:var(--sec-pt) var(--gutter);
+  background:radial-gradient(70% 60% at 10% 20%,rgba(32,65,192,.4),rgba(32,65,192,0) 70%),linear-gradient(180deg,#071654 0%,#081969 55%,#071654 100%);}
+.tst__grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;padding:0 0 clamp(32px,4vw,56px);}
+.tst__aside{display:flex;flex-direction:column;gap:clamp(24px,3vw,40px);}
+.tst__mark{font-family:'DM Serif Display',Georgia,serif;font-size:96px;line-height:.7;height:44px;color:#4d8dff;}
+.tst__aside h2{font-size:clamp(30px,3.4vw,46px);line-height:1.08;font-weight:400;color:#ffffff;}
+.tst__nav{display:flex;align-items:center;gap:14px;}
+.tst__nav button{border:0;background:transparent;font:inherit;font-size:22px;color:#ffffff;cursor:pointer;padding:4px;}
+.tst__nav button:hover{color:#8ec5ff;}
+.tst__bar{position:relative;flex:1;max-width:160px;height:2px;background:rgba(255,255,255,.2);}
+.tst__thumb{position:absolute;left:var(--l,0%);top:-1px;width:20%;height:4px;background:#8ec5ff;transition:left .4s var(--ease);}
+.tst__track{display:flex;gap:clamp(14px,1.6vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;
+  margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter);}
+.tst__track::-webkit-scrollbar{display:none;}
+.quote{flex:none;width:clamp(280px,30vw,420px);scroll-snap-align:start;display:flex;flex-direction:column;margin:0;}
+.quote__bubble{position:relative;margin:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:4px solid #6aa8ff;
+  padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:28px;min-height:280px;transition:transform .35s var(--ease),box-shadow .35s;}
+.quote__bubble:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(7,22,84,.35);}
+.quote__bubble p{margin:0;font-size:16px;line-height:1.65;color:#071654;text-wrap:pretty;}
+.quote__stars{display:flex;gap:5px;margin-top:auto;color:#2041c0;font-size:13px;}
+.quote__tail{position:absolute;left:0;bottom:-22px;width:0;height:0;border-top:22px solid rgba(255,255,255,.96);border-right:28px solid transparent;}
+.quote__who{display:flex;align-items:center;gap:14px;margin-top:34px;padding-left:clamp(22px,2.4vw,32px);}
+.quote__who .av{flex:none;width:48px;height:48px;border-radius:50%;background-position:center;background-size:cover;}
+.quote__who>span:last-child{display:flex;flex-direction:column;gap:2px;}
+.quote__who .n{font-size:16px;font-weight:600;color:#ffffff;} .quote__who .r{font-size:12px;color:#c2dcff;}
+
+.faq{background:#ffffff;padding:var(--sec-pt) var(--gutter) clamp(48px,6vw,80px);}
+.faq__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,5vw,72px);align-items:start;}
+.faq__grid h2{font-weight:400;color:#071654;}
+.faq__list{display:flex;flex-direction:column;border-top:1px solid #c2d8ff;}
+.faq__item{border-bottom:1px solid #c2d8ff;}
+.faq__q{width:100%;font:inherit;cursor:pointer;border:0;background:transparent;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;color:#071654;}
+.faq__q:hover{color:#2a50d1;}
+.faq__q>span:first-child{font-size:18px;font-weight:500;}
+.faq__icon{flex:none;width:32px;height:32px;border-radius:50%;background:#dde9ff;color:#2a50d1;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .3s;}
+.faq__q[aria-expanded="true"] .faq__icon{background:#2a50d1;color:#ffffff;}
+.faq__a{margin:0;padding:0 48px 24px 0;font-size:15px;line-height:1.6;color:#32446f;text-wrap:pretty;}
+
+.con{overflow:hidden;color:#ffffff;padding:var(--sec-pt) var(--gutter);background:linear-gradient(180deg,#11288a 0%,#071654 100%);}
+.con__fx{left:50%;top:50%;transform:translate(-50%,-50%);width:min(90%,900px);height:110%;}
+.con__fx.is-live{opacity:.85;}                      /* NOT 1 */
+.con__center{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(56px,8vw,96px) 0;}
+.con__center h2{font-size:clamp(38px,5.6vw,80px);line-height:1;letter-spacing:-.035em;font-weight:300;max-width:860px;}
+.con__center>p{margin:22px 0 0;font-size:16px;line-height:1.55;color:rgba(255,255,255,.75);max-width:440px;}
+.con__form{display:flex;gap:8px;margin-top:36px;width:100%;max-width:480px;flex-wrap:wrap;}
+.con__input{flex:1 1 220px;min-width:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#ffffff;font:inherit;font-size:15px;padding:15px 16px;border-radius:3px;outline:none;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.con__input:focus{border-color:#8ec5ff;}
+.con__submit{flex:none;background:#ffffff;color:#071654;border:0;font:inherit;font-weight:600;font-size:15px;padding:15px 24px;border-radius:3px;cursor:pointer;}
+.con__submit:hover{background:#d6e8ff;}
+.foot{position:relative;z-index:2;display:flex;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.65);border-top:1px solid rgba(255,255,255,.15);padding-top:20px;}
+.foot>div{display:flex;gap:16px 32px;flex-wrap:wrap;}
+
+
+/* ===== Quorum: adaptación (spec/adaptada.md) ===== */
+:root{--font:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;--display:'Sofia Sans Condensed','Figtree',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);--ease-expo:cubic-bezier(.16,1,.3,1);--gutter:clamp(20px,5vw,72px);--sec-pt:calc(24px + clamp(28px,4vw,44px));--h2:clamp(34px,4.4vw,60px);}
+::selection{background:#2041c0;color:#ffffff;}
+[hidden]{display:none !important;}
+h1,h2,.num,.cd-metric,.svc-p__num,.svc-p__name,.svc-p__stats .kpi,.fa__pct,.fb__num,.met__num,.adopt-pct,.sl__num,.sl__title,.proj__cols .big,.pcard__title,.save__pill,.save__who .n,.tst__mark,.case-logo{font-family:var(--display);letter-spacing:0;}
+.brand img{display:block;height:44px;width:auto;}
+.logo{font-family:var(--display);font-size:22px;font-weight:400;gap:14px;white-space:nowrap;}
+.logo::before{content:"";flex:none;width:6px;height:6px;background:#8ec5ff;transform:rotate(45deg);}
+.case-logo{font-weight:700;font-size:18px;}
+.prod__fill{flex:1;display:flex;align-items:flex-start;justify-content:center;}
+.adopt-label{text-align:right;}
+.adopt__row{gap:12px;}
+.save__who{gap:8px;align-items:baseline;}
+a.save__rate:hover{color:#2041c0;}
+.proj__cols .big,.adopt-pct,.sl__num,.fa__pct{font-variant-numeric:proportional-nums;}
+.member--wide{width:clamp(300px,58vw,860px);}
+.team .member__fig{overflow:hidden;isolation:isolate;background:#061349;}
+.team .member__fig img{object-fit:cover;object-position:center;filter:grayscale(1) contrast(1.12) brightness(1.04);mix-blend-mode:screen;}
+.team .member__fig::after{content:"";position:absolute;inset:0;background:#c2dcff;mix-blend-mode:multiply;pointer-events:none;}
+.quote__who .av{display:flex;align-items:center;justify-content:center;background:#2041c0;color:#ffffff;font:600 20px var(--display);}
+.con__legal{flex-basis:100%;display:flex;gap:10px;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;}
+.con__legal input{width:18px;height:18px;margin:0;accent-color:#8ec5ff;}
+.con__legal a{text-decoration:underline;text-underline-offset:3px;}
+.foot a:hover{color:#8ec5ff;}
+/* contraste AA sobre los valores de la spec */
+.tile--a{background:linear-gradient(180deg,rgba(41,77,204,.9),rgba(17,40,138,.88));}
+.tile--b{background:linear-gradient(180deg,rgba(214,232,255,.9),rgba(41,77,204,.92));}
+.proj__b .delta{color:#3157d6;}
+.bar__body{background:linear-gradient(90deg,rgba(47,86,214,.95),rgba(32,65,192,.95));}
+.bar--3 .bar__body{background:linear-gradient(90deg,rgba(47,86,214,.95),rgba(17,40,138,.95));}
+.pcard--2 .pcard__body{background:linear-gradient(180deg,#8ec5ff 0%,#4d8dff 100%);color:#071654;}
+.pcard--2 .pcard__tab span,.pcard--2 .pcard__meta,.pcard--2 .pcard__text{color:#071654;}
+.pcard--2 .pcard__meta{border-bottom-color:rgba(7,22,84,.15);}
+:is(.btn,.nav__cta,.sl__btn,.sl__cta,.arw,.seg button,.con__submit,.orbit__cta,.tst__nav button,.case-btn,.faq__q,.svc-p,.orb,.sl__dot):active{opacity:.82;}
+
+/* ===== §8 responsive ===== */
+@media (max-width:1199px){.float-a,.float-b{--cs:.82;}.hero__copy{max-width:min(680px,calc(100% - 286px));}}
+@media (max-width:859px){.float-a,.float-b{display:none;}.hero__copy{max-width:680px;}}
+@media (max-width:760px){
+  .svc__row{flex-direction:column;min-height:0;}
+  .svc-p,.svc-p.is-on{flex:none;gap:16px;transition:background .5s;}
+  .tst__grid{grid-template-columns:minmax(0,1fr);}
+}
+@media (max-width:640px){
+  .nav{width:100%;gap:14px;font-size:13px;}
+  .bar--1{grid-column:1 / 5;} .bar--2{grid-column:2 / 6;} .bar--3{grid-column:3 / 7;}
+  .bar__chip{padding:0 10px;font-size:13px;} .bar__body{font-size:12px;padding:8px 10px;}
+  .gantt__months span{font-size:0;} .gantt__months span::after{content:attr(data-short);font-size:11px;}
+  .case-logo{width:88px;height:48px;} .case-btn{padding:16px 16px;}
+  .faq__a{padding-right:0;}
+}
+@media (max-width:400px){.svc-p__stats{gap:16px;} .cd-metric{font-size:56px;} .w--save .save__foot{flex-wrap:wrap;}}
+
+/* ===== §9 entrada ===== */
+.anim .rv{opacity:0;transform:translateY(28px);}
+.anim .rv.is-in{opacity:1;transform:none;transition:opacity 900ms var(--ease) var(--d,0ms),transform 900ms var(--ease) var(--d,0ms);}
+.anim .gy{transform:scaleY(0);transform-origin:bottom;}
+.anim .gy.is-in{transform:scaleY(1);transition:transform 1300ms var(--ease) var(--d,0ms);}
+.anim .gx{transform:scaleX(0);transform-origin:left;}
+.anim .gx.is-in{transform:scaleX(1);transition:transform 1100ms var(--ease) var(--d,0ms);}
+
+/* ===== §11 movimiento reducido ===== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+  .btn--solid:hover,.w:hover,.quote__bubble:hover,.member__fig:hover{transform:none;box-shadow:none;}
+}
+</style>
+</head>
+<body style="background:#061349">
+<main>
+
+<section class="sec hero" data-screen-label="01 Inicio">
+  <canvas class="fx hero__fx" aria-hidden="true"></canvas>
+  <header class="hdr">
+    <div class="brand"><img src="assets/logo-blanco.png" width="718" height="131" alt="Quorum Asesores JA, SL"></div>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a><a href="#tramites">Trámites</a><a href="#herencias">Herencias</a><a href="#despacho">Despacho</a><a href="#faq">Preguntas</a><a class="nav__cta" href="#contacto">Contacto</a>
+    </nav>
+  </header>
+  <aside class="float-a" aria-hidden="true">
+    <div class="fa__head"><span class="fa__live"><span class="fa__dot"></span>Asesoría laboral</span><span class="fa__week">Cuota mensual</span></div>
+    <div class="fa__body">
+      <div class="fa__row"><div><span class="fa__k">Gestión</span><span class="fa__v">Delegada en Quorum</span></div><span class="fa__pct">12<span> trámites</span></span></div>
+      <div class="fa__bar"><span class="seg--done"></span><span><span class="seg__fill gx"></span></span><span></span></div>
+      <div class="fa__labels"><span>Contratos</span><span class="is-now">Nóminas</span><span>Seguros sociales</span></div>
+    </div>
+  </aside>
+  <aside class="float-b" aria-hidden="true">
+    <span class="fb__label">Áreas de asesoramiento</span>
+    <div class="fb__row"><span class="fb__num">4</span><div class="fb__bars"><span class="gy" style="--d:100ms"></span><span class="gy" style="--d:200ms"></span><span class="gy" style="--d:300ms"></span><span class="gy" style="--d:400ms"></span></div></div>
+  </aside>
+  <div class="hero__copy">
+    <h1 class="hero__h1 rv" style="--d:100ms" aria-label="Su asesoría de confianza en lo fiscal, contable, laboral y mercantil"><strong>Su asesoría</strong> de confianza en&nbsp;lo&nbsp;<span class="hero__rot" aria-hidden="true">fiscal</span></h1>
+    <p class="hero__lede rv" style="--d:200ms">Los servicios de asesoría, ya sea laboral, fiscal o contable, son necesarios en todas las empresas, y lo ideal es realizarlo a través de un servicio externo como Quorum Asesores JA.</p>
+    <div class="hero__ctas rv" style="--d:300ms"><a class="btn btn--solid" href="#contacto">Contacte con nosotros</a><a class="btn btn--ghost" href="#servicios">Ver servicios</a></div>
+  </div>
+  <div class="hero__foot">
+    <div class="hero__meta"><span class="hero__proof">Despacho de asesores en Av. Pablo VI, 9, Pozuelo de Alarcón (Madrid).</span><span class="hero__trust">Un servicio global sobre todo tipo de impuestos</span></div>
+    <div class="mq rv" style="--d:400ms"><div class="mq__track"><ul class="mq__group"></ul><ul class="mq__group" aria-hidden="true"></ul></div></div>
+  </div>
+</section>
+
+<section class="sec svc" id="servicios" data-screen-label="02 Servicios">
+  <div class="svc__inner">
+    <div class="svc__head">
+      <h2 class="svc__h2 rv" style="--d:0ms">Le podemos <strong>ayudar</strong></h2>
+      <p class="rv" style="--d:100ms">Asesoramiento fiscal, contable, laboral y jurídico-mercantil para profesionales, pequeñas y medianas empresas.</p>
+    </div>
+    <div class="svc__row"></div>
+  </div>
+</section>
+
+<section class="sec imp" id="quorum" data-screen-label="03 Quorum">
+  <canvas class="fx imp__fx" aria-hidden="true"></canvas>
+  <div class="imp__grid">
+    <div class="imp__intro">
+      <h2 class="rv" style="--d:0ms"><strong>Quorum</strong> Asesores JA, S.L.</h2>
+      <p class="rv" style="--d:100ms">Quorum es una sociedad que desde hace 24 años se dedica a asesorar a profesionales, pequeñas y medianas empresas en áreas de fiscal, contable, laboral, jurídico y mercantil. Su equipo humano está compuesto por personas de una gran experiencia profesional así como con una gran formación en nuevas tecnologías.</p>
+    </div>
+    <div class="bento">
+      <div class="tile tile--a rv" style="--d:0ms"><span>Años asesorando<br>a pymes</span><span class="num" data-count="24">24</span></div>
+      <div class="tile tile--b rv" style="--d:120ms"><span>Años de experiencia<br>en asesoría fiscal</span><span class="num" data-count="20" data-prefix="+">+20</span></div>
+      <div class="tile tile--c rv" style="--d:240ms"><span>Tipos de impuestos</span><span class="num" data-count="12">12</span></div>
+      <div class="prod"><div class="prod__fill gy" style="--d:300ms"></div><div class="prod__cap">Gestión integral</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cas" id="tramites" data-screen-label="04 Trámites">
+  <canvas class="fx cas__fx" aria-hidden="true"></canvas>
+  <h2 class="cas__h2 rv" style="--d:0ms">Trámites que <strong>resolvemos</strong> por usted</h2>
+  <div class="cas__grid">
+    <div class="cas__list"></div>
+    <div class="case-detail">
+      <div class="case-detail__body" aria-live="polite"><div class="cd-meta"></div><div class="cd-metric"></div><div class="cd-label"></div><p class="cd-text"></p></div>
+      <div class="case-progress"><div class="cp"><div class="cp__fill"></div></div><div class="cp"><div class="cp__fill"></div></div><div class="cp"><div class="cp__fill"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec pan" id="panel" data-screen-label="05 Panel">
+  <div class="pan__head">
+    <h2 class="rv" style="--d:0ms"><strong>Todo</strong> lo que su empresa necesita</h2>
+    <p class="rv" style="--d:100ms">Un despacho profesional dedicado a los temas fiscales, contables, laborales, mercantiles y jurídicos, para llevar al día todas sus obligaciones empresariales. Pase el ratón, cambie de periodo o elija un servicio.</p>
+  </div>
+  <div class="pan__grid">
+    <div class="w w--proj rv" style="--d:0ms">
+      <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="proj-icon"></span></span><span class="w__title">Declaraciones fiscales</span></div>
+        <div class="seg seg--decl" role="group" aria-label="Periodo"><button type="button" data-k="trimestral" aria-pressed="true">Trimestral</button><button type="button" data-k="anual" aria-pressed="false">Anual</button></div></div>
+      <div class="proj__cols">
+        <div class="proj__a"><span class="k">Declaraciones</span><span><span class="big">5</span><span class="delta">IRPF · IVA · alquileres</span></span><span class="foot">cada trimestre</span></div>
+        <div class="proj__b"><span class="k">Sociedades</span><span><span class="big">202</span><span class="delta">pago a cuenta</span></span><span class="foot">Impuesto de Sociedades</span></div>
+      </div>
+      <div class="proj__bar"><span class="proj__fill" style="width:25%"></span><span class="proj__rest"></span></div>
+    </div>
+    <div class="w w--adopt rv" style="--d:120ms">
+      <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="adopt-icon"></span></span><span class="w__title">Trámites laborales</span></div><span class="adopt-people">Dedicación <span>plena</span></span></div>
+      <div class="adopt__row"><span>Trámite</span><span class="adopt-label">Trámites ante INEM, TGSS e INSS</span></div>
+      <span class="adopt-pct">12</span>
+      <div class="adopt__scale"><span>01</span><span>12</span></div>
+      <div class="ticks" role="img" aria-label="Trámite 12 de 12: Trámites ante INEM, TGSS e INSS"></div>
+    </div>
+    <div class="w--slides rv" style="--d:240ms">
+      <canvas class="fx slides__fx" aria-hidden="true"></canvas>
+      <div class="sl__top"><div class="sl__num">3<span>/5</span></div><div><button type="button" class="sl__btn" aria-label="Anterior">←</button><button type="button" class="sl__btn" aria-label="Siguiente">→</button></div></div>
+      <div class="sl__body" aria-live="polite"><div class="sl__title"></div><p class="sl__text"></p></div>
+      <a class="sl__cta" href="#contacto">Pedir información <span>→</span></a>
+      <div class="sl__dots"></div>
+    </div>
+    <div class="w w--save rv" style="--d:0ms">
+      <div class="w__head"><span class="w__title">Valoración en Google</span></div>
+      <div class="save__track" style="--p:90%"><div class="save__glow"></div><div class="save__base"></div><div class="save__fill"></div><div class="save__mark"></div><span class="save__pill">4,5</span><span class="save__min">0</span><span class="save__max">5</span></div>
+      <div class="save__foot">
+        <div><span class="k">Según</span><div class="save__who"><span class="n">Google</span><span class="k">reseñas de clientes</span></div></div>
+        <a class="save__rate" target="_blank" rel="noopener" data-maps>Ver reseñas <span class="save__gem">◆</span></a>
+      </div>
+    </div>
+    <div class="w w--team rv" style="--d:120ms">
+      <span class="w__title">Todo en un despacho</span>
+      <span class="who"></span>
+      <div class="orbit"><span class="ring ring--outer"></span><span class="ring ring--inner"></span><a class="orbit__cta" href="#contacto" aria-label="Contacto">→</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec met" id="herencias" data-screen-label="06 Herencias">
+  <div class="met__top">
+    <h2 class="rv" style="--d:0ms">Herencias, <strong>paso a paso</strong></h2>
+    <div class="met__copy rv" style="--d:100ms">
+      <p>Cuando una persona fallece y tiene bienes en España (inmuebles, depósitos, vehículos, cuentas bancarias…), hay que determinar quiénes son los herederos e inventariar sus bienes y deudas.</p>
+      <p>Después, los herederos los aceptan y se los adjudican mediante documento notarial o privado, según el tipo de bienes, pagando el Impuesto de Sucesiones correspondiente.</p>
+    </div>
+    <div class="met__stat rv" style="--d:200ms">
+      <div><span class="met__num" data-count="6">6</span><span>pasos</span></div>
+      <p>Del certificado de defunción a la inscripción de los bienes en los registros públicos.</p>
+    </div>
+  </div>
+  <div class="met__band">
+    <div class="gantt">
+      <div class="gantt__guides" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="bar bar--1 gx" style="--d:0ms"><span class="bar__chip">Fase 1</span><span class="bar__body">Pasos 1–2 · Certificados</span></div>
+      <div class="bar bar--2 gx" style="--d:300ms"><span class="bar__chip">Fase 2</span><span class="bar__body">Pasos 3–4 · Título hereditario y reparto</span></div>
+      <div class="bar bar--3 gx" style="--d:600ms"><span class="bar__chip">Fase 3</span><span class="bar__body">Pasos 5–6 · Sucesiones e inscripción</span></div>
+      <div class="gantt__months"><span data-short="P1">Defunción</span><span data-short="P2">Últimas voluntades</span><span data-short="P3">Título hereditario</span><span data-short="P4">Reparto</span><span data-short="P5">Sucesiones</span><span data-short="P6">Registros</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec pri" data-screen-label="07 Principios">
+  <div class="pri__grid">
+    <div class="pri__left">
+      <h2><strong>Experiencia, eficacia</strong> y trabajo en equipo</h2>
+      <canvas class="fx pri__fx" aria-hidden="true"></canvas>
+    </div>
+    <div class="pri__stack"></div>
+  </div>
+</section>
+
+<section class="sec team" id="despacho" data-screen-label="08 Despacho">
+  <canvas class="fx team__fx" aria-hidden="true"></canvas>
+  <div class="team__head">
+    <h2 class="rv" style="--d:0ms">Nuestro despacho, <strong>en Pozuelo de Alarcón</strong></h2>
+    <div class="arrows"><button type="button" class="arw" aria-label="Anterior">‹</button><button type="button" class="arw" aria-label="Siguiente">›</button></div>
+  </div>
+  <div class="team__track"></div>
+</section>
+
+<section class="sec tst" id="opiniones" data-screen-label="09 Opiniones">
+  <div class="tst__grid">
+    <div class="tst__aside">
+      <span class="tst__mark" aria-hidden="true">“</span>
+      <h2 class="rv" style="--d:0ms">Lo que dicen <strong>nuestros clientes</strong></h2>
+      <div class="tst__nav"><button type="button" aria-label="Anterior">←</button><span class="tst__bar"><span class="tst__thumb"></span></span><button type="button" aria-label="Siguiente">→</button></div>
+    </div>
+    <div class="tst__track"></div>
+  </div>
+</section>
+
+<section class="sec faq" id="faq" data-screen-label="10 FAQ">
+  <div class="faq__grid">
+    <h2 class="rv" style="--d:0ms">Lo que suelen <strong>preguntarnos</strong></h2>
+    <div class="faq__list"></div>
+  </div>
+</section>
+
+<section class="sec con" id="contacto" data-screen-label="11 Contacto">
+  <canvas class="fx con__fx" aria-hidden="true"></canvas>
+  <div class="con__center">
+    <h2 class="rv" style="--d:0ms"><strong>Contacte</strong> con nosotros</h2>
+    <p class="rv" style="--d:100ms">Consúltenos todas sus dudas e inquietudes, con profesionalidad y compromiso.</p>
+    <form class="con__form rv" style="--d:200ms">
+      <input class="con__input" type="email" required placeholder="su@empresa.com" aria-label="Su email" autocomplete="email">
+      <button class="con__submit" type="submit" aria-live="polite">Enviar consulta</button>
+      <label class="con__legal"><input type="checkbox" required> <span>He leído y acepto la <a href="https://quorum.es/politica.html" target="_blank" rel="noopener">Política de privacidad</a></span></label>
+    </form>
+  </div>
+  <footer class="foot">
+    <div><a href="mailto:info@quorum.es">info@quorum.es</a><a href="tel:+34913525310">913 525 310</a><span>Av. Pablo VI, 9, local 6A, 28223 Pozuelo de Alarcón</span></div>
+    <div><a href="http://quorumasesoresja.boletinmensual.es/" target="_blank" rel="noopener">Blog</a><a href="https://www.facebook.com/quorumasesoresja" target="_blank" rel="noopener">Facebook</a><span>© 2026 Quorum Asesores JA, S.L.</span></div>
+  </footer>
+</section>
+
+</main>
+<script>
+(() => {
+'use strict';
+window.__ncBooted = true;
+const WORDS = ['fiscal', 'contable', 'laboral', 'mercantil'];
+
+const TAXES = ['Impuesto sobre sociedades', 'Renta y patrimonio', 'IVA y transmisiones patrimoniales', 'Sucesiones y donaciones', 'Actividades económicas', 'Impuestos municipales', 'Inspecciones y aplazamientos', 'Recursos y contenciosos', 'Doble imposición', 'Comercio exterior', 'Operaciones corporativas', 'Análisis económico-financiero'];
+
+const SERVICES = [
+  { num: '01', name: 'Asesoría fiscal', short: 'Impuestos de empresas y particulares', desc: 'La elaboración de todos los impuestos y su adaptación legal a cada sociedad es prioridad en nuestro trabajo diario. Con formación continua y conocedores de todas las leyes fiscales y sus modificaciones, confeccionamos sus impuestos con garantía legal y eficacia.', kpi: 'IRPF · IVA', kpiLabel: 'declaraciones trimestrales y anuales', k1: 'Para', v1: 'Personas físicas y jurídicas', k2: 'Ante', v2: 'Inspección de Hacienda' },
+  { num: '02', name: 'Asesoría contable', short: 'Libros, balances y cuentas', desc: 'Un grupo de expertos con amplios conocimientos en la materia aplica las normas de contabilidad para reflejar la imagen fiel de su empresa y optimizar sus beneficios fiscales.', kpi: 'Imagen fiel', kpiLabel: 'del patrimonio y la situación de su empresa', k1: 'Parte de', v1: 'Facturas y bancos', k2: 'Plan contable', v2: 'Adaptado a su sector' },
+  { num: '03', name: 'Asesoría laboral', short: 'Nóminas, contratos y seguros sociales', desc: 'Confeccionamos sus nóminas, seguros sociales y contratos, estudiando sus posibilidades y posibles subvenciones; cursamos altas, bajas e incidentes laborales y aplicamos y actualizamos convenios.', kpi: '110 · 190', kpiLabel: 'modelos de retenciones, trimestral y anual', k1: 'Ante', v1: 'INEM, TGSS e INSS', k2: 'Incluye', v2: 'Convenio y certificados' },
+  { num: '04', name: 'Jurídico-mercantil', short: 'Sociedades, herencias y licencias', desc: 'Nuestros profesionales jurídicos le asesoran para encauzar sus casos y optimizar sus resultados, tanto en actuaciones jurídicas como mercantiles, estudiando cada caso de manera individual y exhaustiva.', kpi: 'Caso a caso', kpiLabel: 'estudio individual y exhaustivo', k1: 'Ante', v1: 'Registro y notario', k2: 'Además', v2: 'Herencias y licencias' }
+];
+
+const CASES = [
+  { sector: 'Mercantil', client: 'Constitución de sociedades', meta: 'Registro, notario y Hacienda', tile: 'S.L.', metric: '24 h', metricLabel: 'para tener una sociedad ya constituida', text: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula de constitución, las subvenciones y la financiación, y constituimos su sociedad de forma rápida. También vendemos sociedades ya constituidas, en 24 horas.' },
+  { sector: 'Municipal', client: 'Licencias de apertura', meta: 'Madrid y provincia', tile: 'Apertura', metric: '2', metricLabel: 'procedimientos: licencia nueva o cambio de titularidad', text: 'Redactamos toda la documentación para obtener la licencia de apertura en el Ayuntamiento de Madrid y en el resto de municipios de la provincia, con la colaboración de peritos experimentados.' },
+  { sector: 'Sucesiones', client: 'Herencias', meta: 'Documento notarial o privado', tile: 'Herencia', metric: 'Mod. 600', metricLabel: 'título hereditario: testamento o declaración de herederos', text: 'Determinamos quiénes son los herederos, inventariamos los bienes y deudas y tramitamos su aceptación y adjudicación, con el Impuesto de Sucesiones correspondiente.' }
+];
+
+const DECL = {
+  trimestral: { n: 5, nd: 'IRPF · IVA · alquileres', nfoot: 'cada trimestre', model: '202', md: 'pago a cuenta', ew: '25%', rot: 45 },
+  anual: { n: 4, nd: 'terceros · 390 · 180', nfoot: 'cada año', model: '200', md: 'y 201', ew: '100%', rot: 225 }
+};
+
+const TRAMITES = ['Inscripción en la Seguridad Social', 'Altas, bajas y variaciones', 'Contratos de trabajo', 'Prórrogas y renovaciones', 'Nóminas y seguros sociales', 'Declaraciones de IRPF', 'Vidas laborales y aplazamientos', 'Convenio laboral', 'Certificados laborales', 'Conciliaciones y despidos', 'Asesoramiento y consultas', 'Trámites ante INEM, TGSS e INSS'];
+
+const SLIDES = [
+  { title: 'Partimos de su documentación', text: 'Facturas de ingresos, gastos y movimientos de bancos: con ellos llevamos al día su contabilidad.' },
+  { title: 'Libros oficiales', text: 'Libro de Diario, Libro de Mayor y Libro Registro de IVA, soportado y repercutido.' },
+  { title: 'Cuentas anuales', text: 'Aplicamos las normas legales y los principios contables para que las cuentas anuales expresen la imagen fiel del patrimonio y de la situación de la empresa.' },
+  { title: 'Un plan contable para su sector', text: 'Plan contable vigente en cada momento, adaptado a cada actividad sectorial.' },
+  { title: 'Resultados que se interpretan', text: 'Analizamos el resultado de la empresa en cada momento para tomar las decisiones oportunas: máximo rendimiento y menos impuestos, aplicando la ley.' }
+];
+
+const MAPS_URL = 'https://www.google.com/maps/place/QUORUM+ASESORES/@40.4307064,-3.810521,17z/data=!4m6!3m5!1s0xd41866c8718647d:0x54e1435f370cdfe5!8m2!3d40.4307064!4d-3.810521';
+
+const IMG = 'assets/';
+const ORBIT = [
+  { name: 'Asesoría fiscal',            role: 'Personas físicas y jurídicas', img: IMG + 'orb-fiscal1.jpg',   x: 'calc(50% - 17px)',  y: '8px'   },
+  { name: 'Asesoría contable',          role: 'Libros y cuentas anuales',     img: IMG + 'orb-contable1.jpg', x: 'calc(50% - 125px)', y: '58px'  },
+  { name: 'Asesoría laboral',           role: 'Nóminas y contratos',          img: IMG + 'orb-laboral1.jpg',  x: 'calc(50% + 91px)',  y: '58px'  },
+  { name: 'Jurídico-mercantil',         role: 'Cada caso, a fondo',           img: IMG + 'orb-equipo2.jpg',   x: 'calc(50% - 84px)',  y: '110px' },
+  { name: 'Constitución de sociedades', role: 'Ya constituidas en 24 horas',  img: IMG + 'orb-otros1.jpg',    x: 'calc(50% + 50px)',  y: '104px' },
+  { name: 'Herencias',                  role: 'De principio a fin',           img: IMG + 'orb-otros2.jpg',    x: 'calc(50% - 160px)', y: '150px' },
+  { name: 'Licencias de apertura',      role: 'Madrid y provincia',           img: IMG + 'orb-otros3.jpg',    x: 'calc(50% + 126px)', y: '150px' }
+];
+
+const PRINCIPLES = [
+  { title: 'Experiencia', text: 'Nuestra amplia experiencia le brindará un trato especial y aportará todo el valor que su caso merece.' },
+  { title: 'Eficacia', text: 'Sin dilaciones y sin esperas. Llámenos o visítenos, díganos qué tiene en mente, y nosotros le resolveremos absolutamente todo.' },
+  { title: 'Trabajo en equipo', text: 'El equipo humano está en constante actualización con cursos de reciclaje y adaptaciones a las nuevas leyes y normativas, para aplicarlas a todas las empresas clientes con los criterios más convenientes.' }
+];
+
+const PLACES = [
+  { n: 'Av. Pablo VI, 9, local 6A', r: 'Pozuelo de Alarcón', img: IMG + 'equipo1', alt: 'Fachada del despacho de Quorum, con su rótulo, en la avenida Pablo VI de Pozuelo de Alarcón', wide: true },
+  { n: 'Quorum Asesores JA', r: 'Gestión integral de pymes', img: IMG + 'equipo2', alt: 'Código Fiscal y un dossier de Quorum sobre la mesa del despacho' }
+];
+
+const QUOTES = [];   // reseñas de Google: { name, text, stars }. Pendiente de que Juan las pase.
+
+const FAQS = [
+  { q: '¿Necesito licencia de apertura para mi negocio?', a: 'La gran mayoría de los establecimientos que precisan de un local u oficina, abierta al público o no, necesitan la licencia municipal de apertura. Están exentas gran parte de las actividades profesionales, como despachos de abogados o gabinetes de arquitectura o ingeniería, aunque deben comunicar al Ayuntamiento la actividad que van a realizar.' },
+  { q: '¿Qué queda fuera de la cuota mensual laboral?', a: 'Los actos de conciliación y los procedimientos de despido. El resto de gestiones laborales de su empresa, de las nóminas y los seguros sociales a los contratos y certificados, puede delegarlas en nosotros.' },
+  { q: '¿Qué forma jurídica me conviene?', a: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula: ¿sociedad, persona física o sociedad civil? ¿Limitada, Limitada Laboral o Anónima? También analizamos las subvenciones y la forma de financiar la inversión (leasing, préstamo, renting, hipoteca…).' },
+  { q: '¿Asesoran a particulares o solo a empresas?', a: 'A los dos. Nuestro servicio fiscal asesora sobre todo tipo de impuestos tanto a personas físicas como a jurídicas: renta y patrimonio, sucesiones y donaciones, sociedades, IVA…' }
+];
+const SILK_VS = `precision highp float;
+attribute vec2 a;
+uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform float uScroll;uniform float uDeform;uniform float uPx;uniform float uPh;uniform float uFlat;
+varying float vB;varying float vT;
+void main(){
+  float t=uTime*.2+uPh;float u=a.x;float v=a.y;
+  float amp=uDeform;
+  float x=(u-.5)*6.2;
+  float y=-1.2+1.3*smoothstep(0.,1.,u)+(.55*sin(u*5.4-1.1-t*.6+uMouse.x*.3+uScroll*2.)*smoothstep(.05,.5,u)+.18*sin(u*11.-t*.9))*amp+uMouse.y*.08+uPh*.12;
+  y=mix(y,.22*sin(u*4.-t*.7+uPh)+.08*sin(u*9.+t)+uPh*.18,uFlat);
+  float z=1.1*sin(u*3.1+t*.5+uPh)+.35*cos(u*7.-t*.6)-uPh*.6;
+  float th=u*6.8-t*.9+uPh*1.7+sin(u*2.3+t*.7)*1.4*amp;
+  float hw=(.55+.28*sin(u*3.7+t)+.12*sin(u*9.+t*1.3))*mix(1.,.42,uFlat);
+  vec3 p=vec3(x,y,z)+v*hw*vec3(0.,cos(th),sin(th));
+  p.y+=.09*sin(v*3.+u*9.-t*1.5)*amp;
+  p+=vec3(0.,.12,.12)*sin(v*2.2+u*5.-t)*amp*(1.-uFlat);
+  float zz=4.2-p.z;
+  vec2 uv=p.xy*1.6/zz;
+  float mn=min(uRes.x,uRes.y);
+  gl_Position=vec4(uv*2.*mn/uRes,0.,1.);
+  float face=abs(cos(th));
+  vB=clamp(.25+.75*face*(1.-v*v*.5)+.25*clamp(p.z,-1.,1.),0.,1.2);
+  vT=v*.5+.5;
+  gl_PointSize=uPx*(4.2/zz)*mix(.7,1.2,face);
+}`;
+const SILK_FS = `precision highp float;
+uniform float uDim;uniform float uLight;uniform float uFlat;uniform vec2 uRes;
+varying float vB;varying float vT;
+void main(){
+  float d=length(gl_PointCoord-.5);
+  float al=1.-smoothstep(.28,.5,d);
+  if(al<.01)discard;
+  vec3 blue=vec3(.22,.48,1.),lil=vec3(.56,.78,1.),pearl=vec3(.92,.92,1.);
+  vec3 col=mix(blue,lil,smoothstep(.2,.9,vT));
+  col=mix(col,pearl,smoothstep(.75,1.05,vB)*.85);
+  if(uLight>.5)col=mix(vec3(.08,.24,.78),vec3(.22,.5,.98),smoothstep(.2,.9,vT))*(1.1-.35*vB);
+  float k=vB*al*uDim*(uLight>.5?.85:1.35);
+  if(uFlat<.5){vec2 sp=gl_FragCoord.xy/uRes;float mx=mix(.18,1.,smoothstep(.3,.72,sp.x));float my=mix(.3,1.,smoothstep(.04,.24,sp.y));k*=max(mx*my,smoothstep(.75,.95,sp.x));k*=1.-smoothstep(.8,.92,sp.y)*.85;}
+  gl_FragColor=vec4(col*k,k);
+}`;
+const BLOB_VS = `precision highp float;
+attribute vec3 a;
+uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform float uShape;uniform float uScroll;uniform float uDeform;uniform float uPx;
+varying float vF;varying float vY;
+mat2 rot(float x){float c=cos(x),s=sin(x);return mat2(c,-s,s,c);}
+void main(){
+  float t=uTime*.8;
+  vec3 s=a;
+  float m=.5+.5*sin(t*.4+uScroll*4.);
+  vec3 sc=vec3(1.);
+  if(uShape>.5&&uShape<1.5)sc=mix(vec3(1.15,.8,1.15),vec3(1.),m*.5);
+  else if(uShape>1.5&&uShape<2.5)sc=mix(vec3(.7,1.2,.7),vec3(1.),m*.5);
+  else if(uShape>2.5)sc=mix(vec3(1.3,.65,.9),vec3(1.),m*.5);
+  vec3 p=s*sc;
+  vec3 nd=s;
+  if(uShape>5.5){
+    float th=atan(s.z,s.x);float ph2=2.*asin(clamp(s.y,-1.,1.));
+    vec3 ctr=vec3(cos(th),0.,sin(th));vec3 nT=normalize(ctr*cos(ph2)+vec3(0.,sin(ph2),0.));
+    vec3 pT=ctr*.74+nT*.36;pT.yz*=rot(1.05);
+    float uu=atan(s.z,s.x)/3.14159;float vv=asin(clamp(s.y,-1.,1.))/1.5708;
+    vec3 pW=vec3(uu*1.2,.28*sin(uu*3.2+t*.9)+.22*sin(vv*2.6-t*.7),vv*1.15);pW.yz*=rot(-.55);
+    vec3 pP=s*vec3(.62,1.25,.62);
+    float cy=mod(t*.09,4.);
+    float wT=smoothstep(.6,1.,cy)*(1.-smoothstep(1.6,2.,cy));
+    float wW=smoothstep(1.6,2.,cy)*(1.-smoothstep(2.6,3.,cy));
+    float wP=smoothstep(2.6,3.,cy)*(1.-smoothstep(3.6,4.,cy));
+    float wS=1.-wT-wW-wP;
+    p=s*wS+pT*wT+pW*wW+pP*wP;
+    nd=normalize(s*wS+nT*wT+vec3(0.,1.,0.)*wW+s*wP+1e-4);
+  }
+  else if(uShape>4.5){
+    float uu=atan(s.z,s.x)/3.14159;float vv=asin(clamp(s.y,-1.,1.))/1.5708;
+    p=vec3(uu*1.2,.28*sin(uu*3.2+t*.9)+.22*sin(vv*2.6-t*.7)+.12*sin((uu+vv)*5.-t*1.2),vv*1.15);
+    nd=vec3(0.,1.,0.);
+  }
+  else if(uShape>3.5){
+    float th=atan(s.z,s.x);float ph2=2.*asin(clamp(s.y,-1.,1.));
+    float R=.74+.04*sin(t*.5),rr=.36;
+    vec3 ctr=vec3(cos(th),0.,sin(th));
+    nd=normalize(ctr*cos(ph2)+vec3(0.,sin(ph2),0.));
+    p=ctr*R+nd*rr;
+  }
+  vec3 q=p+.42*vec3(sin(p.y*1.8+t*.6),sin(p.z*1.9+t*.5),sin(p.x*1.7+t*.7));
+  float n1=sin(p.x*1.7+t*.6)*sin(p.y*1.5+t*.8)*sin(p.z*1.8+t*.5);
+  float n2=sin(q.x*2.3+t*.35)*sin(q.y*2.1-t*.4)*sin(q.z*2.4+t*.25);
+  float n3=sin(p.x*1.1-t*.4+1.3)*sin(p.y*1.3+t*.3)*sin(p.z*1.2-t*.5+.7);
+  float disp=n1*.3+n2*.2+n3*.22;
+  p+=nd*disp*uDeform*(uShape>5.5?.6:uShape>4.5?.35:uShape>3.5?.45:1.)*(.75+.25*sin(t*.5+uScroll*3.));
+  if(uShape>4.5&&uShape<5.5)p.yz*=rot(-.55);
+  else if(uShape>3.5)p.yz*=rot(1.05);
+  p.xz*=rot(t*.14+uMouse.x*.7+uScroll*2.2);
+  p.yz*=rot(.4+uMouse.y*.5+t*.08+uScroll*.8);
+  float z=4.6-p.z;
+  vec2 uv=p.xy*1.55/z;
+  float mn=min(uRes.x,uRes.y);
+  gl_Position=vec4(uv*2.*mn/uRes,0.,1.);
+  vF=clamp(.5+p.z*.5,0.,1.);
+  vY=p.y;
+  gl_PointSize=uPx*(4.6/z)*mix(.65,1.15,vF);
+}`;
+const BLOB_FS = `precision highp float;
+uniform float uLight;uniform float uShape;
+varying float vF;varying float vY;
+void main(){
+  float d=length(gl_PointCoord-.5);
+  float a=1.-smoothstep(.28,.5,d);
+  if(a<.01)discard;
+  vec3 blue=mix(vec3(.22,.52,1.),vec3(.62,.82,1.),smoothstep(-.4,.9,vY));
+  vec3 lil=vec3(.1,.3,.85);
+  vec3 col=mix(blue,lil,smoothstep(-.2,-1.,vY)*.85);
+  if(uLight>.5){col=mix(vec3(.08,.24,.78),col*.85,smoothstep(-1.,1.,vY)*.6);}
+  float k=mix(uLight>.5?.4:.18,1.,vF*vF)*a*(uShape>4.5&&uLight>.5?1.35:1.);
+  gl_FragColor=vec4(col*k,k);
+}`;
+
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ANIM = document.documentElement.classList.contains('anim');
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const h = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const clamp01 = v => Math.max(0, Math.min(1, v));
+const pad = n => String(n).padStart(2, '0');
+
+/* ---------- render desde los datos ---------- */
+for (const ul of $$('.mq__group')) for (const t of TAXES) ul.append(h('li', 'logo', t));
+
+const svcRow = $('.svc__row');
+const svcBtns = SERVICES.map((s, i) => {
+  const b = h('button', 'svc-p');
+  b.type = 'button';
+  b.innerHTML = `<span class="svc-p__top"><span class="svc-p__num">${s.num}</span><span class="svc-p__arrow">→</span></span>
+    <span class="svc-p__full"><span class="svc-p__name">${s.name}</span><span class="svc-p__desc">${s.desc}</span>
+      <span class="svc-p__stats"><span><span class="kpi">${s.kpi}</span><span class="kpi-l">${s.kpiLabel}</span></span><span><span class="k">${s.k1}</span><span class="v">${s.v1}</span></span><span><span class="k">${s.k2}</span><span class="v">${s.v2}</span></span></span></span>
+    <span class="svc-p__mini"><span class="svc-p__name">${s.name}</span><span class="svc-p__short">${s.short}</span></span>`;
+  svcRow.append(b);
+  return b;
+});
+
+const casList = $('.cas__list');
+const caseBtns = CASES.map(c => {
+  const b = h('button', 'case-btn');
+  b.type = 'button';
+  b.innerHTML = `<span class="case-btn__l"><span class="case-logo">${c.tile}</span><span><span class="case-sector">${c.sector}</span><span class="case-client">${c.client}</span></span></span><span class="case-arrow"></span>`;
+  casList.append(b);
+  return b;
+});
+
+const ticksEl = $('.ticks');
+const ticks = TRAMITES.map(() => ticksEl.appendChild(h('span', 'tick')));
+
+const dotsEl = $('.sl__dots');
+const dots = SLIDES.map((_, i) => {
+  const b = h('button', 'sl__dot', '<span class="dot__track"><span class="dot__fill"></span></span>');
+  b.type = 'button'; b.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+  dotsEl.append(b);
+  return b;
+});
+
+const orbitEl = $('.orbit');
+const orbs = ORBIT.map(m => {
+  const b = h('button', 'orb');
+  b.type = 'button';
+  b.setAttribute('aria-label', `${m.name}, ${m.role}`);
+  b.style.cssText = `left:${m.x};top:${m.y};background-image:url(${m.img})`;
+  orbitEl.insertBefore(b, $('.orbit__cta'));
+  return b;
+});
+
+const stack = $('.pri__stack');
+PRINCIPLES.forEach((p, i) => {
+  const n = pad(i + 1);
+  stack.append(h('div', `pcard pcard--${i + 1}`, `<div class="pcard__tab"><span>Principio ${n}</span></div><div class="pcard__body"><div class="pcard__meta"><span>Quorum Asesores · Principios</span><span>${n} / 03</span></div><div><div class="pcard__title">${p.title}</div><p class="pcard__text">${p.text}</p></div></div>`));
+});
+
+const teamTrack = $('.team__track');
+for (const p of PLACES) {
+  teamTrack.append(h('figure', 'member' + (p.wide ? ' member--wide' : ''),
+    `<figcaption class="member__label"><span class="n">${p.n}</span><span class="r">${p.r}</span></figcaption>
+     <div class="member__fig"><img src="${p.img}-1200.jpg" srcset="${p.img}-800.jpg 800w, ${p.img}-1200.jpg 1200w" sizes="${p.wide ? '(max-width:760px) 80vw, 860px' : '(max-width:760px) 70vw, 420px'}" width="1200" height="800" alt="${p.alt}" loading="lazy" decoding="async"></div>`));
+}
+
+const tstTrack = $('.tst__track');
+for (const q of QUOTES) {
+  const stars = Math.round(q.stars || 5);
+  tstTrack.append(h('figure', 'quote', `<blockquote class="quote__bubble"><p>${q.text}</p><div class="quote__stars" aria-label="${stars} de 5">${'<span>◆</span>'.repeat(stars)}</div><span class="quote__tail"></span></blockquote>
+    <figcaption class="quote__who"><span class="av" aria-hidden="true">${q.name.trim()[0]}</span><span><span class="n">${q.name}</span><span class="r">Reseña de Google</span></span></figcaption>`));
+}
+if (!QUOTES.length) $('.tst').hidden = true;
+
+const faqList = $('.faq__list');
+const faqItems = FAQS.map((f, i) => {
+  const it = h('div', 'faq__item', `<button type="button" class="faq__q" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f.q}</span><span class="faq__icon" aria-hidden="true">+</span></button><p class="faq__a" id="faq-a-${i}" hidden>${f.a}</p>`);
+  faqList.append(it);
+  return it;
+});
+for (const a of $$('[data-maps]')) a.href = MAPS_URL;
+
+/* ---------- visibilidad de secciones (relojes) ---------- */
+const onScreen = new Set();
+const secIO = new IntersectionObserver(es => { for (const e of es) e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target); });
+$$('.sec').forEach(s => secIO.observe(s));
+const clocks = [];
+const clock = (sec, period, step, extra = {}) => { const c = { sec, period, step, ms: 0, paused: () => false, ...extra }; clocks.push(c); return c; };
+
+/* ---------- 01 Hero ---------- */
+const rot = $('.hero__rot');
+let word = 0;
+clock($('.hero'), 2800, () => {
+  rot.classList.add('is-out');
+  setTimeout(() => { word = (word + 1) % WORDS.length; rot.textContent = WORDS[word]; rot.classList.remove('is-out'); }, 450);
+});
+const cards = [[$('.float-a'), 18], [$('.float-b'), -12]];
+const wideMQ = matchMedia('(min-width:860px)');
+const pm = [0, 0];
+const track = $('.mq__track'), mq = $('.mq');
+let mqV = 50, mqX = 0, mqHover = false, mqHalf = 0;
+mq.addEventListener('pointerenter', () => { mqHover = true; });
+mq.addEventListener('pointerleave', () => { mqHover = false; });
+new ResizeObserver(() => { mqHalf = track.scrollWidth / 2; }).observe(track);
+
+/* ---------- 02 Servicios ---------- */
+let svc = -1, svcHover = null, svcPend = 0;
+const svcClock = clock($('.svc'), 7000, () => setSvc((svc + 1) % SERVICES.length), { paused: () => svcHover !== null });
+function setSvc(i) {
+  svc = i; svcClock.ms = 0;
+  svcBtns.forEach((b, k) => {
+    const on = k === i;
+    b.classList.toggle('is-on', on); b.setAttribute('aria-expanded', on);
+    $('.svc-p__full', b).hidden = !on; $('.svc-p__mini', b).hidden = on;
+  });
+}
+svcBtns.forEach((b, i) => {
+  b.addEventListener('pointerenter', e => {
+    if (e.pointerType !== 'mouse') return;
+    svcHover = i; clearTimeout(svcPend);
+    svcPend = setTimeout(() => setSvc(i), 200);
+  });
+  b.addEventListener('click', () => { clearTimeout(svcPend); setSvc(i); });
+});
+svcRow.addEventListener('mouseleave', () => { svcHover = null; clearTimeout(svcPend); svcClock.ms = 0; });
+
+/* ---------- 04 Trámites ---------- */
+const cdBody = $('.case-detail__body'), cpFills = $$('.cp__fill');
+let caseIdx = 0;
+const caseClock = clock($('.cas'), 7000, () => goCase((caseIdx + 1) % CASES.length));
+function fillCase(i) {
+  const c = CASES[i];
+  $('.cd-meta').textContent = `${c.client} · ${c.meta}`;
+  $('.cd-metric').textContent = c.metric;
+  $('.cd-label').textContent = c.metricLabel;
+  $('.cd-text').textContent = c.text;
+}
+function markCase(i) {
+  caseBtns.forEach((b, k) => { const on = k === i; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on); $('.case-arrow', b).textContent = on ? '→' : ''; });
+}
+function goCase(i, instant) {
+  caseIdx = i; caseClock.ms = 0; markCase(i);
+  if (instant) return fillCase(i);
+  cdBody.classList.add('is-out');
+  setTimeout(() => { fillCase(caseIdx); cdBody.classList.remove('is-out'); }, 250);
+}
+caseBtns.forEach((b, i) => b.addEventListener('click', () => goCase(i)));
+
+/* ---------- 05 Panel ---------- */
+const declBtns = $$('.seg--decl button');
+function setDecl(k) {
+  const d = DECL[k], w = $('.w--proj'), bigs = $$('.big', w), deltas = $$('.delta', w);
+  declBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.k === k));
+  bigs[0].textContent = d.n; deltas[0].textContent = d.nd; $('.proj__a .foot', w).textContent = d.nfoot;
+  bigs[1].textContent = d.model; deltas[1].textContent = d.md;
+  $('.proj__fill', w).style.width = d.ew;
+  $('.proj-icon', w).style.setProperty('--rot', d.rot + 'deg');
+}
+declBtns.forEach(b => b.addEventListener('click', () => setDecl(b.dataset.k)));
+
+let adoptHover = null, adoptShown = -1;
+function tickFrom(e) { const r = ticksEl.getBoundingClientRect(); return Math.max(0, Math.min(TRAMITES.length - 1, Math.floor((e.clientX - r.left) / r.width * TRAMITES.length))); }
+ticksEl.addEventListener('pointermove', e => { adoptHover = tickFrom(e) + 1; });
+ticksEl.addEventListener('pointerdown', e => { adoptHover = tickFrom(e) + 1; });
+ticksEl.addEventListener('pointerleave', () => { adoptHover = null; });
+function renderAdopt() {
+  const v = adoptHover ?? TRAMITES.length, key = v * (adoptHover == null ? -1 : 1);
+  if (key === adoptShown) return; adoptShown = key;
+  const sim = adoptHover != null, name = TRAMITES[v - 1];
+  ticks.forEach((t, i) => { t.classList.toggle('is-fill', i < v); t.classList.toggle('is-head', i === v - 1); });
+  ticksEl.classList.toggle('is-sim', sim);
+  const lab = $('.adopt-label'); lab.textContent = name; lab.classList.toggle('is-sim', sim);
+  $('.adopt-pct').textContent = pad(v);
+  ticksEl.setAttribute('aria-label', `Trámite ${v} de ${TRAMITES.length}: ${name}`);
+}
+
+const slBody = $('.sl__body'), dotFills = $$('.dot__fill');
+let slide = 2;
+const slideClock = clock($('.pan'), 5000, () => goSlide((slide + 1) % SLIDES.length));
+function fillSlide(i) { $('.sl__title').textContent = SLIDES[i].title; $('.sl__text').textContent = SLIDES[i].text; $('.sl__num').firstChild.nodeValue = i + 1; }
+function goSlide(i, instant) {
+  slide = (i + SLIDES.length) % SLIDES.length; slideClock.ms = 0;
+  dots.forEach((d, k) => d.toggleAttribute('aria-current', k === slide));
+  dots[slide].setAttribute('aria-current', 'true');
+  if (instant) return fillSlide(slide);
+  slBody.classList.add('is-out');
+  setTimeout(() => { fillSlide(slide); slBody.classList.remove('is-out'); }, 250);
+}
+const [slPrev, slNext] = $$('.sl__btn');
+slPrev.addEventListener('click', () => goSlide(slide - 1));
+slNext.addEventListener('click', () => goSlide(slide + 1));
+dots.forEach((d, i) => d.addEventListener('click', () => goSlide(i)));
+
+let member = 0, holdUntil = 0, theta = 0;
+const whoEl = $('.who');
+const memberClock = clock($('.pan'), 2500, () => setMember((member + 1) % ORBIT.length), { paused: () => performance.now() < holdUntil });
+function setMember(i) {
+  member = i; memberClock.ms = 0;
+  orbs.forEach((o, k) => { o.classList.toggle('is-on', k === i); o.setAttribute('aria-pressed', k === i); });
+  whoEl.innerHTML = `${ORBIT[i].name}<span class="who__role"> · ${ORBIT[i].role}</span>`;
+}
+orbs.forEach((o, i) => {
+  const take = () => { holdUntil = performance.now() + 6000; if (member !== i) setMember(i); };
+  o.addEventListener('pointerenter', take); o.addEventListener('focus', take); o.addEventListener('click', take);
+});
+
+/* ---------- 08 Despacho ---------- */
+const arrows = $('.arrows');
+const [tPrev, tNext] = $$('.arw');
+tPrev.addEventListener('click', () => teamTrack.scrollBy({ left: -teamTrack.clientWidth * 0.6 }));
+tNext.addEventListener('click', () => teamTrack.scrollBy({ left: teamTrack.clientWidth * 0.6 }));
+new ResizeObserver(() => { arrows.hidden = teamTrack.scrollWidth <= teamTrack.clientWidth + 2; }).observe(teamTrack);
+
+/* ---------- 09 Opiniones ---------- */
+let tstDirty = true;
+const [qPrev, qNext] = $$('.tst__nav button');
+const qStep = () => (tstTrack.firstElementChild ? tstTrack.firstElementChild.offsetWidth + 20 : 300);
+qPrev.addEventListener('click', () => tstTrack.scrollBy({ left: -qStep() }));
+qNext.addEventListener('click', () => tstTrack.scrollBy({ left: qStep() }));
+tstTrack.addEventListener('scroll', () => { tstDirty = true; }, { passive: true });
+function renderThumb() {
+  if (!tstDirty) return; tstDirty = false;
+  const max = tstTrack.scrollWidth - tstTrack.clientWidth;
+  const n = Math.max(1, QUOTES.length - 1);
+  const idx = max > 0 ? Math.round(tstTrack.scrollLeft / max * n) : 0;
+  $('.tst__thumb').style.setProperty('--l', (idx * (100 - 20) / n) + '%');
+}
+
+/* ---------- 10 FAQ ---------- */
+let faqOpen = -1;
+function setFaq(i) {
+  faqOpen = i;
+  faqItems.forEach((it, k) => { const on = k === i, q = $('.faq__q', it); q.setAttribute('aria-expanded', on); $('.faq__a', it).hidden = !on; $('.faq__icon', it).textContent = on ? '−' : '+'; });
+}
+faqItems.forEach((it, i) => $('.faq__q', it).addEventListener('click', () => setFaq(faqOpen === i ? -1 : i)));
+
+/* ---------- 11 Contacto ---------- */
+$('.con__form').addEventListener('submit', e => { e.preventDefault(); $('.con__submit').textContent = 'Enviado. Le contactaremos pronto'; });
+
+/* ---------- estado inicial ---------- */
+setSvc(0); goCase(0, true); setDecl('trimestral'); renderAdopt(); goSlide(2, true); setMember(0); setFaq(0);
+
+/* ---------- WebGL ---------- */
+const FX = { morphSpeed: 1, deform: 1, dotSize: 1 };
+let time = 0, last = performance.now(), raf = 0;
+const mouse = [0, 0];
+addEventListener('pointermove', e => { mouse[0] = e.clientX / innerWidth * 2 - 1; mouse[1] = -(e.clientY / innerHeight * 2 - 1); }, { passive: true });
+
+let silkGeo, blobGeo;
+function silkData() { const NU = 520, NV = 64, a = new Float32Array(NU * NV * 2); let k = 0; for (let i = 0; i < NU; i++) for (let j = 0; j < NV; j++) { a[k++] = i / (NU - 1); a[k++] = j / (NV - 1) * 2 - 1; } return a; }
+function blobData() {
+  const G = 112, a = new Float32Array(G * G * 6 * 3); let k = 0;
+  for (let f = 0; f < 6; f++) for (let j = 0; j < G; j++) for (let i = 0; i < G; i++) {
+    const u = Math.tan(((i + .5) / G * 2 - 1) * Math.PI / 4), v = Math.tan(((j + .5) / G * 2 - 1) * Math.PI / 4);
+    const p = [[1, v, -u], [-1, v, u], [u, 1, -v], [u, -1, v], [u, v, 1], [-u, v, -1]][f];
+    const l = Math.hypot(p[0], p[1], p[2]); a[k++] = p[0] / l; a[k++] = p[1] / l; a[k++] = p[2] / l;
+  }
+  return a;
+}
+function compile(gl, type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
+const fields = [];
+const fieldIO = new IntersectionObserver(es => { for (const e of es) { const b = e.target.__field; if (!b) continue; b.visible = e.isIntersecting; if (b.visible && RM && !b.live) b.draw(); } }, { rootMargin: '100px' });
+const fieldRO = new ResizeObserver(es => { for (const e of es) e.target.__field && e.target.__field.resize(); });
+
+function makeField(canvas, cfg) {
+  const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
+  if (!gl) { canvas.style.display = 'none'; return; }
+  const silk = cfg.kind === 'silk';
+  let prog;
+  try {
+    prog = gl.createProgram();
+    gl.attachShader(prog, compile(gl, gl.VERTEX_SHADER, silk ? SILK_VS : BLOB_VS));
+    gl.attachShader(prog, compile(gl, gl.FRAGMENT_SHADER, silk ? SILK_FS : BLOB_FS));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+  } catch (err) { console.warn(err); canvas.style.display = 'none'; return; }
+  const data = silk ? (silkGeo ||= silkData()) : (blobGeo ||= blobData());
+  gl.useProgram(prog);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'a');
+  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, silk ? 2 : 3, gl.FLOAT, false, 0, 0);
+  const U = {}; for (const n of ['uRes', 'uTime', 'uMouse', 'uScroll', 'uDeform', 'uPx', 'uPh', 'uFlat', 'uDim', 'uLight', 'uShape']) U[n] = gl.getUniformLocation(prog, n);
+  gl.enable(gl.BLEND);
+  if (cfg.light) gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA); else gl.blendFunc(gl.ONE, gl.ONE);
+  gl.clearColor(0, 0, 0, 0);
+  const count = data.length / (silk ? 2 : 3);
+  const b = { canvas, visible: false, lost: false, live: false, w: 1, h: 1, smooth: [0, 0], offset: RM ? 0 : Math.random() * 20 };
+  b.resize = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    b.w = Math.max(1, Math.round(canvas.clientWidth * dpr)); b.h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    canvas.width = b.w; canvas.height = b.h; gl.viewport(0, 0, b.w, b.h);
+    if (RM && b.visible) b.draw();
+  };
+  b.draw = () => {
+    if (b.lost) return;
+    const r = canvas.getBoundingClientRect();
+    gl.uniform2f(U.uRes, b.w, b.h);
+    gl.uniform1f(U.uDeform, FX.deform);
+    gl.uniform1f(U.uLight, cfg.light ? 1 : 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    if (silk) {
+      if (!RM) { b.smooth[0] += (mouse[0] - b.smooth[0]) * 0.04; b.smooth[1] += (mouse[1] - b.smooth[1]) * 0.04; }
+      gl.uniform1f(U.uTime, RM ? 0 : time);
+      gl.uniform2f(U.uMouse, b.smooth[0], b.smooth[1]);
+      gl.uniform1f(U.uScroll, RM ? 0 : clamp01(-r.top / (r.height || 1)));
+      gl.uniform1f(U.uFlat, cfg.flat ? 1 : 0);
+      gl.uniform1f(U.uPx, Math.max(1.6, Math.min(b.w, b.h) / (cfg.light ? 480 : 400)) * FX.dotSize);
+      gl.uniform1f(U.uPh, 1); gl.uniform1f(U.uDim, .45); gl.drawArrays(gl.POINTS, 0, count);
+      gl.uniform1f(U.uPh, 0); gl.uniform1f(U.uDim, 1); gl.drawArrays(gl.POINTS, 0, count);
+    } else {
+      if (!RM) { b.smooth[0] += (mouse[0] - b.smooth[0]) * 0.05; b.smooth[1] += (mouse[1] - b.smooth[1]) * 0.05; }
+      const p01 = RM ? 0 : clamp01(1 - (r.top + r.height) / (innerHeight + r.height));
+      gl.uniform1f(U.uTime, RM ? 0 : time + b.offset);
+      gl.uniform2f(U.uMouse, b.smooth[0], b.smooth[1]);
+      gl.uniform1f(U.uShape, cfg.shape);
+      gl.uniform1f(U.uScroll, cfg.shape > 4.5 ? .45 + p01 * .55 : p01);
+      gl.uniform1f(U.uPx, Math.max(1.2, Math.min(b.w, b.h) / 520) * FX.dotSize);
+      gl.drawArrays(gl.POINTS, 0, count);
+    }
+    if (!b.live) { b.live = true; requestAnimationFrame(() => canvas.classList.add('is-live')); }
+  };
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); canvas.style.visibility = 'hidden'; b.lost = true; }, { once: true });
+  b.gl = gl;
+  canvas.__field = b; fields.push(b);
+  fieldRO.observe(canvas); fieldIO.observe(canvas);
+}
+[['.hero__fx', { kind: 'silk' }], ['.imp__fx', { kind: 'blob', shape: 1 }], ['.cas__fx', { kind: 'blob', shape: 5, light: true }],
+ ['.slides__fx', { kind: 'blob', shape: 2 }], ['.pri__fx', { kind: 'blob', shape: 4 }], ['.team__fx', { kind: 'silk', flat: true, light: true }],
+ ['.con__fx', { kind: 'blob', shape: 6 }]].forEach(([s, c]) => { const el = $(s); if (el) makeField(el, c); });
+
+/* ---------- bucle único ---------- */
+const heroSec = $('.hero'), panSec = $('.pan');
+const saveTrack = $('.save__track');
+function loop(now) {
+  raf = requestAnimationFrame(loop);
+  const dt = Math.min((now - last) / 1000, 0.05); last = now;
+  time += dt * FX.morphSpeed;
+  for (const b of fields) if (b.visible && !b.lost) b.draw();
+  const heroOn = onScreen.has(heroSec);
+  if (heroOn) {
+    const target = mqHover ? 12 : 50;
+    mqV += (target - mqV) * 0.05; mqX -= dt * mqV;
+    if (mqHalf && -mqX >= mqHalf) mqX += mqHalf;
+    track.style.transform = `translateX(${mqX}px)`;
+    if (wideMQ.matches) {
+      pm[0] += (mouse[0] - pm[0]) * 0.06; pm[1] += (mouse[1] - pm[1]) * 0.06;
+      for (const [el, k] of cards) { el.style.setProperty('--px', pm[0] * k + 'px'); el.style.setProperty('--py', -pm[1] * k + 'px'); }
+    }
+  }
+  if (!document.hidden) for (const c of clocks) {
+    if (!onScreen.has(c.sec) || c.paused()) continue;
+    c.ms += dt * 1000;
+    if (c.ms >= c.period) { c.ms = 0; c.step(); }
+  }
+  cpFills.forEach((f, i) => { f.style.width = (i < caseIdx ? 100 : i === caseIdx ? caseClock.ms / caseClock.period * 100 : 0) + '%'; });
+  if (onScreen.has(panSec)) {
+    dotFills.forEach((f, i) => { f.style.width = (i < slide ? 100 : i === slide ? slideClock.ms / slideClock.period * 100 : 0) + '%'; });
+    theta += dt * 4.8;
+    orbitEl.style.setProperty('--o', theta + 'deg'); orbitEl.style.setProperty('--oi', -1.4 * theta + 'deg');
+    renderAdopt();
+  }
+  renderThumb();
+}
+if (RM) {
+  cpFills.forEach((f, i) => { f.style.width = i <= caseIdx ? '100%' : '0%'; });
+  dotFills.forEach((f, i) => { f.style.width = i <= slide ? '100%' : '0%'; });
+  ticksEl.addEventListener('pointermove', () => requestAnimationFrame(renderAdopt));
+  ticksEl.addEventListener('pointerleave', () => requestAnimationFrame(renderAdopt));
+  tstTrack.addEventListener('scroll', () => requestAnimationFrame(renderThumb), { passive: true });
+  renderThumb();
+} else raf = requestAnimationFrame(loop);
+
+/* ---------- §9 entrada ---------- */
+function countUp(el) {
+  const end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '', t0 = performance.now();
+  const step = now => { const p = Math.min(1, (now - t0) / 1600); el.textContent = pre + Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+if (ANIM) {
+  for (const el of $$('[data-count]')) el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
+  saveTrack.style.setProperty('--p', '0%');
+  const hooks = new Set($$('.rv, .gy, .gx'));
+  const clean = el => { if (!hooks.delete(el)) return; el.classList.remove('rv', 'gy', 'gx', 'is-in'); if (!hooks.size) document.documentElement.classList.remove('anim'); };
+  const reveal = el => { el.classList.add('is-in'); el.addEventListener('transitionend', e => { if (e.target === el && e.propertyName === 'transform') clean(el); }); };
+  const boot = () => {
+    const rvIO = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { rvIO.unobserve(e.target); reveal(e.target); if (e.target.matches('.w--save')) saveTrack.style.setProperty('--p', '90%'); } }, { threshold: .1 });
+    const groups = new Map();
+    for (const el of hooks) {
+      if (!el.getClientRects().length) { clean(el); continue; }
+      if (el.classList.contains('rv')) rvIO.observe(el);
+      else { const p = el.parentElement; if (!groups.has(p)) groups.set(p, []); groups.get(p).push(el); }
+    }
+    const gIO = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { gIO.unobserve(e.target); groups.get(e.target).forEach(reveal); } }, { threshold: .1 });
+    groups.forEach((_, p) => gIO.observe(p));
+    const cIO = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { cIO.unobserve(e.target); countUp(e.target); } }, { threshold: .1 });
+    $$('[data-count]').forEach(el => cIO.observe(el));
+    if (!hooks.size) document.documentElement.classList.remove('anim');
+  };
+  Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 500))]).then(() => requestAnimationFrame(() => requestAnimationFrame(boot)));
+}
+})();
+</script>
+</body>
+</html>
