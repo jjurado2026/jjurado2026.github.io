@@ -1,0 +1,3 @@
+/* 1a · El hero de ahora con su oficina abierta de fondo */
+.hero__foto--oficina { object-position: 60% 46%; }
+@media (max-width: 599.98px) { .hero__foto--oficina { object-position: 66% 50%; } }

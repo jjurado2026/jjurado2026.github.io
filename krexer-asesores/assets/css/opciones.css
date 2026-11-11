@@ -1,0 +1,22 @@
+/* Conmutador entre el hero actual y las opciones 1a, 1b y 1c */
+.opciones {
+  position: fixed; z-index: 60; right: 10px; top: 50%; transform: translateY(-50%);
+  display: grid; gap: 2px; padding: 4px; border-radius: 14px;
+  background: var(--negro); box-shadow: var(--sombra-2);
+}
+.opciones a {
+  position: relative; isolation: isolate; display: grid; place-items: center;
+  min-width: 46px; min-height: 40px; padding: 0 8px; border-radius: 10px;
+  color: var(--blanco); font-size: .8rem; font-weight: 680; font-stretch: 108%; line-height: 1; text-decoration: none;
+  -webkit-tap-highlight-color: transparent; transition: transform .15s var(--sale);
+}
+.opciones a::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--negro-3); opacity: 0; transition: opacity .25s; }
+@media (hover: hover) { .opciones a:hover::before { opacity: 1; } }
+.opciones a[aria-current="page"] { color: var(--negro); }
+.opciones a[aria-current="page"]::before { background: var(--naranja); opacity: 1; }
+.opciones a:focus-visible { outline-color: var(--naranja); outline-offset: 2px; }
+.opciones a:active { transform: scale(.94); }
+.captura .opciones { display: none; }
+@media (max-width: 1023.98px) {
+  .opciones { top: auto; bottom: calc(var(--barra) + 10px); transform: none; grid-auto-flow: column; }
+}
