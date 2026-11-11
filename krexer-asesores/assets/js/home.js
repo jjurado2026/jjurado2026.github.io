@@ -121,7 +121,7 @@
   menuMovil.addEventListener('click', (e) => { if (e.target.closest('a')) cierraMenu(); });
   d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menuMovil.hidden) { cierraMenu(); hamb.focus(); } });
 
-  /* ─── Hero: los listones de la pared suben por su carril, el filo se dibuja y el titular sale de su máscara (en CSS) ─── */
+  /* ─── Hero: los listones del equipo suben por su carril, el filo se dibuja y el titular sale de su máscara (en CSS) ─── */
   const hero = $('[data-hero]');
   const h1 = $('.hero__titulo');
   const arrancaHero = () => {
@@ -131,8 +131,8 @@
   const listoFuentes = d.fonts && d.fonts.ready ? Promise.race([d.fonts.ready, espera(1200)]) : espera(200);
   listoFuentes.then(() => requestAnimationFrame(arrancaHero));
 
-  /* Al bajar, los listones se abren como tablas que se separan: el primero sigue pegado al filo y cada uno se aparta
-     un poco más, en perpendicular a la diagonal. Con el ratón se entreabren, más cuanto más cerca de la madera */
+  /* Al bajar, los listones se entreabren: el primero sigue pegado al filo y cada uno se aparta un poco más, en perpendicular
+     a la diagonal. Las juntas caen entre personas. Con el ratón se entreabren apenas, más cuanto más cerca de la foto */
   const marco = $('[data-marco]');
   if (marco && !quieto) {
     const listones = $$('.hero__liston', marco);
@@ -145,9 +145,9 @@
     const pinta = () => {
       pedido = false;
       rx += (rObjetivo - rx) * 0.1;
-      const paso = estrecho.matches ? 26 : 46;
+      const paso = estrecho.matches ? 12 : 20;   // juntas finas: se nota que son listones sin tapar a nadie
       listones.forEach((l, k) => {
-        const a = p * k * paso + rx * k * 6;
+        const a = p * k * paso + rx * k * 3;
         l.style.translate = a ? `${(PX * a).toFixed(1)}px ${(PY * a).toFixed(1)}px` : '';
       });
       texto.style.translate = p ? `0 ${(-p * 70).toFixed(1)}px` : '';
