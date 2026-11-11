@@ -131,38 +131,27 @@
   const listoFuentes = d.fonts && d.fonts.ready ? Promise.race([d.fonts.ready, espera(1200)]) : espera(200);
   listoFuentes.then(() => requestAnimationFrame(arrancaHero));
 
-  /* Al bajar, los listones se entreabren: el primero sigue pegado al filo y cada uno se aparta un poco más, en perpendicular
-     a la diagonal. Las juntas caen entre personas. Con el ratón se entreabren apenas, más cuanto más cerca de la foto */
+  /* Al bajar, los listones se entreabren: el primero sigue pegado al filo y cada uno se aparta un poco más. Se mueven en
+     horizontal, así la junta queda paralela al corte y la foto sigue a ras de la banda negra. Las juntas caen entre personas */
   const marco = $('[data-marco]');
   if (marco && !quieto) {
     const listones = $$('.hero__liston', marco);
     const texto = $('.hero__texto', marco);
-    const foto = $('.hero__foto', marco);
-    const PX = 0.7547, PY = -0.6561;   // perpendicular al filo de 41°, hacia arriba a la derecha
-    const ratonFino = matchMedia('(hover: hover) and (pointer: fine)');
+    const ANCHO = 1 / 0.7547;   // para abrir una junta de a px en perpendicular al filo de 41°, el listón se mueve a / cos 41° en horizontal
     const estrecho = matchMedia('(max-width: 899.98px), (max-aspect-ratio: 1/1)');   // en móvil la foto es más baja y el recorrido, más corto
-    let p = 0, rx = 0, rObjetivo = 0, visible = true, pedido = false, izq = 0;
+    let p = 0, visible = true, pedido = false;
     const pinta = () => {
       pedido = false;
-      rx += (rObjetivo - rx) * 0.1;
       const paso = estrecho.matches ? 12 : 20;   // juntas finas: se nota que son listones sin tapar a nadie
       listones.forEach((l, k) => {
-        const a = p * k * paso + rx * k * 3;
-        l.style.translate = a ? `${(PX * a).toFixed(1)}px ${(PY * a).toFixed(1)}px` : '';
+        const d = p * k * paso;
+        l.style.translate = d ? (d * ANCHO).toFixed(1) + 'px 0' : '';
       });
-      texto.style.translate = p ? `0 ${(-p * 70).toFixed(1)}px` : '';
-      if (visible && Math.abs(rObjetivo - rx) > 0.002) pide();
+      texto.style.translate = p ? '0 ' + (-p * 70).toFixed(1) + 'px' : '';
     };
     const pide = () => { if (!pedido) { pedido = true; requestAnimationFrame(pinta); } };
     const mide = () => { p = Math.min(1, Math.max(0, scrollY / marco.offsetHeight)); };
     addEventListener('scroll', () => { if (visible) { mide(); pide(); } }, { passive: true });
-    marco.addEventListener('pointerenter', () => { izq = foto.getBoundingClientRect().left; });
-    marco.addEventListener('pointermove', (e) => {
-      if (!ratonFino.matches || e.pointerType !== 'mouse') return;
-      rObjetivo = Math.min(1, Math.max(0, (e.clientX - izq) / (innerWidth - izq)));
-      pide();
-    });
-    marco.addEventListener('pointerleave', () => { rObjetivo = 0; pide(); });
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) { mide(); pide(); } }).observe(marco);
   }
 

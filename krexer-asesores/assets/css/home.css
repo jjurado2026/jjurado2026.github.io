@@ -82,6 +82,8 @@ ul, ol { list-style: none; }
 .saltar { position: fixed; left: 12px; top: 12px; z-index: 100; background: var(--negro); color: #fff; padding: 10px 16px; border-radius: 10px; text-decoration: none; transform: translateY(-160%); transition: transform .3s var(--sale); }
 .saltar:focus-visible { transform: none; }
 
+::selection { background: var(--naranja); color: var(--negro); }
+
 /* ═══════════ BOTÓN «CORTE K» ═══════════
    Reposo: trazo fino y pastilla gris con el icono. Al pasar, el naranja nace de la pastilla y se abre en
    rombo (las diagonales de la K), la etiqueta rueda y el icono hace su gesto. El botón no se mueve. */
@@ -322,17 +324,18 @@ ul, ol { list-style: none; }
   .foto-marco:hover img[data-foto], .proceso:hover img[data-foto] { transform: scale(1.035); }
 }
 
-/* ═══════════ HERO: el titular a lo ancho; debajo, a la derecha, su equipo entero en cinco listones, con el corte a 41° de su K en la esquina ═══════════ */
+/* ═══════════ HERO: el texto a la izquierda; a la derecha, su equipo entero en cinco listones, con el corte a 41° de su K en la esquina ═══════════ */
 .primera { background: var(--negro); }
 .hero { background: var(--blanco); color: var(--negro); }
 .hero__marco {
-  --alto: max(600px, calc(100svh - var(--barra)));
-  --fs: min(5.2vw, 8.6svh, 82px);
-  --lh: calc(var(--fs) * .96);
-  --arriba: calc(var(--cab) + clamp(28px, 6svh, 64px));                /* donde empieza el titular */
-  --tope: calc(var(--arriba) + 2 * var(--lh) + clamp(24px, 4svh, 44px));   /* donde empiezan la foto y la columna de texto */
-  --fw: min(calc((var(--alto) - var(--tope)) * 1.5), 64vw, calc(100vw - 470px));   /* la foto, siempre a su proporción 3:2: nadie queda fuera */
-  --fh: calc(var(--fw) / 1.5);
+  --izq: max(var(--canal), (100vw - var(--ancho)) / 2);                /* donde empieza el contenido */
+  --hueco: clamp(32px, 4vw, 72px);                                      /* entre el texto y la foto */
+  --mv: clamp(20px, 5svh, 64px);                                        /* aire de la foto bajo la cabecera */
+  --fw: min(50vw, calc((100svh - var(--barra) - var(--cab) - var(--mv)) * 1.2));  /* la foto en 6:5: solo pierde planta y mueble por los lados */
+  --fh: calc(var(--fw) / 1.2);
+  --alto: max(600px, calc(var(--cab) + var(--mv) + var(--fh)));       /* el hero mide lo que la foto: la banda de valores entra en la primera pantalla */
+  --col: calc(100vw - var(--fw) - var(--izq) - var(--hueco));           /* la columna de texto */
+  --fs: min(calc(var(--col) / 7.8), 10.4svh, 112px);                   /* «Reinventamos» llena la columna */
   --corte: calc(var(--fh) * .3);                /* alto del corte en la esquina inferior izquierda: solo planta y suelo */
   --o: calc((var(--fh) - var(--corte)) * .8693);
   --dx: calc(var(--fh) * .8693);                /* lo que avanza el filo de arriba abajo de la foto: tan 41° */
@@ -340,11 +343,10 @@ ul, ol { list-style: none; }
   --viaje: 24svh;
   position: relative; isolation: isolate; overflow: hidden; height: var(--alto);
 }
-@media (min-width: 1760px) { .hero__marco { --fs: min(5.2vw, 8.6svh, 96px); } }
 
 /* El equipo: cinco listones con la misma foto, cada uno una franja paralela al corte. Las juntas (--c0 y --c1 de cada listón,
    en fracción del ancho de la foto) caen en los huecos entre personas: ninguna cara queda partida al abrirse */
-.hero__foto { position: absolute; z-index: 1; right: 0; bottom: 0; width: var(--fw); height: var(--fh); overflow: hidden; }
+.hero__foto { position: absolute; z-index: 1; right: 0; bottom: 0; width: var(--fw); height: var(--fh); overflow: hidden; }   /* a sangre por la derecha y por abajo */
 .hero__liston {
   --x0: calc(var(--c0) * var(--fw)); --x1: calc(var(--c1) * var(--fw));
   position: absolute; inset: 0; will-change: transform;
@@ -354,39 +356,37 @@ ul, ol { list-style: none; }
 .hero__liston--ultimo { clip-path: polygon(var(--x0) 0, 400% 0, 400% 100%, calc(var(--x0) + var(--dx)) 100%); }
 .hero__liston img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 50%; }
 
-/* El filo: el corte en naranja; solo se ve su tramo dentro de la foto */
+/* El filo: el corte en naranja, solo en su tramo dentro de la foto */
 .hero__filo {
-  position: absolute; z-index: 2; left: calc(-1 * var(--o) - 3px); top: 0;
-  width: 6px; height: calc(var(--fh) * 1.325); border-radius: 3px;
+  position: absolute; z-index: 2; left: -3px; top: calc(var(--fh) - var(--corte));
+  width: 6px; height: calc(var(--corte) * 1.325); border-radius: 3px;
   background: var(--naranja); transform-origin: 50% 0; transform: rotate(-41deg);
 }
 
-/* El texto: el titular en dos líneas a lo ancho; debajo, a la izquierda de la foto, el resto */
-.hero__texto { position: absolute; z-index: 3; top: var(--arriba); left: 0; right: 0; pointer-events: none; }
+/* El texto: una columna a la izquierda de la foto, centrada en su alto */
+.hero__texto {
+  position: absolute; z-index: 3; inset: calc(var(--cab) + var(--mv)) 0 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding-block: clamp(16px, 3svh, 40px); pointer-events: none;
+}
 .hero__texto > * { pointer-events: auto; }
-.hero__titulo { font-size: var(--fs); font-weight: 780; font-stretch: 125%; line-height: .96; letter-spacing: 0; text-wrap: nowrap; }   /* lo más ancho de Mona Sans: un cartel a todo el ancho */
+.hero__titulo { font-size: var(--fs); font-weight: 780; font-stretch: 112%; line-height: .96; letter-spacing: 0; text-wrap: nowrap; }
 .hero__linea { display: block; overflow: hidden; padding-block: .03em .14em; margin-block: -.03em -.14em; white-space: nowrap; }
-.hero__linea:not(:last-child) { display: inline-block; vertical-align: top; }
 .hero__linea > span { display: inline-block; }
 .punto { display: inline-block; position: relative; width: .2em; height: .2em; margin-left: .05em; color: transparent; vertical-align: baseline; overflow: hidden; line-height: 0; }
 .punto::before { content: ''; position: absolute; inset: 0; border-radius: 28%; background: var(--naranja); }
 .anima .hero__titulo.visto .punto::before { animation: punto-late 1s var(--muelle) 1.2s both; }
 @keyframes punto-late { 0% { transform: scale(0) rotate(-45deg); } 100% { transform: none; } }
-/* La columna ocupa el alto de la foto: la entradilla arriba, a la altura de la foto; botones y datos al pie, junto a la esquina naranja */
-.hero__lado {
-  margin-top: clamp(24px, 4svh, 44px); display: grid; grid-template-rows: auto 1fr auto; justify-items: start;
-  height: calc(var(--alto) - var(--tope) - clamp(24px, 4svh, 44px));
-  max-width: calc(100vw - var(--fw) - max(var(--canal), (100vw - var(--ancho)) / 2) - clamp(32px, 4vw, 64px));
-}
+.hero__lado { margin-top: clamp(20px, 3.4svh, 34px); display: grid; justify-items: start; max-width: var(--col); }
 .hero__lead { max-width: 40ch; font-size: clamp(1.05rem, .98rem + .4vw, 1.3rem); line-height: 1.5; color: var(--grafito); text-wrap: balance; }
 .hero__lugar { display: block; color: var(--negro); font-weight: 650; }
-.hero__botones { align-self: end; display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(16px, 2.8svh, 28px); }
+.hero__botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(16px, 2.8svh, 28px); }
 .hero .boton:focus-visible { outline-color: var(--naranja-hondo); }
 
-/* Sus datos, uno por línea bajo los botones */
-.hero__datos { display: grid; justify-items: start; margin-top: clamp(10px, 2svh, 22px); font-size: .92rem; }
+/* Sus datos, bajo los botones */
+.hero__datos { display: flex; flex-wrap: wrap; gap: 0 clamp(14px, 1.4vw, 34px); margin-top: clamp(8px, 1.8svh, 20px); font-size: clamp(.84rem, .6rem + .35vw, .92rem); }
 .hero__datos a {
-  display: inline-flex; align-items: center; gap: 9px; min-height: 40px;
+  display: inline-flex; align-items: center; gap: 9px; min-height: 44px;
   color: var(--grafito); font-weight: 540; font-stretch: 104%; text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -410,7 +410,7 @@ ul, ol { list-style: none; }
 /* Entrada: los listones suben por su carril desde abajo a la derecha, el filo se dibuja y el titular sale de su máscara */
 .anima .hero__liston {
   transform: translate(calc(var(--viaje) * .6561), calc(var(--viaje) * .7547));
-  transition: transform 1.5s var(--sale); transition-delay: calc(.05s + var(--k) * .085s);
+  transition: transform 1.3s var(--sale); transition-delay: calc(.05s + var(--k) * .08s);
 }
 .anima .hero.listo .hero__liston { transform: none; }
 .anima .hero__liston img { transform: scale(1.08); transition: transform 2.6s var(--sale) .1s; }
@@ -429,16 +429,13 @@ ul, ol { list-style: none; }
 /* Tableta, móvil y pantallas en vertical: el equipo arriba, a todo el ancho y a su proporción; el corte en su esquina inferior izquierda */
 @media (max-width: 899.98px), (max-aspect-ratio: 1/1) {
   .hero__marco {
-    --fw: 100vw; --corte: calc(var(--fh) * .4); --viaje: 16svh; --fs: 11.6vw;
+    --fw: 100vw; --corte: calc(var(--fh) * .4); --viaje: 16svh; --fs: 11.6vw; --col: 100vw;
     height: auto; min-height: calc(100svh - var(--barra)); display: flex; flex-direction: column; padding-top: var(--cab);
   }
   .hero__foto { position: relative; right: auto; bottom: auto; flex: none; width: 100%; }
-  .hero__texto { position: relative; top: auto; padding-block: clamp(18px, 3svh, 30px) clamp(20px, 3svh, 30px); }
+  .hero__texto { position: relative; inset: auto; display: block; padding-block: clamp(18px, 3svh, 30px) clamp(20px, 3svh, 30px); }
   .hero__titulo { font-stretch: 104%; }
-  .hero__linea:not(:last-child) { display: block; }
-  .hero__lado { max-width: none; height: auto; grid-template-rows: none; margin-top: clamp(20px, 3.4svh, 34px); }
-  .hero__datos { display: flex; flex-wrap: wrap; gap: 0 clamp(18px, 2.6vw, 38px); }
-  .hero__datos a { min-height: 44px; }
+  .hero__lado { max-width: none; }
 }
 @media (min-width: 600px) and (max-width: 899.98px), (min-width: 900px) and (max-aspect-ratio: 1/1) { .hero__marco { --fs: 9vw; } }
 /* Móvil: la barra fija ya lleva Llamar y Contacta */
