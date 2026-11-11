@@ -1,4 +1,4 @@
-/* Quorum Asesores JA · propuesta de home · ronda 5 */
+/* Quorum Asesores JA · propuesta de home · ronda 6 */
 (function () {
   'use strict';
   window.QUORUM = true;
@@ -93,102 +93,63 @@
   subtitulos.forEach(function (p) { partirPalabras(p); p.setAttribute('data-palabras', ''); });
   alVer(subtitulos, null, 0.3);
 
-  /* ─── Hero «el grabado»: un medallón de guilloché (el grabado de billetes, cheques y escrituras) dibujado en cuatro lienzos.
-         Las capas giran muy despacio en sentidos contrarios y el dibujo cambia al cruzarse; con el cursor encima se paran
-         y el dibujo sigue al cursor; con cada frase de su slider dan un giro. Solo se anima transform. ─── */
-  var hero = $('[data-hero]'), grabado = $('[data-grabado]');
+  /* ─── Hero «tres frases, tres azules»: las tres frases de su slider a tamaño de cartel, cada una tan grande como cabe.
+         Con cada frase, su azul (el del logo, el marino de sus botones y uno vivo) se abre en círculo desde el centro
+         y las letras llegan girando una a una. La frase se para con el cursor encima de ella, de los botones o de las rayas.
+         Solo se anima transform y opacity. ─── */
+  var hero = $('[data-hero]');
   var lemasCaja = $('[data-lemas]'), lemas = $$('[data-lemas] .lema'), selectores = $$('[data-ir]'), pausaBtn = $('[data-pausa]');
+  var tonos = $$('[data-tono]'), BASE = ['#2042C0', '#000066', '#3D5FE6'];
   var actual = -1, pausadoAMano = false, encima = false, foco = false, heroVisible = true;
-  var TAU = Math.PI * 2;
-  /* vel: grados por segundo en reposo · cursor: grados de lado a lado del hero · salto: giro con cada frase */
-  var AJUSTE = { marco: { vel: .22, cursor: 2, salto: 8 }, a: { vel: .5, cursor: 7, salto: 30 }, b: { vel: -.5, cursor: -7, salto: -30 }, centro: { vel: -.7, cursor: 5, salto: 22 } };
-  var capas = grabado ? $$('[data-capa]', grabado).map(function (el, i) {
-    var tipo = el.getAttribute('data-capa'), aj = AJUSTE[tipo];
-    el.style.setProperty('--n', { centro: 0, a: 1, b: 1, marco: 2 }[tipo]);
-    return { tipo: tipo, lienzo: $('canvas', el), vel: aj.vel, cursor: aj.cursor, salto: aj.salto, reposo: 0, giro: 0, desde: 0, hasta: 0, t0: 0, dur: 1 };
-  }) : [];
   lemas.forEach(partirLetras);
   if (lemasCaja) lemasCaja.classList.add('vivo');
 
-  /* Dibujo: cada capa es un haz de curvas cerradas r(θ) desplazadas en fase, con un brillo cónico de sus azules */
-  function trazo(x, R, f, pasos) {
-    x.beginPath();
-    for (var s = 0; s <= pasos; s++) {
-      var t = s / pasos * TAU, r = f(t) * R;
-      if (s) x.lineTo(r * Math.cos(t), r * Math.sin(t)); else x.moveTo(r * Math.cos(t), r * Math.sin(t));
-    }
-    x.closePath(); x.stroke();
-  }
-  function aro(x, r) { x.beginPath(); x.arc(0, 0, r, 0, TAU); x.stroke(); }
-  function brillo(x, colores) {
-    if (!x.createConicGradient) return colores[1];
-    var g = x.createConicGradient(-Math.PI / 2, 0, 0);
-    colores.forEach(function (c, i) { g.addColorStop(i / (colores.length - 1), c); });
-    return g;
-  }
-  var BLANCO = ['rgba(255,255,255,.5)', 'rgba(255,255,255,.92)', 'rgba(201,214,255,.6)', 'rgba(255,255,255,.92)', 'rgba(255,255,255,.5)'];
-  var AZUL = ['rgba(98,132,255,.95)', 'rgba(169,185,255,.75)', 'rgba(98,132,255,.95)', 'rgba(169,185,255,.75)', 'rgba(98,132,255,.95)'];
-  var dibujado = 0;
-  function dibujar() {
-    if (!grabado) return;
-    var lado = grabado.clientWidth;
-    if (!lado) return;
-    var dpr = Math.min(window.devicePixelRatio || 1, 2), px = Math.round(lado * dpr);
-    if (Math.abs(px - dibujado) < 6) return;
-    dibujado = px;
-    var R = px / 2 * .985, n = lado < 300 ? 10 : lado < 460 ? 13 : 16, k = lado < 300 ? 10 : 12;
-    var pasos = Math.round(Math.min(3600, Math.max(1400, lado * 5))), g = .8 * dpr;
-    capas.forEach(function (c) {
-      var lz = c.lienzo; lz.width = lz.height = px;
-      var x = lz.getContext('2d'); x.translate(px / 2, px / 2); x.lineWidth = g; x.lineJoin = 'round';
-      var i, f;
-      if (c.tipo === 'marco') {
-        x.strokeStyle = brillo(x, BLANCO);
-        var ondas = lado < 300 ? 72 : 100;
-        for (i = 0; i < 5; i++) (function (f) { trazo(x, R, function (t) { return .952 + .026 * Math.sin(ondas * t + f); }, pasos * 2); })(TAU * i / 5);
-        x.lineWidth = g * 1.4; aro(x, .905 * R); aro(x, .998 * R);
-      } else if (c.tipo === 'a' || c.tipo === 'b') {
-        x.strokeStyle = brillo(x, c.tipo === 'a' ? BLANCO : AZUL);
-        for (i = 0; i < n; i++) {
-          f = TAU * (i + (c.tipo === 'b' ? .5 : 0)) / n;
-          (function (f) { trazo(x, R, function (t) { return .645 + .15 * Math.sin(k * t + f) + .05 * Math.sin(3 * k * t - 3 * f); }, pasos); })(f);
-        }
-      } else {
-        x.strokeStyle = brillo(x, BLANCO);
-        var m = lado < 300 ? 8 : 12;
-        for (i = 0; i < m; i++) (function (f) { trazo(x, R, function (t) { return .335 + .07 * Math.sin(8 * t + f) * Math.cos(16 * t); }, pasos); })(TAU * i / m);
-        x.lineWidth = g * 1.2; aro(x, .23 * R);
+  /* Cada frase, tan grande como quepa en su caja sin partir palabras */
+  var cajaW = 0, cajaH = 0;
+  function encajar(forzar) {
+    if (!lemasCaja) return;
+    var W = lemasCaja.clientWidth, H = lemasCaja.clientHeight;
+    if (!W || !H || (!forzar && Math.abs(W - cajaW) < 1 && Math.abs(H - cajaH) < 1)) return;
+    cajaW = W; cajaH = H;
+    var tope = Math.min(260, Math.max(64, innerWidth * .16));
+    lemas.forEach(function (l) {
+      var antes = l.style.display; l.style.display = 'block';
+      var lo = 20, hi = tope;
+      for (var k = 0; k < 12; k++) {
+        var m = (lo + hi) / 2; l.style.fontSize = m + 'px';
+        if (l.scrollWidth <= W + 1 && l.offsetHeight <= H) lo = m; else hi = m;
       }
+      l.style.fontSize = Math.floor(lo * 10) / 10 + 'px';
+      l.style.display = antes;
     });
+  }
+  /* El círculo de cada azul llega justo a las esquinas del hero */
+  function medir() {
+    if (!hero) return;
+    var r = hero.getBoundingClientRect();
+    hero.style.setProperty('--diametro', Math.ceil(Math.hypot(r.width, r.height) + 4) + 'px');
+    encajar();
   }
 
-  /* Movimiento: reposo (se para con el cursor, el foco, fuera de pantalla y con la pausa) + cursor + giro de cada frase */
-  function parar() { if (hero) hero.classList.toggle('parado', pausadoAMano || encima || foco || !heroVisible); }
-  function curva(p) { return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
-  var pCursor = 0, pObjetivo = 0, marcha = 1, ultimo = 0, enBucle = false;
-  function pintar() {
-    capas.forEach(function (c) { c.lienzo.style.transform = 'rotate(' + (c.reposo + c.giro + c.cursor * pCursor).toFixed(3) + 'deg)'; });
-  }
-  function bucle(t) {
-    var dt = ultimo ? Math.min(.05, (t - ultimo) / 1000) : 0; ultimo = t;
-    var quiere = pausadoAMano || encima || foco ? 0 : 1;
-    marcha += (quiere - marcha) * Math.min(1, dt * 2.5);
-    pCursor += (pObjetivo - pCursor) * Math.min(1, dt * 3.2);
-    capas.forEach(function (c) {
-      c.reposo += c.vel * marcha * dt;
-      var q = Math.max(0, Math.min(1, (t - c.t0) / c.dur));
-      c.giro = c.desde + (c.hasta - c.desde) * curva(q);
-    });
-    pintar();
-    if (heroVisible) requestAnimationFrame(bucle); else { enBucle = false; ultimo = 0; }
-  }
-  function arrancar() { if (!quieto && !enBucle && capas.length) { enBucle = true; requestAnimationFrame(bucle); } }
-  function girar(veces, dur) {
-    var ahora = performance.now();
-    capas.forEach(function (c) { c.desde = c.giro; c.hasta = c.giro + c.salto * veces; c.t0 = ahora; c.dur = dur; });
+  /* Los azules: el de la frase nueva se abre desde el centro encima del anterior */
+  var zTono = 2, tTono;
+  function ponerTono(n, ya) {
+    var t = tonos[n]; if (!t || !hero) return;
+    clearTimeout(tTono);
+    hero.classList.add('con-tonos');
+    if (ya || quieto) {
+      tonos.forEach(function (o, i) { o.classList.toggle('esta', i === n); o.classList.remove('abre', 'va'); o.style.zIndex = ''; });
+      hero.style.backgroundColor = BASE[n];
+      return;
+    }
+    t.classList.remove('esta', 'va'); t.classList.add('abre'); t.style.zIndex = ++zTono;
+    void t.offsetWidth;
+    t.classList.add('va');
+    tTono = setTimeout(function () { ponerTono(n, true); }, 1700);
   }
 
   /* Frases: la raya de la frase activa se llena en 7 s y pasa a la siguiente */
+  function parar() { if (hero) hero.classList.toggle('parado', pausadoAMano || encima || foco || !heroVisible); }
   function correr(n) {
     selectores.forEach(function (s) { s.classList.remove('corre'); });
     if (quieto || !selectores[n]) return;
@@ -198,58 +159,64 @@
   function cambiarLema(n, primera) {
     lemas.forEach(function (l, i) {
       if (i === n) {
-        if (primera || quieto) l.classList.add('esta');
-        else setTimeout(function () { l.classList.add('esta'); }, 380);
+        if (quieto) l.classList.add('esta');
+        else setTimeout(function () { if (actual === n) { l.classList.remove('sale'); l.classList.add('esta'); } }, primera ? 260 : 420);
       } else if (l.classList.contains('esta')) {
         l.classList.remove('esta');
-        if (!quieto) { l.classList.add('sale'); setTimeout(function () { l.classList.remove('sale'); }, 800); }
+        if (!quieto) { l.classList.add('sale'); setTimeout(function () { l.classList.remove('sale'); }, 900); }
       }
     });
   }
   function ir(n) {
     if (!hero || !lemas[n] || n === actual) return;
-    var primera = actual < 0;
     selectores.forEach(function (s, i) { s.setAttribute('aria-current', i === n ? 'true' : 'false'); });
+    var primera = actual < 0;
+    actual = n;
     cambiarLema(n, primera);
-    if (!primera && !quieto) girar(1, 2200);
-    actual = n; correr(n);
+    ponerTono(n);
+    correr(n);
   }
 
   if (hero && lemas.length) {
-    dibujar();
-    var tRedibujo;
-    window.addEventListener('resize', function () { clearTimeout(tRedibujo); tRedibujo = setTimeout(dibujar, 160); });
+    medir();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { encajar(true); });
+    if ('ResizeObserver' in window) new ResizeObserver(function () { encajar(); }).observe(lemasCaja);
+    var tMedir;
+    window.addEventListener('resize', function () { clearTimeout(tMedir); tMedir = setTimeout(medir, 120); });
     selectores.forEach(function (s, i) {
       s.addEventListener('click', function () { ir(i); });
       var raya = $('.selector__raya i', s);
       if (raya) raya.addEventListener('animationend', function () { if (s.classList.contains('corre')) ir((i + 1) % lemas.length); });
     });
+    /* El cursor sobre la frase (sus letras, no la caja entera), los botones o las rayas la deja quieta para leerla */
     if (!tactil) {
-      hero.addEventListener('mouseenter', function () { encima = true; parar(); });
-      hero.addEventListener('mouseleave', function () { encima = false; parar(); });
+      var rango = document.createRange();
       hero.addEventListener('pointermove', function (e) {
         if (e.pointerType !== 'mouse') return;
-        var r = hero.getBoundingClientRect();
-        pObjetivo = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - .5) * 2));
+        var dentro = !!(e.target.closest && e.target.closest('.hero__acciones a, .hero__mandos button'));
+        if (!dentro && lemas[actual]) {
+          rango.selectNodeContents(lemas[actual]);
+          var r = rango.getBoundingClientRect();
+          dentro = e.clientX >= r.left - 12 && e.clientX <= r.right + 12 && e.clientY >= r.top - 8 && e.clientY <= r.bottom + 8;
+        }
+        if (dentro !== encima) { encima = dentro; parar(); }
       });
+      hero.addEventListener('mouseleave', function () { encima = false; parar(); });
     }
     hero.addEventListener('focusin', function (e) { var t = e.target; foco = !!(t.matches && t.matches(':focus-visible')); parar(); });
     hero.addEventListener('focusout', function (e) { if (!hero.contains(e.relatedTarget)) { foco = false; parar(); } });
-    enVista(hero, function (v) { heroVisible = v; parar(); if (v) arrancar(); });
+    enVista(hero, function (v) { heroVisible = v; parar(); });
     if (pausaBtn) pausaBtn.addEventListener('click', function () {
       pausadoAMano = !pausadoAMano;
       pausaBtn.setAttribute('aria-pressed', String(pausadoAMano));
-      pausaBtn.setAttribute('aria-label', pausadoAMano ? 'Reanudar las frases y el grabado' : 'Pausar las frases y el grabado');
+      pausaBtn.setAttribute('aria-label', pausadoAMano ? 'Reanudar las frases' : 'Pausar las frases');
       parar();
     });
-    if (quieto) { hero.classList.add('listo'); ir(0); }
+    if (quieto) { ponerTono(0, true); hero.classList.add('listo'); ir(0); }
     else {
-      /* Entrada: las capas llegan giradas y se encajan mientras aparecen de dentro afuera */
-      capas.forEach(function (c) { c.giro = -c.salto * 1.6; });
-      pintar();
-      var t0 = performance.now() + 120;
-      capas.forEach(function (c) { c.desde = c.giro; c.hasta = 0; c.dur = 2400; c.t0 = t0; });
-      requestAnimationFrame(function () { hero.classList.add('listo'); ir(0); arrancar(); });
+      /* Entrada: sobre el marino de sus botones se abre el azul del logo y llega la primera frase */
+      ponerTono(1, true);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { hero.classList.add('listo'); ir(0); }); });
     }
   }
 

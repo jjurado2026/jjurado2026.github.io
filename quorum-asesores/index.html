@@ -47,7 +47,7 @@
 </script>
 <link rel="preload" href="assets/fonts/gambarino-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ranade-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/home.css?v=7">
+<link rel="stylesheet" href="assets/css/home.css?v=8">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -125,50 +125,40 @@
 
 <main id="principal">
 
-  <!-- ═══════════ HERO · «el grabado»: un medallón de guilloché (el grabado de billetes, cheques y escrituras) con la Q de su logo; al lado, su nombre y las frases de su slider ═══════════ -->
+  <!-- ═══════════ HERO · «tres frases, tres azules»: las tres frases de su slider a tamaño de cartel; con cada una, su azul (el del logo, el marino de sus botones y uno vivo) se abre en círculo desde el centro ═══════════ -->
   <section class="hero" data-hero aria-labelledby="t-hero">
+    <div class="hero__fondo" aria-hidden="true" data-deco><span class="tono" data-tono="0"></span><span class="tono" data-tono="1"></span><span class="tono" data-tono="2"></span></div>
     <div class="envoltura hero__dentro">
-      <div class="hero__texto">
-        <h1 class="hero__marca" id="t-hero">
-          <span class="hero__nombre">Quorum Asesores JA</span>
-          <span class="hero__lema">Gestión integral de pymes</span>
-        </h1>
-        <div class="lemas" data-lemas>
-          <h2 class="lema">¡Soluciones que usted necesita!</h2>
-          <h2 class="lema">Experiencia, eficacia y trabajo en equipo</h2>
-          <h2 class="lema">Su asesoría de confianza</h2>
-        </div>
-        <p class="hero__entrada">Todo lo que un profesional autónomo o pequeña y mediana empresa necesita para llevar al día todas sus obligaciones empresariales.</p>
-        <div class="hero__acciones">
-          <a class="boton boton--claro" href="tel:+34913525310" data-suena>
-            <span class="boton__asientos" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="boton__txt"><span class="solo-ancho">Llamar al </span>913 525 310</span>
-            <svg class="ico boton__ico" aria-hidden="true"><use href="#i-tel"/></svg>
-          </a>
-          <a class="boton boton--claro" href="#contacto">
-            <span class="boton__asientos" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="boton__txt">Contacta<span class="solo-ancho"> con nosotros</span></span>
-            <svg class="ico boton__ico" aria-hidden="true"><use href="#i-sobre"/></svg>
-          </a>
-        </div>
+      <h1 class="hero__marca" id="t-hero">
+        <span class="hero__nombre">Quorum Asesores JA</span>
+        <span class="hero__lema">Gestión integral de pymes</span>
+      </h1>
+      <div class="lemas" data-lemas>
+        <h2 class="lema">¡Soluciones que usted necesita!</h2>
+        <h2 class="lema">Experiencia, eficacia y trabajo en equipo</h2>
+        <h2 class="lema">Su asesoría de confianza</h2>
       </div>
-      <div class="hero__obra">
-        <div class="grabado" data-grabado aria-hidden="true">
-          <div class="grabado__capa" data-capa="marco"><canvas width="1" height="1"></canvas></div>
-          <div class="grabado__capa" data-capa="b"><canvas width="1" height="1"></canvas></div>
-          <div class="grabado__capa" data-capa="a"><canvas width="1" height="1"></canvas></div>
-          <div class="grabado__capa" data-capa="centro"><canvas width="1" height="1"></canvas></div>
-          <div class="grabado__q"><span>Q</span></div>
-        </div>
-        <div class="hero__mandos" role="group" aria-label="Frases de la portada">
-          <button class="selector" type="button" data-ir="0" aria-current="true" aria-label="Frase 1 de 3: ¡Soluciones que usted necesita!"><span class="selector__raya" aria-hidden="true"><i></i></span></button>
-          <button class="selector" type="button" data-ir="1" aria-current="false" aria-label="Frase 2 de 3: Experiencia, eficacia y trabajo en equipo"><span class="selector__raya" aria-hidden="true"><i></i></span></button>
-          <button class="selector" type="button" data-ir="2" aria-current="false" aria-label="Frase 3 de 3: Su asesoría de confianza"><span class="selector__raya" aria-hidden="true"><i></i></span></button>
-          <button class="hero__pausa" type="button" data-pausa aria-pressed="false" aria-label="Pausar las frases y el grabado">
-            <svg class="ico hero__pausa-ii" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-            <svg class="ico hero__pausa-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor"/></svg>
-          </button>
-        </div>
+      <p class="hero__entrada">Todo lo que un profesional autónomo o pequeña y mediana empresa necesita para llevar al día todas sus obligaciones empresariales.</p>
+      <div class="hero__acciones">
+        <a class="boton boton--claro" href="tel:+34913525310" data-suena>
+          <span class="boton__asientos" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="boton__txt"><span class="solo-ancho">Llamar al </span>913 525 310</span>
+          <svg class="ico boton__ico" aria-hidden="true"><use href="#i-tel"/></svg>
+        </a>
+        <a class="boton boton--claro" href="#contacto">
+          <span class="boton__asientos" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="boton__txt">Contacta<span class="solo-ancho"> con nosotros</span></span>
+          <svg class="ico boton__ico" aria-hidden="true"><use href="#i-sobre"/></svg>
+        </a>
+      </div>
+      <div class="hero__mandos" role="group" aria-label="Frases de la portada">
+        <button class="selector" type="button" data-ir="0" aria-current="true" aria-label="Frase 1 de 3: ¡Soluciones que usted necesita!"><span class="selector__raya" aria-hidden="true"><i></i></span></button>
+        <button class="selector" type="button" data-ir="1" aria-current="false" aria-label="Frase 2 de 3: Experiencia, eficacia y trabajo en equipo"><span class="selector__raya" aria-hidden="true"><i></i></span></button>
+        <button class="selector" type="button" data-ir="2" aria-current="false" aria-label="Frase 3 de 3: Su asesoría de confianza"><span class="selector__raya" aria-hidden="true"><i></i></span></button>
+        <button class="hero__pausa" type="button" data-pausa aria-pressed="false" aria-label="Pausar las frases">
+          <svg class="ico hero__pausa-ii" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="ico hero__pausa-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -677,6 +667,6 @@
   <a class="barra-movil__b" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+de+Pablo+VI+9,+28224+Pozuelo+de+Alarc%C3%B3n" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>Cómo llegar</span></a>
 </nav>
 
-<script src="assets/js/home.js?v=7" defer></script>
+<script src="assets/js/home.js?v=8" defer></script>
 </body>
 </html>
