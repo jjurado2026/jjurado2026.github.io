@@ -469,7 +469,102 @@ a.save__rate:hover{color:#2041c0;}
 .pcard--2 .pcard__body{background:linear-gradient(180deg,#8ec5ff 0%,#4d8dff 100%);color:#071654;}
 .pcard--2 .pcard__tab span,.pcard--2 .pcard__meta,.pcard--2 .pcard__text{color:#071654;}
 .pcard--2 .pcard__meta{border-bottom-color:rgba(7,22,84,.15);}
-:is(.btn,.nav__cta,.sl__btn,.sl__cta,.arw,.seg button,.con__submit,.orbit__cta,.tst__nav button,.case-btn,.faq__q,.svc-p,.orb,.sl__dot):active{opacity:.82;}
+:is(.btn,.nav__cta,.sl__btn,.sl__cta,.arw,.seg button,.con__submit,.tst__nav button,.case-btn,.faq__q,.svc-p,.sl__dot,.lbtn,.callbar a,.con__tel):active{opacity:.82;}
+
+/* ===== Revisión 2 (adaptada.md) ===== */
+p{text-wrap:pretty;}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.75);}
+.nav__tel{font-variant-numeric:tabular-nums;font-weight:600;}
+.fb__bars span:nth-child(n){height:100%;}
+.hero__proof{font-size:13px;}
+.svc__head p,.pan__head p{font-size:17px;line-height:1.6;max-width:460px;}
+.svc-p__full{max-width:620px;}
+.svc-p__desc{font-size:16px;line-height:1.6;}
+.svc-p__list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin:0;padding:16px 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.2);font-size:15px;line-height:1.4;color:#ffffff;}
+.svc-p__list>span{display:flex;gap:10px;align-items:baseline;}
+.svc-p__list>span::before{content:"";flex:none;width:6px;height:6px;background:#8ec5ff;transform:translateY(-2px) rotate(45deg);}
+.svc-p__short{font-size:13px;min-height:2.8em;}
+.imp__intro{justify-content:flex-start;gap:28px;}
+.imp__fx{right:-6%;}
+.svc{min-height:auto;}
+.svc__row{flex:none;min-height:clamp(420px,58vh,540px);}
+.imp__intro p{font-size:17px;line-height:1.65;max-width:440px;color:rgba(255,255,255,.84);}
+.prod__cap{font-size:12px;}
+.cd-text{font-size:17px;}
+.case-sector,.fa__k,.fa__week,.fa__labels,.adopt__scale,.save__min,.save__max,.gantt__months,.proj__cols .k{font-size:12px;}
+/* al día */
+.decl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:start;flex:1;}
+.decl__n{display:flex;flex-direction:column;gap:6px;border-left:2px solid #2041c0;padding:2px 18px 0 12px;}
+.decl__n .big{font-size:clamp(44px,7vh,60px);font-weight:300;line-height:.9;color:#071654;}
+.decl__n .k{font-size:12px;color:#425481;}
+.decl__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;font-size:14px;line-height:1.35;color:#071654;}
+.decl__list li{padding:7px 0;border-bottom:1px solid #dde9ff;}
+.decl__list li:first-child{padding-top:0;}
+.adopt-name{font-family:var(--display);font-size:clamp(24px,2.3vw,32px);font-weight:400;line-height:1.08;color:#071654;min-height:2.16em;text-wrap:balance;}
+.adopt-name.is-sim{color:#2041c0;}
+.adopt-people{font-size:13px;font-weight:600;}
+.sl__label{font-size:13px;color:#dde9ff;}
+.sl__title{max-width:360px;font-size:clamp(24px,2.1vw,30px);}
+.sl__text{font-size:15px;max-width:340px;}
+.slides__fx{bottom:-34%;height:62%;}
+.conta{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;margin-top:auto;padding-top:14px;align-items:center;}
+.conta__col{padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
+.conta__col--in{background:#eaf2ff;color:#071654;}
+.conta__col--out{background:#2041c0;color:#ffffff;}
+.conta__col .k{font-size:12px;font-weight:600;}
+.conta__col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14px;line-height:1.3;}
+.conta__arrow{align-self:center;width:32px;height:32px;border-radius:50%;border:1px solid #c2d8ff;color:#2041c0;display:flex;align-items:center;justify-content:center;font-size:14px;}
+/* herencias */
+.met{min-height:auto;}
+.met__band{margin-top:0;}
+.met__copy{font-size:16px;line-height:1.65;max-width:420px;}
+.met__stat{max-width:none;}
+.met__stat .lbtn{margin-top:18px;}
+/* enlaces-botón */
+.lbtn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:3px;font-size:14px;font-weight:600;background:#071654;color:#ffffff;transition:background .25s,color .25s,border-color .25s;}
+.lbtn:hover{background:#2041c0;color:#ffffff;}
+.lbtn--ghost{background:transparent;color:#071654;border:1px solid #b9c8e0;}
+.lbtn--ghost:hover{background:transparent;border-color:#2041c0;color:#2041c0;}
+/* principios y despacho */
+.pcard__text{font-size:16px;}
+.team__intro{display:flex;flex-direction:column;gap:16px;max-width:640px;}
+.team__intro p{margin:0;font-size:17px;line-height:1.6;color:#32446f;max-width:520px;}
+.team__links{display:flex;gap:10px;flex-wrap:wrap;}
+.member--wide{flex:1 0 clamp(300px,58vw,860px);width:auto;}
+.member:last-child{padding-right:0;}
+.team .member__fig img{filter:grayscale(1) contrast(1.22) brightness(1.02);}
+.team .member__fig::after{background:#d0e2ff;}
+/* faq */
+.faq{justify-content:flex-start;}
+.faq__a{font-size:16px;line-height:1.65;}
+/* contacto */
+.con__intro{display:flex;flex-direction:column;align-items:center;}
+.con__intro>p{margin:22px 0 0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.92);max-width:440px;}
+.con__form{padding:clamp(20px,2.4vw,32px);background:rgba(6,19,73,.62);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+@media (min-width:1000px){
+  .con__center{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);gap:clamp(48px,6vw,96px);align-items:center;text-align:left;}
+  .con__intro{align-items:flex-start;}
+  .con__intro .con__tel{align-items:flex-start;}
+  .con__form{margin-top:0;}
+  .con__fx{left:24%;}
+}
+.con__tel{display:inline-flex;flex-direction:column;align-items:center;gap:6px;margin-top:30px;color:#ffffff;}
+.con__tel span{font-size:13px;color:rgba(255,255,255,.78);}
+.con__tel strong{font-family:var(--display);font-weight:300;font-size:clamp(44px,5.4vw,72px);line-height:1;letter-spacing:0;font-variant-numeric:proportional-nums;}
+.con__tel:hover{color:#8ec5ff;}
+.con__or{margin:30px 0 0;font-size:14px;color:rgba(255,255,255,.75);}
+.con__form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:560px;margin-top:14px;text-align:left;}
+.con__field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:rgba(255,255,255,.82);}
+.con__field--full,.con__legal,.con__done{grid-column:1 / -1;}
+.con__form .con__input{width:100%;flex:none;}
+textarea.con__input{min-height:112px;resize:vertical;line-height:1.5;}
+.con__legal{justify-content:flex-start;margin-top:2px;}
+.con__submit{grid-column:1 / -1;justify-self:start;}
+.con__done{margin:0;padding:18px 0;font-size:17px;line-height:1.5;color:#ffffff;}
+@media (max-width:520px){.con__form{grid-template-columns:minmax(0,1fr);}}
+/* barra de llamada (móvil) */
+.callbar{display:none;}
+@media (max-width:999px){.nav__tel{display:none;}}
 
 /* ===== §8 responsive ===== */
 @media (max-width:1199px){.float-a,.float-b{--cs:.82;}.hero__copy{max-width:min(680px,calc(100% - 286px));}}
@@ -478,9 +573,20 @@ a.save__rate:hover{color:#2041c0;}
   .svc__row{flex-direction:column;min-height:0;}
   .svc-p,.svc-p.is-on{flex:none;gap:16px;transition:background .5s;}
   .tst__grid{grid-template-columns:minmax(0,1fr);}
+  .callbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px;transform:translateY(160%);transition:transform .45s var(--ease);}
+  .callbar.is-on{transform:none;}
+  .callbar a{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:3px;font-size:15px;font-weight:600;box-shadow:0 12px 30px -10px rgba(2,7,32,.55);}
+  .callbar a:first-child{background:#2041c0;color:#ffffff;}
+  .callbar a:last-child{background:#ffffff;color:#071654;}
+  .foot{padding-bottom:72px;}
+  .pri__fx{height:240px;}
+  .svc-p__list{grid-template-columns:minmax(0,1fr);}
 }
 @media (max-width:640px){
-  .nav{width:100%;gap:14px;font-size:13px;}
+  .nav{width:100%;gap:4px 14px;font-size:13px;}
+  .nav a{padding-block:8px;}
+  .conta{grid-template-columns:minmax(0,1fr);}
+  .conta__arrow{transform:rotate(90deg);justify-self:center;}
   .bar--1{grid-column:1 / 5;} .bar--2{grid-column:2 / 6;} .bar--3{grid-column:3 / 7;}
   .bar__chip{padding:0 10px;font-size:13px;} .bar__body{font-size:12px;padding:8px 10px;}
   .gantt__months span{font-size:0;} .gantt__months span::after{content:attr(data-short);font-size:11px;}
@@ -513,13 +619,13 @@ a.save__rate:hover{color:#2041c0;}
   <header class="hdr">
     <div class="brand"><img src="assets/logo-blanco.png" width="718" height="131" alt="Quorum Asesores JA, SL"></div>
     <nav class="nav" aria-label="Principal">
-      <a href="#servicios">Servicios</a><a href="#tramites">Trámites</a><a href="#herencias">Herencias</a><a href="#despacho">Despacho</a><a href="#faq">Preguntas</a><a class="nav__cta" href="#contacto">Contacto</a>
+      <a href="#servicios">Servicios</a><a href="#tramites">Trámites</a><a href="#al-dia">Al día</a><a href="#despacho">Despacho</a><a href="#faq">Preguntas</a><a class="nav__tel" href="tel:+34913525310">913 525 310</a><a class="nav__cta" href="#contacto">Contacto</a>
     </nav>
   </header>
   <aside class="float-a" aria-hidden="true">
-    <div class="fa__head"><span class="fa__live"><span class="fa__dot"></span>Asesoría laboral</span><span class="fa__week">Cuota mensual</span></div>
+    <div class="fa__head"><span class="fa__live"><span class="fa__dot"></span>Asesoría laboral</span><span class="fa__week">Su empresa</span></div>
     <div class="fa__body">
-      <div class="fa__row"><div><span class="fa__k">Gestión</span><span class="fa__v">Delegada en Quorum</span></div><span class="fa__pct">12<span> trámites</span></span></div>
+      <div class="fa__row"><div><span class="fa__k">Gestión</span><span class="fa__v">Delegada en Quorum</span></div><span class="fa__pct">Plena</span></div>
       <div class="fa__bar"><span class="seg--done"></span><span><span class="seg__fill gx"></span></span><span></span></div>
       <div class="fa__labels"><span>Contratos</span><span class="is-now">Nóminas</span><span>Seguros sociales</span></div>
     </div>
@@ -531,7 +637,7 @@ a.save__rate:hover{color:#2041c0;}
   <div class="hero__copy">
     <h1 class="hero__h1 rv" style="--d:100ms" aria-label="Su asesoría de confianza en lo fiscal, contable, laboral y mercantil"><strong>Su asesoría</strong> de confianza en&nbsp;lo&nbsp;<span class="hero__rot" aria-hidden="true">fiscal</span></h1>
     <p class="hero__lede rv" style="--d:200ms">Los servicios de asesoría, ya sea laboral, fiscal o contable, son necesarios en todas las empresas, y lo ideal es realizarlo a través de un servicio externo como Quorum Asesores JA.</p>
-    <div class="hero__ctas rv" style="--d:300ms"><a class="btn btn--solid" href="#contacto">Contacte con nosotros</a><a class="btn btn--ghost" href="#servicios">Ver servicios</a></div>
+    <div class="hero__ctas rv" style="--d:300ms"><a class="btn btn--solid" href="#contacto">Contacte con nosotros</a><a class="btn btn--ghost" href="tel:+34913525310">Llamar al 913 525 310</a></div>
   </div>
   <div class="hero__foot">
     <div class="hero__meta"><span class="hero__proof">Despacho de asesores en Av. Pablo VI, 9, Pozuelo de Alarcón (Madrid).</span><span class="hero__trust">Un servicio global sobre todo tipo de impuestos</span></div>
@@ -577,33 +683,32 @@ a.save__rate:hover{color:#2041c0;}
   </div>
 </section>
 
-<section class="sec pan" id="panel" data-screen-label="05 Panel">
+<section class="sec pan" id="al-dia" data-screen-label="05 Al día">
   <div class="pan__head">
-    <h2 class="rv" style="--d:0ms"><strong>Todo</strong> lo que su empresa necesita</h2>
-    <p class="rv" style="--d:100ms">Un despacho profesional dedicado a los temas fiscales, contables, laborales, mercantiles y jurídicos, para llevar al día todas sus obligaciones empresariales. Pase el ratón, cambie de periodo o elija un servicio.</p>
+    <h2 class="rv" style="--d:0ms">Así llevamos <strong>su día a día</strong></h2>
+    <p class="rv" style="--d:100ms">Las declaraciones que presentamos por usted, los trámites laborales que puede delegar, su contabilidad y las novedades de cada mes.</p>
   </div>
   <div class="pan__grid">
     <div class="w w--proj rv" style="--d:0ms">
       <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="proj-icon"></span></span><span class="w__title">Declaraciones fiscales</span></div>
         <div class="seg seg--decl" role="group" aria-label="Periodo"><button type="button" data-k="trimestral" aria-pressed="true">Trimestral</button><button type="button" data-k="anual" aria-pressed="false">Anual</button></div></div>
-      <div class="proj__cols">
-        <div class="proj__a"><span class="k">Declaraciones</span><span><span class="big">5</span><span class="delta">IRPF · IVA · alquileres</span></span><span class="foot">cada trimestre</span></div>
-        <div class="proj__b"><span class="k">Sociedades</span><span><span class="big">202</span><span class="delta">pago a cuenta</span></span><span class="foot">Impuesto de Sociedades</span></div>
+      <div class="decl">
+        <div class="decl__n"><span class="k decl__when">Cada trimestre</span><span class="big">5</span><span class="k">declaraciones</span></div>
+        <ul class="decl__list" aria-live="polite"></ul>
       </div>
-      <div class="proj__bar"><span class="proj__fill" style="width:25%"></span><span class="proj__rest"></span></div>
     </div>
     <div class="w w--adopt rv" style="--d:120ms">
-      <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="adopt-icon"></span></span><span class="w__title">Trámites laborales</span></div><span class="adopt-people">Dedicación <span>plena</span></span></div>
-      <div class="adopt__row"><span>Trámite</span><span class="adopt-label">Trámites ante INEM, TGSS e INSS</span></div>
-      <span class="adopt-pct">12</span>
+      <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="adopt-icon"></span></span><span class="w__title">Trámites laborales</span></div><span class="adopt-people">Dedicación plena</span></div>
+      <div class="adopt__row"><span class="adopt-count">Trámite 05 de 12</span><span class="adopt-label">Recorra la barra para verlos</span></div>
+      <span class="adopt-name">Nóminas y seguros sociales</span>
       <div class="adopt__scale"><span>01</span><span>12</span></div>
-      <div class="ticks" role="img" aria-label="Trámite 12 de 12: Trámites ante INEM, TGSS e INSS"></div>
+      <div class="ticks" role="img" aria-label="Trámite 5 de 12: Nóminas y seguros sociales"></div>
     </div>
     <div class="w--slides rv" style="--d:240ms">
       <canvas class="fx slides__fx" aria-hidden="true"></canvas>
-      <div class="sl__top"><div class="sl__num">3<span>/5</span></div><div><button type="button" class="sl__btn" aria-label="Anterior">←</button><button type="button" class="sl__btn" aria-label="Siguiente">→</button></div></div>
+      <div class="sl__top"><span class="sl__label">Boletín de octubre 2026</span><div class="sl__num">1<span>/4</span></div></div>
       <div class="sl__body" aria-live="polite"><div class="sl__title"></div><p class="sl__text"></p></div>
-      <a class="sl__cta" href="#contacto">Pedir información <span>→</span></a>
+      <a class="sl__cta" target="_blank" rel="noopener" data-boletin>Leer el boletín <span>→</span></a>
       <div class="sl__dots"></div>
     </div>
     <div class="w w--save rv" style="--d:0ms">
@@ -614,10 +719,13 @@ a.save__rate:hover{color:#2041c0;}
         <a class="save__rate" target="_blank" rel="noopener" data-maps>Ver reseñas <span class="save__gem">◆</span></a>
       </div>
     </div>
-    <div class="w w--team rv" style="--d:120ms">
-      <span class="w__title">Todo en un despacho</span>
-      <span class="who"></span>
-      <div class="orbit"><span class="ring ring--outer"></span><span class="ring ring--inner"></span><a class="orbit__cta" href="#contacto" aria-label="Contacto">→</a></div>
+    <div class="w w--conta rv" style="--d:120ms">
+      <span class="w__title">Su contabilidad</span>
+      <div class="conta">
+        <div class="conta__col conta__col--in"><span class="k">Usted nos da</span><ul class="conta__give"></ul></div>
+        <span class="conta__arrow" aria-hidden="true">→</span>
+        <div class="conta__col conta__col--out"><span class="k">Le entregamos</span><ul class="conta__get"></ul></div>
+      </div>
     </div>
   </div>
 </section>
@@ -632,6 +740,7 @@ a.save__rate:hover{color:#2041c0;}
     <div class="met__stat rv" style="--d:200ms">
       <div><span class="met__num" data-count="6">6</span><span>pasos</span></div>
       <p>Del certificado de defunción a la inscripción de los bienes en los registros públicos.</p>
+      <a class="lbtn" href="#contacto">Consúltenos su herencia <span aria-hidden="true">→</span></a>
     </div>
   </div>
   <div class="met__band">
@@ -640,7 +749,7 @@ a.save__rate:hover{color:#2041c0;}
       <div class="bar bar--1 gx" style="--d:0ms"><span class="bar__chip">Fase 1</span><span class="bar__body">Pasos 1–2 · Certificados</span></div>
       <div class="bar bar--2 gx" style="--d:300ms"><span class="bar__chip">Fase 2</span><span class="bar__body">Pasos 3–4 · Título hereditario y reparto</span></div>
       <div class="bar bar--3 gx" style="--d:600ms"><span class="bar__chip">Fase 3</span><span class="bar__body">Pasos 5–6 · Sucesiones e inscripción</span></div>
-      <div class="gantt__months"><span data-short="P1">Defunción</span><span data-short="P2">Últimas voluntades</span><span data-short="P3">Título hereditario</span><span data-short="P4">Reparto</span><span data-short="P5">Sucesiones</span><span data-short="P6">Registros</span></div>
+      <div class="gantt__months"><span data-short="Paso 1">Certificado de defunción</span><span data-short="Paso 2">Últimas voluntades</span><span data-short="Paso 3">Título hereditario</span><span data-short="Paso 4">Reparto de los bienes</span><span data-short="Paso 5">Impuesto de sucesiones</span><span data-short="Paso 6">Inscripción en registros</span></div>
     </div>
   </div>
 </section>
@@ -658,7 +767,11 @@ a.save__rate:hover{color:#2041c0;}
 <section class="sec team" id="despacho" data-screen-label="08 Despacho">
   <canvas class="fx team__fx" aria-hidden="true"></canvas>
   <div class="team__head">
-    <h2 class="rv" style="--d:0ms">Nuestro despacho, <strong>en Pozuelo de Alarcón</strong></h2>
+    <div class="team__intro">
+      <h2 class="rv" style="--d:0ms">Nuestro despacho, <strong>en Pozuelo de Alarcón</strong></h2>
+      <p class="rv" style="--d:100ms">Puede visitar nuestro despacho de asesores en la Av. Pablo VI, 9, junto a la M-503, en Pozuelo de Alarcón.</p>
+      <div class="team__links rv" style="--d:200ms"><a class="lbtn" target="_blank" rel="noopener" data-dir>Cómo llegar <span aria-hidden="true">↗</span></a><a class="lbtn lbtn--ghost" href="tel:+34913525310">Llamar al 913 525 310</a></div>
+    </div>
     <div class="arrows"><button type="button" class="arw" aria-label="Anterior">‹</button><button type="button" class="arw" aria-label="Siguiente">›</button></div>
   </div>
   <div class="team__track"></div>
@@ -685,21 +798,29 @@ a.save__rate:hover{color:#2041c0;}
 <section class="sec con" id="contacto" data-screen-label="11 Contacto">
   <canvas class="fx con__fx" aria-hidden="true"></canvas>
   <div class="con__center">
-    <h2 class="rv" style="--d:0ms"><strong>Contacte</strong> con nosotros</h2>
-    <p class="rv" style="--d:100ms">Consúltenos todas sus dudas e inquietudes, con profesionalidad y compromiso.</p>
-    <form class="con__form rv" style="--d:200ms">
-      <input class="con__input" type="email" required placeholder="su@empresa.com" aria-label="Su email" autocomplete="email">
-      <button class="con__submit" type="submit" aria-live="polite">Enviar consulta</button>
+    <div class="con__intro">
+      <h2 class="rv" style="--d:0ms"><strong>Contacte</strong> con nosotros</h2>
+      <p class="rv" style="--d:100ms">Consúltenos todas sus dudas e inquietudes, con profesionalidad y compromiso.</p>
+      <a class="con__tel rv" style="--d:150ms" href="tel:+34913525310"><span>Llámenos</span><strong>913 525 310</strong></a>
+    </div>
+    <form class="con__form rv" style="--d:250ms">
+      <label class="con__field con__field--full">Nombre<input class="con__input" type="text" name="nombre" required autocomplete="name"></label>
+      <label class="con__field">Email<input class="con__input" type="email" name="email" required autocomplete="email" placeholder="su@empresa.com"></label>
+      <label class="con__field">Teléfono (opcional)<input class="con__input" type="tel" name="telefono" autocomplete="tel"></label>
+      <label class="con__field con__field--full">Su consulta<textarea class="con__input" name="mensaje" required minlength="20"></textarea></label>
       <label class="con__legal"><input type="checkbox" required> <span>He leído y acepto la <a href="https://quorum.es/politica.html" target="_blank" rel="noopener">Política de privacidad</a></span></label>
+      <button class="con__submit" type="submit">Enviar consulta</button>
+      <p class="con__done" role="status" hidden>¡Su mensaje ha sido enviado! Pronto nos pondremos en contacto con usted.</p>
     </form>
   </div>
   <footer class="foot">
-    <div><a href="mailto:info@quorum.es">info@quorum.es</a><a href="tel:+34913525310">913 525 310</a><span>Av. Pablo VI, 9, local 6A, 28223 Pozuelo de Alarcón</span></div>
-    <div><a href="http://quorumasesoresja.boletinmensual.es/" target="_blank" rel="noopener">Blog</a><a href="https://www.facebook.com/quorumasesoresja" target="_blank" rel="noopener">Facebook</a><span>© 2026 Quorum Asesores JA, S.L.</span></div>
+    <div><a href="mailto:info@quorum.es">info@quorum.es</a><a href="tel:+34913525310">913 525 310</a><span>Fax 913 521 997</span><span>Av. Pablo VI, 9, local 6A, 28224 Pozuelo de Alarcón</span></div>
+    <div><a href="http://quorumasesoresja.boletinmensual.es/" target="_blank" rel="noopener">Boletín</a><a href="https://www.facebook.com/quorumasesoresja" target="_blank" rel="noopener">Facebook</a><a href="https://quorum.es/politica.html" target="_blank" rel="noopener">Privacidad</a><span>© 2026 Quorum Asesores JA, S.L.</span></div>
   </footer>
 </section>
 
 </main>
+<nav class="callbar" aria-label="Contacto rápido"><a href="tel:+34913525310">Llamar</a><a href="#contacto">Escribir</a></nav>
 <script>
 (() => {
 'use strict';
@@ -709,45 +830,42 @@ const WORDS = ['fiscal', 'contable', 'laboral', 'mercantil'];
 const TAXES = ['Impuesto sobre sociedades', 'Renta y patrimonio', 'IVA y transmisiones patrimoniales', 'Sucesiones y donaciones', 'Actividades económicas', 'Impuestos municipales', 'Inspecciones y aplazamientos', 'Recursos y contenciosos', 'Doble imposición', 'Comercio exterior', 'Operaciones corporativas', 'Análisis económico-financiero'];
 
 const SERVICES = [
-  { num: '01', name: 'Asesoría fiscal', short: 'Impuestos de empresas y particulares', desc: 'La elaboración de todos los impuestos y su adaptación legal a cada sociedad es prioridad en nuestro trabajo diario. Con formación continua y conocedores de todas las leyes fiscales y sus modificaciones, confeccionamos sus impuestos con garantía legal y eficacia.', kpi: 'IRPF · IVA', kpiLabel: 'declaraciones trimestrales y anuales', k1: 'Para', v1: 'Personas físicas y jurídicas', k2: 'Ante', v2: 'Inspección de Hacienda' },
-  { num: '02', name: 'Asesoría contable', short: 'Libros, balances y cuentas', desc: 'Un grupo de expertos con amplios conocimientos en la materia aplica las normas de contabilidad para reflejar la imagen fiel de su empresa y optimizar sus beneficios fiscales.', kpi: 'Imagen fiel', kpiLabel: 'del patrimonio y la situación de su empresa', k1: 'Parte de', v1: 'Facturas y bancos', k2: 'Plan contable', v2: 'Adaptado a su sector' },
-  { num: '03', name: 'Asesoría laboral', short: 'Nóminas, contratos y seguros sociales', desc: 'Confeccionamos sus nóminas, seguros sociales y contratos, estudiando sus posibilidades y posibles subvenciones; cursamos altas, bajas e incidentes laborales y aplicamos y actualizamos convenios.', kpi: '110 · 190', kpiLabel: 'modelos de retenciones, trimestral y anual', k1: 'Ante', v1: 'INEM, TGSS e INSS', k2: 'Incluye', v2: 'Convenio y certificados' },
-  { num: '04', name: 'Jurídico-mercantil', short: 'Sociedades, herencias y licencias', desc: 'Nuestros profesionales jurídicos le asesoran para encauzar sus casos y optimizar sus resultados, tanto en actuaciones jurídicas como mercantiles, estudiando cada caso de manera individual y exhaustiva.', kpi: 'Caso a caso', kpiLabel: 'estudio individual y exhaustivo', k1: 'Ante', v1: 'Registro y notario', k2: 'Además', v2: 'Herencias y licencias' }
+  { num: '01', name: 'Asesoría fiscal', short: 'Impuestos de empresas y particulares', desc: 'La elaboración de todos los impuestos y su adaptación legal a cada sociedad es prioridad en nuestro trabajo diario. Asesoramos sobre todo tipo de impuestos, tanto a personas físicas como a jurídicas.', list: ['Renta y patrimonio', 'Sucesiones y donaciones', 'Defensa ante Inspección de Hacienda', 'Recursos y contenciosos', 'Fiscalidad internacional', 'Operaciones corporativas'] },
+  { num: '02', name: 'Asesoría contable', short: 'Libros, balances y cuentas', desc: 'Un grupo de expertos aplica las normas legales y los principios contables para que sus cuentas expresen la imagen fiel de su empresa y optimizar sus beneficios fiscales.', list: ['Confección de la contabilidad', 'Cuentas anuales', 'Plan contable adaptado a su actividad', 'Análisis del resultado en cada momento'] },
+  { num: '03', name: 'Asesoría laboral', short: 'Nóminas, contratos y seguros sociales', desc: 'Profesionales jurídicos y graduados sociales llevan la gestión laboral y social de su empresa, con dedicación plena para que pueda delegarla en nosotros.', list: ['Contratos, prórrogas y renovaciones', 'Estudio de subvenciones', 'Aplicación del convenio laboral', 'Inscripción en la Seguridad Social', 'Asesoramiento y consultas', 'Conciliaciones y despidos, fuera de la cuota'] },
+  { num: '04', name: 'Jurídico-mercantil', short: 'Sociedades, herencias y licencias', desc: 'Encauzamos sus casos para optimizar sus resultados, tanto en actuaciones jurídicas como mercantiles, estudiando cada caso de manera individual y exhaustiva.', list: ['Constitución de sociedades', 'Sociedades ya constituidas, en 24 horas', 'Escritura ante notario', 'Herencias', 'Licencias de apertura', 'Cambio de titularidad de la licencia'] }
 ];
 
 const CASES = [
-  { sector: 'Mercantil', client: 'Constitución de sociedades', meta: 'Registro, notario y Hacienda', tile: 'S.L.', metric: '24 h', metricLabel: 'para tener una sociedad ya constituida', text: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula de constitución, las subvenciones y la financiación, y constituimos su sociedad de forma rápida. También vendemos sociedades ya constituidas, en 24 horas.' },
+  { sector: 'Mercantil', client: 'Constitución de sociedades', meta: 'Registro, notario y Hacienda', tile: 'S.L.', metric: '24 h', metricLabel: 'para comprar una sociedad ya constituida', text: 'Si prefiere crear la suya, con sólo saber la idea de negocio y la denominación social estudiamos la mejor fórmula de constitución, las subvenciones y la financiación, y la constituimos de forma rápida.' },
   { sector: 'Municipal', client: 'Licencias de apertura', meta: 'Madrid y provincia', tile: 'Apertura', metric: '2', metricLabel: 'procedimientos: licencia nueva o cambio de titularidad', text: 'Redactamos toda la documentación para obtener la licencia de apertura en el Ayuntamiento de Madrid y en el resto de municipios de la provincia, con la colaboración de peritos experimentados.' },
   { sector: 'Sucesiones', client: 'Herencias', meta: 'Documento notarial o privado', tile: 'Herencia', metric: 'Mod. 600', metricLabel: 'título hereditario: testamento o declaración de herederos', text: 'Determinamos quiénes son los herederos, inventariamos los bienes y deudas y tramitamos su aceptación y adjudicación, con el Impuesto de Sucesiones correspondiente.' }
 ];
 
 const DECL = {
-  trimestral: { n: 5, nd: 'IRPF · IVA · alquileres', nfoot: 'cada trimestre', model: '202', md: 'pago a cuenta', ew: '25%', rot: 45 },
-  anual: { n: 4, nd: 'terceros · 390 · 180', nfoot: 'cada año', model: '200', md: 'y 201', ew: '100%', rot: 225 }
+  trimestral: { n: 5, when: 'Cada trimestre', items: ['IRPF', 'IVA', 'Retención de alquileres', 'Pagos a cuenta', 'Impuesto de Sociedades (Mod. 202)'], rot: 45 },
+  anual: { n: 4, when: 'Cada año', items: ['Operaciones con terceros', 'Impuesto de Sociedades (Mod. 200 y 201)', 'Resumen de IVA (Mod. 390)', 'Retenciones de alquileres (Mod. 180)'], rot: 225 }
 };
 
-const TRAMITES = ['Inscripción en la Seguridad Social', 'Altas, bajas y variaciones', 'Contratos de trabajo', 'Prórrogas y renovaciones', 'Nóminas y seguros sociales', 'Declaraciones de IRPF', 'Vidas laborales y aplazamientos', 'Convenio laboral', 'Certificados laborales', 'Conciliaciones y despidos', 'Asesoramiento y consultas', 'Trámites ante INEM, TGSS e INSS'];
+const TRAMITES = ['Inscripción de la empresa en la Seguridad Social', 'Altas, bajas y variación de datos', 'Contratos de trabajo', 'Prórrogas y renovaciones', 'Nóminas y seguros sociales', 'Declaraciones de IRPF (Mod. 110 y 190)', 'Vidas laborales y aplazamientos', 'Aplicación del convenio laboral', 'Certificados laborales', 'Conciliaciones y despidos (fuera de la cuota mensual)', 'Asesoramiento y consultas laborales', 'Trámites ante el INEM, la TGSS o el INSS'];
 
-const SLIDES = [
-  { title: 'Partimos de su documentación', text: 'Facturas de ingresos, gastos y movimientos de bancos: con ellos llevamos al día su contabilidad.' },
-  { title: 'Libros oficiales', text: 'Libro de Diario, Libro de Mayor y Libro Registro de IVA, soportado y repercutido.' },
-  { title: 'Cuentas anuales', text: 'Aplicamos las normas legales y los principios contables para que las cuentas anuales expresen la imagen fiel del patrimonio y de la situación de la empresa.' },
-  { title: 'Un plan contable para su sector', text: 'Plan contable vigente en cada momento, adaptado a cada actividad sectorial.' },
-  { title: 'Resultados que se interpretan', text: 'Analizamos el resultado de la empresa en cada momento para tomar las decisiones oportunas: máximo rendimiento y menos impuestos, aplicando la ley.' }
-];
+const BOLETIN = {
+  label: 'Boletín de octubre 2026',
+  url: 'http://quorumasesoresja.boletinmensual.es/newsletter.php?cliente=5228&fecha_newsletter=2026-10-01&tipo_plantilla=html&version_email=no',
+  news: [
+    { title: 'Verifactu: Hacienda plantea retrasar su aplicación hasta octubre de 2028', text: 'Cómo afectaría el nuevo plazo a autónomos y pequeñas empresas.' },
+    { title: 'Condiciones laborales claras y previsibles: ¿qué establece la nueva regulación?', text: 'Claves para que las empresas apliquen el Real Decreto 723/2026 sobre información laboral.' },
+    { title: 'Bonificaciones por nacimiento y contratos de sustitución', text: 'Condiciones para acceder y cantidades aplicables.' },
+    { title: 'Retenciones de IRPF de profesionales autónomos: ¿7 % o 15 %?', text: 'Cuándo resulta más interesante elegir cada porcentaje.' }
+  ]
+};
+
+const CONTA = { give: ['Facturas de ingresos', 'Facturas de gastos', 'Movimientos de bancos'], get: ['Libro de Diario', 'Libro de Mayor', 'Libro Registro de IVA', 'Balances y cuentas de resultados'] };
 
 const MAPS_URL = 'https://www.google.com/maps/place/QUORUM+ASESORES/@40.4307064,-3.810521,17z/data=!4m6!3m5!1s0xd41866c8718647d:0x54e1435f370cdfe5!8m2!3d40.4307064!4d-3.810521';
+const DIR_URL = 'https://www.google.com/maps/dir/?api=1&destination=Av.+de+Pablo+VI+9,+28224+Pozuelo+de+Alarc%C3%B3n';
 
 const IMG = 'assets/';
-const ORBIT = [
-  { name: 'Asesoría fiscal',            role: 'Personas físicas y jurídicas', img: IMG + 'orb-fiscal1.jpg',   x: 'calc(50% - 17px)',  y: '8px'   },
-  { name: 'Asesoría contable',          role: 'Libros y cuentas anuales',     img: IMG + 'orb-contable1.jpg', x: 'calc(50% - 125px)', y: '58px'  },
-  { name: 'Asesoría laboral',           role: 'Nóminas y contratos',          img: IMG + 'orb-laboral1.jpg',  x: 'calc(50% + 91px)',  y: '58px'  },
-  { name: 'Jurídico-mercantil',         role: 'Cada caso, a fondo',           img: IMG + 'orb-equipo2.jpg',   x: 'calc(50% - 84px)',  y: '110px' },
-  { name: 'Constitución de sociedades', role: 'Ya constituidas en 24 horas',  img: IMG + 'orb-otros1.jpg',    x: 'calc(50% + 50px)',  y: '104px' },
-  { name: 'Herencias',                  role: 'De principio a fin',           img: IMG + 'orb-otros2.jpg',    x: 'calc(50% - 160px)', y: '150px' },
-  { name: 'Licencias de apertura',      role: 'Madrid y provincia',           img: IMG + 'orb-otros3.jpg',    x: 'calc(50% + 126px)', y: '150px' }
-];
 
 const PRINCIPLES = [
   { title: 'Experiencia', text: 'Nuestra amplia experiencia le brindará un trato especial y aportará todo el valor que su caso merece.' },
@@ -763,10 +881,11 @@ const PLACES = [
 const QUOTES = [];   // reseñas de Google: { name, text, stars }. Pendiente de que Juan las pase.
 
 const FAQS = [
+  { q: '¿Asesoran a particulares o solo a empresas?', a: 'A los dos. Nuestro servicio fiscal asesora sobre todo tipo de impuestos tanto a personas físicas como a jurídicas: renta y patrimonio, sucesiones y donaciones, sociedades, IVA…' },
+  { q: '¿Los despidos entran en la cuota mensual?', a: 'No. Los actos de conciliación y los procedimientos de despido no están incluidos en la cuota mensual. Sí lo están el asesoramiento y las consultas laborales, las altas, bajas y variaciones de datos, los contratos, las nóminas y los seguros sociales.' },
+  { q: '¿Y si me llega una inspección de Hacienda?', a: 'Le defendemos ante la Inspección de Hacienda y nos ocupamos de los requerimientos, los aplazamientos, los recursos y los contenciosos.' },
   { q: '¿Necesito licencia de apertura para mi negocio?', a: 'La gran mayoría de los establecimientos que precisan de un local u oficina, abierta al público o no, necesitan la licencia municipal de apertura. Están exentas gran parte de las actividades profesionales, como despachos de abogados o gabinetes de arquitectura o ingeniería, aunque deben comunicar al Ayuntamiento la actividad que van a realizar.' },
-  { q: '¿Qué queda fuera de la cuota mensual laboral?', a: 'Los actos de conciliación y los procedimientos de despido. El resto de gestiones laborales de su empresa, de las nóminas y los seguros sociales a los contratos y certificados, puede delegarlas en nosotros.' },
-  { q: '¿Qué forma jurídica me conviene?', a: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula: ¿sociedad, persona física o sociedad civil? ¿Limitada, Limitada Laboral o Anónima? También analizamos las subvenciones y la forma de financiar la inversión (leasing, préstamo, renting, hipoteca…).' },
-  { q: '¿Asesoran a particulares o solo a empresas?', a: 'A los dos. Nuestro servicio fiscal asesora sobre todo tipo de impuestos tanto a personas físicas como a jurídicas: renta y patrimonio, sucesiones y donaciones, sociedades, IVA…' }
+  { q: '¿Qué forma jurídica me conviene?', a: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula: ¿sociedad, persona física o sociedad civil? ¿Limitada, Limitada Laboral o Anónima? También analizamos las subvenciones y la forma de financiar la inversión (leasing, préstamo, renting, hipoteca…).' }
 ];
 const SILK_VS = `precision highp float;
 attribute vec2 a;
@@ -900,7 +1019,7 @@ const svcBtns = SERVICES.map((s, i) => {
   b.type = 'button';
   b.innerHTML = `<span class="svc-p__top"><span class="svc-p__num">${s.num}</span><span class="svc-p__arrow">→</span></span>
     <span class="svc-p__full"><span class="svc-p__name">${s.name}</span><span class="svc-p__desc">${s.desc}</span>
-      <span class="svc-p__stats"><span><span class="kpi">${s.kpi}</span><span class="kpi-l">${s.kpiLabel}</span></span><span><span class="k">${s.k1}</span><span class="v">${s.v1}</span></span><span><span class="k">${s.k2}</span><span class="v">${s.v2}</span></span></span></span>
+      <span class="svc-p__list">${s.list.map(i => `<span>${i}</span>`).join('')}</span></span>
     <span class="svc-p__mini"><span class="svc-p__name">${s.name}</span><span class="svc-p__short">${s.short}</span></span>`;
   svcRow.append(b);
   return b;
@@ -918,23 +1037,18 @@ const caseBtns = CASES.map(c => {
 const ticksEl = $('.ticks');
 const ticks = TRAMITES.map(() => ticksEl.appendChild(h('span', 'tick')));
 
+const NEWS = BOLETIN.news;
 const dotsEl = $('.sl__dots');
-const dots = SLIDES.map((_, i) => {
+const dots = NEWS.map((_, i) => {
   const b = h('button', 'sl__dot', '<span class="dot__track"><span class="dot__fill"></span></span>');
-  b.type = 'button'; b.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+  b.type = 'button'; b.setAttribute('aria-label', `Ir a la noticia ${i + 1}`);
   dotsEl.append(b);
   return b;
 });
-
-const orbitEl = $('.orbit');
-const orbs = ORBIT.map(m => {
-  const b = h('button', 'orb');
-  b.type = 'button';
-  b.setAttribute('aria-label', `${m.name}, ${m.role}`);
-  b.style.cssText = `left:${m.x};top:${m.y};background-image:url(${m.img})`;
-  orbitEl.insertBefore(b, $('.orbit__cta'));
-  return b;
-});
+$('.sl__label').textContent = BOLETIN.label;
+for (const a of $$('[data-boletin]')) a.href = BOLETIN.url;
+for (const a of $$('[data-dir]')) a.href = DIR_URL;
+for (const [sel, arr] of [['.conta__give', CONTA.give], ['.conta__get', CONTA.get]]) for (const t of arr) $(sel).append(h('li', '', t));
 
 const stack = $('.pri__stack');
 PRINCIPLES.forEach((p, i) => {
@@ -990,7 +1104,8 @@ new ResizeObserver(() => { mqHalf = track.scrollWidth / 2; }).observe(track);
 
 /* ---------- 02 Servicios ---------- */
 let svc = -1, svcHover = null, svcPend = 0;
-const svcClock = clock($('.svc'), 7000, () => setSvc((svc + 1) % SERVICES.length), { paused: () => svcHover !== null });
+const touchMQ = matchMedia('(hover: none), (max-width: 760px)');
+const svcClock = clock($('.svc'), 7000, () => setSvc((svc + 1) % SERVICES.length), { paused: () => svcHover !== null || touchMQ.matches });
 function setSvc(i) {
   svc = i; svcClock.ms = 0;
   svcBtns.forEach((b, k) => {
@@ -1034,11 +1149,11 @@ caseBtns.forEach((b, i) => b.addEventListener('click', () => goCase(i)));
 /* ---------- 05 Panel ---------- */
 const declBtns = $$('.seg--decl button');
 function setDecl(k) {
-  const d = DECL[k], w = $('.w--proj'), bigs = $$('.big', w), deltas = $$('.delta', w);
+  const d = DECL[k], w = $('.w--proj'), list = $('.decl__list', w);
   declBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.k === k));
-  bigs[0].textContent = d.n; deltas[0].textContent = d.nd; $('.proj__a .foot', w).textContent = d.nfoot;
-  bigs[1].textContent = d.model; deltas[1].textContent = d.md;
-  $('.proj__fill', w).style.width = d.ew;
+  $('.decl__when', w).textContent = d.when;
+  $('.decl__n .big', w).textContent = d.n;
+  list.replaceChildren(...d.items.map(t => h('li', '', t)));
   $('.proj-icon', w).style.setProperty('--rot', d.rot + 'deg');
 }
 declBtns.forEach(b => b.addEventListener('click', () => setDecl(b.dataset.k)));
@@ -1048,46 +1163,39 @@ function tickFrom(e) { const r = ticksEl.getBoundingClientRect(); return Math.ma
 ticksEl.addEventListener('pointermove', e => { adoptHover = tickFrom(e) + 1; });
 ticksEl.addEventListener('pointerdown', e => { adoptHover = tickFrom(e) + 1; });
 ticksEl.addEventListener('pointerleave', () => { adoptHover = null; });
+let adoptPick = 5;
 function renderAdopt() {
-  const v = adoptHover ?? TRAMITES.length, key = v * (adoptHover == null ? -1 : 1);
+  const v = adoptHover ?? adoptPick, sim = adoptHover != null, key = v * (sim ? 1 : -1);
   if (key === adoptShown) return; adoptShown = key;
-  const sim = adoptHover != null, name = TRAMITES[v - 1];
+  const name = TRAMITES[v - 1];
   ticks.forEach((t, i) => { t.classList.toggle('is-fill', i < v); t.classList.toggle('is-head', i === v - 1); });
   ticksEl.classList.toggle('is-sim', sim);
-  const lab = $('.adopt-label'); lab.textContent = name; lab.classList.toggle('is-sim', sim);
-  $('.adopt-pct').textContent = pad(v);
+  $('.adopt-count').textContent = `Trámite ${pad(v)} de ${TRAMITES.length}`;
+  const nm = $('.adopt-name'); nm.textContent = name; nm.classList.toggle('is-sim', sim);
   ticksEl.setAttribute('aria-label', `Trámite ${v} de ${TRAMITES.length}: ${name}`);
 }
+ticksEl.addEventListener('pointerleave', () => { $('.adopt-label').textContent = 'Recorra la barra para verlos'; });
+ticksEl.addEventListener('pointerdown', () => { $('.adopt-label').textContent = ''; });
+ticksEl.addEventListener('pointerenter', () => { $('.adopt-label').textContent = ''; });
+ticksEl.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') adoptPick = adoptHover ?? adoptPick; });
 
-const slBody = $('.sl__body'), dotFills = $$('.dot__fill');
-let slide = 2;
-const slideClock = clock($('.pan'), 5000, () => goSlide((slide + 1) % SLIDES.length));
-function fillSlide(i) { $('.sl__title').textContent = SLIDES[i].title; $('.sl__text').textContent = SLIDES[i].text; $('.sl__num').firstChild.nodeValue = i + 1; }
+const slBody = $('.sl__body'), dotFills = $$('.dot__fill'), w3 = $('.w--slides');
+let slide = 0, w3Hold = false;
+w3.addEventListener('pointerenter', () => { w3Hold = true; });
+w3.addEventListener('pointerleave', () => { w3Hold = false; });
+w3.addEventListener('focusin', () => { w3Hold = true; });
+w3.addEventListener('focusout', () => { w3Hold = false; });
+const slideClock = clock($('.pan'), 5000, () => goSlide((slide + 1) % NEWS.length), { paused: () => w3Hold });
+function fillSlide(i) { $('.sl__title').textContent = NEWS[i].title; $('.sl__text').textContent = NEWS[i].text; $('.sl__num').firstChild.nodeValue = i + 1; }
 function goSlide(i, instant) {
-  slide = (i + SLIDES.length) % SLIDES.length; slideClock.ms = 0;
+  slide = (i + NEWS.length) % NEWS.length; slideClock.ms = 0;
   dots.forEach((d, k) => d.toggleAttribute('aria-current', k === slide));
   dots[slide].setAttribute('aria-current', 'true');
   if (instant) return fillSlide(slide);
   slBody.classList.add('is-out');
   setTimeout(() => { fillSlide(slide); slBody.classList.remove('is-out'); }, 250);
 }
-const [slPrev, slNext] = $$('.sl__btn');
-slPrev.addEventListener('click', () => goSlide(slide - 1));
-slNext.addEventListener('click', () => goSlide(slide + 1));
 dots.forEach((d, i) => d.addEventListener('click', () => goSlide(i)));
-
-let member = 0, holdUntil = 0, theta = 0;
-const whoEl = $('.who');
-const memberClock = clock($('.pan'), 2500, () => setMember((member + 1) % ORBIT.length), { paused: () => performance.now() < holdUntil });
-function setMember(i) {
-  member = i; memberClock.ms = 0;
-  orbs.forEach((o, k) => { o.classList.toggle('is-on', k === i); o.setAttribute('aria-pressed', k === i); });
-  whoEl.innerHTML = `${ORBIT[i].name}<span class="who__role"> · ${ORBIT[i].role}</span>`;
-}
-orbs.forEach((o, i) => {
-  const take = () => { holdUntil = performance.now() + 6000; if (member !== i) setMember(i); };
-  o.addEventListener('pointerenter', take); o.addEventListener('focus', take); o.addEventListener('click', take);
-});
 
 /* ---------- 08 Despacho ---------- */
 const arrows = $('.arrows');
@@ -1120,10 +1228,19 @@ function setFaq(i) {
 faqItems.forEach((it, i) => $('.faq__q', it).addEventListener('click', () => setFaq(faqOpen === i ? -1 : i)));
 
 /* ---------- 11 Contacto ---------- */
-$('.con__form').addEventListener('submit', e => { e.preventDefault(); $('.con__submit').textContent = 'Enviado. Le contactaremos pronto'; });
+const form = $('.con__form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  for (const el of form.querySelectorAll('.con__field, .con__legal, .con__submit')) el.hidden = true;
+  $('.con__done').hidden = false;
+});
+
+/* barra de llamada en móvil: aparece al dejar el hero */
+const callbar = $('.callbar');
+new IntersectionObserver(([e]) => callbar.classList.toggle('is-on', !e.isIntersecting), { threshold: 0.15 }).observe($('.hero'));
 
 /* ---------- estado inicial ---------- */
-setSvc(0); goCase(0, true); setDecl('trimestral'); renderAdopt(); goSlide(2, true); setMember(0); setFaq(0);
+setSvc(0); goCase(0, true); setDecl('trimestral'); renderAdopt(); goSlide(0, true); setFaq(0);
 
 /* ---------- WebGL ---------- */
 const FX = { morphSpeed: 1, deform: 1, dotSize: 1 };
@@ -1241,8 +1358,6 @@ function loop(now) {
   cpFills.forEach((f, i) => { f.style.width = (i < caseIdx ? 100 : i === caseIdx ? caseClock.ms / caseClock.period * 100 : 0) + '%'; });
   if (onScreen.has(panSec)) {
     dotFills.forEach((f, i) => { f.style.width = (i < slide ? 100 : i === slide ? slideClock.ms / slideClock.period * 100 : 0) + '%'; });
-    theta += dt * 4.8;
-    orbitEl.style.setProperty('--o', theta + 'deg'); orbitEl.style.setProperty('--oi', -1.4 * theta + 'deg');
     renderAdopt();
   }
   renderThumb();
