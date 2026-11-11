@@ -473,7 +473,7 @@ a.save__rate:hover{color:#2041c0;}
 
 /* ===== Revisión 2 (adaptada.md) ===== */
 p{text-wrap:pretty;}
-input::placeholder,textarea::placeholder{color:rgba(255,255,255,.75);}
+input::placeholder,textarea::placeholder{color:#c2dcff;}
 .nav__tel{font-variant-numeric:tabular-nums;font-weight:600;}
 .fb__bars span:nth-child(n){height:100%;}
 .hero__proof{font-size:13px;}
@@ -593,6 +593,21 @@ textarea.con__input{min-height:112px;resize:vertical;line-height:1.5;}
 .hr__stars .hr__half{background:linear-gradient(45deg,#2041c0 50%,#c2d8ff 50%);}
 .hr__more{color:#2041c0;}
 .float-b:hover .hr__more{color:#071654;}
+/* revisión 4: FAQ en dos columnas y contacto más ancho */
+.faq__head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 48px;flex-wrap:wrap;}
+.faq__head h2{font-weight:400;color:#071654;}
+.faq__more{margin:0;font-size:17px;line-height:1.6;color:#32446f;max-width:440px;}
+.faq__more a{color:#2041c0;font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+.faq__more a:hover{color:#071654;}
+.faq__cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4.5vw,80px);margin-top:clamp(32px,3.5vw,56px);align-items:start;}
+.faq__group{margin:0 0 14px;font-family:var(--display);font-size:clamp(20px,1.6vw,24px);font-weight:600;line-height:1.2;color:#071654;}
+.faq__q>span:first-child{font-size:17px;}
+.con__form{max-width:none;gap:16px;}
+.con__form .con__input{padding:17px 18px;font-size:16px;}
+.con__form textarea.con__input{min-height:150px;}
+.con__field{font-size:14px;}
+.con__form .con__submit{padding:17px 30px;font-size:16px;}
+@media (min-width:1000px){.con__center{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,4vw,72px);}}
 /* barra de llamada (móvil) */
 .callbar{display:none;}
 @media (max-width:999px){.nav__tel{display:none;}}
@@ -774,9 +789,13 @@ textarea.con__input{min-height:112px;resize:vertical;line-height:1.5;}
 </section>
 
 <section class="sec faq" id="faq" data-screen-label="10 FAQ">
-  <div class="faq__grid">
+  <div class="faq__head">
     <h2 class="rv" style="--d:0ms">Lo que suelen <strong>preguntarnos</strong></h2>
-    <div class="faq__list"></div>
+    <p class="faq__more rv" style="--d:100ms">¿No encuentra su pregunta? <a href="tel:+34913525310">Llámenos al 913 525 310</a> o <a href="#contacto">escríbanos</a>.</p>
+  </div>
+  <div class="faq__cols">
+    <div class="faq__col rv" style="--d:0ms"><h3 class="faq__group">Impuestos, contabilidad y nóminas</h3><div class="faq__list"></div></div>
+    <div class="faq__col rv" style="--d:120ms"><h3 class="faq__group">Inspecciones, sociedades y trámites</h3><div class="faq__list"></div></div>
   </div>
 </section>
 
@@ -1041,8 +1060,9 @@ for (const q of QUOTES) {
 }
 if (!QUOTES.length) $('.tst').hidden = true;
 
-const faqList = $('.faq__list');
+const faqLists = $$('.faq__list'), perCol = Math.ceil(FAQS.length / faqLists.length);
 const faqItems = FAQS.map((f, i) => {
+  const faqList = faqLists[Math.min(faqLists.length - 1, Math.floor(i / perCol))];
   const it = h('div', 'faq__item', `<button type="button" class="faq__q" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f.q}</span><span class="faq__icon" aria-hidden="true">+</span></button><p class="faq__a" id="faq-a-${i}" hidden>${f.a}</p>`);
   faqList.append(it);
   return it;
