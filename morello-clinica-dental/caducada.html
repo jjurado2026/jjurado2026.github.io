@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página no disponible | Morelló Clínica Dental</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#003B5C">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="preload" href="assets/fonts/boska-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Aviso de propuesta caducada: el texto del taller y la home entera en miniatura, que se recorre despacio */
+  @font-face { font-family: 'Boska'; src: url('assets/fonts/boska-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Switzer'; src: url('assets/fonts/switzer-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  :root {
+    --azul: #003B5C; --azul-noche: #00263C; --cian: #05C3DE; --cian-claro: #9BE8F3; --tinta: #17293A; --gris: #556675; --papel: #F6F7F8;
+    --canal: clamp(16px, 5vw, 72px);
+    --sale: cubic-bezier(.16, 1, .3, 1);
+    --alto: min(62svh, 560px);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; background: var(--papel); color: var(--tinta);
+    font-family: 'Switzer', 'Segoe UI', system-ui, sans-serif; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.7;
+    -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  :focus-visible { outline: 3px solid var(--cian); outline-offset: 3px; border-radius: 3px; }
+
+  .cab { background: #fff; border-bottom: 1px solid #DCE3E8; padding: 14px var(--canal); }
+  .cab img { width: 168px; }
+
+  .aviso { width: 100%; max-width: calc(1180px + 2 * var(--canal)); margin-inline: auto; padding: clamp(56px, 10svh, 104px) var(--canal) clamp(36px, 7svh, 80px);
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 7svh, 72px); align-items: center; }
+  .aviso__texto { display: grid; gap: clamp(18px, 3svh, 28px); }
+  h1 { font-family: 'Boska', Georgia, serif; font-weight: 500; color: var(--azul); font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.1rem); line-height: 1.14; text-wrap: balance; max-width: 19ch; }
+  .mas { max-width: 34em; color: var(--gris); }
+  .mas a { color: var(--azul); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; display: inline-block;
+    background: linear-gradient(var(--cian), var(--cian)) 0 100% / 100% 2px no-repeat; position: relative; }
+  .mas a::after { content: ''; position: absolute; inset: auto 0 0; height: 100%; background: var(--cian-claro); opacity: 0; z-index: -1; transition: opacity .35s; }
+  .mas a:hover::after, .mas a:focus-visible::after { opacity: .6; }
+  .mas a:active { opacity: .8; }
+
+  .miniatura[hidden] { display: none; }
+  .miniatura { justify-self: center; }
+  .ventana { display: block; width: min(300px, 70vw); height: var(--alto); overflow: hidden; border-radius: 10px; background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 59, 92, .12), 0 30px 60px -28px rgba(0, 38, 60, .5); position: relative; }
+  .ventana::after { content: ''; position: absolute; inset: 0; border-radius: 10px; box-shadow: inset 0 0 0 3px rgba(5, 195, 222, .35); pointer-events: none; }
+  .ventana img { width: 100%; }
+  @media (min-width: 900px) {
+    .aviso { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(48px, 6vw, 96px); }
+    .miniatura { justify-self: end; }
+  }
+  @keyframes entra { from { opacity: 0; transform: translateY(20px); } }
+  @keyframes recorre { 0%, 6% { transform: none; } 94%, 100% { transform: translateY(calc(-100% + var(--alto))); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .aviso__texto > * { animation: entra .9s var(--sale) both; }
+    .aviso__texto > :nth-child(2) { animation-delay: .1s; }
+    .ventana { animation: entra 1s var(--sale) .25s both; }
+    .ventana img { animation: recorre 56s ease-in-out 1.6s infinite alternate; }
+    .ventana:hover img, .ventana:focus img { animation-play-state: paused; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ventana { overflow-y: auto; } }
+</style>
+</head>
+<body>
+  <header class="cab">
+    <img src="assets/img/logo-morello-552.webp" width="1103" height="371" alt="Morelló Clínica Dental">
+  </header>
+
+  <main class="aviso">
+    <div class="aviso__texto">
+      <h1>No puedes ver esta página porque han pasado más de 10&nbsp;días desde su envío.</h1>
+      <p class="mas">Si sigues con interés, escríbeme a <a href="mailto:jjuradogarciadelrio@gmail.com?subject=Propuesta%20web%20Morell%C3%B3%20Cl%C3%ADnica%20Dental">jjuradogarciadelrio@gmail.com</a>.</p>
+    </div>
+
+    <figure class="miniatura">
+      <span class="ventana" tabindex="0" aria-label="Miniatura de la home propuesta">
+        <img src="assets/img/home-miniatura.webp" width="480" height="2404" alt="Miniatura de la home propuesta para Morelló Clínica Dental, completa de arriba abajo" onerror="this.closest('figure').hidden = true">
+      </span>
+    </figure>
+  </main>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (16-abr-2026; el día de envío cuenta), hasta el 25-abr-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 3, 25, 22, 0);   // 26-abr-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blanqueamiento combinado: Clínico + Casa | ONWhite | Blanqueamiento X Dentistas</title>
+  <meta name="description" content="Blanqueamiento combinado: clínico (24 MIN) + casa (20 DÍAS). El más valorado. 299 EUR. Reserva tu cita en ON WHITE Madrid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="service.css">
+</head>
+<body>
+
+  <!-- Sticky Mobile Bar -->
+  <div class="sticky-bar" id="stickyBar">
+    <span class="sticky-bar__text">Combinado · 299 €</span>
+    <a href="#reservar" class="sticky-bar__cta">Coge tu cita</a>
+  </div>
+
+  <!-- ==================== TOP BAR ==================== -->
+  <div class="topbar">
+    <div class="topbar__inner">
+      <div class="topbar__links">
+        <a href="https://wa.me/34603913091" class="topbar__link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:info@onwhiteclinic.com" class="topbar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          info@onwhiteclinic.com
+        </a>
+        <a href="tel:+34603913091" class="topbar__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          603 913 091
+        </a>
+      </div>
+      <div class="topbar__address">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Fuencarral 92, 28004
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="../assets/onwhite-logo-positivo.png" alt="ON WHITE" width="160" height="32">
+      </a>
+      <nav class="header__nav">
+        <a href="index.html#tratamientos" class="nav-link">Tratamientos</a>
+        <a href="index.html#como-funciona" class="nav-link">En qué consiste</a>
+        <a href="index.html#regalo" class="nav-link">Regalar</a>
+        <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+        <a href="index.html#noticias" class="nav-link">Noticias</a>
+      </nav>
+      <div class="header__right">
+        <div class="header__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          1 visita · 1 hora · 199€
+        </div>
+        <a href="tel:+34603913091" class="header__phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          603 913 091
+        </a>
+        <a href="#reservar" class="btn btn--yellow btn--sm">Coge tu cita</a>
+      </div>
+      <button class="header__burger" id="burger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== Mobile Menu ==================== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu__nav">
+      <a href="index.html#tratamientos" class="mobile-menu__link">Tratamientos</a>
+      <a href="index.html#como-funciona" class="mobile-menu__link">En qué consiste</a>
+      <a href="index.html#regalo" class="mobile-menu__link">Regalar</a>
+      <a href="index.html#nosotros" class="mobile-menu__link">Nosotros</a>
+      <a href="index.html#noticias" class="mobile-menu__link">Noticias</a>
+      <a href="#reservar" class="btn btn--yellow btn--lg mobile-menu__cta">Coge tu cita</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ==================== SERVICE HERO ==================== -->
+    <section class="srv-hero">
+      <div class="srv-hero__bg">
+        <div class="hero__gradient"></div>
+        <div class="hero__grid-lines"></div>
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__grain"></div>
+      </div>
+      <div class="container">
+        <a href="index.html#tratamientos" class="srv-hero__back reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Todos los tratamientos
+        </a>
+        <div class="srv-hero__grid">
+          <div class="srv-hero__text">
+            <div class="srv-hero__badges reveal">
+              <span class="srv-hero__badge">Resultado más efectivo y duradero</span>
+              <span class="srv-hero__badge">Blanqueamiento mejor valorado</span>
+            </div>
+            <h1 class="srv-hero__title reveal" style="animation-delay:.06s">
+              Blanqueamiento<br>Combinado:<br><em>Clínico + Casa</em>
+            </h1>
+            <p class="srv-hero__desc reveal" style="animation-delay:.12s">Es la combinación del blanqueamiento clínico (24 MIN) + el blanqueamiento en casa (20 DÍAS), primero hacemos el blanqueamiento clínico para tener un blanqueado inicial, luego el paciente continúa el tratamiento en casa, para reforzar, mejorar y mantener los resultados logrados en la clínica.</p>
+            <div class="srv-hero__price reveal" style="animation-delay:.18s">
+              <span class="srv-hero__amount">299€</span>
+              <span class="srv-hero__finance">Financiación desde 77€/mes</span>
+            </div>
+            <div class="srv-hero__ctas reveal" style="animation-delay:.24s">
+              <a href="#reservar" class="btn btn--yellow btn--lg">Coge tu cita</a>
+              <a href="https://wa.me/34603913091" class="btn btn--glass btn--lg" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+          </div>
+          <div class="srv-hero__visual reveal" style="animation-delay:.12s">
+            <div class="srv-hero__image-frame">
+              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&auto=format&fit=crop" alt="Resultado blanqueamiento combinado" style="width:100%;height:100%;object-fit:cover;border-radius:24px;">
+            </div>
+            <div class="srv-hero__stat-card">
+              <span class="srv-hero__stat-num">20</span>
+              <span class="srv-hero__stat-label">DÍAS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EN QUÉ CONSISTE ==================== -->
+    <section class="section" id="como-funciona">
+      <div class="container">
+        <div class="srv-section-header reveal">
+          <h2 class="srv-section-title">¿En qué consiste el<br>blanqueamiento combinado?</h2>
+          <p class="srv-section-subtitle">Blanqueamiento en clínica + Blanqueamiento en casa.</p>
+        </div>
+        <div class="srv-explain reveal" style="animation-delay:.08s">
+          <p>Al llegar a la clínica, tomamos las medidas para crear tus férulas personalizadas. Luego, comenzamos con el tratamiento de blanqueamiento clínico, mientras en el laboratorio se preparan tus férulas. Una vez terminado el blanqueamiento en consulta, te entregamos tu kit de blanqueamiento para casa junto con tus férulas. Además, te explicamos paso a paso cómo usarlo correctamente para que consigas una sonrisa más blanca y brillante, con los mejores resultados posibles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NO ES PARA TI / ES PARA TI ==================== -->
+    <section class="section" style="background:var(--off-white);">
+      <div class="container">
+        <div class="fit-grid">
+          <div class="fit-col fit-col--no reveal" style="animation-delay:.05s">
+            <h3 class="fit-col__title fit-col__title--no">No es para ti si...</h3>
+            <ul class="fit-col__list">
+              <li>No es para ti si tienes sensibilidad dental, por utilizar concentraciones altas de peróxido de hidrógeno: 35% de peróxido de hidrógeno</li>
+              <li>Si no quieres realizar el blanqueamiento de casa: 2 horas al día durante 20 días.</li>
+            </ul>
+          </div>
+          <div class="fit-col fit-col--yes reveal" style="animation-delay:.12s">
+            <h3 class="fit-col__title fit-col__title--yes">Es para ti si...</h3>
+            <ul class="fit-col__list">
+              <li>Es ideal si tienes una boda, una fiesta o una cita importante muy pronto y necesitas estar listo al momento.</li>
+              <li>Es perfecto si quieres salir de la clínica con los dientes más blancos el mismo día (efecto inmediato tras la sesión)</li>
+              <li>Quieres tratamientos duraderos: 2-3 años</li>
+              <li>Buscas máxima eficacia y resultados excelentes</li>
+              <li>Buscas un blanqueamiento combinado mejor que la competencia: No hay que hacer restricción de dieta y son solo 2 horas al día.</li>
+            </ul>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;" class="reveal">
+          <a href="#reservar" class="btn btn--blue btn--lg">Coge tu cita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PASOS ==================== -->
+    <section class="section srv-steps-section">
+      <div class="container">
+        <div class="srv-section-header reveal">
+          <h2 class="srv-section-title" style="color:var(--white)">¿En qué consiste?</h2>
+        </div>
+        <div class="srv-steps">
+          <div class="srv-step reveal" style="animation-delay:.05s">
+            <div class="srv-step__num">01</div>
+            <div class="srv-step__content">
+              <h3 class="srv-step__title">Tratamiento en clínica</h3>
+              <p class="srv-step__desc">Primero realizaremos el Blanqueamiento Clínico con una duración de 24 minutos.</p>
+            </div>
+          </div>
+          <div class="srv-step reveal" style="animation-delay:.12s">
+            <div class="srv-step__num">02</div>
+            <div class="srv-step__content">
+              <h3 class="srv-step__title">Kit personalizado</h3>
+              <p class="srv-step__desc">Te daremos el KIT de blanqueamiento con jeringas dosificadas, y te explicaremos en persona cómo aplicar el producto correctamente.</p>
+            </div>
+          </div>
+          <div class="srv-step reveal" style="animation-delay:.19s">
+            <div class="srv-step__num">03</div>
+            <div class="srv-step__content">
+              <h3 class="srv-step__title">Duración</h3>
+              <p class="srv-step__desc">Deberás aplicar el gel en las férulas y usarlas durante unos 20 días consecutivos / 2h al día.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BEFORE/AFTER ==================== -->
+    <section class="section section--scroll ba-section">
+      <div class="container">
+        <div class="s-header">
+          <div class="s-tag reveal">Resultados</div>
+          <h2 class="s-title reveal" style="animation-delay:.05s">Resultados <em>visibles</em><br>sonrisas ON White</h2>
+        </div>
+        <div class="ba-slider" id="ba-slider">
+          <div class="ba-slider__track">
+            <div class="ba-card">
+              <div class="ba-card__top"><span class="ba-card__tag">Antes</span><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75&auto=format&fit=crop" alt="Antes" loading="lazy"></div>
+              <div class="ba-card__bottom"><span class="ba-card__tag ba-card__tag--after">Ahora</span><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75&auto=format&fit=crop" alt="Después" loading="lazy"></div>
+            </div>
+            <div class="ba-card">
+              <div class="ba-card__top"><span class="ba-card__tag">Antes</span><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75&auto=format&fit=crop" alt="Antes" loading="lazy"></div>
+              <div class="ba-card__bottom"><span class="ba-card__tag ba-card__tag--after">Ahora</span><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75&auto=format&fit=crop" alt="Después" loading="lazy"></div>
+            </div>
+            <div class="ba-card">
+              <div class="ba-card__top"><span class="ba-card__tag">Antes</span><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75&auto=format&fit=crop" alt="Antes" loading="lazy"></div>
+              <div class="ba-card__bottom"><span class="ba-card__tag ba-card__tag--after">Ahora</span><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75&auto=format&fit=crop" alt="Después" loading="lazy"></div>
+            </div>
+            <div class="ba-card">
+              <div class="ba-card__top"><span class="ba-card__tag">Antes</span><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75&auto=format&fit=crop" alt="Antes" loading="lazy"></div>
+              <div class="ba-card__bottom"><span class="ba-card__tag ba-card__tag--after">Ahora</span><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75&auto=format&fit=crop" alt="Después" loading="lazy"></div>
+            </div>
+            <div class="ba-card">
+              <div class="ba-card__top"><span class="ba-card__tag">Antes</span><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75&auto=format&fit=crop" alt="Antes" loading="lazy"></div>
+              <div class="ba-card__bottom"><span class="ba-card__tag ba-card__tag--after">Ahora</span><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75&auto=format&fit=crop" alt="Después" loading="lazy"></div>
+            </div>
+            <div class="ba-card">
+              <div class="ba-card__top"><span class="ba-card__tag">Antes</span><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=75&auto=format&fit=crop" alt="Antes" loading="lazy"></div>
+              <div class="ba-card__bottom"><span class="ba-card__tag ba-card__tag--after">Ahora</span><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=75&auto=format&fit=crop" alt="Después" loading="lazy"></div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-nav" style="margin-top:24px;">
+          <button class="slider-arrow" data-slider="ba-slider" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="slider-arrow" data-slider="ba-slider" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="section section--scroll testimonials">
+      <div class="testimonials__bg"></div>
+      <div class="container">
+        <div class="testimonials__header">
+          <h2 class="testimonials__title reveal">Ya tienen sonrisa On White</h2>
+          <div class="testimonials__rating reveal" style="animation-delay:.08s">
+            <span class="testimonials__rating-badge">EXCELENTE</span>
+            <span class="testimonials__rating-stars">★★★★★</span>
+            <span class="testimonials__rating-text">A base de 125 reseñas ·</span>
+            <svg viewBox="0 0 272 92" width="64" height="22" style="vertical-align:middle;">
+              <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/>
+              <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/>
+              <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/>
+              <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/>
+              <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.2 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/>
+              <path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.01z" fill="#4285F4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="reviews-slider" id="reviews-slider">
+          <div class="reviews-slider__track">
+          <div class="review-card reveal" style="animation-delay:.05s">
+            <div class="review-card__top">
+              <div class="review-card__avatar">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=75&auto=format&fit=crop&crop=faces" alt="María Guzmán" loading="lazy">
+              </div>
+              <div>
+                <div class="review-card__author">María Guzmán</div>
+                <div class="review-card__stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-card__quote">❝</div>
+            <p class="review-card__text">El trato es inmejorable. el tratamiento super bien y con muy buenos resultados! Lo recomiendo</p>
+          </div>
+          <div class="review-card reveal" style="animation-delay:.1s">
+            <div class="review-card__top">
+              <div class="review-card__avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=75&auto=format&fit=crop&crop=faces" alt="Jorge Luis Pérez Paredes" loading="lazy">
+              </div>
+              <div>
+                <div class="review-card__author">Jorge Luis Pérez Paredes</div>
+                <div class="review-card__stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-card__quote">❝</div>
+            <p class="review-card__text">Me estoy realizando el blanqueamiento con ellos y estoy super contento, el cambio esta siendo brutal, además, la atención de todos ha sido 10/10, en especial la de Jusley. 100% recomendado</p>
+          </div>
+          <div class="review-card reveal" style="animation-delay:.15s">
+            <div class="review-card__top">
+              <div class="review-card__avatar">
+                <img src="https://images.unsplash.com/photo-1543596628-0cca3e9ebfd6?w=80&q=75&auto=format&fit=crop&crop=faces" alt="Mila de la Torre" loading="lazy">
+              </div>
+              <div>
+                <div class="review-card__author">Mila de la Torre</div>
+                <div class="review-card__stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="review-card__quote">❝</div>
+            <p class="review-card__text">La mejor clínica de blanqueamiento en Madrid, estoy super contenta con los resultados y con el trato del equipo! Super recomendable, cero sensibilidad</p>
+          </div>
+          </div>
+        </div>
+        <div class="slider-nav" style="margin-top:28px;">
+          <button class="slider-arrow" data-slider="reviews-slider" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="slider-arrow" data-slider="reviews-slider" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOOKING CTA ==================== -->
+    <section class="section cta-section" id="reservar">
+      <div class="cta-section__bg">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80&auto=format" alt="" loading="lazy" aria-hidden="true">
+        <div class="cta-section__overlay"></div>
+      </div>
+      <div class="container">
+        <div class="cta-block">
+          <div class="cta-block__icon reveal">
+            <svg viewBox="0 0 48 48" fill="none" stroke="var(--yellow)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="48" height="48">
+              <rect x="6" y="10" width="36" height="32" rx="4"/>
+              <path d="M16 6V14"/>
+              <path d="M32 6V14"/>
+              <path d="M6 20H42"/>
+              <circle cx="24" cy="30" r="4" fill="var(--yellow)" stroke="none"/>
+            </svg>
+          </div>
+          <h2 class="cta-block__title reveal">Elige tu fecha y hora<br>de forma rápida y sencilla</h2>
+          <p class="cta-block__desc reveal" style="animation-delay:.08s">Todo en una sola visita: Valoración + Blanqueamiento recomendado, que será realizado en el momento. Además podrás hacerte una limpieza dental previa.</p>
+          <div class="cta-block__btns reveal" style="animation-delay:.14s">
+            <a href="#" class="btn btn--yellow btn--lg">Coge tu cita hoy mismo</a>
+            <a href="https://wa.me/34603913091" class="btn btn--glass btn--lg" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="#25D366" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY ONWHITE FOR COMBINADO ==================== -->
+    <section class="section" style="background:var(--off-white);">
+      <div class="container">
+        <div class="s-header">
+          <div class="s-tag reveal">Por qué ONWhite</div>
+          <h2 class="s-title reveal" style="animation-delay:.06s">¿Por qué hacer el tratamiento de<br>blanqueamiento combinado con <em>ONWHITE</em>?</h2>
+        </div>
+        <div class="stats-row reveal" style="animation-delay:.1s">
+          <div class="stat-pill">
+            <div class="stat-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="stat-pill__val">20 DÍAS<br>Duración tratamiento</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="stat-pill__val">Clínica mejor<br>valorada</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 9h20"/><path d="M9 21V9"/></svg>
+            </div>
+            <div class="stat-pill__val">Financiación<br>desde 77€/mes</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5"><path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/></svg>
+            </div>
+            <div class="stat-pill__val">FGM tratamiento<br>líder</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section faq">
+      <div class="container">
+        <div class="s-header">
+          <div class="s-tag reveal">
+            <svg class="s-tag__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9 9a3 3 0 015.12-2.13A3 3 0 0112 13"/>
+              <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+            </svg>
+            FAQ
+          </div>
+          <h2 class="s-title reveal" style="animation-delay:.06s">Preguntas <em>frecuentes</em></h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal" style="animation-delay:.05s">
+            <button class="faq-item__q" aria-expanded="false">
+              <span>¿Cuánto dura el tratamiento?</span>
+              <div class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+            </button>
+            <div class="faq-item__a">
+              <p>Deberás aplicar el gel en las férulas y usarlas durante unos 20 días consecutivos / 2h a 3 horas.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="animation-delay:.1s">
+            <button class="faq-item__q" aria-expanded="false">
+              <span>¿Cuántas veces tengo que ir a la clínica?</span>
+              <div class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+            </button>
+            <div class="faq-item__a">
+              <p>Una sola vez. En una única sesión tendrás valoración + higiene si se requiere + entrega ese mismo día kit personalizado. Duración: 1 Hora. También hay casos puntuales de pacientes que tienen que venir 2 veces, porque tienen encías inflamadas y tienen que sanar, o valorar la sensibilidad dental primero con el de casa.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="animation-delay:.15s">
+            <button class="faq-item__q" aria-expanded="false">
+              <span>¿Puedo tomar café? ¿Es necesario restricción de alimentos?</span>
+              <div class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+            </button>
+            <div class="faq-item__a">
+              <p>Sí puedes tomar café. No es necesario la restricción de alimentos, pero será necesario cepillar dientes después de su consumo.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="animation-delay:.2s">
+            <button class="faq-item__q" aria-expanded="false">
+              <span>¿Cuál es la diferencia del combinado con el clínico o el de casa?</span>
+              <div class="faq-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+            </button>
+            <div class="faq-item__a">
+              <p>La diferencia es que con el combinado, lograrás mejores resultados de tonos en blanqueamiento y durabilidad de hasta 3 años.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section class="section" style="background:linear-gradient(180deg, var(--white) 0%, var(--blue-ghost) 100%);">
+      <div class="container">
+        <div class="cta-block" style="text-align:center;">
+          <div class="s-tag reveal" style="margin:0 auto 16px;">Mejor recomendación, mejor valorado</div>
+          <h2 class="cta-block__title reveal" style="animation-delay:.06s">Coge tu cita<br>hoy mismo</h2>
+          <div class="cta-block__btns reveal" style="animation-delay:.12s">
+            <a href="#reservar" class="btn btn--yellow btn--lg">Coge tu cita hoy mismo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__badges">
+        <div class="footer__badge">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--yellow)" stroke-width="1.5" width="16" height="16"><path d="M10 2L12 7L17 7.5L13 11L14 16L10 13.5L6 16L7 11L3 7.5L8 7L10 2Z"/></svg>
+          Responsable
+        </div>
+        <div class="footer__badge">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--yellow)" stroke-width="1.5" width="16" height="16"><circle cx="10" cy="10" r="7"/><path d="M7 10L9 12L13 8"/></svg>
+          Vegano
+        </div>
+        <div class="footer__badge">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--yellow)" stroke-width="1.5" width="16" height="16"><path d="M10 17C10 17 17 13 17 8C17 5.5 15 3 13 3C11.5 3 10.5 4 10 4.5C9.5 4 8.5 3 7 3C5 3 3 5.5 3 8C3 13 10 17 10 17Z"/></svg>
+          Sin maltrato animal
+        </div>
+        <div class="footer__badge">
+          <svg viewBox="0 0 20 20" fill="none" stroke="var(--yellow)" stroke-width="1.5" width="16" height="16"><circle cx="10" cy="10" r="7"/><path d="M10 6V10L13 12"/></svg>
+          Base científica
+        </div>
+      </div>
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="../assets/onwhite-logo-positivo.png" alt="ON WHITE" width="140" height="28" style="filter:brightness(0) invert(1);">
+          </div>
+          <p class="footer__address">Fuencarral 92, 28004 Madrid</p>
+          <div class="footer__contacts">
+            <a href="tel:+34603913091" class="footer__contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Llámanos
+            </a>
+            <a href="https://wa.me/34603913091" class="footer__contact-link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <a href="mailto:info@onwhiteclinic.com" class="footer__contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Tratamientos</h4>
+          <a href="#" class="footer__link">Blanqueamiento en casa</a>
+          <a href="#" class="footer__link">Blanqueamiento clínico</a>
+          <a href="blanqueamiento-combinado.html" class="footer__link">Blanqueamiento combinado</a>
+          <a href="#" class="footer__link">Dientes sensibles</a>
+          <a href="#" class="footer__link">Higiene dental</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legal</h4>
+          <a href="#" class="footer__link">Aviso legal</a>
+          <a href="#" class="footer__link">Política de protección de datos</a>
+          <a href="#" class="footer__link">Política de Privacidad y cookies</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <button class="footer__scroll-top" id="scrollTop" aria-label="Volver arriba">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+        <p>&copy; 2026 ONWhite Clinic. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== Floating Buttons ==================== -->
+  <a href="tel:+34603913091" class="phone-float" aria-label="Llamar">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/34603913091" class="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (7-sep-2026; el día de envío cuenta), hasta el 16-sep-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 8, 16, 22, 0);   // 17-sep-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAP y Asociados</title>
+<meta name="description" content="Asesoría multidisciplinar, tanto jurídica como empresarialmente. Administradores de Fincas, Peritos Judiciales, Seguros Generales, Inversiones.">
+<meta name="theme-color" content="#14212B">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+<link rel="preload" href="assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="salta" href="#principal">Saltar al contenido</a>
+
+<header class="cab" id="cabecera">
+  <div class="env cab__fila">
+    <a class="cab__logo" href="https://japyasociados.com/" aria-label="JAP y Asociados, inicio">
+      <img src="assets/img/logo-jap.webp" width="67" height="40" alt="JAP y Asociados - Asesoría multidisciplinar">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <ul class="nav__lista">
+        <li class="nav__item nav__item--sub">
+          <button class="nav__link" type="button" aria-expanded="false" aria-controls="sub-jap">Qué es JAP<svg class="nav__chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <ul class="sub" id="sub-jap">
+            <li><a href="https://japyasociados.com/jap-y-asociados/">JAP y Asociados</a></li>
+            <li><a href="#equipo">El equipo</a></li>
+            <li><a href="https://japyasociados.com/clientes/">Los clientes</a></li>
+            <li><a href="https://japyasociados.com/obtenemos-la-certificacion-une-4200012024/">Certificación UNE 420001:2024</a></li>
+            <li><a href="#decalogo">Decálogo de calidad</a></li>
+            <li><a href="https://japyasociados.com/canal-denuncias/">Canal de Denuncias</a></li>
+          </ul>
+        </li>
+        <li class="nav__item nav__item--sub">
+          <button class="nav__link" type="button" aria-expanded="false" aria-controls="sub-servicios">Servicios<svg class="nav__chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <ul class="sub sub--ancho" id="sub-servicios">
+            <li><a href="https://japyasociados.com/all-services/fiscalidad-para-traders/">Fiscalidad para traders</a></li>
+            <li><a href="https://japyasociados.com/all-services/asesoria-juridica/">Asesoría Jurídica</a></li>
+            <li><a href="https://japyasociados.com/all-services/tarifas-servicios-juridicos/">Tarifas de servicios Jurídicos</a></li>
+            <li><a href="#herramientas">Calculadoras</a></li>
+            <li><a href="https://japyasociados.com/?page_id=4551">Modelos Documentos GRATUITOS</a></li>
+            <li><a href="https://japyasociados.com/diccionario-juridico/">DICCIONARIO JURÍDICO</a></li>
+            <li><a href="https://japyasociados.com/all-services/administracion-de-fincas/">Administración de Fincas</a></li>
+            <li><a href="https://japyasociados.com/all-services/gestion-de-patrimonio/">Gestión de Patrimonio</a></li>
+            <li><a href="https://japyasociados.com/all-services/peritos-judiciales/">Peritos Judiciales</a></li>
+            <li><a href="https://japyasociados.com/all-services/seguros-generales/">Seguros Generales</a></li>
+            <li><a href="https://japyasociados.com/all-services/asesoria-de-empresas/">Asesoría de empresas y autónomos</a></li>
+            <li><a href="https://japyasociados.com/detectives-privados-madrid-toledo/">Detectives Privados</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a class="nav__link" href="https://japyasociados.com/compatiblesi/que-es-y-como-usar-compatiblesi/">CompatibleSí</a></li>
+        <li class="nav__item nav__item--sub">
+          <a class="nav__link" href="https://japyasociados.com/novedades/">Novedades</a><button class="nav__toggle" type="button" aria-expanded="false" aria-controls="sub-novedades" aria-label="Abrir submenú de Novedades"><svg class="nav__chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <ul class="sub" id="sub-novedades">
+            <li><a href="https://japyasociados.com/calidad-y-compromiso/">Calidad y compromiso</a></li>
+            <li><a href="https://japyasociados.com/administracion-fincas/">Administración de Fincas</a></li>
+            <li><a href="https://japyasociados.com/negocios/">Negocios</a></li>
+            <li><a href="https://japyasociados.com/consultoria/">Consultoría</a></li>
+            <li><a href="https://japyasociados.com/juridicas/">Jurídicas</a></li>
+            <li><a href="https://japyasociados.com/seguros/">Seguros</a></li>
+            <li><a href="https://japyasociados.com/finanzas-economia/">Finanzas</a></li>
+            <li><a href="https://japyasociados.com/preguntas-respuestas/">Preguntas y respuestas</a></li>
+            <li><a href="https://japyasociados.com/familias-numerosas/">ATFAN y JAP &amp; ASOCIADOS firman un acuerdo de colaboración</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a class="nav__link" href="https://japyasociados.com/planes-de-contratacion-servicios/">Planes</a></li>
+        <li class="nav__item nav__item--sub">
+          <a class="nav__link" href="#herramientas">Calculadoras</a><button class="nav__toggle" type="button" aria-expanded="false" aria-controls="sub-calculadoras" aria-label="Abrir submenú de Calculadoras"><svg class="nav__chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <ul class="sub" id="sub-calculadoras">
+            <li><a href="https://japyasociados.com/simulador-de-trading-con-impacto-fiscal/">Simulador de Trading con Impacto Fiscal</a></li>
+            <li><a href="https://japyasociados.com/calculadoras/calculo-de-intereses/">Cálculo de Intereses</a></li>
+            <li><a href="https://japyasociados.com/calculadoras/calculadora-plusvalias/">Cálculo de Plusvalías</a></li>
+            <li><a href="https://japyasociados.com/calculadoras/calculo-pension-alimenticia/">Cálculo Pensión Alimenticia</a></li>
+            <li><a href="https://japyasociados.com/calculadoras/deuda-publica-de-espana/">Deuda Pública de España</a></li>
+          </ul>
+        </li>
+        <li class="nav__item nav__item--sub">
+          <a class="nav__link" href="https://japyasociados.com/mi-cuenta/">Cuenta</a><button class="nav__toggle" type="button" aria-expanded="false" aria-controls="sub-cuenta" aria-label="Abrir submenú de Cuenta"><svg class="nav__chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <ul class="sub" id="sub-cuenta">
+            <li><a href="https://japyasociados.com/mi-cuenta/descargas/">Descargas</a></li>
+          </ul>
+        </li>
+        <li class="nav__item nav__item--movil"><a class="btn btn--primario" href="#contacto">Contáctanos</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn--primario cab__cta" href="#contacto">Contáctanos</a>
+    <button class="cab__burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="ticker" role="region" aria-label="Aviso destacado">
+  <div class="ticker__pista">
+    <p class="ticker__item">JAP &amp; ASOCIADOS, nº1 en fiscalidad para traders en España<span class="ticker__sep" aria-hidden="true">—</span><a href="https://japyasociados.com/jap-asociados-no1-en-fiscalidad-para-traders-en-espana/">Más info</a></p>
+    <p class="ticker__item" aria-hidden="true">JAP &amp; ASOCIADOS, nº1 en fiscalidad para traders en España<span class="ticker__sep">—</span><a href="https://japyasociados.com/jap-asociados-no1-en-fiscalidad-para-traders-en-espana/" tabindex="-1">Más info</a></p>
+    <p class="ticker__item" aria-hidden="true">JAP &amp; ASOCIADOS, nº1 en fiscalidad para traders en España<span class="ticker__sep">—</span><a href="https://japyasociados.com/jap-asociados-no1-en-fiscalidad-para-traders-en-espana/" tabindex="-1">Más info</a></p>
+    <p class="ticker__item" aria-hidden="true">JAP &amp; ASOCIADOS, nº1 en fiscalidad para traders en España<span class="ticker__sep">—</span><a href="https://japyasociados.com/jap-asociados-no1-en-fiscalidad-para-traders-en-espana/" tabindex="-1">Más info</a></p>
+  </div>
+</div>
+
+<main id="principal">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio" aria-labelledby="t-hero">
+  <div class="env hero__rejilla">
+    <div class="hero__texto">
+      <p class="eyebrow eyebrow--claro hero__eyebrow">En situaciones críticas te ofrecemos</p>
+      <h1 class="hero__titulo" id="t-hero">
+        <span class="w" style="--i:0"><span>Soluciones</span></span>
+        <span class="w" style="--i:1"><span class="hero__resalte">innovadoras</span></span>
+        <span class="w" style="--i:2"><span>para</span></span>
+        <span class="w" style="--i:3"><span>desafíos</span></span>
+        <span class="w" style="--i:4"><span>legales</span></span>
+        <span class="w" style="--i:5"><span>y</span></span>
+        <span class="w" style="--i:6"><span>empresariales</span></span>
+      </h1>
+      <p class="hero__sub">Nuestro equipo te ofrece su experiencia y preparación para ayudarte en el día a día de tu casa y tu negocio</p>
+      <div class="hero__acciones">
+        <a class="btn btn--claro btn--grande" href="#contacto">1ª consulta gratis<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn--fantasma btn--grande" href="#herramientas">Calcula tu caso</a>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="mono" aria-hidden="true">
+        <img class="mono__pieza mono__pieza--j" src="assets/img/monograma.webp" width="512" height="512" alt="" decoding="async">
+        <img class="mono__pieza mono__pieza--a" src="assets/img/monograma.webp" width="512" height="512" alt="" decoding="async">
+        <img class="mono__pieza mono__pieza--p" src="assets/img/monograma.webp" width="512" height="512" alt="" decoding="async">
+      </div>
+
+      <div class="tarjeta-hero tarjeta-hero--une">
+        <div class="tarjeta-hero__flota">
+          <img src="assets/img/une-insignia.webp" width="512" height="512" alt="Insignia UNE 420001" decoding="async">
+          <div class="tarjeta-hero__txt"><strong>UNE 420001:2024</strong><span>Certificado nº 100736 · vigente hasta 27-11-2026</span></div>
+        </div>
+      </div>
+      <div class="tarjeta-hero tarjeta-hero--anos">
+        <div class="tarjeta-hero__flota">
+          <span class="tarjeta-hero__num">28</span>
+          <div class="tarjeta-hero__txt"><strong>años ayudándote</strong><span>Sedes en Madrid, Toledo y Barcelona</span></div>
+        </div>
+      </div>
+      <div class="tarjeta-hero tarjeta-hero--nota">
+        <div class="tarjeta-hero__flota">
+          <div class="estrellas estrellas--mini" role="img" aria-label="Valorado con 4,8 de 5">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+          </div>
+          <div class="tarjeta-hero__txt"><strong>4,8 / 5</strong><span>“Me trataron como si fuera de la familia”</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#perfiles"><span class="hero__scroll-linea" aria-hidden="true"></span>Desliza</a>
+</section>
+
+<!-- ================= MIEMBRO ASOCIADO DE ================= -->
+<section class="confianza" aria-labelledby="t-asoc">
+  <div class="env confianza__fila">
+    <h2 class="confianza__titulo" id="t-asoc">Miembro asociado de</h2>
+    <ul class="logos" data-anim="sube">
+      <li><a href="https://japyasociados.com/all-services/asesoria-de-empresas/"><img src="assets/img/aecem.webp" width="1000" height="400" alt="AECEM - Asociación Española de Consultores de Empresa" loading="lazy" decoding="async"></a></li>
+      <li><a href="https://japyasociados.com/obtenemos-la-certificacion-une-4200012024/"><img src="assets/img/une-insignia.webp" width="512" height="512" alt="Insignia UNE 420001" loading="lazy" decoding="async"></a></li>
+      <li><a href="https://japyasociados.com/all-services/peritos-judiciales/"><img src="assets/img/apjude.webp" width="491" height="509" alt="APJUDE - Asociación Profesional Colegial de Peritos Judiciales" loading="lazy" decoding="async"></a></li>
+      <li><img src="assets/img/adecla.webp" width="320" height="130" alt="Adecla - Asociación del Club del Asesor" loading="lazy" decoding="async"></li>
+      <li><img src="assets/img/cegid.webp" width="437" height="180" alt="Cegid" loading="lazy" decoding="async"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= PERFILES ================= -->
+<section class="seccion perfiles" id="perfiles" aria-labelledby="t-perf">
+  <div class="env">
+    <div class="cabecera" data-anim="sube">
+      <p class="eyebrow">Elige tu perfil</p>
+      <h2 id="t-perf">¿Qué necesitas resolver?</h2>
+      <p class="lead">Asesoramos a empresas y particulares. Dinos quién eres y te enseñamos por dónde empezar.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Perfiles" data-anim="sube" style="--i:1">
+      <button class="tab" role="tab" id="tab-trader" aria-selected="true" aria-controls="panel-trader">Trader</button>
+      <button class="tab" role="tab" id="tab-autonomo" aria-selected="false" aria-controls="panel-autonomo" tabindex="-1">Autónomo</button>
+      <button class="tab" role="tab" id="tab-pyme" aria-selected="false" aria-controls="panel-pyme" tabindex="-1">PYME</button>
+      <button class="tab" role="tab" id="tab-comunidad" aria-selected="false" aria-controls="panel-comunidad" tabindex="-1">Comunidad de propietarios</button>
+      <button class="tab" role="tab" id="tab-funcionario" aria-selected="false" aria-controls="panel-funcionario" tabindex="-1">Funcionario</button>
+      <span class="tabs__indicador" aria-hidden="true"></span>
+    </div>
+
+    <div class="paneles" data-anim="sube" style="--i:2">
+      <div class="panel activo" role="tabpanel" id="panel-trader" aria-labelledby="tab-trader">
+        <div class="panel__texto">
+          <h3>Fiscalidad del trading, sin humo</h3>
+          <p>Declaraciones impecables, criterio técnico y estrategia. Cuentas fondeadas, derivados, CFDs y criptoactivos.</p>
+          <p class="panel__precio">Planes desde <strong>190 €</strong></p>
+          <a class="btn btn--primario" href="https://japyasociados.com/all-services/fiscalidad-para-traders/">Fiscalidad para traders<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <ul class="panel__lista">
+          <li><a href="https://japyasociados.com/simulador-de-trading-con-impacto-fiscal/"><strong>Simulador de trading con impacto fiscal</strong><span>Beneficio bruto, impuestos, neto y eficiencia fiscal</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/asesoria-de-empresas/"><strong>Asesoría de empresas y autónomos</strong><span>Estructura óptima: autónomo o sociedad</span></a></li>
+          <li><a href="https://japyasociados.com/planes-de-contratacion-servicios/"><strong>Planes de contratación</strong><span>Suscripción mensual con garantía de 21 días</span></a></li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-autonomo" aria-labelledby="tab-autonomo" hidden>
+        <div class="panel__texto">
+          <h3>Fiscal, laboral, contable y financiero</h3>
+          <p>Estrategias empresariales para el día a día de tu negocio. Todos nuestros departamentos están para ayudarte.</p>
+          <p class="panel__precio">Planes desde <strong>30 €/mes</strong></p>
+          <a class="btn btn--primario" href="https://japyasociados.com/all-services/asesoria-de-empresas/">Asesoría de empresas y autónomos<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <ul class="panel__lista">
+          <li><a href="#herramientas"><strong>Calculadoras</strong><span>Intereses, IPC, despido, plusvalías</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/asesoria-juridica/"><strong>Asesoría jurídica</strong><span>Civil, laboral, fiscal y mercantil</span></a></li>
+          <li><a href="https://japyasociados.com/planes-de-contratacion-servicios/"><strong>Planes de contratación</strong><span>Elige el plan que encaja con tu actividad</span></a></li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-pyme" aria-labelledby="tab-pyme" hidden>
+        <div class="panel__texto">
+          <h3>Asesores empresariales</h3>
+          <p>Fiscal, laboral, contable y financiero, con asesoría jurídica mercantil, seguros y gestión de patrimonio para tu empresa.</p>
+          <p class="panel__precio">Planes desde <strong>30 €/mes</strong></p>
+          <a class="btn btn--primario" href="https://japyasociados.com/all-services/asesoria-de-empresas/">Asesoría de empresas<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <ul class="panel__lista">
+          <li><a href="https://japyasociados.com/all-services/asesoria-juridica/"><strong>Asesoría jurídica</strong><span>Abogados experimentados a tu disposición</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/seguros-generales/"><strong>Seguros generales</strong><span>Agentes de seguros exclusivos</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/gestion-de-patrimonio/"><strong>Gestión de patrimonio</strong><span>Patrimonio financiero e inmobiliario</span></a></li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-comunidad" aria-labelledby="tab-comunidad" hidden>
+        <div class="panel__texto">
+          <h3>Administradores de fincas</h3>
+          <p>Profesionales independientes gestionan comunidades, instalaciones deportivas, etc. Gestión eficaz y tecnológicamente avanzada.</p>
+          <p class="panel__precio">Desde <strong>50 €/mes</strong></p>
+          <a class="btn btn--primario" href="https://japyasociados.com/all-services/administracion-de-fincas/">Administración de fincas<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <ul class="panel__lista">
+          <li><a href="https://japyasociados.com/all-services/peritos-judiciales/"><strong>Peritos judiciales</strong><span>Informes y dictámenes periciales</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/seguros-generales/"><strong>Seguros generales</strong><span>Las mejores coberturas para la comunidad</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/asesoria-juridica/"><strong>Asesoría jurídica</strong><span>Reclamaciones y conflictos vecinales</span></a></li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-funcionario" aria-labelledby="tab-funcionario" hidden>
+        <div class="panel__texto">
+          <h3>CompatibleSí</h3>
+          <p>La guía definitiva de incompatibilidades: herramienta con IA para funcionarios bajo la Ley 53/1984. Diagnóstico gratuito.</p>
+          <p class="panel__precio">Informe desde <strong>49 €</strong></p>
+          <a class="btn btn--primario" href="https://japyasociados.com/compatiblesi/que-es-y-como-usar-compatiblesi/">Qué es y cómo usar CompatibleSí<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <ul class="panel__lista">
+          <li><a href="https://japyasociados.com/all-services/asesoria-juridica/"><strong>Asesoría jurídica</strong><span>Contencioso-administrativo</span></a></li>
+          <li><a href="https://japyasociados.com/preguntas-respuestas/"><strong>Preguntas y respuestas</strong><span>Dudas frecuentes resueltas por el equipo</span></a></li>
+          <li><a href="https://japyasociados.com/all-services/gestion-de-patrimonio/"><strong>Gestión de patrimonio</strong><span>Planifica tu patrimonio con rigor</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXCELENCIA CERTIFICADA + DECÁLOGO ================= -->
+<section class="seccion excelencia" aria-labelledby="t-exc">
+  <div class="env excelencia__rejilla">
+    <div class="sello" data-anim="escala">
+      <span class="sello__anillo sello__anillo--fino" aria-hidden="true"></span>
+      <span class="sello__anillo sello__anillo--gira" aria-hidden="true"></span>
+      <img class="sello__img" src="assets/img/une-insignia.webp" width="512" height="512" alt="INSIGNIA UNE 420001-1" loading="lazy" decoding="async">
+    </div>
+    <div class="excelencia__texto">
+      <h2 id="t-exc" data-anim="sube">Excelencia Certificada:<br>Su tranquilidad es nuestro estándar.</h2>
+      <p data-anim="sube" style="--i:1">En JAP y Asociados, su confianza es nuestro activo más valioso. Por ello, nos enorgullece contar con la <strong>certificación UNE 420001</strong>, el <strong>estándar de calidad más exigente y específico</strong> para el sector de las asesorías en España.</p>
+      <p data-anim="sube" style="--i:2">¿Qué significa esto para usted? Este sello <strong>avala que nuestro despacho no solo cumple con la ley, sino que opera bajo procesos auditados de máxima transparencia, seguridad en la gestión de datos y rigor técnico</strong>. Mientras otras asesorías simplemente gestionan, en JAP y Asociados garantizamos un servicio excelente, minimizando riesgos y asegurando que su negocio esté siempre en las mejores manos.</p>
+      <p class="excelencia__cierre" data-anim="sube" style="--i:3">Elegirnos es elegir seguridad. Es elegir <strong>JAP y Asociados</strong>.</p>
+    </div>
+  </div>
+
+  <div class="env decalogo" id="decalogo">
+    <div class="decalogo__cab" data-anim="sube">
+      <p class="eyebrow">Decálogo de calidad</p>
+      <h3>Diez compromisos auditados con cada cliente</h3>
+    </div>
+    <ol class="decalogo__lista" data-anim="sube" style="--i:1">
+      <li><span>01</span>Disponibilidad</li>
+      <li><span>02</span>Atención sin demora</li>
+      <li><span>03</span>Conocimiento colectivo</li>
+      <li><span>04</span>Ética y confidencialidad</li>
+      <li><span>05</span>Comunicación y plazos</li>
+      <li><span>06</span>Calidad del lenguaje</li>
+      <li><span>07</span>Revisión por socio</li>
+      <li><span>08</span>Formatos normalizados UNE 197001:2011</li>
+      <li><span>09</span>Trazabilidad</li>
+      <li><span>10</span>Cierre de operación</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= DEPARTAMENTOS PROFESIONALES ================= -->
+<section class="seccion deptos" id="departamentos" aria-labelledby="t-dep">
+  <div class="env">
+    <h2 class="titulo-centrado" id="t-dep" data-anim="sube">Departamentos profesionales</h2>
+
+    <div class="deptos__rejilla">
+      <article class="depto" data-anim="sube" style="--i:0">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M2.5 10 12 4l9.5 6h-19z"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/all-services/asesoria-juridica/">Asesores Jurídicos</a></h3>
+        <p>Abogados experimentados están a tu disposición para ayudarte en tu caso. Para más información pulsa en el título.</p>
+      </article>
+
+      <article class="depto" data-anim="sube" style="--i:1">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v9h9M12 12l-6.4 6.4"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/all-services/asesoria-de-empresas/">Asesores Empresariales</a></h3>
+        <p>Fiscal, Laboral, Contable y Financiero. Estrategias empresariales. Para más información pulsa en el título.</p>
+      </article>
+
+      <div class="depto depto--cta" data-anim="sube" style="--i:2">
+        <img class="depto--cta__marca" src="assets/img/monograma.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <a class="btn btn--claro" href="#contacto">Contacto<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <article class="depto" data-anim="sube" style="--i:0">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/all-services/gestion-de-patrimonio/">Gestión de Patrimonio</a></h3>
+        <p>Gestionamos con rigor tu patrimonio financiero e inmobiliario. Para más información pulsa en el título.</p>
+      </article>
+
+      <article class="depto" data-anim="sube" style="--i:1">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-5.2 5.2M12 11.5l5.2 5.2"/></svg></span>
+        <h3 class="depto__titulo"><span>Marketing Digital</span></h3>
+        <p>Nos encargamos de potenciar tu negocio en el mundo digital. Incrementando tu flujo de clientes. Para más información pulsa en el título.</p>
+      </article>
+
+      <article class="depto" data-anim="sube" style="--i:2">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M12 6 5 8M12 6l7 2M3 14l2-6 2 6a2 2 0 0 1-4 0zM17 14l2-6 2 6a2 2 0 0 1-4 0z"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/all-services/peritos-judiciales/">Peritos Judiciales</a></h3>
+        <p>Expertos en realizar informes y dictámenes periciales complejos en cualquier especialidad, con máximo rigor técnico legal. Para más información pulsa en el título.</p>
+      </article>
+
+      <article class="depto" data-anim="sube" style="--i:0">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/all-services/administracion-de-fincas/">Administradores de Fincas</a></h3>
+        <p>Profesionales independientes gestionan comunidades, instalaciones deportivas, etc. Para más información pulsa en el título.</p>
+      </article>
+
+      <article class="depto" data-anim="sube" style="--i:1">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/all-services/seguros/">Seguros y Ahorros</a></h3>
+        <p>Agentes de seguros exclusivos. Velamos por que disfrutéis de las mejores coberturas. Para más información pulsa en el título.</p>
+      </article>
+
+      <article class="depto" data-anim="sube" style="--i:2">
+        <span class="depto__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.6c0 5.7-7.5 10.3-7.5 10.3z"/></svg></span>
+        <h3 class="depto__titulo"><a href="https://japyasociados.com/obras-sociales-y-donaciones/">Obras Sociales y Donaciones</a></h3>
+        <p>JAP &amp; ASOCIADOS dona parte de sus beneficios. Para más información pulsa en el título.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HERRAMIENTAS ================= -->
+<section class="seccion herramientas" id="herramientas" aria-labelledby="t-herr">
+  <div class="env">
+    <div class="cabecera" data-anim="sube">
+      <p class="eyebrow">Calculadoras</p>
+      <h2 id="t-herr">Calcula antes de preguntar</h2>
+      <p class="lead">Seis calculadoras y un simulador fiscal de trading. Gratis, y sin registro para usarlas.</p>
+    </div>
+
+    <div class="herr__rejilla">
+      <article class="simulador" data-anim="sube">
+        <div class="simulador__cab">
+          <p class="eyebrow eyebrow--claro">Simulador de trading con impacto fiscal</p>
+          <h3>Introduce tu operativa y elige el régimen de tributación</h3>
+        </div>
+        <div class="simulador__cuerpo">
+          <dl class="simulador__datos">
+            <div><dt>Entradas</dt><dd>Capital · nº de operaciones · win rate · ganancia y pérdida media · comisión · apalancamiento</dd></div>
+            <div><dt>Régimen</dt><dd>IRPF ahorro · IRPF actividad económica · Impuesto de Sociedades · compensación de pérdidas</dd></div>
+          </dl>
+          <ul class="simulador__salidas" aria-label="Resultados que devuelve el simulador">
+            <li style="--p:1"><span>Beneficio bruto</span><i></i></li>
+            <li style="--p:.28"><span>Impuestos</span><i></i></li>
+            <li style="--p:.72"><span>Neto</span><i></i></li>
+            <li style="--p:.72"><span>Eficiencia fiscal</span><i></i></li>
+          </ul>
+        </div>
+        <div class="simulador__pie">
+          <a class="btn btn--claro" href="https://japyasociados.com/simulador-de-trading-con-impacto-fiscal/">Abrir el simulador<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <form class="captura" id="form-pdf" novalidate>
+            <label class="oculto" for="email-pdf">Tu email para recibir el informe en PDF</label>
+            <input id="email-pdf" type="email" placeholder="tu@email.com" autocomplete="email" required>
+            <button class="btn btn--azul" type="submit">Recibir el informe en PDF</button>
+            <p class="captura__estado" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </article>
+
+      <ul class="calcs">
+        <li data-anim="sube" style="--i:1"><a href="https://japyasociados.com/calculadoras/calculo-de-intereses/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 15l4-5 4 3 5-7"/></svg><strong>Cálculo de intereses</strong><span>Legales y de demora</span></a></li>
+        <li data-anim="sube" style="--i:2"><a href="https://japyasociados.com/calculadoras/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-5 4 4 9-9M15 7h6v6"/></svg><strong>Actualización IPC</strong><span>Rentas y alquileres</span></a></li>
+        <li data-anim="sube" style="--i:3"><a href="https://japyasociados.com/calculadoras/"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 6V4h8v2M3 11h18"/></svg><strong>Indemnización por despido</strong><span>Improcedente y objetivo</span></a></li>
+        <li data-anim="sube" style="--i:4"><a href="https://japyasociados.com/calculadoras/calculo-pension-alimenticia/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M3 20a6 6 0 0 1 12 0M13.5 20a4 4 0 0 1 7.5 0"/></svg><strong>Pensión alimenticia</strong><span>Según tablas del CGPJ</span></a></li>
+        <li data-anim="sube" style="--i:5"><a href="https://japyasociados.com/calculadoras/calculadora-plusvalias/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M10 21v-5h4v5"/></svg><strong>Plusvalías</strong><span>Municipal y ganancia patrimonial</span></a></li>
+        <li data-anim="sube" style="--i:6"><a href="https://japyasociados.com/calculadoras/deuda-publica-de-espana/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><strong>Deuda pública de España</strong><span>En tiempo real</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPROMISO ================= -->
+<section class="seccion compromiso" aria-labelledby="t-comp">
+  <div class="env compromiso__rejilla">
+    <figure class="compromiso__foto foto-marca" data-anim="escala">
+      <img src="assets/img/compromiso.webp" width="600" height="750" alt="Equipo de JAP y Asociados" loading="lazy" decoding="async">
+    </figure>
+    <div class="compromiso__texto">
+      <p class="eyebrow" data-anim="sube">Compromiso total con todos nuestros clientes</p>
+      <h2 id="t-comp" data-anim="sube" style="--i:1">Con la satisfacción de un trabajo bien hecho</h2>
+      <p data-anim="sube" style="--i:2">Ponemos todos los recursos disponibles para hacer nuestra labor con un nivel de exigencia máximo, para que todos nuestros clientes estén satisfechos de haber contratado a los profesionales que necesitaba para su caso.</p>
+      <ul class="lista-chevron" data-anim="sube" style="--i:3">
+        <li><strong>GARANTÍA 21 DÍAS</strong>, si no cumplimos te compensamos.</li>
+        <li><strong>HACEMOS LO DIFÍCIL,</strong> otros profesionales nos consultan sus casos</li>
+        <li><strong>LO IMPOSIBLE,</strong> lo intentamos. Nunca nos rendimos y eso gusta.</li>
+      </ul>
+      <div class="cifras" data-anim="sube" style="--i:4">
+        <div class="cifra"><span class="cifra__num">5</span><span class="cifra__txt">Sedes en Madrid, Toledo y Barcelona.</span></div>
+        <div class="cifra"><span class="cifra__num">563</span><span class="cifra__txt">Proyectos Completados 2024</span></div>
+      </div>
+      <div class="firma" data-anim="sube" style="--i:5">
+        <div class="firma__quien"><strong>Fernando Sánchez</strong><span>CEO en JAP y Asociados</span></div>
+        <img class="firma__img" src="assets/img/firma.webp" width="200" height="100" alt="Firma de Fernando Sánchez, CEO y fundador" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESTADÍSTICAS ================= -->
+<section class="seccion stats" aria-labelledby="t-stats">
+  <div class="env">
+    <div class="stats__tarjeta" data-anim="sube">
+      <div class="stats__texto">
+        <p class="eyebrow eyebrow--claro">Nuestras estadísticas jurídicas</p>
+        <h2 id="t-stats">Contamos con un equipo que busca el éxito.</h2>
+        <ul class="barras" data-anim="barras">
+          <li class="barra" style="--p:.95;--i:0">
+            <div class="barra__cab"><h3>Casos extrajudiciales resueltos a favor</h3><span class="barra__valor">95%</span></div>
+            <div class="barra__pista"><span class="barra__relleno"></span></div>
+          </li>
+          <li class="barra" style="--p:.91;--i:1">
+            <div class="barra__cab"><h3>Servicios contratados después de la primera consulta</h3><span class="barra__valor">91%</span></div>
+            <div class="barra__pista"><span class="barra__relleno"></span></div>
+          </li>
+          <li class="barra" style="--p:.91;--i:2">
+            <div class="barra__cab"><h3>Procesos Judiciales Ganados</h3><span class="barra__valor">91%</span></div>
+            <div class="barra__pista"><span class="barra__relleno"></span></div>
+          </li>
+        </ul>
+        <a class="btn btn--claro" href="#contacto">Contacto<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="stats__imagen" role="img" aria-label="Reunión de trabajo en JAP y Asociados"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OBJETIVOS ================= -->
+<section class="seccion objetivos" aria-labelledby="t-obj">
+  <div class="env">
+    <div class="objetivos__cab">
+      <div>
+        <p class="eyebrow" data-anim="sube">Nuestros objetivos</p>
+        <h2 id="t-obj" data-anim="sube" style="--i:1">Ayudar a la gente a ser un poquito más felices</h2>
+      </div>
+      <figure class="objetivos__foto foto-marca" data-anim="escala">
+        <img src="assets/img/objetivos.webp" width="600" height="350" alt="Equipo de JAP y Asociados trabajando en un proyecto" loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="objetivos__cuerpo">
+      <div data-anim="sube">
+        <p class="objetivos__claim">Hacemos todo lo posible para implementar sus ideas en el proyecto para que sea exitoso y rentable.</p>
+        <a class="btn btn--secundario" href="https://japyasociados.com/objetivos/">Objetivos<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="objetivos__parrafos" data-anim="sube" style="--i:1">
+        <p>Gracias a nuestros modernos sistemas de trabajo, estamos consiguiendo una mayor respuesta a los problemas cotidianos de las personas, ayudándoles en su día a día a tomar decisiones lógicas, razonables y sensatas.</p>
+        <p>Estamos evitando muchos errores en las decisiones diarias, que seguro se hubieran producido sin un buen asesoramiento profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 28 AÑOS ================= -->
+<section class="anos" aria-labelledby="t-anos">
+  <div class="env anos__rejilla">
+    <h2 id="t-anos" data-anim="sube">Ayudándote desde hace más de 28 Años</h2>
+    <span class="anos__num" aria-hidden="true" data-anim="desliza">28</span>
+  </div>
+</section>
+
+<!-- ================= EQUIPO + OPINIONES ================= -->
+<section class="seccion equipo" id="equipo" aria-labelledby="t-equipo">
+  <div class="env">
+    <div class="cabecera cabecera--ancha" data-anim="sube">
+      <p class="eyebrow">El equipo</p>
+      <h2 id="t-equipo">“Un equipo profesional comprometido con el éxito de tu proyecto”</h2>
+    </div>
+
+    <div class="equipo__rejilla">
+      <article class="persona" data-anim="sube" style="--i:0">
+        <figure class="persona__foto">
+          <img src="assets/img/retrato-fernando-sanchez-480.webp" srcset="assets/img/retrato-fernando-sanchez-480.webp 480w, assets/img/retrato-fernando-sanchez-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="960" alt="Fernando Sánchez, CEO y fundador de JAP y Asociados" loading="lazy" decoding="async">
+        </figure>
+        <div class="persona__pie">
+          <h3>Fernando Sánchez</h3>
+          <p class="persona__cargo">CEO fundador</p>
+          <p class="persona__esp">Perito judicial · Asesor empresarial y financiero · Administrador de fincas · Inspector de viviendas</p>
+        </div>
+      </article>
+      <article class="persona" data-anim="sube" style="--i:1">
+        <figure class="persona__foto">
+          <img src="assets/img/retrato-pilar-tallon-480.webp" width="480" height="599" alt="Pilar Tallón, abogada y mediadora de conflictos" loading="lazy" decoding="async">
+        </figure>
+        <div class="persona__pie">
+          <h3>Pilar Tallón</h3>
+          <p class="persona__cargo">Abogada</p>
+          <p class="persona__esp">Mediadora de conflictos</p>
+        </div>
+      </article>
+      <article class="persona" data-anim="sube" style="--i:2">
+        <figure class="persona__foto">
+          <img src="assets/img/retrato-marian-tallon-480.webp" srcset="assets/img/retrato-marian-tallon-480.webp 480w, assets/img/retrato-marian-tallon-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="960" alt="Marian Tallón, abogada y mediadora de conflictos" loading="lazy" decoding="async">
+        </figure>
+        <div class="persona__pie">
+          <h3>Marian Tallón</h3>
+          <p class="persona__cargo">Abogada</p>
+          <p class="persona__esp">Mediadora de conflictos</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="voces__rejilla">
+      <div class="opinion" data-anim="sube">
+        <div class="estrellas" role="img" aria-label="Valorado con 5 de 5">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>
+          <span class="estrellas__txt">Valorado con 5 de 5</span>
+        </div>
+        <blockquote class="opinion__cita"><p>"Me trataron como si fuera de la familia. ¡Les daría 100 estrellas!"</p></blockquote>
+        <a class="enlace-circ" href="https://japyasociados.com/clientes/">Lee más opiniones<span class="enlace-circ__icono" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 18 18"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+      <div class="ceo" data-anim="sube" style="--i:1">
+        <p class="ceo__cita">Ayudar a la gente a ser un poquito más felices.</p>
+        <img class="ceo__firma" src="assets/img/firma.webp" width="200" height="100" alt="Firma de Fernando Sánchez" loading="lazy" decoding="async">
+        <p class="ceo__nombre">Fernando Sánchez - <span>CEO Fundador</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="seccion contacto" id="contacto" aria-labelledby="t-cont">
+  <div class="env contacto__rejilla">
+    <div class="contacto__texto">
+      <p class="eyebrow" data-anim="sube">Contáctanos</p>
+      <h2 id="t-cont" data-anim="sube" style="--i:1">1ª consulta gratis</h2>
+      <p class="lead" data-anim="sube" style="--i:2">Cuéntanos tu caso y te decimos cómo podemos ayudarte. Sin compromiso.</p>
+      <dl class="contacto__datos" data-anim="sube" style="--i:3">
+        <div><dt>Teléfono</dt><dd><a href="tel:+34925101997">+34 925 101 997</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:info@japyasociados.com">info@japyasociados.com</a></dd></div>
+        <div><dt>Despacho</dt><dd><a href="https://maps.app.goo.gl/WFQQrrJqWTo1nWpE7" rel="noopener">C/ Toledo, 34 — 1ª planta<br>28981 Parla, Madrid</a></dd></div>
+      </dl>
+      <div class="contacto__sello" data-anim="sube" style="--i:4">
+        <img src="assets/img/une-insignia.webp" width="512" height="512" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <p><strong>Certificación UNE 420001:2024</strong><span>Certificado nº 100736 · vigente hasta el 27 de noviembre de 2026</span></p>
+      </div>
+    </div>
+
+    <form class="form" id="form-contacto" data-anim="sube" style="--i:2" novalidate>
+      <div class="form__par">
+        <div class="form__grupo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" required></div>
+        <div class="form__grupo"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" autocomplete="organization"></div>
+      </div>
+      <div class="form__par">
+        <div class="form__grupo"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div class="form__grupo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="form__grupo">
+        <label for="departamento">Departamento</label>
+        <select id="departamento" name="departamento">
+          <option>Asesoría jurídica</option>
+          <option>Administración de fincas</option>
+          <option>Gestión de patrimonio</option>
+          <option>Peritaje judicial</option>
+          <option>Seguros</option>
+          <option>Asesoría de empresa</option>
+          <option>Asesoría traders</option>
+        </select>
+      </div>
+      <div class="form__grupo"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="4"></textarea></div>
+      <p class="form__legal">
+        <input id="politica" type="checkbox" required>
+        <label for="politica">He leído y acepto la <a href="https://japyasociados.com/declaracion-de-privacidad-ue/">política de privacidad</a>.</label>
+      </p>
+      <div class="form__acciones">
+        <button class="btn btn--primario btn--grande" type="submit">Enviar consulta<svg class="btn__flecha" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="form__estado" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="pie">
+  <div class="env pie__rejilla">
+    <div class="pie__marca">
+      <a href="https://japyasociados.com" aria-label="JAP y Asociados"><img src="assets/img/logo-jap-blanco.webp" width="274" height="45" alt="JAP y Asociados Asesores" loading="lazy" decoding="async"></a>
+      <p>En JAP y Asociados asesoramos a empresas y particulares como asesoría jurídica, administradores de fincas y gestión del patrimonio.</p>
+      <p>También prestamos nuestra ayuda como Peritos Judiciales Colegiados y agentes libres de seguros.</p>
+    </div>
+
+    <div class="pie__col">
+      <h4>Información</h4>
+      <ul class="pie__posts">
+        <li>
+          <a href="https://japyasociados.com/como-extraer-dinero-de-tu-empresa-de-forma-legal-en-2026-claves-de-la-planificacion-fiscal-corporativa/">
+            <img src="assets/img/blog-1.webp" width="240" height="240" alt="" loading="lazy" decoding="async">
+            <span><span class="pie__post-titulo">Cómo extraer dinero de tu empresa de forma legal en 2026: Claves de la planificación fiscal corporativa</span><time datetime="2026-08-11">Ago 11,2026</time></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://japyasociados.com/jubilacion-y-prop-trading-como-mantener-el-100-de-tu-pension-operando-cuentas-fondeadas-guia-2026/">
+            <img src="assets/img/blog-2.webp" width="240" height="240" alt="" loading="lazy" decoding="async">
+            <span><span class="pie__post-titulo">Jubilación y prop trading: cómo mantener el 100 % de tu pensión operando cuentas fondeadas (guía 2026)</span><time datetime="2026-07-14">Jul 14,2026</time></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="pie__col">
+      <h4>Navega la web</h4>
+      <ul class="pie__lista">
+        <li><a href="https://japyasociados.com/planes-de-contratacion-servicios/">Planes de Contratación de Servicios</a></li>
+        <li><a href="https://japyasociados.com/clientes/">Opinión de nuestros clientes</a></li>
+        <li><a href="https://japyasociados.com/service-cat/servicios-juridicos/">Servicios jurídicos</a></li>
+        <li><a href="https://japyasociados.com/aviso-legal/">Aviso Legal</a></li>
+        <li><a href="https://japyasociados.com/declaracion-de-privacidad-ue/">Política de Privacidad</a></li>
+        <li><a href="https://japyasociados.com/uso-de-cookies/">Uso de cookies</a></li>
+        <li><a href="#contacto">Términos de contratación</a></li>
+        <li><a href="https://japyasociados.com/canal-denuncias/">Canal de Denuncias</a></li>
+      </ul>
+    </div>
+
+    <div class="pie__col">
+      <h4>Contáctanos</h4>
+      <ul class="pie__lista pie__contacto">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11z"/><path d="m4 7 8 5.5L20 7"/></svg><a href="mailto:info@japyasociados.com">info@japyasociados.com</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><a href="tel:+34925101997">+34 925 101 997</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.4-7-11.5a7 7 0 0 1 14 0C19 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><a href="https://maps.app.goo.gl/WFQQrrJqWTo1nWpE7" rel="noopener">28981 - Parla - MADRID</a></li>
+      </ul>
+      <h4>Síguenos</h4>
+      <ul class="social">
+        <li><a href="https://twitter.com/AsociadosJap" rel="noopener" aria-label="Síguenos en X (Twitter)"><svg viewBox="0 0 24 24"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.3L4.6 21h-3l7.5-8.6L1.5 3H8l4.5 5.8L17.5 3zm-1 16h1.7L7.2 4.7H5.4L16.5 19z"/></svg></a></li>
+        <li><a href="https://www.instagram.com/japyasociados" rel="noopener" aria-label="Síguenos en Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/company/jap-asociados/" rel="noopener" aria-label="Síguenos en LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 9h3v12H3zM10 9h2.9v1.7c.5-.9 1.7-1.9 3.6-1.9 3.8 0 4.5 2.5 4.5 5.7V21h-3v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21h-3V9z"/></svg></a></li>
+        <li><a href="https://www.youtube.com/channel/UCdNGz9N6n29ipPOqXGWUQtQ/" rel="noopener" aria-label="Síguenos en YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.5-.9-2.1c-.8-.9-1.7-.9-2.1-.9C16.1 5 12 5 12 5s-4.1 0-7 .2c-.4 0-1.3 0-2.1.9C2.2 6.7 2 8.2 2 8.2S1.8 10 1.8 11.7v1.6c0 1.8.2 3.5.2 3.5s.2 1.5.9 2.1c.8.9 1.9.8 2.4.9 1.7.2 6.7.2 6.7.2s4.1 0 7-.2c.4 0 1.3 0 2.1-.9.7-.6.9-2.1.9-2.1s.2-1.8.2-3.5v-1.6C22.2 10 22 8.2 22 8.2zM9.9 15.3V9.1l5.6 3.1-5.6 3.1z"/></svg></a></li>
+        <li><a href="https://www.facebook.com/JAPYASOCIADOS/" rel="noopener" aria-label="Síguenos en Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.3-1.5 1.5-1.5h1.4V5.1c-.3 0-1.1-.1-2.1-.1-2.1 0-3.6 1.3-3.6 3.7V11H8.3v3h2.4v7h2.8z"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie__copy">
+    <div class="env"><p>2026 © JAP y Asociados. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+
+<nav class="barra-movil" id="barra-movil" aria-label="Acciones rápidas">
+  <a href="tel:+34925101997"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Llamar</a>
+  <a class="barra-movil__principal" href="#contacto">1ª consulta gratis</a>
+</nav>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

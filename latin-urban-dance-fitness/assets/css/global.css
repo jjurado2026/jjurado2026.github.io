@@ -1,0 +1,349 @@
+/* =====================================================================
+   LATIN URBAN DANCE & FITNESS — global.css · Dirección "Compás"
+   El baile latino se cuenta en ochos. La página se maqueta sobre una
+   retícula de 8 tiempos, porque el método que enseña Junior Monzón
+   combina "baile, fitness y entrenamiento mental EN BLOQUES".
+   La estructura de la página es la estructura musical del producto.
+
+   Color medido píxel a píxel sobre su logo.
+   Regla verificada: turquesa sobre negro 15,7:1 → vale como texto.
+   Azul #304FFF 3,46:1 → PROHIBIDO como texto, solo sombra dura o luz.
+   ===================================================================== */
+
+/* ---------- Fuentes variables autoalojadas ----------
+   Autoalojadas por obligación técnica, no por gusto: servidas desde el CDN
+   de Google, el eje wdth no responde mientras la fuente carga, y el encaje
+   a sangre del hero depende de ese eje. */
+@font-face{
+  font-family:'Anybody';
+  src:url('../fonts/anybody.woff2') format('woff2');
+  font-weight:100 900;
+  font-stretch:50% 150%;
+  font-display:block;          /* block, no swap: el hero se compone con métricas exactas */
+}
+@font-face{
+  font-family:'Archivo';
+  src:url('../fonts/archivo.woff2') format('woff2');
+  font-weight:100 900;
+  font-stretch:62% 125%;
+  font-display:swap;
+}
+
+:root{
+  /* Los suyos — medidos sobre el logo */
+  --turquesa:#64FEDA;
+  --azul:#304FFF;            /* solo sombra/luz, nunca texto */
+  --naranja:#FF9620;
+  --coral:#FF5E5C;
+  --magenta:#FF17A9;
+  --oro:#D8B171;             /* el dorado del rótulo físico de su pared */
+  --azul-neon:#7C8CFF;       /* el azul del logo aclarado: este sí vale como texto (6,6:1) */
+
+  /* Sala */
+  --negro:#0B0B0F;
+  --negro-2:#131318;
+  --negro-3:#1B1B22;
+  --linea:#27272F;
+  --linea-viva:rgba(100,254,218,.26);
+
+  /* Texto */
+  --blanco:#FFFFFF;
+  --texto:#E9EAF0;
+  --texto-suave:#B7B9C6;
+  --texto-tenue:#8B8D9B;
+
+  --fuego:linear-gradient(168deg,var(--naranja) 0%,var(--coral) 48%,var(--magenta) 100%);
+  --fuego-h:linear-gradient(100deg,var(--naranja) 0%,var(--coral) 50%,var(--magenta) 100%);
+
+  --display:'Anybody','Arial Narrow',Impact,sans-serif;
+  --cuerpo:'Archivo',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+
+  /* Movimiento. Regla del taller: solo transform y opacity.
+     --ease: muelle sin rebote (entradas y estados). --sale: salidas,
+     más cortas y discretas que las entradas. --muelle: rebote leve,
+     reservado a piezas pequeñas (botones). */
+  --ease:cubic-bezier(.16,1,.3,1);
+  --sale:cubic-bezier(.55,0,1,.45);
+  --muelle:cubic-bezier(.34,1.4,.64,1);
+  --baile:cubic-bezier(.2,1.5,.4,1);   /* rebote con intención: palabras que «aterrizan» */
+  --t-press:110ms;
+  --t-corto:200ms;
+  --t-medio:520ms;
+  --t-largo:820ms;
+  --tiempo:110ms;            /* un tiempo de la cuenta de entrada del hero */
+  --t0:160ms;                /* respiro antes de empezar a contar */
+
+  --env:1280px;
+  --margen:clamp(18px,4.5vw,56px);
+  --sec:clamp(76px,9vw,140px);
+  --cab-alto:72px;
+
+  /* La retícula de 8 tiempos */
+  --tiempos:8;
+}
+@media (max-width:899px){
+  :root{--cab-alto:58px; --tiempos:6}
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--negro);
+  color:var(--texto);
+  font-family:var(--cuerpo);
+  font-size:clamp(16px,.38vw + 15px,18px);
+  font-weight:400;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img,picture,svg,video{display:block;max-width:100%}
+/* [hidden] manda siempre: sin esto, la regla de arriba pintaba el sprite
+   de iconos como un bloque vacío de 150 px encima del hero */
+[hidden]{display:none!important}
+img{height:auto;border:0}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:400;line-height:1}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+table{border-collapse:collapse}
+
+/* ---------- Foco ---------- */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:3px solid var(--turquesa);
+  outline-offset:3px;
+  border-radius:3px;
+}
+
+.salta{
+  position:absolute;left:50%;top:0;transform:translate(-50%,-140%);
+  z-index:200;padding:12px 22px;
+  background:var(--turquesa);color:#04241C;
+  font-weight:700;text-decoration:none;
+  transition:transform var(--t-corto) var(--ease);
+}
+.salta:focus-visible{transform:translate(-50%,0)}
+
+.vo{
+  position:absolute!important;width:1px;height:1px;
+  padding:0;margin:-1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;border:0;
+}
+
+/* ---------- Envoltorio y retícula ---------- */
+.env{
+  width:100%;max-width:var(--env);
+  margin-inline:auto;padding-inline:var(--margen);
+}
+.seccion{padding-block:var(--sec)}
+.seccion--elevada{background:var(--negro-2)}
+
+/* =====================================================================
+   LA FIRMA · La regla de 8 tiempos
+   No es adorno: es la retícula sobre la que se alinean las secciones.
+   El acento cae en los tiempos 1 y 5, como en un compás de baile latino.
+   ===================================================================== */
+.compas{
+  display:grid;
+  grid-template-columns:repeat(var(--tiempos),1fr);
+  border-top:1px solid var(--linea);
+  list-style:none;
+}
+.compas li{
+  padding:7px 0 9px;
+  border-left:1px solid var(--linea);
+  font-family:var(--cuerpo);
+  font-size:.66rem;font-weight:600;
+  letter-spacing:.2em;
+  color:var(--texto-tenue);
+  text-align:center;
+}
+.compas li:first-child{border-left:0}
+/* El acento: tiempos 1 y 5 */
+.compas li[data-acento]{
+  color:var(--turquesa);
+  border-left-color:var(--linea-viva);
+}
+.compas li[data-acento]:first-child{border-left:0}
+
+/* ---------- Titulares de sección ----------
+   Sin etiquetas encima: el titular abre la sección él solo. */
+.titular{
+  display:block;
+  font-family:var(--display);
+  font-weight:800;
+  font-stretch:112%;
+  text-transform:uppercase;
+  line-height:.92;
+  letter-spacing:-.005em;
+  font-size:clamp(2.1rem,5.6vw,4rem);
+  color:var(--blanco);
+}
+.titular em{
+  font-style:normal;
+  background:var(--fuego-h);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.titular b{
+  font-weight:800;
+  color:transparent;
+  -webkit-text-stroke:1.6px var(--turquesa);
+}
+
+/* Entrada palabra a palabra (main.js parte el titular en .w > .w__i).
+   Cada palabra sube desde su propia ranura y aterriza con un pequeño
+   rebote, una tras otra, como pasos en la cuenta. El degradado se pinta
+   por palabra: un padre con background-clip:text no puede pintar hijos
+   transformados. */
+.titular.partido em{background:none}
+.titular .w{
+  display:inline-block;vertical-align:top;
+  overflow:clip;
+  /* margen para tildes y descendentes, que el recorte no muerda */
+  padding:.14em .04em .08em;margin:-.14em -.04em -.08em;
+}
+.titular .w__i{display:inline-block}
+.titular em .w__i{
+  background:var(--fuego-h);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.js .titular .w__i{transform:translateY(110%) rotate(6deg);transform-origin:0 100%}
+.js .titular.visible .w__i{
+  transform:none;
+  transition:transform 820ms var(--baile) calc(var(--wi,0) * 70ms);
+}
+
+/* ---------- Botones ----------
+   Todo el movimiento es transform: el relleno, la sombra dura y el
+   brillo del hover viven en capas propias (::before / ::after) para no
+   animar nunca box-shadow ni background. */
+.btn{
+  position:relative;isolation:isolate;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 28px;
+  font-family:var(--cuerpo);
+  font-size:1rem;font-weight:700;letter-spacing:.01em;
+  text-decoration:none;text-align:center;
+  background:none;border:0;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform var(--t-corto) var(--ease);
+}
+.btn::before,.btn::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  pointer-events:none;
+}
+.btn .ico{stroke:currentColor}
+
+/* Principal: el degradado del logo con su sombra dura azul.
+   Al pasar, el botón sube y la sombra se queda en su sitio: se «despega».
+   Al pulsar, baja hasta la sombra: se «aprieta». */
+.btn--fuego{color:#16020A}
+.btn--fuego::before{
+  background:var(--azul);
+  transform:translate(5px,5px);
+  transition:transform var(--t-corto) var(--ease);
+}
+.btn--fuego::after{background:var(--fuego-h)}
+.btn--fuego:hover{transform:translate(-2px,-2px)}
+.btn--fuego:hover::before{transform:translate(7px,7px)}
+.btn--fuego:active{transform:translate(5px,5px);transition-duration:var(--t-press)}
+.btn--fuego:active::before{transform:none;transition-duration:var(--t-press)}
+
+/* Secundario: contorno turquesa, se ilumina por dentro */
+.btn--linea{color:var(--turquesa)}
+.btn--linea::before{box-shadow:inset 0 0 0 2px var(--turquesa)}
+.btn--linea::after{
+  background:rgba(100,254,218,.1);
+  opacity:0;transition:opacity var(--t-corto) var(--ease);
+}
+.btn--linea:hover{transform:translateY(-2px)}
+.btn--linea:hover::after{opacity:1}
+.btn--linea:active{transform:scale(.97);transition-duration:var(--t-press)}
+
+/* Terciario: texto con subrayado que se traza */
+.btn--texto{
+  padding:14px 2px;
+  color:var(--texto);
+  font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  font-size:.86rem;
+}
+.btn--texto::before{top:auto;height:2px;background:var(--linea-viva)}
+.btn--texto::after{
+  top:auto;height:2px;background:var(--turquesa);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--t-corto) var(--ease);
+}
+.btn--texto:hover{color:var(--turquesa)}
+.btn--texto:hover::after{transform:none}
+.btn--texto:active{transform:translateY(1px);transition-duration:var(--t-press)}
+.btn--texto .ico{transition:transform var(--t-corto) var(--ease)}
+.btn--texto:hover .ico{transform:translateY(2px)}
+
+.btn--ancho{width:100%}
+.btn--peq{padding:11px 18px;font-size:.88rem}
+.btn--peq.btn--fuego::before{transform:translate(4px,4px)}
+
+.enlace{position:relative;color:var(--turquesa);text-decoration:none}
+.enlace::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;
+  background:currentColor;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--t-corto) var(--ease);
+}
+.enlace:hover::after{transform:none}
+.enlace:active{opacity:.7}
+
+/* ---------- Entrada por scroll ----------
+   Una vez por elemento (IntersectionObserver en main.js). Cada sección
+   elige su gesto: subir, escalar o barrer de lado; y su paso (--paso)
+   entre elementos. Muelle sin rebote: se asienta, no bota. */
+.js .entra{opacity:0}
+.js .entra.visible{
+  opacity:1;
+  transition:opacity var(--t-medio) var(--ease) calc(var(--i,0) * var(--paso,80ms)),
+             transform 700ms var(--ease) calc(var(--i,0) * var(--paso,80ms));
+}
+.js .entra--sube{transform:translateY(26px)}
+.js .entra--escala{transform:translateY(14px) scale(.965)}
+.js .entra--lado{transform:translateX(-14px)}
+.js .entra.visible{transform:none}
+
+/* Grupo: el contenedor se observa una vez y sus piezas (.g) entran en
+   cadena según su --i (lo calcula main.js a partir de la rejilla real). */
+.js [data-grupo] .g{opacity:0;transform:translateX(-10px)}
+.js [data-grupo].visible .g{
+  opacity:1;transform:none;
+  transition:opacity 420ms var(--ease) calc(var(--i,0) * 45ms),
+             transform 560ms var(--ease) calc(var(--i,0) * 45ms);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-delay:0s!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    transition-delay:0s!important;
+    scroll-behavior:auto!important;
+  }
+  .js .entra,.js [data-grupo] .g{opacity:1;transform:none}
+  .js .titular .w__i{transform:none}
+}
+.captura *,.captura *::before,.captura *::after{
+  animation-duration:.001ms!important;
+  animation-delay:0s!important;
+  animation-iteration-count:1!important;
+  transition-duration:.001ms!important;
+  transition-delay:0s!important;
+}
+.captura .entra,.captura [data-grupo] .g{opacity:1;transform:none}
+.captura .titular .w__i{transform:none}

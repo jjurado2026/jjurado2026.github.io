@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultoría Tecnológica — Velarque</title>
+  <meta name="description" content="Consultoría tecnológica para elegir, conectar y optimizar las herramientas que tu negocio necesita.">
+  <meta property="og:title" content="Consultoría Tecnológica — Velarque">
+  <meta property="og:description" content="Consultoría tecnológica para elegir, conectar y optimizar las herramientas que tu negocio necesita.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/servicio.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Tecnología</span>
+      </div>
+      <h1 class="page-hero__title">Las herramientas correctas cambian los <em>resultados</em>.</h1>
+      <p class="page-hero__desc">Consultoría tecnológica para que tu stack de marketing y negocio funcione como un reloj. Elegimos, conectamos y optimizamos las herramientas que realmente necesitas.</p>
+      <div class="page-hero__actions">
+        <a href="contacto.html" class="btn-main" data-magnetic>
+          <span>Hablemos de tu stack tecnológico</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#que-hacemos" class="page-hero__cta-secondary">Qué resolvemos ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUÉ HACEMOS -->
+  <section class="what-we-do" id="que-hacemos">
+    <div class="container">
+      <div class="what-we-do__header">
+        <p class="section-label reveal-text">( Qué hacemos )</p>
+        <h2 class="section-title reveal-text">Tu tecnología debería ayudarte, no complicarte la vida.</h2>
+        <p class="section-subtitle reveal-text">Muchas empresas tienen herramientas que no hablan entre sí, datos dispersos y procesos manuales que deberían estar automatizados. Nosotros lo arreglamos.</p>
+      </div>
+      <div class="what-we-do__grid" data-gsap="stagger">
+        <div class="feature-block">
+          <span class="feature-block__num">01</span>
+          <h3 class="feature-block__title">Auditoría tecnológica</h3>
+          <p class="feature-block__text">Analizamos tu stack actual: qué herramientas usas, cómo están conectadas (o no) y dónde estás perdiendo tiempo y dinero.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">02</span>
+          <h3 class="feature-block__title">Selección de herramientas</h3>
+          <p class="feature-block__text">Recomendamos la que se adapta a tu negocio, tu equipo y tu presupuesto. No la más cara ni la más popular.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">03</span>
+          <h3 class="feature-block__title">Integración de sistemas</h3>
+          <p class="feature-block__text">Conectamos tus herramientas para que los datos fluyan sin fricciones. CRM con email marketing, web con analítica.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">04</span>
+          <h3 class="feature-block__title">Migración y configuración</h3>
+          <p class="feature-block__text">Gestionamos la migración completa. Sin perder datos, sin interrumpir tu operación y con formación para tu equipo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="section-label reveal-text">( Proceso )</p>
+        <h2 class="section-title reveal-text">Un enfoque práctico, no teórico.</h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">2-3 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Diagnóstico</h3>
+            <p class="process-step__text">Mapeamos tu ecosistema tecnológico actual. Identificamos redundancias, puntos ciegos y oportunidades de mejora.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Diagnóstico" alt="Diagnóstico" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">3-5 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Propuesta</h3>
+            <p class="process-step__text">Hoja de ruta con herramientas recomendadas, integraciones necesarias y plan de implementación por fases.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Propuesta" alt="Propuesta" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">1-4 semanas</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Implementación</h3>
+            <p class="process-step__text">Configuramos, integramos y migramos. Cada fase se prueba antes de avanzar.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Implementación" alt="Implementación" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">Continuo</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Formación y soporte</h3>
+            <p class="process-step__text">Tu equipo aprende a usar las nuevas herramientas. Documentación y soporte post-implementación.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Formación" alt="Formación y soporte" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ÁREAS QUE CUBRIMOS -->
+  <section class="project-types">
+    <div class="container">
+      <div class="project-types__header">
+        <p class="section-label reveal-text">( Áreas que cubrimos )</p>
+        <h2 class="section-title reveal-text">Tecnología para cada pieza de tu negocio.</h2>
+      </div>
+      <div class="project-types__grid" data-gsap="stagger">
+        <div class="project-card">
+          <h3 class="project-card__title">Marketing</h3>
+          <p class="project-card__text">Analítica web (GA4, Looker Studio), tracking de conversiones, email marketing, gestión de redes y herramientas de SEO.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Ventas</h3>
+          <p class="project-card__text">CRM, herramientas de prospección, automatización de seguimiento comercial y sistemas de reporting de ventas.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Operaciones</h3>
+          <p class="project-card__text">Gestión de proyectos, comunicación interna, automatización de procesos y herramientas de productividad.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Datos</h3>
+          <p class="project-card__text">Data warehousing, dashboards, ETL, conexión de fuentes de datos y reporting automatizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RESULTADOS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__header">
+        <p class="section-label reveal-text">( Resultados )</p>
+        <h2 class="section-title reveal-text">Menos herramientas, más resultados.</h2>
+      </div>
+      <div class="results__grid" data-gsap="stagger">
+        <div class="result-card">
+          <span class="result-card__tag">Startup</span>
+          <h3 class="result-card__title">Stack de marketing desde cero</h3>
+          <p class="result-card__text">De 0 a stack completo en 2 semanas.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">2 sem.</span>
+              <span class="result-card__metric-lab">Entrega</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">-800€/mes</span>
+              <span class="result-card__metric-lab">Ahorro</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">5</span>
+              <span class="result-card__metric-lab">Herramientas integradas</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">PYME</span>
+          <h3 class="result-card__title">Migración de CRM</h3>
+          <p class="result-card__text">3.500 contactos migrados sin pérdida de datos.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">3.500</span>
+              <span class="result-card__metric-lab">Contactos</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">3 días</span>
+              <span class="result-card__metric-lab">Formación</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">0</span>
+              <span class="result-card__metric-lab">Datos perdidos</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">E-commerce</span>
+          <h3 class="result-card__title">Integración de sistemas</h3>
+          <p class="result-card__text">Tienda + CRM + email + pasarela de pago conectados.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">-60%</span>
+              <span class="result-card__metric-lab">Tiempo procesamiento</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">4</span>
+              <span class="result-card__metric-lab">Sistemas conectados</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">1 sem.</span>
+              <span class="result-card__metric-lab">Implementación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="cta-final__title reveal-text">¿Tu tecnología trabaja para ti o <em>contra</em> ti?</h2>
+      <p class="cta-final__desc reveal-text">Te hacemos un diagnóstico gratuito de tu stack actual. Te decimos qué sobra, qué falta y cómo conectarlo todo.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Solicita tu diagnóstico gratuito</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 48 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,908 @@
+/* ============================================
+   FISIOTERAPIA SANTOS — Homepage
+   ============================================ */
+
+/* --- Hero — Full-bleed cinematic --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-inv);
+  overflow: hidden;
+}
+
+/* Background image */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Multi-layer overlay for depth */
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15,36,64,.55) 0%, rgba(15,36,64,.3) 40%, rgba(15,36,64,.7) 100%),
+    linear-gradient(135deg, rgba(15,36,64,.4) 0%, transparent 50%);
+}
+
+/* Content centered */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 820px;
+  padding: calc(var(--nav-h) + var(--sp-3xl)) var(--sp-lg) var(--sp-3xl);
+}
+
+.hero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding: .4rem 1.2rem;
+  background: rgba(43,181,184,.15);
+  border: 1px solid rgba(43,181,184,.3);
+  border-radius: var(--r-full);
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--sage-light);
+  margin-bottom: var(--sp-xl);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero__label svg {
+  width: 14px;
+  height: 14px;
+}
+
+.hero__title {
+  color: var(--text-inv);
+  margin-bottom: var(--sp-lg);
+  text-shadow: 0 2px 40px rgba(15,36,64,.3);
+}
+
+.hero__title em {
+  color: var(--sage-light);
+}
+
+.hero__subtitle {
+  font-size: 1.2rem;
+  line-height: 1.75;
+  color: rgba(250,248,244,.8);
+  max-width: 620px;
+  margin: 0 auto var(--sp-2xl);
+  text-shadow: 0 1px 20px rgba(15,36,64,.2);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+}
+
+.hero__phone {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: .9375rem;
+  font-weight: 500;
+  color: rgba(250,248,244,.65);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.hero__phone:hover { color: var(--sage-light); }
+.hero__phone:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.hero__phone svg { width: 18px; height: 18px; opacity: .6; }
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--sp-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+  color: rgba(250,248,244,.4);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(250,248,244,.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: .4; transform: scaleY(1); }
+  50% { opacity: .8; transform: scaleY(1.2); }
+}
+
+/* Sage glow accents */
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(43,181,184,.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__glow--1 {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  right: -100px;
+}
+
+.hero__glow--2 {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -80px;
+}
+
+/* --- Stats bar --- */
+.stats {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+.stats__item {
+  padding: var(--sp-2xl) var(--sp-lg);
+  border-right: 1px solid var(--border-light);
+}
+
+.stats__item:last-child { border-right: none; }
+
+.stats__number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--blue-dark);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: var(--sp-xs);
+}
+
+.stats__label {
+  font-size: .875rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* --- Credentials / Formación y Experiencia --- */
+.credentials__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3xl);
+  align-items: center;
+}
+
+.credentials__content h2 { margin-bottom: var(--sp-lg); }
+
+.credentials__content p {
+  color: var(--text-mid);
+  margin-bottom: var(--sp-md);
+}
+
+.credentials__badges {
+  display: flex;
+  gap: var(--sp-lg);
+  margin-top: var(--sp-xl);
+}
+
+.credentials__badge {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  background: var(--sage-pale);
+  border-radius: var(--r-md);
+  border: 1px solid rgba(43,181,184,.2);
+}
+
+.credentials__badge-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.credentials__badge-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--sage-dark);
+}
+
+.credentials__badge-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--blue-dark);
+  line-height: 1.2;
+}
+
+.credentials__badge-text {
+  font-size: .8125rem;
+  color: var(--text-light);
+}
+
+/* Credentials images — overlapping composition */
+.credentials__images {
+  position: relative;
+  min-height: 440px;
+}
+
+.credentials__img {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.credentials__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.credentials__img--main {
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.credentials__img--secondary {
+  position: absolute;
+  bottom: -30px;
+  right: -20px;
+  width: 55%;
+  aspect-ratio: 4/3;
+  border: 4px solid var(--cream);
+}
+
+/* --- Therapy showcase — Large image cards --- */
+.therapies__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-lg);
+  margin-top: var(--sp-2xl);
+}
+
+.therapy-visual {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  display: block;
+  cursor: pointer;
+}
+
+.therapy-visual__img {
+  position: absolute;
+  inset: 0;
+}
+
+.therapy-visual__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+}
+
+.therapy-visual:hover .therapy-visual__img img {
+  transform: scale(1.06);
+}
+
+.therapy-visual__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(15,36,64,.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--sp-xl);
+  transition: background .4s var(--ease-out);
+}
+
+.therapy-visual:hover .therapy-visual__overlay {
+  background: linear-gradient(180deg, transparent 15%, rgba(15,36,64,.9) 100%);
+}
+
+.therapy-visual__label {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--sage-light);
+  margin-bottom: var(--sp-xs);
+}
+
+.therapy-visual__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text-inv);
+  line-height: 1.25;
+  margin-bottom: var(--sp-sm);
+}
+
+.therapy-visual__text {
+  font-size: .875rem;
+  color: rgba(250,248,244,.7);
+  line-height: 1.6;
+  margin-bottom: var(--sp-sm);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .5s var(--ease-out), opacity .4s var(--ease-out);
+}
+
+.therapy-visual:hover .therapy-visual__text {
+  max-height: 120px;
+  opacity: 1;
+}
+
+.therapy-visual__link {
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--sage-light);
+  transition: gap var(--dur-fast) var(--ease-spring);
+}
+
+.therapy-visual:focus-visible {
+  outline: 3px solid var(--sage);
+  outline-offset: 2px;
+}
+
+/* --- About clinic — Image gallery + content --- */
+.about-clinic__layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--sp-3xl);
+  align-items: start;
+}
+
+.about-clinic__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.about-clinic__img-main {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.about-clinic__img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-clinic__img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-md);
+}
+
+.about-clinic__img-small {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.about-clinic__img-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-clinic__content h2 { margin-bottom: var(--sp-lg); }
+
+.about-clinic__content p {
+  color: var(--text-mid);
+  margin-bottom: var(--sp-md);
+}
+
+.about-clinic__features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-xl);
+}
+
+.about-clinic__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--blue-dark);
+}
+
+.about-clinic__feature svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--sage-dark);
+  flex-shrink: 0;
+}
+
+/* --- Elite athletes banner --- */
+.elite-banner {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.elite-banner__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.elite-banner__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.elite-banner__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(15,36,64,.88) 0%, rgba(15,36,64,.6) 50%, transparent 100%),
+    linear-gradient(180deg, rgba(15,36,64,.2) 0%, rgba(15,36,64,.4) 100%);
+}
+
+.elite-banner__content {
+  max-width: 560px;
+  padding: var(--sp-3xl) 0;
+}
+
+/* --- S.I.S. Highlight --- */
+.sis__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3xl);
+  align-items: center;
+}
+
+.sis__image {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 7/5;
+}
+
+.sis__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sis__content h2 { margin-bottom: var(--sp-lg); }
+
+.sis__content p {
+  color: var(--text-mid);
+  margin-bottom: var(--sp-md);
+}
+
+.sis__features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-xl);
+}
+
+.sis__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: .9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.sis__feature-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--sage-pale);
+  color: var(--sage-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* --- Team --- */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-lg);
+  margin-top: var(--sp-2xl);
+}
+
+.team-card {
+  text-align: center;
+  padding: var(--sp-xl) var(--sp-md);
+  background: var(--white);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-light);
+  transition: transform var(--dur-mid) var(--ease-spring),
+              box-shadow var(--dur-mid) var(--ease-out);
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.team-card__photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto var(--sp-lg);
+  overflow: hidden;
+  background: var(--sand);
+  border: 3px solid var(--sage-pale);
+}
+
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--blue-dark);
+  margin-bottom: var(--sp-2xs);
+}
+
+.team-card__role {
+  font-size: .875rem;
+  color: var(--text-mid);
+  margin-bottom: var(--sp-2xs);
+}
+
+.team-card__col {
+  font-size: .8125rem;
+  color: var(--text-light);
+}
+
+/* --- Why us --- */
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-lg);
+  margin-top: var(--sp-2xl);
+}
+
+.why-card {
+  display: flex;
+  gap: var(--sp-lg);
+  padding: var(--sp-2xl);
+}
+
+.why-card__icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-md);
+  background: var(--sage-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-card__icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--sage-dark);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.why-card__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--blue-dark);
+  margin-bottom: var(--sp-xs);
+}
+
+.why-card__text {
+  font-size: .9rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+/* --- Testimonials --- */
+.testimonials {
+  background: var(--sand);
+}
+
+.testimonials__slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-lg);
+  margin-top: var(--sp-2xl);
+}
+
+.testimonial-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  padding: var(--sp-2xl);
+  border: 1px solid var(--border-light);
+}
+
+.testimonial-card__stars {
+  color: #e8b339;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: var(--sp-md);
+}
+
+.testimonial-card__text {
+  font-size: .95rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: var(--sp-lg);
+}
+
+.testimonial-card__author {
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--blue-dark);
+}
+
+.testimonial-card__detail {
+  font-size: .8125rem;
+  color: var(--text-light);
+}
+
+/* --- CTA Section --- */
+.cta-section {
+  background: var(--blue-dark);
+  color: var(--text-inv);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(43,181,184,.1) 0%, transparent 70%);
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.cta-section h2 {
+  color: var(--text-inv);
+  margin-bottom: var(--sp-md);
+}
+
+.cta-section p {
+  color: rgba(250,248,244,.65);
+  margin: 0 auto var(--sp-2xl);
+  max-width: 520px;
+  font-size: 1.1rem;
+}
+
+.cta-section__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-2xl);
+}
+
+.cta-section__contact {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-2xl);
+  font-size: .9rem;
+  color: rgba(250,248,244,.5);
+}
+
+.cta-section__contact a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.cta-section__contact a:hover { color: var(--sage-light); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats__item:nth-child(2) { border-right: none; }
+
+  .credentials__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2xl);
+  }
+
+  .credentials__images {
+    min-height: 320px;
+  }
+
+  .therapies__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-clinic__layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2xl);
+  }
+
+  .sis__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2xl);
+  }
+
+  .team__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials__slider {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    padding: calc(var(--nav-h) + var(--sp-2xl)) var(--sp-md) var(--sp-3xl);
+  }
+
+  .hero__scroll { display: none; }
+
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .credentials__badges {
+    flex-direction: column;
+    gap: var(--sp-sm);
+  }
+
+  .credentials__img--secondary {
+    position: static;
+    width: 100%;
+    border: none;
+    margin-top: var(--sp-md);
+  }
+
+  .credentials__images {
+    min-height: auto;
+  }
+
+  .therapies__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .therapy-visual {
+    aspect-ratio: 16/9;
+  }
+
+  .therapy-visual__text {
+    max-height: none;
+    opacity: 1;
+  }
+
+  .about-clinic__img-row {
+    grid-template-columns: 1fr;
+  }
+
+  .elite-banner {
+    min-height: 400px;
+  }
+
+  .elite-banner__bg::after {
+    background:
+      linear-gradient(180deg, rgba(15,36,64,.5) 0%, rgba(15,36,64,.85) 100%);
+  }
+
+  .elite-banner__content {
+    text-align: center;
+  }
+
+  .sis__features {
+    grid-template-columns: 1fr;
+  }
+
+  .why__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials__slider {
+    grid-template-columns: 1fr;
+  }
+
+  .about-clinic__features {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section__contact {
+    flex-direction: column;
+    gap: var(--sp-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .stats__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats__item {
+    padding: var(--sp-xl) var(--sp-md);
+  }
+
+  .stats__number { font-size: 2rem; }
+
+  .team__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .therapy-visual {
+    aspect-ratio: 3/4;
+  }
+
+  .elite-banner {
+    min-height: 360px;
+  }
+}

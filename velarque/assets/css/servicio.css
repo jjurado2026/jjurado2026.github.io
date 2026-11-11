@@ -1,0 +1,263 @@
+/* ============================================
+   VELARQUE — Shared Service Page Styles
+   Used by all service pages
+   ============================================ */
+
+/* ============================
+   WHAT WE DO (feature blocks)
+   ============================ */
+.what-we-do {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.what-we-do__header {
+  margin-bottom: 64px;
+}
+.what-we-do__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+.feature-block {
+  padding: 48px 40px;
+  border-top: 1px solid var(--gray-200);
+  transition: background 0.5s var(--ease);
+}
+.feature-block:hover { background: var(--gray-50); }
+.feature-block__num {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 20px;
+}
+.feature-block__title {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.feature-block__text {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gray-500);
+}
+
+/* ============================
+   PROJECT/APPLICATION CARDS
+   ============================ */
+.project-types {
+  padding: clamp(100px, 12vh, 180px) 0;
+  background: var(--gray-50);
+}
+.project-types__header {
+  margin-bottom: 64px;
+}
+.project-types__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.project-card {
+  padding: 40px 36px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius);
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.project-card:hover {
+  border-color: transparent;
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover), 0 0 40px var(--accent-glow);
+}
+.project-card__title {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.project-card__text {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+}
+.project-card__price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+/* List variant for automation/platform sections */
+.project-card__list {
+  list-style: none;
+  padding: 0;
+}
+.project-card__list li {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--gray-500);
+  padding-left: 16px;
+  position: relative;
+}
+.project-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ============================
+   RESULTS
+   ============================ */
+.results {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.results__header {
+  margin-bottom: 64px;
+}
+.results__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.result-card {
+  padding: 36px;
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+  transition: transform 0.5s var(--ease), background 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.result-card:hover {
+  transform: translateY(-6px);
+  background: var(--white);
+  box-shadow: var(--shadow-card-hover);
+}
+.result-card__tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 4px 12px;
+  background: var(--accent-light);
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.result-card__title {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.result-card__text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+}
+.result-card__metrics {
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+}
+.result-card__metric-val {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--black);
+  letter-spacing: -0.5px;
+  display: block;
+}
+.result-card__metric-lab {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  display: block;
+  margin-top: 4px;
+}
+
+/* ============================
+   TECH STACK / TOOLS
+   ============================ */
+.tech-stack {
+  padding: clamp(80px, 10vh, 140px) 0;
+  background: var(--gray-50);
+}
+.tech-stack__header {
+  margin-bottom: 48px;
+}
+.tech-stack__grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.tech-item {
+  flex: 1;
+  min-width: 180px;
+  padding: 32px 28px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.tech-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.tech-item__icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  color: var(--gray-400);
+  transition: color 0.4s;
+}
+.tech-item:hover .tech-item__icon { color: var(--accent); }
+.tech-item__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+.tech-item__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+.tech-item__desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+  .what-we-do__grid { grid-template-columns: 1fr; }
+  .project-types__grid { grid-template-columns: 1fr; }
+  .results__grid { grid-template-columns: 1fr; max-width: 500px; }
+}
+
+@media (max-width: 768px) {
+  .tech-stack__grid { flex-direction: column; }
+  .tech-item { min-width: auto; }
+}

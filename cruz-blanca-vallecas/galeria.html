@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (abril de 2026, publicada el 13-abr; el día de envío cuenta), hasta el 22-abr-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 3, 22, 22, 0);   // 23-abr-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería — Cruz Blanca de Vallecas</title>
+    <meta name="description" content="Galería de imágenes de Cruz Blanca de Vallecas. Nuestros mejores momentos, platos premiados, visitas ilustres y el día a día de nuestro restaurante.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo"><img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas"></a>
+            <div class="nav__links">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="especialidades.html" class="nav__link">Especialidades</a>
+                <a href="carta.html" class="nav__link">Carta</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="galeria.html" class="nav__link active">Galería</a>
+                <a href="prensa.html" class="nav__link">Prensa</a>
+                <a href="reservas.html" class="nav__cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Reservar</a>
+            </div>
+            <button class="nav__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html" class="mobile-menu__link">Inicio</a>
+        <a href="especialidades.html" class="mobile-menu__link">Especialidades</a>
+        <a href="carta.html" class="mobile-menu__link">Carta</a>
+        <a href="nosotros.html" class="mobile-menu__link">Nosotros</a>
+        <a href="galeria.html" class="mobile-menu__link">Galería</a>
+        <a href="prensa.html" class="mobile-menu__link">Prensa</a>
+        <a href="reservas.html" class="mobile-menu__cta">Reservar Mesa</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="page-hero__bg" style="background-image: url('https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_16-1-1.jpg');"></div>
+        <div class="page-hero__content">
+            <span class="eyebrow">Nuestros mejores momentos</span>
+            <h1>Galería</h1>
+            <p>Una gran familia que trabaja día a día para ofrecer siempre lo mejor a nuestros clientes.</p>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2017/03/03_reyjuancarloscruzblancavallecas.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2017/03/03_reyjuancarloscruzblancavallecas.jpg" alt="Visita del Rey Juan Carlos a Cruz Blanca de Vallecas" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Antonio-1.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Antonio-1.jpg" alt="Antonio Cosmen, chef de Cruz Blanca de Vallecas" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/IMG_7901-scaled.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/IMG_7901-scaled.jpg" alt="Interior del restaurante Cruz Blanca de Vallecas" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Ayuso-en-Cruz-Blanca-Vallecas.jpeg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Ayuso-en-Cruz-Blanca-Vallecas.jpeg" alt="Visita de la presidenta Ayuso a Cruz Blanca de Vallecas" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_33-1.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_33-1.jpg" alt="Ambiente y platos de Cruz Blanca de Vallecas" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_16-1-1.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_16-1-1.jpg" alt="Comedor de Cruz Blanca de Vallecas" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/CONEJO-AL-AJILLO.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/CONEJO-AL-AJILLO.jpg" alt="Conejo al ajillo" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/IMG_7914-scaled.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/IMG_7914-scaled.jpg" alt="Preparación de platos en cocina" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Cocido-2.jpeg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Cocido-2.jpeg" alt="Cocido madrileño de Cruz Blanca" loading="lazy">
+                </div>
+                <div class="gallery-grid__item" data-lightbox="https://cruzblancavallecas.com/wp-content/uploads/2021/11/VERDINAS-BOGAVANTE.jpg">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/VERDINAS-BOGAVANTE.jpg" alt="Verdinas con bogavante" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__logo">
+                        <img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas">
+                    </div>
+                    <p class="footer__desc">
+                        En el Madrid castizo, te ofrecemos las delicias más reconocidas y premiadas tanto nacional como internacionalmente. Ven a conocer a nuestro chef, Antonio Cosmen.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer__title">Navegación</h4>
+                    <a href="especialidades.html" class="footer__link">Especialidades</a>
+                    <a href="carta.html" class="footer__link">Carta</a>
+                    <a href="nosotros.html" class="footer__link">Nosotros</a>
+                    <a href="galeria.html" class="footer__link">Galería</a>
+                    <a href="prensa.html" class="footer__link">Prensa</a>
+                    <a href="reservas.html" class="footer__link">Reservas</a>
+                </div>
+
+                <div>
+                    <h4 class="footer__title">Horarios</h4>
+                    <p class="footer__link" style="cursor:default;">Comidas: 13:30 - 18:00</p>
+                    <p class="footer__link" style="cursor:default;">Abierto: 8:00 - 00:00</p>
+                    <p class="footer__link" style="cursor:default;">Todos los días del año</p>
+                    <p class="footer__link" style="cursor:default; margin-top: 8px; font-size: 0.8125rem; opacity: 0.7;">Cerrado solo Navidad y Año Nuevo</p>
+                </div>
+
+                <div>
+                    <h4 class="footer__title">Contacto</h4>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>C. de Carlos Martín Álvarez, 58, 28018 Madrid</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+34914773438" style="color: var(--warm-gray);">91 477 34 38</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:info@cruzblancavallecas.com" style="color: var(--warm-gray);">info@cruzblancavallecas.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2025 Cruz Blanca de Vallecas. Todos los derechos reservados.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/CruzBlancadeVallecas" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/CruzBlancaValle" target="_blank" rel="noopener" class="footer__social" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA Bar -->
+    <div class="mobile-cta-bar">
+        <a href="tel:+34914773438" class="cta-call">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Llamar
+        </a>
+        <a href="reservas.html" class="cta-reserve">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar
+        </a>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <img class="lightbox__img" src="" alt="">
+        <button class="lightbox__close" aria-label="Cerrar">&times;</button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

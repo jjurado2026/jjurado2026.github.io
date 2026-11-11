@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Propuesta no disponible | Lorena Campillo</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<link rel="preload" href="assets/fonts/italiana.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23000'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23fff' text-anchor='middle'%3ELC%3C/text%3E%3C/svg%3E">
+<style>
+  /* Aviso de propuesta caducada: la misma luz de espejo de la home, ya fuera de alcance */
+  @font-face { font-family: 'Italiana'; src: url('assets/fonts/italiana.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Onest'; src: url('assets/fonts/onest.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+
+  :root {
+    --negro: #000000;
+    --blanco: #FFFFFF;
+    --humo-claro: #A6A6A6;
+    --oro: #C9A55C;
+    --gutter: clamp(20px, 5vw, 64px);
+    --e-out: cubic-bezier(.16, 1, .3, 1);
+    --e-muelle: linear(0, .009, .037 1.7%, .153 3.6%, .776 10.3%, 1.001 13.8%, 1.083 16.8%, 1.101 18.4%, 1.09 20.8%, 1.018 26.9%, .996 31.2%, .99 35.4%, 1.002 46.3%, 1);
+    --alto: min(62svh, 560px);   /* la ventana del espejo */
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    min-height: 100vh; min-height: 100svh;
+    display: grid; grid-template-rows: auto 1fr;
+    background: var(--negro); color: var(--blanco);
+    font-family: 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.0625rem; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--blanco); outline-offset: 4px; }
+
+  .cab { padding: clamp(18px, 3svh, 28px) var(--gutter) 0; }
+  .cab img { height: clamp(22px, 2.4vw, 30px); width: auto; }
+
+  .aviso {
+    width: 100%; max-width: calc(1180px + 2 * var(--gutter)); margin-inline: auto;
+    padding: clamp(32px, 6svh, 72px) var(--gutter) clamp(40px, 7svh, 80px);
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(44px, 7svh, 64px);
+    align-items: center;
+  }
+  .aviso__texto { display: grid; gap: clamp(28px, 4svh, 40px); justify-items: start; }
+  .aviso h1, .aviso__mas {
+    font-family: 'Italiana', 'Didot', 'Bodoni 72', serif; font-weight: 400;
+    font-size: clamp(2rem, 1.25rem + 2.6vw, 3.6rem); line-height: 1.12; letter-spacing: .005em;
+    max-width: 19ch; text-wrap: balance;
+  }
+  .aviso__mas { color: rgba(255, 255, 255, .78); }
+  /* Números en Onest: el «1» de Italiana se lee como una «I» */
+  .num { font-family: 'Onest', system-ui, sans-serif; font-weight: 300; font-size: .84em; }
+  .aviso__mas a {
+    color: var(--blanco); text-decoration: underline; text-decoration-thickness: 1px;
+    text-underline-offset: .16em; text-decoration-color: var(--oro); overflow-wrap: anywhere;
+  }
+  .aviso__mas a:hover { color: var(--oro); }
+  .aviso__mas a:active { opacity: .7; }
+  .aviso__frases { display: grid; gap: .5em; }
+
+
+  /* La home entera, dentro de un espejo con su LED */
+  .espejo { justify-self: center; display: grid; gap: 16px; justify-items: center; margin: 0; }
+  .espejo__marco {
+    position: relative; display: block; padding: 10px; background: var(--negro); border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16);
+  }
+  .espejo__marco::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+    box-shadow: 0 0 18px 2px rgba(255, 255, 255, .7), 0 0 70px 16px rgba(255, 255, 255, .2);
+  }
+  .espejo__ventana {
+    display: block; width: min(300px, 70vw); height: var(--alto);
+    overflow: hidden; background: #111;
+  }
+
+  @media (min-width: 900px) {
+    .aviso { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(48px, 6vw, 96px); }
+    .espejo { justify-self: end; }
+  }
+
+  /* Movimiento: el LED se enciende y la home pasa despacio por el espejo, de arriba abajo */
+  @keyframes encender { 0% { opacity: 0; } 12% { opacity: .85; } 20% { opacity: .1; } 34% { opacity: .95; } 44% { opacity: .45; } 60%, 100% { opacity: 1; } }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes recorrer { 0%, 6% { transform: none; } 94%, 100% { transform: translateY(calc(-100% + var(--alto))); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .espejo__marco::before { animation: encender 1.1s linear .3s both; }
+    .espejo__ventana img { animation: recorrer 48s ease-in-out 1.6s infinite alternate; }
+    .espejo:hover .espejo__ventana img, .espejo__ventana:focus img { animation-play-state: paused; }
+    .aviso__texto > * { animation: aparecer .9s var(--e-out) both; }
+    .aviso__texto > :nth-child(2) { animation-delay: .12s; }
+    .aviso__texto > :nth-child(3) { animation-delay: .24s; }
+  }
+  /* Sin movimiento: la miniatura se recorre a mano */
+  @media (prefers-reduced-motion: reduce) {
+    .espejo__ventana { overflow-y: auto; }
+  }
+</style>
+</head>
+<body>
+  <header class="cab">
+    <img src="assets/img/logo-blanco.webp" width="1200" height="175" alt="Lorena Campillo Peluquería">
+  </header>
+
+  <main class="aviso">
+    <div class="aviso__texto">
+      <div class="aviso__frases">
+        <h1>No puedes ver esta página porque han pasado más de <span class="num">10</span> días desde su envío.</h1>
+        <p class="aviso__mas">Si sigues con interés, escríbeme a <a href="mailto:jjuradogarciadelrio@gmail.com?subject=Propuesta%20web%20Lorena%20Campillo">jjuradogarciadelrio<wbr>@gmail.com</a>.</p>
+      </div>
+    </div>
+
+    <figure class="espejo">
+      <span class="espejo__marco">
+        <span class="espejo__ventana" tabindex="0" aria-label="Miniatura de la home completa">
+          <img src="assets/img/home-entera.jpg" width="576" height="4071" alt="Miniatura de la home propuesta para Lorena Campillo Peluquería, completa de arriba abajo: el retrato de Lorena en un espejo de camerino, los servicios, la reserva de cita, el salón, la trayectoria, las preguntas frecuentes y la ubicación">
+        </span>
+      </span>
+    </figure>
+  </main>
+</body>
+</html>

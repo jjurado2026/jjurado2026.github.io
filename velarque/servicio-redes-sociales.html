@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redes Sociales — Velarque</title>
+  <meta name="description" content="Estrategia, contenido y gestión de redes sociales que construyen comunidad y generan negocio real. Sin métricas de vanidad.">
+  <meta property="og:title" content="Redes Sociales — Velarque">
+  <meta property="og:description" content="Estrategia, contenido y gestión de redes sociales que construyen comunidad y generan negocio real. Sin métricas de vanidad.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/servicio.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Redes Sociales</span>
+      </div>
+      <h1 class="page-hero__title">Redes sociales que construyen <em>comunidad</em> y generan <em>negocio</em></h1>
+      <p class="page-hero__desc">No publicamos por publicar. Cada post, cada story, cada reel tiene un objetivo claro. Construimos tu presencia social con estrategia, creatividad y datos.</p>
+      <div class="page-hero__actions">
+        <a href="contacto.html" class="btn-main" data-magnetic>
+          <span>Pedir propuesta</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#proceso" class="page-hero__cta-secondary">Ver proceso ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUÉ HACEMOS -->
+  <section class="what-we-do">
+    <div class="container">
+      <div class="what-we-do__header">
+        <p class="section-label reveal-text">( Qué hacemos )</p>
+        <h2 class="section-title reveal-text">Gestión de redes sociales con estrategia, no con improvisación.</h2>
+        <p class="section-subtitle reveal-text">No gestionamos perfiles por gestionar. Diseñamos estrategias de contenido con un objetivo claro: que tu presencia en redes construya comunidad y genere negocio real.</p>
+      </div>
+      <div class="what-we-do__grid" data-gsap="stagger">
+        <div class="feature-block">
+          <span class="feature-block__num">01</span>
+          <h3 class="feature-block__title">Estrategia de contenidos</h3>
+          <p class="feature-block__text">Definimos qué publicar, cuándo y dónde para maximizar alcance e interacción. Calendario editorial mensual con objetivos claros.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">02</span>
+          <h3 class="feature-block__title">Creación de contenido</h3>
+          <p class="feature-block__text">Diseño gráfico, copywriting, reels, stories. Contenido que refleja tu marca y conecta con tu audiencia.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">03</span>
+          <h3 class="feature-block__title">Community management</h3>
+          <p class="feature-block__text">Gestión diaria de tu comunidad. Respondemos, interactuamos y cuidamos la reputación de tu marca en cada canal.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">04</span>
+          <h3 class="feature-block__title">Reporting y optimización</h3>
+          <p class="feature-block__text">Informes mensuales con métricas que importan. Analizamos, aprendemos y optimizamos para mejorar cada mes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="section-label reveal-text">( Proceso )</p>
+        <h2 class="section-title reveal-text">Un método que construye comunidad de verdad.</h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">1 semana</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Auditoría y estrategia</h3>
+            <p class="process-step__text">Analizamos tu presencia actual, tu competencia y tu audiencia. Definimos objetivos, tono, pilares de contenido y calendario editorial.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Auditoría" alt="Auditoría y estrategia" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">1 semana</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Diseño de identidad visual</h3>
+            <p class="process-step__text">Creamos las plantillas, la guía de estilo visual y el banco de recursos para que cada publicación sea reconocible como tu marca.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Identidad" alt="Diseño de identidad visual" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">Continuo</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Producción y publicación</h3>
+            <p class="process-step__text">Creamos el contenido, lo revisas, lo apruebas y publicamos. Gestión diaria de comunidad incluida.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Producción" alt="Producción y publicación" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">Mensual</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Análisis y optimización</h3>
+            <p class="process-step__text">Informes mensuales con lo que ha funcionado, lo que no y el plan para el mes siguiente. Mejora continua basada en datos.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Análisis" alt="Análisis y optimización" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PLATAFORMAS -->
+  <section class="project-types">
+    <div class="container">
+      <div class="project-types__header">
+        <p class="section-label reveal-text">( Plataformas )</p>
+        <h2 class="section-title reveal-text">Donde está tu audiencia, estamos nosotros.</h2>
+      </div>
+      <div class="project-types__grid" data-gsap="stagger" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="project-card">
+          <h3 class="project-card__title">Instagram</h3>
+          <p class="project-card__text">Reels, stories, posts, shopping.</p>
+          <ul class="project-card__list">
+            <li>Calendario editorial</li>
+            <li>Diseño de feed</li>
+            <li>Reels y stories</li>
+            <li>Colaboraciones con influencers</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">LinkedIn</h3>
+          <p class="project-card__text">Posicionamiento B2B, thought leadership.</p>
+          <ul class="project-card__list">
+            <li>Publicaciones corporativas</li>
+            <li>Artículos de autoridad</li>
+            <li>Employee advocacy</li>
+            <li>Lead generation</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">TikTok</h3>
+          <p class="project-card__text">Contenido viral y tendencias.</p>
+          <ul class="project-card__list">
+            <li>Estrategia de contenidos</li>
+            <li>Producción de vídeo</li>
+            <li>Trending topics</li>
+            <li>Análisis de rendimiento</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Meta (Facebook)</h3>
+          <p class="project-card__text">Comunidad y alcance.</p>
+          <ul class="project-card__list">
+            <li>Gestión de página</li>
+            <li>Facebook Groups</li>
+            <li>Eventos y lives</li>
+            <li>Integración con Meta Ads</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RESULTADOS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__header">
+        <p class="section-label reveal-text">( Resultados )</p>
+        <h2 class="section-title reveal-text">Números de gestiones reales.</h2>
+      </div>
+      <div class="results__grid" data-gsap="stagger">
+        <div class="result-card">
+          <span class="result-card__tag">Instagram</span>
+          <h3 class="result-card__title">Crecimiento orgánico para marca de moda</h3>
+          <p class="result-card__text">Estrategia de contenido visual + reels que triplicó el engagement.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">+280%</span>
+              <span class="result-card__metric-lab">Engagement</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">15K</span>
+              <span class="result-card__metric-lab">Nuevos seguidores</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">LinkedIn</span>
+          <h3 class="result-card__title">Posicionamiento B2B para consultora tech</h3>
+          <p class="result-card__text">Thought leadership + employee advocacy que generó leads cualificados.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">+180%</span>
+              <span class="result-card__metric-lab">Alcance</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">25</span>
+              <span class="result-card__metric-lab">Leads/mes</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">TikTok</span>
+          <h3 class="result-card__title">Lanzamiento de marca en TikTok</h3>
+          <p class="result-card__text">Estrategia de contenido viral que posicionó la marca en 3 meses.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">500K</span>
+              <span class="result-card__metric-lab">Visualizaciones</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">+8K</span>
+              <span class="result-card__metric-lab">Seguidores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TECH STACK -->
+  <section class="tech-stack">
+    <div class="container">
+      <div class="tech-stack__header">
+        <p class="section-label reveal-text">( Herramientas )</p>
+        <h2 class="section-title reveal-text">Las herramientas que usamos.</h2>
+      </div>
+      <div class="tech-stack__grid" data-gsap="stagger">
+        <div class="tech-item">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg>
+          </div>
+          <span class="tech-item__name">Meta Business Suite</span>
+          <span class="tech-item__desc">Gestión integrada</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-5"/></svg>
+          </div>
+          <span class="tech-item__name">Metricool</span>
+          <span class="tech-item__desc">Analítica social</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+          </div>
+          <span class="tech-item__name">Canva Pro</span>
+          <span class="tech-item__desc">Diseño de contenido</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>
+          </div>
+          <span class="tech-item__name">Later</span>
+          <span class="tech-item__desc">Programación</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21"/></svg>
+          </div>
+          <span class="tech-item__name">CapCut</span>
+          <span class="tech-item__desc">Edición de vídeo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. POR QUÉ VELARQUE -->
+  <section class="why-velarque">
+    <div class="container">
+      <div class="why-velarque__header">
+        <p class="section-label reveal-text">( Por qué Velarque )</p>
+        <h2 class="section-title reveal-text">No somos un community manager freelance.</h2>
+      </div>
+      <div class="value-blocks__grid" data-gsap="stagger">
+        <div class="value-block">
+          <span class="value-block__num">01</span>
+          <h3 class="value-block__title">Estrategia antes que contenido</h3>
+          <p class="value-block__text">No publicamos por publicar. Cada pieza de contenido tiene un objetivo claro dentro de una estrategia definida.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">02</span>
+          <h3 class="value-block__title">Equipo multidisciplinar</h3>
+          <p class="value-block__text">Estrategas, diseñadores, copywriters y editores de vídeo. Todo el talento que necesitas sin contratar un equipo interno.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">03</span>
+          <h3 class="value-block__title">Métricas que importan</h3>
+          <p class="value-block__text">Nos centramos en engagement real, leads generados y ventas. No en likes vacíos ni seguidores comprados.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">04</span>
+          <h3 class="value-block__title">Integración con tu marketing</h3>
+          <p class="value-block__text">Tus redes no funcionan solas. Las conectamos con tu paid media, tu web y tu CRM para maximizar resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="cta-final__title reveal-text">¿Tus redes sociales no generan <em>resultados</em>?</h2>
+      <p class="cta-final__desc reveal-text">Te hacemos una propuesta personalizada con estrategia, contenido y gestión. Sin compromiso, sin métricas de vanidad.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Pedir propuesta</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 48 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

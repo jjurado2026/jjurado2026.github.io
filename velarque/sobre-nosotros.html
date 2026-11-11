@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros — Velarque</title>
+  <meta name="description" content="Somos una agencia de marketing digital 360 en Madrid. Diseño, tecnología e IA para hacer crecer negocios que quieren competir de verdad.">
+  <meta property="og:title" content="Sobre Nosotros — Velarque">
+  <meta property="og:description" content="Somos una agencia de marketing digital 360 en Madrid. Diseño, tecnología e IA para hacer crecer negocios que quieren competir de verdad.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/sobre-nosotros.css">
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Sobre nosotros</span>
+      </div>
+      <h1 class="page-hero__title">Somos el equipo que quieres detrás de tu <em>marca</em>.</h1>
+      <p class="page-hero__desc">Velarque es una agencia de marketing digital 360 en Madrid. Combinamos diseño, tecnología e inteligencia artificial para hacer crecer negocios que quieren competir de verdad.</p>
+    </div>
+  </section>
+
+  <!-- 2. HISTORIA -->
+  <section class="historia">
+    <div class="container">
+      <div class="historia__layout">
+        <div class="historia__content reveal-text">
+          <p>Velarque nació de una frustración: ver cómo empresas con potencial pagaban por servicios de marketing mediocres. Webs lentas hechas con plantillas, campañas sin estrategia, CRMs que nadie usaba y promesas que nunca se cumplían.</p>
+          <p>Decidimos que había una forma mejor de hacer las cosas. Una agencia donde el diseño fuera impecable, el código estuviera limpio, las campañas generaran resultados reales y cada herramienta implementada sirviera para algo.</p>
+          <p>No somos la agencia más grande. Somos la que mejor cuida cada proyecto.</p>
+        </div>
+        <div class="historia__visual reveal-up">
+          <img src="https://placehold.co/600x750/1a1a1a/333?text=Equipo" alt="Equipo Velarque" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. QUÉ NOS DEFINE -->
+  <section class="why-velarque" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="why-velarque__header" style="grid-template-columns: 1fr; gap: 0;">
+        <div>
+          <p class="section-label reveal-text">( Lo que creemos )</p>
+          <h2 class="section-title reveal-text">Lo que creemos y cómo trabajamos.</h2>
+        </div>
+      </div>
+      <div class="value-blocks__grid" data-gsap="stagger">
+        <div class="value-block reveal-up">
+          <span class="value-block__num">01</span>
+          <h3 class="value-block__title">Calidad sobre cantidad</h3>
+          <p class="value-block__text">Preferimos hacer pocos proyectos y hacerlos bien que abarcar más de lo que podemos cuidar. Cada cliente tiene acceso directo a su equipo, no a un gestor de cuentas que apenas conoce su proyecto.</p>
+        </div>
+        <div class="value-block reveal-up">
+          <span class="value-block__num">02</span>
+          <h3 class="value-block__title">Sin humo, con resultados</h3>
+          <p class="value-block__text">No vendemos PowerPoints bonitos ni métricas de vanidad. Vendemos impacto en tu negocio: más leads, más ventas, más eficiencia. Si algo no funciona, te lo decimos y lo cambiamos.</p>
+        </div>
+        <div class="value-block reveal-up">
+          <span class="value-block__num">03</span>
+          <h3 class="value-block__title">Tecnología con propósito</h3>
+          <p class="value-block__text">No usamos la última herramienta porque sea nueva. La usamos si resuelve un problema real. Somos prácticos, no trendy.</p>
+        </div>
+        <div class="value-block reveal-up">
+          <span class="value-block__num">04</span>
+          <h3 class="value-block__title">Un solo equipo</h3>
+          <p class="value-block__text">Diseño, desarrollo, paid media, CRM y automatización bajo un mismo techo. No subcontratamos las partes difíciles. Tu proyecto no pasa por 5 empresas diferentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SERVICIOS (lista compacta) -->
+  <section class="services-list">
+    <div class="container">
+      <div class="services-list__header">
+        <p class="section-label reveal-text">( Servicios )</p>
+        <h2 class="section-title reveal-text">Todo lo que necesitas. Un solo equipo.</h2>
+      </div>
+      <div class="services-list__items" data-stagger data-gsap="stagger">
+        <a href="servicio-ia.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">Inteligencia Artificial</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">IA aplicada a tu marketing y procesos de negocio</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+        <a href="servicio-tecnologia.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">Tecnología</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">Consultoría para elegir y conectar tu stack</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+        <a href="servicio-paid-media.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">Paid Media</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">Google Ads, Meta Ads, programática con obsesión por el ROI</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+        <a href="servicio-desarrollo-web.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">Desarrollo Web</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">Webs a medida que cargan rápido y convierten</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+        <a href="servicio-crm.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">CRM</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">Implementación y lifecycle marketing</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+        <a href="servicio-automatizacion.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">Automatización</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">Procesos que funcionan solos, sin errores</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+        <a href="servicio-redes-sociales.html" class="service-list-item" data-stagger-item>
+          <div class="service-list-item__left">
+            <span class="service-list-item__name">Redes Sociales</span>
+            <span class="service-list-item__sep">—</span>
+            <span class="service-list-item__desc">Gestión y estrategia de redes sociales para tu marca</span>
+          </div>
+          <span class="service-list-item__arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat">
+          <span class="stat__number">50+</span>
+          <span class="stat__label">Proyectos<br>entregados</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">3 sem.</span>
+          <span class="stat__label">Tiempo medio<br>de entrega</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">98%</span>
+          <span class="stat__label">Satisfacción<br>del cliente</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number">x4.2</span>
+          <span class="stat__label">ROAS medio<br>en paid media</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. EQUIPO -->
+  <section class="team">
+    <div class="container">
+      <div class="team__header">
+        <p class="section-label reveal-text">( Equipo )</p>
+        <h2 class="section-title reveal-text">Las personas detrás de Velarque.</h2>
+      </div>
+      <div class="team__grid">
+        <div class="team-card reveal-up">
+          <div class="team-card__img">
+            <img src="https://placehold.co/300x400/eee/999?text=Miembro+1" alt="Miembro del equipo" loading="lazy">
+          </div>
+          <h3 class="team-card__name">[Nombre]</h3>
+          <p class="team-card__role">CEO & Estrategia</p>
+        </div>
+        <div class="team-card reveal-up">
+          <div class="team-card__img">
+            <img src="https://placehold.co/300x400/eee/999?text=Miembro+2" alt="Miembro del equipo" loading="lazy">
+          </div>
+          <h3 class="team-card__name">[Nombre]</h3>
+          <p class="team-card__role">Director Creativo</p>
+        </div>
+        <div class="team-card reveal-up">
+          <div class="team-card__img">
+            <img src="https://placehold.co/300x400/eee/999?text=Miembro+3" alt="Miembro del equipo" loading="lazy">
+          </div>
+          <h3 class="team-card__name">[Nombre]</h3>
+          <p class="team-card__role">Lead Developer</p>
+        </div>
+        <div class="team-card reveal-up">
+          <div class="team-card__img">
+            <img src="https://placehold.co/300x400/eee/999?text=Miembro+4" alt="Miembro del equipo" loading="lazy">
+          </div>
+          <h3 class="team-card__name">[Nombre]</h3>
+          <p class="team-card__role">Paid Media Manager</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="cta-final__title reveal-text">¿Quieres saber si <em>encajamos</em>?</h2>
+      <p class="cta-final__desc reveal-text">Cuéntanos qué necesitas. Hablaremos sin compromiso y te diremos honestamente si podemos ayudarte.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Hablemos</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 24 horas.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

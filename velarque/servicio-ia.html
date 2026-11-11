@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inteligencia Artificial — Velarque</title>
+  <meta name="description" content="Integramos IA en tu marketing y procesos de negocio. Chatbots, análisis predictivo, automatización inteligente.">
+  <meta property="og:title" content="Inteligencia Artificial — Velarque">
+  <meta property="og:description" content="Integramos IA en tu marketing y procesos de negocio. Chatbots, análisis predictivo, automatización inteligente.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/servicio.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Inteligencia Artificial</span>
+      </div>
+      <h1 class="page-hero__title">La IA no es el futuro. Es lo que tu competencia ya está <em>usando</em>.</h1>
+      <p class="page-hero__desc">Integramos inteligencia artificial en tu marketing y tus procesos de negocio para que trabajes menos, decidas mejor y vendas más. Sin buzzwords, con implementaciones reales.</p>
+      <div class="page-hero__actions">
+        <a href="contacto.html" class="btn-main" data-magnetic>
+          <span>Descubre qué puede hacer la IA por tu negocio</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#aplicaciones" class="page-hero__cta-secondary">Ver aplicaciones reales ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUÉ HACEMOS -->
+  <section class="what-we-do">
+    <div class="container">
+      <div class="what-we-do__header">
+        <p class="section-label reveal-text">( Qué hacemos )</p>
+        <h2 class="section-title reveal-text">IA aplicada a tu negocio, no a una demo.</h2>
+        <p class="section-subtitle reveal-text">No hablamos de IA en abstracto. La implementamos donde genera impacto real: en tus campañas, tu atención al cliente, tu análisis de datos y tus procesos internos.</p>
+      </div>
+      <div class="what-we-do__grid" data-gsap="stagger">
+        <div class="feature-block">
+          <span class="feature-block__num">01</span>
+          <h3 class="feature-block__title">IA para marketing</h3>
+          <p class="feature-block__text">Optimización automática de campañas, generación de creatividades, segmentación predictiva de audiencias y personalización de contenido a escala.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">02</span>
+          <h3 class="feature-block__title">Chatbots y asistentes virtuales</h3>
+          <p class="feature-block__text">Atención al cliente 24/7 con chatbots que entienden contexto, resuelven consultas reales y derivan a tu equipo cuando hace falta.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">03</span>
+          <h3 class="feature-block__title">Análisis predictivo</h3>
+          <p class="feature-block__text">Modelos que anticipan comportamiento de clientes, detectan oportunidades de venta y te avisan antes de que un cliente se vaya.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">04</span>
+          <h3 class="feature-block__title">Automatización inteligente</h3>
+          <p class="feature-block__text">Procesos que se adaptan solos. Desde clasificar leads por probabilidad de cierre hasta generar informes automáticos con recomendaciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="section-label reveal-text">( Proceso )</p>
+        <h2 class="section-title reveal-text">De la idea a la implementación.</h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">2-3 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Diagnóstico</h3>
+            <p class="process-step__text">Analizamos tus procesos actuales e identificamos dónde la IA puede generar el mayor impacto con el menor esfuerzo.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Diagnóstico" alt="Diagnóstico" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">3-5 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Diseño de solución</h3>
+            <p class="process-step__text">Definimos la solución técnica, las herramientas y la integración con tus sistemas existentes.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Diseño" alt="Diseño de solución" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">1-3 semanas</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Implementación</h3>
+            <p class="process-step__text">Configuramos, integramos y entrenamos los modelos con tus datos. Probamos en entorno controlado antes de lanzar.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Implementación" alt="Implementación" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">Continuo</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Monitorización</h3>
+            <p class="process-step__text">La IA mejora con el uso. Monitorizamos el rendimiento, ajustamos los modelos y optimizamos los resultados.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Monitorización" alt="Monitorización" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. APLICACIONES REALES -->
+  <section class="project-types" id="aplicaciones">
+    <div class="container">
+      <div class="project-types__header">
+        <p class="section-label reveal-text">( Aplicaciones reales )</p>
+        <h2 class="section-title reveal-text">Esto no es ciencia ficción. Es lo que implementamos.</h2>
+      </div>
+      <div class="project-types__grid" data-gsap="stagger">
+        <div class="project-card">
+          <h3 class="project-card__title">Para e-commerce</h3>
+          <p class="project-card__text">Recomendaciones de producto personalizadas, pricing dinámico, predicción de stock y chatbots de venta asistida.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Para servicios profesionales</h3>
+          <p class="project-card__text">Clasificación automática de leads, generación de propuestas personalizadas y asistentes virtuales para consultas frecuentes.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Para marketing</h3>
+          <p class="project-card__text">Optimización de pujas en tiempo real, generación de copies y creatividades, análisis de sentimiento y segmentación predictiva.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Para operaciones</h3>
+          <p class="project-card__text">Automatización de reporting, detección de anomalías, clasificación de tickets de soporte y extracción de datos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RESULTADOS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__header">
+        <p class="section-label reveal-text">( Resultados )</p>
+        <h2 class="section-title reveal-text">IA que se mide en resultados.</h2>
+      </div>
+      <div class="results__grid" data-gsap="stagger">
+        <div class="result-card">
+          <span class="result-card__tag">E-commerce</span>
+          <h3 class="result-card__title">Recomendaciones personalizadas</h3>
+          <p class="result-card__text">Sistema de recomendación implementado sobre catálogo de +2.000 productos.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">+23%</span>
+              <span class="result-card__metric-lab">Valor carrito</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">+15%</span>
+              <span class="result-card__metric-lab">Conversión</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">2 sem.</span>
+              <span class="result-card__metric-lab">Implementación</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">Inmobiliaria</span>
+          <h3 class="result-card__title">Clasificación de leads</h3>
+          <p class="result-card__text">Modelo predictivo que clasifica leads por probabilidad de cierre.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">-40%</span>
+              <span class="result-card__metric-lab">Tiempo leads fríos</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">+35%</span>
+              <span class="result-card__metric-lab">Tasa de cierre</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">3 sem.</span>
+              <span class="result-card__metric-lab">Implementación</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">Salud</span>
+          <h3 class="result-card__title">Chatbot de atención</h3>
+          <p class="result-card__text">Chatbot que gestiona el 70% de las consultas sin intervención humana.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">-50%</span>
+              <span class="result-card__metric-lab">Carga recepción</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">24/7</span>
+              <span class="result-card__metric-lab">Atención</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">2 sem.</span>
+              <span class="result-card__metric-lab">Implementación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="cta-final__title reveal-text">¿Quieres saber qué puede hacer la IA por tu <em>negocio</em>?</h2>
+      <p class="cta-final__desc reveal-text">Te hacemos un diagnóstico gratuito. Analizamos tus procesos y te proponemos implementaciones concretas con impacto real.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Solicita tu diagnóstico gratuito</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 48 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

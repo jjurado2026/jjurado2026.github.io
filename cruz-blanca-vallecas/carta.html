@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (abril de 2026, publicada el 13-abr; el día de envío cuenta), hasta el 22-abr-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 3, 22, 22, 0);   // 23-abr-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta — Cruz Blanca de Vallecas</title>
+    <meta name="description" content="Carta completa del restaurante Cruz Blanca de Vallecas. Cocido madrileño, fabada, carnes, pescados, raciones y más. Cocina tradicional española premiada.">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .carta-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+        }
+
+        .carta-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--cream);
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            color: var(--carbon-light);
+            margin-top: var(--space-sm);
+        }
+
+        .carta-note svg {
+            width: 16px;
+            height: 16px;
+            color: var(--terracotta);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+
+        .pdf-downloads {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+
+        .pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--warm-white);
+            border: 1.5px solid var(--cream-dark);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--carbon);
+            transition: all var(--duration-fast) var(--ease-out);
+        }
+
+        .pdf-btn:hover {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pdf-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo"><img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas"></a>
+            <div class="nav__links">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="especialidades.html" class="nav__link">Especialidades</a>
+                <a href="carta.html" class="nav__link active">Carta</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="galeria.html" class="nav__link">Galería</a>
+                <a href="prensa.html" class="nav__link">Prensa</a>
+                <a href="reservas.html" class="nav__cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Reservar</a>
+            </div>
+            <button class="nav__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html" class="mobile-menu__link">Inicio</a>
+        <a href="especialidades.html" class="mobile-menu__link">Especialidades</a>
+        <a href="carta.html" class="mobile-menu__link">Carta</a>
+        <a href="nosotros.html" class="mobile-menu__link">Nosotros</a>
+        <a href="galeria.html" class="mobile-menu__link">Galería</a>
+        <a href="prensa.html" class="mobile-menu__link">Prensa</a>
+        <a href="reservas.html" class="mobile-menu__cta">Reservar Mesa</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="page-hero__bg" style="background-image: url('https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_16-1-1.jpg');"></div>
+        <div class="page-hero__content">
+            <span class="eyebrow">Nuestra carta</span>
+            <h1>La Carta</h1>
+            <p>Cocina tradicional española con la mejor materia prima seleccionada por Antonio Cosmen.</p>
+        </div>
+    </div>
+
+
+    <!-- TABS + CARTA -->
+    <section class="section">
+        <div class="container" data-tab-group>
+
+            <div class="carta-intro reveal">
+                <div class="carta-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    *El segundo precio corresponde al servicio en mesa
+                </div>
+            </div>
+
+            <div class="tabs reveal">
+                <button class="tab-btn active" data-tab="todos">Todos</button>
+                <button class="tab-btn" data-tab="compartir">Para Compartir</button>
+                <button class="tab-btn" data-tab="ensaladas">Ensaladas</button>
+                <button class="tab-btn" data-tab="especialidades">Especialidades</button>
+                <button class="tab-btn" data-tab="pescados">Pescados</button>
+                <button class="tab-btn" data-tab="carnes">Carnes</button>
+                <button class="tab-btn" data-tab="raciones">Raciones</button>
+                <button class="tab-btn" data-tab="tostas">Tostas</button>
+            </div>
+
+            <!-- ALL -->
+            <div class="tab-panel active" data-panel="todos">
+                <div class="menu-grid reveal">
+                    <!-- Para Compartir -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Para Compartir</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Bienmesabe (Cazón Adobado)</div><div class="menu-item__desc">Crujiente rebozado andaluz, receta tradicional</div></div><div class="menu-item__price">15€ / 16€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Boquerones en Vinagre</div><div class="menu-item__desc">El clásico de siempre, con ajo y perejil</div></div><div class="menu-item__price">14€ / 15€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Chipirones a la Plancha</div><div class="menu-item__desc">Tiernos y jugosos, con toque de ajo y perejil</div></div><div class="menu-item__price">16€ / 17€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Gambas a la Plancha</div><div class="menu-item__desc">Gambas grandes, simplemente a la sal</div></div><div class="menu-item__price">23€ / 24€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Jamón Ibérico de Bellota</div><div class="menu-item__desc">Cortado a cuchillo, 100% ibérico</div></div><div class="menu-item__price">23€ / 25€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lacón a la Gallega</div><div class="menu-item__desc">Con pimentón de la Vera y aceite de oliva virgen</div></div><div class="menu-item__price">14€ / 15€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Morcilla de Burgos</div><div class="menu-item__desc">Salteada con pimientos, auténtico sabor castellano</div></div><div class="menu-item__price">14€ / 15€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pimientos de Padrón con Jamón</div><div class="menu-item__desc">Con crujiente de jamón ibérico</div></div><div class="menu-item__price">15€ / 16€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pulpo a la Gallega</div><div class="menu-item__desc">Clásico con cachelos, pimentón y AOVE</div></div><div class="menu-item__price">25€ / 26€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pulpo a la Piedra</div><div class="menu-item__desc">Sellado en piedra caliente, textura perfecta</div></div><div class="menu-item__price">25€ / 26€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Sepia a la Plancha con Alioli</div><div class="menu-item__desc">Tierna, con alioli casero</div></div><div class="menu-item__price">15€ / 16€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Setas con Jamón, Gambas y Trigueros</div><div class="menu-item__desc">Salteado de temporada</div></div><div class="menu-item__price">17€ / 18€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Codillo Asado</div><div class="menu-item__desc">Deshuesado y crujiente, a baja temperatura</div></div><div class="menu-item__price">16€ / 18€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Alitas de Pollo Fritas</div><div class="menu-item__desc">Crujientes con toque de especias</div></div><div class="menu-item__price">14€ / 15€</div></div>
+                    </div>
+
+                    <!-- Ensaladas -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Ensaladas</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Ensalada Templada</div><div class="menu-item__desc">Verduras de temporada asadas con vinagreta balsámica</div></div><div class="menu-item__price">13€ / 14€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Espinacas con Queso de Cabra y Nueces</div><div class="menu-item__desc">Espinacas frescas con queso de cabra y nueces tostadas</div></div><div class="menu-item__price">13€ / 14€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Verdinas en Vinagreta de Marisco</div><div class="menu-item__desc">Judías verdinas con vinagreta de marisco</div></div><div class="menu-item__price">17€ / 18€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Ensaladilla Rusa Casera</div><div class="menu-item__desc">Receta tradicional con mayonesa casera</div></div><div class="menu-item__price">14€ / 15€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pimientos con Ventresca</div><div class="menu-item__desc">Pimientos asados con ventresca de bonito del norte</div></div><div class="menu-item__price">18€ / 19€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Ensalada Mixta</div><div class="menu-item__desc">Lechuga, tomate, cebolla, atún y aceitunas</div></div><div class="menu-item__price">10€ / 12€</div></div>
+                    </div>
+
+                    <!-- Huevos & Revueltos -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Huevos y Revueltos</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Fritos con Jamón Ibérico</div><div class="menu-item__desc">Patatas fritas con huevos rotos y jamón ibérico de bellota</div></div><div class="menu-item__price">14€ / 15€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Revuelto de Gambas</div><div class="menu-item__desc">Revuelto de gambas peladas</div></div><div class="menu-item__price">13€ / 14€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Revuelto de Morcilla de Burgos</div><div class="menu-item__desc">Revuelto de morcilla de Burgos</div></div><div class="menu-item__price">12€ / 13€</div></div>
+                    </div>
+
+                    <!-- Especialidades -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Especialidades</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Cocido Madrileño</div><div class="menu-item__desc">Plato completo con garbanzos, verduras y carnes, servido en tres vuelcos</div></div><div class="menu-item__price">27€ / 29€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Fabada Asturiana</div><div class="menu-item__desc">Guiso asturiano con fabes, compango y embutidos tradicionales</div></div><div class="menu-item__price">19€ / 20€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Callos a la Madrileña</div><div class="menu-item__desc">Guiso tradicional madrileño con callos, chorizo y morcilla</div></div><div class="menu-item__price">19€ / 21€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Croquetas de la Abuela</div><div class="menu-item__desc">Croquetas caseras con jamón ibérico, receta tradicional</div></div><div class="menu-item__price">12€ / 14€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Calamares a la Romana</div><div class="menu-item__desc">Calamares frescos rebozados en harina y fritos al punto</div></div><div class="menu-item__price">19€ / 20€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Anchoas de Santoña (Caseras)</div><div class="menu-item__desc">Anchoas del Cantábrico seleccionadas artesanalmente</div></div><div class="menu-item__price">23€ / 24€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Verdinas con Bogavante</div><div class="menu-item__desc">Judías verdinas con bogavante en su punto perfecto</div></div><div class="menu-item__price">21€ / 23€</div></div>
+                    </div>
+
+                    <!-- Pescados -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Pescados</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lenguado a la Plancha</div><div class="menu-item__desc">Lenguado fresco con aceite de oliva y limón</div></div><div class="menu-item__price">23€ / 24€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lubina a la Espalda</div><div class="menu-item__desc">Lubina abierta y asada con ajo, perejil y aceite de oliva</div></div><div class="menu-item__price">17€ / 18€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Salmón a la Plancha</div><div class="menu-item__desc">Salmón fresco a la plancha con piel crujiente</div></div><div class="menu-item__price">17€ / 18€</div></div>
+                    </div>
+
+                    <!-- Carnes -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Carnes</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Entrecot Vacuno</div><div class="menu-item__desc">Jugoso entrecot a la parrilla con sal gruesa</div></div><div class="menu-item__price">19€ / 20€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lomo Cruz Blanca (2 pers.)</div><div class="menu-item__desc">Lomo de vacuno premium, especialidad de la casa</div></div><div class="menu-item__price">50€ / 55€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Conejo al Ajillo con Lechuga Viva (2 pers.)</div><div class="menu-item__desc">Conejo estofado al ajillo con lechuga viva</div></div><div class="menu-item__price">32€ / 33€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Chuletillas de Cordero (700gr)</div><div class="menu-item__desc">Chuletillas a la brasa con patatas</div></div><div class="menu-item__price">51€ / 52€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Chuletillas de Lechal</div><div class="menu-item__desc">Chuletillas de cordero lechal a la parrilla</div></div><div class="menu-item__price">20€ / 21€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Rabo de Toro Estofado</div><div class="menu-item__desc">Rabo de toro estofado a fuego lento con verduras</div></div><div class="menu-item__price">22€ / 24€</div></div>
+                    </div>
+
+                    <!-- Raciones -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Raciones</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Oreja a la Plancha</div><div class="menu-item__desc">Oreja de cerdo con ajos y guindilla</div></div><div class="menu-item__price">13€ / 14€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Patatas Bravas</div><div class="menu-item__desc">Patatas fritas con salsa brava picante</div></div><div class="menu-item__price">9€ / 10€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Patatas Dos Salsas</div><div class="menu-item__desc">Patatas fritas con salsa brava y alioli</div></div><div class="menu-item__price">9€ / 10€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Patatas al Cabrales</div><div class="menu-item__desc">Patatas con salsa cremosa de queso Cabrales</div></div><div class="menu-item__price">9€ / 10€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pincho de Tortilla</div><div class="menu-item__desc">Pincho de tortilla de patatas casera</div></div><div class="menu-item__price">4,50€ / 5€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Queso Castrón</div><div class="menu-item__desc">Queso asturiano Castrón con nueces y membrillo</div></div><div class="menu-item__price">14€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Queso Cabrales Batido a la Sidra</div><div class="menu-item__desc">Crema de queso Cabrales batido con sidra asturiana</div></div><div class="menu-item__price">15€ / 16€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Hamburguesa Normal</div><div class="menu-item__desc">Con queso, lechuga y tomate</div></div><div class="menu-item__price">5,50€ / 6,50€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Hamburguesa Especial</div><div class="menu-item__desc">Con ingredientes premium y salsa especial</div></div><div class="menu-item__price">7,50€ / 8,50€</div></div>
+                    </div>
+
+                    <!-- Tostas -->
+                    <div class="menu-category">
+                        <h3 class="menu-category__title">Tostas</h3>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Aguinaga</div><div class="menu-item__desc">Especialidad Aguinaga de la casa</div></div><div class="menu-item__price">9€ / 10€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Anchoas</div><div class="menu-item__desc">Con anchoas del Cantábrico</div></div><div class="menu-item__price">9€ / 10€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Bonito</div><div class="menu-item__desc">Con bonito del norte y pimientos asados</div></div><div class="menu-item__price">10€ / 11€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Jamón</div><div class="menu-item__desc">Con jamón ibérico y tomate</div></div><div class="menu-item__price">10€ / 11€</div></div>
+                        <div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Salmón</div><div class="menu-item__desc">Con salmón marinado y eneldo</div></div><div class="menu-item__price">9€ / 10€</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual tab panels (simplified — show category on filter) -->
+            <div class="tab-panel" data-panel="compartir"><div class="menu-category"><h3 class="menu-category__title">Para Compartir</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Bienmesabe (Cazón Adobado)</div><div class="menu-item__desc">Crujiente rebozado andaluz</div></div><div class="menu-item__price">15€ / 16€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Boquerones en Vinagre</div><div class="menu-item__desc">El clásico con ajo y perejil</div></div><div class="menu-item__price">14€ / 15€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Chipirones a la Plancha</div><div class="menu-item__desc">Tiernos y jugosos</div></div><div class="menu-item__price">16€ / 17€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Gambas a la Plancha</div><div class="menu-item__desc">Gambas grandes a la sal</div></div><div class="menu-item__price">23€ / 24€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Jamón Ibérico de Bellota</div><div class="menu-item__desc">100% ibérico, cortado a cuchillo</div></div><div class="menu-item__price">23€ / 25€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pulpo a la Gallega</div><div class="menu-item__desc">Con cachelos, pimentón y AOVE</div></div><div class="menu-item__price">25€ / 26€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pulpo a la Piedra</div><div class="menu-item__desc">Sellado en piedra caliente</div></div><div class="menu-item__price">25€ / 26€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Codillo Asado</div><div class="menu-item__desc">Deshuesado y crujiente</div></div><div class="menu-item__price">16€ / 18€</div></div></div></div>
+
+            <div class="tab-panel" data-panel="ensaladas"><div class="menu-category"><h3 class="menu-category__title">Ensaladas</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Ensalada Templada</div><div class="menu-item__desc">Verduras asadas con vinagreta balsámica</div></div><div class="menu-item__price">13€ / 14€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Espinacas con Queso de Cabra</div><div class="menu-item__desc">Con nueces tostadas</div></div><div class="menu-item__price">13€ / 14€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Verdinas en Vinagreta de Marisco</div><div class="menu-item__desc">Judías verdinas con vinagreta</div></div><div class="menu-item__price">17€ / 18€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Ensaladilla Rusa Casera</div><div class="menu-item__desc">Receta tradicional</div></div><div class="menu-item__price">14€ / 15€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pimientos con Ventresca</div><div class="menu-item__desc">Bonito del norte</div></div><div class="menu-item__price">18€ / 19€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Ensalada Mixta</div><div class="menu-item__desc">Lechuga, tomate, cebolla, atún</div></div><div class="menu-item__price">10€ / 12€</div></div></div></div>
+
+            <div class="tab-panel" data-panel="especialidades"><div class="menu-category"><h3 class="menu-category__title">Especialidades</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Cocido Madrileño</div><div class="menu-item__desc">Servido en tres vuelcos</div></div><div class="menu-item__price">27€ / 29€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Fabada Asturiana</div><div class="menu-item__desc">Fabes con compango</div></div><div class="menu-item__price">19€ / 20€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Callos a la Madrileña</div><div class="menu-item__desc">Con chorizo y morcilla</div></div><div class="menu-item__price">19€ / 21€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Croquetas de la Abuela</div><div class="menu-item__desc">Jamón ibérico, receta tradicional</div></div><div class="menu-item__price">12€ / 14€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Calamares a la Romana</div><div class="menu-item__desc">Frescos y crujientes</div></div><div class="menu-item__price">19€ / 20€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Anchoas de Santoña</div><div class="menu-item__desc">Artesanales</div></div><div class="menu-item__price">23€ / 24€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Verdinas con Bogavante</div><div class="menu-item__desc">En su punto perfecto</div></div><div class="menu-item__price">21€ / 23€</div></div></div></div>
+
+            <div class="tab-panel" data-panel="pescados"><div class="menu-category"><h3 class="menu-category__title">Pescados</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lenguado a la Plancha</div><div class="menu-item__desc">Con aceite de oliva y limón</div></div><div class="menu-item__price">23€ / 24€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lubina a la Espalda</div><div class="menu-item__desc">Con ajo, perejil y AOVE</div></div><div class="menu-item__price">17€ / 18€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Salmón a la Plancha</div><div class="menu-item__desc">Con piel crujiente</div></div><div class="menu-item__price">17€ / 18€</div></div></div></div>
+
+            <div class="tab-panel" data-panel="carnes"><div class="menu-category"><h3 class="menu-category__title">Carnes</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Entrecot Vacuno</div><div class="menu-item__desc">A la parrilla con sal gruesa</div></div><div class="menu-item__price">19€ / 20€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Lomo Cruz Blanca (2 pers.)</div><div class="menu-item__desc">Vacuno premium</div></div><div class="menu-item__price">50€ / 55€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Conejo al Ajillo (2 pers.)</div><div class="menu-item__desc">Con lechuga viva</div></div><div class="menu-item__price">32€ / 33€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Chuletillas de Cordero (700gr)</div><div class="menu-item__desc">A la brasa con patatas</div></div><div class="menu-item__price">51€ / 52€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Chuletillas de Lechal</div><div class="menu-item__desc">A la parrilla</div></div><div class="menu-item__price">20€ / 21€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Rabo de Toro Estofado</div><div class="menu-item__desc">A fuego lento con verduras</div></div><div class="menu-item__price">22€ / 24€</div></div></div></div>
+
+            <div class="tab-panel" data-panel="raciones"><div class="menu-category"><h3 class="menu-category__title">Raciones</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Oreja a la Plancha</div><div class="menu-item__desc">Con ajos y guindilla</div></div><div class="menu-item__price">13€ / 14€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Patatas Bravas</div><div class="menu-item__desc">Salsa brava picante</div></div><div class="menu-item__price">9€ / 10€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Patatas al Cabrales</div><div class="menu-item__desc">Salsa cremosa de Cabrales</div></div><div class="menu-item__price">9€ / 10€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Pincho de Tortilla</div><div class="menu-item__desc">Casera</div></div><div class="menu-item__price">4,50€ / 5€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Queso Cabrales a la Sidra</div><div class="menu-item__desc">Batido con sidra asturiana</div></div><div class="menu-item__price">15€ / 16€</div></div></div></div>
+
+            <div class="tab-panel" data-panel="tostas"><div class="menu-category"><h3 class="menu-category__title">Tostas</h3><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Aguinaga</div><div class="menu-item__desc">Especialidad de la casa</div></div><div class="menu-item__price">9€ / 10€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Anchoas</div><div class="menu-item__desc">Anchoas del Cantábrico</div></div><div class="menu-item__price">9€ / 10€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Bonito</div><div class="menu-item__desc">Bonito del norte y pimientos</div></div><div class="menu-item__price">10€ / 11€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Jamón</div><div class="menu-item__desc">Jamón ibérico y tomate</div></div><div class="menu-item__price">10€ / 11€</div></div><div class="menu-item"><div class="menu-item__info"><div class="menu-item__name">Tosta de Salmón</div><div class="menu-item__desc">Salmón marinado y eneldo</div></div><div class="menu-item__price">9€ / 10€</div></div></div></div>
+
+            <!-- PDF Downloads -->
+            <div class="pdf-downloads reveal">
+                <a href="https://cruzblancavallecas.com/wp-content/uploads/2024/09/DIGITAL_Cruz_Blanca_Carta_restaurante_2024_A3.pdf" target="_blank" class="pdf-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Carta Restaurante (PDF)
+                </a>
+                <a href="https://cruzblancavallecas.com/wp-content/uploads/2023/08/DIGITAL_Carta_vinos_2023.pdf" target="_blank" class="pdf-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Carta de Vinos (PDF)
+                </a>
+                <a href="https://cruzblancavallecas.com/wp-content/uploads/2024/09/DIGITAL_Cruz_Blanca_Carta-terraza-2024.pdf" target="_blank" class="pdf-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Carta Terraza (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div><div class="footer__logo"><img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas"></div><p class="footer__desc">En el Madrid castizo, te ofrecemos las delicias más reconocidas y premiadas tanto nacional como internacionalmente.</p></div>
+                <div><h4 class="footer__title">Navegación</h4><a href="especialidades.html" class="footer__link">Especialidades</a><a href="carta.html" class="footer__link">Carta</a><a href="nosotros.html" class="footer__link">Nosotros</a><a href="galeria.html" class="footer__link">Galería</a><a href="prensa.html" class="footer__link">Prensa</a><a href="reservas.html" class="footer__link">Reservas</a></div>
+                <div><h4 class="footer__title">Horarios</h4><p class="footer__link" style="cursor:default;">Comidas: 13:30 - 18:00</p><p class="footer__link" style="cursor:default;">Abierto: 8:00 - 00:00</p><p class="footer__link" style="cursor:default;">Todos los días del año</p></div>
+                <div><h4 class="footer__title">Contacto</h4><div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>C. de Carlos Martín Álvarez, 58, 28018 Madrid</span></div><div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+34914773438" style="color: var(--warm-gray);">91 477 34 38</a></div><div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@cruzblancavallecas.com" style="color: var(--warm-gray);">info@cruzblancavallecas.com</a></div></div>
+            </div>
+            <div class="footer__bottom"><p class="footer__copy">&copy; 2025 Cruz Blanca de Vallecas.</p><div class="footer__socials"><a href="https://www.facebook.com/CruzBlancadeVallecas" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://twitter.com/CruzBlancaValle" target="_blank" rel="noopener" class="footer__social" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a></div></div>
+        </div>
+    </footer>
+
+    <div class="mobile-cta-bar"><a href="tel:+34914773438" class="cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Llamar</a><a href="reservas.html" class="cta-reserve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Reservar</a></div>
+
+    <div class="lightbox"><img class="lightbox__img" src="" alt=""><button class="lightbox__close" aria-label="Cerrar">&times;</button></div>
+    <script src="js/main.js"></script>
+</body>
+</html>

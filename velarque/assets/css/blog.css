@@ -1,0 +1,14 @@
+/* Blog page styles */
+.blog-filters { padding: 32px 0; border-bottom: 1px solid var(--gray-100); }
+.blog-filters__pills { display: flex; gap: 12px; flex-wrap: wrap; }
+.blog-filter {
+  padding: 8px 20px; border: 1px solid var(--gray-200); border-radius: 100px;
+  background: transparent; font-family: var(--sans); font-size: 14px; font-weight: 400;
+  color: var(--gray-500); cursor: pointer; transition: all 0.3s var(--ease);
+}
+.blog-filter:hover { border-color: var(--accent); color: var(--accent); }
+.blog-filter.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+.blog-listing { padding: clamp(80px, 10vh, 140px) 0; }
+.blog-listing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+/* Reuse .blog-card styles from homepage - include homepage.css in the page */
+@media (max-width: 1024px) { .blog-listing__grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; } }

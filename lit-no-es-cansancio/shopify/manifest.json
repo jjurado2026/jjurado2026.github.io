@@ -1,0 +1,334 @@
+{
+  "generated_by": "tools/build_shopify.py",
+  "upload": [
+    {
+      "key": "assets/nw-lp2-barlow-400.woff2",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-barlow-400.woff2",
+      "bytes": 19608,
+      "sha256": "a9d6076eb87f9e0c1cf28b844a9deb82fedc1f23b07e8364f72c6afa37c0e067"
+    },
+    {
+      "key": "assets/nw-lp2-barlow-500.woff2",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-barlow-500.woff2",
+      "bytes": 19348,
+      "sha256": "c5567c130cbdd307a01617174a7e50d624914cccbc6ed310a055cd2cb6ce4d2c"
+    },
+    {
+      "key": "assets/nw-lp2-barlow-600.woff2",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-barlow-600.woff2",
+      "bytes": 20172,
+      "sha256": "58345651941f9068e1c550730ae11d5f667df95cf643b823bff31d1ff5b75182"
+    },
+    {
+      "key": "assets/nw-lp2-barlow-700.woff2",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-barlow-700.woff2",
+      "bytes": 20112,
+      "sha256": "43adce14b6cb8afc961bbdc1c698807960571eee653eadd07825a0c9a82f58cd"
+    },
+    {
+      "key": "assets/nw-lp2-bottle-elec.svg",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-bottle-elec.svg",
+      "bytes": 2210,
+      "sha256": "6975edf92d5e26a617aa401b19639eb7dfa2fedb533768ebd3ba8231f8b3097d"
+    },
+    {
+      "key": "assets/nw-lp2-bottle-iso.svg",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-bottle-iso.svg",
+      "bytes": 14758,
+      "sha256": "4225cfffc97b00e1b1665778377791f6678738a3f5253eb01e594feb903f76bb"
+    },
+    {
+      "key": "assets/nw-lp2-caja-lemon-560.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-caja-lemon-560.webp",
+      "bytes": 30068,
+      "sha256": "c5e465f36386a3f80be63165e00bdb4c9807a68577970fd6ff356d2a41d0be50"
+    },
+    {
+      "key": "assets/nw-lp2-caja-lemon.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-caja-lemon.webp",
+      "bytes": 71724,
+      "sha256": "8752f68a4955a78e00070413074dad6374d300f173eee9e51bb60eb01533d762"
+    },
+    {
+      "key": "assets/nw-lp2-caja-peach-560.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-caja-peach-560.webp",
+      "bytes": 30882,
+      "sha256": "ca2df54b322232516940b84e34388e4e6649085282cfbca5a7019f5aa9ddb632"
+    },
+    {
+      "key": "assets/nw-lp2-caja-peach.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-caja-peach.webp",
+      "bytes": 73784,
+      "sha256": "916334ada174c0daa3339f4185fb2bf6c571f4eb0ff41bb747af39cc6713a44c"
+    },
+    {
+      "key": "assets/nw-lp2-caja-watermelon-560.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-caja-watermelon-560.webp",
+      "bytes": 29336,
+      "sha256": "a6a4e15e850cbceda5f4885fc1a9dfecdf334eeed1921d54070e8bb992e47640"
+    },
+    {
+      "key": "assets/nw-lp2-caja-watermelon.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-caja-watermelon.webp",
+      "bytes": 71620,
+      "sha256": "7981436cda7a2e7f45d8f31da6f86c20baac78200213d040794ecec70f4b0ac4"
+    },
+    {
+      "key": "assets/nw-lp2-clash.woff2",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-clash.woff2",
+      "bytes": 29348,
+      "sha256": "605d602c69dd2f50407dea32cda1e4f930aef6307d535465839ed90682bd8765"
+    },
+    {
+      "key": "assets/nw-lp2-g-lemon-0-comp-t.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-g-lemon-0-comp-t.webp",
+      "bytes": 5980,
+      "sha256": "a1768f5b19089bc8b314ab95a32263d2868eb48ebf6d4727204fb4a9a9e17ed1"
+    },
+    {
+      "key": "assets/nw-lp2-g-lemon-0-comp.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-g-lemon-0-comp.webp",
+      "bytes": 58094,
+      "sha256": "3d954d00c14fa886893fcc7cb30da15ba08980f0dab2d4a9e0374af94ab9beaf"
+    },
+    {
+      "key": "assets/nw-lp2-g-peach-0-comp-t.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-g-peach-0-comp-t.webp",
+      "bytes": 6174,
+      "sha256": "2cf2e5530a13cec7a7d2ef06ee282e5688ce4e5a1563833005f6632c9d6c847c"
+    },
+    {
+      "key": "assets/nw-lp2-g-peach-0-comp.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-g-peach-0-comp.webp",
+      "bytes": 57618,
+      "sha256": "79b5f2c0fbdc76bdade5f52c81394db7036c32898408da7aa3e26ff56ac16257"
+    },
+    {
+      "key": "assets/nw-lp2-g-watermelon-0-comp-t.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-g-watermelon-0-comp-t.webp",
+      "bytes": 6270,
+      "sha256": "107c70ad3f2160dbd243a30e58b7be0b1048a2d9795ff6eddf03b1e7d1072433"
+    },
+    {
+      "key": "assets/nw-lp2-g-watermelon-0-comp.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-g-watermelon-0-comp.webp",
+      "bytes": 57742,
+      "sha256": "2a6663e7da74ff9c7ce909e5b76e97f047d00fc47768a23e9ec24eb30cfc9ca5"
+    },
+    {
+      "key": "assets/nw-lp2-gsap.min.js",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-gsap.min.js",
+      "bytes": 72927,
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "key": "assets/nw-lp2-press-corredor.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-corredor.webp",
+      "bytes": 11018,
+      "sha256": "3db4c27dbc161b8d5c454a74f889a7a36ec08aaefe3b0e707b0d374f6f9ca2c4"
+    },
+    {
+      "key": "assets/nw-lp2-press-culturaocio.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-culturaocio.webp",
+      "bytes": 10062,
+      "sha256": "fcf031f30aa0b14ae4abbbbbcc612bf73e07ddbaad7be200280951abbffbbf9a"
+    },
+    {
+      "key": "assets/nw-lp2-press-elmundo.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-elmundo.webp",
+      "bytes": 8746,
+      "sha256": "6c70f5be9964d5b07aa579eac962a37f26f04330e9a38c5d693a59f7872c60e0"
+    },
+    {
+      "key": "assets/nw-lp2-press-europapress.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-europapress.webp",
+      "bytes": 14386,
+      "sha256": "540ed28bd3664686bcc22df8c76086680dde343b14e1570e43204775c708383e"
+    },
+    {
+      "key": "assets/nw-lp2-press-glamour.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-glamour.webp",
+      "bytes": 7924,
+      "sha256": "305bf59cc2023977e87800ac4035e5104abf104ad3aef97e54d9354a907fa953"
+    },
+    {
+      "key": "assets/nw-lp2-press-infosalus.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-infosalus.webp",
+      "bytes": 8634,
+      "sha256": "64eed7c67a34678c55f792696a4876a6b83aadafbdecb3730b18cb79d5fff3d7"
+    },
+    {
+      "key": "assets/nw-lp2-press-marca.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-marca.webp",
+      "bytes": 3962,
+      "sha256": "6f17e86661f355d395647093b77330448f2d6b529cc891312753fa555e2252c2"
+    },
+    {
+      "key": "assets/nw-lp2-press-menshealth.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-menshealth.webp",
+      "bytes": 7430,
+      "sha256": "98a78faf6e1e28bc0dbf8e17f3f5ee49915d164003b33bc7e729fc0f96865d41"
+    },
+    {
+      "key": "assets/nw-lp2-press-nutrasalud.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-nutrasalud.webp",
+      "bytes": 7506,
+      "sha256": "4e08f8136b5f437a272d3f589ce28595b425033ec95b4baa3c7feaab76a09869"
+    },
+    {
+      "key": "assets/nw-lp2-press-okdiario.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-okdiario.webp",
+      "bytes": 7072,
+      "sha256": "d7f7eda6ab726307053d15c9b0fd437c6ddcb609b6783b15e341794db927c081"
+    },
+    {
+      "key": "assets/nw-lp2-press-sportlife.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-sportlife.webp",
+      "bytes": 6934,
+      "sha256": "27a7c1d2f5c5f843b006b2fe7cc9601b2d02a53677f12104bc505d409d3b1c2c"
+    },
+    {
+      "key": "assets/nw-lp2-press-trailrun.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-press-trailrun.webp",
+      "bytes": 17132,
+      "sha256": "d1a8a7090192aa5493f1204ab763c70017462d858fccd3a2cc9d07484d3bd03e"
+    },
+    {
+      "key": "assets/nw-lp2-scrolltrigger.min.js",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-scrolltrigger.min.js",
+      "bytes": 44575,
+      "sha256": "b0b14d67b55b0c43c756ac0b106cfcb09d0879945f6ead64451065b0672916a2"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-back-480.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-back-480.webp",
+      "bytes": 29576,
+      "sha256": "0d7403403d255a4893215eae8c94037f86e772249cc8f183b4e2e3bfdccd0215"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-back.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-back.webp",
+      "bytes": 54466,
+      "sha256": "4689452138083a649d646bca2b833195a767dbba9a502a0a99a154c9eafbb4a3"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-front-480.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-front-480.webp",
+      "bytes": 23842,
+      "sha256": "54f50a91e4cd3dbf0277097d845b6d622e953be730cdb16d083ab5fe335e3122"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-front.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-front.webp",
+      "bytes": 40704,
+      "sha256": "97dbd2bc11b1edba77f436bb4ddf1bb0d6efa3a6f218281e47d7b5e307f16cad"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-lemon-h.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-lemon-h.webp",
+      "bytes": 8312,
+      "sha256": "af37ca94d7896ebabe9ab55e767daea1eefe364fd1c1fe341e087a422c188324"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-lemon.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-lemon.webp",
+      "bytes": 20494,
+      "sha256": "c4fae22fdfab70ec18ad62b06b606dc9ecf79511fd229ffdffad5996563984dc"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-peach-h.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-peach-h.webp",
+      "bytes": 7746,
+      "sha256": "ec8174ad9f06f53a60ddccf2746594695c12a2664ae66cf90e32f03c194bda75"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-peach.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-peach.webp",
+      "bytes": 19764,
+      "sha256": "47e4812ad2d1a27f22301ffec1a39c0a8126a810a166344b357a16c6a2a14a9b"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-watermelon-h.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-watermelon-h.webp",
+      "bytes": 8698,
+      "sha256": "2483bbc35708f0471c2658fdb1ccc7dc0f2be1745a7169592f10b11aeef565ca"
+    },
+    {
+      "key": "assets/nw-lp2-sobre-watermelon.webp",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2-sobre-watermelon.webp",
+      "bytes": 21128,
+      "sha256": "a514e847dd7ea921f4691b53b1d674ba45b7a5aee6ca48c7a0f6e46bf94894a8"
+    },
+    {
+      "key": "assets/nw-lp2.css",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2.css",
+      "bytes": 79439,
+      "sha256": "eda5c66c09329c8d4e3b115e456f69991ee6cae644ab40304b1f46423560828a"
+    },
+    {
+      "key": "assets/nw-lp2.js",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/assets/nw-lp2.js",
+      "bytes": 32028,
+      "sha256": "eded01c9d42bcac8d32da1d9f4c93dc3618820582fecb7b46cea84acc57ced5f"
+    },
+    {
+      "key": "sections/nw-lp2.liquid",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/sections/nw-lp2.liquid",
+      "bytes": 88141,
+      "sha256": "52342a15683a3218be76340fb6295da6dc4b7e6b46722e1441a8f690a7e7f42f"
+    },
+    {
+      "key": "snippets/nw-lp2-price.liquid",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/snippets/nw-lp2-price.liquid",
+      "bytes": 420,
+      "sha256": "153659d138e8c6cf60972f2fb4706f9bde04e1d3fc57634b790fbd40066041b7"
+    },
+    {
+      "key": "templates/page.landing-lp2.json",
+      "url": "https://jjurado2026.github.io/lit-no-es-cansancio/shopify/templates/page.landing-lp2.json",
+      "bytes": 676,
+      "sha256": "e7027ed879dc30f2e869d0afbb08ab1d980c14ee51147463d2a865da3f3b3b4f"
+    }
+  ],
+  "theme_assets_already_in_theme": [
+    "nw-comotomarlo-opt.mp4",
+    "nw-comotomarlo-poster.webp",
+    "nw-hero-peach-mobile.mp4",
+    "nw-hero-peach-opt.mp4",
+    "nw-hero-peach-poster-mobile.webp",
+    "nw-hero-peach-poster.webp"
+  ],
+  "files_cdn_already_in_store": [
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/3-2_6.jpg?width=1000",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/3-2_6.jpg?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/3-2_8.jpg?width=1000",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/3-2_8.jpg?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/DON_2370.jpg?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/DON_2370.jpg?width=900",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/DSCF4729_copy_cropped.jpg?width=1000",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/DSCF4729_copy_cropped.jpg?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/Kiko.png?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/Kiko.png?width=760",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/Lit-64029_1.png?width=1200",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/Lit-64029_1.png?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/Lit_Superior_Hydration.8.jpg?width=1600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/Lit_Superior_Hydration.8.jpg?width=800",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/chico_flexion.png?width=1000",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/chico_flexion.png?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-about-ciencia-athlete.webp?width=1600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-about-ciencia-athlete.webp?width=800",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-about-hero-runners_ddaf8ba4-2e5b-4840-8392-b32eb2568135.webp?width=1600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-about-hero-runners_ddaf8ba4-2e5b-4840-8392-b32eb2568135.webp?width=800",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-momentos-portrait.webp?width=1600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-momentos-portrait.webp?width=800",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-problema-runners.webp?width=1600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-problema-runners.webp?width=800",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-reviews-coast.webp?width=1600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-reviews-coast.webp?width=800",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-rutina-0700.webp?width=600",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-home-rutina-0700.webp?width=763",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-pdp-prensa-elmundo_e7739468-38de-47be-9cfd-44e60ac35a0f.webp?width=925",
+    "https://cdn.shopify.com/s/files/1/0896/3319/4288/files/nw-pdp-prensa-menshealth_edcf0b82-b233-4dc3-85c5-aa7aff6f6701.webp?width=925"
+  ],
+  "template": "templates/page.landing-lp2.json"
+}

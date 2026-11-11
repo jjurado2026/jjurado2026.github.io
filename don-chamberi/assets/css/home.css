@@ -1,0 +1,281 @@
+/* ============================================================
+   HOME — hero, "Atendemos", Valoración, Propiedades (buscador +
+   fichas), Chamberí barrio a barrio, Nuevas propiedades, Aliados.
+   Firma visual: las ventanas. Las fotos se abren como contraventanas
+   (clip-path desde el centro) y entra la luz: lo que venden en Chamberí.
+   El damero dorado del escudo aparece como marca pequeña.
+   ============================================================ */
+
+/* Marca de damero: cuatro cuadros dorados, del escudo */
+.damero{display:inline-block;width:14px;height:14px;flex:none;
+  background:conic-gradient(var(--oro) 25%,transparent 0 50%,var(--oro) 0 75%,transparent 0);background-size:7px 7px}
+
+/* ---------- HERO ---------- */
+.hero{padding:clamp(32px,4vw,56px) 0 clamp(40px,6vw,88px);position:relative;overflow:hidden}
+.hero__env{display:grid;gap:var(--s4);align-items:center}
+@media (min-width:1024px){
+  .hero__env{grid-template-columns:minmax(0,8fr) minmax(0,12fr);gap:clamp(40px,5vw,80px)}
+}
+.hero__texto{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s3)}
+.hero__titulo{font-size:var(--t-hero);font-weight:350;line-height:1.04;color:var(--marca);max-width:15ch;text-wrap:balance}
+.hero__titulo em{font-style:italic;font-weight:400;color:var(--marca-medio)}
+.hero__sub{font-size:var(--t-lead);color:var(--gris);max-width:36ch;line-height:1.5;text-wrap:balance}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+@media (max-width:479px){.hero__cta{align-self:stretch;flex-direction:column}.hero__cta .btn{width:100%}}
+
+/* Las tres ventanas: una fila de balcones, como una fachada de Chamberí */
+.ventanas{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:var(--gut);
+  margin:0 calc(var(--gut) * -1);padding:4px var(--gut) 8px;scrollbar-width:none}
+.ventanas::-webkit-scrollbar{display:none}
+.ventana{flex:0 0 min(62vw,300px);scroll-snap-align:start;margin:0}
+@media (min-width:1024px){
+  .ventanas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,22px);align-items:start;
+    overflow:visible;margin:0;padding:0;scroll-snap-type:none}
+  .ventana{flex:none}
+  .ventana:nth-child(2){margin-top:clamp(40px,6vw,88px)}
+}
+.ventana__marco{position:relative;aspect-ratio:2/3;overflow:hidden;border-radius:var(--r-s);background:var(--marca-suave)}
+.ventana__marco img{width:100%;height:100%;object-fit:cover}
+.ventana__marco::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(var(--marca-rgb),.12);pointer-events:none}
+.ventana figcaption{display:flex;justify-content:space-between;gap:8px;margin-top:10px;
+  font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);font-variant-numeric:tabular-nums}
+.ventana figcaption b{font-weight:600;color:var(--marca)}
+
+/* Secuencia de carga (solo con JS): el texto sube, las contraventanas se abren. Todo en reposo antes de 1,3 s. */
+.js .hero__texto > *{opacity:0;transform:translateY(18px)}
+.js .ventana__marco{clip-path:inset(0 50% 0 50% round var(--r-s))}
+.js .ventana__marco img{transform:scale(1.03)}
+.js .ventana figcaption{opacity:0}
+.listo .hero__texto > *{animation:sube 500ms var(--ease-out) forwards;animation-delay:calc(40ms + var(--i,0) * 70ms)}
+.listo .ventana__marco{animation:abrir 800ms var(--ease-out) forwards;animation-delay:calc(200ms + var(--i,0) * 120ms)}
+.listo .ventana__marco img{animation:acercar 800ms var(--ease-out) forwards;animation-delay:calc(200ms + var(--i,0) * 120ms)}
+.listo .ventana figcaption{animation:sube 500ms var(--ease-out) forwards;animation-delay:calc(520ms + var(--i,0) * 120ms)}
+@keyframes sube{to{opacity:1;transform:none}}
+@keyframes abrir{to{clip-path:inset(0 0 0 0 round var(--r-s))}}
+@keyframes acercar{to{transform:scale(1)}}
+html.captura .hero__texto > *,html.quieto .hero__texto > *,html.captura .ventana figcaption,html.quieto .ventana figcaption{opacity:1;transform:none;animation:none}
+html.captura .ventana__marco,html.quieto .ventana__marco{clip-path:none;animation:none}
+html.captura .ventana__marco img,html.quieto .ventana__marco img{transform:none;animation:none}
+
+/* ---------- "ATENDEMOS LAS NECESIDADES ÚNICAS…" ----------
+   Alineado con el resto de bloques: texto a la izquierda y su foto de Almagro a la derecha. */
+.intro{padding:var(--s6) 0;border-top:1px solid var(--linea)}
+.intro__grid{display:grid;gap:var(--s5);align-items:center}
+@media (min-width:900px){.intro__grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,5vw,80px)}}
+/* El texto, desplazado hacia el borde derecho del contenedor: no pegado a la foto */
+@media (min-width:900px){.intro__texto{max-width:600px;margin-left:auto}}
+.intro__texto h2{max-width:16ch;text-wrap:balance}
+.intro__lead{margin-top:22px;font-family:var(--serif);font-size:clamp(1.15rem,1rem + .7vw,1.45rem);line-height:1.5;color:var(--tinta);font-weight:350;max-width:38ch;text-wrap:pretty}
+.intro__p{margin-top:14px;font-size:1rem;line-height:1.7;color:var(--gris);max-width:60ch}
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.cifra{min-width:0;padding:18px 16px 18px 0}
+.cifra + .cifra{padding-left:16px;border-left:1px solid var(--linea)}
+.cifra__num{font-family:var(--serif);font-size:clamp(1.8rem,1.3rem + 1.6vw,2.6rem);line-height:1;color:var(--marca);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cifra__num small{font-family:var(--sans);font-size:.75rem;font-weight:600;color:var(--marca-medio);margin-left:5px;letter-spacing:.04em}
+.cifra__txt{margin-top:6px;font-size:.82rem;line-height:1.4;color:var(--gris)}
+.intro__valores{margin-top:22px;font-family:var(--serif);font-style:italic;font-size:1.1rem;line-height:1.5;color:var(--marca-medio);max-width:44ch}
+.intro__cta{margin-top:14px}
+.intro__figura{margin:0}
+.intro__marco{position:relative;aspect-ratio:4/5;border-radius:var(--r-s);overflow:hidden;background:var(--marca-suave)}
+.intro__marco img{width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.intro__marco::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(var(--marca-rgb),.14);pointer-events:none}
+.intro__figura figcaption{margin-top:12px;font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--gris)}
+@media (max-width:479px){
+  .cifras{grid-template-columns:1fr;border-bottom:0}
+  .cifra{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid var(--linea)}
+  .cifra + .cifra{padding-left:0;border-left:0}
+  .cifra__num{min-width:96px}
+  .cifra__txt{margin-top:0}
+}
+
+/* ---------- SERVICIOS: banda marrón con los siete servicios en tarjetas ---------- */
+.servicios{background:var(--marca);color:#fff;padding:var(--s6) 0;border-top:3px solid var(--oro)}
+.servicios__cab h2{color:#fff}
+.servicios__lista{display:grid;gap:14px;grid-template-columns:1fr;margin-top:var(--s4)}
+@media (min-width:640px){.servicios__lista{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.servicios__lista{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.servicio{position:relative;display:flex;flex-direction:column;gap:10px;padding:24px 22px 26px;border-radius:var(--r-m);
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-top:2px solid var(--oro);
+  transition:background-color 200ms ease,transform 200ms var(--ease-out)}
+.servicio:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+.servicio h3{font-family:var(--serif);font-size:1.3rem;line-height:1.2;color:#fff;font-weight:400}
+.servicio p{font-size:.92rem;line-height:1.55;color:rgba(255,255,255,.76)}
+.servicio--mas{padding:0;background:transparent;border:1px solid var(--oro);border-top-width:2px}
+.servicio--mas a{display:flex;align-items:center;justify-content:space-between;gap:12px;height:100%;min-height:120px;padding:24px 22px;
+  font-family:var(--serif);font-size:1.3rem;color:var(--oro);line-height:1.2}
+.servicio--mas a .ic{width:22px;height:22px;transition:transform 200ms var(--ease-out)}
+.servicio--mas a:hover .ic{transform:translateX(5px)}
+.servicio--mas:hover{background:rgba(232,185,43,.08)}
+
+/* ---------- VALORACIÓN: "Le ayudamos a vender su casa en Chamberí" ----------
+   Banda marrón con su texto de "Vendo casa" y un formulario de valoración. */
+.valora{position:relative;overflow:hidden;background:var(--marca);color:#fff;padding:var(--s6) 0}
+.valora::before{content:"";position:absolute;right:-40px;top:-40px;width:360px;height:360px;opacity:.07;pointer-events:none;
+  background:conic-gradient(var(--oro) 25%,transparent 0 50%,var(--oro) 0 75%,transparent 0);background-size:90px 90px;
+  -webkit-mask:radial-gradient(circle at top right,#000 20%,transparent 72%);mask:radial-gradient(circle at top right,#000 20%,transparent 72%)}
+.valora__env{position:relative;display:grid;gap:var(--s4)}
+@media (min-width:1024px){.valora__env{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:center}}
+.valora h2{color:#fff;max-width:16ch;text-wrap:balance}
+.valora__texto{font-family:var(--serif);font-size:var(--t-lead);line-height:1.5;color:rgba(255,255,255,.86);margin-top:18px;max-width:40ch;font-weight:350}
+.valora__lista{margin-top:22px;display:flex;flex-direction:column;gap:10px;max-width:46ch}
+.valora__lista li{display:flex;gap:12px;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.82)}
+.valora__lista li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;background:var(--oro);transform:rotate(45deg)}
+.valora__tel{margin-top:24px;font-size:.95rem;color:rgba(255,255,255,.7)}
+.valora__tel a{color:#fff;font-weight:600;font-variant-numeric:tabular-nums;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--oro)}
+.valora__form{background:#fff;color:var(--tinta);border-radius:var(--r-m);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px;
+  border-top:4px solid var(--oro);box-shadow:0 30px 80px -30px rgba(0,0,0,.5);--hueco:14px}
+.valora__form h3{font-family:var(--serif);font-size:1.6rem;color:var(--marca);line-height:1.15}
+.valora__form > p{font-size:.95rem;color:var(--gris);margin-top:-4px}
+.valora__fila{display:grid;gap:12px}
+@media (min-width:640px){.valora__fila{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.valora__form .btn{width:100%;margin-top:4px}
+.valora__nota{font-size:.8rem;color:var(--gris);text-align:center}
+
+/* ---------- PROPIEDADES ---------- */
+.props{padding:var(--s6) 0;background:var(--marca-tinte);border-top:1px solid var(--linea)}
+.props__cab{margin-bottom:var(--s4)}
+
+/* Buscador: su mismo formulario, ordenado. "Búsqueda avanzada" despliega el resto (como en su web). */
+.buscador{background:#fff;border:1px solid var(--linea);border-radius:var(--r-m);box-shadow:var(--sombra-1);padding:clamp(16px,2.4vw,28px);margin-bottom:var(--s5);position:relative}
+.buscador__fila{display:grid;gap:12px;grid-template-columns:1fr}
+@media (min-width:480px){.buscador__fila{grid-template-columns:repeat(2,minmax(0,1fr))}.buscador__fila .btn{grid-column:1 / -1}}
+@media (min-width:900px){.buscador__fila{grid-template-columns:repeat(3,1fr)}}
+/* Escritorio: los seis campos en 3×2 y el botón "Buscar" a toda la altura, a la derecha */
+@media (min-width:1100px){.buscador__fila{grid-template-columns:repeat(3,minmax(0,1fr)) auto}.buscador__fila .btn{grid-column:4;grid-row:1 / 3;align-self:stretch;padding:0 28px}}
+.buscador__fila .btn{min-height:50px}
+.buscador__mas{display:grid;grid-template-rows:0fr;transition:grid-template-rows 360ms var(--ease-out)}
+.buscador__mas.abierto{grid-template-rows:1fr}
+.buscador__mas > div{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s linear 360ms}
+.buscador__mas.abierto > div{visibility:visible;transition-delay:0s}
+.buscador__avanzada{display:grid;gap:16px 12px;padding-top:20px;margin-top:20px;border-top:1px solid var(--linea)}
+@media (min-width:640px){.buscador__avanzada{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.buscador__avanzada{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.buscador__avanzada .campo--ancho{grid-column:1 / -1}
+.buscador__extras{display:flex;flex-wrap:wrap;gap:0 22px}
+.buscador__pie{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;font-size:var(--t-small);color:var(--gris);--hueco:8px}
+.buscador__pie .btn--texto{font-size:var(--t-small);font-weight:600}
+
+/* Fichas */
+.fichas{display:grid;gap:clamp(16px,2vw,28px);grid-template-columns:1fr;align-items:start;contain:layout}
+@media (min-width:640px){.fichas{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.fichas{grid-template-columns:repeat(3,1fr)}}
+
+.ficha{background:#fff;border:1px solid var(--linea);border-radius:var(--r-m);overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color 200ms ease,transform 200ms var(--ease-out),box-shadow 200ms ease}
+.ficha:hover,.ficha:focus-within{border-color:var(--linea-fuerte);box-shadow:var(--sombra-2);transform:translateY(-3px)}
+
+.ficha__foto{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--marca-suave)}
+.ficha__enlace-foto{position:absolute;inset:0;display:block}
+.ficha__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  transition:opacity 200ms ease,transform 400ms var(--ease-out)}
+.ficha__foto img.activa{opacity:1}
+.ficha:hover .ficha__foto img.activa,.ficha:focus-within .ficha__foto img.activa{transform:scale(1.02)}
+
+/* Reservado: la foto pierde saturación y el precio pasa a gris */
+.ficha--reservado .ficha__foto img{filter:saturate(.55)}
+.ficha--reservado .ficha__precio{color:var(--gris)}
+
+.ficha__sello{position:absolute;top:12px;left:12px;z-index:3;padding:6px 10px;border-radius:3px;
+  font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1;pointer-events:none}
+.ficha__sello--novedad{background:var(--oro);color:var(--marca)}
+.ficha__sello--exclusiva{background:#fff;color:var(--marca);border:1px solid var(--marca)}
+.ficha__sello--reservado{background:var(--tinta);color:#fff}
+
+.ficha__contadores{position:absolute;top:12px;right:12px;z-index:3;display:flex;gap:6px;pointer-events:none}
+.ficha__contadores span{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:3px;
+  background:rgba(255,255,255,.92);color:var(--tinta);font-size:.72rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.ficha__contadores .ic{width:13px;height:13px;color:var(--marca)}
+
+.ficha__flecha{position:absolute;top:28%;z-index:4;width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.94);color:var(--marca);display:grid;place-items:center;box-shadow:var(--sombra-1);
+  opacity:0;transform:translateY(-50%) translateX(var(--dx,0));
+  transition:opacity 200ms ease,transform 200ms var(--ease-out),background-color var(--d-1) ease}
+.ficha__flecha--izq{left:12px;--dx:-6px}
+.ficha__flecha--der{right:12px;--dx:6px}
+.ficha:hover .ficha__flecha,.ficha:focus-within .ficha__flecha,.ficha__flecha:focus-visible{opacity:1;transform:translateY(-50%) translateX(0)}
+.ficha__flecha:hover{background:var(--marca);color:#fff}
+.ficha__flecha .ic{width:18px;height:18px;stroke-width:2}
+@media (hover:none){.ficha__flecha{opacity:1;top:50%;width:44px;height:44px;transform:translateY(-50%)}}
+
+/* La descripción sube al pasar el ratón: su "flash_descripcion", con maneras. Entrada 280 ms, salida 200 ms. */
+.ficha__desc{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 18px 16px;
+  background:linear-gradient(to top,rgba(var(--marca-rgb),.96),rgba(var(--marca-rgb),.9));color:#fff;
+  transform:translateY(100%);transition:transform 200ms var(--ease-in);pointer-events:none}
+.ficha:hover .ficha__desc,.ficha:focus-within .ficha__desc{transform:none;pointer-events:auto;transition:transform 280ms var(--ease-out)}
+.ficha__desc p{font-size:.85rem;line-height:1.5;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;color:rgba(255,255,255,.92)}
+.ficha__desc a{display:inline-block;margin-top:8px;font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--oro);text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(232,185,43,.5)}
+.ficha__desc a:hover{text-decoration-color:var(--oro)}
+@media (hover:none){.ficha__desc{display:none}}
+
+.ficha__cuerpo{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px}
+.ficha__meta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.ficha__tipo{font-weight:700;color:var(--marca-medio)}
+.ficha__ref{display:inline-flex;align-items:center;gap:2px;color:var(--gris);font-weight:500;letter-spacing:.06em;text-transform:none;font-variant-numeric:tabular-nums}
+.copiar{display:grid;place-items:center;width:36px;height:36px;margin:-8px -8px -8px 0;border-radius:50%;color:var(--gris);transition:color var(--d-1) ease,background-color var(--d-1) ease,transform var(--d-2) var(--ease-out)}
+.copiar:hover{color:var(--marca);background:var(--marca-suave)}
+.copiar .ic{width:14px;height:14px}
+.copiar.copiado{color:#fff;background:var(--marca)}
+.ficha__loc{font-size:var(--t-h3);line-height:1.25;color:var(--tinta)}
+.ficha__loc a{transition:color var(--d-1) ease}
+.ficha__loc a:hover{color:var(--marca)}
+.ficha__datos{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--gris);font-variant-numeric:tabular-nums}
+.ficha__datos li{display:inline-flex;align-items:center;gap:6px}
+.ficha__datos .ic{width:16px;height:16px;color:var(--marca-medio)}
+.ficha__precio{margin-top:6px;padding-top:12px;border-top:1px solid var(--linea);
+  font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--marca);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:.005em}
+
+.props__pie{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s2);margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid var(--linea)}
+.props__pie p{font-size:var(--t-small);color:var(--gris);font-variant-numeric:tabular-nums}
+.props__pie p b{color:var(--tinta);font-weight:600}
+
+/* ---------- CHAMBERÍ, BARRIO A BARRIO: "¿Por qué vivir en Chamberí?" ----------
+   Banda con su foto de Ríos Rosas y el titular encima; debajo, su texto de "Nosotros"
+   y un callejero con los seis barrios y las viviendas en cartera. */
+.barrios{padding:0 0 var(--s6)}
+.barrios__banda{position:relative;height:clamp(300px,40vw,540px);overflow:hidden;background:var(--marca)}
+.barrios__banda img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.barrios__banda::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(53,33,27,.85) 0%,rgba(53,33,27,.35) 40%,rgba(53,33,27,0) 70%)}
+.barrios__banda .env{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(28px,4vw,52px)}
+.barrios__banda h2{color:#fff;font-size:clamp(2.2rem,1.4rem + 3vw,3.6rem);max-width:14ch;text-wrap:balance}
+.barrios__pie{position:absolute;right:var(--gut);top:18px;z-index:1;font-family:var(--serif);font-style:italic;font-size:.9rem;color:rgba(255,255,255,.9);text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.barrios__cuerpo{display:grid;gap:var(--s4);margin-top:var(--s5)}
+@media (min-width:900px){.barrios__cuerpo{grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(40px,6vw,96px);align-items:start}}
+.barrios__texto p{font-family:var(--serif);font-size:clamp(1.05rem,1rem + .35vw,1.2rem);line-height:1.55;color:var(--tinta);font-weight:350;text-wrap:pretty}
+.barrios__texto p + p{margin-top:14px}
+.callejero{border-top:1px solid var(--linea)}
+.callejero a{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:16px;padding:15px 6px;border-bottom:1px solid var(--linea);color:var(--tinta);
+  transition:background-color 200ms ease,color 200ms ease}
+.callejero__nombre{font-family:var(--serif);font-size:clamp(1.3rem,1.1rem + .8vw,1.7rem);line-height:1.1;transition:transform 200ms var(--ease-out)}
+.callejero__dato{font-size:.85rem;color:var(--gris);font-variant-numeric:tabular-nums;white-space:nowrap}
+.callejero .ic{width:18px;height:18px;color:var(--marca);transition:transform 200ms var(--ease-out)}
+.callejero a:hover,.callejero a:focus-visible{background:var(--marca-tinte);color:var(--marca)}
+.callejero a:hover .callejero__nombre{transform:translateX(6px)}
+.callejero a:hover .ic{transform:translateX(4px)}
+.callejero a:hover .callejero__dato{color:var(--marca-medio)}
+@media (max-width:479px){.callejero__dato{white-space:normal;font-size:.78rem}}
+
+/* ---------- NUEVAS PROPIEDADES (suscripción) ---------- */
+.suscrip{padding:var(--s6) 0;background:var(--marca-tinte);border-top:1px solid var(--linea)}
+.suscrip__panel{background:#fff;border:1px solid var(--linea);border-top:4px solid var(--oro);border-radius:var(--r-m);padding:clamp(28px,5vw,64px);display:grid;gap:var(--s4)}
+@media (min-width:1024px){.suscrip__panel{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(40px,6vw,96px);align-items:center}}
+.suscrip__texto{display:flex;flex-direction:column;gap:var(--s2)}
+.suscrip__texto p{font-size:var(--t-lead);color:var(--tinta);max-width:30ch;line-height:1.5;font-family:var(--serif);font-weight:350}
+.suscrip__form{display:grid;gap:14px;--hueco:14px}
+@media (min-width:640px){.suscrip__form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.suscrip__form .campo input,.suscrip__form .campo select{background:#fff}
+.suscrip__form .campo--ancho,.suscrip__form .estado{grid-column:1 / -1}
+.captcha{display:flex;gap:10px;align-items:stretch}
+.captcha__img{flex:none;width:112px;border:1px solid var(--linea-fuerte);border-radius:var(--r-s);background:#fff;display:grid;place-items:center;
+  font-family:'Courier New',monospace;font-size:1.1rem;letter-spacing:.3em;color:var(--gris);
+  background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(var(--marca-rgb),.06) 6px 7px)}
+.suscrip__acciones{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.suscrip__acciones .check a{color:var(--marca);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- NUESTROS ALIADOS ---------- */
+.aliados{padding:var(--s5) 0 var(--s6);border-top:1px solid var(--linea)}
+.aliados__titulo{text-align:center;font-size:clamp(1.6rem,1.2rem + 1.4vw,2.3rem)}
+.aliados__lista{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(24px,4vw,64px);margin-top:var(--s4)}
+.aliados__lista li{display:flex}
+.aliados__lista img{height:46px;width:auto;filter:grayscale(1);opacity:.55;transition:opacity var(--d-2) ease,filter var(--d-2) ease,transform var(--d-2) var(--ease-out)}
+.aliados__lista li:hover img{filter:none;opacity:1;transform:translateY(-2px)}
+@media (max-width:639px){.aliados__lista img{height:36px}}

@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (7-sep-2026; el día de envío cuenta), hasta el 16-sep-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 8, 16, 22, 0);   // 17-sep-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inmobiliaria Don Chamberí · Inmobiliaria en Chamberí</title>
+<meta name="description" content="Inmobiliaria Don Chamberí, tu mejor opción para comprar, vender o alquilar propiedades en Chamberí. Servicio personalizado y asesoramiento experto. ¡Llámanos al 910 59 30 85!">
+<meta name="theme-color" content="#4C3128">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Don Chamberí">
+<meta property="og:url" content="https://jjurado2026.github.io/don-chamberi/">
+<meta property="og:title" content="Inmobiliaria Don Chamberí · Inmobiliaria en Chamberí">
+<meta property="og:description" content="Inmobiliaria Don Chamberí, tu mejor opción para comprar, vender o alquilar propiedades en Chamberí. Servicio personalizado y asesoramiento experto. ¡Llámanos al 910 59 30 85!">
+<meta property="og:image" content="https://jjurado2026.github.io/don-chamberi/assets/img/hero/ventana-fachada-960.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/albert-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/global.css?v=8122e5d3">
+<link rel="stylesheet" href="assets/css/home.css?v=46928a3e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 118'%3E%3Cpath d='M4 4h92v58c0 30-22 46-46 52C26 108 4 92 4 62Z' fill='%234C3128'/%3E%3Cg fill='%23E8B92B'%3E%3Crect x='27' y='54' width='23' height='20'/%3E%3Crect x='73' y='54' width='23' height='20'/%3E%3Crect x='50' y='74' width='23' height='20'/%3E%3Crect x='27' y='94' width='23' height='20'/%3E%3Crect x='73' y='94' width='23' height='20'/%3E%3Crect x='4' y='74' width='23' height='20'/%3E%3C/g%3E%3Cg fill='none' stroke='%23E8B92B' stroke-width='6' stroke-linecap='round'%3E%3Ccircle cx='30' cy='29' r='10'/%3E%3Cpath d='M40 29h38M70 29v10M79 29v8'/%3E%3C/g%3E%3C/svg%3E">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="escudo" viewBox="0 0 100 118">
+    <defs><clipPath id="escudo-clip"><path d="M4 4h92v58c0 30-22 46-46 52C26 108 4 92 4 62Z"/></clipPath></defs>
+    <g clip-path="url(#escudo-clip)">
+      <rect width="100" height="118" fill="var(--escudo-fondo,#fff)"/>
+      <rect width="100" height="54" fill="var(--escudo-arriba,currentColor)"/>
+      <g fill="var(--escudo-damero,currentColor)">
+        <rect x="27" y="54" width="23" height="20"/><rect x="73" y="54" width="23" height="20"/>
+        <rect x="4" y="74" width="23" height="20"/><rect x="50" y="74" width="23" height="20"/>
+        <rect x="27" y="94" width="23" height="20"/><rect x="73" y="94" width="23" height="20"/>
+      </g>
+      <g fill="none" stroke="var(--escudo-llave,#fff)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="30" cy="29" r="10"/><circle cx="30" cy="29" r="3"/>
+        <path d="M40 29h38M70 29v10M79 29v8"/>
+      </g>
+    </g>
+    <path d="M4 4h92v58c0 30-22 46-46 52C26 108 4 92 4 62Z" fill="none" stroke="currentColor" stroke-width="3.5"/>
+  </symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></symbol>
+  <symbol id="i-buscar" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-camara" viewBox="0 0 24 24"><path d="M4 7h3l2-2.5h6L17 7h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-tour" viewBox="0 0 24 24"><path d="M12 3 3 7.5v9L12 21l9-4.5v-9zM3 7.5 12 12l9-4.5M12 12v9"/></symbol>
+  <symbol id="i-enlace" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></symbol>
+  <symbol id="i-regla" viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2"/></symbol>
+  <symbol id="i-cama" viewBox="0 0 24 24"><path d="M3 18V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9M3 14h18M6 7V5h5v2"/></symbol>
+  <symbol id="i-banera" viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM6 12V6a2 2 0 0 1 4 0M6 21v-2M18 21v-2"/></symbol>
+  <symbol id="i-coche" viewBox="0 0 24 24"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M3 11h18v6h-2M5 17H3v-6"/><circle cx="7" cy="17" r="1.5"/><circle cx="17" cy="17" r="1.5"/></symbol>
+  <symbol id="i-parcela" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6-9 6zM3 14l9 6 9-6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M3 3h5l13 18h-5zM21 3l-7.5 8.5M3 21l7-8"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+  <symbol id="i-google" viewBox="0 0 24 24"><path d="M21 12h-9v3.5h5.2A5.5 5.5 0 1 1 15.9 8.6"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4M11 9h4v2a4 4 0 0 1 7 2.5V21h-4v-7a1.5 1.5 0 0 0-3 0v7h-4z"/></symbol>
+  <symbol id="i-correo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4L19 7"/></symbol>
+</svg>
+
+<a class="salta" href="#principal">Saltar al contenido</a>
+
+<!-- ============================ CABECERA ============================ -->
+<header class="cab">
+  <div class="env cab__tira">
+    <ul class="redes" aria-label="Redes sociales">
+      <li><a href="https://twitter.com/donchamberi_es/" target="_blank" rel="noopener" aria-label="Twitter / X"><svg class="ic"><use href="#i-x"/></svg></a></li>
+      <li><a href="https://www.instagram.com/inmobiliariadonchamberi/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-instagram"/></svg></a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=100083190205307" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-facebook"/></svg></a></li>
+      <li><a href="https://n9.cl/btimm" target="_blank" rel="noopener" aria-label="Google"><svg class="ic"><use href="#i-google"/></svg></a></li>
+    </ul>
+    <p class="cab__claim">La inmobiliaria de Madrid</p>
+    <div class="idioma">
+      <button class="idioma__btn" type="button" data-desplegable="abierta" aria-controls="lista-idiomas" aria-expanded="false">
+        Idioma <span aria-hidden="true">·</span> Español <svg class="ic ic--chev"><use href="#i-chev"/></svg>
+      </button>
+      <div class="idioma__lista" id="lista-idiomas">
+        <a href="https://www.inmobiliariadonchamberi.madrid/es/" lang="es" aria-current="true">Español</a>
+        <a href="https://www.inmobiliariadonchamberi.madrid/en/" lang="en">English</a>
+        <a href="https://www.inmobiliariadonchamberi.madrid/it/" lang="it">Italiano</a>
+        <a href="https://www.inmobiliariadonchamberi.madrid/ru/" lang="ru">русский</a>
+        <a href="https://www.inmobiliariadonchamberi.madrid/zh/" lang="zh">中國的</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="env cab__fila">
+    <a class="logo" href="https://www.inmobiliariadonchamberi.madrid/es/" aria-label="Don Chamberí, Grupo Inmobiliario. Inicio">
+      <svg class="logo__escudo" aria-hidden="true"><use href="#escudo"/></svg>
+      <span class="logo__texto"><span class="logo__nombre">Don Chamberí</span><span class="logo__grupo">Grupo Inmobiliario</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/" aria-current="page">Inicio</a></li>
+        <li>
+          <button type="button" data-desplegable="abierta" aria-controls="sub-confienos" aria-expanded="false">Confíenos su casa <svg class="ic"><use href="#i-chev"/></svg></button>
+          <div class="nav__sub" id="sub-confienos">
+            <a href="https://www.inmobiliariadonchamberi.madrid/es/cms/vender_casa_chamberi/">Vendo casa</a>
+            <a href="https://www.inmobiliariadonchamberi.madrid/es/cms/alquilar_casa_chamberi/">Alquilo casa</a>
+          </div>
+        </li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/servicios_inmobiliarios_chamberi/">Servicios</a></li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/inmobiliaria_chamberi_madrid/">Nosotros</a></li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/noticias/">Noticias</a></li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/contacto/">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="cab__acciones">
+      <a class="tel" href="tel:+34910593085"><svg class="ic"><use href="#i-tel"/></svg><span class="tel__num">910 59 30 85</span><span class="oculto">Llamar al 910 59 30 85</span></a>
+      <button class="hamb" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir el menú">
+        <svg class="ic hamb__abrir"><use href="#i-menu"/></svg>
+        <svg class="ic hamb__cerrar"><use href="#i-cerrar"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Su CTA fijo "Contacto": botón flotante que abre el cajón (va aquí para que sea el segundo elemento al tabular) -->
+<button class="contacto-tab" type="button" data-abre-contacto aria-controls="cajon-contacto" aria-expanded="false"><svg class="ic"><use href="#i-tel"/></svg> Contacto</button>
+
+<nav class="menu-movil" id="menu-movil" aria-label="Menú">
+  <ul>
+    <li><a href="https://www.inmobiliariadonchamberi.madrid/es/">Inicio</a></li>
+    <li><span>Confíenos su casa</span>
+      <ul>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/vender_casa_chamberi/">Vendo casa</a></li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/alquilar_casa_chamberi/">Alquilo casa</a></li>
+      </ul>
+    </li>
+    <li><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/servicios_inmobiliarios_chamberi/">Servicios</a></li>
+    <li><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/inmobiliaria_chamberi_madrid/">Nosotros</a></li>
+    <li><a href="https://www.inmobiliariadonchamberi.madrid/es/noticias/">Noticias</a></li>
+    <li><a href="https://www.inmobiliariadonchamberi.madrid/es/contacto/">Contacto</a></li>
+  </ul>
+  <div class="menu-movil__pie">
+    <p class="menu-movil__claim">La inmobiliaria de Madrid</p>
+    <p class="campo__rotulo">Idioma</p>
+    <div class="menu-movil__idiomas">
+      <a href="https://www.inmobiliariadonchamberi.madrid/es/" aria-current="true">Español</a>
+      <a href="https://www.inmobiliariadonchamberi.madrid/en/">English</a>
+      <a href="https://www.inmobiliariadonchamberi.madrid/it/">Italiano</a>
+      <a href="https://www.inmobiliariadonchamberi.madrid/ru/">русский</a>
+      <a href="https://www.inmobiliariadonchamberi.madrid/zh/">中國的</a>
+    </div>
+    <ul class="redes" aria-label="Redes sociales">
+      <li><a href="https://twitter.com/donchamberi_es/" aria-label="Twitter / X"><svg class="ic"><use href="#i-x"/></svg></a></li>
+      <li><a href="https://www.instagram.com/inmobiliariadonchamberi/" aria-label="Instagram"><svg class="ic"><use href="#i-instagram"/></svg></a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=100083190205307" aria-label="Facebook"><svg class="ic"><use href="#i-facebook"/></svg></a></li>
+      <li><a href="https://n9.cl/btimm" aria-label="Google"><svg class="ic"><use href="#i-google"/></svg></a></li>
+    </ul>
+    <a class="btn btn--marca" href="tel:+34910593085"><svg class="ic"><use href="#i-tel"/></svg> 910 59 30 85</a>
+  </div>
+</nav>
+
+<main id="principal">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="titulo-hero">
+  <div class="env hero__env">
+    <div class="hero__texto">
+      <h1 class="hero__titulo" id="titulo-hero" style="--i:1">Venda o alquile su casa con la <em>tranquilidad</em> que se merece</h1>
+      <p class="hero__sub" style="--i:2">Obtén una valoración experta y precisa sin coste</p>
+      <div class="hero__cta" style="--i:3">
+        <a class="btn btn--marca" href="https://www.inmobiliariadonchamberi.madrid/es/cms/vender_casa_chamberi/">Vendo casa <svg class="ic ic--flecha"><use href="#i-flecha"/></svg></a>
+        <a class="btn btn--linea" href="https://www.inmobiliariadonchamberi.madrid/es/cms/alquilar_casa_chamberi/">Alquilo casa</a>
+      </div>
+    </div>
+
+    <div class="ventanas" role="group" aria-label="Tres viviendas de nuestra cartera en Chamberí">
+      <figure class="ventana" style="--i:0">
+        <div class="ventana__marco">
+          <img src="assets/img/hero/ventana-fachada-720.webp" srcset="assets/img/hero/ventana-fachada-480.webp 480w, assets/img/hero/ventana-fachada-720.webp 720w, assets/img/hero/ventana-fachada-960.webp 960w" sizes="(min-width:1024px) 22vw, 62vw" width="720" height="1080" alt="Fachada señorial con balcones de forja en Arapiles, Chamberí" fetchpriority="high">
+        </div>
+        <figcaption><b>Arapiles</b><span>Ref. DCH-636963</span></figcaption>
+      </figure>
+      <figure class="ventana" style="--i:1">
+        <div class="ventana__marco">
+          <img src="assets/img/hero/ventana-salon-720.webp" srcset="assets/img/hero/ventana-salon-480.webp 480w, assets/img/hero/ventana-salon-720.webp 720w, assets/img/hero/ventana-salon-960.webp 960w" sizes="(min-width:1024px) 22vw, 62vw" width="720" height="1080" alt="Salón exterior con techos altos y tarima en una finca de 1942 de Trafalgar, Chamberí">
+        </div>
+        <figcaption><b>Trafalgar</b><span>Ref. DCH-631569</span></figcaption>
+      </figure>
+      <figure class="ventana" style="--i:2">
+        <div class="ventana__marco">
+          <img src="assets/img/hero/ventana-balcon-720.webp" srcset="assets/img/hero/ventana-balcon-480.webp 480w, assets/img/hero/ventana-balcon-720.webp 720w, assets/img/hero/ventana-balcon-960.webp 960w" sizes="(min-width:1024px) 22vw, 62vw" width="720" height="1080" alt="Vista desde el balcón a una calle arbolada de Ríos Rosas, Chamberí">
+        </div>
+        <figcaption><b>Ríos Rosas</b><span>Ref. DCH-634216</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ATENDEMOS ============================
+     Su titular y su párrafo, con lo que ya dicen de sí mismos en "Nosotros" (16 años, valores)
+     y en el pie (tres oficinas). Foto de su ficha DCH-636795. -->
+<section class="intro" aria-labelledby="titulo-intro">
+  <div class="env intro__grid">
+    <figure class="intro__figura rv">
+      <div class="intro__marco">
+        <img src="assets/img/props/636795-1-1200.webp" srcset="assets/img/props/636795-1-480.webp 480w, assets/img/props/636795-1-800.webp 800w, assets/img/props/636795-1-1200.webp 1200w" sizes="(min-width:900px) 40vw, 100vw" width="1200" height="800" alt="Salón exterior con tarima y balcón en una vivienda de Almagro, Chamberí" loading="lazy">
+      </div>
+      <figcaption>Almagro, Chamberí · Ref. DCH-636795</figcaption>
+    </figure>
+    <div class="intro__texto rv" style="--i:1">
+      <h2 id="titulo-intro">Atendemos las necesidades únicas de cada hogar y cliente.</h2>
+      <p class="intro__lead">Nos enfocamos en atender las demandas individuales de cada hogar y cliente a través de un estudio detallado y personalizado de cada situación</p>
+      <p class="intro__p">Somos una agencia inmobiliaria con más de 16 años de experiencia en el sector. Especializados en el barrio de Chamberí, tenemos un perfecto conocimiento del entorno.</p>
+      <ul class="cifras" aria-label="Don Chamberí en cifras">
+        <li class="cifra"><p class="cifra__num">16<small>años</small></p><p class="cifra__txt">de experiencia en el sector inmobiliario</p></li>
+        <li class="cifra"><p class="cifra__num">3<small>oficinas</small></p><p class="cifra__txt">Martínez Campos, Santa Engracia y José Abascal</p></li>
+        <li class="cifra"><p class="cifra__num">4,6<small>/ 5</small></p><p class="cifra__txt">en Google, con 59 opiniones de clientes</p></li>
+      </ul>
+      <p class="intro__valores">Nuestro trabajo está basado en la transparencia, el trato personalizado y la innovación.</p>
+      <a class="btn btn--texto intro__cta" href="https://www.inmobiliariadonchamberi.madrid/es/cms/inmobiliaria_chamberi_madrid/">Sobre nosotros <svg class="ic ic--flecha"><use href="#i-flecha"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SERVICIOS ============================
+     Los siete servicios con su descripción, literales de su página de Servicios. -->
+<section class="servicios" aria-labelledby="titulo-servicios">
+  <div class="env">
+    <div class="servicios__cab rv">
+      <h2 id="titulo-servicios">Servicios</h2>
+    </div>
+    <ul class="servicios__lista">
+      <li class="servicio rv" style="--i:0"><h3>Tasaciones</h3><p>Realizamos tasaciones y valoraciones inmobiliarias. Obtenga un informe realizado por un equipo técnico experto, perfectamente argumentado.</p></li>
+      <li class="servicio rv" style="--i:1"><h3>Asesoramiento financiero</h3><p>Trabajamos con un equipo de expertos que le asesoran para obtener la financiación de su casa más adecuada a sus necesidades y particularidades.</p></li>
+      <li class="servicio rv" style="--i:2"><h3>Asesoramiento jurídico</h3><p>Servicios legales especializados en el sector inmobiliario. Realice su consulta gratuita y en breve le respondemos con una solución.</p></li>
+      <li class="servicio rv" style="--i:3"><h3>Asesoramiento fiscal</h3><p>Beneficios fiscales del vendedor, cálculo de la plusvalía municipal, gastos de la venta, usufructo y nuda propiedad.</p></li>
+      <li class="servicio rv" style="--i:4"><h3>Asesoramiento energético</h3><p>Asesoramiento energético y gestión de suministros sin coste para clientes de Don Chamberí. Servicios prestados por Gasargi S.L.</p></li>
+      <li class="servicio rv" style="--i:5"><h3>Cámara de Comercio Italiana</h3><p>Colaboramos estrechamente como socios, presentando nuestros inmuebles y buscando soluciones inmobiliarias a otros socios de la Cámara de Comercio Italiana en Madrid.</p></li>
+      <li class="servicio rv" style="--i:6"><h3>Seguros de impago de alquiler</h3><p>Don Chamberí es mediador de la Mutua de Propietarios, especialistas en seguros de comunidades de propietarios, hogar, impago de alquiler y accidentes.</p></li>
+      <li class="servicio servicio--mas rv" style="--i:7"><a href="https://www.inmobiliariadonchamberi.madrid/es/cms/servicios_inmobiliarios_chamberi/"><span>Ver todos los servicios</span><svg class="ic ic--flecha"><use href="#i-flecha"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ PROPIEDADES ============================ -->
+<section class="props" id="propiedades" aria-labelledby="titulo-props">
+  <div class="env">
+    <div class="props__cab rv">
+      <h2 id="titulo-props">Propiedades</h2>
+    </div>
+
+    <form class="buscador rv" action="https://www.inmobiliariadonchamberi.madrid/es/" method="get" data-prototipo aria-label="Búsqueda de propiedades" style="--i:1">
+      <div class="buscador__fila">
+        <div class="campo campo--sin-rotulo">
+          <label for="b-operacion">Tipo de operación</label>
+          <select id="b-operacion" name="tipo_operacion">
+            <option value="">Tipo de operación</option>
+            <option value="V">Venta</option><option value="A">Alquiler</option><option value="T">Traspaso</option><option value="X">Venta/Alquiler</option><option value="H">Alquiler vacacional</option>
+          </select>
+        </div>
+        <div class="campo campo--sin-rotulo">
+          <label for="b-provincia">Provincia</label>
+          <select id="b-provincia" name="cod_metazona">
+            <option value="">Provincia</option>
+            <option value="3">Alicante</option><option value="5">Asturias</option><option value="10">Baleares (Illes Balears), Ibiza</option><option value="11">Baleares (Illes Balears), Mallorca</option><option value="12">Baleares (Illes Balears), Menorca</option><option value="14">Burgos</option><option value="16">Cádiz</option><option value="18">Castellón</option><option value="38">Madrid</option><option value="39">Málaga</option><option value="51">Segovia</option><option value="56">Toledo</option><option value="57">Valencia</option><option value="99">Internacional</option>
+          </select>
+        </div>
+        <div class="campo campo--sin-rotulo">
+          <label for="b-localidad">Localidad</label>
+          <select id="b-localidad" name="cod_superzona" disabled title="Se activa al elegir la provincia"><option value="">Localidad</option></select>
+        </div>
+        <div class="campo campo--sin-rotulo">
+          <label for="b-zona">Zona</label>
+          <select id="b-zona" name="cod_zona" disabled title="Se activa al elegir la localidad"><option value="">Zona</option></select>
+        </div>
+        <div class="campo campo--sin-rotulo">
+          <label for="b-tipo">Tipo de propiedad</label>
+          <select id="b-tipo" name="metatipo_propiedad">
+            <option value="">Tipo de propiedad</option>
+            <option value="V">Viviendas</option><option value="N">Negocios</option><option value="P">Parcelas</option><option value="G">Garajes</option><option value="O">Otras</option>
+          </select>
+        </div>
+        <div class="campo campo--sin-rotulo">
+          <label for="b-orden">Ordenación</label>
+          <select id="b-orden" name="ordenar_propiedades_por">
+            <option value="">Ordenación</option>
+            <option value="p">Precio (menor a mayor)</option><option value="P">Precio (mayor a menor)</option>
+            <option value="d">Núm. dormitorios (menor a mayor)</option><option value="D">Núm. dormitorios (mayor a menor)</option>
+            <option value="s">Superficie (menor a mayor)</option><option value="S">Superficie (mayor a menor)</option>
+            <option value="m">Precio/m2 (menor a mayor)</option><option value="M">Precio/m2 (mayor a menor)</option>
+            <option value="f">Fecha (menor a mayor)</option><option value="F">Fecha (mayor a menor)</option>
+          </select>
+        </div>
+        <button class="btn btn--marca" type="submit"><svg class="ic"><use href="#i-buscar"/></svg> Buscar</button>
+      </div>
+
+      <div class="buscador__mas" id="busqueda-avanzada">
+        <div>
+          <div class="buscador__avanzada">
+            <div class="campo">
+              <label for="b-ref">Referencia</label>
+              <input id="b-ref" type="text" name="kwd" placeholder="Referencia">
+            </div>
+            <fieldset class="campo">
+              <legend>Dormitorios</legend>
+              <div class="segmento">
+                <label><input type="checkbox" name="num_dormitorios_desde[]" value="1"><span>1</span></label>
+                <label><input type="checkbox" name="num_dormitorios_desde[]" value="2"><span>2</span></label>
+                <label><input type="checkbox" name="num_dormitorios_desde[]" value="3"><span>3</span></label>
+                <label><input type="checkbox" name="num_dormitorios_desde[]" value="4"><span>&gt; 4</span></label>
+              </div>
+            </fieldset>
+            <div class="campo">
+              <label for="b-m2">m²</label>
+              <input id="b-m2" type="number" name="superficie_min" placeholder="Mínimos m2" min="0" inputmode="numeric">
+            </div>
+            <div class="campo">
+              <label for="b-precio">Precio máximo</label>
+              <input id="b-precio" type="number" name="precio_max" placeholder="Precio máximo" min="0" inputmode="numeric">
+            </div>
+            <fieldset class="campo campo--ancho">
+              <legend>Características</legend>
+              <div class="buscador__extras">
+                <label class="check"><input type="checkbox" name="ascensor" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span>Ascensor</label>
+                <label class="check"><input type="checkbox" name="garaje" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span>Garaje</label>
+                <label class="check"><input type="checkbox" name="terrazas" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span>Terrazas</label>
+                <label class="check"><input type="checkbox" name="calefaccion" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span>Calefacción</label>
+                <label class="check"><input type="checkbox" name="aire_acondicionado" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span>Aire acondicionado</label>
+                <label class="check"><input type="checkbox" name="piscina" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span>Piscina</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div class="buscador__pie">
+        <button class="btn btn--texto" type="button" data-desplegable="abierto" data-solo="no" aria-controls="busqueda-avanzada" aria-expanded="false">Búsqueda avanzada <svg class="ic ic--chev"><use href="#i-chev"/></svg></button>
+        <p class="estado" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div class="fichas">
+      <article class="ficha rv" style="--i:0">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--novedad">Novedad</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Arapiles-Chamberi-Madrid/636963/" aria-label="Piso venta en Arapiles, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/636963-1-800.webp" srcset="assets/img/props/636963-1-480.webp 480w, assets/img/props/636963-1-800.webp 800w, assets/img/props/636963-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Arapiles, Chamberí, Madrid" aria-hidden="false">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636963-2-800.webp" data-srcset="assets/img/props/636963-2-480.webp 480w, assets/img/props/636963-2-800.webp 800w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Arapiles, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636963-3-800.webp" data-srcset="assets/img/props/636963-3-480.webp 480w, assets/img/props/636963-3-800.webp 800w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Arapiles, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636963-4-800.webp" data-srcset="assets/img/props/636963-4-480.webp 480w, assets/img/props/636963-4-800.webp 800w, assets/img/props/636963-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Arapiles, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Don Chamberí Inmobiliaria presenta en exclusiva este piso de 6 habitaciones en Arapiles
+
+Piso de 6 habitaciones en el barrio de Arapiles, Chamberí, una zona con demanda estable para alquiler por habitaciones.
+
+Las 6 habitaciones son de buen tamaño y están distribuidas para separar bien las zonas privadas de las comunes. La vivienda incluye salón-comedor, cocina independiente y baño completo. El edificio está consolidado, en una calle tranquila y con todos los servicios cerca.
+
+Arapiles ofrece comercio de proximidad, mercados, cafeterías y conexión de metro por las líneas 3 y 6. Su proximidad a la Ciudad Universitaria hace que la demanda de alquiler provenga principalmente de estudiantes y jóvenes profesionales, con una ocupación estable durante el curso.
+
+Un inmueble adecuado tanto para inversión en alquiler por habitaciones como para uso familiar, dado su tamaño.
+
+Para más información o para concertar una visita, contacte con Don Chamberí Inmobiliaria.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Arapiles-Chamberi-Madrid/636963/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en venta</span>
+            <span class="ficha__ref">Ref. DCH-636963 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/636963" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Arapiles-Chamberi-Madrid/636963/">Arapiles, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>124 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>6 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>2 baños</li></ul>
+          <p class="ficha__precio">930.000 €</p>
+        </div>
+      </article>
+      <article class="ficha rv" style="--i:1">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--exclusiva">Exclusiva</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Dúplex-Gaztambide-Chamberi-Madrid/636960/" aria-label="Dúplex en Gaztambide, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/636960-1-320.webp" width="320" height="220" alt="Dúplex en Gaztambide, Chamberí, Madrid" aria-hidden="false">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636960-2-320.webp" width="320" height="220" alt="Dúplex en Gaztambide, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636960-3-320.webp" width="320" height="220" alt="Dúplex en Gaztambide, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636960-4-320.webp" width="320" height="220" alt="Dúplex en Gaztambide, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Exclusivamente para estudiantes
+
+Apartamento tipo dúplex con terraza , situado en la zona de Moncloa del Distrito de Chamberi.
+
+Es un piso muy iluminado, moderno y completamente amueblado, que cuenta con 90 metros de superficie útil. En la planta baja se encuentra el salóny la cocina. La planta superior cuenta con 2 habitaciones, un baño, una estancia de paso y la terraza. El piso en general cuenta con calefacción individual por conductos. La cocina está completamente amueblada, equipada y reformada.
+
+Muy bien comunicado con diferentes líneas de metro y autobuses. Estación de metro más cercana: Isla de Filipinas y moncloa
+
+Contáctenos para visitarlo! No pierda esta increíble oportunidad.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Dúplex-Gaztambide-Chamberi-Madrid/636960/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Dúplex en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-636960 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/636960" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Dúplex-Gaztambide-Chamberi-Madrid/636960/">Gaztambide, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>96 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>2 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>1 baño</li></ul>
+          <p class="ficha__precio">1.750 €</p>
+        </div>
+      </article>
+      <article class="ficha rv" style="--i:2">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--novedad">Novedad</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Chalet-Foso_Moreras-Aranjuez-Madrid/636952/" aria-label="Chalet venta en Foso-Moreras, Aranjuez, Madrid">
+            <img class="activa" src="assets/img/props/636952-1-800.webp" srcset="assets/img/props/636952-1-480.webp 480w, assets/img/props/636952-1-800.webp 800w, assets/img/props/636952-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Foso-Moreras, Aranjuez, Madrid" aria-hidden="false">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636952-2-800.webp" data-srcset="assets/img/props/636952-2-480.webp 480w, assets/img/props/636952-2-800.webp 800w, assets/img/props/636952-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Foso-Moreras, Aranjuez, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636952-3-800.webp" data-srcset="assets/img/props/636952-3-480.webp 480w, assets/img/props/636952-3-800.webp 800w, assets/img/props/636952-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Foso-Moreras, Aranjuez, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636952-4-800.webp" data-srcset="assets/img/props/636952-4-480.webp 480w, assets/img/props/636952-4-800.webp 800w, assets/img/props/636952-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Foso-Moreras, Aranjuez, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>40<span class="oculto"> fotos</span></span><span title="Visita virtual"><svg class="ic"><use href="#i-tour"/></svg>1<span class="oculto"> visita virtual</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Presentamos un chalet de 277 m² construidos sobre una parcela de 310 m². Sus propietarios lo diseñaron personalmente, invirtiendo especialmente en la cimentación y en la orientación de la vivienda, de forma que recibe luz solar en todas las direcciones a lo largo del día. El resultado es una casa luminosa en cada estancia, en cualquier momento de la jornada. Se dispone de documentación original de la construcción, incluidos los planos, que se puede aportar al comprador.
+
+Distribución en cuatro plantas:
+
+6 habitaciones 2 baños completos y 1 aseo Amplio salón Cocina independiente Bodega propia 3 terrazas repartidas en distintas plantas Parcela con árboles
+
+Un entorno privilegiado
+
+La vivienda se ubica en una de las zonas más arboladas y tranquilas de Aranjuez, junto a un parque de gran importancia que regala aire limpio y naturaleza a pocos pasos de casa. Es un entorno hipertranquilo, alejado del ruido y el ajetreo, pero con todo lo necesario a mano: colegios cercanos para las familias, zonas deportivas para el día a día activo, y la calma de un barrio residencial consolidado. Vivir aquí es disfrutar de espacio, naturaleza y tranquilidad sin renunciar a la comodidad de tener servicios esenciales muy cerca.
+
+Cuidada desde los cimientos
+
+Cada decisión constructiva responde a un proyecto meditado por sus propios propietarios, desde los cimientos hasta la orientación de cada estancia. Una oportunidad para quien busca una vivienda con personalidad propia y espacio real, en un entorno verde y sereno.
+
+Contacta con Don Chamberí Grupo Inmobiliario para concertar una visita.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Chalet-Foso_Moreras-Aranjuez-Madrid/636952/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Chalet en venta</span>
+            <span class="ficha__ref">Ref. DCH-636952 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/636952" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Chalet-Foso_Moreras-Aranjuez-Madrid/636952/">Foso-Moreras, Aranjuez, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>277 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>6 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>3 baños</li><li title="garaje"><svg class="ic"><use href="#i-coche"/></svg>3 garaje</li><li title="superficie parcela"><svg class="ic"><use href="#i-parcela"/></svg>310 m² parcela</li></ul>
+          <p class="ficha__precio">595.000 €</p>
+        </div>
+      </article>
+      <article class="ficha rv ficha--reservado" style="--i:0">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--reservado">Reservado</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/636795/" aria-label="Piso en Almagro, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/636795-1-800.webp" srcset="assets/img/props/636795-1-480.webp 480w, assets/img/props/636795-1-800.webp 800w, assets/img/props/636795-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636795-2-800.webp" data-srcset="assets/img/props/636795-2-480.webp 480w, assets/img/props/636795-2-800.webp 800w, assets/img/props/636795-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636795-3-800.webp" data-srcset="assets/img/props/636795-3-480.webp 480w, assets/img/props/636795-3-800.webp 800w, assets/img/props/636795-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636795-4-800.webp" data-srcset="assets/img/props/636795-4-480.webp 480w, assets/img/props/636795-4-800.webp 800w, assets/img/props/636795-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>40<span class="oculto"> fotos</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Un piso que no se encuentra todos los días. 168 m² de amplitud real, luz exterior en todas las estancias y la elegancia de un portal verdaderamente señorial, de esos que ya anticipan lo que vas a encontrar arriba.
+
+Tres habitaciones, todas de generosas dimensiones, pensadas para vivir con espacio de sobra: nada de cuartos pequeños ni aprovechados a la fuerza. Dos de ellas cuentan con armarios empotrados. Dos baños completos y amplios, con ese punto de confort que marca la diferencia en el día a día.
+
+La vivienda está recién pintada y en perfecto estado para entrar a vivir sin tocar nada. Y para los meses de calor, cuenta con aire acondicionado en absolutamente todas las habitaciones y en el salón: comodidad total, todo el año.
+
+Pero si algo distingue a esta vivienda es su ubicación. Zurbano 82 te sitúa en Almagro, uno de los rincones más cotizados y con más carácter de Madrid: calles tranquilas y arboladas, arquitectura de otra época, y a un paso del Paseo de la Castellana, con toda su oferta de comercio, restauración y vida. Vivir aquí no es solo tener una casa grande y luminosa; es formar parte de uno de los barrios con más prestigio de la capital.
+
+Una oportunidad para quien busca espacio, elegancia y ubicación, sin renunciar a nada.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/636795/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-636795 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/636795" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/636795/">Almagro, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>168 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>3 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>2 baños</li></ul>
+          <p class="ficha__precio">2.850 €</p>
+        </div>
+      </article>
+      <article class="ficha rv" style="--i:1">
+        <div class="ficha__foto">
+          
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Trafalgar-Chamberi-Madrid/636793/" aria-label="Piso venta en Trafalgar, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/636793-1-800.webp" srcset="assets/img/props/636793-1-480.webp 480w, assets/img/props/636793-1-800.webp 800w, assets/img/props/636793-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636793-2-800.webp" data-srcset="assets/img/props/636793-2-480.webp 480w, assets/img/props/636793-2-800.webp 800w, assets/img/props/636793-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636793-3-800.webp" data-srcset="assets/img/props/636793-3-480.webp 480w, assets/img/props/636793-3-800.webp 800w, assets/img/props/636793-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/636793-4-800.webp" data-srcset="assets/img/props/636793-4-480.webp 480w, assets/img/props/636793-4-800.webp 800w, assets/img/props/636793-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>40<span class="oculto"> fotos</span></span><span title="Visita virtual"><svg class="ic"><use href="#i-tour"/></svg>1<span class="oculto"> visita virtual</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Don Chamberí Inmobiliaria presenta en exclusiva este piso en una ubicación inmejorable, en una tercera planta exterior, muy luminoso y para reforma integral.
+
+Distribuido en 3 habitaciones, baño completo, cocina independiente y salón, es una vivienda con mucho potencial para adaptarla a tus necesidades.
+
+Al tratarse de la penúltima planta del edificio, incluso las estancias interiores reciben una gran cantidad de luz natural a través de los dos patios de luces a los que dan.
+
+Se encuentra en el barrio de Trafalgar, una de las zonas más demandadas de Chamberí, rodeada de una amplia oferta de comercios, cines, restaurantes y colegios. Está a solo 30 segundos andando del metro de Bilbao, entre las calles de Trafalgar y Luchana, esta calle desemboca en la plaza de Olavide (a 2 minutos a pie).
+
+Una oportunidad única para reformar a tu gusto en una de las zonas con más encanto de Madrid.
+
+¡No dudes en llamarnos para ir a verlo!</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Trafalgar-Chamberi-Madrid/636793/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en venta</span>
+            <span class="ficha__ref">Ref. DCH-636793 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/636793" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Trafalgar-Chamberi-Madrid/636793/">Trafalgar, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>92 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>3 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>1 baño</li></ul>
+          <p class="ficha__precio">900.000 €</p>
+        </div>
+      </article>
+      <article class="ficha rv ficha--reservado" style="--i:2">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--reservado">Reservado</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/634216/" aria-label="Piso en Ríos Rosas, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/634216-1-800.webp" srcset="assets/img/props/634216-1-480.webp 480w, assets/img/props/634216-1-800.webp 800w, assets/img/props/634216-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/634216-2-800.webp" data-srcset="assets/img/props/634216-2-480.webp 480w, assets/img/props/634216-2-800.webp 800w, assets/img/props/634216-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/634216-3-800.webp" data-srcset="assets/img/props/634216-3-480.webp 480w, assets/img/props/634216-3-800.webp 800w, assets/img/props/634216-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/634216-4-800.webp" data-srcset="assets/img/props/634216-4-480.webp 480w, assets/img/props/634216-4-800.webp 800w, assets/img/props/634216-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>37<span class="oculto"> fotos</span></span><span title="Visita virtual"><svg class="ic"><use href="#i-tour"/></svg>1<span class="oculto"> visita virtual</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Don Chamberí presenta en exclusiva este luminoso piso en el corazón de Ríos Rosas.
+
+Situado en cuarta planta con orientación sur y vistas a la calle, el apartamento ofrece una distribución práctica de dos habitaciones, baño completo y cocina independiente recién reformada.
+
+El suelo de tarima nuevo aporta calidez al conjunto, mientras que los ventanales hasta el suelo en salón y habitación inundan de luz natural cada rincón.
+
+Se alquila sin amueblar, ideal para familias que quieran personalizarlo a su gusto desde el primer día.
+
+Una ubicación privilegiada. En plena calle Ríos Rosas, a pocos pasos del Mercado de Alonso Cano, rodeado de comercios, supermercados y colegios —incluyendo el Liceo Italiano—, y con acceso directo a tres estaciones de metro: Ríos Rosas, Gregorio Marañón y Nuevos Ministerios.
+
+¿Te lo enseñamos? Llámanos y concertamos visita.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/634216/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-634216 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/634216" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/634216/">Ríos Rosas, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>69 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>2 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>1 baño</li></ul>
+          <p class="ficha__precio">1.850 €</p>
+        </div>
+      </article>
+      <article class="ficha rv" style="--i:0">
+        <div class="ficha__foto">
+          
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Chalet-Nino_Jesus-Retiro-Madrid/633156/" aria-label="Chalet venta en Niño Jesús, Retiro, Madrid">
+            <img class="activa" src="assets/img/props/633156-1-800.webp" srcset="assets/img/props/633156-1-480.webp 480w, assets/img/props/633156-1-800.webp 800w, assets/img/props/633156-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Niño Jesús, Retiro, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/633156-2-800.webp" data-srcset="assets/img/props/633156-2-480.webp 480w, assets/img/props/633156-2-800.webp 800w, assets/img/props/633156-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Niño Jesús, Retiro, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/633156-3-800.webp" data-srcset="assets/img/props/633156-3-480.webp 480w, assets/img/props/633156-3-800.webp 800w, assets/img/props/633156-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Niño Jesús, Retiro, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/633156-4-800.webp" data-srcset="assets/img/props/633156-4-480.webp 480w, assets/img/props/633156-4-800.webp 800w, assets/img/props/633156-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Chalet venta en Niño Jesús, Retiro, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>40<span class="oculto"> fotos</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Inmobiliaria Don Chamberí presenta esta joya oculta en la colonia del Retiro
+
+Descubre uno de esos rincones de Madrid que ya casi no quedan: una casa unifamiliar de tres plantas en plena Colonia del Retiro, el barrio conocido como &quot;La Regalada&quot; por sus calles arboladas, tranquilas y con encanto propio. Un hogar con carácter, pensado para quien busca espacio, luz y la calma de vivir en una colonia con identidad, a un paso del Parque del Retiro.
+
+La vivienda se organiza en tres alturas independientes, pensadas para el día a día en familia. En la planta principal, la cocina semiabierta conecta de forma natural con una amplia sala de estar, ideal tanto para el ritmo diario como para recibir invitados. Las seis habitaciones se reparten entre las plantas superiores, acompañadas de tres baños completos. La terraza y el jardín privado suman ese metro cuadrado extra al aire libre que tanto se valora en el centro de Madrid, y el estacionamiento resuelve la vida práctica sin salir de casa.
+
+Calle Antonio Díaz-Cañabate, 6 — CP 28007, Retiro, Madrid, Casa de 3 plantas, 216 m² de parcela, 256 m² construidos, 6 dormitorios, 3 baños, Cocina semiabierta, Sala de estar, Terraza, Jardín, Estacionamiento, Orientación este/sur, Suelo radiante
+
+Vivir en la Colonia del Retiro es vivir a otro ritmo dentro de Madrid. Sus calles estrechas y arboladas no invitan a la prisa, sino a pasear; el bullicio de la ciudad queda cerca pero se siente lejano. Es un barrio residencial y familiar, con colegios de prestigio, supermercados y comercio de proximidad a un paso, y el verde del Parque del Retiro como telón de fondo. Un enclave tranquilo, discreto y muy cotizado, perfecto tanto para vivir como para invertir.
+
+No dudes en contactarnos y concertar una visita, te atendemos de manera personalizada y sin ningún tipo de compromiso. Inmobiliaria Don Chamberí, su inmobiliaria en Chamberí.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Chalet-Nino_Jesus-Retiro-Madrid/633156/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Chalet en venta</span>
+            <span class="ficha__ref">Ref. DCH-633156 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/633156" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Chalet-Nino_Jesus-Retiro-Madrid/633156/">Niño Jesús, Retiro, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>256 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>6 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>3 baños</li><li title="garaje"><svg class="ic"><use href="#i-coche"/></svg>Garaje</li><li title="superficie parcela"><svg class="ic"><use href="#i-parcela"/></svg>216 m² parcela</li></ul>
+          <p class="ficha__precio">2.590.000 €</p>
+        </div>
+      </article>
+      <article class="ficha rv ficha--reservado" style="--i:1">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--reservado">Reservado</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/632566/" aria-label="Piso en Ríos Rosas, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/632566-1-800.webp" srcset="assets/img/props/632566-1-480.webp 480w, assets/img/props/632566-1-800.webp 800w, assets/img/props/632566-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/632566-2-800.webp" data-srcset="assets/img/props/632566-2-480.webp 480w, assets/img/props/632566-2-800.webp 800w, assets/img/props/632566-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/632566-3-800.webp" data-srcset="assets/img/props/632566-3-480.webp 480w, assets/img/props/632566-3-800.webp 800w, assets/img/props/632566-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/632566-4-800.webp" data-srcset="assets/img/props/632566-4-480.webp 480w, assets/img/props/632566-4-800.webp 800w, assets/img/props/632566-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>35<span class="oculto"> fotos</span></span><span title="Visita virtual"><svg class="ic"><use href="#i-tour"/></svg>1<span class="oculto"> visita virtual</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Don Chamberí Inmobiliaria presenta esta propiedad recién reformada en alquiler
+
+Está ubicada en la calle de Alonso Cano 51, en pleno corazón de Ríos Rosas (Chamberí). Disponible de forma inmediata, se alquila sin muebles.
+
+Se tarta de una ivienda exterior de 80 m², recién reformada con acabados de lujo. Cuenta con dos amplias habitaciones, salón luminoso con gran mirador a la calle, trastero y plaza de garaje incluidos.
+
+Reforma de lujo recién finalizada Exterior y muy luminoso, con mirador a la calle Trastero y plaza de garaje incluidos 80 m² bien distribuidos Dos habitaciones
+
+Ríos Rosas es uno de los rincones más codiciados de Chamberí: calles tranquilas y arboladas, excelente comunicación (metro Ríos Rosas y Canal), y a un paso de Nuevos Ministerios, comercios, colegios y la vida de barrio que caracteriza a Chamberí.
+
+No dudes en contactarnos y concertar una visita, te atendemos de manera personalizada y sin ningún tipo de compromiso. Inmobiliaria Don Chamberí, su Inmobiliaria en Chamberí.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/632566/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-632566 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/632566" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/632566/">Ríos Rosas, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>100 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>2 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>2 baños</li><li title="garaje"><svg class="ic"><use href="#i-coche"/></svg>1 garaje</li></ul>
+          <p class="ficha__precio">2.400 €</p>
+        </div>
+      </article>
+      <article class="ficha rv" style="--i:2">
+        <div class="ficha__foto">
+          
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Trafalgar-Chamberi-Madrid/631569/" aria-label="Piso venta en Trafalgar, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/631569-1-800.webp" srcset="assets/img/props/631569-1-480.webp 480w, assets/img/props/631569-1-800.webp 800w, assets/img/props/631569-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/631569-2-800.webp" data-srcset="assets/img/props/631569-2-480.webp 480w, assets/img/props/631569-2-800.webp 800w, assets/img/props/631569-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/631569-3-800.webp" data-srcset="assets/img/props/631569-3-480.webp 480w, assets/img/props/631569-3-800.webp 800w, assets/img/props/631569-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/631569-4-800.webp" data-srcset="assets/img/props/631569-4-480.webp 480w, assets/img/props/631569-4-800.webp 800w, assets/img/props/631569-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso venta en Trafalgar, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>40<span class="oculto"> fotos</span></span><span title="Visita virtual"><svg class="ic"><use href="#i-tour"/></svg>1<span class="oculto"> visita virtual</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Hay pisos que se enseñan y pisos que se sienten. Este es de los segundos.
+
+Nada más entrar, la luz. Es exterior, así que el sol entra por todas las estancias a lo largo del día, algo que en un edificio de 1942 no es casual: es de esas fincas construidas para vivir bien, con techos altos y una distribución que hoy cuesta encontrar.
+
+216 m² dan para mucho más que metros: dan para imaginar. Seis habitaciones que pueden ser dormitorios, un despacho, un cuarto de invitados, un rincón de lectura o el estudio que llevas tiempo queriendo montar. Espacio de sobra para una familia numerosa, para quien teletrabaja y necesita separar zonas, o para quien simplemente quiere respirar en casa sin sentirse encajonado.
+
+Los armarios empotrados y el trastero resuelven el día a día sin esfuerzo. La calefacción central cuida el invierno. Y el acceso adaptado, algo poco habitual en una finca clásica de esta época, lo convierte también en una casa pensada para todas las etapas de la vida.
+
+Pero un piso no es solo el piso: es el barrio que hay al bajar. Trafalgar tiene ese punto de barrio de siempre que en Madrid ya escasea. Calles arboladas, mercados y comercios de toda la vida, terrazas con historia, colegios a un paseo y esa calma que solo se entiende viviéndola. Fuencarral te conecta en minutos con el centro y con el resto de Chamberí, con un transporte público que hace que todo quede cerca sin necesidad de coche.
+
+Es un piso con posibilidades, y un barrio para quedarse.
+
+¿Lo visitamos? Te lo enseñamos sin compromiso.
+
+Don Chamberí Inmobiliaria — tu inmobiliaria en Chamberí.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Trafalgar-Chamberi-Madrid/631569/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en venta</span>
+            <span class="ficha__ref">Ref. DCH-631569 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/631569" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Venta-Viviendas-Piso-Trafalgar-Chamberi-Madrid/631569/">Trafalgar, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>217 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>6 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>2 baños</li></ul>
+          <p class="ficha__precio">1.790.000 €</p>
+        </div>
+      </article>
+      <article class="ficha rv ficha--reservado" style="--i:0">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--reservado">Reservado</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/631355/" aria-label="Piso en Almagro, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/631355-1-800.webp" srcset="assets/img/props/631355-1-480.webp 480w, assets/img/props/631355-1-800.webp 800w, assets/img/props/631355-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/631355-2-800.webp" data-srcset="assets/img/props/631355-2-480.webp 480w, assets/img/props/631355-2-800.webp 800w, assets/img/props/631355-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/631355-3-800.webp" data-srcset="assets/img/props/631355-3-480.webp 480w, assets/img/props/631355-3-800.webp 800w, assets/img/props/631355-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/631355-4-800.webp" data-srcset="assets/img/props/631355-4-480.webp 480w, assets/img/props/631355-4-800.webp 800w, assets/img/props/631355-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>¡Oportunidad única en Chamberí! Estudio con encanto en el corazón de Almagro
+
+SÓLO CONTRATO DE LARGA ESTANCIA
+
+Don Chamberí Inmobiliaria te presenta este acogedor estudio en pleno centro de Almagro, una de las zonas más solicitadas de Chamberí.
+
+Este apartamento está en una segunda planta y destaca por su distribución abierta, con salón y dormitorio integrados, creando un espacio práctico y acogedor. La cocina, independiente y totalmente equipada, cuenta con ventana al exterior, proporcionando una excelente ventilación e iluminación natural. Está totalmente equipada e incluso dispone de lavadora/secadora.
+
+Además, el apartamento dispone de un amplio altillo al que se accede por una cómoda escalera escamoteable, ideal para aprovechar al máximo el espacio de almacenamiento.
+
+Al disponer de dos orientaciones, las ventanas de esta vivienda permiten una ventilación cruzada. Además abren sobre dos patios de luces muy tranquilos. La propiedad cuenta con calefacción individual eléctrica y un espacioso armario en la zona del dormitorio, lo que añade comodidad y funcionalidad.
+
+No pierdas la oportunidad de vivir en una ubicación privilegiada en Chamberí, cerca de todos los servicios y con excelente comunicación.
+
+Contáctanos hoy mismo para agendar una visita personalizada y sin compromiso. En Don Chamberí Inmobiliaria, nos encargamos de todo para que encuentres tu hogar ideal.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/631355/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-631355 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/631355" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/631355/">Almagro, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>30 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>1 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>1 baño</li></ul>
+          <p class="ficha__precio">900 €</p>
+        </div>
+      </article>
+      <article class="ficha rv ficha--reservado" style="--i:1">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--reservado">Reservado</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/630442/" aria-label="Piso en Ríos Rosas, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/630442-1-800.webp" srcset="assets/img/props/630442-1-480.webp 480w, assets/img/props/630442-1-800.webp 800w, assets/img/props/630442-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/630442-2-800.webp" data-srcset="assets/img/props/630442-2-480.webp 480w, assets/img/props/630442-2-800.webp 800w, assets/img/props/630442-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/630442-3-800.webp" data-srcset="assets/img/props/630442-3-480.webp 480w, assets/img/props/630442-3-800.webp 800w, assets/img/props/630442-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/630442-4-800.webp" data-srcset="assets/img/props/630442-4-480.webp 480w, assets/img/props/630442-4-800.webp 800w, assets/img/props/630442-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Ríos Rosas, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Inmobiliaria Don Chamberí presenta este acogedor piso en Ríos Rosas, ubicado en la tranquila calle de Espronceda.
+
+Perfecto para aquellos que buscan comodidad y estilo en un espacio de 60 metros cuadrados. Situado en la tercera planta de una finca con ascensor se encuentra este inmueble con una conveniente distribución que incluye una habitación con vestidor, un baño completo, una cocina de concepto abierto integrada al salón, y un práctico cuarto de lavado equipado con lavadora y secadora.
+
+Confort durante todo el año gracias a la calefacción con gas natural y el aire acondicionado instalado tanto en la habitación como en el salón, garantizando un ambiente ideal en cualquier temporada. Además, la moderna cocina cuenta con una encimera de inducción integrada, completamente invisible, que combina funcionalidad y elegancia en un solo espacio.
+
+Este encantador piso se alquila completamente amueblado. No pierdas la oportunidad de vivir en una de las zonas más codiciadas de la ciudad. ¡Contáctanos hoy mismo para más información y para programar una visita!</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/630442/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-630442 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/630442" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Rios_Rosas-Chamberi-Madrid/630442/">Ríos Rosas, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>60 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>1 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>1 baño</li></ul>
+          <p class="ficha__precio">1.800 €</p>
+        </div>
+      </article>
+      <article class="ficha rv ficha--reservado" style="--i:2">
+        <div class="ficha__foto">
+          <span class="ficha__sello ficha__sello--reservado">Reservado</span>
+          <a class="ficha__enlace-foto" href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/629519/" aria-label="Piso en Almagro, Chamberí, Madrid">
+            <img class="activa" src="assets/img/props/629519-1-800.webp" srcset="assets/img/props/629519-1-480.webp 480w, assets/img/props/629519-1-800.webp 800w, assets/img/props/629519-1-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="false" loading="lazy">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/629519-2-800.webp" data-srcset="assets/img/props/629519-2-480.webp 480w, assets/img/props/629519-2-800.webp 800w, assets/img/props/629519-2-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/629519-3-800.webp" data-srcset="assets/img/props/629519-3-480.webp 480w, assets/img/props/629519-3-800.webp 800w, assets/img/props/629519-3-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/props/629519-4-800.webp" data-srcset="assets/img/props/629519-4-480.webp 480w, assets/img/props/629519-4-800.webp 800w, assets/img/props/629519-4-1200.webp 1200w" sizes="(min-width:1100px) 30vw, (min-width:640px) 50vw, 100vw" width="1200" height="800" alt="Piso en Almagro, Chamberí, Madrid" aria-hidden="true">
+          </a>
+          <div class="ficha__contadores"><span title="Fotos"><svg class="ic"><use href="#i-camara"/></svg>40<span class="oculto"> fotos</span></span><span title="Visita virtual"><svg class="ic"><use href="#i-tour"/></svg>1<span class="oculto"> visita virtual</span></span></div>
+          <button class="ficha__flecha ficha__flecha--izq" type="button" aria-label="Foto anterior"><svg class="ic"><use href="#i-izq"/></svg></button>
+          <button class="ficha__flecha ficha__flecha--der" type="button" aria-label="Foto siguiente"><svg class="ic"><use href="#i-der"/></svg></button>
+          <span class="oculto ficha__foto-estado" aria-live="polite"></span>
+          <div class="ficha__desc"><p>Don Chamberí Inmobiliaria presenta en exclusiva este gran apartamento con mucha luz en el Paseo del General Martínez Campos.
+
+Salón muy espacioso con sofá cama, cocina abierta con lavadora y secadora y acceso a un agradable balcón desde el que se ve la calle y los jardines de atrás.
+
+Habitación doble con armarios empotrados, baño en suite y un balcón idéntico al del salón.
+
+La finca tiene conserje y además hay opción de tener plaza de garaje grande por 175 € más.
+
+No dudes en llamarnos y lo vamos a ver.</p><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/629519/">... ver más</a></div>
+        </div>
+        <div class="ficha__cuerpo">
+          <div class="ficha__meta">
+            <span class="ficha__tipo">Piso en alquiler</span>
+            <span class="ficha__ref">Ref. DCH-629519 <button class="copiar" type="button" data-url="https://www.inmobiliariadonchamberi.madrid/629519" aria-label="Copiar dirección al portapapeles" title="Copiar dirección al portapapeles"><svg class="ic"><use href="#i-enlace"/></svg></button></span>
+          </div>
+          <h3 class="ficha__loc"><a href="https://www.inmobiliariadonchamberi.madrid/es/Alquiler-Viviendas-Piso-Almagro-Chamberi-Madrid/629519/">Almagro, Chamberí, Madrid</a></h3>
+          <ul class="ficha__datos"><li title="superficie"><svg class="ic"><use href="#i-regla"/></svg>50 m²</li><li title="dormitorios"><svg class="ic"><use href="#i-cama"/></svg>1 dorm.</li><li title="baños"><svg class="ic"><use href="#i-banera"/></svg>1 baño</li></ul>
+          <p class="ficha__precio">1.650 €</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="props__pie rv">
+      <p>Seleccionadas: <b>362 propiedades</b></p>
+      <a class="btn btn--linea" href="https://www.inmobiliariadonchamberi.madrid/?prgr=propiedad_busc_av.php&web=100&cod_empresa=175&idioma=es&paso=1&tipo_web=2&tipo_operacion=&prioridad=4&cod_metazona=3%2C5%2C10%2C11%2C12%2C14%2C16%2C18%2C38%2C39%2C51%2C56%2C57%2C99&grupo_registros=1&num_total_props_seleccionadas=362&wth=kuku">siguiente <svg class="ic ic--flecha"><use href="#i-flecha"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CHAMBERÍ, BARRIO A BARRIO (sección nueva) ============================
+     Su texto de "Nosotros" ("¿Por qué vivir en Chamberí?"), su foto de Ríos Rosas y los seis barrios del distrito. -->
+<section class="barrios" id="chamberi" aria-labelledby="titulo-barrios">
+  <div class="barrios__banda">
+    <img src="assets/img/props/634216-3-1200.webp" srcset="assets/img/props/634216-3-480.webp 480w, assets/img/props/634216-3-800.webp 800w, assets/img/props/634216-3-1200.webp 1200w" sizes="100vw" width="1200" height="797" alt="Calle arbolada de Ríos Rosas, en Chamberí, vista desde un balcón" loading="lazy">
+    <span class="barrios__pie">Ríos Rosas · Ref. DCH-634216</span>
+    <div class="env"><h2 id="titulo-barrios">¿Por qué vivir en Chamberí?</h2></div>
+  </div>
+  <div class="env barrios__cuerpo">
+    <div class="barrios__texto rv">
+      <p>Chamberí es uno de los mejores lugares para vivir de Madrid y también, el que cuenta con mayor demanda de vivienda. Reúne todo lo que alguien querría tener a su disposición: colegios, hospitales, centros culturales, parques, comercios, terrazas.</p>
+      <p>Además, es una zona céntrica de Madrid, con mucho comercio tradicional, buenas comunicaciones y barrios interesantes como Malasaña o Chueca muy cerca. Es el tercer distrito con mayor renta per cápita tras Chamartín y Barrio de Salamanca, y se trata de una zona que reúne un estilo arquitectónico único, con algunos de los edificios señoriales más bonitos de Madrid.</p>
+    </div>
+    <nav class="callejero rv" style="--i:1" aria-label="Los seis barrios de Chamberí">
+      <a href="#propiedades"><span class="callejero__nombre">Almagro</span><span class="callejero__dato">3 viviendas en cartera</span><svg class="ic"><use href="#i-flecha"/></svg></a>
+      <a href="#propiedades"><span class="callejero__nombre">Trafalgar</span><span class="callejero__dato">2 viviendas en cartera</span><svg class="ic"><use href="#i-flecha"/></svg></a>
+      <a href="#propiedades"><span class="callejero__nombre">Ríos Rosas</span><span class="callejero__dato">3 viviendas en cartera</span><svg class="ic"><use href="#i-flecha"/></svg></a>
+      <a href="#propiedades"><span class="callejero__nombre">Arapiles</span><span class="callejero__dato">1 vivienda en cartera</span><svg class="ic"><use href="#i-flecha"/></svg></a>
+      <a href="#propiedades"><span class="callejero__nombre">Gaztambide</span><span class="callejero__dato">1 vivienda en cartera</span><svg class="ic"><use href="#i-flecha"/></svg></a>
+      <a href="https://www.inmobiliariadonchamberi.madrid/es/contacto/" data-abre-contacto aria-controls="cajon-contacto" aria-expanded="false"><span class="callejero__nombre">Vallehermoso</span><span class="callejero__dato">Consúltenos</span><svg class="ic"><use href="#i-flecha"/></svg></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============================ VALORACIÓN (sección nueva) ============================
+     Texto literal de su página "Vendo casa" y un formulario de valoración. -->
+<section class="valora" id="valoracion" aria-labelledby="titulo-valora">
+  <div class="env valora__env">
+    <div class="rv">
+      <h2 id="titulo-valora">Le ayudamos a vender su casa en Chamberí</h2>
+      <p class="valora__texto">Valoramos su casa con un método comparativo entre propiedades con similares características y en base a operaciones realizadas recientemente.</p>
+      <ul class="valora__lista">
+        <li>Nuestro modelo organizativo y de gestión nos permite tener los honorarios más ventajosos para usted, como propietario.</li>
+        <li>Realizamos campañas de Marketing e invertimos en publicidad.</li>
+        <li>Acompañamos en el proceso de compra-venta, desde el inicio hasta la escritura.</li>
+      </ul>
+      <p class="valora__tel">O llame al <a href="tel:+34910593085">910 59 30 85</a>. Estaremos encantados de hablar con usted personalmente.</p>
+    </div>
+    <form class="valora__form rv" style="--i:1" action="https://www.inmobiliariadonchamberi.madrid/es/cms/vender_casa_chamberi/" method="post" data-prototipo aria-label="Solicitar valoración">
+      <h3>Valoración de su vivienda</h3>
+      <p>Rellene el formulario y nos pondremos en contacto con usted.</p>
+      <div class="campo">
+        <label for="v-dir">Dirección de la vivienda</label>
+        <input id="v-dir" type="text" name="direccion" placeholder="Calle, número y piso" autocomplete="street-address">
+      </div>
+      <div class="valora__fila">
+        <div class="campo">
+          <label for="v-m2">Metros cuadrados</label>
+          <input id="v-m2" type="number" name="superficie" placeholder="m²" min="0" inputmode="numeric">
+        </div>
+        <div class="campo">
+          <label for="v-op">Quiero</label>
+          <select id="v-op" name="operacion"><option value="V">Vender</option><option value="A">Alquilar</option></select>
+        </div>
+      </div>
+      <div class="valora__fila">
+        <div class="campo">
+          <label for="v-nombre">Nombre</label>
+          <input id="v-nombre" type="text" name="nombre" placeholder="Nombre" autocomplete="name">
+        </div>
+        <div class="campo">
+          <label for="v-tel">Teléfono</label>
+          <input id="v-tel" type="tel" name="telefono" placeholder="Teléfono" autocomplete="tel" inputmode="tel">
+        </div>
+      </div>
+      <button class="btn btn--oro" type="submit">Solicitar valoración sin coste <svg class="ic ic--flecha"><use href="#i-flecha"/></svg></button>
+      <p class="valora__nota">Sin compromiso.</p>
+      <p class="estado" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ NUEVAS PROPIEDADES ============================ -->
+<section class="suscrip" aria-labelledby="titulo-suscrip">
+  <div class="env">
+    <div class="suscrip__panel rv">
+      <div class="suscrip__texto">
+        <h2 id="titulo-suscrip">Nuevas propiedades</h2>
+        <p>¿Te interesa recibir las ofertas de propiedades que aparecen en nuestra web?</p>
+      </div>
+      <form class="suscrip__form" action="https://www.inmobiliariadonchamberi.madrid/" method="post" data-prototipo>
+        <div class="campo">
+          <label for="s-email">Email</label>
+          <input id="s-email" type="email" name="email_susc" placeholder="Email" autocomplete="email">
+        </div>
+        <div class="campo">
+          <label for="s-nombre">Nombre</label>
+          <input id="s-nombre" type="text" name="nombre_susc" placeholder="Nombre" autocomplete="name">
+        </div>
+        <div class="campo">
+          <label for="s-tipo">Me interesa</label>
+          <select id="s-tipo" name="tipo_orden">
+            <option value="C">Compra</option><option value="A">Alquiler</option><option value="T">Traspaso</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="s-captcha">Código de seguridad</label>
+          <div class="captcha">
+            <span class="captcha__img" aria-hidden="true">7K4P</span>
+            <input id="s-captcha" type="text" name="captcha_code" placeholder="Código de seguridad" maxlength="6" autocomplete="off">
+          </div>
+        </div>
+        <div class="suscrip__acciones">
+          <label class="check"><input type="checkbox" name="aceptar_politica_privacidad" value="S"><span class="check__caja"><svg class="ic"><use href="#i-check"/></svg></span><span>Aceptar <a href="https://www.inmobiliariadonchamberi.madrid/es/politica_privacidad/" target="_blank" rel="noopener">Política de privacidad</a></span></label>
+          <button class="btn btn--marca" type="submit">Suscripción <svg class="ic ic--flecha"><use href="#i-flecha"/></svg></button>
+        </div>
+        <p class="estado" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ NUESTROS ALIADOS ============================ -->
+<section class="aliados" aria-labelledby="titulo-aliados">
+  <div class="env">
+    <h2 class="aliados__titulo rv" id="titulo-aliados">Nuestros aliados</h2>
+    <ul class="aliados__lista">
+      <li><img src="assets/img/partners/logo-sabadell.webp" alt="Banco Sabadell" width="277" height="92" loading="lazy"></li>
+      <li><img src="assets/img/partners/logo-uci.webp" alt="UCI" width="170" height="92" loading="lazy"></li>
+      <li><img src="assets/img/partners/logo-deutsche-bank.webp" alt="Deutsche Bank" width="292" height="92" loading="lazy"></li>
+      <li><img src="assets/img/partners/logo-mutua-propietarios.webp" alt="Mutua de Propietarios" width="186" height="92" loading="lazy"></li>
+      <li><img src="assets/img/partners/logo-accion-legal.webp" alt="Acción Legal" width="312" height="92" loading="lazy"></li>
+      <li><img src="assets/img/partners/logo-camara-comercio-italiana.webp" alt="Cámara de Comercio Italiana" width="217" height="92" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ PIE ============================ -->
+<footer class="pie">
+  <div class="env">
+    <div class="pie__sup">
+      <div class="pie__marca">
+        <a class="logo" href="https://www.inmobiliariadonchamberi.madrid/es/" aria-label="Don Chamberí, Grupo Inmobiliario">
+          <svg class="logo__escudo" aria-hidden="true"><use href="#escudo"/></svg>
+          <span class="logo__texto"><span class="logo__nombre">Don Chamberí</span><span class="logo__grupo">Grupo Inmobiliario</span></span>
+        </a>
+        <p class="pie__dir">Paseo General Martínez Campos 23<br>28010 Madrid<br><a href="tel:+34910593085">910 59 30 85</a></p>
+      </div>
+      <div class="pie__col">
+        <h3>Madrid</h3>
+        <p>Boutique Inmobiliaria<span>Paseo del General Martínez Campos, 23. 28010</span><span>L - V 9:30–14:00, 16:30–19:30</span><span>Sábados 11:00 - 13:30</span></p>
+      </div>
+      <div class="pie__col">
+        <h3>Madrid</h3>
+        <p>Central de Gestión y firmas<span>Calle de Santa Engracia, 23. 28010</span><span>Cita previa</span></p>
+      </div>
+      <div class="pie__col">
+        <h3>Madrid</h3>
+        <p>Oficina de Gestión y firmas<span>Calle de José Abascal, 41. 28003</span><span>Cita previa</span></p>
+      </div>
+      <div class="pie__col">
+        <h3>Contacto</h3>
+        <p><a href="tel:+34910593085">910 59 30 85</a><span><a href="mailto:info@donchamberi.es">info@donchamberi.es</a></span></p>
+        <ul class="redes" aria-label="Redes sociales">
+          <li><span title="LinkedIn (sin enlace en la web actual)" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg></span></li>
+          <li><a href="https://www.instagram.com/inmobiliariadonchamberi/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-instagram"/></svg></a></li>
+          <li><a href="https://n9.cl/btimm" target="_blank" rel="noopener" aria-label="Google"><svg class="ic"><use href="#i-google"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pie__enlaces">
+      <div>
+        <h3><a href="https://www.inmobiliariadonchamberi.madrid/">Propiedades en España</a></h3>
+        <ul>
+          <li><a href="https://www.inmobiliariadonchamberi.madrid/es/venta/terreno-r%C3%BAstico-agr%C3%ADcola/Benissa,%20Alicante/3-530-10/">Venta de terreno rústico/agrícola en Benissa</a></li>
+          <li><a href="https://www.inmobiliariadonchamberi.madrid/es/venta/pisos/Lista,%20Salamanca,%20Madrid,%20/38-930-1700-50/">Venta de pisos en Madrid, Salamanca, Lista</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3><a href="https://www.inmobiliariadonchamberi.madrid/es/noticias/">Noticias</a></h3>
+      </div>
+    </div>
+
+    <div class="pie__inf">
+      <ul class="pie__legal">
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/aviso_legal/">Aviso legal</a></li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/politica_privacidad/">Política de privacidad</a></li>
+        <li><a href="https://www.inmobiliariadonchamberi.madrid/es/politica_cookies/">Política de cookies</a></li>
+      </ul>
+      <p class="pie__credito"><a href="http://www.artekasa.es/" target="_blank" rel="noopener">Software para inmobiliarias Artekasa</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ CAJÓN DE CONTACTO ============================ -->
+<div class="velo" id="velo"></div>
+<aside class="cajon" id="cajon-contacto" aria-hidden="true" aria-labelledby="titulo-cajon" role="dialog" aria-modal="true">
+  <div class="cajon__cab">
+    <h2 id="titulo-cajon">Contacto</h2>
+    <button class="cajon__cerrar" type="button" data-cierra-contacto aria-label="Cerrar"><svg class="ic"><use href="#i-cerrar"/></svg></button>
+  </div>
+  <div class="cajon__cuerpo">
+    <form class="cajon__bloque cajon__bloque--marca" action="https://www.inmobiliariadonchamberi.madrid/es/contacto/" method="post" data-prototipo>
+      <h3>Te llamamos gratis</h3>
+      <div class="cajon__fila">
+        <div class="campo">
+          <label for="c-tel" class="oculto">Teléfono</label>
+          <input id="c-tel" type="tel" name="telefono" placeholder="Teléfono" autocomplete="tel" inputmode="tel">
+        </div>
+        <button class="btn btn--marca" type="submit">Enviar</button>
+      </div>
+      <p class="estado" aria-live="polite"></p>
+    </form>
+    <div class="cajon__bloque">
+      <h3>Llámanos:</h3>
+      <p class="cajon__dato"><svg class="ic"><use href="#i-tel"/></svg><a href="tel:+34910593085">910 59 30 85</a></p>
+    </div>
+    <div class="cajon__bloque">
+      <h3>Rellena el formulario de contacto</h3>
+      <p class="cajon__dato"><svg class="ic"><use href="#i-correo"/></svg><a href="mailto:info@donchamberi.es">info@donchamberi.es</a></p>
+      <a class="btn btn--linea" href="https://www.inmobiliariadonchamberi.madrid/es/contacto/">Ir al formulario de contacto <svg class="ic ic--flecha"><use href="#i-flecha"/></svg></a>
+    </div>
+  </div>
+</aside>
+
+<script src="assets/js/main.js?v=ba9f3ac7" defer></script>
+</body>
+</html>

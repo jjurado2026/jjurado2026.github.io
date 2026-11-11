@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM — Velarque</title>
+  <meta name="description" content="Implementamos y configuramos tu CRM para que cada lead se trabaje y cada oportunidad se cierre. Lifecycle marketing de verdad.">
+  <meta property="og:title" content="CRM — Velarque">
+  <meta property="og:description" content="Implementamos y configuramos tu CRM para que cada lead se trabaje y cada oportunidad se cierre. Lifecycle marketing de verdad.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/servicio.css">
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>( CRM )</span>
+      </div>
+      <h1 class="page-hero__title">Si tus leads se pierden, tu dinero <em>también</em>.</h1>
+      <p class="page-hero__desc">Implementamos y configuramos tu CRM para que cada lead se trabaje, cada cliente se cuide y cada oportunidad de venta se cierre. Lifecycle marketing de verdad.</p>
+      <div class="page-hero__actions">
+        <a href="contacto.html" class="btn-main" data-magnetic>
+          <span>Hablemos de tu CRM</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#proceso" class="page-hero__cta-secondary">Cómo funciona ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUÉ HACEMOS -->
+  <section class="what-we-do">
+    <div class="container">
+      <div class="what-we-do__header">
+        <p class="section-label reveal-text">( Qué hacemos )</p>
+        <h2 class="section-title reveal-text">Un CRM que tu equipo realmente usa.</h2>
+        <p class="section-subtitle reveal-text">El problema no es tener un CRM. El problema es que nadie lo usa o que está mal configurado. Nosotros implementamos CRMs que se adaptan a cómo trabaja tu equipo.</p>
+      </div>
+      <div class="what-we-do__grid" data-gsap="stagger">
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">01</span>
+          <h3 class="feature-block__title">Implementación a medida</h3>
+          <p class="feature-block__text">Elegimos el CRM adecuado y lo configuramos de principio a fin. Pipelines, campos personalizados, automatizaciones y permisos.</p>
+        </div>
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">02</span>
+          <h3 class="feature-block__title">Migración de datos</h3>
+          <p class="feature-block__text">Si vienes de otro CRM (o de Excel), migramos todos tus datos sin perder un solo contacto. Limpieza, deduplicación y organización.</p>
+        </div>
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">03</span>
+          <h3 class="feature-block__title">Automatización de ventas</h3>
+          <p class="feature-block__text">Emails de seguimiento automáticos, asignación de leads, recordatorios de tareas y notificaciones al equipo.</p>
+        </div>
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">04</span>
+          <h3 class="feature-block__title">Lifecycle marketing</h3>
+          <p class="feature-block__text">De lead a cliente y de cliente a embajador. Nurturing, onboarding, upselling y reactivación. Todo automatizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="section-label reveal-text">( Proceso )</p>
+        <h2 class="section-title reveal-text">De la hoja de cálculo al CRM en días.</h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">1-2 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Análisis comercial</h3>
+            <p class="process-step__text">Entendemos tu proceso de venta actual: cómo captas leads, cómo los trabajas y dónde los pierdes.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Análisis" alt="Análisis comercial" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">3-7 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Configuración</h3>
+            <p class="process-step__text">Montamos el CRM con tus pipelines, campos, automatizaciones e integraciones. Migramos datos si es necesario.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Configuración" alt="Configuración" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">1-2 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Formación</h3>
+            <p class="process-step__text">Formamos a tu equipo comercial para que use el CRM con soltura. Lo que necesitan saber para su trabajo diario.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Formación" alt="Formación" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">Continuo</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Optimización</h3>
+            <p class="process-step__text">Monitorizamos el uso, ajustamos configuraciones y optimizamos los flujos según datos reales.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Optimización" alt="Optimización" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CON QUÉ TRABAJAMOS -->
+  <section class="project-types">
+    <div class="container">
+      <div class="project-types__header">
+        <p class="section-label reveal-text">( Con qué trabajamos )</p>
+        <h2 class="section-title reveal-text">El CRM adecuado para cada negocio.</h2>
+      </div>
+      <div class="project-types__grid" data-gsap="stagger">
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">HubSpot</h3>
+          <p class="project-card__text">Ideal para un ecosistema completo: CRM + marketing + ventas + servicio. Potente, escalable y con plan gratuito competitivo.</p>
+        </div>
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">Pipedrive</h3>
+          <p class="project-card__text">Perfecto para equipos comerciales que necesitan simplicidad y enfoque en el pipeline de ventas.</p>
+        </div>
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">Salesforce</h3>
+          <p class="project-card__text">Para empresas con operaciones complejas y necesidades avanzadas de personalización y reporting.</p>
+        </div>
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">Otros CRMs</h3>
+          <p class="project-card__text">Zoho, Monday Sales CRM, Freshsales, Notion como CRM ligero... Recomendamos lo que mejor se adapta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RESULTADOS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__header">
+        <p class="section-label reveal-text">( Resultados )</p>
+        <h2 class="section-title reveal-text">Leads que antes se perdían, ahora se cierran.</h2>
+      </div>
+      <div class="results__grid" data-gsap="stagger">
+        <div class="result-card reveal-up">
+          <span class="result-card__tag">Consultora</span>
+          <h3 class="result-card__title">De Excel a HubSpot</h3>
+          <p class="result-card__text">+3.000 contactos y 5 pipelines migrados.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">6h/sem</span>
+              <span class="result-card__metric-lab">Recuperadas</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">3.000+</span>
+              <span class="result-card__metric-lab">Contactos</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">5</span>
+              <span class="result-card__metric-lab">Pipelines</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card reveal-up">
+          <span class="result-card__tag">SaaS</span>
+          <h3 class="result-card__title">Lifecycle marketing</h3>
+          <p class="result-card__text">Flujo completo de nurturing automatizado.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">+60%</span>
+              <span class="result-card__metric-lab">Conversión</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">12</span>
+              <span class="result-card__metric-lab">Flujos automáticos</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">3 meses</span>
+              <span class="result-card__metric-lab">Implementación</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card reveal-up">
+          <span class="result-card__tag">E-commerce</span>
+          <h3 class="result-card__title">Reactivación de clientes</h3>
+          <p class="result-card__text">Segmentación + campañas automatizadas.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">22%</span>
+              <span class="result-card__metric-lab">Reactivados</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">60 días</span>
+              <span class="result-card__metric-lab">Periodo</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">+35%</span>
+              <span class="result-card__metric-lab">Revenue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <h2 class="cta-final__title reveal-text">¿Cuántos leads se te están <em>escapando</em>?</h2>
+      <p class="cta-final__desc reveal-text">Te analizamos gratis tu proceso comercial actual y te proponemos cómo un CRM bien configurado puede cambiarlo.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Solicita tu análisis gratuito</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 48 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+
+</body>
+</html>

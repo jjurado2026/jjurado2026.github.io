@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (abril de 2026, publicada el 13-abr; el día de envío cuenta), hasta el 22-abr-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 3, 22, 22, 0);   // 23-abr-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas — Cruz Blanca de Vallecas</title>
+    <meta name="description" content="Reserva tu mesa en Cruz Blanca de Vallecas. Cocido madrileño premiado, cocina tradicional española. Llámanos al 91 477 34 38 o rellena el formulario.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        /* === RESERVAS PAGE-SPECIFIC STYLES === */
+
+        /* Page hero — full-width background image */
+        .page-hero {
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            margin-top: var(--nav-height);
+        }
+
+        .page-hero__bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center 40%;
+        }
+
+        .page-hero__bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                0deg,
+                rgba(42, 33, 24, 0.82) 0%,
+                rgba(107, 29, 42, 0.45) 50%,
+                rgba(42, 33, 24, 0.25) 100%
+            );
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 2;
+            padding: var(--space-2xl) 0 var(--space-xl);
+            width: 100%;
+        }
+
+        .page-hero .eyebrow {
+            color: var(--terracotta-light);
+            margin-bottom: var(--space-xs);
+        }
+
+        .page-hero h1 {
+            color: var(--cream);
+            margin-bottom: var(--space-sm);
+        }
+
+        .page-hero p {
+            color: rgba(245, 237, 224, 0.85);
+            font-size: 1.125rem;
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* Decorative line under hero eyebrow */
+        .page-hero .eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 2px;
+            background: var(--terracotta-light);
+            vertical-align: middle;
+            margin-right: 12px;
+        }
+
+        /* Reservas grid — form + sidebar */
+        .reservas-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .reservas-grid {
+                grid-template-columns: 1.3fr 1fr;
+            }
+        }
+
+        /* Form card */
+        .form-card {
+            background: var(--warm-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(232, 220, 200, 0.5);
+        }
+
+        .form-card__header {
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .form-card__title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: 4px;
+        }
+
+        .form-card__subtitle {
+            font-size: 0.9375rem;
+            color: var(--warm-gray);
+        }
+
+        /* Two column form layout on wider screens */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 480px) {
+            .form-row--2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        /* Full-width submit button */
+        .btn--full {
+            width: 100%;
+            justify-content: center;
+            padding: 16px 32px;
+            font-size: 0.9375rem;
+        }
+
+        /* Checkbox styling */
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            border: 2px solid var(--cream-dark);
+            border-radius: 4px;
+            background: var(--warm-white);
+            cursor: pointer;
+            position: relative;
+            margin-top: 2px;
+            transition: border-color var(--duration-fast) var(--ease-out),
+                        background var(--duration-fast) var(--ease-out);
+        }
+
+        .form-checkbox input[type="checkbox"]:checked {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        .form-checkbox input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 9px;
+            border: solid var(--warm-white);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .form-checkbox input[type="checkbox"]:focus-visible {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
+        }
+
+        .form-checkbox__text {
+            font-size: 0.875rem;
+            color: var(--carbon-light);
+        }
+
+        .form-checkbox__text a {
+            color: var(--terracotta);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* Sidebar info card */
+        .sidebar-card {
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            position: sticky;
+            top: calc(var(--nav-height) + var(--space-md));
+        }
+
+        .sidebar-card__section {
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .sidebar-card__section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .sidebar-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-card__title svg {
+            width: 22px;
+            height: 22px;
+            color: var(--terracotta);
+            flex-shrink: 0;
+        }
+
+        .sidebar-card__item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9375rem;
+            color: var(--carbon);
+            line-height: 1.55;
+        }
+
+        .sidebar-card__item:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-card__item svg {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            color: var(--terracotta);
+            margin-top: 2px;
+        }
+
+        .sidebar-card__item a {
+            color: var(--carbon);
+            font-weight: 600;
+            transition: color var(--duration-fast) var(--ease-out);
+        }
+
+        .sidebar-card__item a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Important notes */
+        .notes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .note-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.875rem;
+            color: var(--carbon-light);
+            line-height: 1.55;
+        }
+
+        .note-item svg {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            color: var(--terracotta);
+            margin-top: 1px;
+        }
+
+        /* Map wrapper */
+        .map-wrap {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 250px;
+            display: block;
+            border: none;
+        }
+
+        /* CTA call section */
+        .cta-call-section {
+            background: var(--burgundy);
+            padding: var(--space-xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-call-section::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -20%;
+            width: 50%;
+            height: 220%;
+            background: radial-gradient(ellipse, rgba(196, 98, 58, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-call-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60%;
+            right: -20%;
+            width: 50%;
+            height: 220%;
+            background: radial-gradient(ellipse, rgba(196, 98, 58, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-call-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-call-section h2 {
+            color: var(--cream);
+            margin-bottom: var(--space-sm);
+        }
+
+        .cta-call__phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--cream);
+            margin-top: var(--space-sm);
+            transition: color var(--duration-fast) var(--ease-out),
+                        transform var(--duration-fast) var(--ease-spring);
+        }
+
+        .cta-call__phone:hover {
+            color: var(--terracotta-light);
+            transform: scale(1.03);
+        }
+
+        .cta-call__phone:active {
+            transform: scale(1);
+        }
+
+        .cta-call__phone svg {
+            width: 40px;
+            height: 40px;
+            opacity: 0.7;
+        }
+
+        /* Nav CTA active state on reservas page */
+        .nav__cta--active {
+            background: var(--burgundy);
+        }
+
+        .nav__cta--active:hover {
+            background: var(--burgundy-dark);
+        }
+
+        /* Mobile menu active CTA */
+        .mobile-menu__cta--active {
+            background: var(--burgundy);
+        }
+
+        /* Form success message (hidden by default) */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success__icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(196, 98, 58, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+        }
+
+        .form-success__icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--terracotta);
+        }
+
+        .form-success h3 {
+            color: var(--burgundy);
+            margin-bottom: var(--space-xs);
+        }
+
+        .form-success p {
+            color: var(--carbon-light);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .page-hero {
+                min-height: 440px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .page-hero {
+                min-height: 480px;
+            }
+
+            .form-card {
+                padding: var(--space-xl);
+            }
+
+            .sidebar-card {
+                padding: var(--space-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === NAVIGATION === -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas">
+            </a>
+
+            <div class="nav__links">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="especialidades.html" class="nav__link">Especialidades</a>
+                <a href="carta.html" class="nav__link">Carta</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="galeria.html" class="nav__link">Galeria</a>
+                <a href="prensa.html" class="nav__link">Prensa</a>
+                <a href="reservas.html" class="nav__cta nav__cta--active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Reservar
+                </a>
+            </div>
+
+            <button class="nav__hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu">
+        <a href="index.html" class="mobile-menu__link">Inicio</a>
+        <a href="especialidades.html" class="mobile-menu__link">Especialidades</a>
+        <a href="carta.html" class="mobile-menu__link">Carta</a>
+        <a href="nosotros.html" class="mobile-menu__link">Nosotros</a>
+        <a href="galeria.html" class="mobile-menu__link">Galeria</a>
+        <a href="prensa.html" class="mobile-menu__link">Prensa</a>
+        <a href="reservas.html" class="mobile-menu__cta mobile-menu__cta--active">Reservar Mesa</a>
+    </div>
+
+
+    <!-- === PAGE HERO === -->
+    <section class="page-hero">
+        <div class="page-hero__bg" style="background-image: url('https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_16-1-1.jpg');"></div>
+        <div class="page-hero__content">
+            <div class="container">
+                <span class="eyebrow">Te esperamos</span>
+                <h1>Reserva tu Mesa</h1>
+                <p>Llamanos, escribenos o rellena el formulario. La reserva se confirma por telefono o email.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- === MAIN CONTENT: FORM + SIDEBAR === -->
+    <section class="section">
+        <div class="container">
+            <div class="reservas-grid">
+
+                <!-- LEFT: Reservation Form -->
+                <div class="form-card reveal">
+                    <div class="form-card__header">
+                        <h2 class="form-card__title">Formulario de Reserva</h2>
+                        <p class="form-card__subtitle">Rellena los datos y te confirmamos tu reserva</p>
+                    </div>
+
+                    <form id="reservaForm" action="#" method="POST" novalidate>
+
+                        <!-- Nombre + Email -->
+                        <div class="form-row form-row--2">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">Nombre completo *</label>
+                                <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <!-- Telefono + Fecha -->
+                        <div class="form-row form-row--2" style="margin-top: var(--space-md);">
+                            <div class="form-group">
+                                <label for="telefono" class="form-label">Telefono *</label>
+                                <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="600 123 456" required autocomplete="tel">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha" class="form-label">Fecha de reserva *</label>
+                                <input type="date" id="fecha" name="fecha" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Horario + Comensales -->
+                        <div class="form-row form-row--2" style="margin-top: var(--space-md);">
+                            <div class="form-group">
+                                <label for="horario" class="form-label">Horario *</label>
+                                <select id="horario" name="horario" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona turno</option>
+                                    <option value="13:30 - 15:15">13:30 - 15:15</option>
+                                    <option value="15:30 - 18:00">15:30 - 18:00</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="comensales" class="form-label">Comensales *</label>
+                                <input type="number" id="comensales" name="comensales" class="form-input" placeholder="2" min="1" max="30" required>
+                            </div>
+                        </div>
+
+                        <!-- Cocido -->
+                        <div class="form-group" style="margin-top: var(--space-md);">
+                            <label for="cocido" class="form-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="display:inline-block; vertical-align:-2px; margin-right:4px;"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                                Desea cocido madrileno?
+                            </label>
+                            <select id="cocido" name="cocido" class="form-select">
+                                <option value="no">No</option>
+                                <option value="todos">Si, para todos</option>
+                                <option value="algunos">Si, para algunos</option>
+                            </select>
+                        </div>
+
+                        <!-- Comentarios -->
+                        <div class="form-group">
+                            <label for="comentarios" class="form-label">Comentarios</label>
+                            <textarea id="comentarios" name="comentarios" class="form-textarea" placeholder="Alergias, celebraciones especiales, necesidades especificas..."></textarea>
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" name="privacidad" required>
+                                <span class="form-checkbox__text">Acepto la <a href="#" target="_blank">politica de proteccion de datos</a> y el tratamiento de mis datos para gestionar la reserva.</span>
+                            </label>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn--primary btn--full">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Enviar Reserva
+                        </button>
+                    </form>
+
+                    <!-- Success message (shown after submit) -->
+                    <div class="form-success" id="formSuccess">
+                        <div class="form-success__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <h3>Reserva enviada</h3>
+                        <p>Hemos recibido tu solicitud. Te confirmaremos por email o telefono en las proximas horas.</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Contact Info Sidebar -->
+                <aside class="sidebar-card reveal">
+
+                    <!-- Phone -->
+                    <div class="sidebar-card__section">
+                        <h3 class="sidebar-card__title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Contacto directo
+                        </h3>
+                        <div class="sidebar-card__item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <a href="tel:+34914773438">91 477 34 38</a>
+                        </div>
+                        <div class="sidebar-card__item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <a href="mailto:info@cruzblancavallecas.com">info@cruzblancavallecas.com</a>
+                        </div>
+                        <div class="sidebar-card__item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>C. de Carlos Martin Alvarez, 58, 28018 Madrid</span>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="sidebar-card__section">
+                        <h3 class="sidebar-card__title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Horarios
+                        </h3>
+                        <div class="sidebar-card__item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <span><strong>Comidas:</strong> 13:30 - 16:00</span>
+                        </div>
+                        <div class="sidebar-card__item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span><strong>Abierto:</strong> 8:00 - 00:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Important notes -->
+                    <div class="sidebar-card__section">
+                        <h3 class="sidebar-card__title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Importante
+                        </h3>
+                        <div class="notes-list">
+                            <div class="note-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>La reserva se confirma por email o telefono</span>
+                            </div>
+                            <div class="note-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Cenas: reservas hasta las 21:00</span>
+                            </div>
+                            <div class="note-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Grupos +10: deposito de 10&#8364;</span>
+                            </div>
+                            <div class="note-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Cocido en cena: solicitar al reservar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="sidebar-card__section">
+                        <h3 class="sidebar-card__title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Como llegar
+                        </h3>
+                        <div class="map-wrap">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.5!2d-3.6579!3d40.3936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228a3b3a43a7d%3A0x8f5c8c8c8c8c8c8c!2sCruz+Blanca+de+Vallecas!5e0!3m2!1ses!2ses!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicacion Cruz Blanca de Vallecas"></iframe>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- === CTA: LLAMAR === -->
+    <section class="cta-call-section">
+        <div class="container reveal">
+            <span class="eyebrow" style="color: var(--terracotta-light);">Reserva directa</span>
+            <h2>Prefieres llamarnos?</h2>
+            <a href="tel:+34914773438" class="cta-call__phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                91 477 34 38
+            </a>
+        </div>
+    </section>
+
+
+    <!-- === FOOTER === -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__logo">
+                        <img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas">
+                    </div>
+                    <p class="footer__desc">
+                        En el Madrid castizo, te ofrecemos las delicias mas reconocidas y premiadas tanto nacional como internacionalmente. Ven a conocer a nuestro chef, Antonio Cosmen.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer__title">Navegacion</h4>
+                    <a href="especialidades.html" class="footer__link">Especialidades</a>
+                    <a href="carta.html" class="footer__link">Carta</a>
+                    <a href="nosotros.html" class="footer__link">Nosotros</a>
+                    <a href="galeria.html" class="footer__link">Galeria</a>
+                    <a href="prensa.html" class="footer__link">Prensa</a>
+                    <a href="reservas.html" class="footer__link">Reservas</a>
+                </div>
+
+                <div>
+                    <h4 class="footer__title">Horarios</h4>
+                    <p class="footer__link" style="cursor:default;">Comidas: 13:30 - 16:00</p>
+                    <p class="footer__link" style="cursor:default;">Abierto: 8:00 - 00:00</p>
+                    <p class="footer__link" style="cursor:default;">Todos los dias del ano</p>
+                    <p class="footer__link" style="cursor:default; margin-top: 8px; font-size: 0.8125rem; opacity: 0.7;">Cerrado solo Navidad y Ano Nuevo</p>
+                </div>
+
+                <div>
+                    <h4 class="footer__title">Contacto</h4>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>C. de Carlos Martin Alvarez, 58, 28018 Madrid</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+34914773438" style="color: var(--warm-gray);">91 477 34 38</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:info@cruzblancavallecas.com" style="color: var(--warm-gray);">info@cruzblancavallecas.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2025 Cruz Blanca de Vallecas. Todos los derechos reservados.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/CruzBlancadeVallecas" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/CruzBlancaValle" target="_blank" rel="noopener" class="footer__social" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA Bar -->
+    <div class="mobile-cta-bar">
+        <a href="tel:+34914773438" class="cta-call">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Llamar
+        </a>
+        <a href="reservas.html" class="cta-reserve">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar
+        </a>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('reservaForm');
+            const success = document.getElementById('formSuccess');
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Basic validation
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+
+                    // Hide form, show success
+                    form.style.display = 'none';
+                    success.classList.add('show');
+
+                    // Scroll to success message
+                    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+
+            // Set min date to today
+            const fechaInput = document.getElementById('fecha');
+            if (fechaInput) {
+                const today = new Date().toISOString().split('T')[0];
+                fechaInput.setAttribute('min', today);
+            }
+        });
+    </script>
+</body>
+</html>

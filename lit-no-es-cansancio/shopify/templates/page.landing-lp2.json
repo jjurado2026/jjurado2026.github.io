@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "nw-lp2",
+      "settings": {
+        "promo_show": true,
+        "p_sub_lemon": "lit-daily-hydration",
+        "p_sub_watermelon": "lit-daily-hydration-watermelon",
+        "p_sub_peach": "lit-daily-hydration-peach",
+        "p_ot_lemon": "lit-daily-hydration-compra-unica",
+        "p_ot_watermelon": "lit-daily-hydration-watermelon-compra-unica",
+        "p_ot_peach": "lit-daily-hydration-peach-compra-unica",
+        "p_pack_sub": "lit-pack-4-cajas",
+        "p_pack_ot": "lit-pack-4-cajas-compra-unica",
+        "discovery_show": true,
+        "p_discovery": "discovery-set"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

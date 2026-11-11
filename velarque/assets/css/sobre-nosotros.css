@@ -1,0 +1,162 @@
+/* ============================================
+   VELARQUE — Sobre Nosotros
+   ============================================ */
+
+/* ============================
+   HISTORIA
+   ============================ */
+.historia {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.historia__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 120px);
+  align-items: center;
+}
+.historia__content p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--gray-600);
+  margin-bottom: 24px;
+}
+.historia__content p:last-child { margin-bottom: 0; }
+.historia__content p:first-child {
+  font-size: 20px;
+  color: var(--black);
+  line-height: 1.7;
+}
+.historia__visual {
+  aspect-ratio: 4/5;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.historia__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: filter 0.6s var(--ease);
+}
+.historia__visual:hover img { filter: grayscale(0%); }
+
+/* ============================
+   SERVICES LIST (compact)
+   ============================ */
+.services-list {
+  padding: clamp(100px, 12vh, 180px) 0;
+  background: var(--gray-50);
+}
+.services-list__header {
+  margin-bottom: 48px;
+}
+.services-list__items {
+  max-width: 900px;
+}
+.service-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gray-200);
+  transition: padding-left 0.4s var(--ease);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease), padding-left 0.4s var(--ease);
+}
+.service-list-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.service-list-item:hover { padding-left: 16px; }
+.service-list-item__left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.service-list-item__name {
+  font-family: var(--sans);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  color: var(--black);
+}
+.service-list-item__sep {
+  color: var(--gray-300);
+  font-weight: 200;
+}
+.service-list-item__desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--gray-500);
+}
+.service-list-item__arrow {
+  font-size: 20px;
+  color: var(--gray-300);
+  transition: color 0.3s, transform 0.3s var(--ease);
+}
+.service-list-item:hover .service-list-item__arrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* ============================
+   TEAM
+   ============================ */
+.team {
+  padding: clamp(100px, 12vh, 180px) 0;
+}
+.team__header {
+  margin-bottom: 64px;
+}
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.team-card {
+  text-align: center;
+}
+.team-card__img {
+  aspect-ratio: 3/4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+.team-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.team-card:hover .team-card__img img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+.team-card__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+.team-card__role {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gray-500);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+  .historia__layout { grid-template-columns: 1fr; }
+  .historia__visual { max-width: 500px; aspect-ratio: 3/2; }
+  .team__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .team__grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .service-list-item__desc { display: none; }
+}

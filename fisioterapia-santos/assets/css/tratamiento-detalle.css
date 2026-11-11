@@ -1,0 +1,365 @@
+/* ============================================
+   FISIOTERAPIA SANTOS — Tratamiento Detalle
+   ============================================ */
+
+/* --- Detail Hero --- */
+.detail-hero {
+  padding: calc(var(--nav-h) + var(--sp-3xl)) 0 var(--sp-3xl);
+  background: var(--blue-dark);
+  color: var(--text-inv);
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-hero::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(43,181,184,.08) 0%, transparent 70%);
+  top: -150px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.detail-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3xl);
+  align-items: center;
+}
+
+.detail-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: .8125rem;
+  color: rgba(250,248,244,.45);
+  margin-bottom: var(--sp-lg);
+}
+
+.detail-hero__breadcrumb a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.detail-hero__breadcrumb a:hover { color: var(--sage-light); }
+
+.detail-hero h1 { color: var(--text-inv); margin-bottom: var(--sp-md); }
+
+.detail-hero__subtitle {
+  font-size: 1.15rem;
+  color: rgba(250,248,244,.65);
+  max-width: 520px;
+}
+
+.detail-hero__image {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.detail-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Content layout --- */
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--sp-3xl);
+  padding: var(--sp-3xl) 0;
+}
+
+.detail-main h2 {
+  margin-bottom: var(--sp-md);
+}
+
+.detail-main h3 {
+  margin-top: var(--sp-2xl);
+  margin-bottom: var(--sp-md);
+}
+
+.detail-main p {
+  color: var(--text-mid);
+  margin-bottom: var(--sp-lg);
+}
+
+/* Approach cards */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+  margin: var(--sp-xl) 0;
+}
+
+.approach-card {
+  background: var(--sage-pale);
+  border-radius: var(--r-md);
+  padding: var(--sp-xl);
+  text-align: center;
+}
+
+.approach-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--sp-md);
+}
+
+.approach-card__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--white);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.approach-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--blue-dark);
+  margin-bottom: var(--sp-xs);
+}
+
+.approach-card__text {
+  font-size: .8125rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* Techniques list */
+.techniques-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+  margin: var(--sp-md) 0 var(--sp-xl);
+}
+
+.techniques-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) var(--sp-md);
+  background: var(--sand);
+  border-radius: var(--r-sm);
+  font-size: .9rem;
+  color: var(--text-mid);
+}
+
+.techniques-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+
+/* --- Sidebar --- */
+.detail-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--sp-lg));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.sidebar-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-light);
+  padding: var(--sp-xl);
+}
+
+.sidebar-card__heading {
+  font-family: var(--font-body);
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: var(--sp-lg);
+}
+
+/* Pricing sidebar */
+.sidebar-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--sp-sm) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar-price:last-of-type { border-bottom: none; }
+
+.sidebar-price__label {
+  font-size: .9rem;
+  color: var(--text-mid);
+}
+
+.sidebar-price__value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--blue-dark);
+}
+
+.sidebar-price__save {
+  font-size: .75rem;
+  color: var(--sage-dark);
+  font-weight: 500;
+}
+
+/* Team sidebar */
+.sidebar-team-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-sm) 0;
+}
+
+.sidebar-team-item + .sidebar-team-item {
+  border-top: 1px solid var(--border-light);
+  padding-top: var(--sp-md);
+}
+
+.sidebar-team-item__photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--sand);
+}
+
+.sidebar-team-item__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-team-item__name {
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--blue-dark);
+}
+
+.sidebar-team-item__role {
+  font-size: .8125rem;
+  color: var(--text-light);
+}
+
+/* --- Related treatments --- */
+.related {
+  background: var(--sand);
+  padding: var(--sp-3xl) 0;
+}
+
+.related__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-lg);
+  margin-top: var(--sp-2xl);
+}
+
+.related-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-light);
+  padding: var(--sp-xl);
+  display: block;
+  transition: transform var(--dur-mid) var(--ease-spring),
+              box-shadow var(--dur-mid) var(--ease-out);
+}
+
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.related-card:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+}
+
+.related-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background: var(--sage-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-md);
+}
+
+.related-card__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--sage-dark);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.related-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--blue-dark);
+  margin-bottom: var(--sp-xs);
+}
+
+.related-card__text {
+  font-size: .8125rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .detail-content {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-lg);
+  }
+
+  .detail-hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-xl);
+  }
+
+  .detail-hero__image {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .techniques-list {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .related__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-hero {
+    padding: calc(var(--nav-h) + var(--sp-2xl)) 0 var(--sp-2xl);
+  }
+}

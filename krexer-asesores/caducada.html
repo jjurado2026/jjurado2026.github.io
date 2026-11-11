@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página no disponible | Krexer Asesores</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FF861F">
+<link rel="icon" href="assets/img/favicon-32x32.jpg" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/favicon-180x180.jpg">
+<link rel="preload" href="assets/fonts/mona-sans.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Aviso de propuesta caducada: el texto del taller y la home entera en miniatura, que se recorre despacio */
+  @font-face { font-family: 'Mona Sans'; src: url('assets/fonts/mona-sans.woff2') format('woff2'); font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; }
+  :root {
+    --naranja: #FF861F; --naranja-hondo: #E06F0A; --negro: #060808; --grafito: #5B5F61; --papel: #F5F5F3;
+    --canal: clamp(16px, 5vw, 72px);
+    --sale: cubic-bezier(.16, 1, .3, 1);
+    --alto: min(62svh, 560px);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { min-height: 100svh; display: grid; grid-template-rows: auto 1fr; background: var(--papel); color: var(--negro);
+    font-family: 'Mona Sans', 'Segoe UI', system-ui, sans-serif; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.7;
+    -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img, svg { display: block; max-width: 100%; height: auto; }
+  :focus-visible { outline: 3px solid var(--naranja-hondo); outline-offset: 3px; border-radius: 4px; }
+
+  .cab { background: #fff; border-bottom: 1px solid rgba(6, 8, 8, .12); padding: 14px var(--canal); }
+  .cab a { display: inline-flex; align-items: center; gap: 10px; }
+  .cab svg { width: 44px; height: 44px; }
+  .cab img { width: 108px; }
+
+  .aviso { width: 100%; max-width: calc(1180px + 2 * var(--canal)); margin-inline: auto; padding: clamp(56px, 10svh, 104px) var(--canal) clamp(36px, 7svh, 80px);
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 7svh, 72px); align-items: center; }
+  .aviso__texto { display: grid; gap: clamp(18px, 3svh, 28px); }
+  h1 { font-weight: 760; font-stretch: 114%; font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3rem); line-height: 1.1; text-wrap: balance; max-width: 20ch; }
+  .mas { max-width: 34em; color: var(--grafito); }
+  .mas a { position: relative; color: var(--negro); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; display: inline-block; }
+  .mas a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--naranja); transform-origin: left; transition: transform .4s var(--sale); }
+  .mas a:hover::after { transform: scaleX(.3); }
+  .mas a:active { opacity: .7; }
+
+  .miniatura[hidden] { display: none; }
+  .miniatura { justify-self: center; }
+  .ventana { display: block; width: min(300px, 70vw); height: var(--alto); overflow: hidden; border-radius: 14px; background: #fff;
+    box-shadow: 0 0 0 1px rgba(6, 8, 8, .12), 0 30px 60px -28px rgba(6, 8, 8, .5); position: relative; }
+  .ventana::after { content: ''; position: absolute; inset: 0; border-radius: 14px; box-shadow: inset 0 0 0 3px rgba(255, 134, 31, .45); pointer-events: none; }
+  .ventana img { width: 100%; }
+  @media (min-width: 900px) {
+    .aviso { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(48px, 6vw, 96px); }
+    .miniatura { justify-self: end; }
+  }
+  @keyframes entra { from { opacity: 0; transform: translateY(20px); } }
+  @keyframes recorre { 0%, 6% { transform: none; } 94%, 100% { transform: translateY(calc(-100% + var(--alto))); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .aviso__texto > * { animation: entra .9s var(--sale) both; }
+    .aviso__texto > :nth-child(2) { animation-delay: .1s; }
+    .ventana { animation: entra 1s var(--sale) .25s both; }
+    .ventana img { animation: recorre 56s ease-in-out 1.6s infinite alternate; }
+    .ventana:hover img, .ventana:focus img { animation-play-state: paused; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ventana { overflow-y: auto; } }
+</style>
+</head>
+<body>
+  <header class="cab">
+    <a href="https://krexerasesores.es/" aria-label="Krexer Asesores">
+      <svg viewBox="0 0 672 672" aria-hidden="true"><rect width="672" height="672" rx="172" fill="#FF861F"/><g fill="#fff"><rect x="157" y="95" width="73" height="481"/><rect x="229" y="439" width="146" height="62"/><polygon points="432,95 505,95 309,321 541,576 458,576 230,330"/></g><polygon fill="#FF861F" points="132.5,240 145.5,240 391.6,505 378.6,505"/></svg>
+      <img src="assets/img/krexer-texto-negro.webp" width="386" height="150" alt="">
+    </a>
+  </header>
+
+  <main class="aviso">
+    <div class="aviso__texto">
+      <h1>No puedes ver esta página porque han pasado más de 10&nbsp;días desde su envío.</h1>
+      <p class="mas">Si sigues con interés, escríbeme a <a href="mailto:jjuradogarciadelrio@gmail.com?subject=Propuesta%20web%20Krexer%20Asesores">jjuradogarciadelrio@gmail.com</a>.</p>
+    </div>
+
+    <figure class="miniatura">
+      <span class="ventana" tabindex="0" aria-label="Miniatura de la home propuesta">
+        <img src="assets/img/home-miniatura.webp" width="480" height="3292" alt="Miniatura de la home propuesta para Krexer Asesores, completa de arriba abajo" onerror="this.closest('figure').hidden = true">
+      </span>
+    </figure>
+  </main>
+</body>
+</html>

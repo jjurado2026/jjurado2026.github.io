@@ -1,0 +1,279 @@
+/* =====================================================================
+   LORENA CAMPILLO — v4 «Luz de espejo» · movimiento
+   Solo transform y opacity. El gesto de la casa es ENCENDER: los espejos
+   se iluminan con un parpadeo de LED, las letras suben desde la luz, las
+   medallas de la trayectoria se prenden al pasar el hilo de oro.
+   Todo lo oculto depende de html.js: sin JavaScript se ve entera.
+   Con movimiento reducido o ?ss: quieta y completa.
+   ===================================================================== */
+
+/* El parpadeo de un LED al encenderse */
+@keyframes encender {
+  0% { opacity: 0; } 12% { opacity: .85; } 20% { opacity: .1; } 34% { opacity: .95; }
+  44% { opacity: .45; } 60% { opacity: 1; } 100% { opacity: 1; }
+}
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+@keyframes subir { from { transform: translateY(108%); } to { transform: none; } }
+@keyframes posarse { from { opacity: 0; transform: translateY(14px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes destello { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+@keyframes girar-entrada { from { opacity: 0; transform: rotate(-120deg) scale(.7); } to { opacity: 1; transform: none; } }
+
+/* ---------- 1 · Hero: el tocador se enciende (una vez) y sigue vivo ---------- */
+/* Las bombillas prenden una a una, con su parpadeo, en el sentido del reloj; con ellas se
+   encienden la pared, el retrato y su nombre, y los objetos se meten en el marco. Después,
+   las bombillas respiran en una ola lenta, la escarapela se mece y la polaroid pasa sus
+   trabajos. Todo se para cuando el hero no se ve (clase .en-pausa, la pone el JS). */
+@keyframes prender {
+  0% { opacity: 0; } 14% { opacity: .9; } 26% { opacity: .12; } 42% { opacity: 1; }
+  56% { opacity: .5; } 72%, 100% { opacity: 1; }
+}
+@keyframes respirar { 0%, 100% { opacity: 1; } 50% { opacity: .42; } }
+@keyframes meterse { from { opacity: 0; transform: translate(var(--ex, 0px), var(--ey, -40px)) rotate(var(--er, -14deg)); } to { opacity: 1; transform: none; } }
+@keyframes mecerse { 0%, 100% { transform: rotate(-2.4deg); } 50% { transform: rotate(2.4deg); } }
+@keyframes asomar {
+  0% { opacity: 0; transform: translate(var(--ltx, -50%), var(--lty, 0px)) translateY(8px) scale(.9); }
+  14%, 78% { opacity: 1; transform: translate(var(--ltx, -50%), var(--lty, 0px)); }
+  100% { opacity: 0; transform: translate(var(--ltx, -50%), var(--lty, 0px)) translateY(4px) scale(.96); }
+}
+
+html.js:not(.quieto) .cab__in { animation: aparecer .8s var(--e-out) .05s both; }
+html.js:not(.quieto) .tocador__marco { animation: aparecer .6s var(--e-out) .1s both; }
+html.js:not(.quieto) .bombilla::before { animation: prender .6s linear both; animation-delay: calc(.4s + var(--i, 0) * 38ms); }
+html.js:not(.quieto) .bombilla::after {
+  animation: prender .6s linear calc(.4s + var(--i, 0) * 38ms) both,
+             respirar 6.4s var(--e-inout) calc(2.8s + var(--i, 0) * 229ms) infinite;
+}
+html.js:not(.quieto) .tocador__luz { animation: aparecer 1.8s var(--e-out) .7s both; }
+html.js:not(.quieto) .tocador__foto { animation: aparecer 1s var(--e-out) .55s both; }
+html.js:not(.quieto) .hero__nombre .l { animation: prender .7s linear both; animation-delay: calc(1.05s + var(--d, 0) * 42ms); }
+html.js:not(.quieto) .hero__sub { animation: aparecer .9s var(--e-out) 1.7s both; }
+/* Los objetos entran desde fuera y se meten en el marco con un muelle */
+html.js:not(.quieto) .objeto { animation: meterse 1.1s var(--e-muelle) backwards; animation-delay: calc(1.5s + var(--n, 0) * 130ms); }
+html.js:not(.quieto) .hero__acciones > * { animation: posarse .8s var(--e-muelle) backwards; }
+html.js:not(.quieto) .hero__acciones > :nth-child(1) { animation-delay: 1.9s; }
+html.js:not(.quieto) .hero__acciones > :nth-child(2) { animation-delay: 2s; }
+html.js:not(.quieto) .hero__acciones > :nth-child(3) { animation-delay: 2.1s; }
+html.js:not(.quieto) .boton[data-llamativo]::after { animation: destello 1.2s var(--e-out) 2.9s 1; }
+html.js:not(.quieto) .roseta__vaiven { animation: mecerse 5.6s var(--e-inout) 2.8s infinite; }
+html.js:not(.quieto) .hero.en-pausa .bombilla::after,
+html.js:not(.quieto) .hero.en-pausa .roseta__vaiven { animation-play-state: paused; }
+
+/* De dónde entra cada objeto (vertical: los de arriba bajan, los de abajo suben) */
+.objeto--nota     { --ex: calc(var(--uo) * -4); --ey: calc(var(--uo) * -9); --er: -14deg; --vaiven: -8deg; }
+.objeto--polaroid { --ex: calc(var(--uo) * 4);  --ey: calc(var(--uo) * -10); --er: 16deg; --vaiven: 8deg; }
+.objeto--tarjeta  { --ex: calc(var(--uo) * -4); --ey: calc(var(--uo) * 9);  --er: 12deg; --vaiven: 7deg; }
+.objeto--roseta   { --ex: 0px;                  --ey: calc(var(--uo) * 10); --er: 0deg;  --vaiven: 12deg; }
+.objeto--copia    { --ex: calc(var(--uo) * 4);  --ey: calc(var(--uo) * 9);  --er: -12deg; --vaiven: -7deg; }
+@media (min-width: 900px) and (min-aspect-ratio: 5/4), (orientation: landscape) and (max-height: 540px) and (max-width: 1023px) {
+  .objeto--nota     { --ex: calc(var(--uo) * -9); --ey: calc(var(--uo) * -2); --er: -14deg; --vaiven: 9deg; }
+  .objeto--polaroid { --ex: calc(var(--uo) * 9);  --ey: calc(var(--uo) * -5); --er: 18deg; --vaiven: -9deg; }
+  .objeto--tarjeta  { --ex: calc(var(--uo) * -9); --ey: calc(var(--uo) * 4);  --er: 14deg; --vaiven: 8deg; }
+  .objeto--roseta   { --ex: calc(var(--uo) * -3); --ey: calc(var(--uo) * -12); --er: 0deg; --vaiven: 12deg; }
+  .objeto--copia    { --ex: calc(var(--uo) * 9);  --ey: calc(var(--uo) * 4);  --er: -16deg; --vaiven: 8deg; }
+}
+
+/* Al pasar el cursor (o con el foco): el objeto se columpia desde donde está metido, se
+   acerca y enseña su rótulo. Las bombillas se agrandan hacia el cursor (lo pone el JS). */
+html.js:not(.quieto) .objeto__cuerpo { transition: transform .85s var(--e-muelle); }
+html.js:not(.quieto) .objeto__flota { transition: transform 1.2s var(--e-out); }
+html.js:not(.quieto) .objeto__rotulo { transition: opacity .3s var(--e-out), transform .6s var(--e-muelle); }
+html.js:not(.quieto) .objeto:focus-visible .objeto__cuerpo { transform: rotate(calc(var(--r, 0deg) + var(--vaiven, 6deg))) scale(1.08); }
+@media (hover: hover) {
+  html.js:not(.quieto) .objeto:hover .objeto__cuerpo { transform: rotate(calc(var(--r, 0deg) + var(--vaiven, 6deg))) scale(1.08); }
+}
+html.js:not(.quieto) .objeto:active .objeto__cuerpo { transform: rotate(var(--r, 0deg)) scale(.95); transition-duration: .2s; }
+html.js:not(.quieto) .bombilla { transition: transform .5s var(--e-muelle); }
+/* La polaroid: una foto se funde en la siguiente y el nombre del servicio sube */
+html.js:not(.quieto) .polaroid__foto img { transition: opacity .9s var(--e-out); }
+html.js:not(.quieto) .polaroid__pie > span { transform: translateY(70%); transition: opacity .45s var(--e-out), transform .7s var(--e-out); }
+html.js:not(.quieto) .polaroid__pie > span.activa { transform: none; }
+html.js:not(.quieto) .polaroid__pie > span.sale { transform: translateY(-70%); }
+/* En escritorio, al terminar de encenderse, cada objeto enseña un momento su rótulo */
+@media (hover: hover) and (min-width: 700px) and (min-height: 541px) {
+  html.js:not(.quieto) .objeto__rotulo { animation: asomar 1.8s var(--e-out) backwards; animation-delay: calc(2.7s + var(--n, 0) * 170ms); }
+}
+/* Al bajar, el espejo se queda un poco atrás (el JS pone --sy) */
+html.js:not(.quieto) .tocador__espejo { transform: translateY(calc(var(--sy, 0) * .14px)); }
+
+/* ---------- Titulares: suben palabra a palabra al entrar ---------- */
+html.js:not(.quieto) [data-palabras] .p__in { transform: translateY(108%); transition: transform 1s var(--e-out); transition-delay: calc(var(--w, 0) * 70ms); }
+html.js:not(.quieto) [data-palabras].visible .p__in { transform: none; }
+
+/* ---------- 2 · Servicios ---------- */
+@keyframes barrido { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+@keyframes rodar-in { from { transform: translateY(100%); } to { transform: none; } }
+html.js:not(.quieto) .vitrina__luz.pasa { animation: barrido 1s var(--e-out); }
+html.js:not(.quieto) .vitrina__pie span.nuevo { animation: rodar-in .6s var(--e-out); }
+
+/* Microgestos de los pictogramas (al activarse un servicio o elegirlo en la cita) */
+.picto g, .picto path { transform-box: view-box; }
+.picto--tijera .p-a, .picto--tijera .p-b { transform-origin: 12px 12px; }
+.picto--color .p-brocha { transform-origin: 20px 2.5px; }
+.picto--gota .p-gota { transform-origin: 11px 20px; }
+.picto--gota .p-destello { transform-origin: 19px 5px; }
+.picto--carmin .p-barra { transform-origin: 12px 11px; }
+.picto--bigote path { transform-origin: 12px 13px; }
+@keyframes tijera-a { 0%, 50%, 100% { transform: none; } 25%, 75% { transform: rotate(-17deg); } }
+@keyframes tijera-b { 0%, 50%, 100% { transform: none; } 25%, 75% { transform: rotate(17deg); } }
+@keyframes brocha   { 0%, 100% { transform: none; } 45% { transform: rotate(-13deg); } }
+@keyframes aire     { 0%, 100% { transform: none; opacity: 1; } 50% { transform: translateX(2.4px); opacity: .25; } }
+@keyframes gota     { 0%, 100% { transform: none; } 40% { transform: translateY(-1.8px) scale(1.04); } }
+@keyframes chispa   { 0% { transform: none; } 60% { transform: rotate(90deg) scale(1.3); } 100% { transform: rotate(90deg); } }
+@keyframes barra    { 0%, 100% { transform: none; } 45% { transform: translateY(-2.6px); } }
+@keyframes bigote   { 0%, 100% { transform: none; } 30% { transform: rotate(-8deg); } 65% { transform: rotate(6deg); } }
+html.js:not(.quieto) .gesto .picto--tijera .p-a { animation: tijera-a .62s var(--e-out); }
+html.js:not(.quieto) .gesto .picto--tijera .p-b { animation: tijera-b .62s var(--e-out); }
+html.js:not(.quieto) .gesto .picto--color .p-brocha { animation: brocha .7s var(--e-muelle); }
+html.js:not(.quieto) .gesto .picto--secador .p-aire { animation: aire .45s var(--e-out) 2; }
+html.js:not(.quieto) .gesto .picto--gota .p-gota { animation: gota .6s var(--e-muelle); }
+html.js:not(.quieto) .gesto .picto--gota .p-destello { animation: chispa .6s var(--e-out); }
+html.js:not(.quieto) .gesto .picto--carmin .p-barra { animation: barra .6s var(--e-muelle); }
+html.js:not(.quieto) .gesto .picto--bigote path { animation: bigote .7s var(--e-out); }
+
+/* ---------- 3 · Cita ---------- */
+@keyframes linea-nueva { from { opacity: .15; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes sellar { from { opacity: 0; transform: rotate(-22deg) scale(1.5); } to { opacity: 1; transform: rotate(-8deg) scale(1); } }
+/* El latido usa la propiedad scale: no pisa el transform del botón (imán y pulsación) */
+@keyframes latido { 0%, 100% { scale: 1; } 40% { scale: 1.045; } }
+@keyframes paso-hecho { from { transform: scale(.6); } to { transform: none; } }
+html.js:not(.quieto) .ticket__lista dd.cambia { animation: linea-nueva .4s var(--e-out); }
+html.js:not(.quieto) .reserva.lista .ticket__sello { animation: sellar .55s var(--e-muelle) both; }
+html.js:not(.quieto) .reserva.recien-lista [data-llamar] { animation: latido .7s var(--e-out) .35s; }
+/* Al elegir: la tinta llena la pieza o el día desde donde se toca, el visto salta y el número del paso se rellena.
+   La tinta entra despacio y se retira deprisa. */
+html.js:not(.quieto) .reserva__progreso span { transition: transform .8s var(--e-out); }
+html.js:not(.quieto) .pieza__cara, html.js:not(.quieto) .dia__cara { transition: transform .45s var(--e-muelle); }
+html.js:not(.quieto) .pieza__cara::before, html.js:not(.quieto) .dia__cara::before { transition: transform .4s var(--e-out); }
+html.js:not(.quieto) .pieza input:checked + .pieza__cara::before, html.js:not(.quieto) .dia input:checked + .dia__cara::before { transition-duration: .65s; }
+html.js:not(.quieto) .pieza__ok { transition: opacity .2s var(--e-out), transform .5s var(--e-muelle); }
+html.js:not(.quieto) .pieza input:checked + .pieza__cara .pieza__ok { transition-delay: .14s; }
+html.js:not(.quieto) .dia__cara::after { transition: transform .5s var(--e-out); }
+html.js:not(.quieto) .dia input:checked + .dia__cara::after { transition-delay: .18s; }
+html.js:not(.quieto) .segmento__pulgar { transition: transform .5s var(--e-muelle), opacity .25s var(--e-out); }
+html.js:not(.quieto) .segmento__op span { transition: transform .3s var(--e-muelle); }
+html.js:not(.quieto) .campo span { transition: transform .3s var(--e-out); }
+html.js:not(.quieto) .paso:has(input:checked) .paso__n,
+html.js:not(.quieto) .paso:has(input[name="nombre"]:not(:placeholder-shown)) .paso__n { animation: paso-hecho .55s var(--e-muelle); }
+/* Al pasar el cursor por un servicio, su pictograma hace el gesto */
+@media (hover: hover) {
+  html.js:not(.quieto) .pieza:hover .picto--tijera .p-a { animation: tijera-a .62s var(--e-out); }
+  html.js:not(.quieto) .pieza:hover .picto--tijera .p-b { animation: tijera-b .62s var(--e-out); }
+  html.js:not(.quieto) .pieza:hover .picto--color .p-brocha { animation: brocha .7s var(--e-muelle); }
+  html.js:not(.quieto) .pieza:hover .picto--secador .p-aire { animation: aire .45s var(--e-out) 2; }
+  html.js:not(.quieto) .pieza:hover .picto--gota .p-gota { animation: gota .6s var(--e-muelle); }
+  html.js:not(.quieto) .pieza:hover .picto--gota .p-destello { animation: chispa .6s var(--e-out); }
+  html.js:not(.quieto) .pieza:hover .picto--carmin .p-barra { animation: barra .6s var(--e-muelle); }
+  html.js:not(.quieto) .pieza:hover .picto--bigote path { animation: bigote .7s var(--e-out); }
+}
+
+/* ---------- 4 · El salón: los espejos se encienden ---------- */
+html.js:not(.quieto) .espejo--pared .espejo__marco::before { opacity: 0; }
+html.js:not(.quieto) .espejo--pared .espejo__luna img { opacity: .18; transition: opacity 1.2s var(--e-out); transition-delay: calc(var(--n, 0) * 220ms + 250ms); }
+html.js:not(.quieto) .espejo--pared.encendido .espejo__marco::before { animation: encender 1.1s linear both; animation-delay: calc(var(--n, 0) * 220ms); }
+html.js:not(.quieto) .espejo--pared.encendido .espejo__luna img { opacity: 1; }
+html.js:not(.quieto) .salon__cita .w { opacity: .14; }
+html.js:not(.quieto) .salon__cita .w.lit { opacity: 1; }
+
+/* Al pasar el cursor, el espejo que miras se vuelve hacia ti, se acerca y su LED se
+   enciende con el parpadeo de la casa; un reflejo cruza el cristal y la foto se asoma.
+   Los demás bajan la luz y se giran un poco hacia el cursor. Al salir, el muelle lo
+   recoloca. El JS escribe --mira-x/--mira-y (el cursor dentro del espejo, de -1 a 1)
+   y --hacia-x/--hacia-y (hacia dónde queda el cursor para los demás). */
+@media (hover: hover) and (pointer: fine) {
+  html.js:not(.quieto) .espejo--pared .espejo__marco {
+    transform: perspective(1100px) rotateX(0deg) rotateY(0deg) translateZ(0px);
+    transition: transform 1.6s var(--e-muelle);
+  }
+  html.js:not(.quieto) .espejo--pared.mirado .espejo__marco {
+    transform: perspective(1100px) rotateX(calc(var(--mira-y, 0) * 6deg)) rotateY(calc(var(--mira-x, 0) * -8deg)) translateZ(42px);
+    transition: transform .5s var(--e-out);
+  }
+  html.js:not(.quieto) .pared.mirando .espejo--pared:not(.mirado) .espejo__marco {
+    transform: perspective(1100px) rotateX(calc(var(--hacia-y, 0) * 3deg)) rotateY(calc(var(--hacia-x, 0) * -5deg)) translateZ(-16px);
+    transition: transform .9s var(--e-out);
+  }
+  /* El LED se enciende detrás del marco y se inclina hacia el cursor */
+  html.js:not(.quieto) .espejo--pared::before { transform: scale(.94); transition: opacity 1s var(--e-out), transform 1.2s var(--e-out); }
+  html.js:not(.quieto) .espejo--pared.mirado::before {
+    opacity: 1; transform: translate(calc(var(--mira-x, 0) * 12px), calc(var(--mira-y, 0) * 12px)) scale(1.04);
+    animation: encender .75s linear;
+    transition: opacity 0s, transform .8s var(--e-out);
+  }
+  /* Los demás bajan la luz (con un respiro al salir: pasar de uno a otro no parpadea) */
+  html.js:not(.quieto) .espejo--pared .espejo__luna::before { transition: opacity .7s var(--e-out) .12s; }
+  html.js:not(.quieto) .pared.mirando .espejo--pared:not(.mirado) .espejo__luna::before { opacity: .22; transition: opacity .5s var(--e-out); }
+  /* El reflejo entra con el cursor, lo sigue por el cristal y sale por donde sale él */
+  html.js:not(.quieto) .espejo--pared .espejo__luna::after { transform: translateX(calc(var(--mira-x, -1) * 70%)); transition: opacity .4s var(--e-out), transform 1s var(--e-out); }
+  html.js:not(.quieto) .espejo--pared.mirado .espejo__luna::after {
+    opacity: 1; transform: translate(calc(var(--mira-x, 0) * 26%), calc(var(--mira-y, 0) * 6%));
+    transition: opacity .5s var(--e-out), transform .8s var(--e-out);
+  }
+  /* La foto se asoma hacia el cursor: translate y scale no tocan el translateY del scroll */
+  html.js:not(.quieto) .espejo--pared .espejo__luna img {
+    transition: opacity 1.2s var(--e-out) calc(var(--n, 0) * 220ms + 250ms), translate 1s var(--e-out), scale 1.4s var(--e-out);
+  }
+  html.js:not(.quieto) .espejo--pared.mirado .espejo__luna img { translate: calc(var(--mira-x, 0) * 2%) calc(var(--mira-y, 0) * 1.5%); scale: 1.07; }
+}
+
+/* En táctil, un toque enciende el espejo un momento y un reflejo cruza el cristal */
+@keyframes destello-led { 0% { opacity: 0; } 9% { opacity: .85; } 16% { opacity: .15; } 27% { opacity: 1; } 62% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes reflejo { 0% { opacity: 0; transform: translateX(-60%); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateX(60%); } }
+html.js:not(.quieto) .espejo--pared.toque::before { animation: destello-led 1.6s linear; }
+html.js:not(.quieto) .espejo--pared.toque .espejo__luna::after { animation: reflejo 1.1s var(--e-out); }
+
+/* ---------- 5 · Trayectoria ---------- */
+html.js:not(.quieto) .marco-oro img { opacity: 0; transition: opacity 1.2s var(--e-out); }
+html.js:not(.quieto) .marco-oro.visible img { opacity: 1; }
+html.js:not(.quieto) .marco-oro.visible::before { animation: destello 1.6s var(--e-out) .4s 1; }
+html.js:not(.quieto) .linea::after { transition: transform .25s linear; }
+html.js:not(.quieto) .hito::after { opacity: 0; transform: scale(.3); transition: opacity .4s var(--e-out), transform .6s var(--e-muelle); }
+html.js:not(.quieto) .hito .hito__año,
+html.js:not(.quieto) .hito .hito__cuerpo { opacity: .22; transform: translateX(-14px); transition: opacity .6s var(--e-out), transform .8s var(--e-out); }
+html.js:not(.quieto) .hito .hito__logo { transform: perspective(500px) rotateY(90deg); opacity: 0; transition: transform .9s var(--e-muelle), opacity .4s var(--e-out); }
+html.js:not(.quieto) .hito.encendido::after { opacity: 1; transform: none; }
+html.js:not(.quieto) .hito.encendido .hito__año,
+html.js:not(.quieto) .hito.encendido .hito__cuerpo { opacity: 1; transform: none; }
+html.js:not(.quieto) .hito.encendido .hito__cuerpo { transition-delay: .08s; }
+html.js:not(.quieto) .hito.encendido .hito__logo { transform: none; opacity: 1; transition-delay: .15s; }
+@keyframes medalla { from { transform: perspective(500px) rotateY(0); } to { transform: perspective(500px) rotateY(360deg); } }
+@media (hover: hover) {
+  html.js:not(.quieto) .hito.encendido:hover .hito__logo { animation: medalla .9s var(--e-out); }
+}
+
+/* ---------- 6 · Preguntas frecuentes: la conversación ---------- */
+@keyframes burbuja { from { opacity: 0; transform: translateY(12px) scale(.9); } to { opacity: 1; transform: none; } }
+@keyframes punto { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-5px); opacity: 1; } }
+html.js:not(.quieto) .burbuja.nueva, html.js:not(.quieto) .escribiendo { animation: burbuja .5s var(--e-muelle) both; }
+html.js:not(.quieto) .escribiendo span { animation: punto 1s ease-in-out infinite; }
+html.js:not(.quieto) .escribiendo span:nth-child(2) { animation-delay: .15s; }
+html.js:not(.quieto) .escribiendo span:nth-child(3) { animation-delay: .3s; }
+html.js:not(.quieto) .chat__preguntas .pregunta-btn { animation: posarse .6s var(--e-muelle) both; animation-delay: calc(var(--i, 0) * 70ms + .1s); }
+
+/* ---------- 7 · Ubicación ---------- */
+@keyframes caer { 0% { opacity: 0; transform: translate(-50%, -360%) rotate(-45deg); } 60% { opacity: 1; } 100% { opacity: 1; transform: translate(-50%, -125%) rotate(-45deg); } }
+html.js:not(.quieto) .mapa .mapa__pin { opacity: 0; }
+html.js:not(.quieto) .mapa.visible .mapa__pin { animation: caer .9s var(--e-muelle) .5s both; }
+html.js:not(.quieto) .horario tr { opacity: 0; transform: translateX(-16px); transition: opacity .6s var(--e-out), transform .8s var(--e-out); transition-delay: calc(var(--i, 0) * 110ms); }
+html.js:not(.quieto) .horario.visible tr { opacity: 1; transform: none; }
+
+/* ---------- Menú, barra fija y botón flotante ---------- */
+html.js:not(.quieto) .menu { opacity: 0; transition: opacity .2s var(--e-out); }
+html.js:not(.quieto) .menu.abierto { opacity: 1; }
+html.js:not(.quieto) .menu__lista li { opacity: 0; transform: translateY(18px); transition: opacity .4s var(--e-out), transform .6s var(--e-out); }
+html.js:not(.quieto) .menu.abierto .menu__lista li { opacity: 1; transform: none; transition-delay: calc(var(--i, 0) * 55ms + 60ms); }
+html.js .menu.abierto { opacity: 1; }
+html.js:not(.quieto) .fija { transition: transform .4s var(--e-out); }
+html.js:not(.quieto) .flotante { transition: transform .7s var(--e-muelle), opacity .3s var(--e-out); }
+
+/* ---------- Quietud ---------- */
+html.quieto { scroll-behavior: auto !important; }
+html.quieto *, html.quieto *::before, html.quieto *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* La hoja de calendario cambia de día como una página que pasa */
+@keyframes hoja-pasa { from { opacity: 0; transform: translateY(-40%) rotateX(70deg); } to { opacity: 1; transform: none; } }
+html.js:not(.quieto) .ticket__fecha.pasa > span { animation: hoja-pasa .6s var(--e-out) both; transform-origin: 50% 0; }
+html.js:not(.quieto) .ticket__fecha.pasa .ticket__num { animation-delay: .06s; }
+html.js:not(.quieto) .ticket__fecha.pasa .ticket__mes { animation-delay: .08s; }

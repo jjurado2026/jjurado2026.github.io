@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paid Media — Velarque</title>
+  <meta name="description" content="Gestión de campañas en Google Ads, Meta Ads y programática. Cada euro invertido, medido y optimizado para maximizar tu ROAS.">
+  <meta property="og:title" content="Paid Media — Velarque">
+  <meta property="og:description" content="Gestión de campañas en Google Ads, Meta Ads y programática. Cada euro invertido, medido y optimizado para maximizar tu ROAS.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/servicio.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Paid Media</span>
+      </div>
+      <h1 class="page-hero__title">Cada euro invertido en publicidad debería volver <em>multiplicado</em>.</h1>
+      <p class="page-hero__desc">Gestionamos tus campañas en Google Ads, Meta Ads y programática con una obsesión: que cada céntimo de tu presupuesto trabaje para generar resultados medibles.</p>
+      <div class="page-hero__actions">
+        <a href="contacto.html" class="btn-main" data-magnetic>
+          <span>Solicita tu auditoría gratuita</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#proceso" class="page-hero__cta-secondary">Cómo lo hacemos ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUÉ HACEMOS -->
+  <section class="what-we-do">
+    <div class="container">
+      <div class="what-we-do__header">
+        <p class="section-label reveal-text">( Qué hacemos )</p>
+        <h2 class="section-title reveal-text">Publicidad digital que se mide en resultados, no en clics.</h2>
+        <p class="section-subtitle reveal-text">No gestionamos campañas por gestionar. Diseñamos estrategias de paid media con un objetivo claro: que tu inversión publicitaria sea la más rentable posible.</p>
+      </div>
+      <div class="what-we-do__grid" data-gsap="stagger">
+        <div class="feature-block">
+          <span class="feature-block__num">01</span>
+          <h3 class="feature-block__title">Google Ads</h3>
+          <p class="feature-block__text">Search, Shopping, Display y YouTube. Campañas para captar demanda existente y aparecer justo cuando tu cliente te busca.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">02</span>
+          <h3 class="feature-block__title">Meta Ads</h3>
+          <p class="feature-block__text">Campañas de prospección y remarketing en Facebook e Instagram. Creatividades que paran el scroll, audiencias que convierten.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">03</span>
+          <h3 class="feature-block__title">Publicidad programática</h3>
+          <p class="feature-block__text">Acceso a inventario premium en medios digitales. Ideal para branding y alcance a gran escala con segmentación avanzada.</p>
+        </div>
+        <div class="feature-block">
+          <span class="feature-block__num">04</span>
+          <h3 class="feature-block__title">Analítica y atribución</h3>
+          <p class="feature-block__text">Medimos todo. Configuramos la analítica para que sepas exactamente de dónde viene cada lead y cada venta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="section-label reveal-text">( Proceso )</p>
+        <h2 class="section-title reveal-text">Un método que maximiza cada euro.</h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">2-3 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Auditoría y estrategia</h3>
+            <p class="process-step__text">Analizamos tu situación actual o definimos estrategia desde cero. Oportunidades, KPIs y plan de acción.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Auditoría" alt="Auditoría y estrategia" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">3-5 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Configuración y lanzamiento</h3>
+            <p class="process-step__text">Estructuramos campañas, configuramos tracking (GA4, conversiones, píxeles), creamos audiencias y lanzamos.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Lanzamiento" alt="Configuración y lanzamiento" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">Continuo</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Optimización continua</h3>
+            <p class="process-step__text">Monitorizamos diariamente. Ajustamos pujas, audiencias, creatividades y presupuestos en función de datos.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Optimización" alt="Optimización continua" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step reveal-up">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">Mensual</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Reporting transparente</h3>
+            <p class="process-step__text">Informes claros. Qué ha pasado, por qué y qué vamos a hacer para mejorar.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Reporting" alt="Reporting transparente" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PLATAFORMAS -->
+  <section class="project-types">
+    <div class="container">
+      <div class="project-types__header">
+        <p class="section-label reveal-text">( Plataformas )</p>
+        <h2 class="section-title reveal-text">Donde está tu cliente, estamos nosotros.</h2>
+      </div>
+      <div class="project-types__grid" data-gsap="stagger" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="project-card">
+          <h3 class="project-card__title">Google Ads</h3>
+          <ul class="project-card__list">
+            <li>Search (búsquedas)</li>
+            <li>Shopping (e-commerce)</li>
+            <li>Display (banners)</li>
+            <li>YouTube (vídeo)</li>
+            <li>Performance Max</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Meta Ads</h3>
+          <ul class="project-card__list">
+            <li>Facebook Feed e Stories</li>
+            <li>Instagram Feed, Stories y Reels</li>
+            <li>Audience Network</li>
+            <li>Messenger</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">Otras plataformas</h3>
+          <ul class="project-card__list">
+            <li>LinkedIn Ads (B2B)</li>
+            <li>TikTok Ads</li>
+            <li>Programática (DV360, Trade Desk)</li>
+            <li>Twitter/X Ads</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RESULTADOS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__header">
+        <p class="section-label reveal-text">( Resultados )</p>
+        <h2 class="section-title reveal-text">Números de campañas reales.</h2>
+      </div>
+      <div class="results__grid" data-gsap="stagger">
+        <div class="result-card">
+          <span class="result-card__tag">E-commerce</span>
+          <h3 class="result-card__title">Moda y accesorios</h3>
+          <p class="result-card__text">Google Shopping + Meta Ads.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">x5.8</span>
+              <span class="result-card__metric-lab">ROAS</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">-35%</span>
+              <span class="result-card__metric-lab">Coste/adquisición</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">3 meses</span>
+              <span class="result-card__metric-lab">Periodo</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">SaaS B2B</span>
+          <h3 class="result-card__title">Generación de leads</h3>
+          <p class="result-card__text">Google Ads + LinkedIn.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">45 leads/mes</span>
+              <span class="result-card__metric-lab">De 8 a 45</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">32€ CPL</span>
+              <span class="result-card__metric-lab">De 85€ a 32€</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">4 meses</span>
+              <span class="result-card__metric-lab">Periodo</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card">
+          <span class="result-card__tag">Servicios</span>
+          <h3 class="result-card__title">Consultoría</h3>
+          <p class="result-card__text">Meta Ads + remarketing.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">120</span>
+              <span class="result-card__metric-lab">Solicitudes</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">x4.5</span>
+              <span class="result-card__metric-lab">ROAS</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">2.000€/mes</span>
+              <span class="result-card__metric-lab">Invertido</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. POR QUÉ VELARQUE -->
+  <section class="why-velarque">
+    <div class="container">
+      <div class="why-velarque__header">
+        <p class="section-label reveal-text">( Por qué Velarque )</p>
+        <h2 class="section-title reveal-text">No somos un freelance con acceso a Google Ads.</h2>
+      </div>
+      <div class="value-blocks__grid" data-gsap="stagger">
+        <div class="value-block">
+          <span class="value-block__num">01</span>
+          <h3 class="value-block__title">Sin contratos de permanencia</h3>
+          <p class="value-block__text">Si no estás contento, te vas. Nos ganamos tu confianza cada mes con resultados.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">02</span>
+          <h3 class="value-block__title">Presupuesto transparente</h3>
+          <p class="value-block__text">Tu inversión publicitaria es tuya. Te decimos exactamente cuánto se invierte en medios y cuánto en gestión.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">03</span>
+          <h3 class="value-block__title">Estrategia integrada</h3>
+          <p class="value-block__text">Tu paid media no funciona solo. Lo conectamos con tu web, tu CRM y tu automatización.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">04</span>
+          <h3 class="value-block__title">Equipo certificado</h3>
+          <p class="value-block__text">Google Partner y Meta Business Partner. Certificaciones que significan acceso a betas, soporte prioritario y mejores prácticas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="cta-final__title reveal-text">¿Tu publicidad no rinde como <em>debería</em>?</h2>
+      <p class="cta-final__desc reveal-text">Te hacemos una auditoría gratuita de tus campañas actuales. Te decimos qué funciona, qué no y qué haríamos diferente.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Solicita tu auditoría gratuita</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 48 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script>
+  /* La propuesta caduca a los 10 días de su envío (5-10-2026): desde el
+     15-10-2026 a las 00:00 (hora de Madrid) se muestra caducada.html.
+     No aplica al abrir el archivo en local (capturas) ni con ?ver en el
+     enlace. Para alargarla, cambiar la fecha. */
+  if (location.protocol !== 'file:' && !/[?&]ver\b/.test(location.search) &&
+      Date.now() >= Date.parse('2026-10-15T00:00:00+02:00')) {
+    document.documentElement.style.display = 'none';
+    location.replace('caducada.html');
+  }
+  document.documentElement.classList.add('js');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clases de baile y fitness en Ciudad Lineal | Studio LUDF Madrid</title>
+<meta name="description" content="Studio de baile latino y urbano en Ciudad Lineal, Madrid. Bachata, salsa, reggaetón, zumba, heels y más. Primera clase gratis, sin pareja y sin saber bailar. Metro Ciudad Lineal.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0B0F">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Studio Latin Urban Dance &amp; Fitness — Madrid">
+<meta property="og:description" content="Más que una clase, una comunidad. Baile latino y urbano en Ciudad Lineal. Primera clase gratis.">
+<link rel="preload" href="assets/fonts/anybody.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/home.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B0B0F'/><path d='M8 7v18h16' fill='none' stroke='%2364FEDA' stroke-width='4'/></svg>">
+</head>
+<body>
+<a class="salta" href="#principal">Saltar al contenido</a>
+
+<svg hidden aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/></symbol>
+  <symbol id="i-tk" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .52.04.76.12v-3.2a5.8 5.8 0 0 0-.76-.05A5.72 5.72 0 0 0 4.15 15.3 5.72 5.72 0 0 0 9.86 21a5.72 5.72 0 0 0 5.71-5.71V9.01a7.35 7.35 0 0 0 4.28 1.38V7.3a4.28 4.28 0 0 1-3.25-1.48Z"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M21.58 7.19a2.5 2.5 0 0 0-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42a2.5 2.5 0 0 0-1.77 1.77A26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42a2.5 2.5 0 0 0 1.77-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12A7 7 0 0 0 5 10c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+  <symbol id="i-metro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M7 16 9 8l3 5 3-5 2 8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m3.5 7 8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-usuario" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pausa" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5Z" fill="currentColor"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-flecha-der" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="cab" id="cab">
+  <div class="env cab__env">
+    <a class="cab__logo" href="#principal" aria-label="Studio Latin Urban Dance &amp; Fitness — inicio">
+      <img src="assets/img/logo-360.png" alt="Latin Urban Dance &amp; Fitness" width="360" height="225">
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <ul class="nav__lista">
+        <li><a class="nav__enlace" href="#metodo">El método</a></li>
+        <li><a class="nav__enlace" href="#clases">Clases</a></li>
+        <li><a class="nav__enlace" href="#horario">Horario</a></li>
+        <li><a class="nav__enlace" href="#equipo">Equipo</a></li>
+        <li><a class="nav__enlace" href="#bonos">Precios</a></li>
+        <li><a class="nav__enlace" href="#formacion">Hazte instructor</a></li>
+        <li class="nav__extra"><a class="btn btn--fuego btn--ancho" href="#bonos">Reserva tu primera clase gratis</a></li>
+        <li class="nav__extra"><a class="btn btn--linea btn--ancho" href="#"><svg class="ico" aria-hidden="true"><use href="#i-usuario"/></svg>Acceder</a></li>
+      </ul>
+    </nav>
+    <div class="cab__acciones">
+      <a class="btn btn--linea btn--peq cab__acceder" href="#"><svg class="ico" aria-hidden="true"><use href="#i-usuario"/></svg>Acceder</a>
+      <a class="btn btn--fuego btn--peq cab__cta" href="#bonos">Primera clase gratis</a>
+      <button class="cab__menu" id="cab-menu" type="button" aria-expanded="false" aria-controls="nav">
+        <svg class="ico ico--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="ico ico--cerrar" aria-hidden="true"><use href="#i-cerrar"/></svg>
+        <span class="vo">Menú</span>
+      </button>
+    </div>
+  </div>
+  <!-- Progreso de lectura: dónde estás en la página -->
+  <span class="cab__progreso" id="progreso" aria-hidden="true"></span>
+</header>
+
+<main id="principal">
+
+  <!-- ===============================================================
+       1 · HERO — la cuenta de entrada
+       Como un profe antes de empezar: la regla cuenta 1…8 y cada línea
+       del rótulo entra en un tiempo (5, 6, 7, 8). En el «1» siguiente
+       aparece el panel. Una sola vez; nada se repite en bucle.
+       Encaje a sangre: font-size 100cqw/5.4 y un font-stretch por línea
+       medido por bisección (0 px de desbordamiento).
+       =============================================================== -->
+  <section class="hero" aria-labelledby="rotulo" data-vivo>
+    <div class="hero__foto" aria-hidden="true">
+      <img src="assets/img/clase-sala-900.webp"
+           srcset="assets/img/clase-sala-560.webp 560w, assets/img/clase-sala-900.webp 900w, assets/img/clase-sala-1400.webp 1400w"
+           sizes="100vw" alt="" width="1400" height="1004" fetchpriority="high" decoding="async">
+    </div>
+
+    <div class="hero__env">
+      <ol class="compas hero__compas" aria-hidden="true">
+        <li data-acento style="--b:1">1</li><li style="--b:2">2</li><li style="--b:3">3</li><li style="--b:4">4</li>
+        <li data-acento style="--b:5">5</li><li style="--b:6">6</li><li class="t7" style="--b:7">7</li><li class="t8" style="--b:8">8</li>
+      </ol>
+
+      <div class="hero__rejilla">
+        <div class="rotulo-caja">
+          <h1 class="rotulo" id="rotulo">
+            <span class="rotulo__l rotulo__l--studio l-hueco" style="--k:0">Studio</span>
+            <span class="rotulo__l rotulo__l--latin l-fuego" style="--k:1">Latin Urban</span>
+            <span class="rotulo__l rotulo__l--dance l-hueco" style="--k:2">Dance &amp; Fitness</span>
+            <span class="rotulo__l rotulo__l--madrid l-blanco" style="--k:3">Madrid</span>
+          </h1>
+          <!-- El espejo: su sala tiene una pared de espejo con tira LED. -->
+          <div class="espejo" aria-hidden="true">
+            <span class="espejo__led"></span>
+            <div class="espejo__copia">
+              <span class="rotulo__l rotulo__l--studio l-hueco">Studio</span>
+              <span class="rotulo__l rotulo__l--latin l-fuego">Latin Urban</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__panel">
+          <p class="hero__claim" style="--i:0">Tu lugar de baile en Madrid</p>
+          <p class="hero__sub" style="--i:1">13 disciplinas, todos los niveles. Sin pareja y sin saber bailar.</p>
+          <div class="hero__ctas" style="--i:2">
+            <a class="btn btn--fuego" href="#bonos">Reserva tu primera clase gratis</a>
+          </div>
+          <!-- Se rellena con el propio horario de la página (main.js).
+               Sin JS, queda el enlace al horario. -->
+          <a class="proxima" id="proxima" href="#horario" style="--i:3">
+            <span class="proxima__et"><span class="proxima__punto" aria-hidden="true"></span><span id="proxima-et">Ver el horario de la semana</span></span>
+            <span class="proxima__cuando" id="proxima-cuando"></span>
+            <span class="proxima__que" id="proxima-que"></span>
+            <svg class="ico proxima__ir" aria-hidden="true"><use href="#i-flecha-der"/></svg>
+          </a>
+          <p class="hero__donde" style="--i:4"><svg class="ico" aria-hidden="true"><use href="#i-metro"/></svg>En el C. C. Alcalá Norte, metro Ciudad Lineal</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       2 · CINTA — las disciplinas, dos carriles opuestos
+       =============================================================== -->
+  <section class="cinta" aria-labelledby="cinta-t">
+    <h2 class="vo" id="cinta-t">Disciplinas del studio</h2>
+    <div class="cinta__carril cinta__carril--a">
+      <ul class="cinta__lista" id="cinta-a">
+        <li>Bailoterapia</li><li>Latin Urban Dance</li><li>Coreos y Ritmos</li><li>Comercial</li>
+        <li>Salsa</li><li>Bachata</li><li>Tonificación Dance</li><li>Zumba</li>
+        <li>Pilates Funcional</li><li>Reggaetón</li><li>GAP</li><li>Clases para niños</li><li>Heels</li>
+      </ul>
+    </div>
+    <div class="cinta__carril cinta__carril--b">
+      <ul class="cinta__lista" id="cinta-b">
+        <li>Dancehall</li><li>Afro Fusion</li><li>Street Jazz</li><li>Salsa Cubana</li>
+        <li>Paso a paso</li><li>Bailetón</li><li>Social Bachata</li><li>Ritmos Latinos</li>
+        <li>Power Dance</li><li>Paso a Paso 50+</li>
+      </ul>
+    </div>
+    <button class="cinta__btn" id="cinta-btn" type="button" aria-pressed="false">
+      <svg class="ico ico--pausa" aria-hidden="true"><use href="#i-pausa"/></svg>
+      <svg class="ico ico--play" aria-hidden="true"><use href="#i-play"/></svg>
+      <span class="vo">Pausar el movimiento de las disciplinas</span>
+    </button>
+  </section>
+
+  <!-- ===============================================================
+       3 · EL MÉTODO EN BLOQUES  [NUEVO]
+       =============================================================== -->
+  <section class="seccion metodo" id="metodo" aria-labelledby="metodo-t">
+    <div class="env">
+      <h2 class="titular metodo__t" id="metodo-t">Pasión, movimiento<br><em>y memoria</em> en cada paso</h2>
+
+      <div class="bento" data-vivo>
+        <article class="bento__c bento__c--cita entra entra--escala" style="--i:0">
+          <blockquote class="cita">
+            <p>Este no es un entrenamiento cualquiera… es una <b>experiencia única</b> donde tu cuerpo y tu mente se activan al ritmo de la música.</p>
+            <p>Nuestro programa combina <b>baile, fitness y entrenamiento mental en bloques</b>, diseñados para que disfrutes mientras ejercitas tu <b>memoria, coordinación y concentración</b>.</p>
+          </blockquote>
+          <p class="cita__pie">
+            <span class="cita__nombre">Junior Monzón O.</span>
+            <span class="cita__rol">Fundador, director y creador del programa LUDF</span>
+          </p>
+        </article>
+
+        <!-- Los tres bloques del método, cada uno con su gesto:
+             la música (ecualizador de 8 barras, un compás), el cuerpo
+             (pulso) y la mente (una secuencia que memorizar). -->
+        <article class="bento__c bento__c--bloque entra entra--escala" style="--i:1">
+          <div class="glifo glifo--eq" aria-hidden="true">
+            <span style="--n:0;--d:.82s"></span><span style="--n:1;--d:1.04s"></span><span style="--n:2;--d:.7s"></span><span style="--n:3;--d:.94s"></span>
+            <span style="--n:4;--d:.76s"></span><span style="--n:5;--d:1.12s"></span><span style="--n:6;--d:.88s"></span><span style="--n:7;--d:.66s"></span>
+          </div>
+          <span class="bento__n" aria-hidden="true">01</span>
+          <h3 class="bento__t">Baila</h3>
+          <p>Baila con pasión y deja que cada movimiento te haga sentir más libre.</p>
+        </article>
+
+        <article class="bento__c bento__c--bloque entra entra--escala" style="--i:2">
+          <div class="glifo glifo--pulso" aria-hidden="true">
+            <div class="pulso__pista">
+              <svg viewBox="0 0 160 64" preserveAspectRatio="none"><path d="M0 34H44l6-10 6 10h8l7-28 9 52 7-38 5 14h68"/></svg>
+              <svg viewBox="0 0 160 64" preserveAspectRatio="none"><path d="M0 34H44l6-10 6 10h8l7-28 9 52 7-38 5 14h68"/></svg>
+            </div>
+          </div>
+          <span class="bento__n" aria-hidden="true">02</span>
+          <h3 class="bento__t">Entrena</h3>
+          <p>Entrena tu cuerpo con rutinas llenas de energía y diversión.</p>
+        </article>
+
+        <article class="bento__c bento__c--bloque entra entra--escala" style="--i:3">
+          <div class="glifo glifo--memo" aria-hidden="true">
+            <span style="--o:0"></span><span style="--o:5"></span><span style="--o:3"></span>
+            <span style="--o:7"></span><span style="--o:1"></span><span style="--o:8"></span>
+            <span style="--o:4"></span><span style="--o:6"></span><span style="--o:2"></span>
+          </div>
+          <span class="bento__n" aria-hidden="true">03</span>
+          <h3 class="bento__t">Desafía</h3>
+          <p>Desafía tu mente con bloques que estimulan la memoria y te mantienen enfocado.</p>
+        </article>
+
+        <article class="bento__c bento__c--ciudades entra entra--escala" style="--i:4">
+          <p class="bento__et">El método se enseña en</p>
+          <ol class="ciudades">
+            <li><span class="ciudades__n">Madrid</span><span class="ciudades__d">Studio propio</span></li>
+            <li><span class="ciudades__n">Hamburgo</span><span class="ciudades__d">Instructor Training</span></li>
+            <li><span class="ciudades__n">Berlín</span><span class="ciudades__d">Masterclass</span></li>
+          </ol>
+        </article>
+      </div>
+
+      <p class="metodo__cierre entra entra--sube">Aquí no vienes solo a hacer ejercicio… vienes a vivir el poder del baile, liberar el estrés y <em>conectar con tu mejor versión</em>.</p>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       4 · LAS CLASES — una estantería de discos
+       «Elige tu ritmo»: cada clase es un disco en su funda. Al pasar,
+       el vinilo sale y gira; al pulsar, la funda se da la vuelta y se lee
+       la contraportada (su descripción literal). Sin JS: portada y
+       contraportada se leen una debajo de otra.
+       =============================================================== -->
+  <section class="seccion seccion--elevada clases" id="clases" aria-labelledby="clases-t">
+    <div class="env">
+      <h2 class="titular clases__t" id="clases-t">Elige <em>tu ritmo</em></h2>
+      <p class="clases__intro">Todos son bienvenidos: principiantes, avanzados, jóvenes y adultos. Dale la vuelta a cada disco para saber de qué va la clase.</p>
+    </div>
+
+    <ul class="discos" data-vivo data-ola>
+      <li class="disco entra" data-arte="sol" style="--c:#FF9620;--c2:#FF17A9;--w:72%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Pasión<br>Movimiento<br>Memoria</p>
+            <h3 class="disco__nombre">Latin Urban Dance</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Latin Urban Dance</p>
+            <p class="disco__d">Baile, fitness y entrenamiento mental en bloques. Disfrutas mientras ejercitas memoria, coordinación y concentración.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Latin Urban Dance</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="anillos" style="--c:#FF17A9;--c2:#FF5E5C;--w:66%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Sensualidad<br>Conexión<br>Ritmo</p>
+            <h3 class="disco__nombre">Bachata Lady Style</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Bachata Lady Style</p>
+            <p class="disco__d">Desde los pasos básicos hasta figuras más avanzadas, mejorando tu técnica, tu estilo y tu confianza en la pista.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Bachata Lady Style</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="rayas" style="--c:#64FEDA;--c2:#304FFF;--w:80%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Energética<br>Consciente<br>Empowering</p>
+            <h3 class="disco__nombre">Dancehall</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Dancehall</p>
+            <p class="disco__d">Del foundation a su evolución más actual, con grooves y coreografías que respetan la esencia de esta cultura.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Dancehall</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="compas" style="--c:#FF9620;--c2:#FF5E5C;--w:82%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Flow<br>Intensidad<br>Diversión</p>
+            <h3 class="disco__nombre">Reggaetón</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Reggaetón</p>
+            <p class="disco__d">Coreografías potentes con la actitud del reggaetón. Mejora tu resistencia y disfruta del flow urbano más actual.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Reggaetón</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="cuadros" style="--c:#FF17A9;--c2:#304FFF;--w:62%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Empoderamiento<br>Divertida<br>Esfuerzo</p>
+            <h3 class="disco__nombre">Street Jazz &amp; Heels</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Street Jazz &amp; Heels</p>
+            <p class="disco__d">Mucha técnica y una mezcla de estilos, lo clásico y lo urbano. Descubrirás lados que quizás no conocías de ti.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Street Jazz &amp; Heels</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="anillos" style="--c:#D8B171;--c2:#FF9620;--w:96%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Energía<br>Ritmo<br>Conexión</p>
+            <h3 class="disco__nombre">Afro Fusion</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Afro Fusion</p>
+            <p class="disco__d">Movimientos afrocaribeños con estilos urbanos. Te conecta con el ritmo y potencia tu confianza a través de la danza.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Afro Fusion</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="sol" style="--c:#64FEDA;--c2:#FF9620;--w:150%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Intensa<br>Divertida<br>Motivadora</p>
+            <h3 class="disco__nombre">Zumba</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Zumba</p>
+            <p class="disco__d">Sudarás, reirás y saldrás con una sonrisa. No importa tu nivel: entrenas casi sin darte cuenta.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Zumba</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="rayas" style="--c:#304FFF;--c2:#FF17A9;--w:76%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Estilo<br>Energía<br>Escenario</p>
+            <h3 class="disco__nombre">Commercial</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Commercial</p>
+            <p class="disco__d">Enfocada en que ganes muchísima confianza en ti mismo. Muy dinámica, con estilos variados.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Commercial</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="compas" style="--c:#64FEDA;--c2:#D8B171;--w:70%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Fuerza<br>Equilibrio<br>Bienestar</p>
+            <h3 class="disco__nombre">Pilates Funcional</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Pilates Funcional</p>
+            <p class="disco__d">Fortalece el cuerpo desde el centro, mejora la postura y gana flexibilidad.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué va Pilates Funcional</span></button>
+        </div>
+      </li>
+      <li class="disco entra" data-arte="cuadros" style="--c:#FF5E5C;--c2:#FF9620;--w:74%">
+        <div class="disco__vinilo" aria-hidden="true"><span class="disco__galleta">LUDF</span></div>
+        <div class="disco__funda">
+          <div class="disco__cara disco__cara--frente">
+            <p class="disco__triada">Diversión<br>Creatividad<br>Movimiento</p>
+            <h3 class="disco__nombre">Clases para niños</h3>
+          </div>
+          <div class="disco__cara disco__cara--dorso">
+            <p class="disco__dn" aria-hidden="true">Clases para niños</p>
+            <p class="disco__d">A través de juegos, música y movimiento desarrollan coordinación, confianza y expresión corporal.</p>
+          </div>
+          <button class="disco__girar" type="button" aria-pressed="false"><span class="vo">Leer de qué van las clases para niños</span></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===============================================================
+       5 · HORARIO  [antes era un JPG]
+       Neón por familia de clase (latinos, urbanos, fitness, niños) y
+       el nivel básico en coral. Al pasar por un filtro se iluminan sus
+       clases; la columna de hoy y la próxima clase van marcadas.
+       =============================================================== -->
+  <section class="seccion horario" id="horario" aria-labelledby="horario-t">
+    <div class="env">
+      <h2 class="titular horario__t" id="horario-t">Horario <em>semanal</em></h2>
+      <p class="horario__intro">Temporada 2026. Las clases marcadas <b class="badge badge--inline">Nivel básico</b> están pensadas para empezar de cero.</p>
+
+      <div class="filtros entra" role="group" aria-label="Filtrar el horario">
+        <button class="filtro filtro--on" type="button" data-f="todo" aria-pressed="true">Todas</button>
+        <button class="filtro" type="button" data-f="basico" aria-pressed="false">Nivel básico</button>
+        <button class="filtro" type="button" data-f="latino" aria-pressed="false">Latinos</button>
+        <button class="filtro" type="button" data-f="urbano" aria-pressed="false">Urbanos</button>
+        <button class="filtro" type="button" data-f="fitness" aria-pressed="false">Fitness</button>
+        <button class="filtro" type="button" data-f="ninos" aria-pressed="false">Niños</button>
+      </div>
+
+      <div class="tabla-caja" data-grupo>
+        <table class="tabla" id="tabla">
+          <caption class="vo">Horario de clases por día y franja horaria, temporada 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="vo">Hora</span></th>
+              <th scope="col">Lunes</th><th scope="col">Martes</th><th scope="col">Miércoles</th>
+              <th scope="col">Jueves</th><th scope="col">Viernes</th><th scope="col">Sábado</th>
+            </tr>
+          </thead>
+          <!-- Transcripción literal de la imagen publicada el 24-09-2026
+               ("horarios temporada 2026.jpg"). Confirmar con el cliente. -->
+          <tbody>
+            <tr>
+              <th scope="row" class="hora">11:00<span>12:00</span></th>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="latino" href="#bonos"><span class="cl__n">Paso a paso</span></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="latino" href="#bonos"><span class="cl__n">Paso a paso</span></a></td>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+              <td><a class="cl cl--fiesta" data-c="latino" href="#bonos"><span class="cl__n">Bailetón Latino</span></a></td>
+            </tr>
+            <tr>
+              <th scope="row" class="hora">18:00<span>19:00</span></th>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="ninos" href="#bonos"><span class="cl__n">Clase para niños</span><span class="cl__extra">7 a 11 años</span></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="ninos" href="#bonos"><span class="cl__n">Clase para niños</span><span class="cl__extra">12 a 16 años</span></a></td>
+              <td><a class="cl" data-c="latino" href="#bonos"><span class="cl__n">Paso a paso</span></a></td>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+            </tr>
+            <tr>
+              <th scope="row" class="hora">19:00<span>20:00</span></th>
+              <td><a class="cl" data-c="urbano basico" href="#bonos"><span class="cl__n">Comercial</span><b class="badge">Nivel básico</b></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="urbano basico" href="#bonos"><span class="cl__n">Comercial</span><b class="badge">Nivel básico</b></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="urbano" href="#bonos"><span class="cl__n">Reparto Cubano</span></a></td>
+              <td><a class="cl cl--fiesta" data-c="latino" href="#bonos"><span class="cl__n">Bailetón Latino</span></a></td>
+            </tr>
+            <tr>
+              <th scope="row" class="hora">20:15<span>21:15</span></th>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="latino basico" href="#bonos"><span class="cl__n">Salsa</span><b class="badge">Nivel básico</b></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="fitness" href="#bonos"><span class="cl__n">Bailoterapia</span></a></td>
+              <td><a class="cl" data-c="latino basico" href="#bonos"><span class="cl__n">Bachata Lady Style</span><b class="badge">Nivel básico</b></a></td>
+            </tr>
+            <tr>
+              <th scope="row" class="hora">21:15<span>22:15</span></th>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+              <td class="vacia"><span class="vo">Sin clase</span><span aria-hidden="true">·</span></td>
+              <td><a class="cl" data-c="latino" href="#bonos"><span class="cl__n">Bachata Coreográfica</span><span class="cl__extra">Lady Style</span></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="horario__nota entra">
+        <svg class="ico" aria-hidden="true"><use href="#i-reloj"/></svg>
+        Studio abierto de lunes a domingo, de 9:30 a 21:30.
+        <span class="horario__aviso">Horario de temporada — confírmalo antes de tu primera visita.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       6 · OBJECIONES  [NUEVO] — respuestas literales de su FAQ
+       =============================================================== -->
+  <section class="seccion seccion--elevada dudas" aria-labelledby="dudas-t">
+    <div class="env">
+      <h2 class="titular dudas__t" id="dudas-t">Lo que <em>todo el mundo</em><br>pregunta</h2>
+
+      <ol class="dudas__lista">
+        <li class="duda" style="--i:0">
+          <h3 class="duda__p">«No sé bailar nada»</h3>
+          <p class="duda__r">No hace falta experiencia: <b>todos los niveles son bienvenidos</b>. Las clases de nivel básico están marcadas en el horario y empiezan desde cero.</p>
+        </li>
+        <li class="duda" style="--i:1">
+          <h3 class="duda__p">«No tengo pareja»</h3>
+          <p class="duda__r">No la necesitas. En bachata trabajamos la conexión, pero <b>se viene solo</b>: ven a soltarte, conocer gente y vivir la bachata de verdad.</p>
+        </li>
+        <li class="duda" style="--i:2">
+          <h3 class="duda__p">«¿Y si no me gusta?»</h3>
+          <p class="duda__r">Tu <b>primera clase es gratis</b> y la matrícula también. Solo tienes que registrarte y reservar en el calendario. Sin compromiso.</p>
+        </li>
+        <li class="duda" style="--i:3">
+          <h3 class="duda__p">«¿Qué me llevo?»</h3>
+          <p class="duda__r">Ropa cómoda, zapatillas adecuadas y, sobre todo, <b>muchas ganas de bailar</b>. Para Heels, trae tus propios tacones.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       7 · EL EQUIPO — acreditaciones de staff
+       Como los pases de un festival o una masterclass: cuelgan de un
+       riel y se balancean con física real al deslizar (main.js).
+       =============================================================== -->
+  <section class="seccion equipo" id="equipo" aria-labelledby="equipo-t">
+    <div class="env equipo__cab">
+      <div>
+        <h2 class="titular equipo__t" id="equipo-t">Un equipo dedicado<br>a <em>inspirarte</em></h2>
+        <p class="equipo__intro">Nueve instructores, cada uno con su estilo. Desliza para conocerlos a todos.</p>
+      </div>
+      <div class="ctrl" role="group" aria-label="Desplazar el equipo">
+        <button class="ctrl__b" type="button" data-dir="-1" aria-controls="pases"><svg class="ico" aria-hidden="true"><use href="#i-izq"/></svg><span class="vo">Anterior</span></button>
+        <button class="ctrl__b" type="button" data-dir="1" aria-controls="pases"><svg class="ico" aria-hidden="true"><use href="#i-der"/></svg><span class="vo">Siguiente</span></button>
+      </div>
+    </div>
+
+    <div class="riel" data-vivo data-revela>
+      <ul class="pases" id="pases">
+        <li class="pase pase--fundador" style="--c:#D8B171">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Fundador</span></p>
+              <p class="pase__grande" aria-hidden="true">Junior</p>
+              <h3 class="pase__n">Junior Monzón</h3>
+              <p class="pase__rol">Fundador · CEO</p>
+              <p class="pase__d">Director, coreógrafo, instructor y formador del programa LUDF. Su misión: inspirar, motivar y guiar a través de la música y el movimiento.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#FF17A9">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Ricardo</p>
+              <h3 class="pase__n">Ricardo Bolaños</h3>
+              <p class="pase__rol">Street Jazz · Heels</p>
+              <p class="pase__d">«Me pueden llamar Rick.» Bailarín profesional formado en Perú (D1) desde hace 12 años. Street jazz, commercial y baile en tacones.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#64FEDA">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Jaison</p>
+              <h3 class="pase__n">Jaison</h3>
+              <p class="pase__rol">Reparto · Hip Hop · AfroFusion</p>
+              <p class="pase__d">Más de 10 años de experiencia internacional. Pionero del estilo Reparto en Cuba, con trayectoria en compañías y batallas de freestyle.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#FF9620">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">José</p>
+              <h3 class="pase__n">José Orta</h3>
+              <p class="pase__rol">Dance Fitness</p>
+              <p class="pase__d">De Isla de Margarita (Venezuela). Ballet clásico a los 14, profesional a los 22, compañía Teresa Carreño y RAZA en Buenos Aires. +9 años como instructor.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#FF5E5C">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Maira</p>
+              <h3 class="pase__n">Maira</h3>
+              <p class="pase__rol">Dancehall · Afrodance</p>
+              <p class="pase__d">Más de 10 años en danzas urbanas. Ha impartido clases en escuelas de todo el país, compartiendo técnica, energía, cultura y flow.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#7C8CFF">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Frank</p>
+              <h3 class="pase__n">Frank Mendoza</h3>
+              <p class="pase__rol">Reggaetón · Dancehall</p>
+              <p class="pase__d">Peruano, bailarín y coreógrafo de estilos comerciales. Ha competido en televisión en Perú. «Mis clases están enfocadas en que ganes confianza.»</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#FF17A9">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Laura</p>
+              <h3 class="pase__n">Laura</h3>
+              <p class="pase__rol">Latinos · Urbanos · Funcional</p>
+              <p class="pase__d">«Bailar es mi lenguaje desde que era pequeña.» Cree en el poder transformador de la danza: no solo cambia cuerpos, también actitudes.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#64FEDA">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Sara</p>
+              <h3 class="pase__n">Sara Delbuono</h3>
+              <p class="pase__rol">Zumba</p>
+              <p class="pase__d">Bailando desde los 7 años: ballet, moderno e hip hop. Instructora de Zumba certificada en 2019. También dietista-nutricionista.</p>
+            </article>
+          </div>
+        </li>
+        <li class="pase" style="--c:#FF9620">
+          <div class="pase__colgante">
+            <span class="pase__cinta" aria-hidden="true"></span>
+            <article class="pase__tarjeta">
+              <p class="pase__cab" aria-hidden="true"><span>LUDF</span><span>Staff</span></p>
+              <p class="pase__grande" aria-hidden="true">Marta</p>
+              <h3 class="pase__n">Marta</h3>
+              <p class="pase__rol">Bachata · Salsa</p>
+              <p class="pase__d">Especializada en los ritmos latinos de pareja, con foco en la técnica, el estilo y la confianza en la pista.</p>
+            </article>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       8 · CÓMO RESERVAR — tiempos 1, 4 y 7 del compás
+       =============================================================== -->
+  <section class="seccion seccion--elevada pasos" aria-labelledby="pasos-t">
+    <div class="env">
+      <h2 class="titular pasos__t" id="pasos-t">¿Cómo reservar<br>tu clase <em>en el studio</em>?</h2>
+      <ol class="pasos__lista" data-revela>
+        <li class="paso entra entra--sube" style="--i:0">
+          <span class="paso__n" aria-hidden="true">1</span>
+          <h3 class="paso__t">Crea tu cuenta</h3>
+          <p class="paso__d">Solo te toma 1 min. Arriba en «Acceder».</p>
+        </li>
+        <li class="paso entra entra--sube" style="--i:1">
+          <span class="paso__n" aria-hidden="true">2</span>
+          <h3 class="paso__t">Elige tu bono</h3>
+          <p class="paso__d">O prueba tu clase gratis.</p>
+        </li>
+        <li class="paso entra entra--sube" style="--i:2">
+          <span class="paso__n" aria-hidden="true">3</span>
+          <h3 class="paso__t">Reserva tu clase</h3>
+          <p class="paso__d">¡Y ven a disfrutar!</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       9 · BONOS — sin neón. El precio se lee, no se espera.
+       =============================================================== -->
+  <section class="seccion bonos" id="bonos" aria-labelledby="bonos-t">
+    <div class="env">
+      <h2 class="titular bonos__t" id="bonos-t">Elige <em>tu bono</em></h2>
+
+      <ul class="bonos__lista" data-vivo>
+        <li class="bono bono--gratis">
+          <h3 class="bono__t">Primera clase</h3>
+          <p class="bono__d">Prueba tu primera clase gratis, cualquier estilo. ¡Descubre LUDF sin compromiso!</p>
+          <p class="bono__p"><span class="bono__c bono__c--txt">GRATIS</span></p>
+          <a class="btn btn--linea btn--ancho" href="#">Reservar</a>
+        </li>
+        <li class="bono">
+          <h3 class="bono__t">Clase suelta</h3>
+          <p class="bono__d">Una clase individual de Latin Urban Dance, Bachata, Salsa Cubana, Paso a paso, Ritmos Latinos, Zumba o de kids/niños.</p>
+          <p class="bono__p"><span class="bono__c">9</span><span class="bono__m">€</span></p>
+          <a class="btn btn--linea btn--ancho" href="#">Comprar</a>
+        </li>
+        <li class="bono">
+          <h3 class="bono__t">Bono Studio · 4 clases</h3>
+          <p class="bono__d">¡Quema calorías y mejora tu mente en cada movimiento! Para todas las clases excepto Bachata.</p>
+          <p class="bono__p"><span class="bono__c">29</span><span class="bono__m">€</span><span class="bono__u">7,25 € por clase</span></p>
+          <a class="btn btn--linea btn--ancho" href="#">Comprar</a>
+        </li>
+        <li class="bono">
+          <h3 class="bono__t">Bono 8 clases <em>+ 2 gratis</em></h3>
+          <p class="bono__d">La opción ideal para disfrutar de todas las clases del estudio, avanzar a tu ritmo y probar diferentes estilos, incluido Heels.</p>
+          <p class="bono__p"><span class="bono__c">49</span><span class="bono__m">€</span><span class="bono__u">4,90 € por clase</span></p>
+          <a class="btn btn--linea btn--ancho" href="#">Comprar</a>
+        </li>
+        <li class="bono bono--top">
+          <p class="bono__sello">Precio de apertura</p>
+          <h3 class="bono__t">Abono ilimitado LUDF</h3>
+          <p class="bono__d">Disfruta de cualquier clase y estilo, sin límite.</p>
+          <p class="bono__p">
+            <span class="bono__antes"><span class="vo">Precio normal </span>129&nbsp;€</span>
+            <span class="bono__c">59</span><span class="bono__m">€</span><span class="bono__per">/mes</span>
+          </p>
+          <a class="btn btn--fuego btn--ancho" href="#">Comprar</a>
+        </li>
+        <li class="bono">
+          <h3 class="bono__t">Bono Bachata</h3>
+          <p class="bono__d">Bachata Ladies Style para mejorar pasos, movimiento corporal, caderas y estilo de brazos. ¡Todos los niveles!</p>
+          <p class="bono__p"><span class="bono__c">30</span><span class="bono__m">€</span><span class="bono__per">/mes</span></p>
+          <a class="btn btn--linea btn--ancho" href="#">Comprar</a>
+        </li>
+      </ul>
+
+      <p class="bonos__nota">Matrícula gratis. Si prefieres pagar en efectivo, también puedes hacerlo directamente en el Studio — o por Bizum.</p>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       10 · LA GIRA — un libro que se hojea
+       Cada fecha es una página (frente) y el reverso de cada hoja es la
+       portadilla de la fecha siguiente. En escritorio se ve el libro
+       abierto a doble página; en móvil, una página que se pasa.
+       Sin JS: las tres fechas se leen una debajo de otra.
+       =============================================================== -->
+  <section class="seccion seccion--elevada gira" id="gira" aria-labelledby="gira-t">
+    <div class="env">
+      <div class="gira__cab">
+        <div>
+          <h2 class="titular gira__t" id="gira-t">El método <em>de gira</em></h2>
+          <p class="gira__intro">El programa que se enseña en Alemania se aprende aquí, en Ciudad Lineal. Pasa las páginas para ver las próximas fechas.</p>
+        </div>
+        <div class="ctrl libro__ctrl" role="group" aria-label="Pasar las páginas">
+          <button class="ctrl__b" type="button" data-pasa="-1" aria-controls="libro"><svg class="ico" aria-hidden="true"><use href="#i-izq"/></svg><span class="vo">Página anterior</span></button>
+          <p class="libro__folio" aria-live="polite"><span class="vo">Fecha </span><b id="libro-n">1</b> <span aria-hidden="true">/</span><span class="vo">de</span> 3</p>
+          <button class="ctrl__b" type="button" data-pasa="1" aria-controls="libro"><svg class="ico" aria-hidden="true"><use href="#i-der"/></svg><span class="vo">Página siguiente</span></button>
+        </div>
+      </div>
+
+      <div class="libro" id="libro">
+        <!-- Página izquierda fija: portadilla de la primera fecha -->
+        <div class="libro__izq" aria-hidden="true">
+          <div class="capitulo" style="--c:#64FEDA">
+            <span class="capitulo__n">01</span>
+            <p class="capitulo__ciudad">Hamburgo</p>
+            <p class="capitulo__fecha">Sábado 3 de octubre</p>
+            <p class="capitulo__tipo">Instructor Training</p>
+          </div>
+        </div>
+
+        <article class="hoja" aria-label="Fecha 1 de 3">
+          <div class="hoja__cara hoja__cara--frente">
+            <div class="evento" style="--c:#64FEDA">
+              <img class="evento__img" src="assets/img/cartel-training-800.webp" srcset="assets/img/cartel-training-800.webp 800w, assets/img/cartel-training-1200.webp 1200w" sizes="(min-width:900px) 500px, 90vw" alt="Cartel del LUDF Instructor Training en Hamburgo" width="800" height="600" loading="lazy" decoding="async">
+              <p class="evento__cuando"><b>Hamburgo</b> sábado 3 de octubre</p>
+              <h3 class="evento__t">LUDF Instructor Training</h3>
+              <p class="evento__lugar">David Lloyd Meridian</p>
+              <a class="btn btn--fuego btn--peq evento__cta" href="#">Reserva tu plaza</a>
+              <span class="evento__folio" aria-hidden="true">1</span>
+            </div>
+          </div>
+          <div class="hoja__cara hoja__cara--dorso" aria-hidden="true">
+            <div class="capitulo" style="--c:#FF17A9">
+              <span class="capitulo__n">02</span>
+              <p class="capitulo__ciudad">Hamburgo</p>
+              <p class="capitulo__fecha">Sábado 3 de octubre</p>
+              <p class="capitulo__tipo">Workshop &amp; Masterclass</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="hoja" aria-label="Fecha 2 de 3">
+          <div class="hoja__cara hoja__cara--frente">
+            <div class="evento" style="--c:#FF17A9">
+              <img class="evento__img" src="assets/img/tour-hamburgo-900.webp" srcset="assets/img/tour-hamburgo-900.webp 900w, assets/img/tour-hamburgo-1400.webp 1400w" sizes="(min-width:900px) 500px, 90vw" alt="Cartel del Workshop y Masterclass LUDF en Hamburgo" width="900" height="616" loading="lazy" decoding="async">
+              <p class="evento__cuando"><b>Hamburgo</b> sábado 3 de octubre</p>
+              <h3 class="evento__t">Workshop &amp; Masterclass</h3>
+              <p class="evento__lugar">AFROTOPIA</p>
+              <a class="btn btn--fuego btn--peq evento__cta" href="#">Reserva tu plaza</a>
+              <span class="evento__folio" aria-hidden="true">2</span>
+            </div>
+          </div>
+          <div class="hoja__cara hoja__cara--dorso" aria-hidden="true">
+            <div class="capitulo" style="--c:#FF9620">
+              <span class="capitulo__n">03</span>
+              <p class="capitulo__ciudad">Berlín</p>
+              <p class="capitulo__fecha">Domingo 4 de octubre</p>
+              <p class="capitulo__tipo">Master Class LUDF</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="hoja" aria-label="Fecha 3 de 3">
+          <div class="hoja__cara hoja__cara--frente">
+            <div class="evento" style="--c:#FF9620">
+              <img class="evento__img" src="assets/img/cartel-berlin-900.webp" srcset="assets/img/cartel-berlin-900.webp 900w, assets/img/cartel-berlin-1400.webp 1400w" sizes="(min-width:900px) 500px, 90vw" alt="Cartel de la Master Class LUDF en Berlín" width="900" height="411" loading="lazy" decoding="async">
+              <p class="evento__cuando"><b>Berlín</b> domingo 4 de octubre</p>
+              <h3 class="evento__t">Master Class LUDF</h3>
+              <p class="evento__lugar">Fitness Unlimited</p>
+              <a class="btn btn--fuego btn--peq evento__cta" href="#">Compra tu entrada</a>
+              <span class="evento__folio" aria-hidden="true">3</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================================
+       11 · FORMACIÓN — banda con corte diagonal
+       =============================================================== -->
+  <section class="formacion" id="formacion" aria-labelledby="form-t">
+    <!-- Sello de certificación: gira mientras está a la vista -->
+    <div class="sello" aria-hidden="true" data-vivo>
+      <svg class="sello__giro" viewBox="0 0 200 200">
+        <defs><path id="sello-c" d="M100 100m-80 0a80 80 0 1 1 160 0a80 80 0 1 1-160 0"/></defs>
+        <text><textPath href="#sello-c" textLength="500">Certificación LUDF · Nivel 1 · Certificación LUDF · Nivel 1 ·</textPath></text>
+      </svg>
+      <span class="sello__c"><b>N1</b><span>LUDF</span></span>
+    </div>
+    <div class="env formacion__env">
+      <h2 class="titular formacion__t" id="form-t">Hazte <em>instructor</em></h2>
+      <p class="formacion__d entra entra--sube">Aprende las herramientas para guiar clases dinámicas, divertidas y efectivas, tanto en gimnasios como en estudios o espacios al aire libre. Formación creada por Junior Monzón, con la certificación LUDF Nivel 1.</p>
+      <ul class="formacion__datos entra entra--sube">
+        <li><b>4 semanas</b><span>4 sesiones de 3 h</span></li>
+        <li><b>150 €</b><span>precio especial · normal 250 €</span></li>
+        <li><b>Presencial</b><span>en el Studio de Madrid</span></li>
+      </ul>
+      <a class="btn btn--fuego entra entra--sube" href="#">Quiero formarme</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie" id="pie">
+  <!-- El claim está pintado en dorado en la pared de su studio -->
+  <p class="pie__claim" data-revela>
+    <span class="pie__claim-1">Más que una clase…</span>
+    <span class="pie__claim-2" data-letras>Una comunidad</span>
+  </p>
+
+  <div class="env pie__env">
+    <div class="pie__col pie__col--marca">
+      <img class="pie__logo" src="assets/img/logo-360.png" alt="Latin Urban Dance &amp; Fitness" width="360" height="225" loading="lazy" decoding="async">
+      <ul class="pie__redes">
+        <li><a href="https://www.instagram.com/studio_latinurbandance/" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg></a></li>
+        <li><a href="#" aria-label="TikTok"><svg class="ico" aria-hidden="true"><use href="#i-tk"/></svg></a></li>
+        <li><a href="https://wa.me/34641296483" aria-label="WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg></a></li>
+        <li><a href="#" aria-label="Facebook"><svg class="ico" aria-hidden="true"><use href="#i-fb"/></svg></a></li>
+        <li><a href="#" aria-label="YouTube"><svg class="ico" aria-hidden="true"><use href="#i-yt"/></svg></a></li>
+      </ul>
+    </div>
+
+    <div class="pie__col">
+      <h2 class="pie__t">El studio</h2>
+      <address class="pie__datos">
+        <p><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>C. C. Alcalá Norte, local 33 — 1.ª planta<br>Calle de Alcalá, 414 · 28027 Madrid</span></p>
+        <p><svg class="ico" aria-hidden="true"><use href="#i-metro"/></svg><span>Metro Ciudad Lineal</span></p>
+        <p><svg class="ico" aria-hidden="true"><use href="#i-reloj"/></svg><span>Lunes a domingo · 9:30 – 21:30</span></p>
+        <p><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg><a class="enlace" href="tel:+34641296483">+34 641 29 64 83</a></p>
+        <p><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><a class="enlace" href="mailto:latinurbandancefitness@gmail.com">latinurbandancefitness@gmail.com</a></p>
+      </address>
+    </div>
+
+    <div class="pie__col">
+      <h2 class="pie__t">Studio</h2>
+      <ul class="pie__enlaces">
+        <li><a href="#metodo">El método LUDF</a></li>
+        <li><a href="#clases">Clases</a></li>
+        <li><a href="#horario">Horario</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#bonos">Precios</a></li>
+        <li><a href="#formacion">Hazte instructor</a></li>
+        <li><a href="#">Tarjeta de regalo</a></li>
+        <li><a href="#">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+
+    <div class="pie__col">
+      <h2 class="pie__t">Legal</h2>
+      <ul class="pie__enlaces">
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Política de cookies</a></li>
+        <li><a href="#">Condiciones de compra</a></li>
+        <li><a href="#">Política de devoluciones</a></li>
+        <li><a href="#">Declaración de accesibilidad</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pie__barra">
+    <div class="env">
+      <ol class="compas" aria-hidden="true">
+        <li data-acento>1</li><li>2</li><li>3</li><li>4</li>
+        <li data-acento>5</li><li>6</li><li class="t7">7</li><li class="t8">8</li>
+      </ol>
+      <div class="pie__fin">
+        <p>© 2026 Latin Urban Dance &amp; Fitness</p>
+        <p>Prototipo de propuesta · <a class="enlace" href="https://jjuradogarciadelrio.com">Juan Jurado</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="fija" id="fija" aria-hidden="true">
+  <a class="fija__b fija__b--wa" href="https://wa.me/34641296483"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="fija__b fija__b--fuego" href="#bonos">Primera clase gratis</a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

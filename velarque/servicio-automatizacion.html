@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatización — Velarque</title>
+  <meta name="description" content="Automatizamos los procesos repetitivos de tu negocio. Emails, reporting, flujos de trabajo. Sin errores, sin olvidos.">
+  <meta property="og:title" content="Automatización — Velarque">
+  <meta property="og:description" content="Automatizamos los procesos repetitivos de tu negocio. Emails, reporting, flujos de trabajo. Sin errores, sin olvidos.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/servicio.css">
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <section class="page-hero" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>( Automatización )</span>
+      </div>
+      <h1 class="page-hero__title">Deja de hacer a mano lo que una máquina hace <em>mejor</em>.</h1>
+      <p class="page-hero__desc">Automatizamos los procesos repetitivos de tu negocio para que tu equipo se dedique a lo que importa: pensar, crear y vender. Sin errores humanos, sin olvidos.</p>
+      <div class="page-hero__actions">
+        <a href="contacto.html" class="btn-main" data-magnetic>
+          <span>Automatiza tu negocio</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#automatizamos" class="page-hero__cta-secondary">Qué automatizamos ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. QUÉ HACEMOS -->
+  <section class="what-we-do">
+    <div class="container">
+      <div class="what-we-do__header">
+        <p class="section-label reveal-text">( Qué hacemos )</p>
+        <h2 class="section-title reveal-text">Automatización que libera tiempo y reduce errores.</h2>
+        <p class="section-subtitle reveal-text">Si tu equipo pasa horas copiando datos entre herramientas, enviando emails manualmente o generando informes a mano, hay una forma mejor.</p>
+      </div>
+      <div class="what-we-do__grid" data-gsap="stagger">
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">01</span>
+          <h3 class="feature-block__title">Automatización de marketing</h3>
+          <p class="feature-block__text">Emails de bienvenida, secuencias de nurturing, seguimiento post-compra, segmentación dinámica y scoring de leads.</p>
+        </div>
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">02</span>
+          <h3 class="feature-block__title">Automatización de procesos internos</h3>
+          <p class="feature-block__text">Conectamos tus herramientas para que los datos fluyan sin intervención humana. Nuevo lead → asignación → email → tarea en CRM.</p>
+        </div>
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">03</span>
+          <h3 class="feature-block__title">Reporting automatizado</h3>
+          <p class="feature-block__text">Informes que se generan solos con datos actualizados. Dashboards en tiempo real.</p>
+        </div>
+        <div class="feature-block reveal-up">
+          <span class="feature-block__num">04</span>
+          <h3 class="feature-block__title">Alertas y notificaciones</h3>
+          <p class="feature-block__text">El sistema te avisa cuando pasa algo importante: lead caliente, campaña que baja, carrito abandonado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="process__header">
+        <p class="section-label reveal-text">( Proceso )</p>
+        <h2 class="section-title reveal-text">Automatizamos paso a paso.</h2>
+      </div>
+      <div class="process__steps">
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">01</span>
+            <span class="process-step__time">1-2 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Mapeo de procesos</h3>
+            <p class="process-step__text">Documentamos tus flujos de trabajo. Identificamos tareas repetitivas, cuellos de botella y oportunidades de automatización.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Mapeo" alt="Mapeo de procesos" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">02</span>
+            <span class="process-step__time">2-3 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Diseño de flujos</h3>
+            <p class="process-step__text">Diseñamos los flujos automatizados: triggers, condiciones, acciones y excepciones. Te los presentamos antes de construir.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Diseño" alt="Diseño de flujos" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">03</span>
+            <span class="process-step__time">1-2 semanas</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Construcción e integración</h3>
+            <p class="process-step__text">Montamos las automatizaciones en las herramientas adecuadas y las conectamos con tu stack existente.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Construcción" alt="Construcción e integración" loading="lazy">
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__left">
+            <span class="process-step__num">04</span>
+            <span class="process-step__time">2-3 días</span>
+          </div>
+          <div class="process-step__center">
+            <h3 class="process-step__title">Testing y lanzamiento</h3>
+            <p class="process-step__text">Probamos cada flujo con escenarios reales. Corregimos, ajustamos y lanzamos.</p>
+          </div>
+          <div class="process-step__visual">
+            <img src="https://placehold.co/300x200/f7f7f7/999?text=Testing" alt="Testing y lanzamiento" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. QUÉ AUTOMATIZAMOS -->
+  <section class="project-types" id="automatizamos">
+    <div class="container">
+      <div class="project-types__header">
+        <p class="section-label reveal-text">( Qué automatizamos )</p>
+        <h2 class="section-title reveal-text">Procesos que están pidiendo a gritos ser automatizados.</h2>
+      </div>
+      <div class="project-types__grid" data-gsap="stagger" style="grid-template-columns: repeat(3, 1fr)">
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">Marketing y ventas</h3>
+          <ul class="project-card__list">
+            <li>Secuencias de email (bienvenida, nurturing, abandono)</li>
+            <li>Scoring y asignación de leads</li>
+            <li>Seguimiento post-compra y upselling</li>
+            <li>Publicación programada en redes</li>
+          </ul>
+        </div>
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">Operaciones</h3>
+          <ul class="project-card__list">
+            <li>Onboarding de clientes</li>
+            <li>Generación y envío de facturas</li>
+            <li>Sincronización de datos entre herramientas</li>
+            <li>Gestión de tareas y recordatorios</li>
+          </ul>
+        </div>
+        <div class="project-card reveal-up">
+          <h3 class="project-card__title">Reporting</h3>
+          <ul class="project-card__list">
+            <li>Informes de ventas y marketing automáticos</li>
+            <li>Dashboards en tiempo real</li>
+            <li>Alertas de KPIs (caídas, oportunidades)</li>
+            <li>Consolidación de datos de múltiples fuentes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HERRAMIENTAS -->
+  <section class="tech-stack">
+    <div class="container">
+      <div class="tech-stack__header">
+        <p class="section-label reveal-text">( Herramientas )</p>
+        <h2 class="section-title reveal-text">Usamos lo que mejor encaja.</h2>
+      </div>
+      <div class="tech-stack__grid" data-gsap="stagger">
+        <div class="tech-item reveal-up">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4"/><path d="M16 20l8 8 8-8"/></svg>
+          </div>
+          <h3 class="tech-item__name">n8n</h3>
+          <p class="tech-item__desc">Automatización open source, potente y flexible. Nuestra herramienta principal.</p>
+        </div>
+        <div class="tech-item reveal-up">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M14 24h20M24 14v20"/></svg>
+          </div>
+          <h3 class="tech-item__name">Make</h3>
+          <p class="tech-item__desc">Ideal para automatizaciones visuales y conexiones entre SaaS.</p>
+        </div>
+        <div class="tech-item reveal-up">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 48 48"><path d="M12 12h24v24H12z"/><path d="M20 20h8v8h-8z"/></svg>
+          </div>
+          <h3 class="tech-item__name">Zapier</h3>
+          <p class="tech-item__desc">Integraciones rápidas y sencillas con miles de aplicaciones.</p>
+        </div>
+        <div class="tech-item reveal-up">
+          <div class="tech-item__icon">
+            <svg viewBox="0 0 48 48"><path d="M8 12l16 24 16-24"/><path d="M14 12h20"/></svg>
+          </div>
+          <h3 class="tech-item__name">Custom</h3>
+          <p class="tech-item__desc">Cuando ninguna herramienta no-code cubre, lo programamos a medida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. RESULTADOS -->
+  <section class="results">
+    <div class="container">
+      <div class="results__header">
+        <p class="section-label reveal-text">( Resultados )</p>
+        <h2 class="section-title reveal-text">Horas recuperadas, errores eliminados.</h2>
+      </div>
+      <div class="results__grid" data-gsap="stagger">
+        <div class="result-card reveal-up">
+          <span class="result-card__tag">Seguros</span>
+          <h3 class="result-card__title">Onboarding automatizado</h3>
+          <p class="result-card__text">De 45 min manuales a 3 min automáticos.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">12</span>
+              <span class="result-card__metric-lab">Flujos</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">15h/sem</span>
+              <span class="result-card__metric-lab">Recuperadas</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">-93%</span>
+              <span class="result-card__metric-lab">Tiempo</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card reveal-up">
+          <span class="result-card__tag">E-commerce</span>
+          <h3 class="result-card__title">Carritos abandonados</h3>
+          <p class="result-card__text">Secuencia automatizada de recuperación.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">18%</span>
+              <span class="result-card__metric-lab">Recuperación</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">+12.000€</span>
+              <span class="result-card__metric-lab">1er mes</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">3</span>
+              <span class="result-card__metric-lab">Emails</span>
+            </div>
+          </div>
+        </div>
+        <div class="result-card reveal-up">
+          <span class="result-card__tag">Consultora</span>
+          <h3 class="result-card__title">Reporting automático</h3>
+          <p class="result-card__text">Dashboard unificado con 4 fuentes.</p>
+          <div class="result-card__metrics">
+            <div>
+              <span class="result-card__metric-val">4</span>
+              <span class="result-card__metric-lab">Fuentes conectadas</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">Tiempo real</span>
+              <span class="result-card__metric-lab">Actualización</span>
+            </div>
+            <div>
+              <span class="result-card__metric-val">0</span>
+              <span class="result-card__metric-lab">Informes manuales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <h2 class="cta-final__title reveal-text">¿Cuántas horas pierde tu equipo en tareas <em>repetitivas</em>?</h2>
+      <p class="cta-final__desc reveal-text">Te hacemos un mapeo gratuito de tus procesos y te decimos exactamente qué puedes automatizar y cuánto tiempo recuperarías.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Solicita tu mapeo gratuito</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 48 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (marzo de 2026, publicada el 10-mar; el día de envío cuenta), hasta el 19-mar-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 2, 19, 23, 0);   // 20-mar-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fisioterapia Santos — Clínica de Fisioterapia y Osteopatía en Madrid</title>
+  <meta name="description" content="Clínica de fisioterapia y osteopatía en Madrid. Más de 20 años de experiencia, tratamientos personalizados y un equipo de profesionales colegiados.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/homepage.css">
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Fisioterapia Santos — Inicio">
+        <img src="assets/img/logo.png" alt="Logo Fisioterapia Santos">
+        <span class="nav__logo-text">Fisioterapia <span>Santos</span></span>
+      </a>
+
+      <div class="nav__links">
+        <a href="tratamientos.html" class="nav__link">Tratamientos</a>
+        <a href="tarifas.html" class="nav__link">Tarifas</a>
+        <a href="perfil-profesional.html" class="nav__link">Equipo</a>
+        <a href="tel:667069096" class="nav__phone" aria-label="Llamar al 667 069 096">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          667 069 096
+        </a>
+        <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita" class="nav__cta nav__cta--desktop" target="_blank" rel="noopener">
+          Pide tu cita
+        </a>
+      </div>
+
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true">
+    <a href="tratamientos.html">Tratamientos</a>
+    <a href="tarifas.html">Tarifas</a>
+    <a href="perfil-profesional.html">Equipo</a>
+    <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita" class="btn btn--sage btn--lg" target="_blank" rel="noopener">Pide tu cita</a>
+    <a href="tel:667069096" style="font-family:var(--font-body);font-size:1rem;color:var(--text-mid);">667 069 096</a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <!-- Full-bleed background image -->
+    <div class="hero__bg">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&h=1080&fit=crop&crop=center&q=85" alt="Profesional de fisioterapia realizando tratamiento manual" loading="eager">
+    </div>
+
+    <!-- Subtle glow accents -->
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+
+    <!-- Content -->
+    <div class="hero__content">
+      <div class="hero__label reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Colegiados CPFCM · Arganzuela, Madrid
+      </div>
+      <h1 class="hero__title split-reveal">
+        Tu centro de <em>fisioterapia</em><br>en Arganzuela
+      </h1>
+      <p class="hero__subtitle reveal reveal--delay-2">
+        Diagnóstico, tratamiento y prevención de dolor. Los tratamientos son personalizados a cada persona, se practican en función de una valoración previa y conforme a un diagnóstico.
+      </p>
+      <div class="hero__actions reveal reveal--delay-3">
+        <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita" class="btn btn--sage btn--lg btn--magnetic" target="_blank" rel="noopener">
+          Reserva tu cita
+        </a>
+        <a href="tel:667069096" class="hero__phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;opacity:.6;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          667 069 096
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stats__item reveal">
+          <div class="stats__number" data-count="20" data-prefix="+">+20</div>
+          <div class="stats__label">Años de experiencia</div>
+        </div>
+        <div class="stats__item reveal reveal--delay-1">
+          <div class="stats__number" data-count="4">4</div>
+          <div class="stats__label">Especialistas colegiados</div>
+        </div>
+        <div class="stats__item reveal reveal--delay-2">
+          <div class="stats__number" data-count="14">14</div>
+          <div class="stats__label">Tratamientos especializados</div>
+        </div>
+        <div class="stats__item reveal reveal--delay-3">
+          <div class="stats__number" data-count="45" data-suffix="'">45'</div>
+          <div class="stats__label">Minutos por sesión</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TRUST MARQUEE ==================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__inner">
+      <span>Terapia Manual</span>
+      <span class="marquee__dot"></span>
+      <span>Osteopatía</span>
+      <span class="marquee__dot"></span>
+      <span>Respiratoria</span>
+      <span class="marquee__dot"></span>
+      <span>Pediátrica</span>
+      <span class="marquee__dot"></span>
+      <span>Deportiva</span>
+      <span class="marquee__dot"></span>
+      <span>Suelo Pélvico</span>
+      <span class="marquee__dot"></span>
+      <span>Punción Seca</span>
+      <span class="marquee__dot"></span>
+      <span>S.I.S.</span>
+      <span class="marquee__dot"></span>
+      <span>RPG</span>
+      <span class="marquee__dot"></span>
+      <span>Pilates</span>
+      <span class="marquee__dot"></span>
+      <span>Dermatofuncional</span>
+      <span class="marquee__dot"></span>
+      <span>Masaje Terapéutico</span>
+      <span class="marquee__dot"></span>
+    </div>
+  </div>
+
+  <!-- ==================== FORMACIÓN Y EXPERIENCIA ==================== -->
+  <section class="section credentials">
+    <div class="container">
+      <div class="credentials__inner">
+        <div class="credentials__content reveal">
+          <span class="section-label">Formación y experiencia</span>
+          <h2 style="margin-top:var(--sp-md);">Fisioterapia basada en <em>evidencia</em></h2>
+          <p>Nuestras sesiones se centran en la terapia manual y los tratamientos se basan en el razonamiento clínico y la evidencia científica más actual.</p>
+          <p>Ofrecemos una amplia variedad de terapias adecuadas a las necesidades de cada paciente, con tratamientos especializados desde recién nacidos hasta adultos.</p>
+          <p>Ponemos a disposición del paciente nuestros conocimientos y experiencias para atender sus consultas particulares, proporcionando información sobre tratamientos en los campos deportivo, traumatológico, respiratorio y reumatológico como complemento al tratamiento médico.</p>
+
+          <div class="credentials__badges">
+            <div class="credentials__badge">
+              <div class="credentials__badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div>
+                <div class="credentials__badge-title">Comunidad de Madrid</div>
+                <div class="credentials__badge-text">Centro sanitario autorizado</div>
+              </div>
+            </div>
+            <div class="credentials__badge">
+              <div class="credentials__badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <div class="credentials__badge-title">CPFCM</div>
+                <div class="credentials__badge-text">Colegiados oficiales</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20cita" class="btn btn--sage" target="_blank" rel="noopener" style="margin-top:var(--sp-lg);">Reserva tu cita</a>
+        </div>
+
+        <div class="credentials__images reveal reveal--delay-1">
+          <div class="credentials__img credentials__img--main">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=640&h=480&fit=crop" alt="Fisioterapeuta realizando terapia manual en la clínica" loading="lazy">
+          </div>
+          <div class="credentials__img credentials__img--secondary">
+            <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&h=300&fit=crop" alt="Sala de tratamiento de fisioterapia moderna" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NUESTRAS TERAPIAS (visual showcase) ==================== -->
+  <section class="section therapies-showcase" style="background:var(--sand);">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
+        <span class="section-label">Nuestras terapias</span>
+        <h2 style="margin-top:var(--sp-md);">Trabajamos en la <em>práctica</em></h2>
+        <p style="color:var(--text-mid);margin-top:var(--sp-md);font-size:1.05rem;">Los tratamientos se adaptan a la fase, objetivos y características específicas de cada paciente y su patología.</p>
+      </div>
+
+      <div class="therapies__grid">
+        <!-- Terapia Manual -->
+        <a href="tratamiento-detalle.html" class="therapy-visual reveal">
+          <div class="therapy-visual__img">
+            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&h=600&fit=crop" alt="Fisioterapeuta realizando terapia manual y osteopatía" loading="lazy">
+          </div>
+          <div class="therapy-visual__overlay">
+            <span class="therapy-visual__label">Terapia Manual</span>
+            <h3 class="therapy-visual__title">Osteopatía y Terapia Manual</h3>
+            <p class="therapy-visual__text">Base fundamental de los tratamientos de la clínica. Enfoque en los sistemas estructural, visceral y craneal, válido para todas las edades.</p>
+            <span class="therapy-visual__link">Saber más →</span>
+          </div>
+        </a>
+
+        <!-- Fisioterapia Pediátrica -->
+        <a href="tratamientos.html" class="therapy-visual reveal reveal--delay-1">
+          <div class="therapy-visual__img">
+            <img src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=800&h=600&fit=crop" alt="Fisioterapia pediátrica: tratamiento especializado para bebés y niños" loading="lazy">
+          </div>
+          <div class="therapy-visual__overlay">
+            <span class="therapy-visual__label">Pediátrica</span>
+            <h3 class="therapy-visual__title">Fisioterapia Pediátrica</h3>
+            <p class="therapy-visual__text">Tratamiento de bronquiolitis, cólicos, estreñimiento, reflujo gastroesofágico, plagiocefalia y tortícolis congénita.</p>
+            <span class="therapy-visual__link">Saber más →</span>
+          </div>
+        </a>
+
+        <!-- Fisioterapia Respiratoria -->
+        <a href="tratamientos.html" class="therapy-visual reveal reveal--delay-2">
+          <div class="therapy-visual__img">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop" alt="Fisioterapia respiratoria para adultos y niños" loading="lazy">
+          </div>
+          <div class="therapy-visual__overlay">
+            <span class="therapy-visual__label">Respiratoria</span>
+            <h3 class="therapy-visual__title">Fisioterapia Respiratoria</h3>
+            <p class="therapy-visual__text">Tratamiento individualizado para patologías respiratorias. Alternativa terapéutica con dimensión preventiva y educativa.</p>
+            <span class="therapy-visual__link">Saber más →</span>
+          </div>
+        </a>
+
+        <!-- Punción Seca -->
+        <a href="tratamientos.html" class="therapy-visual reveal">
+          <div class="therapy-visual__img">
+            <img src="https://images.unsplash.com/photo-1598153346810-860daa814c4b?w=800&h=600&fit=crop" alt="Técnica de punción seca para tratar puntos gatillo musculares" loading="lazy">
+          </div>
+          <div class="therapy-visual__overlay">
+            <span class="therapy-visual__label">Punción Seca</span>
+            <h3 class="therapy-visual__title">Punción Seca</h3>
+            <p class="therapy-visual__text">Técnica invasiva que aborda los puntos gatillo musculares. Una de las técnicas más eficaces en su tratamiento.</p>
+            <span class="therapy-visual__link">Saber más →</span>
+          </div>
+        </a>
+
+        <!-- Suelo Pélvico -->
+        <a href="tratamientos.html" class="therapy-visual reveal reveal--delay-1">
+          <div class="therapy-visual__img">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop" alt="Fisioterapia de suelo pélvico" loading="lazy">
+          </div>
+          <div class="therapy-visual__overlay">
+            <span class="therapy-visual__label">Suelo Pélvico</span>
+            <h3 class="therapy-visual__title">Suelo Pélvico</h3>
+            <p class="therapy-visual__text">Disfunciones musculoesqueléticas pélvicas: incontinencia, prolapsos, dolor pélvico crónico y disfunciones sexuales.</p>
+            <span class="therapy-visual__link">Saber más →</span>
+          </div>
+        </a>
+
+        <!-- Fisioterapia Deportiva -->
+        <a href="tratamientos.html" class="therapy-visual reveal reveal--delay-2">
+          <div class="therapy-visual__img">
+            <img src="https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&h=600&fit=crop" alt="Fisioterapia deportiva para atletas amateur y profesional" loading="lazy">
+          </div>
+          <div class="therapy-visual__overlay">
+            <span class="therapy-visual__label">Deportiva</span>
+            <h3 class="therapy-visual__title">Fisioterapia Deportiva</h3>
+            <p class="therapy-visual__text">Fisioterapia deportiva tanto a nivel amateur como profesional, recuperando a los mejores profesionales del deporte.</p>
+            <span class="therapy-visual__link">Saber más →</span>
+          </div>
+        </a>
+      </div>
+
+      <div style="text-align:center;margin-top:var(--sp-2xl);" class="reveal">
+        <a href="tratamientos.html" class="btn btn--secondary">Ver todos los tratamientos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SOBRE LA CLÍNICA ==================== -->
+  <section class="section about-clinic">
+    <div class="container">
+      <div class="about-clinic__layout">
+
+        <!-- Large image gallery -->
+        <div class="about-clinic__gallery stagger-gallery">
+          <div class="about-clinic__img-main stagger-gallery__item">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&h=600&fit=crop" alt="Interior de la clínica Fisioterapia Santos" loading="lazy">
+          </div>
+          <div class="about-clinic__img-row">
+            <div class="about-clinic__img-small stagger-gallery__item">
+              <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=300&fit=crop" alt="Sala de tratamiento con equipamiento moderno" loading="lazy">
+            </div>
+            <div class="about-clinic__img-small stagger-gallery__item">
+              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop" alt="Recepción de la clínica de fisioterapia" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="about-clinic__content reveal reveal--delay-1">
+          <span class="section-label">Nuestra clínica</span>
+          <h2 style="margin-top:var(--sp-md);">Fisioterapia Santos en <em>Arganzuela</em></h2>
+          <p>Tras 14 años ubicados en la zona norte de Madrid, se traslada al barrio de Arganzuela-Planetario el Centro de Fisioterapia Santos, inaugurado en Septiembre de 2015.</p>
+          <p>Centro de líneas minimalistas, decoración blanca y sencilla que busca un entorno acogedor para su comodidad y bienestar tanto en la espera como durante el tratamiento.</p>
+          <p>Ponemos a disposición del paciente nuestros conocimientos y experiencias para atender sus consultas particulares, proporcionando información sobre tratamientos en los campos deportivo, traumatológico, respiratorio y reumatológico como complemento al tratamiento médico.</p>
+
+          <div class="about-clinic__features">
+            <div class="about-clinic__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Tratamientos personalizados</span>
+            </div>
+            <div class="about-clinic__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Sesiones de 45 minutos</span>
+            </div>
+            <div class="about-clinic__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <span>Principio de no-dolor</span>
+            </div>
+            <div class="about-clinic__feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>Evidencia científica</span>
+            </div>
+          </div>
+
+          <a href="perfil-profesional.html" class="btn btn--ghost" style="margin-top:var(--sp-lg);">Conoce al equipo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DEPORTISTAS DE ÉLITE ==================== -->
+  <section class="elite-banner">
+    <div class="elite-banner__bg">
+      <img src="https://images.unsplash.com/photo-1461896836934-bd45ba8bf8bd?w=1920&h=900&fit=crop&crop=center" alt="Deportista profesional en acción" loading="lazy" data-parallax="0.08">
+    </div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="elite-banner__content reveal">
+        <span class="section-label" style="color:var(--sage-light);">Fisioterapia Deportiva</span>
+        <h2 style="color:var(--text-inv);margin-top:var(--sp-md);">Deportistas de <em>élite</em> nos avalan</h2>
+        <p style="color:rgba(250,248,244,.75);max-width:560px;font-size:1.05rem;margin-top:var(--sp-md);">Trabajamos el campo de la fisioterapia deportiva, tanto a nivel amateur como profesional, recuperando a los mejores profesionales del deporte.</p>
+        <a href="tratamientos.html" class="btn btn--sage" style="margin-top:var(--sp-xl);">Ver tratamientos deportivos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EQUIPO ==================== -->
+  <section class="section" id="equipo" style="background:var(--sand);">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto;">
+        <span class="section-label">Equipo</span>
+        <h2 style="margin-top:var(--sp-md);">Profesionales que <em>cuidan</em> de ti</h2>
+      </div>
+
+      <div class="team__grid">
+        <a href="perfil-profesional.html" class="team-card reveal">
+          <div class="team-card__photo">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=240&h=240&fit=crop&crop=face" alt="Santos Rodríguez Cuenca" loading="lazy">
+          </div>
+          <div class="team-card__name">Santos Rodríguez Cuenca</div>
+          <div class="team-card__role">Director · Fisioterapeuta y Osteópata</div>
+          <div class="team-card__col">Col. 2437</div>
+        </a>
+
+        <div class="team-card reveal reveal--delay-1">
+          <div class="team-card__photo">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=240&h=240&fit=crop&crop=face" alt="Andrea González Portela" loading="lazy">
+          </div>
+          <div class="team-card__name">Andrea González Portela</div>
+          <div class="team-card__role">Fisioterapeuta · Suelo Pélvico</div>
+          <div class="team-card__col">Col. 016718</div>
+        </div>
+
+        <div class="team-card reveal reveal--delay-2">
+          <div class="team-card__photo">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=240&h=240&fit=crop&crop=face" alt="Alejandro Quintana Román" loading="lazy">
+          </div>
+          <div class="team-card__name">Alejandro Quintana Román</div>
+          <div class="team-card__role">Fisioterapeuta y Osteópata</div>
+          <div class="team-card__col">Col. 12881</div>
+        </div>
+
+        <div class="team-card reveal reveal--delay-3">
+          <div class="team-card__photo">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=240&h=240&fit=crop&crop=face" alt="Lis Losada Baz" loading="lazy">
+          </div>
+          <div class="team-card__name">Lis Losada Baz</div>
+          <div class="team-card__role">Fisioterapeuta · Dermatofuncional</div>
+          <div class="team-card__col">Col. 17167</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== S.I.S. HIGHLIGHT ==================== -->
+  <section class="section sis-section">
+    <div class="container">
+      <div class="sis__inner">
+        <div class="sis__image reveal">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=700&h=500&fit=crop" alt="Tecnología Sistema Super Inductivo para fisioterapia" loading="lazy">
+        </div>
+        <div class="sis__content reveal reveal--delay-1">
+          <span class="section-label">Tecnología avanzada</span>
+          <h2 style="margin-top:var(--sp-md);">Sistema Super Inductivo <em>(S.I.S.)</em></h2>
+          <p>Tecnología innovadora que utiliza campo electromagnético de alta intensidad (2,5 Teslas) para tratar el aparato musculoesquelético a una profundidad de 10cm.</p>
+          <p>Tratamiento no invasivo e indoloro para el tratamiento profundo del sistema musculoesquelético.</p>
+
+          <div class="sis__features">
+            <div class="sis__feature">
+              <span class="sis__feature-check">✓</span>
+              <span>No invasivo e indoloro</span>
+            </div>
+            <div class="sis__feature">
+              <span class="sis__feature-check">✓</span>
+              <span>2,5 Teslas de intensidad</span>
+            </div>
+            <div class="sis__feature">
+              <span class="sis__feature-check">✓</span>
+              <span>10cm de profundidad</span>
+            </div>
+            <div class="sis__feature">
+              <span class="sis__feature-check">✓</span>
+              <span>Sesión desde 25€</span>
+            </div>
+          </div>
+
+          <a href="tratamientos.html" class="btn btn--ghost" style="margin-top:var(--sp-lg);">Más sobre S.I.S.</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POR QUÉ ELEGIRNOS ==================== -->
+  <section class="section" style="background:var(--sand);">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto;">
+        <span class="section-label">Por qué elegirnos</span>
+        <h2 style="margin-top:var(--sp-md);">Lo que nos <em>diferencia</em></h2>
+      </div>
+
+      <div class="why__grid">
+        <div class="card why-card reveal">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4 class="why-card__title">Tratamientos personalizados</h4>
+            <p class="why-card__text">Los tratamientos son personalizados a cada persona. Se practican en función de una valoración previa y conforme a un diagnóstico.</p>
+          </div>
+        </div>
+
+        <div class="card why-card reveal reveal--delay-1">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2m7-10a4 4 0 100-8 4 4 0 000 8zm10 0v6m3-3h-6"/></svg>
+          </div>
+          <div>
+            <h4 class="why-card__title">Entorno acogedor</h4>
+            <p class="why-card__text">Centro minimalista con decoración blanca que busca un entorno acogedor para su comodidad y bienestar. Sesiones de 45 minutos respetando el principio de no-dolor.</p>
+          </div>
+        </div>
+
+        <div class="card why-card reveal reveal--delay-2">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m8-10a4 4 0 100-8 4 4 0 000 8zm8 0a3 3 0 100-6 3 3 0 000 6zm4 10v-2a3 3 0 00-3-3h-1"/></svg>
+          </div>
+          <div>
+            <h4 class="why-card__title">Equipo colegiado</h4>
+            <p class="why-card__text">4 profesionales colegiados con formación especializada en osteopatía, suelo pélvico, dermatofuncional, respiratoria, deportiva y pediátrica.</p>
+          </div>
+        </div>
+
+        <div class="card why-card reveal reveal--delay-3">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <h4 class="why-card__title">Tecnología S.I.S.</h4>
+            <p class="why-card__text">Tecnología innovadora que utiliza campo electromagnético de alta intensidad (2,5 Teslas) para tratar aparato musculoesquelético a profundidad de 10cm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIOS ==================== -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto;">
+        <span class="section-label">Testimonios</span>
+        <h2 style="margin-top:var(--sp-md);">Lo que dicen nuestros <em>pacientes</em></h2>
+      </div>
+
+      <div class="testimonials__slider">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__text">"El trato es excelente y muy profesional. Después de varias sesiones, la mejoría es notable. Recomiendo al 100%."</p>
+          <div class="testimonial-card__author">María G.</div>
+          <div class="testimonial-card__detail">Fisioterapia traumatológica</div>
+        </div>
+
+        <div class="testimonial-card reveal reveal--delay-1">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__text">"Grandes profesionales. Santos y su equipo te explican todo con detalle y adaptan el tratamiento a tus necesidades."</p>
+          <div class="testimonial-card__author">Carlos R.</div>
+          <div class="testimonial-card__detail">Osteopatía</div>
+        </div>
+
+        <div class="testimonial-card reveal reveal--delay-2">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__text">"Mi bebé mejoró muchísimo con las sesiones de fisioterapia respiratoria. Un equipo muy cercano y con mucha experiencia."</p>
+          <div class="testimonial-card__author">Laura P.</div>
+          <div class="testimonial-card__detail">Fisioterapia respiratoria pediátrica</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section class="section cta-section grain">
+    <div class="container" style="position:relative;z-index:2;">
+      <h2 class="reveal">Reserva tu primera consulta</h2>
+      <p class="reveal reveal--delay-1">Cuéntanos qué necesitas. Te ayudamos a encontrar el tratamiento más adecuado.</p>
+
+      <div class="cta-section__actions reveal reveal--delay-2">
+        <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita" class="btn btn--sage btn--lg" target="_blank" rel="noopener">
+          Pide cita por WhatsApp
+        </a>
+        <a href="tel:667069096" class="btn btn--secondary btn--lg" style="border-color:rgba(250,248,244,.2);color:var(--text-inv);">
+          Llamar ahora
+        </a>
+      </div>
+
+      <div class="cta-section__contact reveal reveal--delay-3">
+        <a href="tel:667069096">667 069 096</a>
+        <span>·</span>
+        <a href="tel:915993690">91 599 36 90</a>
+        <span>·</span>
+        <a href="mailto:consultas@fisioterapiasantos.es">consultas@fisioterapiasantos.es</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Fisioterapia <span>Santos</span></div>
+          <p class="footer__text">Calle del Rodio, 2<br>28045 Madrid (Arganzuela-Planetario)</p>
+          <p class="footer__text" style="margin-top:var(--sp-md);">
+            <a href="tel:667069096" class="footer__link" style="display:inline;">667 069 096</a> ·
+            <a href="tel:915993690" class="footer__link" style="display:inline;">91 599 36 90</a>
+          </p>
+          <p class="footer__text" style="margin-top:var(--sp-xs);">
+            <a href="mailto:consultas@fisioterapiasantos.es" class="footer__link" style="display:inline;">consultas@fisioterapiasantos.es</a>
+          </p>
+        </div>
+
+        <div>
+          <div class="footer__heading">Tratamientos</div>
+          <a href="tratamiento-detalle.html" class="footer__link">Osteopatía</a>
+          <a href="tratamientos.html" class="footer__link">Fisioterapia Respiratoria</a>
+          <a href="tratamientos.html" class="footer__link">Suelo Pélvico</a>
+          <a href="tratamientos.html" class="footer__link">Pilates</a>
+          <a href="tratamientos.html" class="footer__link">S.I.S.</a>
+          <a href="tratamientos.html" class="footer__link" style="color:var(--sage-light);margin-top:var(--sp-xs);">Ver todos →</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Clínica</div>
+          <a href="perfil-profesional.html" class="footer__link">Equipo</a>
+          <a href="tarifas.html" class="footer__link">Tarifas</a>
+        </div>
+
+        <div>
+          <div class="footer__heading">Reserva</div>
+          <a href="https://wa.me/34667069096" class="footer__link" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="tel:667069096" class="footer__link">Teléfono</a>
+          <a href="#" class="footer__link">App online</a>
+          <p class="footer__text" style="margin-top:var(--sp-lg);font-size:.8125rem;">
+            Pago: Efectivo, tarjeta,<br>Bizum, transferencia
+          </p>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; 2025 Fisioterapia Santos. Todos los derechos reservados.</span>
+        <div>
+          <a href="#">Condiciones legales</a> · <a href="#">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== WHATSAPP FLOAT ==================== -->
+  <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

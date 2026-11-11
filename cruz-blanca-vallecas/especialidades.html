@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (abril de 2026, publicada el 13-abr; el día de envío cuenta), hasta el 22-abr-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 3, 22, 22, 0);   // 23-abr-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialidades — Cruz Blanca de Vallecas</title>
+    <meta name="description" content="Cocido Madrileño premiado como el mejor de España, Fabada Asturiana multipremiada, Callos a la Madrileña y más especialidades de la cocina tradicional.">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Specialty detail block */
+        .specialty-detail {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-bottom: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            background: var(--warm-white);
+        }
+
+        .specialty-detail--reverse .specialty-detail__image { order: 1; }
+        .specialty-detail--reverse .specialty-detail__content { order: 2; }
+
+        .specialty-detail__image {
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .specialty-detail__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+            transition: transform var(--duration-slow) var(--ease-out);
+        }
+
+        .specialty-detail:hover .specialty-detail__image img {
+            transform: scale(1.03);
+        }
+
+        .specialty-detail__badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--terracotta);
+            color: var(--warm-white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 100px;
+        }
+
+        .specialty-detail__badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .specialty-detail__content {
+            padding: var(--space-xl) var(--space-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .specialty-detail__title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: var(--space-xs);
+        }
+
+        .specialty-detail__subtitle {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.125rem;
+            color: var(--terracotta);
+            margin-bottom: var(--space-md);
+        }
+
+        .specialty-detail__text {
+            color: var(--carbon-light);
+            line-height: 1.75;
+            margin-bottom: var(--space-md);
+        }
+
+        .specialty-detail__includes {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .specialty-detail__includes h4 {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: var(--space-sm);
+        }
+
+        .specialty-detail__includes li {
+            position: relative;
+            padding-left: 24px;
+            padding-bottom: 8px;
+            font-size: 0.9375rem;
+            color: var(--carbon-light);
+            line-height: 1.5;
+        }
+
+        .specialty-detail__includes li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--terracotta);
+            border-radius: 50%;
+        }
+
+        .specialty-detail__price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .specialty-detail__price-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+
+        .specialty-detail__price-note {
+            font-size: 0.8125rem;
+            color: var(--warm-gray);
+        }
+
+        .specialty-detail__tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: var(--space-md);
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(196, 98, 58, 0.06);
+            border-left: 3px solid var(--terracotta);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.9375rem;
+            color: var(--carbon-light);
+        }
+
+        .specialty-detail__tip svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--terracotta);
+            margin-top: 2px;
+        }
+
+        /* Other specialties grid */
+        .other-specialties {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+
+        .other-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            background: var(--warm-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--duration-normal) var(--ease-out),
+                        box-shadow var(--duration-normal) var(--ease-out);
+        }
+
+        .other-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .other-card__icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 2rem;
+        }
+
+        .other-card__content {
+            flex: 1;
+        }
+
+        .other-card__name {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--carbon);
+            margin-bottom: 4px;
+        }
+
+        .other-card__desc {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+
+        .other-card__price {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .specialty-detail {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .specialty-detail__image {
+                min-height: 500px;
+            }
+
+            .specialty-detail__content {
+                padding: var(--space-xl);
+            }
+
+            .other-specialties {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .specialty-detail__content {
+                padding: var(--space-2xl);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas">
+            </a>
+            <div class="nav__links">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="especialidades.html" class="nav__link active">Especialidades</a>
+                <a href="carta.html" class="nav__link">Carta</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="galeria.html" class="nav__link">Galería</a>
+                <a href="prensa.html" class="nav__link">Prensa</a>
+                <a href="reservas.html" class="nav__cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Reservar
+                </a>
+            </div>
+            <button class="nav__hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html" class="mobile-menu__link">Inicio</a>
+        <a href="especialidades.html" class="mobile-menu__link">Especialidades</a>
+        <a href="carta.html" class="mobile-menu__link">Carta</a>
+        <a href="nosotros.html" class="mobile-menu__link">Nosotros</a>
+        <a href="galeria.html" class="mobile-menu__link">Galería</a>
+        <a href="prensa.html" class="mobile-menu__link">Prensa</a>
+        <a href="reservas.html" class="mobile-menu__cta">Reservar Mesa</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="page-hero__bg" style="background-image: url('https://cruzblancavallecas.com/wp-content/uploads/2021/11/IMG_7901-scaled.jpg');"></div>
+        <div class="page-hero__content">
+            <span class="eyebrow">Cocina premiada</span>
+            <h1>Nuestras Especialidades</h1>
+            <p>Los platos que han hecho de Cruz Blanca un referente nacional e internacional de la cocina tradicional española.</p>
+        </div>
+    </div>
+
+
+    <!-- COCIDO MADRILEÑO -->
+    <section class="section">
+        <div class="container">
+            <div class="specialty-detail reveal">
+                <div class="specialty-detail__image">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/Cocido-2.jpeg" alt="Cocido Madrileño de Cruz Blanca de Vallecas">
+                    <span class="specialty-detail__badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        El mejor de España — 9.03/10
+                    </span>
+                </div>
+                <div class="specialty-detail__content">
+                    <h2 class="specialty-detail__title">Cocido Madrileño</h2>
+                    <p class="specialty-detail__subtitle">El mejor cocido después del que hacen las madres y abuelas</p>
+
+                    <p class="specialty-detail__text">La fama del Cocido Madrileño de la Cervecería Cruz Blanca Vallecas traspasa fronteras: no solo vienen desde diferentes rincones de la geografía española a degustarlo, sino que el propio Antonio Cosmen, embajador internacional de la cocina tradicional española, lo ha exportado a países como México.</p>
+
+                    <p class="specialty-detail__text">Nuestro cocido tiene una materia prima muy seleccionada como es el garbanzo, la carne con la que se prepara su delicioso caldo, chorizo, morcilla, tocino y las guindillas vascas con cebolleta que nunca faltan en una mesa de cocido.</p>
+
+                    <div class="specialty-detail__includes">
+                        <h4>Qué incluye nuestro Cocido:</h4>
+                        <ul>
+                            <li>Entrante de croqueta casera al estilo de la abuela acompañada con tomate natural y salsa</li>
+                            <li>Primero de sopa de cocido casero — ¡no olvides pedirnos más si quieres!</li>
+                            <li>Principal: plato de garbanzos selectos, acompañados por chorizo, morcilla, gallina, berza, y aderezado con tomate natural preparado con comino</li>
+                        </ul>
+                    </div>
+
+                    <div class="specialty-detail__price">
+                        <span class="specialty-detail__price-value">27€</span>
+                        <span class="specialty-detail__price-note">/ 29€ servido en mesa</span>
+                    </div>
+
+                    <div class="specialty-detail__tip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        <span>Y si no puedes con todo, te preparamos un tupper para que te lo lleves a casa.</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- FABADA ASTURIANA -->
+            <div class="specialty-detail specialty-detail--reverse reveal">
+                <div class="specialty-detail__content">
+                    <h2 class="specialty-detail__title">Fabada Asturiana</h2>
+                    <p class="specialty-detail__subtitle">Asturias, en Madrid — Fabada Multipremiada</p>
+
+                    <p class="specialty-detail__text">Antonio Cosmen es asturiano de origen, y claro, se le nota la tierra. Así que desde tierras astures selecciona los mejores ingredientes para hacer una fabada para chuparse los dedos.</p>
+
+                    <p class="specialty-detail__text">Ha recibido el primer premio de la II Ruta de la Fabada de Madrid en 2016, y el segundo premio en la edición de 2017.</p>
+
+                    <p class="specialty-detail__text">Muchos asturianos vienen a comerse nuestra fabada, y muchos madrileños, y valencianos… y también ¡de fuera de España! Y es que es de esos platos que hechos con mimo, esmero, cariño y atención, a fuego lento, como se hacía antes, es capaz de quitarte el hipo y hasta los fríos invernales de Madrid.</p>
+
+                    <p class="specialty-detail__text" style="font-style: italic; color: var(--terracotta);">¡Y también hay valientes que lo comen en verano!</p>
+
+                    <div class="specialty-detail__price">
+                        <span class="specialty-detail__price-value">19€</span>
+                        <span class="specialty-detail__price-note">/ 20€ servido en mesa</span>
+                    </div>
+                </div>
+                <div class="specialty-detail__image">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/IMG_7914-scaled.jpg" alt="Fabada Asturiana">
+                    <span class="specialty-detail__badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        1º y 2º Premio Mejor Fabada
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- CALLOS A LA MADRILEÑA -->
+            <div class="specialty-detail reveal">
+                <div class="specialty-detail__image">
+                    <img src="https://cruzblancavallecas.com/wp-content/uploads/2021/11/cruzblancavallecas_33-1.jpg" alt="Callos a la Madrileña">
+                    <span class="specialty-detail__badge">Tradición Madrileña</span>
+                </div>
+                <div class="specialty-detail__content">
+                    <h2 class="specialty-detail__title">Callos a la Madrileña</h2>
+                    <p class="specialty-detail__subtitle">Al tradicional y sabroso estilo de la capital</p>
+
+                    <p class="specialty-detail__text">No tiene secreto… bueno, sí, lo tiene: Antonio selecciona personalmente unos proveedores comprometidos con la calidad.</p>
+
+                    <p class="specialty-detail__text">El secreto para conseguir la excelencia es emplear un callo de res grande de vaca, que, aunque suelta más gelatina y tarda más en cocer, posee más sabor.</p>
+
+                    <p class="specialty-detail__text" style="font-style: italic; color: var(--burgundy);">Seguirás comiendo incluso cuando los hayas terminado.</p>
+
+                    <div class="specialty-detail__price">
+                        <span class="specialty-detail__price-value">19€</span>
+                        <span class="specialty-detail__price-note">/ 21€ servido en mesa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OTHER SPECIALTIES -->
+    <section class="section section--cream texture-overlay">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="eyebrow">Y mucho más</span>
+                <h2>Otras Especialidades</h2>
+                <div class="decorator-line decorator-line--center"></div>
+                <p class="lead">Una extensa carta para todos los gustos. Salmón, calamares, verdinas… te va a encantar.</p>
+            </div>
+
+            <div class="other-specialties reveal-stagger">
+                <div class="other-card">
+                    <div class="other-card__icon">🐰</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Conejo al Ajillo con Lechuga Viva</div>
+                        <div class="other-card__desc">Refrescante y sabroso. Primer Premio al Mejor de la Capital.</div>
+                    </div>
+                    <div class="other-card__price">32€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🦞</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Verdinas con Bogavante</div>
+                        <div class="other-card__desc">Judías verdinas con bogavante en su punto perfecto.</div>
+                    </div>
+                    <div class="other-card__price">21€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🥘</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Croquetas de la Abuela</div>
+                        <div class="other-card__desc">Tal como la Abuela de Antonio Cosmen le enseñó a hacer.</div>
+                    </div>
+                    <div class="other-card__price">12€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🦑</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Calamares a la Romana</div>
+                        <div class="other-card__desc">Preparados y cocinados por nosotros, frescos y crujientes.</div>
+                    </div>
+                    <div class="other-card__price">19€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🐂</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Rabo de Toro Estofado</div>
+                        <div class="other-card__desc">Estofado a fuego lento con verduras, tierno y sabroso.</div>
+                    </div>
+                    <div class="other-card__price">22€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🐟</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Salmón Marinado</div>
+                        <div class="other-card__desc">Con refrescante toque de cebolla y aceite de oliva.</div>
+                    </div>
+                    <div class="other-card__price">17€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🐟</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Lubina a la Espalda</div>
+                        <div class="other-card__desc">Abierta y asada con ajo, perejil y aceite de oliva.</div>
+                    </div>
+                    <div class="other-card__price">17€</div>
+                </div>
+
+                <div class="other-card">
+                    <div class="other-card__icon">🐟</div>
+                    <div class="other-card__content">
+                        <div class="other-card__name">Anchoas caseras de Santoña</div>
+                        <div class="other-card__desc">Con nuestro toque de aceite de oliva virgen extra.</div>
+                    </div>
+                    <div class="other-card__price">23€</div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top: var(--space-xl);" class="reveal">
+                <a href="carta.html" class="btn btn--primary">Ver Carta Completa</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- WINE RECOMMENDATION -->
+    <section class="section section--burgundy texture-overlay" style="text-align: center;">
+        <div class="container reveal">
+            <span class="eyebrow" style="color: var(--terracotta-light);">Recomendación del chef</span>
+            <h2 style="color: var(--cream); margin-bottom: var(--space-sm);">Acompaña tu comida con nuestros vinos</h2>
+            <p style="color: rgba(245, 237, 224, 0.75); max-width: 560px; margin: 0 auto var(--space-lg); font-size: 1.125rem;">Te recomendamos acompañar la comida con vino tinto de nuestras bodegas. Seleccionados con el mismo cariño que ponemos en cada plato.</p>
+            <a href="carta.html" class="btn btn--light">Ver Carta de Vinos</a>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__logo"><img src="assets/Cruz-blanca-logo.png" alt="Cruz Blanca de Vallecas"></div>
+                    <p class="footer__desc">En el Madrid castizo, te ofrecemos las delicias más reconocidas y premiadas tanto nacional como internacionalmente.</p>
+                </div>
+                <div>
+                    <h4 class="footer__title">Navegación</h4>
+                    <a href="especialidades.html" class="footer__link">Especialidades</a>
+                    <a href="carta.html" class="footer__link">Carta</a>
+                    <a href="nosotros.html" class="footer__link">Nosotros</a>
+                    <a href="galeria.html" class="footer__link">Galería</a>
+                    <a href="prensa.html" class="footer__link">Prensa</a>
+                    <a href="reservas.html" class="footer__link">Reservas</a>
+                </div>
+                <div>
+                    <h4 class="footer__title">Horarios</h4>
+                    <p class="footer__link" style="cursor:default;">Comidas: 13:30 - 18:00</p>
+                    <p class="footer__link" style="cursor:default;">Abierto: 8:00 - 00:00</p>
+                    <p class="footer__link" style="cursor:default;">Todos los días del año</p>
+                </div>
+                <div>
+                    <h4 class="footer__title">Contacto</h4>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>C. de Carlos Martín Álvarez, 58, 28018 Madrid</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+34914773438" style="color: var(--warm-gray);">91 477 34 38</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:info@cruzblancavallecas.com" style="color: var(--warm-gray);">info@cruzblancavallecas.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2025 Cruz Blanca de Vallecas. Todos los derechos reservados.</p>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/CruzBlancadeVallecas" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="https://twitter.com/CruzBlancaValle" target="_blank" rel="noopener" class="footer__social" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA Bar -->
+    <div class="mobile-cta-bar">
+        <a href="tel:+34914773438" class="cta-call">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Llamar
+        </a>
+        <a href="reservas.html" class="cta-reserve">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar
+        </a>
+    </div>
+
+    <div class="lightbox"><img class="lightbox__img" src="" alt=""><button class="lightbox__close" aria-label="Cerrar">&times;</button></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

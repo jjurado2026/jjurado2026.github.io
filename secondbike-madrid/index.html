@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<script>
+/* Propuesta visible 10 días desde su envío, el 1-oct-2026 (el día de envío cuenta): hasta el 10-oct-2026 a las 23:59 de Madrid.
+   Desde el domingo 11-oct-2026 a las 00:00 (22:00 UTC del 10-oct) se envía a la página de caducidad.
+   Para enseñarla después, añadir ?acceso=jj a la dirección. */
+(function(){if(Date.now()>=Date.UTC(2026,9,10,22)&&!/[?&]acceso=jj\b/.test(location.search))location.replace('caducada.html')})();
+document.documentElement.classList.add('js');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Secondbike | Taller y tienda de bicicletas de segunda mano en Madrid</title>
+<meta name="description" content="Taller y tienda de bicicletas de segunda mano en Madrid. Taller de reparación y mantenimiento de bicis. 633 064 847. Calle San Germán 70, Madrid.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#3F9104">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Secondbike | Taller y tienda de bicicletas de segunda mano en Madrid">
+<meta property="og:description" content="Taller y tienda de bicicletas de segunda mano en Madrid. Calle San Germán 70, Tetuán.">
+<link rel="preload" href="assets/fonts/saira-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/red-hat-text.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero-carril-tienda-1200.avif" as="image" type="image/avif" media="(min-width: 700px)">
+<link rel="preload" href="assets/img/hero-carril-tienda-768.avif" as="image" type="image/avif" media="(max-width: 699px)">
+<link rel="stylesheet" href="assets/css/global.css?v=3.2">
+<link rel="stylesheet" href="assets/css/home.css?v=3.2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%233F9104'/><circle cx='16' cy='16' r='12.2' fill='white'/><g fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><circle cx='12.6' cy='19.2' r='4.6'/><circle cx='21.2' cy='21.4' r='2.6'/><path d='M10.4 12.1 10.9 10.5H15.1L12.6 19.2M14.4 13.1H18.6L21.2 21.4M18.2 11.4c1-.3 2.1.2 3.2-.2'/></g></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BikeStore",
+  "name": "Secondbike",
+  "url": "https://www.secondbikemadrid.com/",
+  "telephone": "+34633064847",
+  "email": "secondbikemadrid@gmail.com",
+  "address": {"@type": "PostalAddress", "streetAddress": "Calle San Germán 70", "postalCode": "28020", "addressLocality": "Madrid", "addressCountry": "ES"},
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "14:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "14:00"}
+  ],
+  "sameAs": ["https://www.facebook.com/secondbike.madrid.1/"]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Necesito cita previa para reparar mi bici?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Trabajamos sin cita previa y sin lista de espera: tráenos la bici en nuestro horario y te decimos qué necesita."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto tardáis en reparar una bici?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La mayoría de reparaciones están listas en uno o dos días. Si la tuya va a tardar más, te podemos dejar una bici de sustitución."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué garantía tienen las reparaciones?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Todas nuestras reparaciones tienen una garantía por escrito de tres meses."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto cuesta una revisión?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La Revisión Completa cuesta 45 € y la Revisión Completa Plus, 89 €. Te recomendamos la Completa cada 1 a 6 meses y la Plus cada 6 a 12."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo probar una bici de segunda mano antes de comprarla?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Dentro de la tienda tenemos un carril bici para que pruebes la que te guste antes de llevártela."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué garantía tienen las bicis de segunda mano?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Todas salen revisadas por nuestros mecánicos, con garantía por escrito y verificadas en colaboración con la Policía Nacional. Además, te regalamos la Revisión Completa Plus durante el primer año."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Compráis bicis usadas?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Pásate por la tienda y te la valoramos. Si lo prefieres, también podemos venderla por ti en comisión."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Instaláis kits eléctricos en cualquier bicicleta?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Los kits son compatibles con la mayoría de bicicletas. Te asesoramos para elegir el que mejor encaja con la tuya y hacemos toda la instalación."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo funciona el alquiler de bicis eléctricas?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Con los planes SmartRenting, sin depósito: 129 €/mes sin permanencia, 109 €/mes con 3 meses o 99 €/mes con 6 meses, más el seguro obligatorio de 18 €/mes. Incluye mantenimiento y reparaciones."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="salta" href="#principal">Saltar al contenido</a>
+
+<svg hidden aria-hidden="true" focusable="false">
+  <!-- La bici del logo de Secondbike, redibujada a trazo (mira a la izquierda, como en el logo) -->
+  <symbol id="i-bici" viewBox="16 20 66 58"><g fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="36.7" cy="57.2" r="17.7"/><circle cx="69" cy="65.7" r="10"/><path d="M28.6 29.5 30.3 23.6H46.3L36.2 57.2M44.1 33.2H59.8L69 64.8M58 27.4c4-1.1 8 .5 12-.9"/></g></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12A7 7 0 0 0 5 10c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m3.5 7 8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-izq" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-der" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-estrella" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ruta" viewBox="0 0 24 24"><path d="M12 2.8 21.2 12 12 21.2 2.8 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.5 14v-2.2a1.3 1.3 0 0 1 1.3-1.3h4m-1.8-2 2 2-2 2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mapa" viewBox="0 0 24 24"><path d="M3 6.5 9 4l6 2.5 6-2.5v13.5L15 20l-6-2.5-6 2.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.9"/></symbol>
+  <symbol id="i-llave" viewBox="0 0 24 24"><path d="M14.7 3.3a5 5 0 0 0 5.9 6.6l-9.8 9.8a2.3 2.3 0 0 1-3.3-3.3l9.8-9.8a5 5 0 0 0-2.6-3.3Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mundo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 2.8 19.5 5.6v5.8c0 4.6-3.2 8.3-7.5 9.8-4.3-1.5-7.5-5.2-7.5-9.8V5.6Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m8.6 12 2.4 2.4 4.5-4.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 17h-9l-5 4v-4H4a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 4 5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M7.5 10h9M7.5 13h6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-regalo" viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5 12.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7.5M12 8.5V21M12 8.5c-1.6-3.6-5.6-4.4-5.6-1.8 0 1.5 2.4 1.8 5.6 1.8Zm0 0c1.6-3.6 5.6-4.4 5.6-1.8 0 1.5-2.4 1.8-5.6 1.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M13.5 2.5 5 13.5h6l-1 8 8.5-11h-6Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-patinete" viewBox="0 0 24 24"><path d="M14.5 4h2.2l2.6 12.6M4 17.5h11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18" r="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="19.3" cy="18" r="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+  <symbol id="i-etiqueta" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2L13.8 20.5a1.4 1.4 0 0 1-2 0Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-lista" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m8.5 9.5 1.5 1.5 3-3M8.5 15.5l1.5 1.5 3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ============================ CABECERA ============================ -->
+<header class="cab" id="inicio">
+  <div class="env cab__fila">
+    <a class="logo" href="#inicio" aria-label="Secondbike, bicicletas para todos. Inicio">
+      <img src="assets/img/logo-secondbike-h.png" width="651" height="134" alt="" fetchpriority="high">
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__lista">
+        <li class="nav__desp">
+          <button type="button" class="nav__boton" aria-expanded="false" aria-controls="m-taller">Taller <svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <div class="mega" id="m-taller"><ul><li><a class="mega__item" href="https://www.secondbikemadrid.com/taller-bicicletas-madrid/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-llave"/></svg></span><span><strong>Reparación de bicicletas</strong><small>Sin cita previa y con garantía de 3 meses</small></span></a></li><li><a class="mega__item" href="https://www.secondbikemadrid.com/producto/revision-completa-bicicleta/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-lista"/></svg></span><span><strong>Revisiones</strong><small>Completa por 45 € y Plus por 89 €</small></span></a></li><li><a class="mega__item" href="https://www.secondbikemadrid.com/montaje-kit-electricos-madrid/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-rayo"/></svg></span><span><strong>Kits eléctricos</strong><small>Convierte tu bici en eléctrica</small></span></a></li><li><a class="mega__item" href="https://www.secondbikemadrid.com/taller-patinetes-electricos-madrid/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-patinete"/></svg></span><span><strong>Patinetes eléctricos</strong><small>Reparación en A Todo Voltio</small></span></a></li></ul><p class="mega__pie"><span>Sin cita previa, de lunes a sábado</span><a class="enlace" href="#servicios">Todos los servicios</a></p></div>
+        </li>
+        <li class="nav__desp">
+          <button type="button" class="nav__boton" aria-expanded="false" aria-controls="m-segunda">Segunda mano <svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <div class="mega" id="m-segunda"><ul><li><a class="mega__item" href="https://www.secondbikemadrid.com/bicicletas-segunda-mano-madrid/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-bici"/></svg></span><span><strong>Comprar una bici</strong><small>32 bicis revisadas y con garantía</small></span></a></li><li><a class="mega__item" href="https://www.secondbikemadrid.com/vende-tu-bici/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-etiqueta"/></svg></span><span><strong>Vender tu bici</strong><small>Te la valoramos en la tienda</small></span></a></li><li><a class="mega__item" href="https://www.secondbikemadrid.com/producto/alquiler-bicicletas-electricas/"><span class="mega__icono"><svg aria-hidden="true"><use href="#i-calendario"/></svg></span><span><strong>Alquiler de eléctricas</strong><small>Desde 99 €/mes, sin depósito</small></span></a></li></ul><p class="mega__pie"><span>Pruébalas en nuestro carril</span><a class="enlace" href="https://www.secondbikemadrid.com/shop/">Ver bicis a la venta</a></p></div>
+        </li>
+        <li><a href="https://www.secondbikemadrid.com/nosotros-histotia-mecanicos-grantia-tienda-bicicletas-segunda-mano-madrid/">Nosotros</a></li>
+        <li><a href="https://www.secondbikemadrid.com/contacto-direccion-horario-taller-madrid-tetuan/">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="cab__acciones">
+      <a class="boton boton--activo boton--cab" href="tel:+34633064847"><svg aria-hidden="true"><use href="#i-tel"/></svg><span><span class="solo-ancho">Taller </span>633 064 847</span></a>
+      <button type="button" class="cab__menu" aria-expanded="false" aria-controls="menu-movil"><svg aria-hidden="true"><use href="#i-menu"/></svg><span>Menú</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Menú en móvil y tableta -->
+<div class="menu" id="menu-movil" hidden>
+  <nav aria-label="Menú">
+    <p class="menu__grupo">Taller</p>
+    <ul class="menu__lista"><li><a href="https://www.secondbikemadrid.com/taller-bicicletas-madrid/">Reparación de bicicletas</a></li><li><a href="https://www.secondbikemadrid.com/producto/revision-completa-bicicleta/">Revisiones</a></li><li><a href="https://www.secondbikemadrid.com/montaje-kit-electricos-madrid/">Kits eléctricos</a></li><li><a href="https://www.secondbikemadrid.com/taller-patinetes-electricos-madrid/">Patinetes eléctricos</a></li></ul>
+    <p class="menu__grupo">Segunda mano</p>
+    <ul class="menu__lista"><li><a href="https://www.secondbikemadrid.com/bicicletas-segunda-mano-madrid/">Comprar una bici</a></li><li><a href="https://www.secondbikemadrid.com/vende-tu-bici/">Vender tu bici</a></li><li><a href="https://www.secondbikemadrid.com/producto/alquiler-bicicletas-electricas/">Alquiler de eléctricas</a></li><li><a href="https://www.secondbikemadrid.com/shop/">Ver bicis a la venta</a></li></ul>
+    <ul class="menu__lista"><li><a href="https://www.secondbikemadrid.com/nosotros-histotia-mecanicos-grantia-tienda-bicicletas-segunda-mano-madrid/">Nosotros</a></li><li><a href="https://www.secondbikemadrid.com/contacto-direccion-horario-taller-madrid-tetuan/">Contacto</a></li></ul>
+  </nav>
+  <div class="menu__contacto">
+    <a class="boton boton--activo" href="tel:+34633064847"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>Taller 633 064 847</span></a>
+    <a class="boton boton--blanco" href="tel:+34910221042"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>Tienda 910 221 042</span></a>
+    <p>Calle San Germán 70, 28020 Madrid<br>L–V 10:00–14:00 y 17:00–20:00<br>S 10:00–14:00</p>
+  </div>
+</div>
+
+<main id="principal">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="hero-titulo">
+  <figure class="hero__foto">
+    <picture><source type="image/avif" sizes="100vw" srcset="assets/img/hero-carril-tienda-480.avif 480w, assets/img/hero-carril-tienda-768.avif 768w, assets/img/hero-carril-tienda-1200.avif 1200w, assets/img/hero-carril-tienda-1800.avif 1800w"><img src="assets/img/hero-carril-tienda-768.webp" sizes="100vw" srcset="assets/img/hero-carril-tienda-480.webp 480w, assets/img/hero-carril-tienda-768.webp 768w, assets/img/hero-carril-tienda-1200.webp 1200w, assets/img/hero-carril-tienda-1800.webp 1800w" width="1800" height="1350" fetchpriority="high" decoding="async" alt="El carril bici pintado que recorre la tienda de Secondbike, con bicicletas de segunda mano aparcadas a un lado"></picture>
+  </figure>
+
+  <div class="env hero__cuerpo">
+    <a class="hero__nota" href="#opiniones">
+      <span class="hero__estrellas" aria-hidden="true"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+      <span><strong>4,7</strong> en Google, 795 reseñas</span>
+    </a>
+    <h1 class="hero__titulo" id="hero-titulo">Taller y tienda de bicis de segunda mano en Madrid</h1>
+    <p class="hero__entrada">Reparamos tu bici sin cita previa y vendemos bicis revisadas con garantía, que puedes probar en nuestro carril.</p>
+    <div class="hero__botones">
+      <a class="boton-icono boton-icono--grande" href="tel:+34633064847" aria-label="Llamar al taller, 633 064 847"><svg aria-hidden="true"><use href="#i-tel"/></svg></a>
+      <a class="boton-icono boton-icono--grande" href="https://wa.me/34633064847" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+      <a class="boton boton--verde boton--grande" href="https://www.secondbikemadrid.com/shop/">Ver bicis a la venta</a>
+    </div>
+  </div>
+
+  <!-- Sus datos, en una fila dentro del hero -->
+  <div class="hero__barra">
+    <ul class="env datos">
+      <li class="dato"><svg aria-hidden="true"><use href="#i-pin"/></svg><a href="https://maps.google.com/?q=Calle+San+Germ%C3%A1n+70,+28020+Madrid" target="_blank" rel="noopener">Calle San Germán 70, Madrid</a></li>
+      <li class="dato"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>Taller <a href="tel:+34633064847">633 064 847</a></span><span>Tienda <a href="tel:+34910221042">910 221 042</a></span></li>
+      <li class="dato"><svg aria-hidden="true"><use href="#i-reloj"/></svg><span>L–V 10:00–14:00 y 17:00–20:00</span><span>S 10:00–14:00</span></li>
+      <li class="dato dato--estado"><span class="estado" data-estado hidden><span class="estado__punto" aria-hidden="true"></span><span class="estado__texto"></span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ SERVICIOS ============================
+     Siete servicios de arriba abajo, alternando foto y texto. Una carretera
+     sutil los une y la rueda del logo baja por ella al hacer scroll. -->
+<section class="sec servicios" id="servicios" aria-labelledby="servicios-titulo">
+  <div class="env servicios__cabeza">
+    <h2 class="titulo" id="servicios-titulo">Servicios</h2>
+    <p class="entradilla">Todo lo que tu bici necesita, en el mismo taller.</p>
+  </div>
+  <div class="env">
+    <div class="ruta" data-ruta>
+      <svg class="ruta__trazo" aria-hidden="true" focusable="false"><path class="ruta__asfalto" d=""/></svg>
+      <div class="ruta__rueda" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#fff"/><circle cx="32" cy="32" r="28.5" fill="none" stroke="#3F9104" stroke-width="3"/><g transform="translate(12.2 14.5) scale(.6)" fill="none" stroke="#000" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(-16 -20)"><circle cx="36.7" cy="57.2" r="17.7"/><circle cx="69" cy="65.7" r="10"/><path d="M28.6 29.5 30.3 23.6H46.3L36.2 57.2M44.1 33.2H59.8L69 64.8M58 27.4c4-1.1 8 .5 12-.9"/></g></g></svg>
+      </div>
+      <ol class="servicios__lista">
+        <li class="servicio" id="servicio-reparacion">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/mecanico-mtb-480.avif 480w, assets/img/mecanico-mtb-768.avif 768w, assets/img/mecanico-mtb-1200.avif 1200w"><img src="assets/img/mecanico-mtb-768.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/mecanico-mtb-480.webp 480w, assets/img/mecanico-mtb-768.webp 768w, assets/img/mecanico-mtb-1200.webp 1200w" width="1200" height="855" loading="lazy" decoding="async" alt="Mecánico de Secondbike ajustando una bicicleta de montaña de doble suspensión en el soporte del taller"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-llave"/></svg></span>
+            <h3 class="servicio__nombre">Reparación de bicicletas</h3>
+            <p class="servicio__texto">Reparamos todo tipo de bicicletas, de urbanas a montaña y carretera, con herramientas profesionales y repuestos de primera calidad.</p>
+            <ul class="servicio__datos"><li>Sin cita previa</li><li>Garantía de 3 meses por escrito</li></ul>
+            <div class="fila-botones"><a class="enlace" href="https://www.secondbikemadrid.com/taller-bicicletas-madrid/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+        <li class="servicio" id="servicio-revisiones">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/revision-completa-480.avif 480w, assets/img/revision-completa-550.avif 550w"><img src="assets/img/revision-completa-550.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/revision-completa-480.webp 480w, assets/img/revision-completa-550.webp 550w" width="550" height="387" loading="lazy" decoding="async" alt="Mecánico de Secondbike revisando una bicicleta de montaña blanca en el soporte"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-lista"/></svg></span>
+            <h3 class="servicio__nombre">Revisiones</h3>
+            <p class="servicio__texto">Puesta a punto sin listas de espera para que tu bici dure más y ruedes con seguridad: cambios, frenos, transmisión, holguras y tornillería.</p>
+            <ul class="servicio__datos"><li>Revisión Completa, 45 €</li><li>Revisión Completa Plus, 89 €</li></ul>
+            <div class="fila-botones"><a class="enlace" href="https://www.secondbikemadrid.com/producto/revision-completa-bicicleta/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+        <li class="servicio" id="servicio-compra">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/tienda-bicis-carril-480.avif 480w, assets/img/tienda-bicis-carril-768.avif 768w, assets/img/tienda-bicis-carril-1200.avif 1200w"><img src="assets/img/tienda-bicis-carril-768.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/tienda-bicis-carril-480.webp 480w, assets/img/tienda-bicis-carril-768.webp 768w, assets/img/tienda-bicis-carril-1200.webp 1200w" width="1200" height="612" loading="lazy" decoding="async" alt="Bicicletas de segunda mano sobre una isla de madera rodeada por el carril bici de la tienda"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-bici"/></svg></span>
+            <h3 class="servicio__nombre">Compra de bicis de segunda mano</h3>
+            <p class="servicio__texto">Bicis revisadas y reacondicionadas por nuestros mecánicos, con garantía por escrito. Pruébalas antes en el carril bici de la tienda.</p>
+            <ul class="servicio__datos"><li>32 bicis en stock</li><li>Revisión Plus gratis el primer año</li></ul>
+            <div class="fila-botones"><a class="boton boton--verde" href="https://www.secondbikemadrid.com/shop/">Ver bicis a la venta</a><a class="enlace" href="https://www.secondbikemadrid.com/bicicletas-segunda-mano-madrid/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+        <li class="servicio" id="servicio-venta">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/mostrador-secondbike-480.avif 480w, assets/img/mostrador-secondbike-768.avif 768w, assets/img/mostrador-secondbike-1200.avif 1200w"><img src="assets/img/mostrador-secondbike-768.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/mostrador-secondbike-480.webp 480w, assets/img/mostrador-secondbike-768.webp 768w, assets/img/mostrador-secondbike-1200.webp 1200w" width="1200" height="900" loading="lazy" decoding="async" alt="Mostrador de madera y negro de la tienda Secondbike, donde se valoran las bicis usadas"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-etiqueta"/></svg></span>
+            <h3 class="servicio__nombre">Venta de tu bici usada</h3>
+            <p class="servicio__texto">Compramos tu bici o la vendemos por ti en comisión. Pásate por la tienda y te la valoramos, con un trato justo y transparente.</p>
+            <ul class="servicio__datos"><li>Valoración en tienda</li></ul>
+            <div class="fila-botones"><a class="enlace" href="https://www.secondbikemadrid.com/vende-tu-bici/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+        <li class="servicio" id="servicio-kits">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/kit-electrico-ciclotek-480.avif 480w, assets/img/kit-electrico-ciclotek-550.avif 550w"><img src="assets/img/kit-electrico-ciclotek-550.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/kit-electrico-ciclotek-480.webp 480w, assets/img/kit-electrico-ciclotek-550.webp 550w" width="550" height="387" loading="lazy" decoding="async" alt="Bicicleta de montaña verde en el soporte del taller con un kit eléctrico Ciclotek recién montado"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-rayo"/></svg></span>
+            <h3 class="servicio__nombre">Instalación de kits eléctricos</h3>
+            <p class="servicio__texto">Convertimos tu bicicleta en eléctrica: te asesoramos para elegir el kit Ciclotek que mejor encaja y nos encargamos de toda la instalación.</p>
+            <ul class="servicio__datos"><li>Compatible con la mayoría de bicis</li></ul>
+            <div class="fila-botones"><a class="enlace" href="https://www.secondbikemadrid.com/montaje-kit-electricos-madrid/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+        <li class="servicio" id="servicio-patinetes">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/taller-patinetes-480.avif 480w, assets/img/taller-patinetes-768.avif 768w, assets/img/taller-patinetes-1200.avif 1200w"><img src="assets/img/taller-patinetes-768.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/taller-patinetes-480.webp 480w, assets/img/taller-patinetes-768.webp 768w, assets/img/taller-patinetes-1200.webp 1200w" width="1200" height="800" loading="lazy" decoding="async" alt="Rincón de A Todo Voltio dentro de la tienda, con un patinete eléctrico y estanterías de recambios"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-patinete"/></svg></span>
+            <h3 class="servicio__nombre">Reparación de patinetes eléctricos</h3>
+            <p class="servicio__texto">Dentro de nuestra tienda se encuentra «A Todo Voltio», un taller especializado en la reparación de patinetes eléctricos.</p>
+            <div class="fila-botones"><a class="enlace" href="https://www.secondbikemadrid.com/taller-patinetes-electricos-madrid/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+        <li class="servicio" id="servicio-alquiler">
+          <figure class="servicio__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/alquiler-electrica-450.avif 450w"><img src="assets/img/alquiler-electrica-450.webp" sizes="(min-width:1000px) 560px, 100vw" srcset="assets/img/alquiler-electrica-450.webp 450w" width="450" height="338" loading="lazy" decoding="async" alt="Bicicleta eléctrica Smartgyro de alquiler aparcada frente a la pared de listones de la tienda"></picture></figure>
+          <div class="servicio__cuerpo">
+            <span class="servicio__icono" aria-hidden="true"><svg><use href="#i-calendario"/></svg></span>
+            <h3 class="servicio__nombre">Alquiler de bicis eléctricas</h3>
+            <p class="servicio__texto">Planes SmartRenting para moverte por Madrid o trabajar de repartidor sin una gran inversión, con mantenimiento y reparaciones.</p>
+            <ul class="servicio__datos"><li>Desde 99 €/mes</li><li>Sin depósito</li></ul>
+            <div class="fila-botones"><a class="enlace" href="https://www.secondbikemadrid.com/producto/alquiler-bicicletas-electricas/">Ver el servicio</a></div>
+          </div>
+          <span class="hito" aria-hidden="true"></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ UN SERVICIO DE CALIDAD ============================ -->
+<section class="sec calidad" id="calidad" aria-labelledby="calidad-titulo">
+  <svg class="calidad__rueda" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor"><circle cx="200" cy="200" r="186" stroke-width="22"/><circle cx="200" cy="200" r="168" stroke-width="4"/><circle cx="200" cy="200" r="16" stroke-width="10"/><g stroke-width="2.4"><line x1="200" y1="200" x2="368.0" y2="200.0"/><line x1="200" y1="200" x2="362.3" y2="243.5"/><line x1="200" y1="200" x2="345.5" y2="284.0"/><line x1="200" y1="200" x2="318.8" y2="318.8"/><line x1="200" y1="200" x2="284.0" y2="345.5"/><line x1="200" y1="200" x2="243.5" y2="362.3"/><line x1="200" y1="200" x2="200.0" y2="368.0"/><line x1="200" y1="200" x2="156.5" y2="362.3"/><line x1="200" y1="200" x2="116.0" y2="345.5"/><line x1="200" y1="200" x2="81.2" y2="318.8"/><line x1="200" y1="200" x2="54.5" y2="284.0"/><line x1="200" y1="200" x2="37.7" y2="243.5"/><line x1="200" y1="200" x2="32.0" y2="200.0"/><line x1="200" y1="200" x2="37.7" y2="156.5"/><line x1="200" y1="200" x2="54.5" y2="116.0"/><line x1="200" y1="200" x2="81.2" y2="81.2"/><line x1="200" y1="200" x2="116.0" y2="54.5"/><line x1="200" y1="200" x2="156.5" y2="37.7"/><line x1="200" y1="200" x2="200.0" y2="32.0"/><line x1="200" y1="200" x2="243.5" y2="37.7"/><line x1="200" y1="200" x2="284.0" y2="54.5"/><line x1="200" y1="200" x2="318.8" y2="81.2"/><line x1="200" y1="200" x2="345.5" y2="116.0"/><line x1="200" y1="200" x2="362.3" y2="156.5"/></g></g>
+  </svg>
+  <div class="env calidad__rejilla">
+    <div class="calidad__texto">
+      <h2 class="titulo" id="calidad-titulo">Un servicio de calidad</h2>
+      <p class="calidad__frase">Los datos nos avalan, más de 15.000 clientes contentos y esto es lo que más nos enorgullece.</p>
+    </div>
+    <dl class="cifras">
+      <div class="cifra"><dt>Años de experiencia y pasión</dt><dd><span class="contador" data-valor="25" aria-label="Más de 25">+25</span></dd></div>
+      <div class="cifra"><dt>Reseñas en Google</dt><dd><span class="contador" data-valor="795" aria-label="795">795</span></dd></div>
+      <div class="cifra"><dt>Reparaciones en 2025</dt><dd><span class="contador" data-valor="6500" aria-label="Más de 6.500">+6.500</span></dd></div>
+      <div class="cifra"><dt>Bicicletas vendidas en 2025</dt><dd><span class="contador" data-valor="600" aria-label="Más de 600">+600</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============================ RESEÑAS ============================ -->
+<section class="sec opiniones" id="opiniones" aria-labelledby="opiniones-titulo">
+  <div class="env opiniones__cabeza">
+    <div>
+      <h2 class="titulo" id="opiniones-titulo">¿Qué opinan nuestros clientes?</h2>
+      <a class="valoracion" href="https://maps.google.com/?q=Secondbike+Madrid+Calle+San+Germ%C3%A1n+70" target="_blank" rel="noopener">
+        <span class="valoracion__estrellas" aria-hidden="true"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+        <span><strong>4,7</strong> en Google, 795 reseñas</span>
+      </a>
+    </div>
+    <div class="flechas">
+      <button type="button" class="flecha" data-mover="-1" aria-label="Reseña anterior"><svg aria-hidden="true"><use href="#i-izq"/></svg></button>
+      <button type="button" class="flecha" data-mover="1" aria-label="Reseña siguiente"><svg aria-hidden="true"><use href="#i-der"/></svg></button>
+    </div>
+  </div>
+  <div class="carrusel" data-carrusel tabindex="0" role="region" aria-label="Reseñas de clientes, desplazable">
+    <ul class="carrusel__pista">
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>A Secondbike llevo mi bicicleta desde que lo abrieron. Me atienden de cine, sus consejos técnicos y del mundo de la bici en general me han ayudado un montón. Conozco otras tiendas del barrio y para mi esta es la mejor.</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">G</span>Gonzalo Gallego</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>Estaba con una urgencia para arreglar un pinchazo y despues de llamar a 4 tiendas diferentes de la zona esta fue la única que me ayudo al momento. La atención de 10 y de un día para otro lo tuve listo. Si quieres arreglar el patinete bicicleta o comprar cualquier tipo de accesorio pásate por aquí sin ninguna duda. Merecida 5 estrellas</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">A</span>Adrián Álvarez Sánchez</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>El trato es personal y siempre agradable. David te atiende rápidamente y te soluciona cualquier problema. Los precios son económicos y me dejaron una bici de sustitución hasta tener la mía reparada. Es mi taller de confianza en Madrid.</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">A</span>Alberto Pérez</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>La mejor tienda de bicis de madrid. Excelente atención, muy buenos profesionales, David y sus mecánicos te recomiendan y te aconsejan lo mejor para nosotros y sin ningún coste. Recomendable. Si hay que ir a una tienda de bicicletas o taller el sitio es este: Secondbike.</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">M</span>Markhus</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>Buen servicio, amables y muy profesionales, lo recomiendo 100% te solucionan los problemas en un tiempo record, ademas tienen a la venta repuestos de primera calidad y mucho espacio donde puedes probar sus bicicletas.</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">M</span>Miguel Ángel</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>Dejé una bicicleta en comisión de venta, se vendió rápidamente y por un precio justo. Muy recomendables.</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">Á</span>Álvaro Alameda Fernández</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>Tienda de reparación y venta de bicicletas de segunda mano. Auténticos profesionales. Lleve una bicicleta que pensaba dar ya de baja pero quería darle una última oportunidad y me los han dejado como nueva, perfectamente ajustada y suave. De 10</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">K</span>Kike Rodríguez</figcaption>
+          </figure>
+        </li>
+        <li class="resena">
+          <figure>
+            <span class="resena__estrellas" role="img" aria-label="5 estrellas"><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg><svg><use href="#i-estrella"/></svg></span>
+            <blockquote><p>Amabilidad y buena atencion al cliente, se les ve un poco apurados, el aumento del uso de la bici y el caos logistico de los proveedores de repuestos, les esta poniendo a prueba….. Gracias por el esfuerzo y animo!!!!</p></blockquote>
+            <figcaption><span class="resena__inicial" aria-hidden="true">C</span>Chema Ramos</figcaption>
+          </figure>
+        </li>
+    </ul>
+  </div>
+  <div class="env"><div class="carrusel__progreso" aria-hidden="true"><span></span></div></div>
+</section>
+
+<!-- ============================ PREGUNTAS FRECUENTES ============================ -->
+<section class="sec sec--tinte faq" id="preguntas" aria-labelledby="faq-titulo">
+  <div class="env faq__rejilla">
+    <div class="faq__cabeza">
+      <h2 class="titulo" id="faq-titulo">Preguntas frecuentes</h2>
+      <p class="entradilla">Lo que más nos preguntáis en la tienda. ¿Tienes otra duda? Escríbenos.</p>
+      <a class="boton boton--verde" href="https://wa.me/34633064847" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Pregúntanos por WhatsApp</span></a>
+    </div>
+    <div class="faq__lista">
+      <details class="pregunta">
+        <summary>¿Necesito cita previa para reparar mi bici?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>No. Trabajamos sin cita previa y sin lista de espera: tráenos la bici en nuestro horario y te decimos qué necesita.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Cuánto tardáis en reparar una bici?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>La mayoría de reparaciones están listas en uno o dos días. Si la tuya va a tardar más, te podemos dejar una bici de sustitución.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Qué garantía tienen las reparaciones?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>Todas nuestras reparaciones tienen una garantía por escrito de tres meses.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Cuánto cuesta una revisión?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>La Revisión Completa cuesta 45 € y la Revisión Completa Plus, 89 €. Te recomendamos la Completa cada 1 a 6 meses y la Plus cada 6 a 12.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Puedo probar una bici de segunda mano antes de comprarla?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>Sí. Dentro de la tienda tenemos un carril bici para que pruebes la que te guste antes de llevártela.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Qué garantía tienen las bicis de segunda mano?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>Todas salen revisadas por nuestros mecánicos, con garantía por escrito y verificadas en colaboración con la Policía Nacional. Además, te regalamos la Revisión Completa Plus durante el primer año.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Compráis bicis usadas?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>Sí. Pásate por la tienda y te la valoramos. Si lo prefieres, también podemos venderla por ti en comisión.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Instaláis kits eléctricos en cualquier bicicleta?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>Los kits son compatibles con la mayoría de bicicletas. Te asesoramos para elegir el que mejor encaja con la tuya y hacemos toda la instalación.</p></div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Cómo funciona el alquiler de bicis eléctricas?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+        <div class="pregunta__respuesta"><p>Con los planes SmartRenting, sin depósito: 129 €/mes sin permanencia, 109 €/mes con 3 meses o 99 €/mes con 6 meses, más el seguro obligatorio de 18 €/mes. Incluye mantenimiento y reparaciones.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SOBRE NOSOTROS ============================ -->
+<section class="sec nosotros" id="nosotros" aria-labelledby="nosotros-titulo">
+  <div class="env nosotros__rejilla">
+    <figure class="nosotros__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 50vw, 100vw" srcset="assets/img/taller-mostrador-480.avif 480w, assets/img/taller-mostrador-768.avif 768w, assets/img/taller-mostrador-1200.avif 1200w"><img src="assets/img/taller-mostrador-768.webp" sizes="(min-width:1000px) 50vw, 100vw" srcset="assets/img/taller-mostrador-480.webp 480w, assets/img/taller-mostrador-768.webp 768w, assets/img/taller-mostrador-1200.webp 1200w" width="1200" height="905" loading="lazy" decoding="async" alt="Dos mecánicos de Secondbike en el mostrador del taller, bajo el rótulo TALLER"></picture></figure>
+    <div class="nosotros__texto">
+      <h2 class="titulo" id="nosotros-titulo">Sobre nosotros</h2>
+      <p class="entradilla">Secondbike se fundó en 2014 con el propósito de ofrecer una opción más asequible para quienes desean adentrarse en el mundo del ciclismo.</p>
+      <p>Los que trabajamos en Secondbike somos unos apasionados de la bicicleta: reparamos, restauramos y vendemos bicis, y estamos encantados de escuchar tus experiencias. Queremos que la tienda sea algo más que un taller: un lugar donde compartir tu pasión por el mundo de la bicicleta.</p>
+      <ul class="nosotros__datos">
+        <li><strong>Desde 2014</strong> en Tetuán</li>
+        <li><strong>Más de 290 m²</strong> de tienda y taller</li>
+        <li><strong>Un carril bici</strong> para probar las bicis</li>
+      </ul>
+      <a class="enlace" href="https://www.secondbikemadrid.com/nosotros-histotia-mecanicos-grantia-tienda-bicicletas-segunda-mano-madrid/">Conoce al equipo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VISÍTANOS ============================ -->
+<section class="sec sec--tinte visita" id="visitanos" aria-labelledby="visita-titulo">
+  <div class="env visita__rejilla">
+    <div class="visita__texto">
+      <h2 class="titulo" id="visita-titulo">Visítanos en Tetuán</h2>
+      <p class="entradilla">Estamos en la calle San Germán 70, bien comunicados en coche y en transporte público desde cualquier barrio de Madrid.</p>
+      <ul class="contacto">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Calle San Germán 70, 28020 Madrid</span></li>
+        <li><svg aria-hidden="true"><use href="#i-tel"/></svg><span>Taller <a href="tel:+34633064847">633 064 847</a><br>Tienda <a href="tel:+34910221042">910 221 042</a></span></li>
+        <li><svg aria-hidden="true"><use href="#i-reloj"/></svg><span>L–V 10:00–14:00 y 17:00–20:00<br>S 10:00–14:00<br><span class="estado" data-estado hidden><span class="estado__punto" aria-hidden="true"></span><span class="estado__texto"></span></span></span></li>
+        <li><svg aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:secondbikemadrid@gmail.com">secondbikemadrid@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <div class="mapa" data-mapa>
+      <figure class="mapa__foto"><picture><source type="image/avif" sizes="(min-width:1000px) 44vw, 100vw" srcset="assets/img/fachada-san-german-480.avif 480w, assets/img/fachada-san-german-768.avif 768w, assets/img/fachada-san-german-1200.avif 1200w"><img src="assets/img/fachada-san-german-768.webp" sizes="(min-width:1000px) 44vw, 100vw" srcset="assets/img/fachada-san-german-480.webp 480w, assets/img/fachada-san-german-768.webp 768w, assets/img/fachada-san-german-1200.webp 1200w" width="1200" height="900" loading="lazy" decoding="async" alt="Fachada de Secondbike en la calle San Germán 70: rótulo verde «Taller de bicicletas» y puerta de cristal con el carril bici al fondo"></picture></figure>
+      <div class="mapa__ficha">
+        <p class="mapa__nombre">Secondbike</p>
+        <p class="mapa__dir">Calle San Germán 70<br>28020 Madrid, Tetuán</p>
+        <div class="fila-botones">
+          <button type="button" class="boton boton--negro" data-mapa-abrir><svg aria-hidden="true"><use href="#i-mapa"/></svg><span>Ver el mapa</span></button>
+          <a class="boton boton--borde" href="https://www.google.com/maps/dir/?api=1&amp;destination=Calle+San+Germ%C3%A1n+70,+28020+Madrid" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ruta"/></svg><span>Cómo llegar</span></a>
+        </div>
+      </div>
+      <div class="mapa__marco" data-mapa-marco hidden></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ PIE ============================ -->
+<footer class="pie">
+  <div class="env pie__rejilla">
+    <div class="pie__marca">
+      <img src="assets/img/logo-secondbike.png" width="515" height="313" alt="Secondbike, bicicletas para todos" loading="lazy">
+      <p>Secondbike taller de bicicletas en Madrid, compra venta de bicicletas de segunda mano, taller de bicicletas, taller de patinetes eléctricos, instalación de kit eléctricos, restauración de bicicletas.</p>
+    </div>
+    <nav class="pie__col" aria-label="Taller">
+      <h2 class="pie__titulo">Taller</h2>
+      <ul><li><a href="https://www.secondbikemadrid.com/taller-bicicletas-madrid/">Reparación de bicicletas</a></li><li><a href="https://www.secondbikemadrid.com/producto/revision-completa-bicicleta/">Revisiones</a></li><li><a href="https://www.secondbikemadrid.com/montaje-kit-electricos-madrid/">Kits eléctricos</a></li><li><a href="https://www.secondbikemadrid.com/taller-patinetes-electricos-madrid/">Patinetes eléctricos</a></li></ul>
+    </nav>
+    <nav class="pie__col" aria-label="Segunda mano">
+      <h2 class="pie__titulo">Segunda mano</h2>
+      <ul><li><a href="https://www.secondbikemadrid.com/bicicletas-segunda-mano-madrid/">Comprar una bici</a></li><li><a href="https://www.secondbikemadrid.com/vende-tu-bici/">Vender tu bici</a></li><li><a href="https://www.secondbikemadrid.com/producto/alquiler-bicicletas-electricas/">Alquiler de eléctricas</a></li><li><a href="https://www.secondbikemadrid.com/nosotros-histotia-mecanicos-grantia-tienda-bicicletas-segunda-mano-madrid/">Nosotros</a></li><li><a href="https://www.secondbikemadrid.com/contacto-direccion-horario-taller-madrid-tetuan/">Contacto</a></li></ul>
+    </nav>
+    <div class="pie__col">
+      <h2 class="pie__titulo">Contacto</h2>
+      <ul class="pie__contacto">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><a href="https://maps.google.com/?q=Calle+San+Germ%C3%A1n+70,+28020+Madrid" target="_blank" rel="noopener">Calle San Germán 70, 28020 Madrid</a></li>
+        <li><svg aria-hidden="true"><use href="#i-tel"/></svg><span>Taller <a href="tel:+34633064847">633 064 847</a><br>Tienda <a href="tel:+34910221042">910 221 042</a></span></li>
+        <li><svg aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:secondbikemadrid@gmail.com">secondbikemadrid@gmail.com</a></li>
+        <li><svg aria-hidden="true"><use href="#i-reloj"/></svg><span>L–V 10:00–14:00 y 17:00–20:00<br>S 10:00–14:00</span></li>
+      </ul>
+      <a class="pie__red" href="https://www.facebook.com/secondbike.madrid.1/" target="_blank" rel="noopener" aria-label="Secondbike en Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+    </div>
+  </div>
+  <div class="env pie__legal">
+    <p>© 2014–2026 Secondbikemadrid.</p>
+    <ul>
+      <li><a href="https://www.secondbikemadrid.com/aviso-legal/">Aviso legal</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Barra fija en móvil -->
+<nav class="barra" aria-label="Contacto rápido" data-barra>
+  <a href="tel:+34633064847"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>Llamar al taller</span></a>
+  <a class="barra__wa" href="https://wa.me/34633064847" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Calle+San+Germ%C3%A1n+70,+28020+Madrid" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ruta"/></svg><span>Cómo llegar</span></a>
+</nav>
+
+<!-- WhatsApp flotante en escritorio -->
+<a class="wa-flotante" href="https://wa.me/34633064847" target="_blank" rel="noopener" data-wa><svg aria-hidden="true"><use href="#i-wa"/></svg><span>¿Hola, en qué podemos ayudarte?</span></a>
+
+<script src="assets/js/main.js?v=3.2" defer></script>
+</body>
+</html>

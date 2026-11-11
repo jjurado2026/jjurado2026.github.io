@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Velarque</title>
+  <meta name="description" content="Ideas, estrategias y tendencias de marketing digital. Compartimos lo que sabemos para que tomes mejores decisiones.">
+  <meta property="og:title" content="Blog — Velarque">
+  <meta property="og:description" content="Ideas, estrategias y tendencias de marketing digital. Compartimos lo que sabemos para que tomes mejores decisiones.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/homepage.css">
+  <link rel="stylesheet" href="assets/css/blog.css">
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO (compact) -->
+  <section class="page-hero page-hero--compact" data-gsap="hero">
+    <div class="hero__container container">
+      <div class="page-hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Blog</span>
+      </div>
+      <h1 class="page-hero__title">Ideas, estrategias y <em>tendencias</em>.</h1>
+      <p class="page-hero__desc">Compartimos lo que sabemos para que tomes mejores decisiones de marketing digital.</p>
+    </div>
+  </section>
+
+  <!-- 2. CATEGORY FILTERS -->
+  <section class="blog-filters">
+    <div class="container">
+      <div class="blog-filters__pills">
+        <button class="blog-filter active">Todos</button>
+        <button class="blog-filter">Desarrollo Web</button>
+        <button class="blog-filter">Paid Media</button>
+        <button class="blog-filter">IA</button>
+        <button class="blog-filter">CRM</button>
+        <button class="blog-filter">Automatización</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BLOG LISTING -->
+  <section class="blog-listing">
+    <div class="container">
+      <div class="blog-listing__grid" data-gsap="stagger">
+        <article class="blog-card gradient-border">
+          <div class="blog-card__img">
+            <img src="https://placehold.co/600x338/1a1a1a/333?text=Blog+1" alt="Artículo" loading="lazy">
+          </div>
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">Paid Media</span>
+              <span class="blog-card__date">20 feb 2026</span>
+            </div>
+            <h3 class="blog-card__title">Cómo reducir tu coste por lead en Google Ads un 40%</h3>
+            <p class="blog-card__excerpt">Las campañas de búsqueda bien estructuradas pueden cambiar completamente tus costes de adquisición.</p>
+            <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          </div>
+        </article>
+        <article class="blog-card gradient-border">
+          <div class="blog-card__img">
+            <img src="https://placehold.co/600x338/1a1a1a/333?text=Blog+2" alt="Artículo" loading="lazy">
+          </div>
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">Desarrollo Web</span>
+              <span class="blog-card__date">15 feb 2026</span>
+            </div>
+            <h3 class="blog-card__title">WordPress custom vs. page builders: por qué importa</h3>
+            <p class="blog-card__excerpt">No todas las webs son iguales por dentro. El código que no ves define el rendimiento que sí notas.</p>
+            <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          </div>
+        </article>
+        <article class="blog-card gradient-border">
+          <div class="blog-card__img">
+            <img src="https://placehold.co/600x338/1a1a1a/333?text=Blog+3" alt="Artículo" loading="lazy">
+          </div>
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">IA</span>
+              <span class="blog-card__date">10 feb 2026</span>
+            </div>
+            <h3 class="blog-card__title">IA aplicada al marketing: 5 usos reales que ya puedes implementar</h3>
+            <p class="blog-card__excerpt">No es ciencia ficción. Estas son las aplicaciones de IA que están dando resultados hoy.</p>
+            <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-tecnologia.html">Tecnología</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

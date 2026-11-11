@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velarque — Agencia de Marketing Digital 360 en Madrid</title>
+  <meta name="description" content="Diseño, tecnología e inteligencia artificial al servicio de tu marca. Sin humo, con resultados.">
+  <meta property="og:title" content="Velarque — Agencia de Marketing Digital 360 en Madrid">
+  <meta property="og:description" content="Diseño, tecnología e inteligencia artificial al servicio de tu marca.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide-core.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/homepage.css">
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__text">velarque</span>
+      <div class="loader__bar"><div class="loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav nav--dark" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">velarque<span>.</span></a>
+      <div class="nav__links" id="navLinks">
+        <a href="index.html" data-hover="Inicio">Inicio</a>
+        <div class="nav__item">
+          <a href="#" data-hover="Servicios">Servicios</a>
+          <div class="nav__dropdown">
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+        </div>
+        <a href="sobre-nosotros.html" data-hover="Nosotros">Nosotros</a>
+        <a href="blog.html" data-hover="Blog">Blog</a>
+        <a href="contacto.html" data-hover="Contacto">Contacto</a>
+      </div>
+      <a href="contacto.html" class="nav__cta">Hablemos</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 1. HERO — Geometric shapes -->
+  <section class="hero" data-gsap="hero">
+    <div class="hero__ambient"></div>
+    <div class="hero__shapes">
+      <div class="hero__shape hero__shape--1"></div>
+      <div class="hero__shape hero__shape--2"></div>
+      <div class="hero__shape hero__shape--3"></div>
+      <div class="hero__shape hero__shape--4"></div>
+      <div class="hero__shape hero__shape--5"></div>
+    </div>
+    <div class="hero__container container">
+      <div class="hero__eyebrow">
+        <span class="hero__line"></span>
+        <span>Agencia de marketing digital 360</span>
+      </div>
+      <h1 class="hero__title">
+        <span class="hero__title-line">
+          <span class="hero__word">Diseño, tecnología e</span>
+        </span>
+        <span class="hero__title-line">
+          <span class="hero__word"><em>inteligencia artificial</em></span>
+        </span>
+        <span class="hero__title-line">
+          <span class="hero__word">para tu marca</span>
+        </span>
+      </h1>
+      <div class="hero__bottom">
+        <p class="hero__desc">Somos Velarque, la agencia que combina diseño, tecnología e inteligencia artificial para hacer crecer tu marca. Sin humo, con resultados.</p>
+        <a href="contacto.html" class="hero__cta" data-magnetic>
+          <span>Hablemos de tu proyecto</span>
+          <span class="hero__cta-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="hero__fade"></div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- 2. TRUST BAR -->
+  <section class="trust-bar">
+    <p class="trust-bar__label">Empresas que ya confían en nosotros</p>
+    <div class="trust-bar__marquee">
+      <div class="trust-bar__track">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+1" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+2" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+3" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+4" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+5" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+6" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+7" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+8" alt="Cliente" class="trust-bar__logo">
+        <!-- Duplicate for seamless loop -->
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+1" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+2" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+3" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+4" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+5" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+6" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+7" alt="Cliente" class="trust-bar__logo">
+        <img src="https://placehold.co/120x28/eee/999?text=Cliente+8" alt="Cliente" class="trust-bar__logo">
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SERVICES — Bento grid -->
+  <section class="services">
+    <div class="container">
+      <div class="services__header">
+        <div class="services__header-split">
+          <p class="section-label reveal-text">( Servicios )</p>
+          <h2 class="section-title reveal-text">Lo que hacemos</h2>
+        </div>
+      </div>
+      <div class="bento" data-gsap="stagger">
+        <!-- 01 IA — TALL (spans 2 rows) -->
+        <a href="servicio-ia.html" class="bento__card bento__card--tall bento__card--accent" data-bento>
+          <span class="bento__num">01</span>
+          <div class="bento__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5v1h-4v-1A4 4 0 0 1 12 2z"/>
+              <path d="M10 10.5v2h4v-2"/>
+              <path d="M10 14.5h4"/>
+              <path d="M9 18h6"/>
+              <circle cx="12" cy="21" r="1"/>
+            </svg>
+          </div>
+          <h3 class="bento__title">Inteligencia Artificial</h3>
+          <p class="bento__text">Integramos IA en tus procesos de marketing para que trabajes menos y vendas más. Modelos predictivos, automatización inteligente y análisis de datos avanzado.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+        </a>
+        <!-- 02 Paid Media — Standard -->
+        <a href="servicio-paid-media.html" class="bento__card" data-bento>
+          <span class="bento__num">02</span>
+          <div class="bento__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v4"/>
+              <path d="M12 18v4"/>
+              <path d="M2 12h4"/>
+              <path d="M18 12h4"/>
+            </svg>
+          </div>
+          <h3 class="bento__title">Paid Media</h3>
+          <p class="bento__text">Google Ads, Meta Ads, programática. Cada euro invertido, medido y optimizado.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+        </a>
+        <!-- 03 Desarrollo Web — WIDE (spans 2 columns) -->
+        <a href="servicio-desarrollo-web.html" class="bento__card bento__card--wide" data-bento>
+          <span class="bento__num">03</span>
+          <div class="bento__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3 class="bento__title">Desarrollo Web</h3>
+          <p class="bento__text">Webs rápidas, bonitas y que convierten. Diseño a medida, código limpio. WordPress custom, Shopify, lo que tu proyecto necesite.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+        </a>
+        <!-- 04 CRM — Standard -->
+        <a href="servicio-crm.html" class="bento__card" data-bento>
+          <span class="bento__num">04</span>
+          <div class="bento__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="bento__title">CRM</h3>
+          <p class="bento__text">Implementamos tu CRM para que no pierdas ni un lead. Lifecycle marketing completo.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+        </a>
+        <!-- 05 Automatización — Standard with lime bg -->
+        <a href="servicio-automatizacion.html" class="bento__card bento__card--lime" data-bento>
+          <span class="bento__num">05</span>
+          <div class="bento__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="13 17 18 12 13 7"/>
+              <polyline points="6 17 11 12 6 7"/>
+            </svg>
+          </div>
+          <h3 class="bento__title">Automatización</h3>
+          <p class="bento__text">Automatizamos tus procesos repetitivos: emails, reportes, flujos de trabajo.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+        </a>
+        <!-- 06 Redes Sociales — WIDE (spans 2 columns) -->
+        <a href="servicio-redes-sociales.html" class="bento__card bento__card--wide" data-bento>
+          <span class="bento__num">06</span>
+          <div class="bento__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <h3 class="bento__title">Redes Sociales</h3>
+          <p class="bento__text">Estrategia, contenido y gestión de redes que construyen comunidad y generan negocio. Orgánico y pagado, integrados.</p>
+          <span class="bento__link">Saber más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MANIFESTO — Massive typography -->
+  <section class="manifesto">
+    <div class="container">
+      <h2 class="manifesto__text reveal-text">
+        No necesitas cinco agencias.<br>
+        Nosotros cubrimos <em>cada pieza</em><br>
+        de tu estrategia digital.
+      </h2>
+    </div>
+  </section>
+
+  <!-- 5. VIDEO BREAK — Full-bleed stat -->
+  <section class="video-break">
+    <div class="video-break__bg">
+      <img src="https://placehold.co/1920x1080/0a0a0a/1a1a1a?text=" alt="" aria-hidden="true">
+      <div class="video-break__bg-overlay"></div>
+    </div>
+    <div class="video-break__content container">
+      <span class="video-break__number" data-count="50" data-suffix="+">0</span>
+      <span class="video-break__label">Proyectos entregados<br>Cero excusas</span>
+    </div>
+  </section>
+
+  <!-- 6. CASES — Horizontal scroll (pinned) -->
+  <section class="cases-horizontal" data-gsap="horizontal-scroll">
+    <div class="cases-horizontal__header container">
+      <p class="section-label reveal-text">( Casos de éxito )</p>
+      <h2 class="section-title reveal-text">Resultados reales</h2>
+    </div>
+    <div class="cases-horizontal__track" data-gsap="horizontal-track">
+      <!-- Case 1 -->
+      <article class="case-card case-card--tall">
+        <div class="case-card__img">
+          <img src="https://placehold.co/800x500/1a1a1a/333?text=Caso+1" alt="Caso de éxito" loading="lazy">
+          <div class="case-card__overlay">
+            <span class="case-card__tag">Web + Paid Media</span>
+          </div>
+        </div>
+        <div class="case-card__info">
+          <h3 class="case-card__title">Web nueva + estrategia de captación desde cero</h3>
+          <div class="case-card__metrics">
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">2 sem.</span>
+              <span class="case-card__metric-lab">Entrega</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">+340%</span>
+              <span class="case-card__metric-lab">Tráfico orgánico</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">45</span>
+              <span class="case-card__metric-lab">Leads / mes</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- Case 2 -->
+      <article class="case-card case-card--short">
+        <div class="case-card__img">
+          <img src="https://placehold.co/800x500/1a1a1a/333?text=Caso+2" alt="Caso de éxito" loading="lazy">
+          <div class="case-card__overlay">
+            <span class="case-card__tag">Automatización + CRM</span>
+          </div>
+        </div>
+        <div class="case-card__info">
+          <h3 class="case-card__title">CRM implementado y procesos automatizados</h3>
+          <div class="case-card__metrics">
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">1 sem.</span>
+              <span class="case-card__metric-lab">Implementación</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">12</span>
+              <span class="case-card__metric-lab">Flujos automáticos</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">+60%</span>
+              <span class="case-card__metric-lab">Conversión</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- Case 3 -->
+      <article class="case-card case-card--tall">
+        <div class="case-card__img">
+          <img src="https://placehold.co/800x500/1a1a1a/333?text=Caso+3" alt="Caso de éxito" loading="lazy">
+          <div class="case-card__overlay">
+            <span class="case-card__tag">Paid Media + IA</span>
+          </div>
+        </div>
+        <div class="case-card__info">
+          <h3 class="case-card__title">Campañas de Meta Ads optimizadas con IA predictiva</h3>
+          <div class="case-card__metrics">
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">x5.8</span>
+              <span class="case-card__metric-lab">ROAS</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">-35%</span>
+              <span class="case-card__metric-lab">Coste/adquisición</span>
+            </div>
+            <div class="case-card__metric">
+              <span class="case-card__metric-val">IA</span>
+              <span class="case-card__metric-lab">Optimización</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 7. WHY VELARQUE -->
+  <section class="why-velarque">
+    <div class="container">
+      <div class="why-velarque__header">
+        <p class="section-label reveal-text">( Por qué Velarque )</p>
+        <h2 class="section-title reveal-text">Por qué las marcas eligen trabajar con nosotros</h2>
+      </div>
+      <div class="value-blocks__grid" data-gsap="stagger">
+        <div class="value-block">
+          <span class="value-block__num">01</span>
+          <h3 class="value-block__title">Diseño que marca la diferencia</h3>
+          <p class="value-block__text">No hacemos webs genéricas. Cada proyecto tiene una identidad visual propia, cuidada al detalle. Tu marca se merece algo que esté a su altura.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">02</span>
+          <h3 class="value-block__title">Código limpio, rendimiento real</h3>
+          <p class="value-block__text">Programamos a medida, sin plantillas ni atajos. Webs rápidas, seguras y optimizadas para SEO desde la primera línea de código.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">03</span>
+          <h3 class="value-block__title">Entrega rápida, sin dramas</h3>
+          <p class="value-block__text">Sabemos que el tiempo es dinero. Trabajamos con plazos claros y los cumplimos. Sin sorpresas, sin excusas, sin retrasos.</p>
+        </div>
+        <div class="value-block">
+          <span class="value-block__num">04</span>
+          <h3 class="value-block__title">Un equipo, todo el servicio</h3>
+          <p class="value-block__text">No necesitas coordinar entre agencias. Desde la estrategia hasta la ejecución, todo pasa por el mismo equipo. Coherencia, agilidad y menos reuniones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. PROCESS — Editorial split layout -->
+  <section class="process">
+    <div class="container">
+      <div class="process__header">
+        <div class="process__header-split">
+          <p class="section-label reveal-text">( Proceso )</p>
+          <div>
+            <h2 class="section-title reveal-text">Cómo trabajamos</h2>
+            <p class="section-subtitle reveal-text">Cuatro pasos claros, sin letra pequeña. Así convertimos tu idea en resultados.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process__items">
+        <div class="process-item reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">01</span>
+            <h3>Escuchamos</h3>
+            <p>Nos reunimos contigo para entender tu negocio, tus objetivos y tus puntos de dolor. Sin presentaciones vacías: solo las preguntas correctas.</p>
+            <span class="process-item__time">1-2 días</span>
+          </div>
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Escuchamos" alt="Escuchamos" loading="lazy">
+          </div>
+        </div>
+        <div class="process-item process-item--reverse reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">02</span>
+            <h3>Diseñamos</h3>
+            <p>Creamos wireframes y un diseño visual completo. No programamos hasta que el diseño te encanta.</p>
+            <span class="process-item__time">3-5 días</span>
+          </div>
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Diseñamos" alt="Diseñamos" loading="lazy">
+          </div>
+        </div>
+        <div class="process-item reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">03</span>
+            <h3>Ejecutamos</h3>
+            <p>Desarrollamos, implementamos y configuramos todo lo necesario. Código limpio, herramientas correctas y plazos reales.</p>
+            <span class="process-item__time">1-4 semanas</span>
+          </div>
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Ejecutamos" alt="Ejecutamos" loading="lazy">
+          </div>
+        </div>
+        <div class="process-item process-item--reverse reveal-up">
+          <div class="process-item__text">
+            <span class="process-item__num">04</span>
+            <h3>Optimizamos</h3>
+            <p>Medimos resultados, analizamos datos y ajustamos la estrategia. Tu proyecto no termina con la entrega: mejora con el tiempo.</p>
+            <span class="process-item__time">Continuo</span>
+          </div>
+          <div class="process-item__media">
+            <img src="https://placehold.co/560x400/1a1a1a/333?text=Optimizamos" alt="Optimizamos" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonials__header">
+        <p class="section-label reveal-text">( Testimonios )</p>
+        <h2 class="section-title reveal-text">Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="testimonials__slider splide" id="testimonialsSlider">
+        <div class="splide__track">
+          <div class="splide__list">
+            <div class="splide__slide">
+              <div class="testimonial">
+                <div class="testimonial__marks">"</div>
+                <p class="testimonial__text">Velarque nos entregó una web increíble en tiempo récord. Profesionales, directos y con un ojo para el diseño que no habíamos visto en otras agencias.</p>
+                <div class="testimonial__author">
+                  <div class="testimonial__avatar">
+                    <img src="https://placehold.co/52x52/eee/999?text=A" alt="Avatar">
+                  </div>
+                  <div>
+                    <span class="testimonial__name">[Nombre], CEO</span>
+                    <span class="testimonial__role">[Empresa]</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="splide__slide">
+              <div class="testimonial">
+                <div class="testimonial__marks">"</div>
+                <p class="testimonial__text">Desde que gestionan nuestras campañas de paid media, hemos triplicado el retorno. Y con la automatización que implementaron, nos ahorramos horas de trabajo manual cada semana.</p>
+                <div class="testimonial__author">
+                  <div class="testimonial__avatar">
+                    <img src="https://placehold.co/52x52/eee/999?text=B" alt="Avatar">
+                  </div>
+                  <div>
+                    <span class="testimonial__name">[Nombre], Dir. Marketing</span>
+                    <span class="testimonial__role">[Empresa]</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="splide__slide">
+              <div class="testimonial">
+                <div class="testimonial__marks">"</div>
+                <p class="testimonial__text">Lo que más valoramos es que lo entienden todo: diseño, código, marketing, datos. No tienes que explicar todo dos veces. Son rápidos y resolutivos.</p>
+                <div class="testimonial__author">
+                  <div class="testimonial__avatar">
+                    <img src="https://placehold.co/52x52/eee/999?text=C" alt="Avatar">
+                  </div>
+                  <div>
+                    <span class="testimonial__name">[Nombre], Fundador</span>
+                    <span class="testimonial__role">[Empresa]</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. BLOG PREVIEW — 2 posts -->
+  <section class="blog-preview">
+    <div class="container">
+      <div class="blog-preview__header">
+        <p class="section-label reveal-text">( Blog )</p>
+        <h2 class="section-title reveal-text">Ideas, estrategias y tendencias</h2>
+        <p class="section-subtitle reveal-text">Compartimos lo que sabemos para que tomes mejores decisiones de marketing.</p>
+      </div>
+      <div class="blog-preview__grid" data-gsap="stagger">
+        <article class="blog-card">
+          <div class="blog-card__img">
+            <img src="https://placehold.co/600x338/1a1a1a/333?text=Blog+1" alt="Artículo" loading="lazy">
+          </div>
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">Paid Media</span>
+              <span class="blog-card__date">20 feb 2026</span>
+            </div>
+            <h3 class="blog-card__title">Cómo reducir tu coste por lead en Google Ads un 40%</h3>
+            <p class="blog-card__excerpt">Las campañas de búsqueda bien estructuradas pueden cambiar completamente tus costes de adquisición.</p>
+            <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-card__img">
+            <img src="https://placehold.co/600x338/1a1a1a/333?text=Blog+2" alt="Artículo" loading="lazy">
+          </div>
+          <div class="blog-card__content">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">Desarrollo Web</span>
+              <span class="blog-card__date">15 feb 2026</span>
+            </div>
+            <h3 class="blog-card__title">WordPress custom vs. page builders: por qué importa</h3>
+            <p class="blog-card__excerpt">No todas las webs son iguales por dentro. El código que no ves define el rendimiento que sí notas.</p>
+            <span class="blog-card__link">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq__header">
+        <p class="section-label reveal-text">( FAQ )</p>
+        <h2 class="section-title reveal-text">Preguntas frecuentes</h2>
+      </div>
+      <div class="faq__list">
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            ¿Cuánto cuesta trabajar con Velarque?
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Depende del proyecto. Trabajamos con presupuestos a medida según el alcance, los servicios y los plazos. Desde proyectos web puntuales hasta servicios mensuales de marketing. Pide tu consulta gratuita y te damos un presupuesto sin compromiso.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            ¿Cuánto tardáis en entregar un proyecto?
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Nuestro tiempo medio de entrega es de 3 semanas para proyectos web completos. Proyectos más pequeños o urgentes pueden estar listos en una semana. Siempre acordamos plazos claros antes de empezar y los cumplimos.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            ¿Trabajáis solo con empresas grandes?
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>No. Trabajamos principalmente con PYMEs y startups que necesitan un partner de marketing digital completo. Da igual tu tamaño: si tienes un producto o servicio bueno, podemos ayudarte a crecer.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            ¿Qué tecnologías usáis?
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>WordPress custom (sin page builders), Shopify, herramientas de automatización como Make y n8n, CRMs como HubSpot y Pipedrive, Google Ads, Meta Ads, y herramientas de IA propias y de terceros. Elegimos la tecnología según tu necesidad, no al revés.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            ¿Ofrecéis mantenimiento después de la entrega?
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Sí. Ofrecemos planes de mantenimiento mensual que incluyen actualizaciones, copias de seguridad, monitorización de rendimiento y soporte técnico. Tu proyecto no termina con la entrega: mejora con el tiempo.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            ¿Podemos contratar un solo servicio?
+            <span class="faq-item__icon"></span>
+          </summary>
+          <div class="faq-item__a">
+            <p>Por supuesto. Puedes contratar solo desarrollo web, solo paid media o cualquier combinación de servicios. Aunque nuestra mayor fortaleza es la integración de todo bajo el mismo equipo, nos adaptamos a lo que necesites.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. CTA FINAL -->
+  <section class="cta-final">
+    <div class="container" style="position: relative; z-index: 2;">
+      <h2 class="cta-final__title reveal-text">Tu próximo paso empieza con una <em>conversación</em></h2>
+      <p class="cta-final__desc reveal-text">Cuéntanos qué necesitas y te mandamos una propuesta personalizada en menos de 48h. Sin compromiso.</p>
+      <a href="contacto.html" class="btn-main reveal-up" data-magnetic>
+        <span>Solicita tu consulta gratuita</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+      <p class="cta-final__note reveal-up">Respondemos en menos de 24 horas. Sin spam, sin letra pequeña.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">velarque<span>.</span></a>
+          <p class="footer__desc">Agencia de marketing digital 360 en Madrid. Diseño, tecnología e inteligencia artificial al servicio de tu marca.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <span class="footer__col-title">Servicios</span>
+            <a href="servicio-ia.html">Inteligencia Artificial</a>
+            <a href="servicio-paid-media.html">Paid Media</a>
+            <a href="servicio-desarrollo-web.html">Desarrollo Web</a>
+            <a href="servicio-crm.html">CRM</a>
+            <a href="servicio-automatizacion.html">Automatización</a>
+            <a href="servicio-redes-sociales.html">Redes Sociales</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Empresa</span>
+            <a href="sobre-nosotros.html">Sobre nosotros</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__col-title">Contacto</span>
+            <span>info@velarque.com</span>
+            <span>91 281 21 52</span>
+            <span>Madrid, España</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Velarque. Todos los derechos reservados.</span>
+        <div class="footer__legal">
+          <a href="aviso-legal.html">Aviso Legal</a>
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/homepage.js"></script>
+</body>
+</html>

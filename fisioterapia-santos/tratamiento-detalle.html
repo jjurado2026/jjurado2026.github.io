@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+<script>
+  /* Caducidad: la propuesta se ve 10 días desde su envío (marzo de 2026, publicada el 10-mar; el día de envío cuenta), hasta el 19-mar-2026
+     a las 23:59 de Madrid. Desde entonces, caducada.html. En local no caduca; ?caducada lo simula. */
+  (function () {
+    var fin = Date.UTC(2026, 2, 19, 23, 0);   // 20-mar-2026 00:00 en Madrid
+    if (/[?&]caducada\b/.test(location.search) || (/github\.io$/.test(location.hostname) && Date.now() >= fin)) {
+      document.documentElement.style.display = 'none';
+      location.replace('caducada.html');
+    }
+  })();
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osteopatía y Terapia Manual — Fisioterapia Santos</title>
+  <meta name="description" content="Tratamiento integral del sistema musculoesquelético. Osteopatía estructural, craneal y visceral con fisioterapeutas colegiados en Madrid.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/tratamiento-detalle.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Navegación principal">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Fisioterapia Santos — Inicio">
+        <img src="assets/img/logo.png" alt="Logo Fisioterapia Santos">
+        <span class="nav__logo-text">Fisioterapia <span>Santos</span></span>
+      </a>
+      <div class="nav__links">
+        <a href="tratamientos.html" class="nav__link nav__link--active">Tratamientos</a>
+        <a href="tarifas.html" class="nav__link">Tarifas</a>
+        <a href="perfil-profesional.html" class="nav__link">Equipo</a>
+        <a href="tel:667069096" class="nav__phone" aria-label="Llamar al 667 069 096">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          667 069 096
+        </a>
+        <a href="https://wa.me/34667069096" class="nav__cta nav__cta--desktop" target="_blank" rel="noopener">Pide tu cita</a>
+      </div>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="nav__overlay" aria-hidden="true">
+    <a href="index.html">Inicio</a>
+    <a href="tratamientos.html">Tratamientos</a>
+    <a href="tarifas.html">Tarifas</a>
+    <a href="perfil-profesional.html">Equipo</a>
+    <a href="https://wa.me/34667069096" class="btn btn--sage btn--lg" target="_blank" rel="noopener">Pide tu cita</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="detail-hero grain">
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="detail-hero__inner">
+        <div>
+          <div class="detail-hero__breadcrumb reveal">
+            <a href="index.html">Inicio</a>
+            <span>/</span>
+            <a href="tratamientos.html">Tratamientos</a>
+            <span>/</span>
+            <span style="color:rgba(250,248,244,.7);">Osteopatía</span>
+          </div>
+          <h1 class="reveal reveal--delay-1">Osteopatía y Terapia Manual</h1>
+          <p class="detail-hero__subtitle reveal reveal--delay-2">Tratamiento integral del sistema musculoesquelético basado en la interconexión de todos los sistemas corporales.</p>
+        </div>
+        <div class="detail-hero__image reveal reveal--delay-2">
+          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&h=450&fit=crop" alt="Tratamiento de osteopatía y terapia manual" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section>
+    <div class="container">
+      <div class="detail-content">
+
+        <!-- Main content -->
+        <div class="detail-main">
+          <h2 class="reveal">¿Qué es la Osteopatía?</h2>
+          <p class="reveal reveal--delay-1">La osteopatía se basa en que todos los sistemas corporales trabajan conjuntamente y están relacionados entre sí. Por ello, el objetivo de la osteopatía es garantizar la movilidad adecuada de todos los componentes del cuerpo (ya sea músculo, articulación, fascia, víscera...).</p>
+
+          <h3 class="reveal">Diagnóstico integral</h3>
+          <p class="reveal">El diagnóstico osteopático es un diagnóstico integral en el que se valoran la localización, tipo, duración y características del dolor, test de movilidad, palpación, inspección y test ortopédicos.</p>
+
+          <h3 class="reveal">Técnicas que utilizamos</h3>
+          <ul class="techniques-list reveal">
+            <li>Impulsos de alta velocidad</li>
+            <li>Técnicas funcionales</li>
+            <li>Inhibiciones</li>
+            <li>Energías musculares</li>
+          </ul>
+
+          <h3 class="reveal">Tres enfoques de tratamiento</h3>
+          <div class="approach-grid">
+            <div class="approach-card reveal">
+              <div class="approach-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M18 4a4 4 0 00-4 4c0 3.5-3 5-6 7.5C5 13 2 11 2 8a4 4 0 018 0 4 4 0 018 0z"/></svg>
+              </div>
+              <h4 class="approach-card__title">Estructural</h4>
+              <p class="approach-card__text">Sistema musculoesquelético: columna vertebral y extremidades.</p>
+            </div>
+
+            <div class="approach-card reveal reveal--delay-1">
+              <div class="approach-card__icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <h4 class="approach-card__title">Craneal</h4>
+              <p class="approach-card__text">Problemas craneales, sistema nervioso central, neonatos.</p>
+            </div>
+
+            <div class="approach-card reveal reveal--delay-2">
+              <div class="approach-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20"/></svg>
+              </div>
+              <h4 class="approach-card__title">Visceral</h4>
+              <p class="approach-card__text">Órganos y vísceras. Tratamiento de problemas digestivos y funcionales.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="detail-sidebar">
+
+          <!-- Pricing card -->
+          <div class="sidebar-card">
+            <div class="sidebar-card__heading">Tarifas</div>
+            <div class="sidebar-price">
+              <span class="sidebar-price__label">Sesión individual</span>
+              <span class="sidebar-price__value">43€</span>
+            </div>
+            <div class="sidebar-price">
+              <div>
+                <span class="sidebar-price__label">Bono 5 sesiones</span>
+                <div class="sidebar-price__save">Ahorra 15€</div>
+              </div>
+              <span class="sidebar-price__value">200€</span>
+            </div>
+            <div class="sidebar-price">
+              <div>
+                <span class="sidebar-price__label">Bono 10 sesiones</span>
+                <div class="sidebar-price__save">Ahorra 60€</div>
+              </div>
+              <span class="sidebar-price__value">370€</span>
+            </div>
+            <a href="https://wa.me/34667069096?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20osteopat%C3%ADa" class="btn btn--sage" style="width:100%;margin-top:var(--sp-lg);" target="_blank" rel="noopener">Reserva tu sesión</a>
+          </div>
+
+          <!-- Team card -->
+          <div class="sidebar-card">
+            <div class="sidebar-card__heading">Profesionales</div>
+            <a href="perfil-profesional.html" class="sidebar-team-item" style="text-decoration:none;">
+              <div class="sidebar-team-item__photo">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=96&h=96&fit=crop&crop=face" alt="Santos Rodríguez Cuenca" loading="lazy">
+              </div>
+              <div>
+                <div class="sidebar-team-item__name">Santos Rodríguez Cuenca</div>
+                <div class="sidebar-team-item__role">Fisioterapeuta y Osteópata · Col. 2437</div>
+              </div>
+            </a>
+            <div class="sidebar-team-item">
+              <div class="sidebar-team-item__photo">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=96&h=96&fit=crop&crop=face" alt="Alejandro Quintana Román" loading="lazy">
+              </div>
+              <div>
+                <div class="sidebar-team-item__name">Alejandro Quintana Román</div>
+                <div class="sidebar-team-item__role">Fisioterapeuta y Osteópata · Col. 12881</div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED TREATMENTS -->
+  <section class="related">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <span class="section-label">Tratamientos relacionados</span>
+        <h2 style="margin-top:var(--sp-md);">También puede interesarte</h2>
+      </div>
+
+      <div class="related__grid">
+        <a href="#" class="related-card reveal">
+          <div class="related-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4h8"/></svg>
+          </div>
+          <h3 class="related-card__title">Punción Seca</h3>
+          <p class="related-card__text">Técnica para síndrome de dolor miofascial mediante aguja sobre puntos gatillo.</p>
+        </a>
+
+        <a href="#" class="related-card reveal reveal--delay-1">
+          <div class="related-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="related-card__title">Reeducación Postural Global</h3>
+          <p class="related-card__text">Método suave, progresivo y activo. Resuelve causas desde análisis de síntomas.</p>
+        </a>
+
+        <a href="#" class="related-card reveal reveal--delay-2">
+          <div class="related-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3 class="related-card__title">Masaje Terapéutico</h3>
+          <p class="related-card__text">Para eliminar dolor por contracturas y lesiones. Amasamientos profundos adaptados.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Fisioterapia <span>Santos</span></div>
+          <p class="footer__text">Calle del Rodio, 2<br>28045 Madrid (Arganzuela-Planetario)</p>
+          <p class="footer__text" style="margin-top:var(--sp-md);"><a href="tel:667069096" class="footer__link" style="display:inline;">667 069 096</a> · <a href="tel:915993690" class="footer__link" style="display:inline;">91 599 36 90</a></p>
+        </div>
+        <div>
+          <div class="footer__heading">Tratamientos</div>
+          <a href="tratamiento-detalle.html" class="footer__link">Osteopatía</a>
+          <a href="#" class="footer__link">Respiratoria</a>
+          <a href="#" class="footer__link">Suelo Pélvico</a>
+          <a href="#" class="footer__link">S.I.S.</a>
+        </div>
+        <div>
+          <div class="footer__heading">Clínica</div>
+          <a href="perfil-profesional.html" class="footer__link">Equipo</a>
+          <a href="tarifas.html" class="footer__link">Tarifas</a>
+        </div>
+        <div>
+          <div class="footer__heading">Reserva</div>
+          <a href="https://wa.me/34667069096" class="footer__link" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="tel:667069096" class="footer__link">Teléfono</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 Fisioterapia Santos.</span>
+        <div><a href="#">Condiciones legales</a> · <a href="#">Política de cookies</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/34667069096" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

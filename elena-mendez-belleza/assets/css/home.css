@@ -1,0 +1,306 @@
+/* =====================================================================
+   Elena Méndez — home v7: márgenes iguales, un solo eje de alineación por
+   bloque y una banda oscura que da ritmo. Scroll normal: nada se fija ni se
+   mueve al bajar. Lo único que se mueve solo es el vídeo de «Novedades».
+   ===================================================================== */
+
+/* ── Cabeceras de sección: el título a la izquierda, su texto a la derecha ── */
+.cabeza { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(32px, 5vw, 80px); row-gap: 14px; align-items: end; margin-bottom: clamp(36px, 4.4vw, 64px); }
+.cabeza { grid-template-rows: minmax(0, 1fr) auto auto; }
+.cabeza > .titulo-2 { grid-row: 1 / -1; }
+.cabeza > :not(.titulo-2) { grid-column: 2; }
+.cabeza > .titulo-2 + * { grid-row: 2; }
+.cabeza > .titulo-2 + * + * { grid-row: 3; }
+.cabeza > .titulo-2:only-child { grid-column: 1 / -1; }
+.cabeza__texto { font-size: clamp(1.0625rem, 1rem + .25vw, 1.1875rem); line-height: 1.6; text-wrap: pretty; }
+@media (max-width: 899px) { .cabeza { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; } .cabeza > .titulo-2, .cabeza > .titulo-2 + *, .cabeza > .titulo-2 + * + * { grid-row: auto; } .cabeza > :not(.titulo-2) { grid-column: 1; } }
+.pie-de-bloque { margin-top: clamp(36px, 4.4vw, 64px); }
+
+/* =====================================================================
+   1 · HERO: retrato pegado a cabecera y borde; texto en un solo eje, con el
+   mismo aire arriba y abajo; una franja base apoya toda la composición.
+   ===================================================================== */
+.hero { --barra: 0px; --alto: calc(100svh - var(--cab) - var(--sup, 0px) - var(--barra)); --base: clamp(84px, 12svh, 108px); position: relative; overflow: hidden; background: #fff; }
+@media (max-width: 899px) { .hero { --barra: 60px; } }
+.hero__escena { position: relative; }
+.hero__foto { position: absolute; left: 0; bottom: 0; max-width: none; }
+.hero__titulo { display: contents; }
+.hero__t1 { position: relative; font-family: var(--serif); font-weight: 700; line-height: 1.06; color: var(--noche); text-wrap: balance; }
+.hero__l1, .hero__l2 { display: inline; }
+.hero__t2 { position: relative; font-weight: 500; line-height: 1.25; color: var(--noche); text-wrap: balance; }
+.hero__desc { position: relative; line-height: 1.65; text-wrap: pretty; }
+.hero__acciones { position: relative; display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* La franja base: sus acreditaciones, su financiación y sus opiniones */
+.hero__base { position: relative; display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 3vw, 48px); padding-inline: var(--canal); border-top: 1px solid var(--oro-linea); background: #fff; }
+.hero__insignias { display: flex; flex: none; gap: clamp(8px, 1vw, 14px); }
+.hero__insignias img { width: clamp(50px, 8svh, 68px); height: auto; border-radius: 50%; }
+.hero__financia { font-weight: 600; font-size: clamp(.9688rem, .9rem + .2vw, 1.0625rem); line-height: 1.35; text-align: center; text-wrap: balance; }
+.hero__nota { display: inline-flex; flex: none; flex-wrap: wrap; align-items: center; gap: 2px 10px; min-height: 44px; font-weight: 600; font-size: .9688rem; line-height: 1.3; color: var(--noche); text-decoration: none; }
+.hero__nota:hover span:last-child, .hero__nota:focus-visible span:last-child { text-decoration: underline; text-decoration-color: var(--oro-hondo); text-underline-offset: 4px; }
+
+/* Apaisado normal: retrato a la izquierda, texto en la otra mitad */
+@media (min-aspect-ratio: 3/2) and (min-height: 521px) {
+  .hero { height: var(--alto); display: grid; grid-template-rows: minmax(0, 1fr) var(--base); }
+  .hero__escena { --foto-h: calc(var(--alto) - var(--base)); --foto-w: calc(var(--foto-h) * 1.916); --col: max(calc(var(--foto-w) * .6), 50vw); --t: min(4.2vw, 6.8svh, 6.5rem);
+    display: grid; grid-template-columns: var(--col) minmax(0, 1fr); align-content: center; padding-right: var(--canal); }
+  .hero__foto { width: var(--foto-w); height: var(--foto-h); }
+  .hero__t1 { grid-column: 2; font-size: var(--t); }
+  .hero__t2 { grid-column: 2; margin-top: clamp(10px, 1.8svh, 18px); font-size: clamp(1.1875rem, min(1.7vw, 2.9svh), 2rem); }
+  .hero__desc { grid-column: 2; margin-top: clamp(8px, 1.5svh, 16px); max-width: 38em; font-size: clamp(.9688rem, min(1.15vw, 1.95svh), 1.25rem); }
+  .hero__acciones { grid-column: 2; margin-top: clamp(14px, 2.6svh, 28px); }
+}
+
+/* Apaisado casi cuadrado (tableta tumbada): el título arriba, a todo el ancho */
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2) {
+  .hero { height: var(--alto); display: grid; grid-template-rows: minmax(0, 1fr) var(--base); }
+  .hero__escena { --t: min(5.2vw, 8.4svh); --foto-w: min(92vw, calc((var(--alto) - var(--base) - var(--t) * 2.2 - 44px) * 1.916)); display: grid; grid-template-columns: calc(var(--foto-w) * .6) minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto auto auto minmax(0, 1fr); padding: clamp(14px, 2.4svh, 24px) var(--canal) 0 0; }
+  .hero__foto { width: var(--foto-w); height: auto; }
+  .hero__t1 { grid-column: 1 / -1; grid-row: 1; padding-left: var(--canal); font-size: var(--t); }
+  .hero__t2 { grid-column: 2; grid-row: 3; font-size: clamp(1.125rem, 2vw, 1.5rem); }
+  .hero__desc { grid-column: 2; grid-row: 4; margin-top: 10px; font-size: clamp(.9688rem, 1.5vw, 1.0625rem); }
+  .hero__acciones { grid-column: 2; grid-row: 5; margin-top: 16px; }
+}
+
+/* Vertical (móviles y tabletas): título, retrato y botones en la primera pantalla; lo demás, debajo */
+@media (max-aspect-ratio: 1/1) {
+  .hero { --t: min(9.5vw, 5rem); --t2: clamp(1rem, 4.9vw, 2rem);
+    --foto-alto: min(88vw, calc(var(--alto) - var(--t) * 4.3 - var(--t2) * 1.4 - 124px)); }
+  .hero__escena { display: flex; flex-direction: column; padding-top: 16px; }
+  .hero__t1 { order: 1; padding-inline: var(--canal); font-size: var(--t); }
+  .hero__foto { order: 2; position: relative; left: auto; bottom: auto; width: auto; height: var(--foto-alto); margin-top: 12px; align-self: flex-start; }
+  .hero__t2 { order: 3; padding-inline: var(--canal); margin-top: 14px; font-size: var(--t2); }
+  .hero__acciones { order: 4; padding-inline: var(--canal); margin-top: 14px; flex-wrap: nowrap; }
+  .hero__acciones .boton { flex: 1 1 0; padding-inline: 12px; min-width: 0; }
+  .hero__desc { order: 5; padding: 28px var(--canal) 0; font-size: 1.0625rem; }
+  .hero__base { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 28px; padding-block: 24px 4px; }
+  .hero__financia { text-align: left; }
+}
+
+/* Apaisado y bajo (móvil tumbado): retrato a un lado, título y botones al otro; lo demás, debajo */
+@media (min-aspect-ratio: 1/1) and (max-height: 520px) {
+  .hero { height: auto; display: block; --foto-alto: var(--alto); }
+  .hero__escena { display: grid; grid-template-columns: calc(var(--foto-alto) * 1.916 * .6) minmax(0, 1fr); padding-right: var(--canal); }
+  .hero__foto { position: absolute; left: 0; top: 0; bottom: auto; width: auto; height: var(--foto-alto); }
+  .hero__t1, .hero__t2, .hero__acciones { grid-column: 2; }
+  .hero__t1 { align-self: end; padding-top: 10px; font-size: min(3.6vw, 2.5rem); }
+  .hero__t2 { margin-top: 8px; font-size: clamp(1.0625rem, 2.2vw, 1.375rem); }
+  .hero__acciones { margin-top: 12px; padding-bottom: 12px; flex-wrap: nowrap; }
+  .hero__acciones .boton { min-height: 46px; padding-inline: 20px; }
+  .hero__desc { grid-column: 1 / -1; padding: 24px 0 0 var(--canal); margin-top: calc(var(--alto) - 100% + 0px); font-size: 1.0625rem; }
+  .hero__base { margin-top: 20px; padding-block: 16px; }
+  .hero__t1 { min-height: 0; }
+}
+
+/* Una sola entrada al cargar, corta */
+.anima .hero__foto { animation: hero-foto 1.1s var(--sale) both; transform-origin: left center; }
+.anima .hero__t1 { animation: hero-sube .8s var(--sale) .08s both; }
+.anima .hero__t2, .anima .hero__desc, .anima .hero__acciones { animation: hero-sube .8s var(--sale) .2s both; }
+.anima .hero__base { animation: hero-aparece .6s linear .35s both; }
+@keyframes hero-foto { from { opacity: 0; transform: scale(1.015); } }
+@keyframes hero-sube { from { opacity: 0; transform: translateY(10px); } }
+@keyframes hero-aparece { from { opacity: 0; } }
+
+/* =====================================================================
+   2 · PROMOCIONES: catálogo. Todo a la vista, sin nada bajo el cursor
+   ===================================================================== */
+.promos__rejilla { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(40px, 4vw, 60px) clamp(20px, 2.2vw, 32px); }
+@media (max-width: 999px) { .promos__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.promo { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+.promo__medio { display: block; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: var(--marfil); }
+.promo__medio img { width: 100%; height: 100%; object-fit: contain; transition: transform .6s var(--sale); }
+.promo:hover .promo__medio img { transform: scale(1.025); }
+.promo__nombre { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--oro-linea); font-weight: 600; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.25; text-wrap: balance; }
+.promo__nombre a { text-decoration: none; }
+.promo__nombre a:hover { text-decoration: underline; text-decoration-color: var(--oro-marca); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.promo__precio { display: flex; align-items: center; min-height: 3.25rem; font-family: var(--serif); font-weight: 700; font-size: clamp(2rem, 1.6rem + 1vw, 2.75rem); line-height: 1; color: var(--oro-tinta); }
+.promo__precio--texto { font-family: var(--sans); font-weight: 600; font-size: 1rem; line-height: 1.25; }
+.promo__texto { font-size: 1rem; line-height: 1.55; text-wrap: pretty; }
+.promo__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin-top: 16px; }
+@media (max-width: 559px) {
+  .promos__rejilla { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .promo { grid-row: auto; grid-template-rows: auto auto auto auto; grid-template-columns: 40% minmax(0, 1fr); column-gap: 16px; }
+  .promo__medio { grid-column: 1; grid-row: 1 / span 2; }
+  .promo__nombre { grid-column: 2; grid-row: 1; align-self: end; margin-top: 0; }
+  .promo__precio { grid-column: 2; grid-row: 2; align-self: start; align-items: flex-start; min-height: 0; padding-top: 8px; }
+  .promo__texto { grid-column: 1 / -1; grid-row: 3; margin-top: 12px; }
+  .promo__acciones { grid-column: 1 / -1; grid-row: 4; margin-top: 10px; }
+}
+
+/* =====================================================================
+   3 · NOVEDADES: la palabra lleva dentro su vídeo, quieta en su sitio
+   ===================================================================== */
+.nov { padding-bottom: var(--seccion); scroll-margin-top: var(--cab); }
+.nov__palabra { position: relative; isolation: isolate; overflow: hidden; height: calc(18.6vw * 1.08); background: #14151C; }
+.nov__palabra video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.8); }
+.nov__mascara { position: absolute; inset: 0; display: grid; place-items: center; background: #fff; mix-blend-mode: screen; font-family: var(--serif); font-weight: 700; font-size: 18.6vw; line-height: 1; color: #000; white-space: nowrap; }
+.nov__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 2.6vw, 40px); margin-top: clamp(28px, 3.4vw, 52px); }
+.novedad { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+.novedad__medio { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #14151C; }
+.novedad__medio video, .novedad__medio img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.novedad__play { position: absolute; right: 14px; bottom: 14px; display: grid; place-items: center; width: 54px; height: 54px; border: 1px solid #fff; border-radius: 50%; color: #fff; background: rgba(20, 21, 28, .35); overflow: hidden; isolation: isolate; }
+.novedad__play .icono { width: 22px; height: 22px; }
+.novedad__play::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: 50%; background: var(--oro); opacity: 0; transform: scale(.6); transition: transform .4s var(--sale), opacity .2s linear; }
+.novedad__play:hover, .novedad__play:focus-visible { color: var(--noche); border-color: var(--oro); }
+.novedad__play:hover::before, .novedad__play:focus-visible::before { opacity: 1; transform: none; }
+.novedad__nombre { margin-top: 18px; font-weight: 600; font-size: clamp(1.1875rem, 1.1rem + .4vw, 1.4375rem); line-height: 1.3; text-wrap: balance; }
+.novedad__texto { margin-top: 8px; max-width: 34em; text-wrap: pretty; }
+.novedad__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin-top: 16px; }
+@media (max-width: 759px) { .nov__lista { grid-template-columns: minmax(0, 1fr); gap: 44px; } .novedad { grid-row: auto; grid-template-rows: none; } }
+
+/* =====================================================================
+   4 · LA GUÍA: la banda oscura de la página. Palabras grandes y, al elegir,
+   sus tratamientos y el botón
+   ===================================================================== */
+.guia { background: var(--noche-honda); color: rgba(255, 255, 255, .84); }
+.guia .titulo-2 { color: #fff; }
+.guia__opciones { display: flex; flex-wrap: wrap; gap: clamp(2px, .5vw, 8px) clamp(22px, 3.2vw, 52px); }
+.guia__opciones button { position: relative; min-height: 64px; padding: 0 2px; font-family: var(--serif); font-weight: 700; font-size: clamp(2.75rem, 1.9rem + 2vw, 3.75rem); line-height: 1.1; color: #fff; cursor: pointer; }
+.guia__opciones button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: var(--oro); transform: scaleX(0); transform-origin: left center; transition: transform .35s var(--sale); }
+.guia__opciones button:hover::after, .guia__opciones button:focus-visible::after, .guia__opciones button[aria-pressed="true"]::after { transform: none; }
+.guia__opciones button[aria-pressed="true"] { color: var(--oro); }
+.guia__opciones button:focus-visible { outline-color: var(--oro); }
+.guia__respuesta { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: clamp(32px, 5vw, 80px); row-gap: 16px; align-items: center; margin-top: clamp(28px, 3.4vw, 48px); padding-top: clamp(24px, 2.8vw, 36px); border-top: 1px solid rgba(244, 208, 88, .35); }
+.guia__respuesta[hidden] { display: none; }
+.anima .guia__respuesta > * { animation: hero-aparece .3s linear both; }
+.guia__titulo { grid-column: 1 / -1; font-weight: 600; font-size: clamp(1.1875rem, 1.1rem + .4vw, 1.4375rem); line-height: 1.3; color: #fff; }
+.guia__lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px clamp(16px, 2vw, 32px); font-size: clamp(1.0625rem, 1rem + .25vw, 1.1875rem); color: #fff; }
+.guia__lista em { display: block; font-style: normal; font-weight: 600; font-size: .9375rem; color: var(--oro); }
+.guia__respuesta .boton { justify-self: start; }
+@media (max-width: 899px) { .guia__respuesta { grid-template-columns: minmax(0, 1fr); } .guia__lista { grid-template-columns: minmax(0, 1fr); } .guia__respuesta .boton { white-space: normal; text-align: center; padding-block: 10px; } }
+
+/* =====================================================================
+   5 · TRATAMIENTOS: índice a la izquierda, su contenido a la derecha.
+   Todos los paneles ocupan la misma celda: la altura no salta al cambiar
+   ===================================================================== */
+.indice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(7, auto); column-gap: clamp(32px, 5vw, 80px); border-top: 1px solid var(--oro-linea); }
+.indice__fila { display: contents; }
+.indice__nombre { grid-column: 1; position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 76px; border-bottom: 1px solid var(--oro-linea); font-family: var(--serif); font-weight: 700; font-size: clamp(2.5rem, 1.7rem + 1.7vw, 3.25rem); line-height: 1.08; color: var(--texto-suave); text-align: left; cursor: pointer; }
+.indice__nombre::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--oro-hondo); transform: scaleX(0); transform-origin: left center; transition: transform .4s var(--sale); }
+.indice__nombre:hover, .indice__nombre:focus-visible, .indice__nombre[aria-expanded="true"] { color: var(--noche); }
+.indice__nombre:hover::after, .indice__nombre:focus-visible::after, .indice__nombre[aria-expanded="true"]::after { transform: none; }
+.indice__nombre i { display: none; }
+.indice__panel { grid-column: 2; grid-row: 1 / span 7; display: grid; justify-items: start; align-content: start; gap: 12px; padding-top: clamp(16px, 2vw, 28px); opacity: 0; visibility: hidden; transition: opacity .15s linear, visibility 0s linear .15s; }
+.indice__panel.es-activa { opacity: 1; visibility: visible; transition: opacity .3s linear; }
+.indice__panel img { width: 100%; height: auto; margin-bottom: 8px; }
+.indice__panel ul { display: grid; gap: 4px; font-weight: 600; color: var(--noche); }
+.indice__panel .boton { margin-top: 8px; }
+@media (max-width: 899px) {
+  .indice { display: block; }
+  .indice__fila { display: block; }
+  .indice__nombre { min-height: 72px; font-size: min(8.8vw, 2.75rem); color: var(--noche); }
+  .indice__nombre span { min-width: 0; }
+  .indice__nombre i { position: relative; display: block; flex: none; width: 20px; height: 20px; }
+  .indice__nombre i::before, .indice__nombre i::after { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 2px; background: var(--oro-hondo); transition: transform .3s var(--sale); }
+  .indice__nombre i::after { transform: rotate(90deg); }
+  .indice__nombre[aria-expanded="true"] i::after { transform: rotate(0); }
+  .indice__panel { display: none; opacity: 1; visibility: visible; padding-block: 18px 28px; }
+  .indice__panel.es-activa { display: grid; }
+}
+.servicios__seo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 5vw, 80px); row-gap: 16px; margin-top: clamp(40px, 4.4vw, 64px); }
+.servicios__lista { font-weight: 600; color: var(--noche); line-height: 1.7; text-wrap: pretty; }
+.servicios__zona { font-size: .9688rem; line-height: 1.65; color: var(--texto-suave); text-wrap: pretty; }
+@media (max-width: 899px) { .servicios__seo { grid-template-columns: minmax(0, 1fr); } }
+
+/* =====================================================================
+   6 · MEDICINA ESTÉTICA: su foto llena su mitad y su rosa, la otra
+   ===================================================================== */
+.medicina { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: var(--rosa-claro); }
+.medicina__foto { position: relative; min-height: 100%; overflow: hidden; }
+.medicina__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 27% 15%; }
+.medicina__texto { display: grid; justify-items: start; align-content: center; gap: 18px; padding: clamp(48px, 6vw, 96px) var(--canal) clamp(48px, 6vw, 96px) clamp(32px, 5vw, 80px); }
+.medicina__texto p { max-width: 38em; font-size: clamp(1rem, .96rem + .2vw, 1.125rem); }
+.medicina__texto .medicina__expertos { font-weight: 600; color: var(--noche); }
+@media (max-width: 999px) {
+  .medicina { grid-template-columns: minmax(0, 1fr); }
+  .medicina__foto { min-height: 0; }
+  .medicina__foto img { position: static; height: auto; }
+  .medicina__texto { padding: 36px var(--canal) 48px; }
+}
+
+/* =====================================================================
+   7 · PRIMERAS MARCAS
+   ===================================================================== */
+.marcas__alta { font-weight: 600; color: var(--oro-tinta); text-wrap: pretty; }
+.monedas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); padding-top: clamp(24px, 3vw, 40px); border-top: 1px solid var(--oro-linea); }
+@media (max-width: 999px) { .monedas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; } }
+.moneda { display: grid; justify-items: start; align-content: start; gap: 10px; font-size: .9688rem; line-height: 1.55; }
+.moneda__cara { display: block; width: min(112px, 70%); border-radius: 50%; overflow: hidden; }
+.moneda__cara img { width: 100%; height: auto; transition: transform .5s var(--sale); }
+.moneda:hover .moneda__cara img { transform: scale(1.04); }
+.moneda h3 { margin-top: 6px; font-weight: 600; font-size: 1.0625rem; line-height: 1.3; text-wrap: balance; }
+
+/* =====================================================================
+   8 · OPINIONES: tres, quietas; ni carrusel ni tarjetas
+   ===================================================================== */
+.opiniones { background: var(--marfil); }
+.opiniones__nota { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; min-height: 44px; font-weight: 600; color: var(--noche); text-decoration: underline; text-decoration-color: var(--oro-linea); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.opiniones__nota:hover { text-decoration-color: var(--oro-hondo); }
+.opiniones__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
+.opiniones__lista blockquote { display: grid; align-content: start; gap: 12px; padding-top: 18px; border-top: 1px solid var(--oro-hondo); }
+.opiniones__lista p { font-weight: 500; font-size: clamp(1.1875rem, 1.1rem + .5vw, 1.5rem); line-height: 1.45; color: var(--noche); text-wrap: pretty; }
+.opiniones__lista footer { font-size: .9688rem; color: var(--texto); }
+@media (max-width: 759px) { .opiniones__lista { grid-template-columns: minmax(0, 1fr); } }
+
+/* =====================================================================
+   9 · BLOG
+   ===================================================================== */
+.entradas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 2.6vw, 40px); }
+@media (max-width: 759px) { .entradas { grid-template-columns: minmax(0, 1fr); } }
+.entrada a { display: grid; gap: 14px; text-decoration: none; }
+.entrada__foto { display: block; aspect-ratio: 16 / 9; overflow: hidden; }
+.entrada__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--sale); }
+.entrada a:hover .entrada__foto img { transform: scale(1.025); }
+.entrada__titulo { font-weight: 600; font-size: clamp(1.0625rem, 1rem + .25vw, 1.1875rem); line-height: 1.35; color: var(--noche); text-wrap: pretty; }
+.entrada a:hover .entrada__titulo { text-decoration: underline; text-decoration-color: var(--oro-marca); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* =====================================================================
+   10 · LA CITA: su foto sin velos y una hoja blanca con el formulario
+   ===================================================================== */
+.cita { position: relative; display: grid; align-items: center; justify-items: end; padding: clamp(48px, 5.4vw, 80px) var(--canal); }
+@media (max-width: 999px) { .cita { justify-items: center; } }
+.cita__foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+.cita__tarjeta { position: relative; width: min(100%, 38rem); padding: clamp(28px, 3.4vw, 48px); background: #fff; box-shadow: var(--sombra-flotante); }
+.cita__tarjeta .titulo-2 { font-size: clamp(2.5rem, 1.9rem + 2vw, 3.75rem); }
+.cita__intro { margin-top: 12px; text-wrap: pretty; }
+.cita__llamar { margin-top: 16px; font-size: 1rem; }
+.cita__llamar a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--noche); text-underline-offset: 4px; text-decoration-color: var(--oro-hondo); }
+.formulario { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+.campo { display: grid; gap: 6px; min-width: 0; }
+.campo--ancho { grid-column: 1 / -1; }
+.campo label { font-weight: 600; font-size: 1rem; color: var(--noche); }
+.campo input, .campo select { width: 100%; min-height: 54px; padding: 0 16px; border: 1px solid var(--linea-fuerte); border-radius: 0; background: #fff; font-size: 1.0625rem; color: var(--noche); appearance: none; -webkit-appearance: none; }
+.campo input:hover, .campo select:hover { border-color: var(--noche); }
+.campo input:focus-visible, .campo select:focus-visible { outline: 2px solid var(--oro-tinta); outline-offset: 0; border-radius: 0; border-color: var(--oro-tinta); }
+.campo__lista { position: relative; display: block; }
+.campo__lista select { padding-right: 44px; cursor: pointer; }
+.campo__lista::after { content: ""; position: absolute; right: 20px; top: 50%; width: 9px; height: 9px; margin-top: -7px; border-right: 2px solid var(--oro-tinta); border-bottom: 2px solid var(--oro-tinta); transform: rotate(45deg); pointer-events: none; }
+.con-error input, .con-error select { border-color: #A3262E; }
+.formulario__acepto { display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 1rem; cursor: pointer; }
+.formulario__acepto input { flex: none; width: 22px; height: 22px; accent-color: var(--noche); }
+.formulario__acepto a { font-weight: 600; color: var(--noche); text-decoration-color: var(--oro-hondo); text-underline-offset: 3px; }
+.formulario__acepto.con-error { color: #A3262E; }
+.formulario__aviso { font-weight: 600; font-size: 1rem; color: var(--noche); }
+.formulario__aviso:empty { display: none; }
+@media (max-width: 559px) {
+  .cita { display: block; padding: 0; }
+  .cita__foto { position: static; height: auto; }
+  .cita__tarjeta { width: 100%; padding: 28px var(--canal) 40px; box-shadow: none; }
+  .formulario { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── Pie: a la izquierda, como todo lo demás ─────────────────────────── */
+.pie .contenedor { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: clamp(24px, 3vw, 40px) clamp(20px, 2.4vw, 36px); }
+.pie .pie__logo { grid-column: 1 / -1; margin-bottom: 0; }
+.pie .pie__rejilla { grid-column: 1 / -1; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pie .pie__redes { grid-column: 2; grid-row: 3; margin-top: 0; }
+.pie .pie__sanidad { grid-column: 3; grid-row: 3; }
+.pie .pie__legal { grid-column: 1; grid-row: 3; }
+.pie__enlace-mapa { font-weight: 600; text-decoration: underline !important; text-decoration-color: var(--oro-hondo) !important; text-underline-offset: 4px; }
+@media (max-width: 899px) {
+  .pie .contenedor { grid-template-columns: minmax(0, 1fr); }
+  .pie .pie__redes, .pie .pie__sanidad, .pie .pie__legal { grid-column: 1; grid-row: auto; }
+  .pie .pie__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pie .pie__rejilla > :nth-child(-n+2) { grid-column: 1 / -1; }
+  .pie a[href^="tel:"], .pie a[href^="mailto:"], .pie__enlace-mapa { display: inline-block; padding-block: 12px; }
+}
