@@ -96,15 +96,11 @@
     });
   });
 
-  /* ─── Cabecera: arriba del todo va dentro del marco del hero, sin fondo y en blanco ─── */
+  /* ─── Cabecera: la línea de abajo aparece en cuanto se baja ─── */
   const cab = $('[data-cab]');
   const hamb = $('.hamburguesa');
   const menuMovil = $('#menu-movil');
-  const sombra = () => {
-    const arriba = scrollY <= 8;
-    cab.classList.toggle('con-sombra', !arriba);
-    cab.classList.toggle('sobre', arriba && menuMovil.hidden);
-  };
+  const sombra = () => cab.classList.toggle('con-sombra', scrollY > 8);
   addEventListener('scroll', sombra, { passive: true });
   sombra();
 
@@ -125,18 +121,50 @@
   menuMovil.addEventListener('click', (e) => { if (e.target.closest('a')) cierraMenu(); });
   d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menuMovil.hidden) { cierraMenu(); hamb.focus(); } });
 
-  /* ─── Hero: la foto se asienta, el corte barre el titular y sigue la entradilla ─── */
+  /* ─── Hero: los listones de la pared suben por su carril, el filo se dibuja y el titular sale de su máscara (en CSS) ─── */
   const hero = $('[data-hero]');
   const h1 = $('.hero__titulo');
-  const lead = $('.hero__lead');
   const arrancaHero = () => {
     hero.classList.add('listo');
     h1.classList.add('visto');
-    lead.classList.add('visto');
-    if (!quieto) barre(h1);
   };
   const listoFuentes = d.fonts && d.fonts.ready ? Promise.race([d.fonts.ready, espera(1200)]) : espera(200);
   listoFuentes.then(() => requestAnimationFrame(arrancaHero));
+
+  /* Al bajar, los listones se abren como tablas que se separan: el primero sigue pegado al filo y cada uno se aparta
+     un poco más, en perpendicular a la diagonal. Con el ratón se entreabren, más cuanto más cerca de la madera */
+  const marco = $('[data-marco]');
+  if (marco && !quieto) {
+    const listones = $$('.hero__liston', marco);
+    const texto = $('.hero__texto', marco);
+    const foto = $('.hero__foto', marco);
+    const PX = 0.7547, PY = -0.6561;   // perpendicular al filo de 41°, hacia arriba a la derecha
+    const ratonFino = matchMedia('(hover: hover) and (pointer: fine)');
+    const estrecho = matchMedia('(max-width: 899.98px), (max-aspect-ratio: 1/1)');   // en móvil la foto es más baja y el recorrido, más corto
+    let p = 0, rx = 0, rObjetivo = 0, visible = true, pedido = false, izq = 0;
+    const pinta = () => {
+      pedido = false;
+      rx += (rObjetivo - rx) * 0.1;
+      const paso = estrecho.matches ? 26 : 46;
+      listones.forEach((l, k) => {
+        const a = p * k * paso + rx * k * 6;
+        l.style.translate = a ? `${(PX * a).toFixed(1)}px ${(PY * a).toFixed(1)}px` : '';
+      });
+      texto.style.translate = p ? `0 ${(-p * 70).toFixed(1)}px` : '';
+      if (visible && Math.abs(rObjetivo - rx) > 0.002) pide();
+    };
+    const pide = () => { if (!pedido) { pedido = true; requestAnimationFrame(pinta); } };
+    const mide = () => { p = Math.min(1, Math.max(0, scrollY / marco.offsetHeight)); };
+    addEventListener('scroll', () => { if (visible) { mide(); pide(); } }, { passive: true });
+    marco.addEventListener('pointerenter', () => { izq = foto.getBoundingClientRect().left; });
+    marco.addEventListener('pointermove', (e) => {
+      if (!ratonFino.matches || e.pointerType !== 'mouse') return;
+      rObjetivo = Math.min(1, Math.max(0, (e.clientX - izq) / (innerWidth - izq)));
+      pide();
+    });
+    marco.addEventListener('pointerleave', () => { rObjetivo = 0; pide(); });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) { mide(); pide(); } }).observe(marco);
+  }
 
   /* ─── Valores: los pictogramas hacen su gesto por turnos ─── */
   const valores = $$('.valor');

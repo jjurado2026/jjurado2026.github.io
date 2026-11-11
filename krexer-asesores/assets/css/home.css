@@ -35,7 +35,6 @@
   --ancho: 1280px;
   --cab: 64px;
   --barra: 0px;
-  --marco: 0px;   /* el marco negro alrededor del hero */
   --sec: clamp(64px, 8.5vw, 128px);
 
   /* Profundidad: base → elevado → flotante, con el negro de la marca */
@@ -55,7 +54,6 @@
 @media (min-width: 1024px) { :root { --cab: 76px; } }
 @media (min-width: 1760px) { :root { --ancho: 1480px; } }
 @media (max-width: 1023.98px) { :root { --barra: 62px; } }
-@media (min-width: 600px) { :root { --marco: clamp(8px, 1vw, 16px); } }
 
 /* ─── Base ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -118,7 +116,7 @@ ul, ol { list-style: none; }
 }
 .boton__txt { position: relative; display: block; overflow: hidden; color: transparent; padding-block: 4px; }
 .boton__txt::before, .boton__txt::after {
-  content: attr(data-t); position: absolute; left: 0; top: 4px;
+  content: attr(data-t); content: attr(data-t) / ''; position: absolute; left: 0; top: 4px;
   transition: transform .5s var(--sale), opacity .3s;
 }
 .boton__txt::before { color: var(--b-txt); }
@@ -158,6 +156,12 @@ ul, ol { list-style: none; }
 
 /* Variantes */
 .boton--sec { --b-borde: var(--linea-fuerte); --b-pastilla: transparent; --b-pastilla-on: var(--blanco); }
+/* Relleno en negro: el primario sobre fondo claro */
+.boton--lleno {
+  --b-txt: var(--blanco); --b-txt-on: var(--negro); --b-pastilla: rgba(255, 255, 255, .16); --b-pastilla-on: var(--blanco);
+  --b-ico: var(--blanco); --b-ico-on: var(--negro);
+  background: var(--negro);
+}
 .boton--peq { --b-alto: 48px; --b-pas: 36px; padding-left: 18px; font-size: .95rem; }
 .boton--cab { --b-alto: 46px; --b-pas: 34px; padding-left: 18px; font-size: .95rem; }
 .boton--claro {
@@ -199,17 +203,6 @@ ul, ol { list-style: none; }
   -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px);
   transition: opacity .35s;
 }
-/* Arriba del todo, la cabecera va dentro del marco del hero: sin fondo y en blanco */
-.js .cab.sobre::before { opacity: 0; }
-.js .cab.sobre .cab__dentro { transform: translateY(var(--marco)); }
-.js .cab.sobre .menu a, .js .cab.sobre .cab__tel, .js .cab.sobre .hamburguesa { color: var(--blanco); }
-.js .cab.sobre .logo__texto { filter: brightness(0) invert(1); }
-.js .cab.sobre .hamburguesa { border-color: rgba(255, 255, 255, .55); }
-.js .cab.sobre .boton--cab {
-  --b-borde: rgba(255, 255, 255, .8); --b-txt: var(--blanco); --b-txt-on: var(--negro);
-  --b-pastilla: rgba(255, 255, 255, .14); --b-pastilla-on: var(--negro); --b-ico: var(--blanco); --b-ico-on: var(--blanco);
-}
-.js .cab.sobre :focus-visible { outline-color: var(--naranja); }
 .cab::after { content: ''; position: absolute; inset: auto 0 0; height: 1px; background: var(--linea); opacity: 0; transition: opacity .3s; }
 .cab.con-sombra::after { opacity: 1; }
 .cab__dentro { height: 100%; display: flex; align-items: center; gap: 24px; transition: transform .45s var(--sale); }
@@ -292,7 +285,6 @@ ul, ol { list-style: none; }
   position: absolute; left: 0; top: -30%; width: 3px; height: 160%; border-radius: 2px;
   background: var(--naranja); opacity: 0; pointer-events: none; transform: translateX(-30px) rotate(41deg);
 }
-.hero .corte { background: var(--blanco); width: 4px; }
 .llamada .corte { background: var(--negro); }
 .anima [data-titulo].barre .corte { animation: corte-barre 1s cubic-bezier(.55, 0, .3, 1) backwards; }
 /* Lo que entra o barre de lado nunca ensancha la página */
@@ -330,58 +322,80 @@ ul, ol { list-style: none; }
   .foto-marco:hover img[data-foto], .proceso:hover img[data-foto] { transform: scale(1.035); }
 }
 
-/* ═══════════ HERO: su titular en grande sobre la foto de su sala de espera, a sangre dentro de un marco ═══════════ */
+/* ═══════════ HERO: el texto a la izquierda; a la derecha, su pared de madera en cinco listones cortados a 41°, la diagonal de su K ═══════════ */
 .primera { background: var(--negro); }
-.hero { padding: var(--marco); }
+.hero { background: var(--blanco); color: var(--negro); }
 .hero__marco {
-  position: relative; isolation: isolate; overflow: hidden;
-  min-height: calc(100svh - 2 * var(--marco) - var(--barra));
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding-top: var(--cab); border-radius: 0 0 22px 22px;
-  background: var(--negro-2); color: var(--blanco);
+  --alto: max(600px, calc(100svh - var(--barra)));
+  --caja: calc(var(--alto) - var(--cab));       /* alto de la foto */
+  --xl: 47vw;                                   /* dónde arranca el filo arriba */
+  --dx: calc(var(--caja) * .8693);              /* lo que avanza el filo hacia la derecha de arriba abajo: tan 41° */
+  --o: 0px;
+  --s: calc((100vw - var(--xl)) / 5);           /* ancho de cada listón, en horizontal */
+  --g: -2px;                                    /* en reposo los listones encajan sin junta; solo se abren al moverse */
+  --viaje: 34svh;
+  --fs: min(6.2vw, 10.6svh);
+  position: relative; isolation: isolate; overflow: hidden; height: var(--alto);
 }
-@media (min-width: 600px) {
-  .hero__marco { border-radius: clamp(18px, 1.8vw, 28px); }
+@media (min-width: 1760px) { .hero__marco { --xl: 50vw; } }
+
+/* La pared: cinco listones con la misma foto, cada uno recortado en una franja paralela al filo y a sus tablas */
+.hero__foto { position: absolute; left: var(--xl); right: 0; top: var(--cab); height: var(--caja); overflow: hidden; }
+/* Bajo los listones, el fondo de las juntas: cuando se abren se ve la sombra entre tablas, que enlaza con la franja negra de abajo */
+.hero__foto::before {
+  content: ''; position: absolute; inset: 0; background: var(--negro-2);
+  clip-path: polygon(calc(0px - var(--o)) 0, 100% 0, 100% 100%, calc(var(--dx) - var(--o)) 100%);
 }
-.hero__foto {
-  position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; max-width: none;
-  object-fit: cover; object-position: 56% 50%;
+.hero__liston {
+  position: absolute; inset: 0; will-change: transform;
+  clip-path: polygon(
+    calc(var(--k) * var(--s) - var(--o)) 0,
+    calc((var(--k) + 1) * var(--s) - var(--o) - var(--g)) 0,
+    calc((var(--k) + 1) * var(--s) - var(--o) - var(--g) + var(--dx)) 100%,
+    calc(var(--k) * var(--s) - var(--o) + var(--dx)) 100%);
 }
-/* Veladura para leer en blanco: arriba (el menú), a la izquierda y abajo (el texto); la derecha queda limpia */
-.hero__marco::before {
-  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(6, 8, 8, .52) 0, rgba(6, 8, 8, 0) calc(var(--cab) + 90px)),
-    linear-gradient(90deg, rgba(6, 8, 8, .72) 0%, rgba(6, 8, 8, .4) 42%, rgba(6, 8, 8, 0) 72%),
-    linear-gradient(0deg, rgba(6, 8, 8, .66) 0%, rgba(6, 8, 8, .18) 46%, rgba(6, 8, 8, 0) 70%);
+.hero__liston--ultimo {
+  clip-path: polygon(calc(var(--k) * var(--s) - var(--o)) 0, 400% 0, 400% 100%, calc(var(--k) * var(--s) - var(--o) + var(--dx)) 100%);
 }
-/* El contenido del marco, alineado con el de la cabecera */
-.hero .envoltura { max-width: calc(var(--ancho) + 2 * var(--canal) - 2 * var(--marco)); padding-inline: calc(var(--canal) - var(--marco)); }
-.hero__dentro { display: grid; justify-items: start; padding-block: clamp(28px, 6svh, 72px) clamp(22px, 4.5svh, 48px); }
-.hero__titulo {
-  max-width: 10.5em; font-size: clamp(2.1rem, 1rem + 6vw, 6.6rem); font-weight: 760; font-stretch: 112%;
-  line-height: 1; letter-spacing: 0; text-wrap: balance;
+/* Si el hueco se ensancha, la foto crece hacia abajo: la madera llena siempre el triángulo y el blanco de la pared nunca asoma */
+.hero__liston img {
+  position: absolute; left: 0; top: 0; width: 100%; height: max(100%, calc((100vw - var(--xl)) / 1.18)); max-width: none;
+  object-fit: cover; object-position: 100% 0;
 }
+
+/* El filo: la diagonal en naranja, de arriba abajo hacia la derecha */
+.hero__filo {
+  position: absolute; z-index: 2; left: calc(var(--xl) - var(--o) - 3px); top: var(--cab);
+  width: 6px; height: calc(var(--caja) * 1.325); border-radius: 3px;
+  background: var(--naranja); transform-origin: 50% 0; transform: rotate(-41deg);
+}
+
+/* El texto: una columna alineada a la izquierda, centrada en el alto del hero */
+.hero__texto {
+  position: absolute; z-index: 3; inset: var(--cab) 0 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding-block: clamp(16px, 3svh, 40px) clamp(24px, 5svh, 56px);
+  pointer-events: none;
+}
+.hero__texto > * { pointer-events: auto; }
+.hero__titulo { font-size: var(--fs); font-weight: 780; font-stretch: 112%; line-height: .96; letter-spacing: 0; text-wrap: nowrap; }
+.hero__linea { display: block; overflow: hidden; padding-block: .03em .14em; margin-block: -.03em -.14em; white-space: nowrap; }
+.hero__linea > span { display: inline-block; }
 .punto { display: inline-block; position: relative; width: .2em; height: .2em; margin-left: .05em; color: transparent; vertical-align: baseline; overflow: hidden; line-height: 0; }
 .punto::before { content: ''; position: absolute; inset: 0; border-radius: 28%; background: var(--naranja); }
 .anima .hero__titulo.visto .punto::before { animation: punto-late 1s var(--muelle) 1.2s both; }
 @keyframes punto-late { 0% { transform: scale(0) rotate(-45deg); } 100% { transform: none; } }
-.hero__lead { margin-top: clamp(16px, 2.6svh, 28px); max-width: 40ch; font-size: clamp(1.05rem, .98rem + .4vw, 1.3rem); line-height: 1.5; color: rgba(255, 255, 255, .86); text-wrap: balance; }
-.hero__lugar { display: block; color: var(--blanco); font-weight: 650; }
-.hero__botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(20px, 3.4svh, 34px); }
-.boton--blanco {
-  --b-borde: var(--blanco); --b-txt: var(--negro); --b-txt-on: var(--negro); --b-fondo: var(--naranja);
-  --b-pastilla: var(--hormigon-claro); --b-pastilla-on: var(--blanco); --b-ico: var(--negro); --b-ico-on: var(--negro);
-  background: var(--blanco);
-}
-.boton--blanco:focus-visible, .hero .boton--claro:focus-visible { outline-color: var(--naranja); }
-.hero .boton--claro.boton--sec { --b-pastilla: transparent; }
+.hero__lado { margin-top: clamp(20px, 3.4svh, 34px); display: grid; justify-items: start; }
+.hero__lead { max-width: 40ch; font-size: clamp(1.05rem, .98rem + .4vw, 1.3rem); line-height: 1.5; color: var(--grafito); text-wrap: balance; }
+.hero__lugar { display: block; color: var(--negro); font-weight: 650; }
+.hero__botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(14px, 2.4svh, 24px); }
+.hero .boton:focus-visible { outline-color: var(--naranja-hondo); }
 
-/* Sus datos al pie del marco */
-.hero__datos { display: flex; flex-wrap: wrap; gap: 0 clamp(18px, 2.6vw, 38px); margin-top: clamp(26px, 6svh, 64px); font-size: .92rem; }
+/* Sus datos, bajo los botones */
+.hero__datos { display: flex; flex-wrap: wrap; gap: 0 clamp(18px, 2.6vw, 38px); margin-top: clamp(8px, 1.8svh, 20px); font-size: .92rem; }
 .hero__datos a {
   display: inline-flex; align-items: center; gap: 9px; min-height: 44px;
-  color: rgba(255, 255, 255, .84); font-weight: 540; font-stretch: 104%; text-decoration: none;
+  color: var(--grafito); font-weight: 540; font-stretch: 104%; text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
 .hero__datos .ico { width: 18px; height: 18px; }
@@ -391,54 +405,62 @@ ul, ol { list-style: none; }
   background: var(--naranja); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--sale);
 }
 @media (hover: hover) {
-  .hero__datos a:hover { color: var(--blanco); }
+  .hero__datos a:hover { color: var(--negro); }
   .hero__datos a:hover span::after { transform: none; }
   .hero__datos a:hover .ico { color: var(--naranja); }
   .hero__datos a[data-gesto="bota"]:hover .ico { animation: bota .8s var(--sale); }
   .hero__datos a[data-gesto="suena"]:hover .ico { animation: suena .9s var(--sale); }
 }
-.hero__datos a:focus-visible { outline-color: var(--naranja); color: var(--blanco); }
+.hero__datos a:focus-visible { outline-color: var(--naranja-hondo); color: var(--negro); }
 .hero__datos a:focus-visible span::after { transform: none; }
 .hero__datos a:active { opacity: .7; }
 
-/* Entrada: la foto se asienta, el corte barre el titular, la entradilla sigue palabra a palabra y después botones y datos */
-.anima .hero__foto { transform: scale(1.08); transition: transform 2.8s cubic-bezier(.16, 1, .3, 1); }
-.anima .hero.listo .hero__foto { transform: none; }
-.anima .hero__botones, .anima .hero__datos { opacity: 0; transform: translateY(16px); transition: transform 1s var(--sale), opacity .7s; }
-.anima .hero.listo .hero__botones { opacity: 1; transform: none; transition-delay: .8s; }
-.anima .hero.listo .hero__datos { opacity: 1; transform: none; transition-delay: 1.05s; }
-
-@media (min-width: 1760px) and (min-height: 960px) { .hero__titulo { font-size: clamp(6.6rem, 3rem + 3vw, 7.6rem); } }
-/* Pantallas bajas (portátil 1366×768, 1280×720): el hero sigue cabiendo entero */
-@media (min-width: 1024px) and (max-height: 800px) {
-  .hero__titulo { font-size: clamp(2.6rem, 1rem + 4.2vw, 5rem); }
-  .hero__datos { margin-top: 22px; }
+/* Entrada: los listones suben por su carril desde abajo a la derecha, el filo se dibuja y el titular sale de su máscara */
+.anima .hero__liston {
+  transform: translate(calc(var(--viaje) * .6561), calc(var(--viaje) * .7547));
+  transition: transform 1.5s var(--sale); transition-delay: calc(.05s + var(--k) * .085s);
 }
+.anima .hero.listo .hero__liston { transform: none; }
+.anima .hero__foto::before { opacity: 0; transition: opacity .4s 1.6s; }
+.anima .hero.listo .hero__foto::before { opacity: 1; }
+.anima .hero__liston img { transform: scale(1.1); transition: transform 2.6s var(--sale) .1s; }
+.anima .hero.listo .hero__liston img { transform: none; }
+.anima .hero__filo { transform: rotate(-41deg) scaleY(0); transition: transform 1.2s var(--sale) .7s; }
+.anima .hero.listo .hero__filo { transform: rotate(-41deg); }
+.anima .hero__linea > span { transform: translateY(112%); transition: transform 1.1s var(--sale); transition-delay: calc(.35s + var(--i) * .1s); }
+.anima .hero.listo .hero__linea > span { transform: none; }
+.anima .hero__lead, .anima .hero__botones, .anima .hero__datos { opacity: 0; transform: translateY(16px); transition: transform 1s var(--sale), opacity .7s; }
+.anima .hero.listo .hero__lead { opacity: 1; transform: none; transition-delay: .85s; }
+.anima .hero.listo .hero__botones { opacity: 1; transform: none; transition-delay: .98s; }
+.anima .hero.listo .hero__datos { opacity: 1; transform: none; transition-delay: 1.1s; }
+
+/* Portátiles bajos */
+@media (min-width: 900px) and (max-height: 800px) {
+  .hero__marco { --fs: min(5.9vw, 10.2svh); }
+  .hero__lead { font-size: 1.02rem; }
+}
+/* Tableta, móvil y pantallas en vertical: la pared arriba, en listones a todo el ancho; la diagonal corta su esquina inferior izquierda */
+@media (max-width: 899.98px), (max-aspect-ratio: 1/1) {
+  .hero__marco {
+    --caja: 44svh; --xl: 0px; --o: calc(var(--caja) * .5216); --s: 24vw; --viaje: 22svh; --fs: 11.6vw;
+    height: auto; min-height: calc(100svh - var(--barra)); display: flex; flex-direction: column; padding-top: var(--cab);
+  }
+  .hero__foto { position: relative; top: auto; left: auto; flex: none; width: 100%; }
+  .hero__liston img { height: 100%; object-position: 50% 50%; }
+  .hero__texto { position: relative; inset: auto; display: block; padding-block: clamp(18px, 3svh, 30px) clamp(20px, 3svh, 30px); }
+  .hero__titulo { font-stretch: 104%; }
+}
+@media (min-width: 600px) and (max-width: 899.98px), (min-width: 900px) and (max-aspect-ratio: 1/1) { .hero__marco { --fs: 9vw; } }
+/* Móvil: la barra fija ya lleva Llamar y Contacta */
+@media (max-width: 599.98px) { .hero__datos { display: none; } }
+@media (max-width: 599.98px) and (max-height: 700px) { .hero__botones { display: none; } }
 /* Móvil en horizontal (844×390, 667×375…) */
 @media (orientation: landscape) and (max-height: 560px) and (max-width: 1023.98px) {
-  .hero__titulo { max-width: 16em; font-size: clamp(1.7rem, .8rem + 3vw, 2.6rem); }
-  .hero__dentro { padding-block: 14px 16px; }
-  .hero__lead { margin-top: 10px; font-size: .95rem; }
-  .hero__botones { margin-top: 14px; }
+  .hero__marco { --caja: 56svh; --fs: 7vw; }
+  .hero__lead, .hero__datos { display: none; }
   .boton { --b-alto: 46px; --b-pas: 36px; }
-  .hero__datos { display: none; }
 }
-@media (orientation: landscape) and (max-height: 420px) and (max-width: 1023.98px) {
-  .hero__botones { display: none; }
-}
-/* Móvil: el texto abajo, sobre una veladura más firme; la barra fija ya lleva Llamar y Contacta */
-@media (max-width: 599.98px) {
-  .hero__foto { object-position: 50% 40%; }
-  .hero__marco::before {
-    background:
-      linear-gradient(180deg, rgba(6, 8, 8, .5) 0, rgba(6, 8, 8, 0) calc(var(--cab) + 70px)),
-      linear-gradient(0deg, rgba(6, 8, 8, .86) 0%, rgba(6, 8, 8, .6) 46%, rgba(6, 8, 8, 0) 78%);
-  }
-  .hero__datos { display: none; }
-}
-@media (max-width: 599.98px) and (max-height: 700px) {
-  .hero__botones { display: none; }
-}
+@media (orientation: landscape) and (max-height: 420px) and (max-width: 1023.98px) { .hero__botones { display: none; } }
 
 /* ═══════════ VALORES ═══════════ */
 .valores { background: var(--negro); color: var(--blanco); padding-block: clamp(32px, 4.5vw, 52px); }
@@ -801,7 +823,7 @@ ul, ol { list-style: none; }
   font: inherit; color: var(--naranja); background: transparent; border: 0; outline: none; border-radius: 0;
   padding: 0 .08em; max-width: 100%; caret-color: var(--naranja);
 }
-.hueco input::placeholder, .hueco textarea::placeholder { color: rgba(255, 255, 255, .34); }
+.hueco input::placeholder, .hueco textarea::placeholder { color: rgba(255, 255, 255, .52); }   /* 5,6:1 sobre negro */
 .hueco::after, .hueco::before { content: ''; position: absolute; left: 0; right: 0; bottom: .06em; height: 3px; border-radius: 2px; pointer-events: none; }
 .hueco::after { background: rgba(255, 255, 255, .26); }
 .hueco::before { z-index: 1; background: var(--naranja); transform: scaleX(0); transform-origin: left; transition: transform .55s var(--sale); }
