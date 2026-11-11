@@ -437,7 +437,7 @@ h1 strong,h2 strong{font-weight:700;}
 
 /* ===== Quorum: adaptación (spec/adaptada.md) ===== */
 :root{--font:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;--display:'Sofia Sans Condensed','Figtree',system-ui,sans-serif;
-  --ease:cubic-bezier(.2,.7,.2,1);--ease-expo:cubic-bezier(.16,1,.3,1);--gutter:clamp(20px,5vw,72px);--sec-pt:calc(24px + clamp(28px,4vw,44px));--h2:clamp(34px,4.4vw,60px);}
+  --ease:cubic-bezier(.2,.7,.2,1);--ease-expo:cubic-bezier(.16,1,.3,1);--gutter:clamp(24px,7vw,140px);--sec-py:clamp(56px,6.5vw,104px);--sec-pt:var(--sec-py);--h2:clamp(34px,4.4vw,60px);}
 ::selection{background:#2041c0;color:#ffffff;}
 [hidden]{display:none !important;}
 h1,h2,.num,.cd-metric,.svc-p__num,.svc-p__name,.svc-p__stats .kpi,.fa__pct,.fb__num,.met__num,.adopt-pct,.sl__num,.sl__title,.proj__cols .big,.pcard__title,.save__pill,.save__who .n,.tst__mark,.case-logo{font-family:var(--display);letter-spacing:0;}
@@ -563,6 +563,36 @@ textarea.con__input{min-height:112px;resize:vertical;line-height:1.5;}
 .con__submit{grid-column:1 / -1;justify-self:start;}
 .con__done{margin:0;padding:18px 0;font-size:17px;line-height:1.5;color:#ffffff;}
 @media (max-width:520px){.con__form{grid-template-columns:minmax(0,1fr);}}
+/* revisión 3: ritmo vertical común, sin secciones de pantalla fija */
+.sec:not(.hero){min-height:0;justify-content:flex-start;}
+.svc,.imp,.cas,.pri,.faq{padding:var(--sec-py) var(--gutter);}
+.met{padding:var(--sec-py) 0 0;}
+.met__top{padding-bottom:clamp(40px,4.5vw,64px);}
+.team{padding:var(--sec-py) 0;}
+.con{padding:var(--sec-py) var(--gutter) 36px;}
+.con__center{padding:0 0 var(--sec-py);}
+.svc__head{padding-bottom:clamp(28px,3vw,44px);}
+.cas__grid{margin-top:clamp(28px,3vw,44px);}
+.team__track{margin-top:clamp(32px,3.5vw,52px);}
+.imp__grid{align-items:center;}
+/* revisión 3: tarjetas del hero con datos reales */
+.float-a,.float-b{display:flex;flex-direction:column;text-decoration:none;}
+.float-a{transition:border-color .3s;}
+.float-a:hover{color:#ffffff;border-color:rgba(255,255,255,.42);}
+.float-a .fa__body{gap:10px;}
+.hn__title{font-size:16px;font-weight:600;line-height:1.35;text-wrap:balance;}
+.hn__text{font-size:13px;line-height:1.5;color:rgba(255,255,255,.75);}
+.hn__more,.hr__more{display:inline-flex;gap:6px;font-size:13px;font-weight:600;transition:color .25s;}
+.hn__more{color:#8ec5ff;margin-top:2px;}
+.float-a:hover .hn__more{color:#ffffff;}
+.float-b{gap:10px;}
+.float-b:hover{color:#071654;}
+.float-b .fb__row{align-items:center;}
+.hr__stars{display:flex;gap:9px;padding-right:2px;}
+.hr__stars span{width:11px;height:11px;font-size:0;background:#2041c0;transform:rotate(45deg);}
+.hr__stars .hr__half{background:linear-gradient(45deg,#2041c0 50%,#c2d8ff 50%);}
+.hr__more{color:#2041c0;}
+.float-b:hover .hr__more{color:#071654;}
 /* barra de llamada (móvil) */
 .callbar{display:none;}
 @media (max-width:999px){.nav__tel{display:none;}}
@@ -620,21 +650,22 @@ textarea.con__input{min-height:112px;resize:vertical;line-height:1.5;}
   <header class="hdr">
     <div class="brand"><img src="assets/logo-blanco.png" width="718" height="131" alt="Quorum Asesores JA, SL"></div>
     <nav class="nav" aria-label="Principal">
-      <a href="#servicios">Servicios</a><a href="#tramites">Trámites</a><a href="#al-dia">Al día</a><a href="#despacho">Despacho</a><a href="#faq">Preguntas</a><a class="nav__tel" href="tel:+34913525310">913 525 310</a><a class="nav__cta" href="#contacto">Contacto</a>
+      <a href="#servicios">Servicios</a><a href="#tramites">Trámites</a><a href="#despacho">Despacho</a><a href="#faq">Preguntas</a><a class="nav__tel" href="tel:+34913525310">913 525 310</a><a class="nav__cta" href="#contacto">Contacto</a>
     </nav>
   </header>
-  <aside class="float-a" aria-hidden="true">
-    <div class="fa__head"><span class="fa__live"><span class="fa__dot"></span>Asesoría laboral</span><span class="fa__week">Su empresa</span></div>
-    <div class="fa__body">
-      <div class="fa__row"><div><span class="fa__k">Gestión</span><span class="fa__v">Delegada en Quorum</span></div><span class="fa__pct">Plena</span></div>
-      <div class="fa__bar"><span class="seg--done"></span><span><span class="seg__fill gx"></span></span><span></span></div>
-      <div class="fa__labels"><span>Contratos</span><span class="is-now">Nóminas</span><span>Seguros sociales</span></div>
-    </div>
-  </aside>
-  <aside class="float-b" aria-hidden="true">
-    <span class="fb__label">Áreas de asesoramiento</span>
-    <div class="fb__row"><span class="fb__num">4</span><div class="fb__bars"><span class="gy" style="--d:100ms"></span><span class="gy" style="--d:200ms"></span><span class="gy" style="--d:300ms"></span><span class="gy" style="--d:400ms"></span></div></div>
-  </aside>
+  <a class="float-a" href="http://quorumasesoresja.boletinmensual.es/newsletter.php?cliente=5228&amp;fecha_newsletter=2026-10-01&amp;tipo_plantilla=html&amp;version_email=no" target="_blank" rel="noopener">
+    <span class="fa__head"><span class="fa__live"><span class="fa__dot"></span>Boletín mensual</span><span class="fa__week">Octubre 2026</span></span>
+    <span class="fa__body">
+      <span class="hn__title">Verifactu: Hacienda plantea retrasar su aplicación hasta octubre de 2028</span>
+      <span class="hn__text">Cómo afectaría el nuevo plazo a autónomos y pequeñas empresas.</span>
+      <span class="hn__more">Leer el boletín <span aria-hidden="true">↗</span></span>
+    </span>
+  </a>
+  <a class="float-b" target="_blank" rel="noopener" data-maps>
+    <span class="fb__label">Valoración en Google</span>
+    <span class="fb__row"><span class="fb__num">4,5</span><span class="hr__stars" role="img" aria-label="4,5 de 5"><span>◆</span><span>◆</span><span>◆</span><span>◆</span><span class="hr__half">◆</span></span></span>
+    <span class="hr__more">Ver reseñas <span aria-hidden="true">↗</span></span>
+  </a>
   <div class="hero__copy">
     <h1 class="hero__h1 rv" style="--d:100ms" aria-label="Su asesoría de confianza en lo fiscal, contable, laboral y mercantil"><strong>Su asesoría</strong> de confianza en&nbsp;lo&nbsp;<span class="hero__rot" aria-hidden="true">fiscal</span></h1>
     <p class="hero__lede rv" style="--d:200ms">Los servicios de asesoría, ya sea laboral, fiscal o contable, son necesarios en todas las empresas, y lo ideal es realizarlo a través de un servicio externo como Quorum Asesores JA.</p>
@@ -680,53 +711,6 @@ textarea.con__input{min-height:112px;resize:vertical;line-height:1.5;}
     <div class="case-detail">
       <div class="case-detail__body" aria-live="polite"><div class="cd-meta"></div><div class="cd-metric"></div><div class="cd-label"></div><p class="cd-text"></p></div>
       <div class="case-progress"><div class="cp"><div class="cp__fill"></div></div><div class="cp"><div class="cp__fill"></div></div><div class="cp"><div class="cp__fill"></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec pan" id="al-dia" data-screen-label="05 Al día">
-  <div class="pan__head">
-    <h2 class="rv" style="--d:0ms">Así llevamos <strong>su día a día</strong></h2>
-    <p class="rv" style="--d:100ms">Las declaraciones que presentamos por usted, los trámites laborales que puede delegar, su contabilidad y las novedades de cada mes.</p>
-  </div>
-  <div class="pan__grid">
-    <div class="w w--proj rv" style="--d:0ms">
-      <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="proj-icon"></span></span><span class="w__title">Declaraciones fiscales</span></div>
-        <div class="seg seg--decl" role="group" aria-label="Periodo"><button type="button" data-k="trimestral" aria-pressed="true">Trimestral</button><button type="button" data-k="anual" aria-pressed="false">Anual</button></div></div>
-      <div class="decl">
-        <div class="decl__n"><span class="k decl__when">Cada trimestre</span><span class="big">5</span><span class="k">declaraciones</span></div>
-        <ul class="decl__list" aria-live="polite"></ul>
-      </div>
-    </div>
-    <div class="w w--adopt rv" style="--d:120ms">
-      <div class="w__head"><div class="w__lead"><span class="w__icon"><span class="adopt-icon"></span></span><span class="w__title">Trámites laborales</span></div><span class="adopt-people">Dedicación plena</span></div>
-      <div class="adopt__row"><span class="adopt-count">Trámite 05 de 12</span><span class="adopt-label">Recorra la barra para verlos</span></div>
-      <span class="adopt-name">Nóminas y seguros sociales</span>
-      <div class="adopt__scale"><span>01</span><span>12</span></div>
-      <div class="ticks" role="img" aria-label="Trámite 5 de 12: Nóminas y seguros sociales"></div>
-    </div>
-    <div class="w--slides rv" style="--d:240ms">
-      <canvas class="fx slides__fx" aria-hidden="true"></canvas>
-      <div class="sl__top"><span class="sl__label">Boletín de octubre 2026</span><div class="sl__num">1<span>/4</span></div></div>
-      <div class="sl__body" aria-live="polite"><div class="sl__title"></div><p class="sl__text"></p></div>
-      <a class="sl__cta" target="_blank" rel="noopener" data-boletin>Leer el boletín <span>→</span></a>
-      <div class="sl__dots"></div>
-    </div>
-    <div class="w w--save rv" style="--d:0ms">
-      <div class="w__head"><span class="w__title">Valoración en Google</span></div>
-      <div class="save__track" style="--p:90%"><div class="save__glow"></div><div class="save__base"></div><div class="save__fill"></div><div class="save__mark"></div><span class="save__pill">4,5</span><span class="save__min">0</span><span class="save__max">5</span></div>
-      <div class="save__foot">
-        <div><span class="k">Según</span><div class="save__who"><span class="n">Google</span><span class="k">reseñas de clientes</span></div></div>
-        <a class="save__rate" target="_blank" rel="noopener" data-maps>Ver reseñas <span class="save__gem">◆</span></a>
-      </div>
-    </div>
-    <div class="w w--conta rv" style="--d:120ms">
-      <span class="w__title">Su contabilidad</span>
-      <div class="conta">
-        <div class="conta__col conta__col--in"><span class="k">Usted nos da</span><ul class="conta__give"></ul></div>
-        <span class="conta__arrow" aria-hidden="true">→</span>
-        <div class="conta__col conta__col--out"><span class="k">Le entregamos</span><ul class="conta__get"></ul></div>
-      </div>
     </div>
   </div>
 </section>
@@ -843,12 +827,7 @@ const CASES = [
   { sector: 'Sucesiones', client: 'Herencias', meta: 'Documento notarial o privado', tile: 'Herencia', metric: 'Mod. 600', metricLabel: 'título hereditario: testamento o declaración de herederos', text: 'Determinamos quiénes son los herederos, inventariamos los bienes y deudas y tramitamos su aceptación y adjudicación, con el Impuesto de Sucesiones correspondiente.' }
 ];
 
-const DECL = {
-  trimestral: { n: 5, when: 'Cada trimestre', items: ['IRPF', 'IVA', 'Retención de alquileres', 'Pagos a cuenta', 'Impuesto de Sociedades (Mod. 202)'], rot: 45 },
-  anual: { n: 4, when: 'Cada año', items: ['Operaciones con terceros', 'Impuesto de Sociedades (Mod. 200 y 201)', 'Resumen de IVA (Mod. 390)', 'Retenciones de alquileres (Mod. 180)'], rot: 225 }
-};
 
-const TRAMITES = ['Inscripción de la empresa en la Seguridad Social', 'Altas, bajas y variación de datos', 'Contratos de trabajo', 'Prórrogas y renovaciones', 'Nóminas y seguros sociales', 'Declaraciones de IRPF (Mod. 110 y 190)', 'Vidas laborales y aplazamientos', 'Aplicación del convenio laboral', 'Certificados laborales', 'Conciliaciones y despidos (fuera de la cuota mensual)', 'Asesoramiento y consultas laborales', 'Trámites ante el INEM, la TGSS o el INSS'];
 
 const BOLETIN = {
   label: 'Boletín de octubre 2026',
@@ -861,7 +840,6 @@ const BOLETIN = {
   ]
 };
 
-const CONTA = { give: ['Facturas de ingresos', 'Facturas de gastos', 'Movimientos de bancos'], get: ['Libro de Diario', 'Libro de Mayor', 'Libro Registro de IVA', 'Balances y cuentas de resultados'] };
 
 const MAPS_URL = 'https://www.google.com/maps/place/QUORUM+ASESORES/@40.4307064,-3.810521,17z/data=!4m6!3m5!1s0xd41866c8718647d:0x54e1435f370cdfe5!8m2!3d40.4307064!4d-3.810521';
 const DIR_URL = 'https://www.google.com/maps/dir/?api=1&destination=Av.+de+Pablo+VI+9,+28224+Pozuelo+de+Alarc%C3%B3n';
@@ -883,10 +861,15 @@ const QUOTES = [];   // reseñas de Google: { name, text, stars }. Pendiente de 
 
 const FAQS = [
   { q: '¿Asesoran a particulares o solo a empresas?', a: 'A los dos. Nuestro servicio fiscal asesora sobre todo tipo de impuestos tanto a personas físicas como a jurídicas: renta y patrimonio, sucesiones y donaciones, sociedades, IVA…' },
+  { q: '¿Qué declaraciones me presentan?', a: 'Cada trimestre, las de IRPF, IVA, retención de alquileres, pagos a cuenta e Impuesto de Sociedades (Mod. 202). Cada año, la de operaciones con terceros, el Impuesto de Sociedades (Mod. 200 y 201), el resumen de IVA (Mod. 390) y el resumen de retenciones de alquileres (Mod. 180).' },
+  { q: '¿Qué necesitan para llevarme la contabilidad?', a: 'Su documentación: facturas de ingresos, gastos y movimientos de bancos. Con ella obtenemos el Libro de Diario, el Libro de Mayor, el Libro Registro de IVA (soportado y repercutido), los balances y cuentas de resultados y cualquier otro documento contable de obligado cumplimiento.' },
+  { q: '¿Me hacen las nóminas y los contratos?', a: 'Sí. Confeccionamos sus nóminas, seguros sociales y contratos, estudiando sus posibilidades y posibles subvenciones; cursamos altas, bajas e incidentes laborales, presentamos sus declaraciones de IRPF y aplicamos y actualizamos convenios.' },
   { q: '¿Los despidos entran en la cuota mensual?', a: 'No. Los actos de conciliación y los procedimientos de despido no están incluidos en la cuota mensual. Sí lo están el asesoramiento y las consultas laborales, las altas, bajas y variaciones de datos, los contratos, las nóminas y los seguros sociales.' },
   { q: '¿Y si me llega una inspección de Hacienda?', a: 'Le defendemos ante la Inspección de Hacienda y nos ocupamos de los requerimientos, los aplazamientos, los recursos y los contenciosos.' },
-  { q: '¿Necesito licencia de apertura para mi negocio?', a: 'La gran mayoría de los establecimientos que precisan de un local u oficina, abierta al público o no, necesitan la licencia municipal de apertura. Están exentas gran parte de las actividades profesionales, como despachos de abogados o gabinetes de arquitectura o ingeniería, aunque deben comunicar al Ayuntamiento la actividad que van a realizar.' },
-  { q: '¿Qué forma jurídica me conviene?', a: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula: ¿sociedad, persona física o sociedad civil? ¿Limitada, Limitada Laboral o Anónima? También analizamos las subvenciones y la forma de financiar la inversión (leasing, préstamo, renting, hipoteca…).' }
+  { q: '¿Cuánto tardan en darme una sociedad?', a: 'Si la necesita ya, le vendemos una sociedad ya constituida en 24 horas. Si prefiere crear la suya, estudiamos la mejor fórmula de constitución, las subvenciones y la financiación, y la constituimos de forma rápida.' },
+  { q: '¿Qué forma jurídica me conviene?', a: 'Con sólo saber la idea de negocio y la denominación social, estudiamos la mejor fórmula: ¿sociedad, persona física o sociedad civil? ¿Limitada, Limitada Laboral o Anónima? También analizamos las subvenciones y la forma de financiar la inversión (leasing, préstamo, renting, hipoteca…).' },
+  { q: '¿Qué documentos hacen falta para una herencia?', a: 'El certificado de defunción, el certificado de últimas voluntades y el título hereditario (testamento o declaración de herederos ab intestato). Con ellos tramitamos la adjudicación o el reparto de los bienes, el Impuesto de Sucesiones y la inscripción en los registros públicos.' },
+  { q: '¿Necesito licencia de apertura para mi negocio?', a: 'La gran mayoría de los establecimientos que precisan de un local u oficina, abierta al público o no, la necesitan. Están exentas gran parte de las actividades profesionales, como despachos de abogados o gabinetes de arquitectura o ingeniería, aunque deben comunicar al Ayuntamiento la actividad. Tramitamos la licencia en el Ayuntamiento de Madrid y en el resto de municipios de la provincia.' }
 ];
 const SILK_VS = `precision highp float;
 attribute vec2 a;
@@ -1035,21 +1018,7 @@ const caseBtns = CASES.map(c => {
   return b;
 });
 
-const ticksEl = $('.ticks');
-const ticks = TRAMITES.map(() => ticksEl.appendChild(h('span', 'tick')));
-
-const NEWS = BOLETIN.news;
-const dotsEl = $('.sl__dots');
-const dots = NEWS.map((_, i) => {
-  const b = h('button', 'sl__dot', '<span class="dot__track"><span class="dot__fill"></span></span>');
-  b.type = 'button'; b.setAttribute('aria-label', `Ir a la noticia ${i + 1}`);
-  dotsEl.append(b);
-  return b;
-});
-$('.sl__label').textContent = BOLETIN.label;
-for (const a of $$('[data-boletin]')) a.href = BOLETIN.url;
 for (const a of $$('[data-dir]')) a.href = DIR_URL;
-for (const [sel, arr] of [['.conta__give', CONTA.give], ['.conta__get', CONTA.get]]) for (const t of arr) $(sel).append(h('li', '', t));
 
 const stack = $('.pri__stack');
 PRINCIPLES.forEach((p, i) => {
@@ -1147,57 +1116,6 @@ function goCase(i, instant) {
 }
 caseBtns.forEach((b, i) => b.addEventListener('click', () => goCase(i)));
 
-/* ---------- 05 Panel ---------- */
-const declBtns = $$('.seg--decl button');
-function setDecl(k) {
-  const d = DECL[k], w = $('.w--proj'), list = $('.decl__list', w);
-  declBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.k === k));
-  $('.decl__when', w).textContent = d.when;
-  $('.decl__n .big', w).textContent = d.n;
-  list.replaceChildren(...d.items.map(t => h('li', '', t)));
-  $('.proj-icon', w).style.setProperty('--rot', d.rot + 'deg');
-}
-declBtns.forEach(b => b.addEventListener('click', () => setDecl(b.dataset.k)));
-
-let adoptHover = null, adoptShown = -1;
-function tickFrom(e) { const r = ticksEl.getBoundingClientRect(); return Math.max(0, Math.min(TRAMITES.length - 1, Math.floor((e.clientX - r.left) / r.width * TRAMITES.length))); }
-ticksEl.addEventListener('pointermove', e => { adoptHover = tickFrom(e) + 1; });
-ticksEl.addEventListener('pointerdown', e => { adoptHover = tickFrom(e) + 1; });
-ticksEl.addEventListener('pointerleave', () => { adoptHover = null; });
-let adoptPick = 5;
-function renderAdopt() {
-  const v = adoptHover ?? adoptPick, sim = adoptHover != null, key = v * (sim ? 1 : -1);
-  if (key === adoptShown) return; adoptShown = key;
-  const name = TRAMITES[v - 1];
-  ticks.forEach((t, i) => { t.classList.toggle('is-fill', i < v); t.classList.toggle('is-head', i === v - 1); });
-  ticksEl.classList.toggle('is-sim', sim);
-  $('.adopt-count').textContent = `Trámite ${pad(v)} de ${TRAMITES.length}`;
-  const nm = $('.adopt-name'); nm.textContent = name; nm.classList.toggle('is-sim', sim);
-  ticksEl.setAttribute('aria-label', `Trámite ${v} de ${TRAMITES.length}: ${name}`);
-}
-ticksEl.addEventListener('pointerleave', () => { $('.adopt-label').textContent = 'Recorra la barra para verlos'; });
-ticksEl.addEventListener('pointerdown', () => { $('.adopt-label').textContent = ''; });
-ticksEl.addEventListener('pointerenter', () => { $('.adopt-label').textContent = ''; });
-ticksEl.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') adoptPick = adoptHover ?? adoptPick; });
-
-const slBody = $('.sl__body'), dotFills = $$('.dot__fill'), w3 = $('.w--slides');
-let slide = 0, w3Hold = false;
-w3.addEventListener('pointerenter', () => { w3Hold = true; });
-w3.addEventListener('pointerleave', () => { w3Hold = false; });
-w3.addEventListener('focusin', () => { w3Hold = true; });
-w3.addEventListener('focusout', () => { w3Hold = false; });
-const slideClock = clock($('.pan'), 5000, () => goSlide((slide + 1) % NEWS.length), { paused: () => w3Hold });
-function fillSlide(i) { $('.sl__title').textContent = NEWS[i].title; $('.sl__text').textContent = NEWS[i].text; $('.sl__num').firstChild.nodeValue = i + 1; }
-function goSlide(i, instant) {
-  slide = (i + NEWS.length) % NEWS.length; slideClock.ms = 0;
-  dots.forEach((d, k) => d.toggleAttribute('aria-current', k === slide));
-  dots[slide].setAttribute('aria-current', 'true');
-  if (instant) return fillSlide(slide);
-  slBody.classList.add('is-out');
-  setTimeout(() => { fillSlide(slide); slBody.classList.remove('is-out'); }, 250);
-}
-dots.forEach((d, i) => d.addEventListener('click', () => goSlide(i)));
-
 /* ---------- 08 Despacho ---------- */
 const arrows = $('.arrows');
 const [tPrev, tNext] = $$('.arw');
@@ -1241,7 +1159,7 @@ const callbar = $('.callbar');
 new IntersectionObserver(([e]) => callbar.classList.toggle('is-on', !e.isIntersecting), { threshold: 0.15 }).observe($('.hero'));
 
 /* ---------- estado inicial ---------- */
-setSvc(0); goCase(0, true); setDecl('trimestral'); renderAdopt(); goSlide(0, true); setFaq(0);
+setSvc(0); goCase(0, true); setFaq(0);
 
 /* ---------- WebGL ---------- */
 const FX = { morphSpeed: 1, deform: 1, dotSize: 1 };
@@ -1333,8 +1251,7 @@ function makeField(canvas, cfg) {
  ['.con__fx', { kind: 'blob', shape: 6 }]].forEach(([s, c]) => { const el = $(s); if (el) makeField(el, c); });
 
 /* ---------- bucle único ---------- */
-const heroSec = $('.hero'), panSec = $('.pan');
-const saveTrack = $('.save__track');
+const heroSec = $('.hero');
 function loop(now) {
   raf = requestAnimationFrame(loop);
   const dt = Math.min((now - last) / 1000, 0.05); last = now;
@@ -1357,17 +1274,10 @@ function loop(now) {
     if (c.ms >= c.period) { c.ms = 0; c.step(); }
   }
   cpFills.forEach((f, i) => { f.style.width = (i < caseIdx ? 100 : i === caseIdx ? caseClock.ms / caseClock.period * 100 : 0) + '%'; });
-  if (onScreen.has(panSec)) {
-    dotFills.forEach((f, i) => { f.style.width = (i < slide ? 100 : i === slide ? slideClock.ms / slideClock.period * 100 : 0) + '%'; });
-    renderAdopt();
-  }
   renderThumb();
 }
 if (RM) {
   cpFills.forEach((f, i) => { f.style.width = i <= caseIdx ? '100%' : '0%'; });
-  dotFills.forEach((f, i) => { f.style.width = i <= slide ? '100%' : '0%'; });
-  ticksEl.addEventListener('pointermove', () => requestAnimationFrame(renderAdopt));
-  ticksEl.addEventListener('pointerleave', () => requestAnimationFrame(renderAdopt));
   tstTrack.addEventListener('scroll', () => requestAnimationFrame(renderThumb), { passive: true });
   renderThumb();
 } else raf = requestAnimationFrame(loop);
@@ -1380,12 +1290,11 @@ function countUp(el) {
 }
 if (ANIM) {
   for (const el of $$('[data-count]')) el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
-  saveTrack.style.setProperty('--p', '0%');
   const hooks = new Set($$('.rv, .gy, .gx'));
   const clean = el => { if (!hooks.delete(el)) return; el.classList.remove('rv', 'gy', 'gx', 'is-in'); if (!hooks.size) document.documentElement.classList.remove('anim'); };
   const reveal = el => { el.classList.add('is-in'); el.addEventListener('transitionend', e => { if (e.target === el && e.propertyName === 'transform') clean(el); }); };
   const boot = () => {
-    const rvIO = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { rvIO.unobserve(e.target); reveal(e.target); if (e.target.matches('.w--save')) saveTrack.style.setProperty('--p', '90%'); } }, { threshold: .1 });
+    const rvIO = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) { rvIO.unobserve(e.target); reveal(e.target); } }, { threshold: .1 });
     const groups = new Map();
     for (const el of hooks) {
       if (!el.getClientRects().length) { clean(el); continue; }
