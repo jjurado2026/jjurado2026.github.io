@@ -1,8 +1,11 @@
 /* =====================================================================
-   Reggae School Madrid — v3.2 "RIDDIM"
+   Reggae School Madrid — v4 "RIDDIM", desarrollo
    Global: tokens, fuentes, base, tipografía, botones, cabecera, menú,
    pie, barra fija y sistema de movimiento.
-   Paleta: negro predominante, blanco para el texto, rojo para resaltar.
+   Paleta (feedback del cliente, 12-11-2026): la bandera jamaicana en tonos
+   crudos y de tierra, sacada de su propio estudio. Oro = el ámbar de sus
+   vúmetros; verde = la bandera y su vinilo; negro = el estudio en penumbra;
+   tierra = la madera del Hammond; crudo en lugar de blanco.
    Mobile-first. Solo se animan transform y opacity.
    ===================================================================== */
 
@@ -40,22 +43,35 @@
 
 /* ---------- Tokens ---------- */
 :root {
-  /* Marca: su negro de fondo, el blanco y el rojo de su cartel del Combo */
-  --negro: #1d1e1e;          /* su negro, literal: el fondo */
-  --negro-2: #161717;        /* secciones alternas */
-  --negro-3: #111212;        /* pie */
-  --carbon: #262828;         /* tarjetas */
-  --carbon-2: #333535;
-  --blanco: #ffffff;
-  --gris-1: #f4f4f4;
-  --tinta: #1d1e1e;          /* texto sobre blanco (formulario, tarjeta destacada) */
-  --rojo: #b8312b;           /* relleno: botones, puntos, sellos */
-  --rojo-2: #cf3a33;         /* hover */
-  --rojo-texto: #ea5a4f;     /* rojo para texto sobre negro: 4,9:1 */
+  /* Negro de la bandera: su negro de siempre, con un punto de oliva en las variantes */
+  --negro: #1d1e1e;          /* su negro, literal */
+  --negro-2: #171812;        /* secciones alternas */
+  --negro-3: #121310;        /* pie */
+  --carbon: #262822;         /* tarjetas sobre negro */
+  --carbon-2: #31342b;
+  /* Verde de la bandera, de monte: fondo principal */
+  --verde: #1f3a29;
+  --verde-2: #16291d;        /* más hondo: la mesa, las preguntas */
+  --verde-3: #2a4a34;        /* tarjetas sobre verde */
+  --verde-hoja: #8fbf72;     /* el verde vivo, solo en detalles sobre oscuro: 5,8:1 sobre --verde */
+  --verde-tinta: #2c5a35;    /* verde para texto y foco sobre crudo: 6,6:1 */
+  /* Tierra: la madera del Hammond */
+  --tierra: #2f2118;         /* fondo de la agenda */
+  --tierra-2: #3d2b1f;
+  --tierra-tinta: #7a4a26;   /* texto tierra sobre crudo: 6,1:1 */
+  /* Oro de la bandera: el ámbar de los vúmetros */
+  --oro: #e6ae35;            /* relleno: botones, cabezal, sellos (texto encima en --tinta: 8,3:1) */
+  --oro-2: #f0c158;          /* hover */
+  --oro-texto: #ecbd4c;      /* oro para texto sobre oscuro: 7 a 10:1 */
+  /* Crudo en lugar de blanco */
+  --blanco: #f1e9d6;
+  --gris-1: #e6dcc5;
+  --tinta: #1d1e1e;          /* texto sobre crudo y sobre oro */
+  --error: #a8261c;          /* errores de formulario sobre crudo: 5,9:1 */
 
-  --texto: #ffffff;
-  --texto-suave: #b9bbbb;    /* 8,6:1 sobre el negro */
-  --linea: rgba(255, 255, 255, .12);
+  --texto: var(--blanco);
+  --texto-suave: #c9bfa8;    /* 6,8:1 sobre verde, 9,2:1 sobre negro */
+  --linea: rgba(241, 233, 214, .14);
 
   /* Sombras profundas, en capas */
   --sombra-1: 0 1px 2px rgba(0, 0, 0, .3), 0 2px 8px -2px rgba(0, 0, 0, .35);
@@ -126,10 +142,10 @@ h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
 strong { font-weight: 650; }
 em { font-style: italic; }
 
-::selection { background: var(--rojo); color: var(--blanco); }
+::selection { background: var(--oro); color: var(--tinta); }
 
 :focus-visible {
-  outline: 3px solid var(--rojo-texto);
+  outline: 3px solid var(--oro-texto);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -179,7 +195,7 @@ em { font-style: italic; }
 .t-mega em, .t-seccion em {
   font-style: italic;
   font-weight: 700;
-  color: var(--rojo-texto);
+  color: var(--oro-texto);
 }
 
 .mono {
@@ -198,19 +214,19 @@ em { font-style: italic; }
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: .22em;
-  text-decoration-color: var(--rojo-texto);
+  text-decoration-color: var(--oro-texto);
   transition: color 180ms var(--salida);
 }
-.enlace:hover { color: var(--rojo-texto); }
+.enlace:hover { color: var(--oro-texto); }
 .enlace:active { opacity: .7; }
-.enlace--blanco { text-decoration-color: rgba(255, 255, 255, .6); }
-.enlace--blanco:hover { color: var(--blanco); text-decoration-color: var(--rojo-texto); }
+.enlace--blanco { text-decoration-color: rgba(241, 233, 214, .6); }
+.enlace--blanco:hover { color: var(--blanco); text-decoration-color: var(--oro-texto); }
 
 /* ---------- Botones ---------- */
 .boton {
-  --b-fondo: var(--rojo);
-  --b-texto: var(--blanco);
-  --b-borde: var(--rojo);
+  --b-fondo: var(--oro);
+  --b-texto: var(--tinta);
+  --b-borde: var(--oro);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -238,14 +254,14 @@ em { font-style: italic; }
     color 200ms var(--salida);
   -webkit-tap-highlight-color: transparent;
 }
-.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(184, 49, 43, .7); }
+.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(230, 174, 53, .55); }
 .boton:active { transform: translateY(0) scale(.97); box-shadow: none; transition-duration: 90ms; }
 .boton:focus-visible { outline-offset: 4px; border-radius: 999px; }
 
 .boton__flecha { transition: transform 420ms var(--muelle); }
 .boton:hover .boton__flecha { transform: translateX(3px); }
 
-.boton--rojo:hover { --b-fondo: var(--rojo-2); --b-borde: var(--rojo-2); }
+.boton--oro:hover { --b-fondo: var(--oro-2); --b-borde: var(--oro-2); }
 /* Sobre blanco (formulario) */
 .boton--linea { --b-fondo: transparent; --b-texto: var(--tinta); --b-borde: var(--tinta); }
 .boton--linea:hover { --b-fondo: var(--tinta); --b-texto: var(--blanco); box-shadow: none; }
@@ -257,7 +273,7 @@ em { font-style: italic; }
   place-items: center;
   width: 48px; height: 48px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, .5);
+  border: 1.5px solid rgba(241, 233, 214, .5);
   background: transparent;
   color: var(--blanco);
   transition: transform 420ms var(--muelle), background-color 200ms var(--salida), color 200ms var(--salida), border-color 200ms var(--salida);
@@ -273,7 +289,7 @@ em { font-style: italic; }
   place-items: center;
   width: 44px; height: 44px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, .3);
+  border: 1.5px solid rgba(241, 233, 214, .3);
   color: var(--blanco);
 }
 
@@ -283,7 +299,7 @@ em { font-style: italic; }
   inset: 0 0 auto;
   z-index: 60;
   height: var(--cab-alto);
-  background: rgba(29, 30, 30, .9);
+  background: rgba(22, 41, 29, .9);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   backdrop-filter: blur(14px) saturate(1.2);
 }
@@ -314,7 +330,7 @@ em { font-style: italic; }
 .marca__logo {
   width: 48px; height: 48px;
   border-radius: 50%;
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .28);
+  box-shadow: 0 0 0 1.5px rgba(241, 233, 214, .28);
   transition: transform 600ms var(--muelle);
 }
 .marca:hover .marca__logo { transform: rotate(-12deg); }
@@ -327,7 +343,7 @@ em { font-style: italic; }
   padding: 10px 12px;
   font-size: .95rem;
   font-weight: 550;
-  color: rgba(255, 255, 255, .85);
+  color: rgba(241, 233, 214, .85);
   cursor: default;
 }
 
@@ -339,7 +355,7 @@ em { font-style: italic; }
   gap: 10px;
   min-height: 44px;
   padding: 8px 8px 8px 16px;
-  border: 1.5px solid rgba(255, 255, 255, .55);
+  border: 1.5px solid rgba(241, 233, 214, .55);
   border-radius: 999px;
   background: transparent;
   color: var(--blanco);
@@ -430,7 +446,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   border-bottom: 1px solid var(--linea);
   text-align: center;
 }
-.pie__marca img { width: 88px; height: 88px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .25); }
+.pie__marca img { width: 88px; height: 88px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(241, 233, 214, .25); }
 .pie__lema {
   font-family: var(--f-display);
   font-weight: 700;
@@ -459,11 +475,11 @@ body.menu-abierto .cab::after { opacity: 0; }
 .pie__col li a {
   color: var(--blanco);
   text-decoration: underline;
-  text-decoration-color: var(--rojo-texto);
+  text-decoration-color: var(--oro-texto);
   text-underline-offset: .22em;
   transition: color 180ms var(--salida);
 }
-.pie__col li a:hover { color: var(--rojo-texto); }
+.pie__col li a:hover { color: var(--oro-texto); }
 .pie__col li a:active { opacity: .7; }
 .pie__mail { color: var(--blanco); font-weight: 600; overflow-wrap: anywhere; }
 .pie__col .iconos--pie { margin-top: var(--e-5); }
@@ -473,7 +489,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   border-top: 1px solid var(--linea);
   text-align: center;
   font-size: .85rem;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(241, 233, 214, .5);
 }
 
 /* Móvil: tres bloques a ancho completo, cada lista a dos columnas */
@@ -494,7 +510,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   inset: auto 0 0;
   z-index: 50;
   padding: 10px var(--gutter) max(10px, env(safe-area-inset-bottom));
-  background: rgba(22, 23, 23, .9);
+  background: rgba(22, 41, 29, .92);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   box-shadow: 0 -1px 0 var(--linea);
@@ -540,7 +556,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   font-style: italic;
   font-weight: inherit;
   white-space: nowrap;
-  color: var(--rojo-texto);
+  color: var(--oro-texto);
   pointer-events: none;
   user-select: none;
   --x: calc(var(--n) * .065em);

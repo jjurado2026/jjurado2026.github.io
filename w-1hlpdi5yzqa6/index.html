@@ -6,7 +6,7 @@
 <title>Reggae School Madrid — Clases de reggae online y presenciales en Madrid</title>
 <meta name="description" content="Aprende guitarra, bajo, canto, saxo, teclado, batería, producción o toca en una banda con músicos de la escena reggae. Online o presencial en Madrid. Sin matrícula.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1d1e1e">
+<meta name="theme-color" content="#1f3a29">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Reggae School Madrid — Educación musical desde el reggae">
 <meta property="og:description" content="Ocho cursos, online o presenciales en Madrid, con músicos de la escena reggae. Sin matrícula.">
@@ -15,8 +15,9 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/esc-banda-900.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=3.3">
-<link rel="stylesheet" href="assets/css/home.css?v=3.3">
+<link rel="stylesheet" href="assets/css/global.css?v=4">
+<link rel="stylesheet" href="assets/css/home.css?v=4">
+<link rel="stylesheet" href="assets/css/secciones.css?v=4">
 <script>
   // Antes de pintar: marca JS disponible y el modo captura (?ss) para no parpadear
   document.documentElement.classList.add('js');
@@ -60,18 +61,18 @@
       <img class="marca__logo" src="assets/img/logo-120.webp" width="52" height="52" alt="Reggae School Madrid" decoding="async">
     </a>
 
-    <!-- Propuesta: el menú se enseña, pero sus páginas aún no existen; solo el CTA navega -->
+    <!-- En la home, el menú baja a cada sección; en WordPress enlazará a sus páginas -->
     <nav class="nav" aria-label="Principal">
       <ul class="nav__lista">
-        <li><span>Cursos</span></li>
-        <li><span>Profesorado</span></li>
-        <li><span>Combo RSM</span></li>
-        <li><span>Tarifas</span></li>
-        <li><span>Preguntas</span></li>
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#profesorado">Profesorado</a></li>
+        <li><a href="#agenda">Jams y talleres</a></li>
+        <li><a href="#tarifas">Tarifas</a></li>
+        <li><a href="#noticias">Noticias</a></li>
       </ul>
     </nav>
 
-    <a class="boton boton--rojo cab__cta" href="#reserva" data-reserva>Sesión de prueba</a>
+    <a class="boton boton--oro cab__cta" href="#reserva" data-reserva>Sesión de prueba</a>
 
     <button class="menu-btn" type="button" data-menu-abrir aria-expanded="false" aria-controls="menu">
       <span class="menu-btn__txt">Menú</span>
@@ -84,14 +85,14 @@
 <div class="menu" id="menu" data-menu hidden>
   <div class="menu__int envoltura">
     <ul class="menu__lista">
-      <li style="--i:0"><span>Cursos</span></li>
-      <li style="--i:1"><span>Profesorado</span></li>
-      <li style="--i:2"><span>Combo RSM</span></li>
-      <li style="--i:3"><span>Tarifas</span></li>
-      <li style="--i:4"><span>Preguntas</span></li>
+      <li style="--i:0"><a href="#cursos" data-menu-enlace>Cursos</a></li>
+      <li style="--i:1"><a href="#profesorado" data-menu-enlace>Profesorado</a></li>
+      <li style="--i:2"><a href="#agenda" data-menu-enlace>Jams y talleres</a></li>
+      <li style="--i:3"><a href="#tarifas" data-menu-enlace>Tarifas</a></li>
+      <li style="--i:4"><a href="#noticias" data-menu-enlace>Noticias</a></li>
     </ul>
     <div class="menu__pie" style="--i:5">
-      <a class="boton boton--rojo boton--ancho" href="#reserva" data-menu-enlace data-reserva>Reserva tu sesión de prueba</a>
+      <a class="boton boton--oro boton--ancho" href="#reserva" data-menu-enlace data-reserva>Reserva tu sesión de prueba</a>
       <p class="menu__mail">reggaeschoolmadrid@gmail.com</p>
       <ul class="iconos" aria-label="Redes sociales">
         <li><span aria-label="Instagram" role="img"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span></li>
@@ -122,7 +123,7 @@
       </p>
 
       <div class="hero__ctas" data-entra style="--i:4">
-        <a class="boton boton--rojo boton--grande" href="#reserva" data-reserva>
+        <a class="boton boton--oro boton--grande" href="#reserva" data-reserva>
           Reserva tu sesión de prueba
           <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -182,6 +183,57 @@
         desde el Reggae</em>, con profesores experimentados en el género y donde tú eres el
         protagonista de tu propio aprendizaje.
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LA CINTA · CON QUIÉN HAN TOCADO ============================ -->
+<!-- Los nombres salen de las bios de /equipo/. Fyahbwoy e Iseo & Dodosound: los confirma Juan; falta saber con qué profesor -->
+<section class="cinta" id="con-quien" aria-labelledby="cinta-t" data-cinta>
+  <div class="cinta__fija">
+    <img class="cinta__fondo" src="assets/img/creditos-mesa-1200.webp"
+         srcset="assets/img/creditos-mesa-1200.webp 1200w, assets/img/creditos-mesa-1920.webp 1920w"
+         sizes="100vw" width="1920" height="1080" alt="" loading="lazy" decoding="async" data-cinta-fondo>
+    <div class="cinta__int">
+      <header class="envoltura">
+        <h2 class="t-seccion" id="cinta-t" data-revela>Tus profesores han tocado <em>con ellos</em></h2>
+        <p class="cinta__guia" data-revela>Discos, giras y escenarios de quienes te dan clase en la escuela.</p>
+      </header>
+
+      <div class="cinta__pistas" data-cinta-pistas>
+        <ul class="pista pista--a" aria-label="Artistas internacionales">
+          <li><span class="pista__n">Kymani Marley</span> <span class="pista__con">con Maga Lion</span></li>
+          <li><span class="pista__n">Brian Travers (UB40)</span> <span class="pista__con">con Maga Lion</span></li>
+          <li><span class="pista__n">Clinton Fearon</span> <span class="pista__con">con Maga Lion</span></li>
+          <li><span class="pista__n">Luciano</span> <span class="pista__con">con Maga Lion</span></li>
+          <li><span class="pista__n">Michael Prophet</span> <span class="pista__con">con Jorge Rodríguez y Miguel Valenciano</span></li>
+          <li><span class="pista__n">Al Campbell</span> <span class="pista__con">con Miguel Valenciano</span></li>
+          <li><span class="pista__n">Alpheus</span> <span class="pista__con">con Jorge Rodríguez</span></li>
+          <li><span class="pista__n">Mellow Mood</span> <span class="pista__con">con Maga Lion</span></li>
+        </ul>
+        <ul class="pista pista--b" aria-label="Artistas de aquí">
+          <li><span class="pista__n">Ska-P</span> <span class="pista__con">con Jorge Rodríguez, en sus dos últimos discos</span></li>
+          <li><span class="pista__n">Morodo</span> <span class="pista__con">con Maga Lion</span></li>
+          <li><span class="pista__n">Swan Fyahbwoy</span> <span class="pista__con pista__con--pendiente">profesor por confirmar</span></li>
+          <li><span class="pista__n">Macaco</span> <span class="pista__con">con Maga Lion</span></li>
+          <li><span class="pista__n">Iseo &amp; Dodosound</span> <span class="pista__con pista__con--pendiente">profesor por confirmar</span></li>
+          <li><span class="pista__n">Xoel López</span> <span class="pista__con">con Jorge Rodríguez</span></li>
+          <li><span class="pista__n">Hermano L</span> <span class="pista__con">con Miguel Valenciano</span></li>
+          <li><span class="pista__n">Freedonia</span> <span class="pista__con">con Jorge Rodríguez</span></li>
+          <li><span class="pista__n">Chalart 58</span> <span class="pista__con">con Maga Lion</span></li>
+        </ul>
+        <ul class="pista pista--c" aria-label="Bandas en las que tocan o han tocado">
+          <li><span class="pista__n">Emeterians</span> <span class="pista__con">con Maga Lion y Pablo Cano</span></li>
+          <li><span class="pista__n">J.P. Bimeni &amp; The Black Belts</span> <span class="pista__con">con Pablo Cano</span></li>
+          <li><span class="pista__n">The Rootskank</span> <span class="pista__con">con Javier Ochoa, Pablo Cano y Miguel Valenciano</span></li>
+          <li><span class="pista__n">Downtown Beat</span> <span class="pista__con">con David Arribas</span></li>
+          <li><span class="pista__n">Shirley Davis &amp; the Silverbacks</span> <span class="pista__con">con Pablo Cano</span></li>
+          <li><span class="pista__n">Skalone</span> <span class="pista__con">con Jorge Rodríguez</span></li>
+          <li><span class="pista__n">Echo Chamber Roots Hi-Fi</span> <span class="pista__con">con Javier Ochoa</span></li>
+          <li><span class="pista__n">Alamedadosoulna</span> <span class="pista__con">con Pablo Cano</span></li>
+        </ul>
+        <span class="cinta__cabezal" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -292,7 +344,7 @@
               expresión</strong>: <em>bend, vibratos, ligados</em>. Descubre los <strong>pedales y
               efectos</strong> más comunes en reggae: <em>Delay, reverb, phaser, Wah wah</em>.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Guitarra">Prueba una clase de guitarra</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Guitarra">Prueba una clase de guitarra</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-guitarra-600.webp" srcset="assets/img/curso-guitarra-400.webp 400w, assets/img/curso-guitarra-600.webp 600w, assets/img/curso-guitarra-892.webp 892w" sizes="(min-width: 1024px) 30vw, 90vw" width="600" height="800" alt="Guitarrista tocando una guitarra de caja en directo" loading="lazy" decoding="async">
@@ -312,7 +364,7 @@
               necesaria para dominarlos. Entiende y domina tu <strong>sonido</strong> y sus
               posibilidades.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Bajo">Prueba una clase de bajo</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Bajo">Prueba una clase de bajo</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-bajo-600.webp" srcset="assets/img/curso-bajo-400.webp 400w, assets/img/curso-bajo-600.webp 600w, assets/img/curso-bajo-900.webp 900w" sizes="(min-width: 1024px) 30vw, 90vw" width="600" height="800" alt="Bajo eléctrico de cuatro cuerdas" loading="lazy" decoding="async">
@@ -334,7 +386,7 @@
               eres corista, aprende a poder <strong>armonizar voces</strong>. Para voces melódicas o
               recitadas. Aprende a usar el <strong>micrófono</strong> y <strong>efectos</strong> para voz.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Canto">Prueba una clase de canto</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Canto">Prueba una clase de canto</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-canto-600.webp" srcset="assets/img/curso-canto-400.webp 400w, assets/img/curso-canto-600.webp 600w, assets/img/curso-canto-900.webp 900w" sizes="(min-width: 1024px) 30vw, 90vw" width="600" height="800" alt="Cantante con micrófono y guitarra en un concierto" loading="lazy" decoding="async">
@@ -355,7 +407,7 @@
               instrumento con los <strong>grandes clásicos</strong> del género. Aprende de cero o
               perfecciona tu nivel con este gran profesor y músico <strong>residente en Madrid</strong>.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Saxo">Prueba una clase de saxo</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Saxo">Prueba una clase de saxo</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-saxo-600.webp" srcset="assets/img/curso-saxo-400.webp 400w, assets/img/curso-saxo-600.webp 600w, assets/img/curso-saxo-900.webp 900w" sizes="(min-width: 1024px) 30vw, 90vw" width="600" height="800" alt="Jorge Rodríguez tocando el saxofón en un escenario con luz roja" loading="lazy" decoding="async">
@@ -377,7 +429,7 @@
               distintas técnicas de <strong>independencia de manos</strong> y descubre estrategias de
               <strong>improvisación</strong>.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Teclado">Prueba una clase de teclado</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Teclado">Prueba una clase de teclado</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-teclado-600.webp" srcset="assets/img/curso-teclado-400.webp 400w, assets/img/curso-teclado-600.webp 600w, assets/img/curso-teclado-900.webp 900w" sizes="(min-width: 1024px) 30vw, 90vw" width="600" height="800" alt="Teclado de un piano eléctrico con mueble de madera" loading="lazy" decoding="async">
@@ -398,7 +450,7 @@
               <strong>fills</strong> más característicos de cada subestilo. Controla la
               <strong>técnica</strong> del instrumento.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Batería">Prueba una clase de batería</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Batería">Prueba una clase de batería</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-bateria-600.webp" srcset="assets/img/curso-bateria-400.webp 400w, assets/img/curso-bateria-600.webp 600w" sizes="(min-width: 1024px) 30vw, 90vw" width="600" height="800" alt="Baterista tocando en el estudio, en blanco y negro" loading="lazy" decoding="async">
@@ -420,7 +472,7 @@
               <strong>Mezcla analógica / mezcla digital</strong>. Trabajamos con <em>Cubase, Pro Tools,
               Ableton, Reason, Reaper y Logic pro</em>.
             </p>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Producción y mezcla">Prueba una clase de producción</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Producción y mezcla">Prueba una clase de producción</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/curso-produccion-512.webp" srcset="assets/img/curso-produccion-400.webp 400w, assets/img/curso-produccion-512.webp 512w" sizes="(min-width: 1024px) 30vw, 90vw" width="512" height="683" alt="Productor trabajando en una mesa de mezclas durante un directo" loading="lazy" decoding="async">
@@ -456,7 +508,7 @@
                 <li>Conocimientos básicos</li>
               </ul>
             </div>
-            <a class="boton boton--rojo" href="#reserva" data-reserva data-instrumento="Combo RSM">Quiero entrar en el Combo</a>
+            <a class="boton boton--oro" href="#reserva" data-reserva data-instrumento="Combo RSM">Quiero entrar en el Combo</a>
           </div>
           <figure class="curso__foto">
             <img src="assets/img/cartel-combo-560.webp" srcset="assets/img/cartel-combo-560.webp 560w, assets/img/cartel-combo-900.webp 900w" sizes="(min-width: 1024px) 30vw, 90vw" width="560" height="579" alt="Cartel del Curso de Combo: impartido por Maga Lion y David Arribas, clase semanal de dos horas, centro de Madrid, backline incluido" loading="lazy" decoding="async">
@@ -477,6 +529,152 @@
         </div>
       </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROFESORADO · CARRIL LATERAL ============================ -->
+<section class="profes seccion" id="profesorado" aria-labelledby="profes-t">
+  <div class="envoltura">
+    <header class="cabeza cabeza--doble">
+      <h2 class="t-seccion" id="profes-t" data-revela>Quién te da <em>clase</em></h2>
+      <p class="cabeza__guia" data-revela>
+        Desde que Javier Ochoa fundó Reggae School Madrid en 2020, su idea perseguía el sueño de formar
+        un equipo de docentes músicos especializados en el género. Poco a poco fueron incorporándose los
+        que hoy forman un equipo multidisciplinar que trabaja para ofrecer la mejor experiencia educativa.
+      </p>
+    </header>
+  </div>
+
+  <div class="carril" data-carril tabindex="0" role="region" aria-label="Profesorado: desliza para ver a los siete">
+    <ul class="carril__pista">
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-javier-480.webp" srcset="assets/img/prof4-javier-480.webp 480w, assets/img/prof4-javier-720.webp 720w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Javier Ochoa tocando una guitarra eléctrica con cascos en el estudio" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">Javier Ochoa</h3>
+          <p class="profe__clases">Guitarra, canto y producción. Fundador y director</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</p>
+        </div>
+      </li>
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-maga-480.webp" srcset="assets/img/prof4-maga-480.webp 480w, assets/img/prof4-maga-720.webp 720w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Retrato de Maga Lion con gorro amarillo y los brazos cruzados" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">Maga Lion</h3>
+          <p class="profe__clases">Combo RSM</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> Kymani Marley, Brian Travers (UB40), Clinton Fearon, Luciano, Mellow Mood, Macaco, Morodo y Chalart 58. Fundador de Emeterians.</p>
+        </div>
+      </li>
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-jorge-480.webp" srcset="assets/img/prof4-jorge-480.webp 480w, assets/img/prof4-jorge-720.webp 720w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Jorge Rodríguez tocando el saxo en directo con una camisa estampada" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">Jorge Rodríguez</h3>
+          <p class="profe__clases">Saxo</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> Ska-P (grabó sus dos últimos discos), Xoel López, Freedonia, Michael Prophet y Alpheus. Fundador de Skalone.</p>
+        </div>
+      </li>
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-pablo-480.webp" srcset="assets/img/prof4-pablo-480.webp 480w, assets/img/prof4-pablo-720.webp 720w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Pablo Cano grabando con el bajo y cascos en el estudio" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">Pablo Cano</h3>
+          <p class="profe__clases">Bajo</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> J.P. Bimeni &amp; The Black Belts, donde es director musical, Shirley Davis and the Silverbacks, Emeterians y Alamedadosoulna.</p>
+        </div>
+      </li>
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-david-480.webp" srcset="assets/img/prof4-david-480.webp 480w, assets/img/prof4-david-720.webp 720w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Retrato de David Arribas sentado en un taburete" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">David Arribas</h3>
+          <p class="profe__clases">Teclado y Combo RSM</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> Hotdrop, Blueskank y Rootskank. Desde 2012 lleva Downtown Beat, con Emeterians, Payoh SoulRebel y Natty Nature.</p>
+        </div>
+      </li>
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-miguelv-480.webp" srcset="assets/img/prof4-miguelv-480.webp 480w, assets/img/prof4-miguelv-640.webp 640w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Miguel Valenciano tocando en directo con luz morada" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">Miguel Valenciano</h3>
+          <p class="profe__clases">Batería</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> The Rootskank (Nytto Dread, Al Campbell, Hermano L, Michael Prophet), Blueskank y RioMente. Produce en Kovan Music Studio.</p>
+        </div>
+      </li>
+      <li class="profe">
+        <figure class="profe__foto"><img src="assets/img/prof4-miguelm-480.webp" srcset="assets/img/prof4-miguelm-480.webp 480w, assets/img/prof4-miguelm-720.webp 720w" sizes="(min-width: 1000px) 340px, 70vw" width="480" height="600" alt="Miguel Moreno tocando la batería al aire libre" loading="lazy" decoding="async"></figure>
+        <div class="profe__texto">
+          <h3 class="profe__nombre">Miguel Moreno</h3>
+          <p class="profe__clases">Batería</p>
+          <p class="profe__con"><strong>Ha tocado con</strong> Blueskank, Los Ministers del Ronsteady, Begoña Bangmatu y Hammond York.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ AGENDA · JAMS, TALLERES Y CLASES GRUPALES ============================ -->
+<!-- Copy de esta sección: provisional, nuestro, hasta que el cliente pase el suyo. Fechas: solo las reales -->
+<section class="agenda seccion" id="agenda" aria-labelledby="agenda-t">
+  <div class="envoltura">
+    <header class="cabeza cabeza--doble">
+      <h2 class="t-seccion" id="agenda-t" data-revela>Toca con <em>más gente</em></h2>
+      <p class="cabeza__guia" data-revela>
+        Además de tu clase, la escuela se junta para tocar: jams abiertas, talleres y clases en grupo.
+        Las fechas se anuncian aquí, en noticias y en Instagram.
+      </p>
+    </header>
+
+    <div class="formatos">
+      <article class="formato" data-revela style="--i:0">
+        <figure class="formato__foto"><img src="assets/img/agenda-jams-480.webp" srcset="assets/img/agenda-jams-480.webp 480w, assets/img/agenda-jams-720.webp 720w" sizes="(min-width: 820px) 30vw, 92vw" width="480" height="600" alt="La banda de la escuela tocando en Madreams Music, con el público delante" loading="lazy" decoding="async"></figure>
+        <div class="formato__texto">
+          <h3 class="formato__t">Jams</h3>
+          <p class="formato__d">A la hora del vermú, con el equipo de RSM como banda base y un set de live dub en el escenario. Vienes a tocar, a cantar o a escuchar.</p>
+          <p class="formato__dato">Abiertas a alumnos y a quien quiera subirse</p>
+        </div>
+      </article>
+      <article class="formato" data-revela style="--i:1">
+        <figure class="formato__foto"><img src="assets/img/agenda-talleres-480.webp" srcset="assets/img/agenda-talleres-480.webp 480w, assets/img/agenda-talleres-720.webp 720w" sizes="(min-width: 820px) 30vw, 92vw" width="480" height="600" alt="La mesa de mezclas del estudio de la escuela en penumbra" loading="lazy" decoding="async"></figure>
+        <div class="formato__texto">
+          <h3 class="formato__t">Talleres</h3>
+          <p class="formato__d">Sesiones sobre un tema concreto con un profesor de la escuela: un estilo, una técnica o una parte del estudio.</p>
+          <p class="formato__dato">Próximas fechas en la agenda</p>
+        </div>
+      </article>
+      <article class="formato" data-revela style="--i:2">
+        <figure class="formato__foto"><img src="assets/img/agenda-grupales-480.webp" srcset="assets/img/agenda-grupales-480.webp 480w, assets/img/agenda-grupales-720.webp 720w" sizes="(min-width: 820px) 30vw, 92vw" width="480" height="600" alt="La banda de la escuela en directo, seis músicos con camisetas de Reggae School" loading="lazy" decoding="async"></figure>
+        <div class="formato__texto">
+          <h3 class="formato__t">Clases grupales</h3>
+          <p class="formato__d">El Combo RSM: un curso de clases presenciales grupales en el que podrás formar parte de una banda de reggae.</p>
+          <p class="formato__dato">Semanal, 2 h, en el centro de Madrid, con backline</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="fechas">
+      <h3 class="fechas__t" data-revela>Fechas</h3>
+      <ol class="tickets" aria-label="Fechas de jams y clases grupales">
+        <li class="ticket ticket--proxima">
+          <p class="ticket__fecha">Próxima jam</p>
+          <p class="ticket__t">Fecha y sala por anunciar</p>
+          <p class="ticket__lugar">La anunciamos aquí y en Instagram</p>
+          <p class="ticket__pie"><span>Se anuncia en Instagram</span><a href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Seguir</a></p>
+        </li>
+        <li class="ticket">
+          <p class="ticket__fecha">Domingo 25 de octubre</p>
+          <p class="ticket__t">Vermut Reggae Jam</p>
+          <p class="ticket__lugar">Madreams Music. La primera del curso</p>
+          <p class="ticket__pie"><span>Ya fue</span><a href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Ver fotos</a></p>
+        </li>
+        <li class="ticket">
+          <p class="ticket__fecha">Todas las semanas</p>
+          <p class="ticket__t">Combo RSM</p>
+          <p class="ticket__lugar">Centro de Madrid. Clase de 2 h con backline incluido</p>
+          <p class="ticket__pie"><span>Con Maga Lion y David Arribas</span><a href="#reserva" data-reserva data-instrumento="Combo RSM">Entrar</a></p>
+        </li>
+        <li class="ticket">
+          <p class="ticket__fecha">Domingo 6 de noviembre de 2022</p>
+          <p class="ticket__t">Jam Session #2 «Inna vermú stylee»</p>
+          <p class="ticket__lugar">Rock Palace, Vara del Rey 6. 13:00, 5 €</p>
+          <p class="ticket__pie"><span>Ya fue</span><a href="https://reggaeschoolmadrid.com/2022/10/21/jam-session-vol-2-en-rock-palace/">Leer</a></p>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
@@ -503,7 +701,7 @@
         </div>
         <div class="entrada__talon">
           <span class="sello" aria-hidden="true">Sin<br>matrícula</span>
-          <a class="boton boton--rojo" href="#reserva" data-reserva data-frecuencia="Semanal">Me interesa</a>
+          <a class="boton boton--oro" href="#reserva" data-reserva data-frecuencia="Semanal">Me interesa</a>
         </div>
       </article>
 
@@ -517,7 +715,7 @@
         </div>
         <div class="entrada__talon">
           <span class="sello" aria-hidden="true">Sin<br>matrícula</span>
-          <a class="boton boton--rojo" href="#reserva" data-reserva data-frecuencia="Quincenal">Me interesa</a>
+          <a class="boton boton--oro" href="#reserva" data-reserva data-frecuencia="Quincenal">Me interesa</a>
         </div>
       </article>
     </div>
@@ -536,6 +734,16 @@
       </div>
       <p class="modalidades__nota">Mismo precio en las dos modalidades.</p>
     </div>
+
+    <div class="prueba" data-revela>
+      <div>
+        <h3 class="prueba__t">Sesión de prueba</h3>
+        <p class="prueba__precio">De pago: <span class="pendiente">precio por confirmar</span></p>
+      </div>
+      <p class="prueba__d">Para conocer al profesor de tu instrumento y el método antes de apuntarte. Al cerrar día y hora te decimos cómo pagarla.</p>
+      <a class="boton boton--oro" href="#reserva" data-reserva>Reservar la sesión</a>
+    </div>
+
   </div>
 </section>
 
@@ -612,6 +820,44 @@
   </div>
 </section>
 
+<!-- ============================ NOTICIAS ============================ -->
+<!-- Las tres reales más recientes. En WordPress, las publican ellos -->
+<section class="noticias seccion" id="noticias" aria-labelledby="noticias-t">
+  <div class="envoltura">
+    <header class="cabeza cabeza--doble">
+      <h2 class="t-seccion" id="noticias-t" data-revela>Noticias de <em>RSM</em></h2>
+      <p class="cabeza__guia" data-revela>Jams, talleres y novedades de la escuela.</p>
+    </header>
+
+    <ul class="notas">
+      <li class="nota" data-revela style="--i:0">
+        <a class="nota__enlace" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">
+          <span class="nota__foto"><img src="assets/img/noticia-vermut-480.webp" srcset="assets/img/noticia-vermut-480.webp 480w, assets/img/noticia-vermut-720.webp 720w" sizes="(min-width: 900px) 30vw, 82vw" width="480" height="320" alt="Cantante en el escenario de Madreams Music con luz azul" loading="lazy" decoding="async"></span>
+          <span class="nota__fecha">Octubre</span>
+          <span class="nota__t">La primera «Vermut Reggae Jam» del curso, en Madreams Music</span>
+          <span class="nota__d">El mejor plan para el aperitivo del domingo. Gracias a Madreams Music por el recibimiento.</span>
+        </a>
+      </li>
+      <li class="nota" data-revela style="--i:1">
+        <a class="nota__enlace" href="https://reggaeschoolmadrid.com/2022/10/24/rsm-en-alma-de-leon-radio-3/">
+          <span class="nota__foto"><img src="assets/img/noticia-radio3-480.webp" srcset="assets/img/noticia-radio3-480.webp 480w, assets/img/noticia-radio3-900.webp 900w" sizes="(min-width: 900px) 30vw, 82vw" width="480" height="320" alt="El equipo de la escuela en el estudio de Radio 3" loading="lazy" decoding="async"></span>
+          <span class="nota__fecha">24 de octubre de 2022</span>
+          <span class="nota__t">RSM en Alma de León, Radio 3</span>
+          <span class="nota__d">El equipo completo en la radio nacional: la historia de la escuela, una tocata en acústico y la sintonía del programa, «Some a Reggae Music».</span>
+        </a>
+      </li>
+      <li class="nota" data-revela style="--i:2">
+        <a class="nota__enlace" href="https://reggaeschoolmadrid.com/2022/10/21/jam-session-vol-2-en-rock-palace/">
+          <span class="nota__foto"><img src="assets/img/noticia-jam2-480.webp" srcset="assets/img/noticia-jam2-480.webp 480w, assets/img/noticia-jam2-900.webp 900w" sizes="(min-width: 900px) 30vw, 82vw" width="480" height="320" alt="Cartel de la Jam Session número 2, Inna vermú stylee, en Rock Palace" loading="lazy" decoding="async"></span>
+          <span class="nota__fecha">21 de octubre de 2022</span>
+          <span class="nota__t">Jam Session vol. 2 en Rock Palace</span>
+          <span class="nota__d">Un evento a la hora del vermú en forma de jam, con el equipo de RSM como banda base y un set de live dub.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============================ PREGUNTAS ============================ -->
 <section class="preguntas seccion" id="preguntas" aria-labelledby="preguntas-t">
   <div class="envoltura preguntas__int">
@@ -629,8 +875,8 @@
       </details>
       <details class="faq__item" name="faq">
         <summary>¿Las clases son individuales?<span class="faq__ico" aria-hidden="true"></span></summary>
-        <div class="faq__r"><p>Sí. Las clases de instrumento son individuales y personalizadas. El
-        Combo RSM es el único grupal, porque es una banda.</p></div>
+        <div class="faq__r"><p>Sí. Las clases de instrumento son individuales y personalizadas. Para
+        tocar con más gente están las clases grupales del Combo RSM, las jams y los talleres.</p></div>
       </details>
       <details class="faq__item" name="faq">
         <summary>¿Dónde son las clases presenciales?<span class="faq__ico" aria-hidden="true"></span></summary>
@@ -640,6 +886,11 @@
         <summary>¿Hay que pagar matrícula?<span class="faq__ico" aria-hidden="true"></span></summary>
         <div class="faq__r"><p>No hay matrícula. Solo la cuota mensual: 100 € con clase semanal o
         60 € con clase quincenal, online o presencial.</p></div>
+      </details>
+      <details class="faq__item" name="faq">
+        <summary>¿La sesión de prueba es gratis?<span class="faq__ico" aria-hidden="true"></span></summary>
+        <div class="faq__r"><p>No, es de pago: <span class="pendiente">precio por confirmar</span>. Sirve
+        para conocer al profesor de tu instrumento y el método antes de apuntarte.</p></div>
       </details>
       <details class="faq__item" name="faq">
         <summary>¿Y si vivo fuera de España?<span class="faq__ico" aria-hidden="true"></span></summary>
@@ -656,6 +907,7 @@
     <div class="reserva__texto">
       <h2 class="t-seccion" id="reserva-t" data-revela>Empieza por <span class="eco eco--suave" data-eco><em>una clase</em><span class="eco__rep" aria-hidden="true">una clase</span><span class="eco__rep" aria-hidden="true">una clase</span></span></h2>
       <p class="reserva__guia" data-revela>Cuéntanos qué instrumento te interesa y te decimos por dónde empezar. Son tres pasos.</p>
+      <p class="reserva__pago" data-revela>La sesión de prueba es de pago (<span class="pendiente">precio por confirmar</span>). Al cerrar día y hora te decimos cómo pagarla.</p>
       <ul class="reserva__sellos" data-revela>
         <li>Sin matrícula</li>
         <li>Online o presencial</li>
@@ -746,13 +998,13 @@
 
       <div class="form__acciones">
         <button class="boton boton--linea" type="button" data-form-atras hidden>Atrás</button>
-        <button class="boton boton--rojo" type="button" data-form-siguiente>Siguiente</button>
-        <button class="boton boton--rojo" type="submit" data-form-enviar hidden>Enviar solicitud</button>
+        <button class="boton boton--oro" type="button" data-form-siguiente>Siguiente</button>
+        <button class="boton boton--oro" type="submit" data-form-enviar hidden>Enviar solicitud</button>
       </div>
 
       <div class="form__ok" data-form-ok hidden tabindex="-1">
         <p class="form__ok-t">¡Recibido!</p>
-        <p data-form-resumen>La escuela te escribirá para cerrar día y hora de tu sesión de prueba.</p>
+        <p data-form-resumen>La escuela te escribirá para cerrar día y hora de tu sesión de prueba y cómo pagarla.</p>
         <p class="form__ok-nota">Prototipo: este formulario no envía datos.</p>
       </div>
     </form>
@@ -797,7 +1049,7 @@
           <span class="tiempo__marca" aria-hidden="true"></span>
           <span class="tiempo__n">Tiempo 4</span>
           <h3 class="tiempo__t">Te subes a una jam</h3>
-          <p>La escuela organiza jam sessions para que toques con otros alumnos.</p>
+          <p>La escuela organiza <a class="enlace" href="#agenda">jam sessions</a> para que toques con otros alumnos.</p>
         </li>
       </ol>
       <p class="compas__nota" data-revela>En el one drop el bombo no cae en el 1: cae en el 3. Aquí el acento también está en lo tuyo.</p>
@@ -880,9 +1132,11 @@
       <nav class="pie__col" aria-label="La escuela">
         <h2 class="pie__t">La escuela</h2>
         <ul>
-          <li><span>Profesorado</span></li>
-          <li><span>Tarifas</span></li>
-          <li><span>Preguntas</span></li>
+          <li><a href="#profesorado">Profesorado</a></li>
+          <li><a href="#agenda">Jams y talleres</a></li>
+          <li><a href="#tarifas">Tarifas</a></li>
+          <li><a href="#noticias">Noticias</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
           <li><a href="#reserva" data-reserva>Sesión de prueba</a></li>
         </ul>
       </nav>
@@ -904,11 +1158,12 @@
 
 <!-- Barra fija en móvil -->
 <div class="fija" data-fija aria-hidden="true">
-  <a class="boton boton--rojo boton--ancho" href="#reserva" data-reserva tabindex="-1">Reserva tu sesión de prueba</a>
+  <a class="boton boton--oro boton--ancho" href="#reserva" data-reserva tabindex="-1">Reserva tu sesión de prueba</a>
 </div>
 
 
-<script src="assets/js/riddim.js?v=3.3" defer></script>
-<script src="assets/js/main.js?v=3.3" defer></script>
+<script src="assets/js/riddim.js?v=4" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/secciones.js?v=4" defer></script>
 </body>
 </html>

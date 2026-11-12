@@ -38,7 +38,7 @@
         e.target.classList.add(e.target.hasAttribute('data-eco') ? 'suena' : 'visto');
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0 }); // vale para bloques más altos que la pantalla (móvil en horizontal)
     revelables.forEach(el => io.observe(el));
     ecos.forEach(el => { el.style.setProperty('--retardo', '300ms'); io.observe(el); });
   }
