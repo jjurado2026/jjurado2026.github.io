@@ -679,3 +679,6 @@ button.cartel__profe:active { transform: scale(.96); }
 .agenda-lista__nota { margin-top: var(--e-5); color: var(--texto-suave); }
 .boton--fantasma { --b-fondo: transparent; --b-texto: var(--crudo); --b-borde: rgba(241, 233, 214, .5); }
 .boton--fantasma:hover { --b-fondo: var(--crudo); --b-texto: var(--tinta); --b-borde: var(--crudo); box-shadow: none; }
+
+/* La mesa sobre verde bandera: base más oscura para que el texto suave pase AA (4,4 → 5,5:1) */
+.mesa { background-color: rgba(10, 30, 18, .35); }
