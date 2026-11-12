@@ -26,7 +26,7 @@
 <script>
   /* Caducidad: a partir de esta fecha la página lleva al aviso. En local no caduca; ?caducada lo simula. */
   (function () {
-    var fin = Date.UTC(2026, 10, 21, 23, 0);
+    var fin = Date.UTC(2026, 10, 22, 23, 0);
     if (/[?&]caducada\b/.test(location.search) || (location.protocol !== 'file:' && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && Date.now() >= fin)) {
       document.documentElement.style.display = 'none';
       location.replace('caducada.html');
