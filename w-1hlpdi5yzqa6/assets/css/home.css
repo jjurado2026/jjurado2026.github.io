@@ -227,7 +227,7 @@
   border-radius: 50%;
   background: var(--oro);
   color: var(--tinta);
-  box-shadow: 0 0 0 10px rgba(230, 174, 53, .3);
+  box-shadow: 0 0 0 10px rgba(241, 233, 214, .14);
   transition: transform 500ms var(--muelle), background-color 200ms var(--salida);
 }
 .video__play svg { transform: translateX(2px); }
@@ -1050,7 +1050,7 @@
   transition: border-color 160ms var(--salida), box-shadow 160ms var(--salida);
 }
 .campo textarea { resize: vertical; min-height: 96px; }
-.campo input::placeholder, .campo textarea::placeholder { color: #8a8a8a; }
+.campo input::placeholder, .campo textarea::placeholder { color: #6b6455; } /* 4,8:1 sobre crudo */
 .campo input:hover, .campo textarea:hover { border-color: rgba(29, 30, 30, .5); }
 .campo input:focus, .campo textarea:focus { outline: none; border-color: var(--tinta); box-shadow: 0 0 0 3px rgba(44, 90, 53, .25); }
 .campo input[aria-invalid="true"] { border-color: var(--error); }

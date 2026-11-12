@@ -254,7 +254,7 @@ em { font-style: italic; }
     color 200ms var(--salida);
   -webkit-tap-highlight-color: transparent;
 }
-.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(230, 174, 53, .55); }
+.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(0, 0, 0, .55); }
 .boton:active { transform: translateY(0) scale(.97); box-shadow: none; transition-duration: 90ms; }
 .boton:focus-visible { outline-offset: 4px; border-radius: 999px; }
 
