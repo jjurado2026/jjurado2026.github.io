@@ -38,7 +38,7 @@
 /* Tarjetas sobre verde: un verde más claro en vez del carbón */
 .alumnado .opinion:not(.opinion--destacada),
 .redes .red { background: var(--verde-3); }
-.redes .red:hover { background: #335b41; }
+.redes .red:hover { background: #134a2e; }
 .escuela .video__btn { box-shadow: 0 0 0 1px rgba(241, 233, 214, .1); }
 
 /* Un dato que falta: se ve como pendiente, no como texto acabado */
@@ -55,7 +55,7 @@
 /* =====================================================================
    LA CINTA — los nombres con los que han tocado pasan bajo un cabezal.
    Por defecto (sin JS, movimiento reducido, móvil en horizontal): listas
-   que se leen enteras. Con .cinta--corre: escena fijada de scroll.
+   que se leen enteras. Con .cinta--viva: las pistas pasan solas.
    ===================================================================== */
 .cinta { position: relative; background: var(--negro); color: var(--blanco); }
 .cinta__fija {
@@ -120,78 +120,66 @@
 .pista__con--pendiente { color: var(--texto-suave); font-weight: 500; }
 .cinta__cabezal { display: none; }
 
-/* --- Corriendo: fijada, la cinta pasa bajo el cabezal con el scroll --- */
-.cinta--corre { height: 380svh; }
-.cinta--corre .cinta__fija {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  display: flex;
-  padding-block: calc(var(--cab-alto) + clamp(18px, 4svh, 48px)) clamp(20px, 5svh, 56px);
-}
-.cinta--corre .cinta__int { width: 100%; grid-template-rows: auto 1fr; gap: 0; }
-.cinta--corre .cinta__pistas {
+/* --- Viva: las tres pistas pasan solas bajo el cabezal (JS). Se paran con el
+   ratón encima y fuera de pantalla; con movimiento reducido no se activa. --- */
+.cinta--viva { --t-pista: clamp(2.5rem, 1.3rem + 4.6vw, 6.4rem); }
+.cinta--viva .cinta__pistas {
   max-width: none;
-  padding: 0;
-  align-self: center;
-  gap: clamp(6px, 1.6svh, 20px);
+  padding: 26px 0 8px;
+  gap: clamp(10px, 1.6vw, 22px);
 }
-.cinta--corre .pista {
+.cinta--viva .pista {
   flex-wrap: nowrap;
   width: max-content;
   gap: 0;
   will-change: transform;
 }
-.cinta--corre .pista li {
+.cinta--viva .pista li {
   position: relative;
   align-items: center;
   padding-inline: clamp(20px, 2.6vw, 40px);
 }
 /* Separador: un single, como en la banda de cursos */
-.cinta--corre .pista li + li::before {
+.cinta--viva .pista li + li::before {
   content: "";
   position: absolute;
-  left: -.16em;
-  top: calc(min(8.2vw, 12svh) * .52);
-  width: .32em; height: .32em;
+  left: calc(var(--t-pista) * -.15);
+  top: calc(var(--t-pista) * .4);
+  width: calc(var(--t-pista) * .3);
+  height: calc(var(--t-pista) * .3);
   border-radius: 50%;
-  font-size: min(8.2vw, 12svh);
   background: radial-gradient(circle, var(--negro) 0 22%, rgba(241, 233, 214, .4) 26%);
 }
-.cinta--corre .pista__n {
-  font-size: min(8.2vw, 12svh);
+.cinta--viva .pista__n {
+  font-size: var(--t-pista);
   line-height: 1.02;
   white-space: nowrap;
   color: rgba(241, 233, 214, .5);
   transition: color 260ms var(--salida);
 }
-.cinta--corre .pista__con {
+.cinta--viva .pista__con {
   white-space: nowrap;
   font-size: clamp(.82rem, .72rem + .3vw, 1.02rem);
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 240ms var(--salida), transform 420ms var(--muelle);
 }
-@media (max-width: 699px) {
-  .cinta--corre .pista__n { font-size: min(12vw, 9svh); }
-  .cinta--corre .pista li + li::before { font-size: min(12vw, 9svh); top: calc(min(12vw, 9svh) * .52); }
-}
-.cinta--corre .pista li.en-cabezal .pista__n { color: var(--blanco); }
-.cinta--corre .pista li.en-cabezal .pista__con { opacity: 1; transform: none; }
+.cinta--viva .pista li.en-cabezal .pista__n { color: var(--crudo); }
+.cinta--viva .pista li.en-cabezal .pista__con { opacity: 1; transform: none; }
 
 /* El cabezal: una línea de oro con su bloque arriba, en el centro exacto */
-.cinta--corre .cinta__cabezal {
+.cinta--viva .cinta__cabezal {
   display: block;
   position: absolute;
   z-index: 3;
   left: 50%;
-  top: -18px; bottom: -18px;
+  top: 8px; bottom: -10px;
   width: 2px;
   margin-left: -1px;
   background: var(--oro);
   pointer-events: none;
 }
-.cinta--corre .cinta__cabezal::before {
+.cinta--viva .cinta__cabezal::before {
   content: "";
   position: absolute;
   left: 50%; top: -12px;
@@ -205,7 +193,7 @@
    PROFESORADO — carril lateral que avanza solo (sin flechas). Se para
    con el ratón encima, con el foco y con movimiento reducido.
    ===================================================================== */
-.profes { background: var(--negro); }
+.profes { background: var(--crudo); }
 .carril {
   --borde: max(var(--gutter), calc((100% - var(--ancho)) / 2));
   overflow-x: auto;
@@ -253,7 +241,7 @@
    AGENDA — jams, talleres y clases grupales. Fondo tierra.
    Las fechas, en entradas de concierto: el mismo lenguaje que las tarifas.
    ===================================================================== */
-.agenda { background: var(--tierra); }
+.agenda { background: var(--verde-2); }
 .formatos { display: grid; gap: var(--e-5); }
 @media (min-width: 820px) { .formatos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .formato {
@@ -261,7 +249,7 @@
   grid-template-rows: auto 1fr;
   border-radius: var(--radio);
   overflow: hidden;
-  background: var(--tierra-2);
+  background: var(--verde-3);
 }
 .formato__foto { aspect-ratio: 4 / 3; overflow: hidden; }
 .formato__foto img { width: 100%; height: 100%; object-fit: cover; }
@@ -317,7 +305,7 @@
   top: calc(var(--muesca) / -2 - 1px);
   width: var(--muesca); height: var(--muesca);
   border-radius: 50%;
-  background: var(--tierra);
+  background: var(--verde-2);
 }
 .ticket__pie::before { left: calc(-22px - var(--muesca) / 2); }
 .ticket__pie::after { right: calc(-22px - var(--muesca) / 2); }
@@ -465,3 +453,49 @@
   .profe { flex-basis: clamp(220px, 30vw, 280px); }
   .t-seccion { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.8rem); }
 }
+
+/* =====================================================================
+   TRAMOS CLAROS — oro (hero, reserva) y crudo (profesorado). Dentro se
+   reasignan los tokens de texto: el crudo pasa a tinta y el oro de los
+   detalles, a verde.
+   ===================================================================== */
+.tema-oro, .tema-crudo {
+  --blanco: var(--tinta);
+  --texto: var(--tinta);
+  --linea: rgba(29, 30, 30, .16);
+  color: var(--tinta);
+}
+.tema-oro { --texto-suave: #4a3a10; --oro-texto: var(--verde-oscuro); }   /* 6:1 y 5:1 sobre oro */
+.tema-crudo { --texto-suave: #5d5546; --oro-texto: var(--verde-tinta); }  /* 6,1:1 y 6,6:1 sobre crudo */
+.tema-oro ::selection { background: var(--tinta); color: var(--crudo); }
+/* Botones sobre oro: negros con texto crudo; al pasar, verde */
+.tema-oro .boton--oro { --b-fondo: var(--tinta); --b-borde: var(--tinta); --b-texto: var(--crudo); }
+.tema-oro .boton--oro:hover { --b-fondo: var(--verde-2); --b-borde: var(--verde-2); }
+.tema-oro .enlace--blanco { text-decoration-color: var(--tinta); }
+
+/* Hero sobre oro: la banda de cursos pasa a verde, con singles de oro */
+.tema-oro .banda { background: var(--verde-2); color: var(--crudo); }
+.tema-oro .banda__lista li::after { background: radial-gradient(circle, var(--verde-2) 0 22%, var(--oro) 26%); }
+.tema-oro .altavoz__sello { box-shadow: 0 0 0 4px var(--crudo), var(--sombra-2); }
+
+/* Reserva sobre oro: el formulario sigue en crudo */
+.tema-oro .form { --blanco: var(--crudo); box-shadow: 0 30px 60px -30px rgba(70, 45, 0, .55), 0 2px 6px rgba(70, 45, 0, .25); }
+.tema-oro .reserva__sellos li { border-color: rgba(29, 30, 30, .35); }
+
+/* Grano de serigrafía: lo crudo del papel y de la tierra. Encima del fondo,
+   debajo del contenido; quieto */
+.grano { isolation: isolate; }
+.grano::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .16;
+  mix-blend-mode: multiply;
+}
+.escuela.grano::before, .metodo.grano::before { opacity: .3; mix-blend-mode: soft-light; }
+
+/* Escuela y método comparten la tierra: un solo capítulo, sin doble hueco */
+.escuela + .metodo { padding-top: clamp(16px, 3vw, 40px); }

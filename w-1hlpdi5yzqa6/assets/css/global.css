@@ -49,28 +49,30 @@
   --negro-3: #121310;        /* pie */
   --carbon: #262822;         /* tarjetas sobre negro */
   --carbon-2: #31342b;
-  /* Verde de la bandera, de monte: fondo principal */
-  --verde: #1f3a29;
-  --verde-2: #16291d;        /* más hondo: la mesa, las preguntas */
-  --verde-3: #2a4a34;        /* tarjetas sobre verde */
+  /* Verde de la bandera: a sangre en cursos, alumnado y redes */
+  --verde: #185c36;          /* texto crudo encima: 6,6:1 */
+  --verde-2: #10432a;        /* hondo: agenda, cabecera */
+  --verde-3: #0d3822;        /* tarjetas sobre verde */
+  --verde-oscuro: #145230;   /* verde para texto sobre oro: 5:1 */
   --verde-hoja: #8fbf72;     /* el verde vivo, solo en detalles sobre oscuro: 5,8:1 sobre --verde */
-  --verde-tinta: #2c5a35;    /* verde para texto y foco sobre crudo: 6,6:1 */
-  /* Tierra: la madera del Hammond */
-  --tierra: #2f2118;         /* fondo de la agenda */
-  --tierra-2: #3d2b1f;
+  --verde-tinta: #185c36;    /* verde para texto y foco sobre crudo: 6,6:1 */
+  /* Tierra rojiza: la madera del Hammond y la tierra roja de la isla */
+  --tierra: #5a2d16;         /* escuela y método; texto crudo encima: 9,5:1 */
+  --tierra-2: #6e3a1e;
   --tierra-tinta: #7a4a26;   /* texto tierra sobre crudo: 6,1:1 */
   /* Oro de la bandera: el ámbar de los vúmetros */
-  --oro: #e6ae35;            /* relleno: botones, cabezal, sellos (texto encima en --tinta: 8,3:1) */
-  --oro-2: #f0c158;          /* hover */
-  --oro-texto: #ecbd4c;      /* oro para texto sobre oscuro: 7 a 10:1 */
+  --oro: #f2b531;            /* a sangre en hero y reserva; botones (texto en --tinta: 9,1:1) */
+  --oro-2: #f6c457;          /* hover */
+  --oro-texto: #f2c14e;      /* oro para texto sobre oscuro: 4,8:1 sobre verde, 10:1 sobre negro */
   /* Crudo en lugar de blanco */
-  --blanco: #f1e9d6;
+  --crudo: #f1e9d6;          /* fijo: no cambia en los tramos claros */
+  --blanco: #f1e9d6;         /* el color del texto principal: en tramos claros pasa a --tinta */
   --gris-1: #e6dcc5;
   --tinta: #1d1e1e;          /* texto sobre crudo y sobre oro */
   --error: #a8261c;          /* errores de formulario sobre crudo: 5,9:1 */
 
   --texto: var(--blanco);
-  --texto-suave: #c9bfa8;    /* 6,8:1 sobre verde, 9,2:1 sobre negro */
+  --texto-suave: #d6ccb4;    /* 5:1 sobre verde, 11:1 sobre negro */
   --linea: rgba(241, 233, 214, .14);
 
   /* Sombras profundas, en capas */
@@ -299,7 +301,7 @@ em { font-style: italic; }
   inset: 0 0 auto;
   z-index: 60;
   height: var(--cab-alto);
-  background: rgba(22, 41, 29, .9);
+  background: rgba(16, 67, 42, .92);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   backdrop-filter: blur(14px) saturate(1.2);
 }
@@ -510,7 +512,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   inset: auto 0 0;
   z-index: 50;
   padding: 10px var(--gutter) max(10px, env(safe-area-inset-bottom));
-  background: rgba(22, 41, 29, .92);
+  background: rgba(16, 67, 42, .94);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   box-shadow: 0 -1px 0 var(--linea);

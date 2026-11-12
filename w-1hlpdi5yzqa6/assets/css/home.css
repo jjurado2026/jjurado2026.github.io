@@ -5,11 +5,14 @@
    preguntas · reserva · método · redes
    ===================================================================== */
 
-/* ---------- Ritmo de fondos: los colores de la bandera, por tramos ---------- */
-.hero, .escuela, .alumnado, .redes { background: var(--verde); }
-.cursos, .reserva { background: var(--verde-2); }
-.tarifas, .metodo { background: var(--negro); }
-.preguntas { background: var(--tierra); }
+/* ---------- Ritmo de fondos: la bandera a sangre, por tramos ----------
+   oro: hero y reserva · verde: cursos, alumnado y redes · crudo: profesorado ·
+   tierra: escuela y método · negro: la cinta, tarifas y preguntas ·
+   verde hondo: agenda · negro hondo: noticias (secciones.css) */
+.hero, .reserva { background: var(--oro); }
+.cursos, .alumnado, .redes { background: var(--verde); }
+.escuela, .metodo { background: var(--tierra); }
+.tarifas, .preguntas { background: var(--negro); }
 
 /* ---------- Cabeceras de sección ---------- */
 .cabeza { margin-bottom: clamp(36px, 5vw, 64px); }
