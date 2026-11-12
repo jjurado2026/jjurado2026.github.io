@@ -1,0 +1,146 @@
+- generic [active] [ref=f11e1]:
+  - banner [ref=f11e2]:
+    - generic [ref=f11e3]:
+      - paragraph [ref=f11e4]: Reggae School Madrid · desarrollo
+      - heading [level=1] [ref=f11e5]:
+        - text: Tres decisiones,
+        - emphasis [ref=f11e6]: cada una acabada
+      - paragraph [ref=f11e7]: Cada opción se ve en la web completa. Elige una de cada y abajo puedes ver la combinación. En las dos opciones de color ya no hay marrón, y la fila de entradas de fechas se sustituye por 3a o 3b.
+  - main [ref=f11e8]:
+    - region [ref=f11e9]:
+      - generic [ref=f11e10]:
+        - generic [ref=f11e11]:
+          - heading "El color de la portada y los fondos" [level=2] [ref=f11e12]
+          - paragraph [ref=f11e13]: El hero se ve a 1440 × 900. Cambia también el ritmo de fondos del resto de la página.
+        - generic [ref=f11e14]:
+          - article [ref=f11e15]:
+            - figure [ref=f11e16]:
+              - 'img "Opción 1a: hero en verde con el titular en crudo y tocan, el botón y la banda en oro" [ref=f11e17]'
+              - generic [ref=f11e18]: 1a
+            - generic [ref=f11e19]:
+              - heading "Verde principal, letras de oro" [level=3] [ref=f11e20]
+              - paragraph [ref=f11e21]: El hero en verde bandera, con «tocan», el botón y la banda de cursos en oro. Los fondos alternan verde, verde hondo y negro; el crudo, solo en el profesorado. La reserva, también en verde.
+              - paragraph [ref=f11e22]:
+                - link "Ver la web con 1a" [ref=f11e23] [cursor=pointer]:
+                  - /url: index.html?color=a
+          - article [ref=f11e24]:
+            - figure [ref=f11e25]:
+              - 'img "Opción 1b: hero en oro a sangre con el titular en negro y la banda en verde" [ref=f11e26]'
+              - generic [ref=f11e27]: 1b
+            - generic [ref=f11e28]:
+              - heading "Oro a sangre" [level=3] [ref=f11e29]
+              - paragraph [ref=f11e30]: El hero y la reserva en oro, como los carteles de sus jams, con el titular en negro y la banda de cursos en verde. El resto, en verde, verde hondo, negro y crudo.
+              - paragraph [ref=f11e31]:
+                - link "Ver la web con 1b" [ref=f11e32] [cursor=pointer]:
+                  - /url: index.html?color=b
+    - region [ref=f11e33]:
+      - generic [ref=f11e34]:
+        - generic [ref=f11e35]:
+          - heading "Con quién han tocado" [level=2] [ref=f11e36]
+          - paragraph [ref=f11e37]: Los mismos 25 nombres, sacados de las biografías de su web, y con qué profesor fue cada uno.
+        - generic [ref=f11e38]:
+          - article [ref=f11e39]:
+            - figure [ref=f11e40]:
+              - 'img "Opción 2a: tres filas de nombres que pasan bajo un cabezal de oro" [ref=f11e41]'
+              - generic [ref=f11e42]: 2a
+            - generic [ref=f11e43]:
+              - heading "La cinta" [level=3] [ref=f11e44]
+              - paragraph [ref=f11e45]: Tres filas de nombres que pasan solas bajo un cabezal de oro. El que pasa por debajo se enciende y dice con qué profesor fue. Se para con el ratón encima.
+              - paragraph [ref=f11e46]:
+                - link "Ver 2a en la web" [ref=f11e47] [cursor=pointer]:
+                  - /url: index.html?artistas=a#con-quien
+          - article [ref=f11e48]:
+            - figure [ref=f11e49]:
+              - 'img "Opción 2b: cartel de festival con los nombres de mayor a menor" [ref=f11e50]'
+              - generic [ref=f11e51]: 2b
+            - generic [ref=f11e52]:
+              - heading "Cartel de festival" [level=3] [ref=f11e53]
+              - paragraph [ref=f11e54]: Todos los nombres a la vista y quietos, de más a menos conocidos, como un cartel de festival. La sigla dice con qué profesor; la leyenda resalta los de cada uno.
+              - paragraph [ref=f11e55]:
+                - link "Ver 2b en la web" [ref=f11e56] [cursor=pointer]:
+                  - /url: index.html?artistas=b#con-quien-cartel
+          - article [ref=f11e57]:
+            - figure [ref=f11e58]:
+              - 'img "Opción 2c: créditos de disco con cara A y cara B junto al tocadiscos del estudio" [ref=f11e59]'
+              - generic [ref=f11e60]: 2c
+            - generic [ref=f11e61]:
+              - heading "Créditos de disco" [level=3] [ref=f11e62]
+              - paragraph [ref=f11e63]: Cara A internacional y cara B de aquí, como el reverso de un vinilo, junto al tocadiscos de su estudio. Cada fila, el artista y su profesor; una pista «suena» cada compás.
+              - paragraph [ref=f11e64]:
+                - link "Ver 2c en la web" [ref=f11e65] [cursor=pointer]:
+                  - /url: index.html?artistas=c#con-quien-creditos
+    - region [ref=f11e66]:
+      - generic [ref=f11e67]:
+        - generic [ref=f11e68]:
+          - heading "Las fechas de jams, talleres y clases grupales" [level=2] [ref=f11e69]
+          - paragraph [ref=f11e70]: Sustituye a la fila de entradas. Lo que ya pasó se cuenta en noticias, no en la agenda.
+        - generic [ref=f11e71]:
+          - article [ref=f11e72]:
+            - figure [ref=f11e73]:
+              - 'img "Opción 3a: cada tarjeta de jams, talleres y clases grupales lleva su fecha" [ref=f11e74]'
+              - generic [ref=f11e75]: 3a
+            - generic [ref=f11e76]:
+              - heading "La fecha, dentro de cada formato" [level=3] [ref=f11e77]
+              - paragraph [ref=f11e78]: "Cada tarjeta lleva la suya: la última jam y dónde ver las próximas, el próximo taller (por anunciar) y el horario del Combo con su botón. Una sola pieza, sin fila aparte."
+              - paragraph [ref=f11e79]:
+                - link "Ver 3a en la web" [ref=f11e80] [cursor=pointer]:
+                  - /url: index.html?fechas=a#agenda
+          - article [ref=f11e81]:
+            - figure [ref=f11e82]:
+              - 'img "Opción 3b: lista de próximas fechas con cuándo, qué, dónde y un botón" [ref=f11e83]'
+              - generic [ref=f11e84]: 3b
+            - generic [ref=f11e85]:
+              - heading "Agenda en lista" [level=3] [ref=f11e86]
+              - paragraph [ref=f11e87]: "Bajo las tarjetas, una lista de próximas fechas: cuándo, qué, dónde y un botón. Hoy tiene el Combo y dos fechas por anunciar; crece sola cuando publiquen jams y talleres."
+              - paragraph [ref=f11e88]:
+                - link "Ver 3b en la web" [ref=f11e89] [cursor=pointer]:
+                  - /url: index.html?fechas=b#agenda
+    - region [ref=f11e90]:
+      - generic [ref=f11e91]:
+        - heading "Ver una combinación" [level=2] [ref=f11e92]
+        - paragraph [ref=f11e93]: Elige una de cada y ábrela en la web completa.
+        - generic [ref=f11e94]:
+          - group "Color" [ref=f11e95]:
+            - generic [ref=f11e97]:
+              - generic [ref=f11e98]:
+                - radio "1a Verde principal" [checked]
+                - generic [ref=f11e99] [cursor=pointer]:
+                  - generic [ref=f11e100]: 1a
+                  - text: Verde principal
+              - generic [ref=f11e101]:
+                - radio "1b Oro a sangre"
+                - generic [ref=f11e102] [cursor=pointer]:
+                  - generic [ref=f11e103]: 1b
+                  - text: Oro a sangre
+          - group "Con quién han tocado" [ref=f11e104]:
+            - generic [ref=f11e106]:
+              - generic [ref=f11e107]:
+                - radio "2a La cinta"
+                - generic [ref=f11e108] [cursor=pointer]:
+                  - generic [ref=f11e109]: 2a
+                  - text: La cinta
+              - generic [ref=f11e110]:
+                - radio "2b Cartel de festival" [checked]
+                - generic [ref=f11e111] [cursor=pointer]:
+                  - generic [ref=f11e112]: 2b
+                  - text: Cartel de festival
+              - generic [ref=f11e113]:
+                - radio "2c Créditos de disco"
+                - generic [ref=f11e114] [cursor=pointer]:
+                  - generic [ref=f11e115]: 2c
+                  - text: Créditos de disco
+          - group "Fechas" [ref=f11e116]:
+            - generic [ref=f11e118]:
+              - generic [ref=f11e119]:
+                - radio "3a Dentro de cada formato" [checked]
+                - generic [ref=f11e120] [cursor=pointer]:
+                  - generic [ref=f11e121]: 3a
+                  - text: Dentro de cada formato
+              - generic [ref=f11e122]:
+                - radio "3b Agenda en lista"
+                - generic [ref=f11e123] [cursor=pointer]:
+                  - generic [ref=f11e124]: 3b
+                  - text: Agenda en lista
+          - generic [ref=f11e125]:
+            - button "Ver la combinación" [ref=f11e126] [cursor=pointer]
+            - paragraph [ref=f11e127]: index.html?color=a&artistas=b&fechas=a

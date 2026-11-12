@@ -7,11 +7,11 @@
 
 /* ---------- Ritmo de fondos: la bandera a sangre, por tramos ----------
    oro: hero y reserva · verde: cursos, alumnado y redes · crudo: profesorado ·
-   tierra: escuela y método · negro: la cinta, tarifas y preguntas ·
-   verde hondo: agenda · negro hondo: noticias (secciones.css) */
+   verde hondo: escuela, método y agenda · negro: la cinta, tarifas y preguntas ·
+   negro hondo: noticias (secciones.css). Sin marrón desde el 12-11-2026 */
 .hero, .reserva { background: var(--oro); }
 .cursos, .alumnado, .redes { background: var(--verde); }
-.escuela, .metodo { background: var(--tierra); }
+.escuela, .metodo { background: var(--verde-2); }
 .tarifas, .preguntas { background: var(--negro); }
 
 /* ---------- Cabeceras de sección ---------- */

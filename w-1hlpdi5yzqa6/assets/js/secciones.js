@@ -12,7 +12,7 @@
      para con el ratón encima, fuera de pantalla o con la pestaña oculta. Con
      movimiento reducido o en captura (?ss), listas quietas que se leen enteras. */
   const cinta = document.querySelector('[data-cinta]');
-  if (cinta) {
+  if (cinta && getComputedStyle(cinta).display !== 'none') {
     const caja = cinta.querySelector('[data-cinta-pistas]');
     const pistas = [...cinta.querySelectorAll('.pista')];
     const velocidad = [-58, 46, -66]; // px por segundo; negativo, hacia la izquierda
@@ -38,6 +38,7 @@
       datos = pistas.map((ul, i) => {
         const originales = [...ul.children];
         const vuelta = ul.offsetWidth;
+        if (!vuelta) return { ul, items: [], vuelta: 1, v: 0, x: 0, activo: null };
         for (let cubierto = vuelta; cubierto < ancho + vuelta; cubierto += vuelta) {
           originales.forEach((li) => {
             const c = li.cloneNode(true);
@@ -163,5 +164,49 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     secciones.forEach((s) => io.observe(s));
+  }
+
+  /* ---------- Opción 2b · Cartel: la leyenda resalta los de un profesor ---------- */
+  const cartel = document.querySelector('[data-cartel]');
+  if (cartel) {
+    const nombres = [...cartel.querySelectorAll('.cartel__n')];
+    const botones = [...cartel.querySelectorAll('button[data-profe]')];
+    let fijo = null;
+    const resaltar = (sigla) => {
+      if (sigla) cartel.setAttribute('data-activo', sigla);
+      else cartel.removeAttribute('data-activo');
+      nombres.forEach((n) => n.classList.toggle('on', !!sigla && n.dataset.profes.split(' ').includes(sigla)));
+    };
+    botones.forEach((b) => {
+      b.addEventListener('click', () => {
+        fijo = fijo === b.dataset.profe ? null : b.dataset.profe;
+        botones.forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.profe === fijo)));
+        resaltar(fijo);
+      });
+      b.addEventListener('pointerenter', () => resaltar(b.dataset.profe));
+      b.addEventListener('pointerleave', () => resaltar(fijo));
+    });
+  }
+
+  /* ---------- Opción 2c · Créditos de disco: suena una pista por compás ----------
+     3,2 s, un compás de one drop a 75 BPM. Se para con el ratón encima y fuera de pantalla. */
+  const creditos = document.querySelector('[data-creditos]');
+  if (creditos && !captura) {
+    const surcos = [...creditos.querySelectorAll('.surcos li')];
+    let n = 0;
+    let enPantalla = false;
+    let quieto = false;
+    const sonar = () => surcos.forEach((li, j) => li.classList.toggle('sonando', j === n));
+    creditos.addEventListener('pointerenter', () => { quieto = true; });
+    creditos.addEventListener('pointerleave', () => { quieto = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { enPantalla = e.isIntersecting; }, { threshold: 0.3 }).observe(creditos);
+    }
+    sonar();
+    setInterval(() => {
+      if (!enPantalla || quieto || reducido.matches || document.hidden) return;
+      n = (n + 1) % surcos.length;
+      sonar();
+    }, 3200);
   }
 })();

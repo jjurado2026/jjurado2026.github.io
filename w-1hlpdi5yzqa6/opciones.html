@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Opciones — Reggae School Madrid</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#10432a">
+<link rel="icon" href="assets/img/logo-120.webp" type="image/webp">
+<link rel="stylesheet" href="assets/css/global.css?v=4.2">
+<style>
+  body { background: var(--negro); }
+  .op-cab { padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 48px); border-bottom: 1px solid var(--linea); }
+  .op-cab__marca { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px); color: var(--texto-suave); font-size: .95rem; }
+  .op-cab__marca img { width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(241, 233, 214, .28); }
+  .op-cab h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.2rem, 1.4rem + 3vw, 4rem); line-height: 1.02; color: var(--crudo); max-width: 18ch; text-wrap: balance; }
+  .op-cab h1 em { color: var(--oro-texto); font-weight: 700; }
+  .op-cab p { margin-top: var(--e-5); max-width: 62ch; color: var(--texto-suave); font-size: clamp(1rem, .96rem + .25vw, 1.12rem); }
+
+  .decision { padding-block: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--linea); }
+  .decision__cab { display: grid; gap: var(--e-3); margin-bottom: clamp(28px, 4vw, 44px); max-width: 64ch; }
+  .decision__cab h2 { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem); line-height: 1.05; color: var(--crudo); }
+  .decision__cab p { color: var(--texto-suave); }
+  .opciones { display: grid; gap: clamp(20px, 2.6vw, 32px); }
+  @media (min-width: 900px) {
+    .opciones--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .opciones--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .opcion { display: grid; grid-template-rows: auto 1fr; border-radius: var(--radio); overflow: hidden; background: var(--carbon); scroll-margin-top: 24px; }
+  .opcion__foto { position: relative; aspect-ratio: 16 / 10; background: var(--negro-2); }
+  .opcion__foto img { width: 100%; height: 100%; object-fit: cover; }
+  .opcion__id {
+    position: absolute; left: 14px; top: 14px;
+    display: grid; place-items: center;
+    min-width: 46px; height: 34px; padding: 0 10px;
+    border-radius: 999px;
+    background: var(--oro); color: var(--tinta);
+    font-family: var(--f-mono); font-size: .85rem; font-weight: 700;
+    box-shadow: 0 6px 18px -6px rgba(0, 0, 0, .6);
+  }
+  .opcion__texto { display: flex; flex-direction: column; gap: var(--e-3); padding: clamp(20px, 2.4vw, 28px); }
+  .opcion__t { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.35rem, 1.15rem + .6vw, 1.7rem); line-height: 1.1; color: var(--crudo); }
+  .opcion__d { color: var(--texto-suave); font-size: .97rem; }
+  .opcion__ver { margin-top: auto; padding-top: var(--e-2); }
+
+  .combina { padding-block: clamp(48px, 7vw, 88px); }
+  .combina h2 { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem); line-height: 1.05; color: var(--crudo); }
+  .combina > .envoltura > p { margin-top: var(--e-3); color: var(--texto-suave); max-width: 60ch; }
+  .combina form { display: grid; gap: var(--e-5); margin-top: clamp(24px, 3vw, 36px); }
+  .grupo { display: grid; gap: var(--e-2); border: 0; margin: 0; padding: 0; }
+  .grupo legend { margin-bottom: var(--e-2); color: var(--crudo); font-weight: 650; }
+  .grupo__ops { display: flex; flex-wrap: wrap; gap: 8px; }
+  .grupo label { position: relative; }
+  .grupo input { position: absolute; opacity: 0; pointer-events: none; }
+  .grupo span {
+    display: inline-flex; align-items: center; gap: 8px;
+    min-height: 44px; padding: 8px 16px;
+    border-radius: 999px; border: 1.5px solid rgba(241, 233, 214, .32);
+    color: var(--crudo); font-weight: 600; font-size: .95rem; cursor: pointer;
+    transition: background-color 180ms var(--salida), color 180ms var(--salida), border-color 180ms var(--salida), transform 360ms var(--muelle);
+  }
+  .grupo span b { font-family: var(--f-mono); font-size: .78rem; color: var(--oro-texto); }
+  .grupo label:hover span { border-color: var(--oro); }
+  .grupo label:active span { transform: scale(.97); }
+  .grupo input:checked + span { background: var(--oro); border-color: var(--oro); color: var(--tinta); }
+  .grupo input:checked + span b { color: var(--tinta); }
+  .grupo input:focus-visible + span { outline: 3px solid var(--oro-texto); outline-offset: 3px; }
+  .combina__accion { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-4); }
+  .combina__url { font-family: var(--f-mono); font-size: .78rem; color: var(--texto-suave); overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+
+<header class="op-cab">
+  <div class="envoltura">
+    <p class="op-cab__marca"><img src="assets/img/logo-120.webp" width="48" height="48" alt=""> Reggae School Madrid · desarrollo</p>
+    <h1>Tres decisiones, <em>cada una acabada</em></h1>
+    <p>Cada opción se ve en la web completa. Elige una de cada y abajo puedes ver la combinación. En las dos opciones de color ya no hay marrón, y la fila de entradas de fechas se sustituye por 3a o 3b.</p>
+  </div>
+</header>
+
+<main>
+  <section class="decision" aria-labelledby="d1">
+    <div class="envoltura">
+      <header class="decision__cab">
+        <h2 id="d1">El color de la portada y los fondos</h2>
+        <p>El hero se ve a 1440 × 900. Cambia también el ritmo de fondos del resto de la página.</p>
+      </header>
+      <div class="opciones opciones--2">
+        <article class="opcion" id="1a">
+          <figure class="opcion__foto"><img src="opciones/op-1a.webp" width="960" height="600" alt="Opción 1a: hero en verde con el titular en crudo y tocan, el botón y la banda en oro" loading="lazy"><span class="opcion__id">1a</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">Verde principal, letras de oro</h3>
+            <p class="opcion__d">El hero en verde bandera, con «tocan», el botón y la banda de cursos en oro. Los fondos alternan verde, verde hondo y negro; el crudo, solo en el profesorado. La reserva, también en verde.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?color=a">Ver la web con 1a</a></p>
+          </div>
+        </article>
+        <article class="opcion" id="1b">
+          <figure class="opcion__foto"><img src="opciones/op-1b.webp" width="960" height="600" alt="Opción 1b: hero en oro a sangre con el titular en negro y la banda en verde" loading="lazy"><span class="opcion__id">1b</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">Oro a sangre</h3>
+            <p class="opcion__d">El hero y la reserva en oro, como los carteles de sus jams, con el titular en negro y la banda de cursos en verde. El resto, en verde, verde hondo, negro y crudo.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?color=b">Ver la web con 1b</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="decision" aria-labelledby="d2">
+    <div class="envoltura">
+      <header class="decision__cab">
+        <h2 id="d2">Con quién han tocado</h2>
+        <p>Los mismos 25 nombres, sacados de las biografías de su web, y con qué profesor fue cada uno.</p>
+      </header>
+      <div class="opciones opciones--3">
+        <article class="opcion" id="2a">
+          <figure class="opcion__foto"><img src="opciones/op-2a.webp" width="960" height="600" alt="Opción 2a: tres filas de nombres que pasan bajo un cabezal de oro" loading="lazy"><span class="opcion__id">2a</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">La cinta</h3>
+            <p class="opcion__d">Tres filas de nombres que pasan solas bajo un cabezal de oro. El que pasa por debajo se enciende y dice con qué profesor fue. Se para con el ratón encima.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?artistas=a#con-quien">Ver 2a en la web</a></p>
+          </div>
+        </article>
+        <article class="opcion" id="2b">
+          <figure class="opcion__foto"><img src="opciones/op-2b.webp" width="960" height="600" alt="Opción 2b: cartel de festival con los nombres de mayor a menor" loading="lazy"><span class="opcion__id">2b</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">Cartel de festival</h3>
+            <p class="opcion__d">Todos los nombres a la vista y quietos, de más a menos conocidos, como un cartel de festival. La sigla dice con qué profesor; la leyenda resalta los de cada uno.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?artistas=b#con-quien-cartel">Ver 2b en la web</a></p>
+          </div>
+        </article>
+        <article class="opcion" id="2c">
+          <figure class="opcion__foto"><img src="opciones/op-2c.webp" width="960" height="600" alt="Opción 2c: créditos de disco con cara A y cara B junto al tocadiscos del estudio" loading="lazy"><span class="opcion__id">2c</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">Créditos de disco</h3>
+            <p class="opcion__d">Cara A internacional y cara B de aquí, como el reverso de un vinilo, junto al tocadiscos de su estudio. Cada fila, el artista y su profesor; una pista «suena» cada compás.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?artistas=c#con-quien-creditos">Ver 2c en la web</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="decision" aria-labelledby="d3">
+    <div class="envoltura">
+      <header class="decision__cab">
+        <h2 id="d3">Las fechas de jams, talleres y clases grupales</h2>
+        <p>Sustituye a la fila de entradas. Lo que ya pasó se cuenta en noticias, no en la agenda.</p>
+      </header>
+      <div class="opciones opciones--2">
+        <article class="opcion" id="3a">
+          <figure class="opcion__foto"><img src="opciones/op-3a.webp" width="960" height="600" alt="Opción 3a: cada tarjeta de jams, talleres y clases grupales lleva su fecha" loading="lazy"><span class="opcion__id">3a</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">La fecha, dentro de cada formato</h3>
+            <p class="opcion__d">Cada tarjeta lleva la suya: la última jam y dónde ver las próximas, el próximo taller (por anunciar) y el horario del Combo con su botón. Una sola pieza, sin fila aparte.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?fechas=a#agenda">Ver 3a en la web</a></p>
+          </div>
+        </article>
+        <article class="opcion" id="3b">
+          <figure class="opcion__foto"><img src="opciones/op-3b.webp" width="960" height="600" alt="Opción 3b: lista de próximas fechas con cuándo, qué, dónde y un botón" loading="lazy"><span class="opcion__id">3b</span></figure>
+          <div class="opcion__texto">
+            <h3 class="opcion__t">Agenda en lista</h3>
+            <p class="opcion__d">Bajo las tarjetas, una lista de próximas fechas: cuándo, qué, dónde y un botón. Hoy tiene el Combo y dos fechas por anunciar; crece sola cuando publiquen jams y talleres.</p>
+            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?fechas=b#agenda">Ver 3b en la web</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="combina" aria-labelledby="dc">
+    <div class="envoltura">
+      <h2 id="dc">Ver una combinación</h2>
+      <p>Elige una de cada y ábrela en la web completa.</p>
+      <form data-combina>
+        <fieldset class="grupo">
+          <legend>Color</legend>
+          <div class="grupo__ops">
+            <label><input type="radio" name="color" value="a" checked><span><b>1a</b> Verde principal</span></label>
+            <label><input type="radio" name="color" value="b"><span><b>1b</b> Oro a sangre</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="grupo">
+          <legend>Con quién han tocado</legend>
+          <div class="grupo__ops">
+            <label><input type="radio" name="artistas" value="a"><span><b>2a</b> La cinta</span></label>
+            <label><input type="radio" name="artistas" value="b" checked><span><b>2b</b> Cartel de festival</span></label>
+            <label><input type="radio" name="artistas" value="c"><span><b>2c</b> Créditos de disco</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="grupo">
+          <legend>Fechas</legend>
+          <div class="grupo__ops">
+            <label><input type="radio" name="fechas" value="a" checked><span><b>3a</b> Dentro de cada formato</span></label>
+            <label><input type="radio" name="fechas" value="b"><span><b>3b</b> Agenda en lista</span></label>
+          </div>
+        </fieldset>
+        <div class="combina__accion">
+          <button class="boton boton--oro boton--grande" type="submit">Ver la combinación</button>
+          <p class="combina__url" data-combina-url aria-live="polite">index.html?color=a&amp;artistas=b&amp;fechas=a</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var f = document.querySelector('[data-combina]');
+    var salida = document.querySelector('[data-combina-url]');
+    var url = function () {
+      var d = new FormData(f);
+      return 'index.html?color=' + d.get('color') + '&artistas=' + d.get('artistas') + '&fechas=' + d.get('fechas');
+    };
+    f.addEventListener('change', function () { salida.textContent = url(); });
+    f.addEventListener('submit', function (e) { e.preventDefault(); location.href = url(); });
+  })();
+</script>
+</body>
+</html>

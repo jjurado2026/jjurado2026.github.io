@@ -1,0 +1,793 @@
+- generic [active] [ref=f6e1]:
+  - link "Saltar al contenido" [ref=f6e2] [cursor=pointer]:
+    - /url: "#contenido"
+  - banner [ref=f6e3]:
+    - generic [ref=f6e4]:
+      - link "Reggae School Madrid, volver arriba" [ref=f6e5] [cursor=pointer]:
+        - /url: "#"
+        - img "Reggae School Madrid" [ref=f6e6]
+      - navigation "Principal" [ref=f6e7]:
+        - list [ref=f6e8]:
+          - listitem [ref=f6e9]:
+            - link "Cursos" [ref=f6e10] [cursor=pointer]:
+              - /url: "#cursos"
+          - listitem [ref=f6e11]:
+            - link "Profesorado" [ref=f6e12] [cursor=pointer]:
+              - /url: "#profesorado"
+          - listitem [ref=f6e13]:
+            - link "Tarifas" [ref=f6e14] [cursor=pointer]:
+              - /url: "#tarifas"
+          - listitem [ref=f6e15]:
+            - link "Jams y talleres" [ref=f6e16] [cursor=pointer]:
+              - /url: "#agenda"
+          - listitem [ref=f6e17]:
+            - link "Noticias" [ref=f6e18] [cursor=pointer]:
+              - /url: "#noticias"
+      - link "Sesión de prueba" [ref=f6e19] [cursor=pointer]:
+        - /url: "#reserva"
+  - main [ref=f6e20]:
+    - region [ref=f6e21]:
+      - generic [ref=f6e22]:
+        - generic [ref=f6e23]:
+          - heading "Aprende reggae con los músicos que lo tocan ." [level=1] [ref=f6e24]:
+            - generic [ref=f6e25]: Aprende reggae
+            - generic [ref=f6e26]: con los músicos
+            - generic [ref=f6e27]:
+              - text: que lo
+              - generic [ref=f6e28]:
+                - emphasis [ref=f6e29]: tocan
+                - generic [aria-hidden]: tocan
+                - generic [aria-hidden]: tocan
+                - generic [aria-hidden]: tocan
+              - text: .
+          - paragraph [ref=f6e30]:
+            - text: Guitarra, bajo, canto, saxo, teclado, batería, producción y banda. Online o presencial en Madrid, con profesores que han colaborado con
+            - strong [ref=f6e31]: Ky-Mani Marley
+            - text: y han grabado con
+            - strong [ref=f6e32]: Ska-P
+            - text: .
+          - link "Reserva tu sesión de prueba" [ref=f6e34] [cursor=pointer]:
+            - /url: "#reserva"
+        - img "Dos profesores de la escuela tocando en directo, guitarra y voz, con luces de escenario" [ref=f6e40]
+      - generic "Los ocho cursos de la escuela" [ref=f6e41]:
+        - generic [ref=f6e42]:
+          - list [ref=f6e43]:
+            - listitem [ref=f6e44]: Guitarra
+            - listitem [ref=f6e45]: Bajo
+            - listitem [ref=f6e46]: Canto
+            - listitem [ref=f6e47]: Saxo
+            - listitem [ref=f6e48]: Teclado
+            - listitem [ref=f6e49]: Batería
+            - listitem [ref=f6e50]: Producción y mezcla
+            - listitem [ref=f6e51]: Combo RSM
+          - list [aria-hidden] [ref=f6e52]:
+            - listitem [ref=f6e53]: Guitarra
+            - listitem [ref=f6e54]: Bajo
+            - listitem [ref=f6e55]: Canto
+            - listitem [ref=f6e56]: Saxo
+            - listitem [ref=f6e57]: Teclado
+            - listitem [ref=f6e58]: Batería
+            - listitem [ref=f6e59]: Producción y mezcla
+            - listitem [ref=f6e60]: Combo RSM
+    - region [ref=f6e61]:
+      - generic [ref=f6e63]:
+        - generic [ref=f6e64]:
+          - heading [level=2] [ref=f6e65]:
+            - text: Tus profesores han tocado
+            - emphasis [ref=f6e66]: con ellos
+          - paragraph [ref=f6e67]: Discos, giras y escenarios de quienes te dan clase en la escuela.
+        - generic [ref=f6e68]:
+          - list "Artistas internacionales" [ref=f6e69]:
+            - listitem [ref=f6e70]:
+              - generic [ref=f6e71]: Ky-Mani Marley
+              - generic [ref=f6e72]: con Maga Lion
+            - listitem [ref=f6e73]:
+              - generic [ref=f6e74]: Brian Travers (UB40)
+              - generic [ref=f6e75]: con Maga Lion
+            - listitem [ref=f6e76]:
+              - generic [ref=f6e77]: Clinton Fearon
+              - generic [ref=f6e78]: con Maga Lion
+            - listitem [ref=f6e79]:
+              - generic [ref=f6e80]: Luciano
+              - generic [ref=f6e81]: con Maga Lion
+            - listitem [ref=f6e82]:
+              - generic [ref=f6e83]: Michael Prophet
+              - generic [ref=f6e84]: con Jorge Rodríguez y Miguel Valenciano
+            - listitem [ref=f6e85]:
+              - generic [ref=f6e86]: Al Campbell
+              - generic [ref=f6e87]: con Miguel Valenciano
+            - listitem [ref=f6e88]:
+              - generic [ref=f6e89]: Alpheus
+              - generic [ref=f6e90]: con Jorge Rodríguez
+            - listitem [ref=f6e91]:
+              - generic [ref=f6e92]: Mellow Mood
+              - generic [ref=f6e93]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e94]:
+              - generic [ref=f6e95]: Ky-Mani Marley
+              - generic [ref=f6e96]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e97]:
+              - generic [ref=f6e98]: Brian Travers (UB40)
+              - generic [ref=f6e99]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e100]:
+              - generic [ref=f6e101]: Clinton Fearon
+              - generic [ref=f6e102]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e103]:
+              - generic [ref=f6e104]: Luciano
+              - generic [ref=f6e105]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e106]:
+              - generic [ref=f6e107]: Michael Prophet
+              - generic [ref=f6e108]: con Jorge Rodríguez y Miguel Valenciano
+            - listitem [aria-hidden] [ref=f6e109]:
+              - generic [ref=f6e110]: Al Campbell
+              - generic [ref=f6e111]: con Miguel Valenciano
+            - listitem [aria-hidden] [ref=f6e112]:
+              - generic [ref=f6e113]: Alpheus
+              - generic [ref=f6e114]: con Jorge Rodríguez
+            - listitem [aria-hidden] [ref=f6e115]:
+              - generic [ref=f6e116]: Mellow Mood
+              - generic [ref=f6e117]: con Maga Lion
+          - list "Artistas de aquí" [ref=f6e118]:
+            - listitem [ref=f6e119]:
+              - generic [ref=f6e120]: Ska-P
+              - generic [ref=f6e121]: con Jorge Rodríguez, en sus dos últimos discos
+            - listitem [ref=f6e122]:
+              - generic [ref=f6e123]: Morodo
+              - generic [ref=f6e124]: con Maga Lion
+            - listitem [ref=f6e125]:
+              - generic [ref=f6e126]: Swan Fyahbwoy
+              - generic [ref=f6e127]: profesor por confirmar
+            - listitem [ref=f6e128]:
+              - generic [ref=f6e129]: Macaco
+              - generic [ref=f6e130]: con Maga Lion
+            - listitem [ref=f6e131]:
+              - generic [ref=f6e132]: Iseo & Dodosound
+              - generic [ref=f6e133]: profesor por confirmar
+            - listitem [ref=f6e134]:
+              - generic [ref=f6e135]: Xoel López
+              - generic [ref=f6e136]: con Jorge Rodríguez
+            - listitem [ref=f6e137]:
+              - generic [ref=f6e138]: Hermano L
+              - generic [ref=f6e139]: con Miguel Valenciano
+            - listitem [ref=f6e140]:
+              - generic [ref=f6e141]: Freedonia
+              - generic [ref=f6e142]: con Jorge Rodríguez
+            - listitem [ref=f6e143]:
+              - generic [ref=f6e144]: Chalart 58
+              - generic [ref=f6e145]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e146]:
+              - generic [ref=f6e147]: Ska-P
+              - generic [ref=f6e148]: con Jorge Rodríguez, en sus dos últimos discos
+            - listitem [aria-hidden] [ref=f6e149]:
+              - generic [ref=f6e150]: Morodo
+              - generic [ref=f6e151]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e152]:
+              - generic [ref=f6e153]: Swan Fyahbwoy
+              - generic [ref=f6e154]: profesor por confirmar
+            - listitem [aria-hidden] [ref=f6e155]:
+              - generic [ref=f6e156]: Macaco
+              - generic [ref=f6e157]: con Maga Lion
+            - listitem [aria-hidden] [ref=f6e158]:
+              - generic [ref=f6e159]: Iseo & Dodosound
+              - generic [ref=f6e160]: profesor por confirmar
+            - listitem [aria-hidden] [ref=f6e161]:
+              - generic [ref=f6e162]: Xoel López
+              - generic [ref=f6e163]: con Jorge Rodríguez
+            - listitem [aria-hidden] [ref=f6e164]:
+              - generic [ref=f6e165]: Hermano L
+              - generic [ref=f6e166]: con Miguel Valenciano
+            - listitem [aria-hidden] [ref=f6e167]:
+              - generic [ref=f6e168]: Freedonia
+              - generic [ref=f6e169]: con Jorge Rodríguez
+            - listitem [aria-hidden] [ref=f6e170]:
+              - generic [ref=f6e171]: Chalart 58
+              - generic [ref=f6e172]: con Maga Lion
+          - list "Bandas en las que tocan o han tocado" [ref=f6e173]:
+            - listitem [ref=f6e174]:
+              - generic [ref=f6e175]: Emeterians
+              - generic [ref=f6e176]: con Maga Lion y Pablo Cano
+            - listitem [ref=f6e177]:
+              - generic [ref=f6e178]: J.P. Bimeni & The Black Belts
+              - generic [ref=f6e179]: con Pablo Cano
+            - listitem [ref=f6e180]:
+              - generic [ref=f6e181]: The Rootskank
+              - generic [ref=f6e182]: con Javier Ochoa, Pablo Cano y Miguel Valenciano
+            - listitem [ref=f6e183]:
+              - generic [ref=f6e184]: Downtown Beat
+              - generic [ref=f6e185]: con David Arribas
+            - listitem [ref=f6e186]:
+              - generic [ref=f6e187]: Shirley Davis & the Silverbacks
+              - generic [ref=f6e188]: con Pablo Cano
+            - listitem [ref=f6e189]:
+              - generic [ref=f6e190]: Skalone
+              - generic [ref=f6e191]: con Jorge Rodríguez
+            - listitem [ref=f6e192]:
+              - generic [ref=f6e193]: Echo Chamber Roots Hi-Fi
+              - generic [ref=f6e194]: con Javier Ochoa
+            - listitem [ref=f6e195]:
+              - generic [ref=f6e196]: Alamedadosoulna
+              - generic [ref=f6e197]: con Pablo Cano
+            - listitem [aria-hidden] [ref=f6e198]:
+              - generic [ref=f6e199]: Emeterians
+              - generic [ref=f6e200]: con Maga Lion y Pablo Cano
+            - listitem [aria-hidden] [ref=f6e201]:
+              - generic [ref=f6e202]: J.P. Bimeni & The Black Belts
+              - generic [ref=f6e203]: con Pablo Cano
+            - listitem [aria-hidden] [ref=f6e204]:
+              - generic [ref=f6e205]: The Rootskank
+              - generic [ref=f6e206]: con Javier Ochoa, Pablo Cano y Miguel Valenciano
+            - listitem [aria-hidden] [ref=f6e207]:
+              - generic [ref=f6e208]: Downtown Beat
+              - generic [ref=f6e209]: con David Arribas
+            - listitem [aria-hidden] [ref=f6e210]:
+              - generic [ref=f6e211]: Shirley Davis & the Silverbacks
+              - generic [ref=f6e212]: con Pablo Cano
+            - listitem [aria-hidden] [ref=f6e213]:
+              - generic [ref=f6e214]: Skalone
+              - generic [ref=f6e215]: con Jorge Rodríguez
+            - listitem [aria-hidden] [ref=f6e216]:
+              - generic [ref=f6e217]: Echo Chamber Roots Hi-Fi
+              - generic [ref=f6e218]: con Javier Ochoa
+            - listitem [aria-hidden] [ref=f6e219]:
+              - generic [ref=f6e220]: Alamedadosoulna
+              - generic [ref=f6e221]: con Pablo Cano
+    - region [ref=f6e222]:
+      - generic [ref=f6e223]:
+        - generic [ref=f6e224]:
+          - heading [level=2] [ref=f6e225]:
+            - text: Nuestros
+            - emphasis [ref=f6e226]: cursos
+          - paragraph [ref=f6e227]:
+            - text: Cursos online o presenciales
+            - strong [ref=f6e228]: estructurados en módulos temáticos
+            - text: que
+            - strong [ref=f6e229]: se adaptan
+            - text: perfectamente a tus
+            - strong [ref=f6e230]: horarios y a tu nivel
+            - text: ", para acompañarte hacia el músico que quieres llegar a ser."
+        - generic [ref=f6e231]:
+          - generic [ref=f6e232]:
+            - paragraph [ref=f6e233]:
+              - generic [ref=f6e237]:
+                - strong [ref=f6e238]: Pulsa un instrumento.
+                - text: Suena solo y ves su curso.
+            - generic [ref=f6e239]:
+              - paragraph [ref=f6e240]: Guitarra
+              - button "Escuchar" [ref=f6e241] [cursor=pointer]
+          - generic [ref=f6e245]:
+            - tablist "Cursos" [ref=f6e246]:
+              - tab "01 Guitarra" [selected] [ref=f6e247] [cursor=pointer]:
+                - generic [ref=f6e248]: "01"
+                - generic [ref=f6e257]: Guitarra
+              - tab "02 Bajo" [ref=f6e258] [cursor=pointer]:
+                - generic [ref=f6e259]: "02"
+                - generic [ref=f6e268]: Bajo
+              - tab "03 Canto" [ref=f6e269] [cursor=pointer]:
+                - generic [ref=f6e270]: "03"
+                - generic [ref=f6e279]: Canto
+              - tab "04 Saxo" [ref=f6e280] [cursor=pointer]:
+                - generic [ref=f6e281]: "04"
+                - generic [ref=f6e290]: Saxo
+              - tab "05 Teclado" [ref=f6e291] [cursor=pointer]:
+                - generic [ref=f6e292]: "05"
+                - generic [ref=f6e301]: Teclado
+              - tab "06 Batería" [ref=f6e302] [cursor=pointer]:
+                - generic [ref=f6e303]: "06"
+                - generic [ref=f6e312]: Batería
+              - tab "07 Producción" [ref=f6e313] [cursor=pointer]:
+                - generic [ref=f6e314]: "07"
+                - generic [ref=f6e323]: Producción
+              - tab "08 Combo RSM" [ref=f6e324] [cursor=pointer]:
+                - generic [ref=f6e325]: "08"
+                - generic [ref=f6e334]: Combo RSM
+            - generic [ref=f6e335]:
+              - tabpanel "01 Guitarra" [ref=f6e336]:
+                - generic [ref=f6e337]:
+                  - paragraph [ref=f6e338]: Canal 01 · Online · Presencial en Madrid
+                  - heading "Guitarra" [level=3] [ref=f6e339]
+                  - list "Profesor" [ref=f6e340]:
+                    - listitem [ref=f6e341]: Javier Ochoa
+                  - paragraph [ref=f6e342]:
+                    - text: Con Javier Ochoa podrás aprender o perfeccionar los
+                    - strong [ref=f6e343]: tipos de guitarra en reggae
+                    - text: ":"
+                    - emphasis [ref=f6e344]: rítmica, picking, melódica o solista
+                    - text: . Saca partido a la
+                    - strong [ref=f6e345]: sonoridad
+                    - text: de tu instrumento y conoce
+                    - strong [ref=f6e346]: técnicas de expresión
+                    - text: ":"
+                    - emphasis [ref=f6e347]: bend, vibratos, ligados
+                    - text: . Descubre los
+                    - strong [ref=f6e348]: pedales y efectos
+                    - text: "más comunes en reggae:"
+                    - emphasis [ref=f6e349]: Delay, reverb, phaser, Wah wah
+                    - text: .
+                  - link "Prueba una clase de guitarra" [ref=f6e350] [cursor=pointer]:
+                    - /url: "#reserva"
+                - figure [ref=f6e351]:
+                  - img "Guitarrista tocando una guitarra de caja en directo" [ref=f6e352]
+              - generic [ref=f6e353]:
+                - button "Combo RSM" [ref=f6e354] [cursor=pointer]
+                - paragraph [ref=f6e358]: 01 / 08
+                - button "Bajo" [ref=f6e359] [cursor=pointer]
+    - region [ref=f6e363]:
+      - generic [ref=f6e365]:
+        - heading [level=2] [ref=f6e366]:
+          - text: Quién te da
+          - emphasis [ref=f6e367]: clase
+        - paragraph [ref=f6e368]: Desde que Javier Ochoa fundó Reggae School Madrid en 2020, su idea perseguía el sueño de formar un equipo de docentes músicos especializados en el género. Poco a poco fueron incorporándose los que hoy forman un equipo multidisciplinar que trabaja para ofrecer la mejor experiencia educativa.
+      - 'region "Profesorado: desliza para ver a los siete" [ref=f6e369]':
+        - list [ref=f6e370]:
+          - listitem [ref=f6e371]:
+            - figure [ref=f6e372]:
+              - img "Javier Ochoa tocando una guitarra eléctrica con cascos en el estudio" [ref=f6e373]
+            - generic [ref=f6e374]:
+              - heading "Javier Ochoa" [level=3] [ref=f6e375]
+              - paragraph [ref=f6e376]: Guitarra, canto y producción. Fundador y director
+              - paragraph [ref=f6e377]:
+                - strong [ref=f6e378]: Ha tocado con
+                - text: The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.
+          - listitem [ref=f6e379]:
+            - figure [ref=f6e380]:
+              - img "Retrato de Maga Lion con gorro amarillo y los brazos cruzados" [ref=f6e381]
+            - generic [ref=f6e382]:
+              - heading "Maga Lion" [level=3] [ref=f6e383]
+              - paragraph [ref=f6e384]: Combo RSM
+              - paragraph [ref=f6e385]:
+                - strong [ref=f6e386]: Ha tocado con
+                - text: Ky-Mani Marley, Brian Travers (UB40), Clinton Fearon, Luciano, Mellow Mood, Macaco, Morodo y Chalart 58. Fundador de Emeterians.
+          - listitem [ref=f6e387]:
+            - figure [ref=f6e388]:
+              - img "Jorge Rodríguez tocando el saxo en directo con una camisa estampada" [ref=f6e389]
+            - generic [ref=f6e390]:
+              - heading "Jorge Rodríguez" [level=3] [ref=f6e391]
+              - paragraph [ref=f6e392]: Saxo
+              - paragraph [ref=f6e393]:
+                - strong [ref=f6e394]: Ha tocado con
+                - text: Ska-P (grabó sus dos últimos discos), Xoel López, Freedonia, Michael Prophet y Alpheus. Fundador de Skalone.
+          - listitem [ref=f6e395]:
+            - figure [ref=f6e396]:
+              - img "Pablo Cano grabando con el bajo y cascos en el estudio" [ref=f6e397]
+            - generic [ref=f6e398]:
+              - heading "Pablo Cano" [level=3] [ref=f6e399]
+              - paragraph [ref=f6e400]: Bajo
+              - paragraph [ref=f6e401]:
+                - strong [ref=f6e402]: Ha tocado con
+                - text: J.P. Bimeni & The Black Belts, donde es director musical, Shirley Davis and the Silverbacks, Emeterians y Alamedadosoulna.
+          - listitem [ref=f6e403]:
+            - figure [ref=f6e404]:
+              - img "Retrato de David Arribas sentado en un taburete" [ref=f6e405]
+            - generic [ref=f6e406]:
+              - heading "David Arribas" [level=3] [ref=f6e407]
+              - paragraph [ref=f6e408]: Teclado y Combo RSM
+              - paragraph [ref=f6e409]:
+                - strong [ref=f6e410]: Ha tocado con
+                - text: Hotdrop, Blueskank y Rootskank. Desde 2012 lleva Downtown Beat, con Emeterians, Payoh SoulRebel y Natty Nature.
+          - listitem [ref=f6e411]:
+            - figure [ref=f6e412]:
+              - img "Miguel Valenciano tocando en directo con luz morada" [ref=f6e413]
+            - generic [ref=f6e414]:
+              - heading "Miguel Valenciano" [level=3] [ref=f6e415]
+              - paragraph [ref=f6e416]: Batería
+              - paragraph [ref=f6e417]:
+                - strong [ref=f6e418]: Ha tocado con
+                - text: The Rootskank (Nytto Dread, Al Campbell, Hermano L, Michael Prophet), Blueskank y RioMente. Produce en Kovan Music Studio.
+          - listitem [ref=f6e419]:
+            - figure [ref=f6e420]:
+              - img "Miguel Moreno tocando la batería al aire libre" [ref=f6e421]
+            - generic [ref=f6e422]:
+              - heading "Miguel Moreno" [level=3] [ref=f6e423]
+              - paragraph [ref=f6e424]: Batería
+              - paragraph [ref=f6e425]:
+                - strong [ref=f6e426]: Ha tocado con
+                - text: Blueskank, Los Ministers del Ronsteady, Begoña Bangmatu y Hammond York.
+    - region [ref=f6e427]:
+      - generic [ref=f6e428]:
+        - button "Reproducir el vídeo de presentación de Javier Ochoa, director de la escuela" [ref=f6e430] [cursor=pointer]
+        - generic [ref=f6e434]:
+          - heading "La escuela" [level=2] [ref=f6e435]
+          - paragraph [ref=f6e436]:
+            - text: Reggae School Madrid nace para ofrecerte
+            - emphasis [ref=f6e437]: una enseñanza musical y artística completa desde el Reggae
+            - text: ", con profesores experimentados en el género y donde tú eres el protagonista de tu propio aprendizaje."
+    - region [ref=f6e438]:
+      - generic [ref=f6e439]:
+        - generic [ref=f6e440]:
+          - heading [level=2] [ref=f6e441]:
+            - text: Cómo se aprende
+            - emphasis [ref=f6e442]: aquí
+          - paragraph [ref=f6e443]: Se trabaja con las canciones que te gustan, combinadas con los ejercicios de técnica y la teoría que esas canciones necesitan. El material se adapta a tu nivel.
+        - generic [ref=f6e444]:
+          - list [ref=f6e447]:
+            - listitem [ref=f6e448]:
+              - generic [ref=f6e450]: Tiempo 1
+              - heading "Reservas una sesión de prueba" [level=3] [ref=f6e451]
+              - paragraph [ref=f6e452]: Cuentas qué instrumento te interesa, tu nivel y tus horarios.
+            - listitem [ref=f6e453]:
+              - generic [ref=f6e455]: Tiempo 2
+              - heading "Eliges formato" [level=3] [ref=f6e456]
+              - paragraph [ref=f6e457]: Online o presencial, semanal o quincenal. Sin matrícula.
+            - listitem [ref=f6e458]:
+              - generic [ref=f6e460]: Tiempo 3, el golpe
+              - heading "Tocas tus canciones" [level=3] [ref=f6e461]
+              - paragraph [ref=f6e462]: El profesor construye el material a partir de la música que te gusta.
+            - listitem [ref=f6e463]:
+              - generic [ref=f6e465]: Tiempo 4
+              - heading "Te subes a una jam" [level=3] [ref=f6e466]
+              - paragraph [ref=f6e467]:
+                - text: La escuela organiza
+                - link "jam sessions" [ref=f6e468] [cursor=pointer]:
+                  - /url: "#agenda"
+                - text: para que toques con otros alumnos.
+          - paragraph [ref=f6e469]: "En el one drop el bombo no cae en el 1: cae en el 3. Aquí el acento también está en lo tuyo."
+    - region [ref=f6e470]:
+      - generic [ref=f6e471]:
+        - generic [ref=f6e472]:
+          - heading [level=2] [ref=f6e473]:
+            - text: Sin matrícula.
+            - emphasis [ref=f6e474]: Solo la cuota.
+          - paragraph [ref=f6e475]: Estas son las tarifas de nuestros cursos online y presenciales. Las clases presenciales se imparten en Madrid o Barcelona (saxo o piano).
+        - generic [ref=f6e476]:
+          - article [ref=f6e477]:
+            - generic [ref=f6e478]:
+              - heading "Clases semanales" [level=3] [ref=f6e479]
+              - paragraph [ref=f6e480]:
+                - generic [ref=f6e481]: "100"
+                - generic [ref=f6e482]: €
+                - generic [ref=f6e483]: / mes
+              - paragraph [ref=f6e484]: Una clase a la semana
+              - paragraph [ref=f6e485]:
+                - strong [ref=f6e486]: Impulsa tu nivel
+                - text: con clases semanales, favoreciendo un
+                - strong [ref=f6e487]: aprendizaje progresivo
+                - text: e interiorizado del instrumento.
+            - generic [ref=f6e488]:
+              - generic [aria-hidden] [ref=f6e489]: Sinmatrícula
+              - link "Me interesa" [ref=f6e491] [cursor=pointer]:
+                - /url: "#reserva"
+          - article [ref=f6e492]:
+            - generic [ref=f6e493]:
+              - heading "Clases quincenales" [level=3] [ref=f6e494]
+              - paragraph [ref=f6e495]:
+                - generic [ref=f6e496]: "60"
+                - generic [ref=f6e497]: €
+                - generic [ref=f6e498]: / mes
+              - paragraph [ref=f6e499]: Una clase cada dos semanas
+              - paragraph [ref=f6e500]:
+                - strong [ref=f6e501]: Para agendas apretadas.
+                - text: Nos adaptamos a tu horario y te damos las claves para generar una rutina de práctica a lo largo de la semana.
+            - generic [ref=f6e502]:
+              - generic [aria-hidden] [ref=f6e503]: Sinmatrícula
+              - link "Me interesa" [ref=f6e505] [cursor=pointer]:
+                - /url: "#reserva"
+        - generic [ref=f6e506]:
+          - generic [ref=f6e507]:
+            - heading "Online" [level=3] [ref=f6e508]
+            - paragraph [ref=f6e509]:
+              - text: Disfruta de la
+              - strong [ref=f6e510]: comodidad
+              - text: de los
+              - strong [ref=f6e511]: cursos online
+              - text: . Clases
+              - strong [ref=f6e512]: individuales
+              - text: y personalizadas que te permiten
+              - strong [ref=f6e513]: aprender a tu ritmo
+              - text: estés donde estés.
+          - generic [ref=f6e514]:
+            - heading "Presencial" [level=3] [ref=f6e515]
+            - paragraph [ref=f6e516]:
+              - strong [ref=f6e517]: Aprovecha al máximo tu potencial
+              - text: con nuestros
+              - strong [ref=f6e518]: cursos presenciales
+              - text: y podrás disfrutar de un método más cercano centrado en ti.
+          - paragraph [ref=f6e519]: Mismo precio en las dos modalidades.
+        - generic [ref=f6e520]:
+          - generic [ref=f6e521]:
+            - heading "Sesión de prueba" [level=3] [ref=f6e522]
+            - paragraph [ref=f6e523]:
+              - text: "De pago:"
+              - generic [ref=f6e524]: precio por confirmar
+          - paragraph [ref=f6e525]: Para conocer al profesor de tu instrumento y el método antes de apuntarte. Al cerrar día y hora te decimos cómo pagarla.
+          - link "Reservar la sesión" [ref=f6e526] [cursor=pointer]:
+            - /url: "#reserva"
+    - region [ref=f6e527]:
+      - generic [ref=f6e528]:
+        - generic [ref=f6e529]:
+          - heading [level=2] [ref=f6e530]:
+            - text: Lo cuentan
+            - emphasis [ref=f6e531]: quienes ya tocan
+          - generic [ref=f6e532]:
+            - button "Opinión anterior" [disabled] [ref=f6e533]
+            - paragraph [ref=f6e536]: 1 / 4
+            - button "Opinión siguiente" [ref=f6e537] [cursor=pointer]
+        - generic "Opiniones del alumnado, desplazables" [ref=f6e540]:
+          - figure "Oscar Villar Teclado, online desde Alemania" [ref=f6e541]:
+            - blockquote [ref=f6e542]:
+              - text: “
+              - paragraph [ref=f6e543]:
+                - text: Soy afortunado de haber encontrado esta opción online ya que
+                - strong [ref=f6e544]: vivo en Alemania
+                - text: . Con total cercanía y dinamismo, a través de Javier Ochoa, estoy aprendiendo a tocar el teclado con la música que más me gusta, el reggae.
+              - paragraph [ref=f6e545]: Todo un acierto. Siempre flexible y con las clases preparadas hacen que una hora pase volando. 100% recomendable.
+            - generic [ref=f6e547]:
+              - strong [ref=f6e548]: Oscar Villar
+              - generic [ref=f6e549]: Teclado, online desde Alemania
+          - figure "Sergio Caño Teclado" [ref=f6e550]:
+            - blockquote [ref=f6e551]:
+              - text: “
+              - paragraph [ref=f6e552]: Muy agradecido con este proyecto. Se nota que el equipo es apasionado en el género y profesional en la docencia. En apenas dos meses con Javier Ochoa, he notado mucha mejora, soltura y seguridad en las teclas. Hace que disfrutes a la hora de aprender y tengas ganas de seguir formándote. El próximo curso sigo sin dudarlo.
+            - generic [ref=f6e554]:
+              - strong [ref=f6e555]: Sergio Caño
+              - generic [ref=f6e556]: Teclado
+          - figure "Dr. Truekes Producción" [ref=f6e557]:
+            - blockquote [ref=f6e558]:
+              - text: “
+              - paragraph [ref=f6e559]: Las clases de producción en Reggae School Madrid te brindan la oportunidad de conocer y asimilar toda la teoría y práctica de este estilo musical y de la música en general.
+              - paragraph [ref=f6e560]: Ves todo el proceso desde antes de empezar el tema hasta que lo escuchas, lo que hace imprescindible para cualquier persona que quiera componer.
+            - generic [ref=f6e562]:
+              - strong [ref=f6e563]: Dr. Truekes
+              - generic [ref=f6e564]: Producción
+          - figure "Natalia Nazo Alumna" [ref=f6e565]:
+            - blockquote [ref=f6e566]:
+              - text: “
+              - paragraph [ref=f6e567]: Reggae School Madrid ha sido lo mejor que me ha pasado en mi proceso musical.
+              - paragraph [ref=f6e568]: Te acompañan profesores excelentes que comparten sus experiencias y todo su conocimiento para que tu camino por el Reggae sea más fácil y satisfactorio. ¡Te saben enseñar, animar y sacar lo mejor de ti!
+            - generic [ref=f6e570]:
+              - strong [ref=f6e571]: Natalia Nazo
+              - generic [ref=f6e572]: Alumna
+    - region [ref=f6e573]:
+      - generic [ref=f6e574]:
+        - generic [ref=f6e575]:
+          - heading [level=2] [ref=f6e576]:
+            - text: Antes de
+            - emphasis [ref=f6e577]: empezar
+          - paragraph [ref=f6e578]:
+            - text: ¿Otra duda? Escribe a
+            - link "reggaeschoolmadrid@gmail.com" [ref=f6e579] [cursor=pointer]:
+              - /url: mailto:reggaeschoolmadrid@gmail.com
+            - text: .
+        - generic [ref=f6e580]:
+          - group [ref=f6e581]:
+            - generic "¿Necesito saber tocar?" [ref=f6e582] [cursor=pointer]
+          - group [ref=f6e584]:
+            - generic "¿Las clases son individuales?" [ref=f6e585] [cursor=pointer]
+          - group [ref=f6e587]:
+            - generic "¿Dónde son las clases presenciales?" [ref=f6e588] [cursor=pointer]
+          - group [ref=f6e590]:
+            - generic "¿Hay que pagar matrícula?" [ref=f6e591] [cursor=pointer]
+          - group [ref=f6e593]:
+            - generic "¿La sesión de prueba es gratis?" [ref=f6e594] [cursor=pointer]
+          - group [ref=f6e596]:
+            - generic "¿Y si vivo fuera de España?" [ref=f6e597] [cursor=pointer]
+    - region [ref=f6e599]:
+      - generic [ref=f6e600]:
+        - generic [ref=f6e601]:
+          - heading [level=2] [ref=f6e602]:
+            - text: Empieza por
+            - generic [ref=f6e603]:
+              - emphasis [ref=f6e604]: una clase
+              - generic [aria-hidden]: una clase
+              - generic [aria-hidden]: una clase
+          - paragraph [ref=f6e605]: Cuéntanos qué instrumento te interesa y te decimos por dónde empezar. Son tres pasos.
+          - paragraph [ref=f6e606]:
+            - text: La sesión de prueba es de pago (
+            - generic [ref=f6e607]: precio por confirmar
+            - text: ). Al cerrar día y hora te decimos cómo pagarla.
+          - list [ref=f6e608]:
+            - listitem [ref=f6e609]: Sin matrícula
+            - listitem [ref=f6e610]: Online o presencial
+            - listitem [ref=f6e611]: Desde cero
+          - paragraph [ref=f6e612]:
+            - text: ¿Prefieres escribir?
+            - link "reggaeschoolmadrid@gmail.com" [ref=f6e613] [cursor=pointer]:
+              - /url: mailto:reggaeschoolmadrid@gmail.com
+        - form "Empieza por una clase" [ref=f6e614]:
+          - paragraph [ref=f6e618]: Paso 1 de 3
+          - group "¿Qué quieres aprender?" [ref=f6e619]:
+            - radiogroup [ref=f6e621]:
+              - generic [ref=f6e622] [cursor=pointer]:
+                - radio "Guitarra" [ref=f6e623]
+                - generic [ref=f6e624]: Guitarra
+              - generic [ref=f6e625] [cursor=pointer]:
+                - radio "Bajo" [ref=f6e626]
+                - generic [ref=f6e627]: Bajo
+              - generic [ref=f6e628] [cursor=pointer]:
+                - radio "Canto" [ref=f6e629]
+                - generic [ref=f6e630]: Canto
+              - generic [ref=f6e631] [cursor=pointer]:
+                - radio "Saxo" [ref=f6e632]
+                - generic [ref=f6e633]: Saxo
+              - generic [ref=f6e634] [cursor=pointer]:
+                - radio "Teclado" [ref=f6e635]
+                - generic [ref=f6e636]: Teclado
+              - generic [ref=f6e637] [cursor=pointer]:
+                - radio "Batería" [ref=f6e638]
+                - generic [ref=f6e639]: Batería
+              - generic [ref=f6e640] [cursor=pointer]:
+                - radio "Producción y mezcla" [ref=f6e641]
+                - generic [ref=f6e642]: Producción y mezcla
+              - generic [ref=f6e643] [cursor=pointer]:
+                - radio "Combo RSM" [ref=f6e644]
+                - generic [ref=f6e645]: Combo RSM
+          - button "Siguiente" [ref=f6e647] [cursor=pointer]
+    - region [ref=f6e648]:
+      - generic [ref=f6e649]:
+        - generic [ref=f6e650]:
+          - heading [level=2] [ref=f6e651]:
+            - text: Toca con
+            - emphasis [ref=f6e652]: más gente
+          - paragraph [ref=f6e653]: "Además de tu clase, la escuela se junta para tocar: jams abiertas, talleres y clases en grupo. Las fechas se anuncian aquí, en noticias y en Instagram."
+        - generic [ref=f6e654]:
+          - article [ref=f6e655]:
+            - figure [ref=f6e656]:
+              - img "La banda de la escuela tocando en Madreams Music, con el público delante" [ref=f6e657]
+            - generic [ref=f6e658]:
+              - heading "Jams" [level=3] [ref=f6e659]
+              - paragraph [ref=f6e660]: A la hora del vermú, con el equipo de RSM como banda base y un set de live dub en el escenario. Vienes a tocar, a cantar o a escuchar.
+              - paragraph [ref=f6e661]: Abiertas a alumnos y a quien quiera subirse
+          - article [ref=f6e662]:
+            - figure [ref=f6e663]:
+              - img "La mesa de mezclas del estudio de la escuela en penumbra" [ref=f6e664]
+            - generic [ref=f6e665]:
+              - heading "Talleres" [level=3] [ref=f6e666]
+              - paragraph [ref=f6e667]: "Sesiones sobre un tema concreto con un profesor de la escuela: un estilo, una técnica o una parte del estudio."
+              - paragraph [ref=f6e668]: Se anuncian en noticias y en Instagram
+          - article [ref=f6e669]:
+            - figure [ref=f6e670]:
+              - img "La banda de la escuela en directo, seis músicos con camisetas de Reggae School" [ref=f6e671]
+            - generic [ref=f6e672]:
+              - heading "Clases grupales" [level=3] [ref=f6e673]
+              - paragraph [ref=f6e674]: "El Combo RSM: un curso de clases presenciales grupales en el que podrás formar parte de una banda de reggae."
+              - paragraph [ref=f6e675]: Con Maga Lion y David Arribas, backline incluido
+        - generic [ref=f6e676]:
+          - heading "Próximas fechas" [level=3] [ref=f6e677]
+          - list [ref=f6e678]:
+            - listitem [ref=f6e679]:
+              - paragraph [ref=f6e680]: Todas las semanas
+              - generic [ref=f6e681]:
+                - paragraph [ref=f6e682]: Combo RSM
+                - paragraph [ref=f6e683]: Clase grupal de 2 h con Maga Lion y David Arribas. Backline incluido.
+              - paragraph [ref=f6e684]: Centro de Madrid
+              - link "Apuntarme" [ref=f6e685] [cursor=pointer]:
+                - /url: "#reserva"
+            - listitem [ref=f6e686]:
+              - paragraph [ref=f6e687]:
+                - generic [ref=f6e688]: Por anunciar
+              - generic [ref=f6e689]:
+                - paragraph [ref=f6e690]: Vermut Reggae Jam
+                - paragraph [ref=f6e691]: A la hora del vermú, con el equipo de RSM como banda base. Abierta a quien quiera subirse.
+              - paragraph [ref=f6e692]: La última, en Madreams Music
+              - link "Seguir en Instagram" [ref=f6e693] [cursor=pointer]:
+                - /url: https://www.instagram.com/reggaeschoolmadrid/
+            - listitem [ref=f6e694]:
+              - paragraph [ref=f6e695]:
+                - generic [ref=f6e696]: Por anunciar
+              - generic [ref=f6e697]:
+                - paragraph [ref=f6e698]: Taller
+                - paragraph [ref=f6e699]: Tema, profesor y sala por anunciar.
+              - paragraph [ref=f6e700]: Madrid
+              - link "Seguir en Instagram" [ref=f6e701] [cursor=pointer]:
+                - /url: https://www.instagram.com/reggaeschoolmadrid/
+          - paragraph [ref=f6e702]:
+            - text: ¿Te perdiste la última?
+            - link "Mira cómo fue en noticias" [ref=f6e703] [cursor=pointer]:
+              - /url: "#noticias"
+            - text: .
+    - region [ref=f6e704]:
+      - generic [ref=f6e705]:
+        - generic [ref=f6e706]:
+          - heading [level=2] [ref=f6e707]:
+            - text: Noticias de
+            - emphasis [ref=f6e708]: RSM
+          - paragraph [ref=f6e709]: Jams, talleres y novedades de la escuela.
+        - list [ref=f6e710]:
+          - listitem [ref=f6e711]:
+            - link "Cantante en el escenario de Madreams Music con luz azul Octubre La primera «Vermut Reggae Jam» del curso, en Madreams Music El mejor plan para el aperitivo del domingo. Gracias a Madreams Music por el recibimiento." [ref=f6e712] [cursor=pointer]:
+              - /url: https://www.instagram.com/reggaeschoolmadrid/
+              - img "Cantante en el escenario de Madreams Music con luz azul" [ref=f6e714]
+              - generic [ref=f6e715]: Octubre
+              - generic [ref=f6e716]: La primera «Vermut Reggae Jam» del curso, en Madreams Music
+              - generic [ref=f6e717]: El mejor plan para el aperitivo del domingo. Gracias a Madreams Music por el recibimiento.
+          - listitem [ref=f6e718]:
+            - 'link "El equipo de la escuela en el estudio de Radio 3 24 de octubre de 2022 RSM en Alma de León, Radio 3 El equipo completo en la radio nacional: la historia de la escuela, una tocata en acústico y la sintonía del programa, «Some a Reggae Music»." [ref=f6e719] [cursor=pointer]':
+              - /url: https://reggaeschoolmadrid.com/2022/10/24/rsm-en-alma-de-leon-radio-3/
+              - img "El equipo de la escuela en el estudio de Radio 3" [ref=f6e721]
+              - generic [ref=f6e722]: 24 de octubre de 2022
+              - generic [ref=f6e723]: RSM en Alma de León, Radio 3
+              - generic [ref=f6e724]: "El equipo completo en la radio nacional: la historia de la escuela, una tocata en acústico y la sintonía del programa, «Some a Reggae Music»."
+          - listitem [ref=f6e725]:
+            - link "Cartel de la Jam Session número 2, Inna vermú stylee, en Rock Palace 21 de octubre de 2022 Jam Session vol. 2 en Rock Palace Un evento a la hora del vermú en forma de jam, con el equipo de RSM como banda base y un set de live dub." [ref=f6e726] [cursor=pointer]:
+              - /url: https://reggaeschoolmadrid.com/2022/10/21/jam-session-vol-2-en-rock-palace/
+              - img "Cartel de la Jam Session número 2, Inna vermú stylee, en Rock Palace" [ref=f6e728]
+              - generic [ref=f6e729]: 21 de octubre de 2022
+              - generic [ref=f6e730]: Jam Session vol. 2 en Rock Palace
+              - generic [ref=f6e731]: Un evento a la hora del vermú en forma de jam, con el equipo de RSM como banda base y un set de live dub.
+    - region [ref=f6e732]:
+      - generic [ref=f6e733]:
+        - generic [ref=f6e734]:
+          - heading [level=2] [ref=f6e735]:
+            - text: Síguenos en
+            - emphasis [ref=f6e736]: redes
+          - paragraph [ref=f6e737]: Lo último de la escuela, en Instagram, YouTube y Facebook.
+          - list [ref=f6e738]:
+            - listitem [ref=f6e739]:
+              - link "Instagram @reggaeschoolmadrid Seguir" [ref=f6e740] [cursor=pointer]:
+                - /url: https://www.instagram.com/reggaeschoolmadrid/
+                - generic [ref=f6e746]:
+                  - strong [ref=f6e747]: Instagram
+                  - generic [ref=f6e748]: "@reggaeschoolmadrid"
+                - generic [ref=f6e749]: Seguir
+            - listitem [ref=f6e750]:
+              - link "YouTube Reggae School Madrid Ver el canal" [ref=f6e751] [cursor=pointer]:
+                - /url: https://www.youtube.com/channel/UCNSFSKC_9hNB4wqtihIZoTg
+                - generic [ref=f6e755]:
+                  - strong [ref=f6e756]: YouTube
+                  - generic [ref=f6e757]: Reggae School Madrid
+                - generic [ref=f6e758]: Ver el canal
+            - listitem [ref=f6e759]:
+              - link "Facebook reggaeschoolmadrid Seguir" [ref=f6e760] [cursor=pointer]:
+                - /url: https://www.facebook.com/reggaeschoolmadrid
+                - generic [ref=f6e764]:
+                  - strong [ref=f6e765]: Facebook
+                  - generic [ref=f6e766]: reggaeschoolmadrid
+                - generic [ref=f6e767]: Seguir
+        - link "Ver más fotos de la escuela en Instagram" [ref=f6e768] [cursor=pointer]:
+          - /url: https://www.instagram.com/reggaeschoolmadrid/
+          - generic [ref=f6e769]: Más en Instagram
+  - contentinfo [ref=f6e774]:
+    - generic [ref=f6e775]:
+      - generic [ref=f6e776]:
+        - img "Reggae School Madrid" [ref=f6e777]
+        - paragraph [ref=f6e778]: Educación musical desde el reggae.
+      - generic [ref=f6e779]:
+        - navigation "Cursos" [ref=f6e780]:
+          - heading "Cursos" [level=2] [ref=f6e781]
+          - list [ref=f6e782]:
+            - listitem [ref=f6e783]:
+              - generic [ref=f6e784]: Guitarra
+            - listitem [ref=f6e785]:
+              - generic [ref=f6e786]: Bajo
+            - listitem [ref=f6e787]:
+              - generic [ref=f6e788]: Canto
+            - listitem [ref=f6e789]:
+              - generic [ref=f6e790]: Saxo
+            - listitem [ref=f6e791]:
+              - generic [ref=f6e792]: Teclado
+            - listitem [ref=f6e793]:
+              - generic [ref=f6e794]: Batería
+            - listitem [ref=f6e795]:
+              - generic [ref=f6e796]: Producción y mezcla
+            - listitem [ref=f6e797]:
+              - generic [ref=f6e798]: Combo RSM
+        - navigation "La escuela" [ref=f6e799]:
+          - heading "La escuela" [level=2] [ref=f6e800]
+          - list [ref=f6e801]:
+            - listitem [ref=f6e802]:
+              - link "Profesorado" [ref=f6e803] [cursor=pointer]:
+                - /url: "#profesorado"
+            - listitem [ref=f6e804]:
+              - link "Tarifas" [ref=f6e805] [cursor=pointer]:
+                - /url: "#tarifas"
+            - listitem [ref=f6e806]:
+              - link "Preguntas" [ref=f6e807] [cursor=pointer]:
+                - /url: "#preguntas"
+            - listitem [ref=f6e808]:
+              - link "Sesión de prueba" [ref=f6e809] [cursor=pointer]:
+                - /url: "#reserva"
+            - listitem [ref=f6e810]:
+              - link "Jams y talleres" [ref=f6e811] [cursor=pointer]:
+                - /url: "#agenda"
+            - listitem [ref=f6e812]:
+              - link "Noticias" [ref=f6e813] [cursor=pointer]:
+                - /url: "#noticias"
+        - generic [ref=f6e814]:
+          - heading "Contacto" [level=2] [ref=f6e815]
+          - paragraph [ref=f6e816]: reggaeschoolmadrid@gmail.com
+          - list "Redes sociales" [ref=f6e817]:
+            - listitem [ref=f6e818]:
+              - img "Instagram" [ref=f6e819]
+            - listitem [ref=f6e824]:
+              - img "YouTube" [ref=f6e825]
+            - listitem [ref=f6e828]:
+              - img "Facebook" [ref=f6e829]
+      - paragraph [ref=f6e832]: © 2026 Reggae School Madrid

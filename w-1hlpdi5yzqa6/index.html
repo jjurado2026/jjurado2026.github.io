@@ -15,13 +15,19 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/esc-banda-900.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=4.1">
-<link rel="stylesheet" href="assets/css/home.css?v=4.1">
-<link rel="stylesheet" href="assets/css/secciones.css?v=4.1">
+<link rel="stylesheet" href="assets/css/global.css?v=4.2">
+<link rel="stylesheet" href="assets/css/home.css?v=4.2">
+<link rel="stylesheet" href="assets/css/secciones.css?v=4.2">
 <script>
   // Antes de pintar: marca JS disponible y el modo captura (?ss) para no parpadear
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
+  // Opciones en revisión (12-11-2026): ?color=a|b &artistas=a|b|c &fechas=a|b. Ver opciones.html
+  (function (q, d) {
+    var v = { color: ['a', 'b'], artistas: ['a', 'b', 'c'], fechas: ['a', 'b'] };
+    var def = { color: 'b', artistas: 'a', fechas: 'a' };
+    for (var k in v) { var x = q.get(k); d.setAttribute('data-' + k, v[k].indexOf(x) > -1 ? x : def[k]); }
+  })(new URLSearchParams(location.search), document.documentElement);
 </script>
 <script type="application/ld+json">
 {
@@ -164,7 +170,7 @@
 
 <!-- ============================ LA CINTA · CON QUIÉN HAN TOCADO ============================ -->
 <!-- Los nombres salen de las bios de /equipo/. Fyahbwoy e Iseo & Dodosound: los confirma Juan; falta saber con qué profesor -->
-<section class="cinta" id="con-quien" aria-labelledby="cinta-t" data-cinta>
+<section class="cinta" id="con-quien" aria-labelledby="cinta-t" data-cinta data-solo-artistas="a">
   <div class="cinta__fija">
     <img class="cinta__fondo" src="assets/img/creditos-mesa-1200.webp"
          srcset="assets/img/creditos-mesa-1200.webp 1200w, assets/img/creditos-mesa-1920.webp 1920w"
@@ -210,6 +216,108 @@
         <span class="cinta__cabezal" aria-hidden="true"></span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================ OPCIÓN 2b · CARTEL DE FESTIVAL ============================ -->
+<section class="cartel" id="con-quien-cartel" aria-labelledby="cartel-t" data-solo-artistas="b" data-cartel>
+  <img class="cartel__fondo" src="assets/img/creditos-mesa-1200.webp"
+       srcset="assets/img/creditos-mesa-1200.webp 1200w, assets/img/creditos-mesa-1920.webp 1920w"
+       sizes="100vw" width="1920" height="1080" alt="" loading="lazy" decoding="async">
+  <div class="envoltura cartel__int">
+    <header class="cartel__cabeza">
+      <h2 class="t-seccion" id="cartel-t" data-revela>Tus profesores han tocado <em>con ellos</em></h2>
+      <p class="cartel__guia" data-revela>Discos, giras y escenarios de quienes te dan clase. La sigla de cada nombre dice con qué profesor fue.</p>
+    </header>
+
+    <ul class="cartel__lineas" aria-label="Artistas y bandas con los que han tocado">
+      <li class="cartel__linea cartel__linea--1" data-revela style="--i:0">
+        <span class="cartel__n" data-profes="ML">Ky-Mani Marley<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="JR">Ska-P<sup aria-hidden="true">JR</sup><span class="visually-hidden">, con Jorge Rodríguez</span></span>
+        <span class="cartel__n" data-profes="ML">Morodo<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+      </li>
+      <li class="cartel__linea cartel__linea--2" data-revela style="--i:1">
+        <span class="cartel__n" data-profes="ML">Brian Travers (UB40)<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="ML">Clinton Fearon<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="ML">Luciano<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="ML">Macaco<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="?">Swan Fyahbwoy<sup aria-hidden="true">?</sup><span class="visually-hidden">, profesor por confirmar</span></span>
+      </li>
+      <li class="cartel__linea cartel__linea--3" data-revela style="--i:2">
+        <span class="cartel__n" data-profes="?">Iseo &amp; Dodosound<sup aria-hidden="true">?</sup><span class="visually-hidden">, profesor por confirmar</span></span>
+        <span class="cartel__n" data-profes="JR">Xoel López<sup aria-hidden="true">JR</sup><span class="visually-hidden">, con Jorge Rodríguez</span></span>
+        <span class="cartel__n" data-profes="MV">Al Campbell<sup aria-hidden="true">MV</sup><span class="visually-hidden">, con Miguel Valenciano</span></span>
+        <span class="cartel__n" data-profes="JR MV">Michael Prophet<sup aria-hidden="true">JR MV</sup><span class="visually-hidden">, con Jorge Rodríguez y Miguel Valenciano</span></span>
+        <span class="cartel__n" data-profes="MV">Hermano L<sup aria-hidden="true">MV</sup><span class="visually-hidden">, con Miguel Valenciano</span></span>
+        <span class="cartel__n" data-profes="ML">Mellow Mood<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="JR">Freedonia<sup aria-hidden="true">JR</sup><span class="visually-hidden">, con Jorge Rodríguez</span></span>
+        <span class="cartel__n" data-profes="ML">Chalart 58<sup aria-hidden="true">ML</sup><span class="visually-hidden">, con Maga Lion</span></span>
+        <span class="cartel__n" data-profes="JR">Alpheus<sup aria-hidden="true">JR</sup><span class="visually-hidden">, con Jorge Rodríguez</span></span>
+      </li>
+      <li class="cartel__linea cartel__linea--4" data-revela style="--i:3">
+        <span class="cartel__n" data-profes="ML PC">Emeterians<sup aria-hidden="true">ML PC</sup><span class="visually-hidden">, con Maga Lion y Pablo Cano</span></span>
+        <span class="cartel__n" data-profes="PC">J.P. Bimeni &amp; The Black Belts<sup aria-hidden="true">PC</sup><span class="visually-hidden">, con Pablo Cano</span></span>
+        <span class="cartel__n" data-profes="JO PC MV">The Rootskank<sup aria-hidden="true">JO PC MV</sup><span class="visually-hidden">, con Javier Ochoa, Pablo Cano y Miguel Valenciano</span></span>
+        <span class="cartel__n" data-profes="DA">Downtown Beat<sup aria-hidden="true">DA</sup><span class="visually-hidden">, con David Arribas</span></span>
+        <span class="cartel__n" data-profes="PC">Shirley Davis &amp; the Silverbacks<sup aria-hidden="true">PC</sup><span class="visually-hidden">, con Pablo Cano</span></span>
+        <span class="cartel__n" data-profes="JR">Skalone<sup aria-hidden="true">JR</sup><span class="visually-hidden">, con Jorge Rodríguez</span></span>
+        <span class="cartel__n" data-profes="JO">Echo Chamber Roots Hi-Fi<sup aria-hidden="true">JO</sup><span class="visually-hidden">, con Javier Ochoa</span></span>
+        <span class="cartel__n" data-profes="PC">Alamedadosoulna<sup aria-hidden="true">PC</sup><span class="visually-hidden">, con Pablo Cano</span></span>
+      </li>
+    </ul>
+
+    <div class="cartel__leyenda" role="group" aria-label="Resaltar los de un profesor">
+      <button type="button" class="cartel__profe" data-profe="ML" aria-pressed="false"><b>ML</b> Maga Lion</button>
+      <button type="button" class="cartel__profe" data-profe="JR" aria-pressed="false"><b>JR</b> Jorge Rodríguez</button>
+      <button type="button" class="cartel__profe" data-profe="PC" aria-pressed="false"><b>PC</b> Pablo Cano</button>
+      <button type="button" class="cartel__profe" data-profe="MV" aria-pressed="false"><b>MV</b> Miguel Valenciano</button>
+      <button type="button" class="cartel__profe" data-profe="JO" aria-pressed="false"><b>JO</b> Javier Ochoa</button>
+      <button type="button" class="cartel__profe" data-profe="DA" aria-pressed="false"><b>DA</b> David Arribas</button>
+      <span class="cartel__profe cartel__profe--pendiente"><b>?</b> Por confirmar</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ OPCIÓN 2c · CRÉDITOS DE DISCO ============================ -->
+<section class="creditos seccion tema-crudo grano" id="con-quien-creditos" aria-labelledby="creditos-t" data-solo-artistas="c" data-creditos>
+  <div class="envoltura">
+    <header class="cabeza cabeza--doble">
+      <h2 class="t-seccion" id="creditos-t" data-revela>Tus profesores han tocado <em>con ellos</em></h2>
+      <p class="cabeza__guia" data-revela>Discos, giras y escenarios de quienes te dan clase, como en el reverso de un vinilo: a la izquierda, el artista; a la derecha, con qué profesor.</p>
+    </header>
+    <div class="creditos__int">
+      <figure class="creditos__disco" data-revela>
+        <img src="assets/img/vinilo-verde-600.webp" srcset="assets/img/vinilo-verde-600.webp 600w, assets/img/vinilo-verde-900.webp 900w" sizes="(min-width: 1100px) 30vw, 92vw" width="600" height="600" alt="El tocadiscos del estudio de la escuela con un vinilo verde" loading="lazy" decoding="async">
+      </figure>
+      <div class="cara" data-revela style="--i:1">
+        <h3 class="cara__t">Cara A <span>Internacional</span></h3>
+        <ol class="surcos">
+          <li><span class="surco__n">A1</span><span class="surco__a">Ky-Mani Marley</span><span class="surco__p">Maga Lion</span></li>
+          <li><span class="surco__n">A2</span><span class="surco__a">Brian Travers (UB40)</span><span class="surco__p">Maga Lion</span></li>
+          <li><span class="surco__n">A3</span><span class="surco__a">Clinton Fearon</span><span class="surco__p">Maga Lion</span></li>
+          <li><span class="surco__n">A4</span><span class="surco__a">Luciano</span><span class="surco__p">Maga Lion</span></li>
+          <li><span class="surco__n">A5</span><span class="surco__a">Michael Prophet</span><span class="surco__p">Jorge Rodríguez y Miguel Valenciano</span></li>
+          <li><span class="surco__n">A6</span><span class="surco__a">Al Campbell</span><span class="surco__p">Miguel Valenciano</span></li>
+          <li><span class="surco__n">A7</span><span class="surco__a">Alpheus</span><span class="surco__p">Jorge Rodríguez</span></li>
+          <li><span class="surco__n">A8</span><span class="surco__a">Mellow Mood</span><span class="surco__p">Maga Lion</span></li>
+        </ol>
+      </div>
+      <div class="cara" data-revela style="--i:2">
+        <h3 class="cara__t">Cara B <span>De aquí</span></h3>
+        <ol class="surcos">
+          <li><span class="surco__n">B1</span><span class="surco__a">Ska-P</span><span class="surco__p">Jorge Rodríguez</span></li>
+          <li><span class="surco__n">B2</span><span class="surco__a">Morodo</span><span class="surco__p">Maga Lion</span></li>
+          <li><span class="surco__n">B3</span><span class="surco__a">Swan Fyahbwoy</span><span class="surco__p surco__p--pendiente">Por confirmar</span></li>
+          <li><span class="surco__n">B4</span><span class="surco__a">Iseo &amp; Dodosound</span><span class="surco__p surco__p--pendiente">Por confirmar</span></li>
+          <li><span class="surco__n">B5</span><span class="surco__a">Macaco</span><span class="surco__p">Maga Lion</span></li>
+          <li><span class="surco__n">B6</span><span class="surco__a">Xoel López</span><span class="surco__p">Jorge Rodríguez</span></li>
+          <li><span class="surco__n">B7</span><span class="surco__a">Hermano L</span><span class="surco__p">Miguel Valenciano</span></li>
+          <li><span class="surco__n">B8</span><span class="surco__a">Freedonia</span><span class="surco__p">Jorge Rodríguez</span></li>
+          <li><span class="surco__n">B9</span><span class="surco__a">Chalart 58</span><span class="surco__p">Maga Lion</span></li>
+        </ol>
+      </div>
+    </div>
+    <p class="creditos__bandas" data-revela><strong>Y en sus bandas:</strong> Emeterians, J.P. Bimeni &amp; The Black Belts, The Rootskank, Downtown Beat, Shirley Davis &amp; the Silverbacks, Skalone, Echo Chamber Roots Hi-Fi y Alamedadosoulna.</p>
   </div>
 </section>
 
@@ -967,6 +1075,7 @@
           <h3 class="formato__t">Jams</h3>
           <p class="formato__d">A la hora del vermú, con el equipo de RSM como banda base y un set de live dub en el escenario. Vienes a tocar, a cantar o a escuchar.</p>
           <p class="formato__dato">Abiertas a alumnos y a quien quiera subirse</p>
+          <p class="formato__fecha" data-solo-fechas="a"><span>Última</span> Vermut Reggae Jam, domingo 25 de octubre, en Madreams Music. <a class="enlace" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Próximas fechas, en Instagram</a></p>
         </div>
       </article>
       <article class="formato" data-revela style="--i:1">
@@ -974,7 +1083,8 @@
         <div class="formato__texto">
           <h3 class="formato__t">Talleres</h3>
           <p class="formato__d">Sesiones sobre un tema concreto con un profesor de la escuela: un estilo, una técnica o una parte del estudio.</p>
-          <p class="formato__dato">Próximas fechas en la agenda</p>
+          <p class="formato__dato">Se anuncian en noticias y en Instagram</p>
+          <p class="formato__fecha" data-solo-fechas="a"><span>Próximo</span> <span class="pendiente">Fecha por anunciar</span></p>
         </div>
       </article>
       <article class="formato" data-revela style="--i:2">
@@ -982,39 +1092,45 @@
         <div class="formato__texto">
           <h3 class="formato__t">Clases grupales</h3>
           <p class="formato__d">El Combo RSM: un curso de clases presenciales grupales en el que podrás formar parte de una banda de reggae.</p>
-          <p class="formato__dato">Semanal, 2 h, en el centro de Madrid, con backline</p>
+          <p class="formato__dato">Con Maga Lion y David Arribas, backline incluido</p>
+          <p class="formato__fecha" data-solo-fechas="a"><span>Cuándo</span> Todas las semanas, 2 h, en el centro de Madrid. <a class="enlace" href="#reserva" data-reserva data-instrumento="Combo RSM">Quiero entrar</a></p>
         </div>
       </article>
     </div>
 
-    <div class="fechas">
-      <h3 class="fechas__t" data-revela>Fechas</h3>
-      <ol class="tickets" aria-label="Fechas de jams y clases grupales">
-        <li class="ticket ticket--proxima">
-          <p class="ticket__fecha">Próxima jam</p>
-          <p class="ticket__t">Fecha y sala por anunciar</p>
-          <p class="ticket__lugar">La anunciamos aquí y en Instagram</p>
-          <p class="ticket__pie"><span>Se anuncia en Instagram</span><a href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Seguir</a></p>
+    <!-- Opción 3b: agenda en lista. Solo lo que viene; lo pasado, en noticias -->
+    <div class="agenda-lista" data-solo-fechas="b">
+      <h3 class="fechas__t" data-revela>Próximas fechas</h3>
+      <ol class="filas">
+        <li class="fila" data-revela style="--i:0">
+          <p class="fila__cuando">Todas las semanas</p>
+          <div class="fila__que">
+            <p class="fila__t">Combo RSM</p>
+            <p class="fila__d">Clase grupal de 2 h con Maga Lion y David Arribas. Backline incluido.</p>
+          </div>
+          <p class="fila__donde">Centro de Madrid</p>
+          <a class="boton boton--oro fila__accion" href="#reserva" data-reserva data-instrumento="Combo RSM">Apuntarme</a>
         </li>
-        <li class="ticket">
-          <p class="ticket__fecha">Domingo 25 de octubre</p>
-          <p class="ticket__t">Vermut Reggae Jam</p>
-          <p class="ticket__lugar">Madreams Music. La primera del curso</p>
-          <p class="ticket__pie"><span>Ya fue</span><a href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Ver fotos</a></p>
+        <li class="fila" data-revela style="--i:1">
+          <p class="fila__cuando"><span class="pendiente">Por anunciar</span></p>
+          <div class="fila__que">
+            <p class="fila__t">Vermut Reggae Jam</p>
+            <p class="fila__d">A la hora del vermú, con el equipo de RSM como banda base. Abierta a quien quiera subirse.</p>
+          </div>
+          <p class="fila__donde">La última, en Madreams Music</p>
+          <a class="boton boton--fantasma fila__accion" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Seguir en Instagram</a>
         </li>
-        <li class="ticket">
-          <p class="ticket__fecha">Todas las semanas</p>
-          <p class="ticket__t">Combo RSM</p>
-          <p class="ticket__lugar">Centro de Madrid. Clase de 2 h con backline incluido</p>
-          <p class="ticket__pie"><span>Con Maga Lion y David Arribas</span><a href="#reserva" data-reserva data-instrumento="Combo RSM">Entrar</a></p>
-        </li>
-        <li class="ticket">
-          <p class="ticket__fecha">Domingo 6 de noviembre de 2022</p>
-          <p class="ticket__t">Jam Session #2 «Inna vermú stylee»</p>
-          <p class="ticket__lugar">Rock Palace, Vara del Rey 6. 13:00, 5 €</p>
-          <p class="ticket__pie"><span>Ya fue</span><a href="https://reggaeschoolmadrid.com/2022/10/21/jam-session-vol-2-en-rock-palace/">Leer</a></p>
+        <li class="fila" data-revela style="--i:2">
+          <p class="fila__cuando"><span class="pendiente">Por anunciar</span></p>
+          <div class="fila__que">
+            <p class="fila__t">Taller</p>
+            <p class="fila__d">Tema, profesor y sala por anunciar.</p>
+          </div>
+          <p class="fila__donde">Madrid</p>
+          <a class="boton boton--fantasma fila__accion" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Seguir en Instagram</a>
         </li>
       </ol>
+      <p class="agenda-lista__nota" data-revela>¿Te perdiste la última? <a class="enlace" href="#noticias">Mira cómo fue en noticias</a>.</p>
     </div>
   </div>
 </section>
@@ -1162,8 +1278,8 @@
 </div>
 
 
-<script src="assets/js/riddim.js?v=4.1" defer></script>
-<script src="assets/js/main.js?v=4.1" defer></script>
-<script src="assets/js/secciones.js?v=4.1" defer></script>
+<script src="assets/js/riddim.js?v=4.2" defer></script>
+<script src="assets/js/main.js?v=4.2" defer></script>
+<script src="assets/js/secciones.js?v=4.2" defer></script>
 </body>
 </html>

@@ -499,3 +499,183 @@
 
 /* Escuela y método comparten la tierra: un solo capítulo, sin doble hueco */
 .escuela + .metodo { padding-top: clamp(16px, 3vw, 40px); }
+
+/* =====================================================================
+   OPCIONES EN REVISIÓN (12-11-2026): ?color=a|b &artistas=a|b|c &fechas=a|b
+   Por defecto 1b, 2a y 3a. Al decidir, se borra lo que no se elija.
+   ===================================================================== */
+[data-solo-artistas="b"], [data-solo-artistas="c"], [data-solo-fechas="b"] { display: none; }
+html[data-artistas="b"] [data-solo-artistas="b"],
+html[data-artistas="c"] [data-solo-artistas="c"],
+html[data-fechas="b"] [data-solo-fechas="b"] { display: block; }
+html[data-artistas="b"] [data-solo-artistas="a"],
+html[data-artistas="c"] [data-solo-artistas="a"],
+html[data-fechas="b"] [data-solo-fechas="a"] { display: none; }
+
+/* ---------- 1a · Verde como principal, letras de oro ---------- */
+html[data-color="a"] .hero,
+html[data-color="a"] .reserva {
+  --blanco: var(--crudo);
+  --texto: var(--crudo);
+  --texto-suave: #d6ccb4;
+  --oro-texto: #f2c14e;
+  --linea: rgba(241, 233, 214, .14);
+  color: var(--crudo);
+  background: var(--verde);
+}
+html[data-color="a"] .hero .boton--oro,
+html[data-color="a"] .reserva .boton--oro { --b-fondo: var(--oro); --b-borde: var(--oro); --b-texto: var(--tinta); }
+html[data-color="a"] .hero .boton--oro:hover,
+html[data-color="a"] .reserva .boton--oro:hover { --b-fondo: var(--oro-2); --b-borde: var(--oro-2); }
+html[data-color="a"] .hero ::selection,
+html[data-color="a"] .reserva ::selection { background: var(--oro); color: var(--tinta); }
+html[data-color="a"] .hero .banda { background: var(--oro); color: var(--tinta); }
+html[data-color="a"] .hero .banda__lista li::after { background: radial-gradient(circle, var(--crudo) 0 22%, var(--negro) 26%); }
+html[data-color="a"] .reserva .reserva__sellos li { border-color: rgba(241, 233, 214, .3); }
+html[data-color="a"] .reserva .enlace--blanco { text-decoration-color: rgba(241, 233, 214, .6); }
+html[data-color="a"] .reserva .form { box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .65), 0 2px 8px rgba(0, 0, 0, .3); }
+html[data-color="a"] .hero.grano::before,
+html[data-color="a"] .reserva.grano::before { opacity: .3; mix-blend-mode: soft-light; }
+/* Ritmo: verde, negro y verde hondo; el crudo, solo en el profesorado */
+html[data-color="a"] .cursos { background: var(--verde-2); }
+html[data-color="a"] .escuela, html[data-color="a"] .metodo { background: var(--negro); }
+html[data-color="a"] .tarifas { background: var(--verde); }
+html[data-color="a"] .tarifas .entrada { --fondo-seccion: var(--verde); }
+html[data-color="a"] .alumnado { background: var(--negro); }
+html[data-color="a"] .alumnado .opinion:not(.opinion--destacada) { background: var(--carbon); }
+html[data-color="a"] .preguntas { background: var(--verde-2); }
+html[data-color="a"] .agenda { background: var(--negro); }
+html[data-color="a"] .agenda .formato { background: var(--carbon); }
+html[data-color="a"] .noticias { background: var(--verde-2); }
+
+/* ---------- 2b · Cartel de festival: todos a la vista, sin esperar ---------- */
+.cartel { position: relative; overflow: hidden; padding-block: var(--seccion); background: var(--negro); color: var(--crudo); }
+.cartel__fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .32; }
+.cartel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, var(--negro) 0%, rgba(29, 30, 30, .72) 28%, rgba(29, 30, 30, .72) 76%, var(--negro) 100%);
+}
+.cartel__int { position: relative; z-index: 2; display: grid; gap: clamp(36px, 5vw, 64px); }
+.cartel__cabeza { display: grid; gap: var(--e-4); justify-items: center; text-align: center; }
+.cartel__guia { max-width: 44ch; color: var(--texto-suave); font-size: clamp(1rem, .96rem + .25vw, 1.12rem); }
+.cartel__lineas { display: grid; gap: clamp(12px, 1.8vw, 24px); text-align: center; }
+.cartel__linea {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  row-gap: 2px;
+  font-family: var(--f-display);
+  line-height: 1.06;
+}
+/* Sin puntos separadores: al partir la línea, un punto quedaría al principio. Separan el aire y la sigla */
+.cartel__linea { column-gap: .62em; }
+.cartel__n { position: relative; transition: opacity 260ms var(--salida); }
+.cartel__n sup {
+  margin-left: .25em;
+  font-family: var(--f-mono);
+  font-size: max(.26em, .62rem);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--oro-texto);
+  vertical-align: .95em;
+  line-height: 0;
+}
+.cartel__linea--1 { font-size: clamp(2.3rem, .9rem + 4.4vw, 5.4rem); font-weight: 900; }
+.cartel__linea--2 { font-size: clamp(1.7rem, .9rem + 3vw, 3.9rem); font-weight: 800; font-style: italic; }
+.cartel__linea--3 { font-size: clamp(1.3rem, .85rem + 1.7vw, 2.5rem); font-weight: 700; }
+.cartel__linea--4 { font-size: clamp(1.05rem, .85rem + .85vw, 1.6rem); font-weight: 600; color: var(--texto-suave); }
+.cartel__leyenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.cartel__profe {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(241, 233, 214, .3);
+  background: transparent;
+  color: var(--crudo);
+  font-size: .9rem;
+  font-weight: 600;
+  transition: transform 360ms var(--muelle), background-color 180ms var(--salida), color 180ms var(--salida), border-color 180ms var(--salida);
+}
+.cartel__profe b { font-family: var(--f-mono); font-size: .72rem; font-weight: 600; color: var(--oro-texto); }
+button.cartel__profe:hover { border-color: var(--oro); }
+button.cartel__profe:active { transform: scale(.96); }
+.cartel__profe[aria-pressed="true"] { background: var(--oro); border-color: var(--oro); color: var(--tinta); }
+.cartel__profe[aria-pressed="true"] b { color: var(--tinta); }
+.cartel__profe--pendiente { border-style: dashed; color: var(--texto-suave); }
+.cartel[data-activo] .cartel__n { opacity: .25; }
+.cartel[data-activo] .cartel__n.on { opacity: 1; }
+
+/* ---------- 2c · Créditos de disco: cara A y cara B ---------- */
+.creditos { background: var(--crudo); }
+.creditos__int { display: grid; gap: clamp(28px, 4vw, 56px); align-items: start; }
+@media (min-width: 720px) and (max-width: 1099px) {
+  .creditos__int { grid-template-columns: 1fr 1fr; }
+  .creditos__disco { grid-column: 1 / -1; max-width: 420px; }
+}
+@media (min-width: 1100px) { .creditos__int { grid-template-columns: .8fr 1fr 1fr; } }
+.creditos__disco { aspect-ratio: 1; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
+.creditos__disco img { width: 100%; height: 100%; object-fit: cover; }
+.cara__t {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: var(--e-3);
+  border-bottom: 2px solid var(--tinta);
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  line-height: 1.05;
+}
+.cara__t span { font-family: var(--f-texto); font-size: .95rem; font-weight: 600; color: var(--texto-suave); }
+.surcos li {
+  display: flex;
+  align-items: baseline;
+  gap: 0 10px;
+  padding: 11px 8px;
+  border-bottom: 1px solid rgba(29, 30, 30, .14);
+  border-radius: 6px;
+  transition: background-color 400ms var(--salida);
+}
+.surco__n { order: 1; flex: none; width: 2.3em; font-family: var(--f-mono); font-size: .76rem; font-weight: 600; color: var(--verde-tinta); }
+.surco__a { order: 2; flex: none; max-width: 60%; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.05rem, .95rem + .4vw, 1.3rem); line-height: 1.2; }
+.surcos li::after { content: ""; order: 3; flex: 1; min-width: 12px; border-bottom: 1.5px dotted rgba(29, 30, 30, .4); transform: translateY(-.3em); }
+.surco__p { order: 4; flex: none; max-width: 42%; text-align: right; font-size: .9rem; font-weight: 600; line-height: 1.3; color: var(--texto-suave); }
+.surco__p--pendiente { font-style: italic; font-weight: 500; }
+/* Suena: una pista cada compás, como el disco girando */
+.surcos li.sonando { background: rgba(24, 92, 54, .1); }
+.surcos li.sonando .surco__a { color: var(--verde-tinta); }
+.creditos__bandas { margin-top: clamp(28px, 4vw, 44px); max-width: 72ch; color: var(--texto-suave); }
+.creditos__bandas strong { color: var(--tinta); }
+
+/* ---------- 3a · La fecha, dentro de cada formato ---------- */
+.formato__fecha {
+  padding-top: var(--e-3);
+  border-top: 1px solid rgba(241, 233, 214, .16);
+  color: var(--crudo);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.formato__fecha > span:first-child { display: block; margin-bottom: 2px; color: var(--oro-texto); font-size: .82rem; font-weight: 700; }
+
+/* ---------- 3b · Agenda en lista: solo lo que viene ---------- */
+.agenda-lista { margin-top: clamp(44px, 6vw, 76px); }
+.filas { border-top: 1.5px solid rgba(241, 233, 214, .3); }
+.fila { display: grid; gap: 8px 24px; align-items: center; padding-block: 22px; border-bottom: 1px solid rgba(241, 233, 214, .16); }
+@media (min-width: 900px) { .fila { grid-template-columns: 180px minmax(0, 1fr) 220px auto; } }
+.fila__cuando { font-family: var(--f-mono); font-size: .8rem; font-weight: 600; color: var(--oro-texto); }
+.fila__t { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.3rem, 1.1rem + .7vw, 1.75rem); line-height: 1.1; color: var(--crudo); }
+.fila__d { margin-top: 4px; color: var(--texto-suave); font-size: .95rem; }
+.fila__donde { color: var(--crudo); font-size: .95rem; font-weight: 600; }
+.fila__accion { justify-self: start; }
+@media (min-width: 900px) { .fila__accion { justify-self: end; } }
+.agenda-lista__nota { margin-top: var(--e-5); color: var(--texto-suave); }
+.boton--fantasma { --b-fondo: transparent; --b-texto: var(--crudo); --b-borde: rgba(241, 233, 214, .5); }
+.boton--fantasma:hover { --b-fondo: var(--crudo); --b-texto: var(--tinta); --b-borde: var(--crudo); box-shadow: none; }
