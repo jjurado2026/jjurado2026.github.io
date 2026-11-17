@@ -489,7 +489,7 @@ body.menu-abierto .cab::after { opacity: 0; }
 .pie__col li a:hover { color: var(--oro-texto); }
 .pie__col li a:active { opacity: .7; }
 .pie__mail { color: var(--blanco); font-weight: 600; overflow-wrap: anywhere; }
-.pie__col .iconos--pie { margin-top: var(--e-5); }
+.pie__col .iconos--pie { display: flex; margin-top: var(--e-5); }
 
 .pie__copy {
   padding-top: var(--e-5);

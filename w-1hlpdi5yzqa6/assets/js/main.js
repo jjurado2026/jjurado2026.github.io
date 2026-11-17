@@ -448,7 +448,13 @@
       if (inst && actual === 1) mostrar(2, 1);
     }));
 
-    mostrar(1, 0);
+    // Desde las páginas de curso: index.html?instrumento=Bajo&frecuencia=Semanal#reserva
+    const q = new URLSearchParams(location.search);
+    const qInst = q.get('instrumento'), qFrec = q.get('frecuencia');
+    const marcar = (nombre, v) => { const r = $$(`[name="${nombre}"]`, form).find(e => e.value === v); if (r) r.checked = true; return !!r; };
+    const conInst = qInst ? marcar('instrumento', qInst) : false;
+    if (qFrec) marcar('frecuencia', qFrec);
+    mostrar(conInst ? 2 : 1, 0);
   }
 
   alDesplazar();
