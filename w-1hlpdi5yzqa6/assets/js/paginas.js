@@ -71,6 +71,34 @@
     }
   }
 
+  /* ---------- Formulario de contacto: validación en línea (en WordPress lo recibe el plugin) ---------- */
+  const fc = $('[data-form-contacto]');
+  if (fc) {
+    const ok = $('[data-form-contacto-ok]', fc);
+    const reglas = {
+      nombre: (el) => el.value.trim() !== '',
+      email: (el) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el.value.trim()),
+      instrumento: (el) => el.value !== '',
+      rgpd: (el) => el.checked,
+    };
+    const revisar = (nombre) => {
+      const el = fc.elements[nombre];
+      const bien = reglas[nombre](el);
+      el.setAttribute('aria-invalid', String(!bien));
+      const err = $(`[data-error-c="${nombre}"]`, fc);
+      if (err) err.hidden = bien;
+      return bien;
+    };
+    Object.keys(reglas).forEach((n) => fc.elements[n].addEventListener('change', () => revisar(n)));
+    fc.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fallos = Object.keys(reglas).filter((n) => !revisar(n));
+      if (fallos.length) { fc.elements[fallos[0]].focus(); return; }
+      if (ok) { ok.hidden = false; }
+      fc.querySelector('[type="submit"]').disabled = true;
+    });
+  }
+
   /* ---------- LED de las listas: se encienden al entrar (la clase la pone main.js) ---------- */
   if (captura || reducido.matches) $$('.leds').forEach((l) => l.classList.add('visto'));
 })();
