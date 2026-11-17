@@ -226,8 +226,8 @@
       // Prueba de sonido: una sola vez, al ver la mesa
       if (!quieto()) new IntersectionObserver((e, obs) => {
         if (!e.some(x => x.isIntersecting)) return;
-        mesa.classList.add('prueba');
-        setTimeout(() => mesa.classList.remove('prueba'), 1600);
+        mesa.classList.add('prueba-sonido');
+        setTimeout(() => mesa.classList.remove('prueba-sonido'), 1600);
         obs.disconnect();
       }, { threshold: .45 }).observe(mesa);
 

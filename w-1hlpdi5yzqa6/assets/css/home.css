@@ -367,7 +367,7 @@
   box-shadow: inset 0 0 0 1.5px var(--blanco);
 }
 
-.canal__n { grid-area: n; color: rgba(241, 233, 214, .5); font-size: .6rem; }
+.canal__n { grid-area: n; color: rgba(241, 233, 214, .72); font-size: .72rem; }
 .canal[aria-selected="true"] .canal__n { color: var(--blanco); }
 
 /* Vúmetro: LEDs verdes con pico oro; la altura se mueve con transform */
@@ -448,7 +448,7 @@
   0%, 100% { transform: translateY(calc((var(--pista) - var(--pomo)) * var(--nivel) * -1)); }
   45% { transform: translateY(calc((var(--pista) - var(--pomo)) * -1)); }
 }
-.mesa.prueba .canal:not([aria-selected="true"]) .canal__pomo { animation: prueba 700ms var(--salida) both; animation-delay: calc(var(--i) * 90ms); }
+.mesa.prueba-sonido .canal:not([aria-selected="true"]) .canal__pomo { animation: prueba 700ms var(--salida) both; animation-delay: calc(var(--i) * 90ms); }
 .canal:nth-child(1) { --i: 0; } .canal:nth-child(2) { --i: 1; } .canal:nth-child(3) { --i: 2; } .canal:nth-child(4) { --i: 3; }
 .canal:nth-child(5) { --i: 4; } .canal:nth-child(6) { --i: 5; } .canal:nth-child(7) { --i: 6; } .canal:nth-child(8) { --i: 7; }
 
@@ -497,7 +497,7 @@
   .canal__fader { width: 28px; }
   .canal__vu { width: 7px; margin-right: 5px; }
   .canal__cinta { font-size: .9rem; padding: 10px 5px; }
-  .canal__n { font-size: .66rem; }
+  .canal__n { font-size: .78rem; }
 }
 
 /* Pantalla del curso */
@@ -545,7 +545,7 @@
   font-weight: 600;
   color: var(--blanco);
 }
-.curso__profes li .mono { color: rgba(241, 233, 214, .55); font-size: .6rem; }
+.curso__profes li .mono { color: rgba(241, 233, 214, .75); font-size: .72rem; }
 .curso__profes img,
 .inicial {
   width: 34px; height: 34px;
@@ -559,7 +559,7 @@
   background: var(--blanco);
   color: var(--tinta);
   font-family: var(--f-mono);
-  font-size: .6rem;
+  font-size: .72rem;
   font-weight: 700;
   font-stretch: 87.5%;
 }
@@ -731,10 +731,10 @@
   box-shadow: inset 0 0 0 4px var(--carbon), inset 0 0 0 5.5px var(--oro-texto);
   color: var(--oro-texto);
   font-family: var(--f-mono);
-  font-size: .6rem;
+  font-size: .7rem;
   font-weight: 700;
   font-stretch: 87.5%;
-  letter-spacing: .06em;
+  letter-spacing: .02em;
   line-height: 1.25;
   text-align: center;
   text-transform: uppercase;
