@@ -56,6 +56,7 @@
   --verde-oscuro: #145230;   /* verde para texto sobre oro: 5:1 */
   --verde-noche: #14261b;    /* fondo oscuro alterno, con el negro (17-11-2026) */
   --verde-noche-2: #1c3325;  /* tarjetas sobre verde noche */
+  --verde-vivo: #1b6e3e;    /* verde bandera a sangre (cartel): crudo encima 5,2:1, oro 3,4:1 en titular */
   --verde-bandera: #1f9d55;  /* detalles que no son texto: puntos, LED, líneas */
   --verde-claro: #7cc48f;    /* datos sobre oscuro (fechas, instrumentos, siglas): 6,5 a 8:1 */
   --verde-hoja: #8fbf72;     /* el verde vivo, solo en detalles sobre oscuro: 5,8:1 sobre --verde */

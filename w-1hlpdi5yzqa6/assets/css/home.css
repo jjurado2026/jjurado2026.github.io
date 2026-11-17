@@ -8,8 +8,11 @@
 /* ---------- Ritmo de fondos: oscuro de base (Juan, 17-11-2026) ----------
    Su negro y un verde noche se alternan. Los colores de Jamaica y el crudo, en
    los detalles: oro = acción y énfasis · verde = datos · crudo = texto y papel */
-.hero, .profes, .tarifas, .preguntas, .agenda, .redes { background: var(--negro); }
-.cursos, .escuela, .metodo, .alumnado, .reserva, .noticias { background: var(--verde-noche); }
+/* Color (17-11-2026, tarde): negro y verdes que se ven, alternos; preguntas en papel crudo */
+.hero, .cursos, .escuela, .metodo, .alumnado, .agenda, .redes { background: var(--negro); }
+.profes, .reserva { background: var(--verde); }
+.tarifas, .noticias { background: var(--verde-2); }
+.preguntas { background: var(--crudo); }
 
 /* ---------- Cabeceras de sección ---------- */
 .cabeza { margin-bottom: clamp(36px, 5vw, 64px); }
@@ -298,7 +301,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 8px 16px 8px 13px;
   border-radius: 999px;
   border: 1.5px solid rgba(241, 233, 214, .4);

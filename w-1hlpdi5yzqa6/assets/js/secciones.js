@@ -1,5 +1,5 @@
-/* Reggae School Madrid — v4.1
-   La cinta (con quién han tocado), el carril del profesorado y la sección
+/* Reggae School Madrid — v4.4
+   El cartel (con quién han tocado), el carril del profesorado y la sección
    en curso en el menú. Solo transform. Sin JS, en captura (?ss) o con
    movimiento reducido: todo se lee quieto. */
 (() => {
@@ -7,114 +7,32 @@
   const captura = document.documentElement.classList.contains('ss');
   const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ---------- La cinta: los nombres pasan solos bajo el cabezal ----------
-     Tres pistas a distinta velocidad, la del medio en sentido contrario. Se
-     para con el ratón encima, fuera de pantalla o con la pestaña oculta. Con
-     movimiento reducido o en captura (?ss), listas quietas que se leen enteras. */
-  const cinta = document.querySelector('[data-cinta]');
-  if (cinta && getComputedStyle(cinta).display !== 'none') {
-    const caja = cinta.querySelector('[data-cinta-pistas]');
-    const pistas = [...cinta.querySelectorAll('.pista')];
-    const velocidad = [-58, 46, -66]; // px por segundo; negativo, hacia la izquierda
-    let viva = false;
-    let visible = false;
-    let parada = false;
-    let raf = 0;
-    let antes = 0;
-    let datos = [];
-
-    const limpiar = () => {
-      pistas.forEach((ul) => {
-        ul.querySelectorAll('[data-clon]').forEach((n) => n.remove());
-        ul.style.transform = '';
-        [...ul.children].forEach((li) => li.classList.remove('en-cabezal'));
-      });
+  /* ---------- Cartel: cada compás, el eco dub salta a un cabeza de cartel ----------
+     Un compás de one drop a 75 BPM = 3,2 s. Pasa solo, no depende del scroll. Se para
+     con el ratón encima, fuera de pantalla y con la pestaña oculta. Con movimiento
+     reducido o en captura (?ss), los ecos se quedan quietos y a la vista. */
+  const cartel = document.querySelector('[data-cartel]');
+  if (cartel && !captura) {
+    const cabezas = [...cartel.querySelectorAll('[data-eco-cartel]')];
+    let n = -1;
+    let enPantalla = false;
+    let encima = false;
+    const lanzar = () => {
+      if (!enPantalla || encima || reducido.matches || document.hidden) return;
+      n = (n + 1) % cabezas.length;
+      cabezas.forEach((c, i) => c.classList.toggle('suena', i === n));
     };
-
-    // Clona cada pista hasta cubrir la pantalla más una vuelta: así el bucle no tiene costura
-    const preparar = () => {
-      limpiar();
-      const ancho = caja.clientWidth;
-      datos = pistas.map((ul, i) => {
-        const originales = [...ul.children];
-        const vuelta = ul.offsetWidth;
-        if (!vuelta) return { ul, items: [], vuelta: 1, v: 0, x: 0, activo: null };
-        for (let cubierto = vuelta; cubierto < ancho + vuelta; cubierto += vuelta) {
-          originales.forEach((li) => {
-            const c = li.cloneNode(true);
-            c.setAttribute('data-clon', '');
-            c.setAttribute('aria-hidden', 'true');
-            ul.appendChild(c);
-          });
-        }
-        // Se enciende cuando el cabezal cruza la palabra, no su margen (16 px de tolerancia)
-        const items = [...ul.children].map((li) => {
-          const n = li.querySelector('.pista__n') || li;
-          return { li, x: li.offsetLeft + (n === li ? 0 : n.offsetLeft) - 16, w: n.offsetWidth + 32 };
-        });
-        const v = velocidad[i % velocidad.length];
-        return { ul, items, vuelta, v, x: -vuelta * [0.15, 0.5, 0.8][i % 3], activo: null };
-      });
-    };
-
-    const pintar = () => {
-      const centro = caja.clientWidth / 2;
-      for (const d of datos) {
-        d.ul.style.transform = `translate3d(${d.x.toFixed(1)}px, 0, 0)`;
-        let activo = null;
-        for (const it of d.items) {
-          if (it.x + d.x <= centro && it.x + it.w + d.x >= centro) { activo = it.li; break; }
-        }
-        if (activo !== d.activo) {
-          if (d.activo) d.activo.classList.remove('en-cabezal');
-          if (activo) activo.classList.add('en-cabezal');
-          d.activo = activo;
-        }
-      }
-    };
-
-    const paso = (t) => {
-      const dt = Math.min(64, t - (antes || t)) / 1000;
-      antes = t;
-      if (!parada) {
-        for (const d of datos) {
-          d.x += d.v * dt;
-          // Siempre entre -vuelta y 0: con una vuelta clonada de más, nunca queda hueco
-          if (d.x <= -d.vuelta) d.x += d.vuelta;
-          if (d.x > 0) d.x -= d.vuelta;
-        }
-      }
-      pintar();
-      raf = requestAnimationFrame(paso);
-    };
-
-    const arrancar = () => {
-      cancelAnimationFrame(raf);
-      antes = 0;
-      if (viva && visible && !document.hidden) raf = requestAnimationFrame(paso);
-    };
-
-    const decidir = () => {
-      viva = !captura && !reducido.matches;
-      cinta.classList.toggle('cinta--viva', viva);
-      cancelAnimationFrame(raf);
-      if (viva) { preparar(); pintar(); } else { limpiar(); datos = []; }
-      arrancar();
-    };
-
-    let espera = 0;
-    window.addEventListener('resize', () => { clearTimeout(espera); espera = setTimeout(decidir, 180); }, { passive: true });
-    reducido.addEventListener('change', decidir);
-    document.addEventListener('visibilitychange', arrancar);
-    caja.addEventListener('pointerenter', () => { parada = true; });
-    caja.addEventListener('pointerleave', () => { parada = false; });
+    cartel.addEventListener('pointerenter', () => { encima = true; });
+    cartel.addEventListener('pointerleave', () => { encima = false; });
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => { visible = e.isIntersecting; arrancar(); }).observe(cinta);
-    } else {
-      visible = true;
-    }
-    decidir();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(decidir);
+      new IntersectionObserver(([e]) => {
+        const antes = enPantalla;
+        enPantalla = e.isIntersecting;
+        if (enPantalla) cartel.classList.add('entra');
+        if (enPantalla && !antes && n < 0) setTimeout(lanzar, 1400); // tras entrar las líneas
+      }, { threshold: 0.2 }).observe(cartel);
+    } else { enPantalla = true; cartel.classList.add('entra'); }
+    setInterval(lanzar, 3200);
   }
 
   /* ---------- Carril del profesorado: avanza solo, sin flechas ----------
@@ -166,47 +84,4 @@
     secciones.forEach((s) => io.observe(s));
   }
 
-  /* ---------- Opción 2b · Cartel: la leyenda resalta los de un profesor ---------- */
-  const cartel = document.querySelector('[data-cartel]');
-  if (cartel) {
-    const nombres = [...cartel.querySelectorAll('.cartel__n')];
-    const botones = [...cartel.querySelectorAll('button[data-profe]')];
-    let fijo = null;
-    const resaltar = (sigla) => {
-      if (sigla) cartel.setAttribute('data-activo', sigla);
-      else cartel.removeAttribute('data-activo');
-      nombres.forEach((n) => n.classList.toggle('on', !!sigla && n.dataset.profes.split(' ').includes(sigla)));
-    };
-    botones.forEach((b) => {
-      b.addEventListener('click', () => {
-        fijo = fijo === b.dataset.profe ? null : b.dataset.profe;
-        botones.forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.profe === fijo)));
-        resaltar(fijo);
-      });
-      b.addEventListener('pointerenter', () => resaltar(b.dataset.profe));
-      b.addEventListener('pointerleave', () => resaltar(fijo));
-    });
-  }
-
-  /* ---------- Opción 2c · Créditos de disco: suena una pista por compás ----------
-     3,2 s, un compás de one drop a 75 BPM. Se para con el ratón encima y fuera de pantalla. */
-  const creditos = document.querySelector('[data-creditos]');
-  if (creditos && !captura) {
-    const surcos = [...creditos.querySelectorAll('.surcos li')];
-    let n = 0;
-    let enPantalla = false;
-    let quieto = false;
-    const sonar = () => surcos.forEach((li, j) => li.classList.toggle('sonando', j === n));
-    creditos.addEventListener('pointerenter', () => { quieto = true; });
-    creditos.addEventListener('pointerleave', () => { quieto = false; });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => { enPantalla = e.isIntersecting; }, { threshold: 0.3 }).observe(creditos);
-    }
-    sonar();
-    setInterval(() => {
-      if (!enPantalla || quieto || reducido.matches || document.hidden) return;
-      n = (n + 1) % surcos.length;
-      sonar();
-    }, 3200);
-  }
 })();
