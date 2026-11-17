@@ -36,9 +36,7 @@
 .menu__lista a:active { opacity: .7; }
 
 /* Tarjetas sobre verde: un verde más claro en vez del carbón */
-.alumnado .opinion:not(.opinion--destacada),
-.redes .red { background: var(--verde-3); }
-.redes .red:hover { background: #134a2e; }
+.alumnado .opinion:not(.opinion--destacada) { background: var(--verde-noche-2); }
 .escuela .video__btn { box-shadow: 0 0 0 1px rgba(241, 233, 214, .1); }
 
 /* Un dato que falta: se ve como pendiente, no como texto acabado */
@@ -193,7 +191,6 @@
    PROFESORADO — carril lateral que avanza solo (sin flechas). Se para
    con el ratón encima, con el foco y con movimiento reducido.
    ===================================================================== */
-.profes { background: var(--crudo); }
 .carril {
   --borde: max(var(--gutter), calc((100% - var(--ancho)) / 2));
   overflow-x: auto;
@@ -238,10 +235,9 @@
 }
 
 /* =====================================================================
-   AGENDA — jams, talleres y clases grupales. Fondo tierra.
-   Las fechas, en entradas de concierto: el mismo lenguaje que las tarifas.
+   AGENDA — jams, talleres y clases grupales.
+   Las fechas: opciones 3a (en cada formato) y 3b (agenda en lista), al final.
    ===================================================================== */
-.agenda { background: var(--verde-2); }
 .formatos { display: grid; gap: var(--e-5); }
 @media (min-width: 820px) { .formatos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .formato {
@@ -249,7 +245,7 @@
   grid-template-rows: auto 1fr;
   border-radius: var(--radio);
   overflow: hidden;
-  background: var(--verde-3);
+  background: var(--carbon);
 }
 .formato__foto { aspect-ratio: 4 / 3; overflow: hidden; }
 .formato__foto img { width: 100%; height: 100%; object-fit: cover; }
@@ -264,7 +260,6 @@
 .formato__d { color: var(--texto-suave); }
 .formato__dato { margin-top: auto; padding-top: var(--e-2); color: var(--oro-texto); font-weight: 600; font-size: .95rem; }
 
-.fechas { margin-top: clamp(44px, 6vw, 76px); }
 .fechas__t {
   margin-bottom: var(--e-5);
   font-family: var(--f-display);
@@ -272,89 +267,6 @@
   font-size: clamp(1.35rem, 1.15rem + .6vw, 1.75rem);
   line-height: 1.1;
   color: var(--blanco);
-}
-.tickets {
-  display: flex;
-  gap: var(--e-4);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--gutter);
-  margin-inline: calc(var(--gutter) * -1);
-  padding: 4px var(--gutter);
-  scrollbar-width: none;
-}
-.tickets::-webkit-scrollbar { display: none; }
-.ticket {
-  --muesca: 22px;
-  position: relative;
-  flex: 0 0 min(78vw, 300px);
-  scroll-snap-align: start;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  gap: var(--e-2);
-  padding: 22px 22px 16px;
-  border-radius: 14px;
-  background: var(--blanco);
-  color: var(--tinta);
-}
-/* Muescas del color del fondo, sobre la línea del troquel (atadas al pie) */
-.ticket__pie::before, .ticket__pie::after {
-  content: "";
-  position: absolute;
-  top: calc(var(--muesca) / -2 - 1px);
-  width: var(--muesca); height: var(--muesca);
-  border-radius: 50%;
-  background: var(--verde-2);
-}
-.ticket__pie::before { left: calc(-22px - var(--muesca) / 2); }
-.ticket__pie::after { right: calc(-22px - var(--muesca) / 2); }
-.ticket__fecha {
-  font-family: var(--f-mono);
-  font-size: .76rem;
-  font-weight: 600;
-  font-stretch: 87.5%;
-  letter-spacing: .03em;
-  color: var(--tierra-tinta);
-}
-.ticket__t { font-family: var(--f-display); font-weight: 800; font-size: 1.45rem; line-height: 1.08; }
-.ticket__lugar { font-size: .95rem; line-height: 1.45; color: #4b4336; }
-.ticket__pie {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--e-3);
-  min-height: 52px;
-  margin-top: var(--e-3);
-  padding-top: 10px;
-  border-top: 2px dashed rgba(29, 30, 30, .22);
-  font-size: .9rem;
-  font-weight: 650;
-}
-.ticket__pie a {
-  color: var(--tinta);
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: .2em;
-  text-decoration-color: var(--tierra-tinta);
-  transition: color 180ms var(--salida);
-}
-.ticket__pie a:hover { color: var(--tierra-tinta); }
-.ticket__pie a:active { opacity: .7; }
-.ticket__pie a:focus-visible { outline-color: var(--verde-tinta); }
-.ticket--proxima { background: var(--oro); }
-.ticket--proxima .ticket__fecha, .ticket--proxima .ticket__lugar { color: var(--tinta); }
-.ticket--proxima .ticket__pie a { text-decoration-color: var(--tinta); }
-.ticket--proxima .ticket__pie a:hover { color: #4b3a10; }
-@media (min-width: 1000px) {
-  .tickets {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    overflow: visible;
-    margin-inline: 0;
-    padding-inline: 0;
-  }
 }
 
 /* =====================================================================
@@ -384,7 +296,6 @@
 /* =====================================================================
    NOTICIAS — tres entradas; en móvil, de lado
    ===================================================================== */
-.noticias { background: var(--negro-2); }
 .notas {
   display: flex;
   gap: var(--e-5);
@@ -454,35 +365,7 @@
   .t-seccion { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.8rem); }
 }
 
-/* =====================================================================
-   TRAMOS CLAROS — oro (hero, reserva) y crudo (profesorado). Dentro se
-   reasignan los tokens de texto: el crudo pasa a tinta y el oro de los
-   detalles, a verde.
-   ===================================================================== */
-.tema-oro, .tema-crudo {
-  --blanco: var(--tinta);
-  --texto: var(--tinta);
-  --linea: rgba(29, 30, 30, .16);
-  color: var(--tinta);
-}
-.tema-oro { --texto-suave: #4a3a10; --oro-texto: var(--verde-oscuro); }   /* 6:1 y 5:1 sobre oro */
-.tema-crudo { --texto-suave: #5d5546; --oro-texto: var(--verde-tinta); }  /* 6,1:1 y 6,6:1 sobre crudo */
-.tema-oro ::selection { background: var(--tinta); color: var(--crudo); }
-/* Botones sobre oro: negros con texto crudo; al pasar, verde */
-.tema-oro .boton--oro { --b-fondo: var(--tinta); --b-borde: var(--tinta); --b-texto: var(--crudo); }
-.tema-oro .boton--oro:hover { --b-fondo: var(--verde-2); --b-borde: var(--verde-2); }
-.tema-oro .enlace--blanco { text-decoration-color: var(--tinta); }
-
-/* Hero sobre oro: la banda de cursos pasa a verde, con singles de oro */
-.tema-oro .banda { background: var(--verde-2); color: var(--crudo); }
-.tema-oro .banda__lista li::after { background: radial-gradient(circle, var(--verde-2) 0 22%, var(--oro) 26%); }
-.tema-oro .altavoz__sello { box-shadow: 0 0 0 4px var(--crudo), var(--sombra-2); }
-
-/* Reserva sobre oro: el formulario sigue en crudo */
-.tema-oro .form { --blanco: var(--crudo); box-shadow: 0 30px 60px -30px rgba(70, 45, 0, .55), 0 2px 6px rgba(70, 45, 0, .25); }
-.tema-oro .reserva__sellos li { border-color: rgba(29, 30, 30, .35); }
-
-/* Grano de serigrafía: lo crudo del papel y de la tierra. Encima del fondo,
+/* Grano de serigrafía: textura cruda sobre el oscuro. Encima del fondo,
    debajo del contenido; quieto */
 .grano { isolation: isolate; }
 .grano::before {
@@ -492,17 +375,16 @@
   z-index: -1;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: .16;
-  mix-blend-mode: multiply;
+  opacity: .28;
+  mix-blend-mode: soft-light;
 }
-.escuela.grano::before, .metodo.grano::before { opacity: .3; mix-blend-mode: soft-light; }
 
-/* Escuela y método comparten la tierra: un solo capítulo, sin doble hueco */
+/* Escuela y método comparten fondo: un solo capítulo, sin doble hueco */
 .escuela + .metodo { padding-top: clamp(16px, 3vw, 40px); }
 
 /* =====================================================================
-   OPCIONES EN REVISIÓN (12-11-2026): ?color=a|b &artistas=a|b|c &fechas=a|b
-   Por defecto 1b, 2a y 3a. Al decidir, se borra lo que no se elija.
+   OPCIONES EN REVISIÓN: ?artistas=a|b|c &fechas=a|b (el color ya está decidido)
+   Por defecto 2a y 3a. Al decidir, se borra lo que no se elija.
    ===================================================================== */
 [data-solo-artistas="b"], [data-solo-artistas="c"], [data-solo-fechas="b"] { display: none; }
 html[data-artistas="b"] [data-solo-artistas="b"],
@@ -511,42 +393,6 @@ html[data-fechas="b"] [data-solo-fechas="b"] { display: block; }
 html[data-artistas="b"] [data-solo-artistas="a"],
 html[data-artistas="c"] [data-solo-artistas="a"],
 html[data-fechas="b"] [data-solo-fechas="a"] { display: none; }
-
-/* ---------- 1a · Verde como principal, letras de oro ---------- */
-html[data-color="a"] .hero,
-html[data-color="a"] .reserva {
-  --blanco: var(--crudo);
-  --texto: var(--crudo);
-  --texto-suave: #d6ccb4;
-  --oro-texto: #f2c14e;
-  --linea: rgba(241, 233, 214, .14);
-  color: var(--crudo);
-  background: var(--verde);
-}
-html[data-color="a"] .hero .boton--oro,
-html[data-color="a"] .reserva .boton--oro { --b-fondo: var(--oro); --b-borde: var(--oro); --b-texto: var(--tinta); }
-html[data-color="a"] .hero .boton--oro:hover,
-html[data-color="a"] .reserva .boton--oro:hover { --b-fondo: var(--oro-2); --b-borde: var(--oro-2); }
-html[data-color="a"] .hero ::selection,
-html[data-color="a"] .reserva ::selection { background: var(--oro); color: var(--tinta); }
-html[data-color="a"] .hero .banda { background: var(--oro); color: var(--tinta); }
-html[data-color="a"] .hero .banda__lista li::after { background: radial-gradient(circle, var(--crudo) 0 22%, var(--negro) 26%); }
-html[data-color="a"] .reserva .reserva__sellos li { border-color: rgba(241, 233, 214, .3); }
-html[data-color="a"] .reserva .enlace--blanco { text-decoration-color: rgba(241, 233, 214, .6); }
-html[data-color="a"] .reserva .form { box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .65), 0 2px 8px rgba(0, 0, 0, .3); }
-html[data-color="a"] .hero.grano::before,
-html[data-color="a"] .reserva.grano::before { opacity: .3; mix-blend-mode: soft-light; }
-/* Ritmo: verde, negro y verde hondo; el crudo, solo en el profesorado */
-html[data-color="a"] .cursos { background: var(--verde-2); }
-html[data-color="a"] .escuela, html[data-color="a"] .metodo { background: var(--negro); }
-html[data-color="a"] .tarifas { background: var(--verde); }
-html[data-color="a"] .tarifas .entrada { --fondo-seccion: var(--verde); }
-html[data-color="a"] .alumnado { background: var(--negro); }
-html[data-color="a"] .alumnado .opinion:not(.opinion--destacada) { background: var(--carbon); }
-html[data-color="a"] .preguntas { background: var(--verde-2); }
-html[data-color="a"] .agenda { background: var(--negro); }
-html[data-color="a"] .agenda .formato { background: var(--carbon); }
-html[data-color="a"] .noticias { background: var(--verde-2); }
 
 /* ---------- 2b · Cartel de festival: todos a la vista, sin esperar ---------- */
 .cartel { position: relative; overflow: hidden; padding-block: var(--seccion); background: var(--negro); color: var(--crudo); }
@@ -614,7 +460,7 @@ button.cartel__profe:active { transform: scale(.96); }
 .cartel[data-activo] .cartel__n.on { opacity: 1; }
 
 /* ---------- 2c · Créditos de disco: cara A y cara B ---------- */
-.creditos { background: var(--crudo); }
+.creditos { background: var(--negro); }
 .creditos__int { display: grid; gap: clamp(28px, 4vw, 56px); align-items: start; }
 @media (min-width: 720px) and (max-width: 1099px) {
   .creditos__int { grid-template-columns: 1fr 1fr; }
@@ -653,7 +499,7 @@ button.cartel__profe:active { transform: scale(.96); }
 .surcos li.sonando { background: rgba(24, 92, 54, .1); }
 .surcos li.sonando .surco__a { color: var(--verde-tinta); }
 .creditos__bandas { margin-top: clamp(28px, 4vw, 44px); max-width: 72ch; color: var(--texto-suave); }
-.creditos__bandas strong { color: var(--tinta); }
+.creditos__bandas strong { color: var(--crudo); }
 
 /* ---------- 3a · La fecha, dentro de cada formato ---------- */
 .formato__fecha {
@@ -682,3 +528,24 @@ button.cartel__profe:active { transform: scale(.96); }
 
 /* La mesa sobre verde bandera: base más oscura para que el texto suave pase AA (4,4 → 5,5:1) */
 .mesa { background-color: rgba(10, 30, 18, .35); }
+
+/* =====================================================================
+   DETALLES EN COLORES DE JAMAICA Y CRUDO (Juan, 17-11-2026)
+   Oro = acción y énfasis · verde = datos (fechas, instrumentos, siglas,
+   con quién tocaron) · crudo = texto y papel.
+   ===================================================================== */
+.profe__clases, .pista__con, .nota__fecha, .fila__cuando,
+.formato__fecha > span:first-child, .cartel__n sup, .cartel__profe b { color: var(--verde-claro); }
+.pista__con--pendiente { color: var(--texto-suave); }
+.reserva__sellos li::before { background: var(--verde-bandera); }
+
+/* 2c · La funda: el papel crudo del reverso del disco, sobre el oscuro */
+.creditos__int {
+  --blanco: var(--tinta);
+  --texto-suave: #5d5546;
+  --oro-texto: var(--verde-tinta);
+  padding: clamp(20px, 3vw, 40px);
+  border-radius: var(--radio);
+  background: var(--crudo);
+  color: var(--tinta);
+}

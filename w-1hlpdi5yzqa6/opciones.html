@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Opciones — Reggae School Madrid</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#10432a">
+<meta name="theme-color" content="#1d1e1e">
 <link rel="icon" href="assets/img/logo-120.webp" type="image/webp">
-<link rel="stylesheet" href="assets/css/global.css?v=4.2">
+<link rel="stylesheet" href="assets/css/global.css?v=4.3">
 <style>
   body { background: var(--negro); }
   .op-cab { padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 48px); border-bottom: 1px solid var(--linea); }
@@ -74,39 +74,12 @@
 <header class="op-cab">
   <div class="envoltura">
     <p class="op-cab__marca"><img src="assets/img/logo-120.webp" width="48" height="48" alt=""> Reggae School Madrid · desarrollo</p>
-    <h1>Tres decisiones, <em>cada una acabada</em></h1>
-    <p>Cada opción se ve en la web completa. Elige una de cada y abajo puedes ver la combinación. En las dos opciones de color ya no hay marrón, y la fila de entradas de fechas se sustituye por 3a o 3b.</p>
+    <h1>Dos decisiones, <em>cada una acabada</em></h1>
+    <p>El color ya está decidido: oscuro de base, con los colores de Jamaica y el crudo en los detalles (oro para la acción y el énfasis, verde para los datos, crudo para el texto y el papel). Quedan dos decisiones; cada opción se ve en la web completa y abajo puedes ver la combinación.</p>
   </div>
 </header>
 
 <main>
-  <section class="decision" aria-labelledby="d1">
-    <div class="envoltura">
-      <header class="decision__cab">
-        <h2 id="d1">El color de la portada y los fondos</h2>
-        <p>El hero se ve a 1440 × 900. Cambia también el ritmo de fondos del resto de la página.</p>
-      </header>
-      <div class="opciones opciones--2">
-        <article class="opcion" id="1a">
-          <figure class="opcion__foto"><img src="opciones/op-1a.webp" width="960" height="600" alt="Opción 1a: hero en verde con el titular en crudo y tocan, el botón y la banda en oro" loading="lazy"><span class="opcion__id">1a</span></figure>
-          <div class="opcion__texto">
-            <h3 class="opcion__t">Verde principal, letras de oro</h3>
-            <p class="opcion__d">El hero en verde bandera, con «tocan», el botón y la banda de cursos en oro. Los fondos alternan verde, verde hondo y negro; el crudo, solo en el profesorado. La reserva, también en verde.</p>
-            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?color=a">Ver la web con 1a</a></p>
-          </div>
-        </article>
-        <article class="opcion" id="1b">
-          <figure class="opcion__foto"><img src="opciones/op-1b.webp" width="960" height="600" alt="Opción 1b: hero en oro a sangre con el titular en negro y la banda en verde" loading="lazy"><span class="opcion__id">1b</span></figure>
-          <div class="opcion__texto">
-            <h3 class="opcion__t">Oro a sangre</h3>
-            <p class="opcion__d">El hero y la reserva en oro, como los carteles de sus jams, con el titular en negro y la banda de cursos en verde. El resto, en verde, verde hondo, negro y crudo.</p>
-            <p class="opcion__ver"><a class="boton boton--oro" href="index.html?color=b">Ver la web con 1b</a></p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="decision" aria-labelledby="d2">
     <div class="envoltura">
       <header class="decision__cab">
@@ -175,13 +148,6 @@
       <p>Elige una de cada y ábrela en la web completa.</p>
       <form data-combina>
         <fieldset class="grupo">
-          <legend>Color</legend>
-          <div class="grupo__ops">
-            <label><input type="radio" name="color" value="a" checked><span><b>1a</b> Verde principal</span></label>
-            <label><input type="radio" name="color" value="b"><span><b>1b</b> Oro a sangre</span></label>
-          </div>
-        </fieldset>
-        <fieldset class="grupo">
           <legend>Con quién han tocado</legend>
           <div class="grupo__ops">
             <label><input type="radio" name="artistas" value="a"><span><b>2a</b> La cinta</span></label>
@@ -198,7 +164,7 @@
         </fieldset>
         <div class="combina__accion">
           <button class="boton boton--oro boton--grande" type="submit">Ver la combinación</button>
-          <p class="combina__url" data-combina-url aria-live="polite">index.html?color=a&amp;artistas=b&amp;fechas=a</p>
+          <p class="combina__url" data-combina-url aria-live="polite">index.html?artistas=b&amp;fechas=a</p>
         </div>
       </form>
     </div>
@@ -211,7 +177,7 @@
     var salida = document.querySelector('[data-combina-url]');
     var url = function () {
       var d = new FormData(f);
-      return 'index.html?color=' + d.get('color') + '&artistas=' + d.get('artistas') + '&fechas=' + d.get('fechas');
+      return 'index.html?artistas=' + d.get('artistas') + '&fechas=' + d.get('fechas');
     };
     f.addEventListener('change', function () { salida.textContent = url(); });
     f.addEventListener('submit', function (e) { e.preventDefault(); location.href = url(); });

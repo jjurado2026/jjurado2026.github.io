@@ -6,7 +6,7 @@
 <title>Reggae School Madrid — Clases de reggae online y presenciales en Madrid</title>
 <meta name="description" content="Aprende guitarra, bajo, canto, saxo, teclado, batería, producción o toca en una banda con músicos de la escena reggae. Online o presencial en Madrid. Sin matrícula.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#10432a">
+<meta name="theme-color" content="#1d1e1e">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Reggae School Madrid — Educación musical desde el reggae">
 <meta property="og:description" content="Ocho cursos, online o presenciales en Madrid, con músicos de la escena reggae. Sin matrícula.">
@@ -15,17 +15,17 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/esc-banda-900.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=4.2">
-<link rel="stylesheet" href="assets/css/home.css?v=4.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=4.2">
+<link rel="stylesheet" href="assets/css/global.css?v=4.3">
+<link rel="stylesheet" href="assets/css/home.css?v=4.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=4.3">
 <script>
   // Antes de pintar: marca JS disponible y el modo captura (?ss) para no parpadear
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
-  // Opciones en revisión (12-11-2026): ?color=a|b &artistas=a|b|c &fechas=a|b. Ver opciones.html
+  // Opciones en revisión: ?artistas=a|b|c &fechas=a|b. Ver opciones.html. El color ya está decidido
   (function (q, d) {
-    var v = { color: ['a', 'b'], artistas: ['a', 'b', 'c'], fechas: ['a', 'b'] };
-    var def = { color: 'b', artistas: 'a', fechas: 'a' };
+    var v = { artistas: ['a', 'b', 'c'], fechas: ['a', 'b'] };
+    var def = { artistas: 'a', fechas: 'a' };
     for (var k in v) { var x = q.get(k); d.setAttribute('data-' + k, v[k].indexOf(x) > -1 ? x : def[k]); }
   })(new URLSearchParams(location.search), document.documentElement);
 </script>
@@ -112,7 +112,7 @@
 <main id="contenido">
 
 <!-- ============================ HERO ============================ -->
-<section class="hero tema-oro grano" aria-labelledby="h1">
+<section class="hero grano" aria-labelledby="h1">
   <div class="hero__int envoltura">
 
     <div class="hero__texto">
@@ -279,7 +279,7 @@
 </section>
 
 <!-- ============================ OPCIÓN 2c · CRÉDITOS DE DISCO ============================ -->
-<section class="creditos seccion tema-crudo grano" id="con-quien-creditos" aria-labelledby="creditos-t" data-solo-artistas="c" data-creditos>
+<section class="creditos seccion" id="con-quien-creditos" aria-labelledby="creditos-t" data-solo-artistas="c" data-creditos>
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="creditos-t" data-revela>Tus profesores han tocado <em>con ellos</em></h2>
@@ -617,7 +617,7 @@
 </section>
 
 <!-- ============================ PROFESORADO · CARRIL LATERAL ============================ -->
-<section class="profes seccion tema-crudo grano" id="profesorado" aria-labelledby="profes-t">
+<section class="profes seccion" id="profesorado" aria-labelledby="profes-t">
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="profes-t" data-revela>Quién te da <em>clase</em></h2>
@@ -947,7 +947,7 @@
 </section>
 
 <!-- ============================ RESERVA ============================ -->
-<section class="reserva seccion tema-oro grano" id="reserva" aria-labelledby="reserva-t">
+<section class="reserva seccion" id="reserva" aria-labelledby="reserva-t">
   <div class="envoltura reserva__int">
     <div class="reserva__texto">
       <h2 class="t-seccion" id="reserva-t" data-revela>Empieza por <span class="eco eco--suave" data-eco><em>una clase</em><span class="eco__rep" aria-hidden="true">una clase</span><span class="eco__rep" aria-hidden="true">una clase</span></span></h2>
@@ -1278,8 +1278,8 @@
 </div>
 
 
-<script src="assets/js/riddim.js?v=4.2" defer></script>
-<script src="assets/js/main.js?v=4.2" defer></script>
-<script src="assets/js/secciones.js?v=4.2" defer></script>
+<script src="assets/js/riddim.js?v=4.3" defer></script>
+<script src="assets/js/main.js?v=4.3" defer></script>
+<script src="assets/js/secciones.js?v=4.3" defer></script>
 </body>
 </html>

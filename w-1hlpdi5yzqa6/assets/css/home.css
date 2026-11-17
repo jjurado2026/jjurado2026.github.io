@@ -5,14 +5,11 @@
    preguntas · reserva · método · redes
    ===================================================================== */
 
-/* ---------- Ritmo de fondos: la bandera a sangre, por tramos ----------
-   oro: hero y reserva · verde: cursos, alumnado y redes · crudo: profesorado ·
-   verde hondo: escuela, método y agenda · negro: la cinta, tarifas y preguntas ·
-   negro hondo: noticias (secciones.css). Sin marrón desde el 12-11-2026 */
-.hero, .reserva { background: var(--oro); }
-.cursos, .alumnado, .redes { background: var(--verde); }
-.escuela, .metodo { background: var(--verde-2); }
-.tarifas, .preguntas { background: var(--negro); }
+/* ---------- Ritmo de fondos: oscuro de base (Juan, 17-11-2026) ----------
+   Su negro y un verde noche se alternan. Los colores de Jamaica y el crudo, en
+   los detalles: oro = acción y énfasis · verde = datos · crudo = texto y papel */
+.hero, .profes, .tarifas, .preguntas, .agenda, .redes { background: var(--negro); }
+.cursos, .escuela, .metodo, .alumnado, .reserva, .noticias { background: var(--verde-noche); }
 
 /* ---------- Cabeceras de sección ---------- */
 .cabeza { margin-bottom: clamp(36px, 5vw, 64px); }
