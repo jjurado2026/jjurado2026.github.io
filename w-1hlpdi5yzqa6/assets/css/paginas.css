@@ -937,3 +937,10 @@ section[id], article[id] { scroll-margin-top: calc(var(--cab-alto) + 16px); }
 .cookies .boton--borde:hover { --b-fondo: var(--tinta); --b-texto: var(--crudo); --b-borde: var(--tinta); }
 .cookies :focus-visible { outline-color: var(--verde-tinta); }
 .cookies-abierto .fija.visible { transform: translateY(110%); }
+
+/* Rendimiento: el navegador no maqueta ni pinta las secciones fuera de pantalla hasta que se acercan.
+   'auto' recuerda la altura real una vez vista, así las anclas no saltan la segunda vez. */
+main > section:not(:first-child), main > article:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
