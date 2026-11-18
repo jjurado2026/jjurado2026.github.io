@@ -899,3 +899,41 @@ section[id], article[id] { scroll-margin-top: calc(var(--cab-alto) + 16px); }
 }
 .profe-p__clases a { min-height: 44px; }
 .canal-c__redes a { display: inline-block; padding-block: 8px; }
+
+/* ---------- Páginas legales: columna de lectura ---------- */
+.legal { position: relative; padding-top: calc(var(--cab-alto) + clamp(28px, 5vw, 64px)); padding-bottom: var(--seccion); background: var(--negro); isolation: isolate; }
+.legal__h1 { margin-top: 24px; font-size: clamp(2.6rem, 1.4rem + 4.4vw, 5rem); line-height: .98; }
+.legal__fecha { margin-top: 14px; color: var(--verde-claro); font-weight: 600; font-size: .95rem; }
+.legal__texto { display: grid; gap: 14px; margin-top: clamp(28px, 4vw, 48px); max-width: 44em; color: var(--crudo); }
+.legal__texto h2 { margin-top: 22px; font-family: var(--f-display); font-weight: 800; font-size: clamp(1.35rem, 1.15rem + .7vw, 1.75rem); line-height: 1.15; color: var(--crudo); }
+.legal__texto p { color: var(--texto-suave); }
+.legal__texto strong { color: var(--crudo); font-weight: 600; }
+.legal__preferencias { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 18px; padding: 20px; border-radius: var(--radio); background: var(--carbon); }
+
+/* ---------- Aviso de cookies ---------- */
+.cookies {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left, 0px));
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 85;
+  display: grid;
+  gap: 10px;
+  max-width: 440px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--crudo);
+  color: var(--tinta);
+  box-shadow: var(--sombra-3);
+  animation: cookies-entra 600ms var(--muelle) both;
+  --oro-texto: var(--verde-tinta);
+}
+.cookies[hidden] { display: none; }
+@keyframes cookies-entra { from { opacity: 0; transform: translateY(24px); } }
+.cookies__t { font-family: var(--f-display); font-weight: 800; font-size: 1.3rem; line-height: 1; }
+.cookies__d { font-size: .92rem; line-height: 1.55; color: #3a352a; }
+.cookies__acciones { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.cookies .boton--borde { --b-texto: var(--tinta); --b-borde: rgba(29, 30, 30, .55); }
+.cookies .boton--borde:hover { --b-fondo: var(--tinta); --b-texto: var(--crudo); --b-borde: var(--tinta); }
+.cookies :focus-visible { outline-color: var(--verde-tinta); }
+.cookies-abierto .fija.visible { transform: translateY(110%); }

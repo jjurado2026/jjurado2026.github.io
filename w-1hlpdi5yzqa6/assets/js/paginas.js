@@ -174,6 +174,23 @@
   const qi = new URLSearchParams(location.search).get('instrumento');
   if (sel && qi) { const o = [...sel.options].find((x) => x.text === qi); if (o) sel.value = o.value; }
 
+  /* ---------- Aviso de cookies: aceptar y rechazar al mismo nivel; se puede cambiar después ----------
+     La elección se guarda en el navegador. En WordPress, Google Analytics solo se carga si es «aceptadas». */
+  const avisoC = $('[data-cookies]');
+  if (avisoC) {
+    const CLAVE = 'rsm-cookies';
+    const leer = () => { try { return localStorage.getItem(CLAVE); } catch { return null; } };
+    const estado = $$('[data-cookies-estado]');
+    const pintarEstado = () => estado.forEach((e) => { e.textContent = { aceptadas: 'analíticas aceptadas', rechazadas: 'analíticas rechazadas' }[leer()] || 'sin elegir'; });
+    const abrir = (si) => { avisoC.hidden = !si; document.body.classList.toggle('cookies-abierto', si); };
+    const guardar = (v) => { try { localStorage.setItem(CLAVE, v); } catch { /* sin almacenamiento: no se recuerda */ } abrir(false); pintarEstado(); };
+    $('[data-cookies-aceptar]', avisoC).addEventListener('click', () => guardar('aceptadas'));
+    $('[data-cookies-rechazar]', avisoC).addEventListener('click', () => guardar('rechazadas'));
+    $$('[data-cookies-abrir]').forEach((b) => b.addEventListener('click', () => { abrir(true); $('[data-cookies-aceptar]', avisoC).focus(); }));
+    pintarEstado();
+    if (!leer() && !captura) abrir(true);
+  }
+
   /* ---------- LED de las listas: se encienden al entrar (la clase la pone main.js) ---------- */
   if (captura || reducido.matches) $$('.leds').forEach((l) => l.classList.add('visto'));
 })();

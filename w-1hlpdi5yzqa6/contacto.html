@@ -223,7 +223,7 @@
       </div>
       <div class="campo campo--check">
         <input id="c-rgpd" name="rgpd" type="checkbox" required>
-        <label for="c-rgpd">He leído la información sobre protección de datos y acepto que Reggae School Madrid use mis datos para contestarme.</label>
+        <label for="c-rgpd">He leído la <a class="enlace" href="privacidad.html">política de privacidad</a> y acepto que Reggae School Madrid use mis datos para contestarme.</label>
         <p class="campo__error" data-error-c="rgpd" hidden>Necesitamos tu permiso para poder contestarte.</p>
       </div>
       <p class="tarjeta-form__info">Responsable: Reggae School Madrid (<span class="pendiente">titular y NIF por confirmar</span>). Finalidad: contestar a tu consulta. No se ceden datos a terceros.</p>
@@ -327,9 +327,9 @@
         </ul>
         <ul class="pie__legal">
           <li><a href="contacto.html">Contacto y redes</a></li>
-          <li><a href="#" data-pronto="Los textos legales llegan en la semana 4, con vuestro titular y NIF.">Aviso legal</a></li>
-          <li><a href="#" data-pronto="Los textos legales llegan en la semana 4, con vuestro titular y NIF.">Privacidad</a></li>
-          <li><a href="#" data-pronto="Los textos legales llegan en la semana 4, con vuestro titular y NIF.">Cookies</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
         </ul>
       </div>
     </div>
@@ -340,6 +340,15 @@
 
 <div class="fija" data-fija-pag aria-hidden="true">
   <a class="boton boton--oro boton--ancho" href="index.html#reserva" tabindex="-1">Reserva tu sesión de prueba</a>
+</div>
+
+<div class="cookies" data-cookies role="dialog" aria-labelledby="cookies-t" aria-describedby="cookies-d" hidden>
+  <p class="cookies__t" id="cookies-t">Cookies</p>
+  <p class="cookies__d" id="cookies-d">Usamos cookies técnicas para que la web funcione y, si nos dejas, analíticas para saber qué páginas se visitan. <a class="enlace" href="cookies.html">Más información sobre las cookies</a></p>
+  <div class="cookies__acciones">
+    <button class="boton boton--borde" type="button" data-cookies-rechazar>Rechazar</button>
+    <button class="boton boton--oro" type="button" data-cookies-aceptar>Aceptar</button>
+  </div>
 </div>
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>

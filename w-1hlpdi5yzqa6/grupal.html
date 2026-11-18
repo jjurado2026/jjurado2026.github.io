@@ -210,7 +210,7 @@
     <div class="combo-p__media" data-revela style="--i:1">
       <div class="video">
         <button class="video__btn" type="button" data-video="aUIB3xT4Ur0" aria-label="Reproducir el vídeo del Combo RSM">
-          <img src="assets/img/video-combo-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async">
+          <img src="assets/img/video-combo-960.webp" srcset="assets/img/video-combo-480.webp 480w, assets/img/video-combo-960.webp 960w" sizes="(min-width: 760px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async">
           <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
         </button>
       </div>
@@ -339,9 +339,9 @@
         </ul>
         <ul class="pie__legal">
           <li><a href="contacto.html">Contacto y redes</a></li>
-          <li><a href="#" data-pronto="Los textos legales llegan en la semana 4, con vuestro titular y NIF.">Aviso legal</a></li>
-          <li><a href="#" data-pronto="Los textos legales llegan en la semana 4, con vuestro titular y NIF.">Privacidad</a></li>
-          <li><a href="#" data-pronto="Los textos legales llegan en la semana 4, con vuestro titular y NIF.">Cookies</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
         </ul>
       </div>
     </div>
@@ -352,6 +352,15 @@
 
 <div class="fija" data-fija-pag aria-hidden="true">
   <a class="boton boton--oro boton--ancho" href="index.html?instrumento=Combo RSM#reserva" tabindex="-1">Quiero entrar en el Combo</a>
+</div>
+
+<div class="cookies" data-cookies role="dialog" aria-labelledby="cookies-t" aria-describedby="cookies-d" hidden>
+  <p class="cookies__t" id="cookies-t">Cookies</p>
+  <p class="cookies__d" id="cookies-d">Usamos cookies técnicas para que la web funcione y, si nos dejas, analíticas para saber qué páginas se visitan. <a class="enlace" href="cookies.html">Más información sobre las cookies</a></p>
+  <div class="cookies__acciones">
+    <button class="boton boton--borde" type="button" data-cookies-rechazar>Rechazar</button>
+    <button class="boton boton--oro" type="button" data-cookies-aceptar>Aceptar</button>
+  </div>
 </div>
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
