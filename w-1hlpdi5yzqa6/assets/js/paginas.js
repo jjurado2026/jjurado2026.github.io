@@ -25,9 +25,10 @@
   const apertura = $('main > section');
   if (fija && apertura && 'IntersectionObserver' in window && !captura) {
     const pie = $('.pie');
-    let trasApertura = false, enPie = false;
+    const reserva = $('#reserva');
+    let trasApertura = false, enPie = false, enReserva = false;
     const pintar = () => {
-      const visible = trasApertura && !enPie && !document.body.classList.contains('menu-abierto');
+      const visible = trasApertura && !enPie && !enReserva && !document.body.classList.contains('menu-abierto');
       fija.classList.toggle('visible', visible);
       fija.setAttribute('aria-hidden', String(!visible));
       const enlace = $('a', fija);
@@ -35,37 +36,46 @@
     };
     new IntersectionObserver(([e]) => { trasApertura = !e.isIntersecting && e.boundingClientRect.top < 0; pintar(); }).observe(apertura);
     if (pie) new IntersectionObserver(([e]) => { enPie = e.isIntersecting; pintar(); }).observe(pie);
+    if (reserva) new IntersectionObserver(([e]) => { enReserva = e.isIntersecting; pintar(); }, { rootMargin: '0px 0px -15% 0px' }).observe(reserva);
   }
 
-  /* ---------- El canal en solo: «Escucha la línea de bajo» ----------
-     Usa el mismo riddim de la home (window.Riddim). Solo suena con un clic, se
-     para al salir de la cabecera y el vúmetro sigue el nivel del instrumento. */
+  /* ---------- El canal en solo: «Escucha la guitarra», «Escucha la línea de bajo»… ----------
+     Usa el mismo riddim de la home (window.Riddim). Solo suena con un clic. Cada botón
+     hace sonar su canal (si suena otro, cambia a este) y mueve el vúmetro de su
+     sección; se para al salir esa sección de la pantalla o al ocultar la pestaña.
+     El texto del botón no cambia (no encoge bajo el cursor): cambian el icono y aria-pressed. */
   const botones = $$('[data-solo]');
   const R = window.Riddim;
   if (botones.length) {
     if (!R || !R.soportado) {
       botones.forEach((b) => { b.hidden = true; });
     } else {
-      // El texto no cambia (el botón no encoge bajo el cursor): cambia el icono y aria-pressed
-      const tapa = $('[data-vu-tapa]');
+      const tapas = $$('[data-vu-tapa]');
+      const tapaDe = (c) => tapas.filter((t) => (t.dataset.vuTapa || botones[0].dataset.solo) === c);
+      let actual = null;
+      const marcar = () => botones.forEach((b) => b.setAttribute('aria-pressed', String(R.sonando && b.dataset.solo === actual)));
+      const limpiar = () => tapas.forEach((t) => { t.style.transform = ''; });
       botones.forEach((b) => b.addEventListener('click', () => {
-        if (R.sonando) R.parar(); else R.tocar(b.dataset.solo);
+        if (R.sonando && actual === b.dataset.solo) { R.parar(); return; }
+        actual = b.dataset.solo;
+        limpiar();
+        R.tocar(actual);
+        marcar();
       }));
-      R.alCambiar((suena) => {
-        botones.forEach((b) => b.setAttribute('aria-pressed', String(suena)));
-        if (!suena && tapa) tapa.style.transform = '';
-      });
-      if (tapa) {
-        const canal = botones[0].dataset.solo;
+      R.alCambiar((suena) => { marcar(); if (!suena) limpiar(); });
+      if (tapas.length) {
         R.alNivel((n) => {
-          if (reducido.matches) return;
-          const v = Math.min(1, .05 + (n[canal] || 0) * .92);
-          tapa.style.transform = `scaleY(${(1 - v).toFixed(3)})`;
+          if (reducido.matches || !actual) return;
+          const v = Math.min(1, .05 + (n[actual] || 0) * .92);
+          tapaDe(actual).forEach((t) => { t.style.transform = `scaleY(${(1 - v).toFixed(3)})`; });
         });
       }
-      const zona = botones[0].closest('section');
-      if (zona && 'IntersectionObserver' in window) {
-        new IntersectionObserver(([e]) => { if (!e.isIntersecting && R.sonando) R.parar(); }, { threshold: 0 }).observe(zona);
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entradas) => entradas.forEach((e) => {
+          const b = $('[data-solo]', e.target);
+          if (!e.isIntersecting && b && R.sonando && b.dataset.solo === actual) R.parar();
+        }), { threshold: 0 });
+        new Set(botones.map((b) => b.closest('section')).filter(Boolean)).forEach((s) => io.observe(s));
       }
       document.addEventListener('visibilitychange', () => { if (document.hidden && R.sonando) R.parar(); });
     }
@@ -98,6 +108,71 @@
       fc.querySelector('[type="submit"]').disabled = true;
     });
   }
+
+  /* ---------- Equipo docente: un profesor cada vez; pasa solo hasta que eliges uno ----------
+     Cuatro compases (12,8 s). Se para con el ratón encima, con el foco dentro, fuera de
+     pantalla y con movimiento reducido. Flechas, Inicio y Fin como en cualquier pestaña. */
+  $$('[data-pestas]').forEach((lista) => {
+    const tabs = $$('[role="tab"]', lista);
+    const paneles = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+    let fijo = false, encima = false, visible = false;
+    const elegir = (i, foco = false) => {
+      tabs.forEach((t, j) => {
+        const si = j === i;
+        t.setAttribute('aria-selected', String(si));
+        t.tabIndex = si ? 0 : -1;
+        if (paneles[j]) paneles[j].hidden = !si;
+      });
+      if (foco) tabs[i].focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => { fijo = true; elegir(i); });
+      t.addEventListener('keydown', (e) => {
+        const n = tabs.length;
+        const k = { ArrowRight: i + 1, ArrowLeft: i - 1 + n, Home: 0, End: n - 1 }[e.key];
+        if (k === undefined) return;
+        e.preventDefault(); fijo = true; elegir(k % n, true);
+      });
+    });
+    elegir(0);
+    const zona = lista.closest('section');
+    zona.addEventListener('pointerenter', () => { encima = true; });
+    zona.addEventListener('pointerleave', () => { encima = false; });
+    zona.addEventListener('focusin', () => { encima = true; });
+    zona.addEventListener('focusout', () => { encima = false; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: .3 }).observe(zona);
+    setInterval(() => {
+      if (fijo || encima || !visible || captura || reducido.matches || document.hidden) return;
+      const i = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+      elegir((i + 1) % tabs.length);
+    }, 12800);
+  });
+
+  /* ---------- Tiras de fotos (data-carril): avanzan solas cada dos compases ---------- */
+  $$('[data-carril]').forEach((carril) => {
+    if (document.body.classList.contains('inicio') && carril.closest('.profes')) return; // la home ya lo hace en secciones.js
+    const pista = $('.carril__pista', carril);
+    if (!pista) return;
+    let parado = false, visible = false, t = 0;
+    const parar = () => { parado = true; clearTimeout(t); };
+    const seguir = () => { clearTimeout(t); t = setTimeout(() => { parado = false; }, 2400); };
+    ['pointerenter', 'focusin', 'pointerdown', 'wheel'].forEach((ev) => carril.addEventListener(ev, parar, { passive: true }));
+    ['pointerleave', 'focusout', 'pointerup'].forEach((ev) => carril.addEventListener(ev, seguir, { passive: true }));
+    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: .4 }).observe(carril);
+    setInterval(() => {
+      if (parado || !visible || captura || reducido.matches || document.hidden) return;
+      const max = carril.scrollWidth - carril.clientWidth;
+      if (max <= 4) return;
+      const paso = pista.firstElementChild.offsetWidth + (parseFloat(getComputedStyle(pista).columnGap) || 0);
+      if (carril.scrollLeft >= max - 4) carril.scrollTo({ left: 0, behavior: 'smooth' });
+      else carril.scrollBy({ left: paso, behavior: 'smooth' });
+    }, 6400);
+  });
+
+  /* ---------- Contacto: llega con el curso elegido (?instrumento=Armonía online) ---------- */
+  const sel = $('#c-inst');
+  const qi = new URLSearchParams(location.search).get('instrumento');
+  if (sel && qi) { const o = [...sel.options].find((x) => x.text === qi); if (o) sel.value = o.value; }
 
   /* ---------- LED de las listas: se encienden al entrar (la clase la pone main.js) ---------- */
   if (captura || reducido.matches) $$('.leds').forEach((l) => l.classList.add('visto'));
