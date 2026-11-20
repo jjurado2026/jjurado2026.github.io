@@ -183,7 +183,8 @@
   };
   fondos.forEach((f, j) => f.setAttribute('aria-hidden', String(j !== 0)));
   if (!quieto) fondos[0].classList.add('zoom');
-  addEventListener('load', () => fondos.forEach((f) => { f.loading = 'eager'; }));
+  /* la siguiente foto se pide con tiempo, cuando la página ya ha cargado */
+  addEventListener('load', () => setTimeout(() => fondos.forEach((f) => { f.loading = 'eager'; }), 1500));
   barras.forEach((b) => b.addEventListener('animationend', () => { if (b.classList.contains('ahora') && !pausaHero) vaA(iF + 1); }));
   $$('[data-h-paso]', ficha).forEach((b) => b.addEventListener('click', () => vaA(iF + Number(b.dataset.hPaso))));
   if (!quieto) {
