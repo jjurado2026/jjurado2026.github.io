@@ -149,11 +149,14 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 @media (max-width: 599px) { .cab__tel span { display: none; } .cab__tel { width: 44px; justify-content: center; } .cab__acciones { gap: 4px; } }
 
 /* ════════ HERO: luz, sus mejores estancias grandes y el nombre bien escrito ════════ */
-.hero { position: relative; isolation: isolate; display: flex; flex-direction: column; min-height: 100svh; padding-top: var(--cab); background: var(--niebla); color: var(--negro); overflow: hidden; }
+.hero { position: relative; z-index: 1; isolation: isolate; display: flex; flex-direction: column; min-height: 100svh; padding-top: var(--cab); background: var(--niebla); color: var(--negro); overflow-x: clip; }
 .hero::before { /* luz cálida muy suave detrás del titular */
   content: ''; position: absolute; z-index: -1; left: -18vw; top: -22vh; width: 70vw; aspect-ratio: 1; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(255, 94, 20, .11), rgba(255, 94, 20, 0)); pointer-events: none; }
 .anima .hero::before { animation: respira 12s ease-in-out infinite; }
+/* Paso al blanco de «30 años de experiencia»: el fondo del hero se funde abajo, sin borde y sin nada que lo tape */
+.hero::after { content: ''; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; height: clamp(120px, 22vh, 240px); background: linear-gradient(rgba(255, 255, 255, 0), var(--blanco)); pointer-events: none; }
+.hero-sangre .hero::after { display: none; }
 .hero__in { --hv: auto; flex: 1; width: min(100% - 2 * var(--canal), var(--ancho)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr); gap: clamp(32px, 4.5vw, 80px); padding-block: clamp(10px, 2vh, 24px) clamp(18px, 3vh, 32px); }
 .hero__texto { display: flex; flex-direction: column; justify-content: center; padding-block: 8px; min-width: 0; }
 .titulo { font-size: var(--t, clamp(2.8rem, 1.5rem + 4.3vw, 6.6rem)); line-height: 1.02; letter-spacing: 0; }
@@ -290,12 +293,6 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 
 /* ════════ 30 años: servicios en pila (cada uno se queda arriba y el siguiente lo cubre) ════════ */
 .servicios { padding-bottom: clamp(60px, 7vw, 100px); }
-.capas { position: relative; }
-/* Transición hero → servicios: desde el centro del borde inferior del hero se abre un círculo blanco que crece al bajar
-   hasta ser el fondo de «30 años de experiencia» (no se parece a la pila de los servicios) */
-.hero__apertura { position: absolute; z-index: 7; left: 50%; bottom: 0; width: var(--d, 200vmax); height: var(--d, 200vmax); margin: 0 0 calc(var(--d, 200vmax) / -2) calc(var(--d, 200vmax) / -2); border-radius: 50%; background: var(--blanco); transform: scale(0); pointer-events: none; }
-.quieto .hero__apertura { display: none; }
-.capas > .servicios { background: var(--blanco); }
 .pila { position: relative; }
 .servicio {
   position: sticky; top: calc(var(--cab) + 18px + var(--i) * 14px);
