@@ -168,6 +168,7 @@
     n = (n + fondos.length) % fondos.length;
     if (n === iF) return;
     const antes = fondos[iF]; const luego = fondos[n];
+    pide(luego);
     fondos.forEach((f) => f.classList.remove('encima'));
     luego.classList.remove('zoom'); void luego.offsetWidth;
     luego.classList.add('encima', 'is-activa');
@@ -179,8 +180,10 @@
   };
   fondos.forEach((f, j) => f.setAttribute('aria-hidden', String(j !== 0)));
   if (!quieto) fondos[0].classList.add('zoom');
-  /* la siguiente foto se pide con tiempo, cuando la página ya ha cargado */
-  addEventListener('load', () => setTimeout(() => fondos.forEach((f) => { f.loading = 'eager'; }), 1500));
+  /* las demás fotos se piden cuando la página ya ha cargado (no compiten con la primera pantalla) */
+  const pide = (f) => { if (f.dataset.srcset) { f.srcset = f.dataset.srcset; delete f.dataset.srcset; } if (f.dataset.src) { f.src = f.dataset.src; delete f.dataset.src; } };
+  if (document.readyState === 'complete') setTimeout(() => fondos.forEach(pide), 1200);
+  else addEventListener('load', () => setTimeout(() => fondos.forEach(pide), 1200));
   barras.forEach((b) => b.addEventListener('animationend', () => { if (b.classList.contains('ahora') && !pausaHero) vaA(iF + 1); }));
   $$('[data-h-paso]', ficha).forEach((b) => b.addEventListener('click', () => vaA(iF + Number(b.dataset.hPaso))));
   if (!quieto) {
