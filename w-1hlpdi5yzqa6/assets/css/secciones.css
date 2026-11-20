@@ -226,19 +226,8 @@
   .t-seccion { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.8rem); }
 }
 
-/* Grano de serigrafía: textura cruda sobre el oscuro. Encima del fondo,
-   debajo del contenido; quieto */
-.grano { isolation: isolate; }
-.grano::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: url("../img/grano.webp");
-  opacity: .28;
-  mix-blend-mode: soft-light;
-}
+/* El grano de serigrafía se quitó en la v6.1: el negro, limpio */
+.grano::before { content: none; }
 
 /* Escuela y método comparten fondo: un solo capítulo, sin doble hueco */
 .escuela + .metodo { padding-top: clamp(16px, 3vw, 40px); }

@@ -642,7 +642,6 @@
 .comun__int { display: grid; gap: clamp(36px, 5vw, 96px); align-items: start; }
 @media (min-width: 900px) { .comun__int { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .comun__p { margin-top: 20px; max-width: 34em; font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); color: var(--crudo); }
-.comun .leds li::before { background: var(--oro); }
 .cierre__precios { margin-top: 18px; max-width: 36em; font-weight: 600; }
 .ch__cinta { white-space: nowrap; overflow-wrap: normal; font-size: clamp(.68rem, .5rem + .42vw, .92rem); padding-inline: 5px; }
 
@@ -975,11 +974,11 @@ main > section:not(:first-child), main > article:not(:first-child) {
    v6 · Dos secciones seguidas del mismo color se leen como un solo tramo:
    menos hueco y un filete fino entre ellas (como en la home).
    ===================================================================== */
-:is(.inst, .objetivo, .producciones, .equipo-p, .combo-p, .como-es, .destacada, .merch, .comun, .tarifas):has(+ :is(.inst, .producciones, .estudio, .armonia, .talleres, .archivo, .proximo, .cierre)) { padding-bottom: calc(var(--seccion) * .82); }
-.inst + .inst, .objetivo + .producciones, .producciones + .estudio, .equipo-p + .estudio, .combo-p + .armonia,
-.como-es + .talleres, .destacada + .archivo, .merch + .proximo, .comun + .cierre, .tarifas + .cierre { padding-top: calc(var(--seccion) * .82); }
-:is(.inst + .inst, .objetivo + .producciones, .producciones + .estudio, .equipo-p + .estudio, .combo-p + .armonia,
-.como-es + .talleres, .destacada + .archivo, .merch + .proximo, .comun + .cierre, .tarifas + .cierre)::after {
+:is(.inst, .objetivo, .producciones, .equipo-p, .combo-p, .como-es, .destacada, .merch, .tarifas):has(+ :is(.inst, .comun, .producciones, .estudio, .armonia, .talleres, .archivo, .proximo, .cierre)) { padding-bottom: calc(var(--seccion) * .82); }
+.inst + .inst, .inst + .comun, .objetivo + .producciones, .producciones + .estudio, .equipo-p + .estudio, .combo-p + .armonia,
+.como-es + .talleres, .destacada + .archivo, .merch + .proximo, .tarifas + .cierre { padding-top: calc(var(--seccion) * .82); }
+:is(.inst + .inst, .inst + .comun, .objetivo + .producciones, .producciones + .estudio, .equipo-p + .estudio, .combo-p + .armonia,
+.como-es + .talleres, .destacada + .archivo, .merch + .proximo, .tarifas + .cierre)::after {
   content: "";
   position: absolute;
   top: 0;

@@ -17,10 +17,10 @@
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/esc-banda-900.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=6.0">
-<link rel="stylesheet" href="assets/css/home.css?v=6.0">
-<link rel="stylesheet" href="assets/css/secciones.css?v=6.0">
-<link rel="stylesheet" href="assets/css/paginas.css?v=6.0">
+<link rel="stylesheet" href="assets/css/global.css?v=6.1">
+<link rel="stylesheet" href="assets/css/home.css?v=6.1">
+<link rel="stylesheet" href="assets/css/secciones.css?v=6.1">
+<link rel="stylesheet" href="assets/css/paginas.css?v=6.1">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -223,27 +223,28 @@
 <!-- ============================ LA ESCUELA · PRESENTACIÓN EN VÍDEO ============================ -->
 <!-- 20-11-2026: lo que más interesa, justo después del hero y a todo el ancho del contenido -->
 <section class="escuela seccion fondo-negro" id="presentacion" aria-labelledby="escuela-t">
-  <div class="envoltura">
-    <header class="cabeza cabeza--doble">
-      <h2 class="t-seccion" id="escuela-t" data-revela>Conoce <em>la escuela</em></h2>
-      <p class="escuela__frase" data-revela style="--i:1">
+  <div class="envoltura escuela__int">
+    <div class="video" data-revela>
+      <button class="video__btn" type="button" data-video="PeHxVKkdIkA" aria-label="Reproducir el vídeo de presentación de Reggae School Madrid">
+        <img src="assets/img/esc-presentacion-900.webp"
+             srcset="assets/img/esc-presentacion-900.webp 900w, assets/img/esc-presentacion-1360.webp 1360w"
+             sizes="(min-width: 1000px) 54vw, 92vw" width="900" height="506"
+             alt="" loading="lazy" decoding="async">
+        <span class="video__play" aria-hidden="true">
+          <span class="video__onda"></span><span class="video__onda"></span>
+          <svg viewBox="0 0 24 24" width="26" height="26"><path d="M8.5 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+        </span>
+        <span class="video__rotulo" aria-hidden="true">Ver la presentación</span>
+      </button>
+    </div>
+
+    <div class="escuela__texto">
+      <h2 class="t-seccion" id="escuela-t" data-revela style="--i:1">Conoce <em>la escuela</em></h2>
+      <p class="escuela__frase" data-revela style="--i:2">
         Reggae School Madrid nace para ofrecerte <em>una enseñanza musical y artística completa
         desde el Reggae</em>, con profesores experimentados en el género y donde tú eres el
         protagonista de tu propio aprendizaje.
       </p>
-    </header>
-    <div class="video video--cine" data-revela style="--i:2">
-      <button class="video__btn" type="button" data-video="PeHxVKkdIkA" aria-label="Reproducir el vídeo de presentación de Reggae School Madrid">
-        <img src="assets/img/esc-presentacion-1360.webp"
-             srcset="assets/img/esc-presentacion-900.webp 900w, assets/img/esc-presentacion-1360.webp 1360w"
-             sizes="(min-width: 1416px) 1320px, 94vw" width="1360" height="765"
-             alt="" loading="lazy" decoding="async">
-        <span class="video__play" aria-hidden="true">
-          <span class="video__onda"></span><span class="video__onda"></span>
-          <svg viewBox="0 0 24 24" width="30" height="30"><path d="M8.5 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
-        </span>
-        <span class="video__rotulo" aria-hidden="true">Ver la presentación</span>
-      </button>
     </div>
   </div>
 </section>
@@ -667,7 +668,7 @@
 </section>
 
 <!-- ============================ MÉTODO · UN COMPÁS ============================ -->
-<section class="metodo seccion fondo-verde" aria-labelledby="metodo-t" data-compas>
+<section class="metodo seccion fondo-negro" aria-labelledby="metodo-t" data-compas>
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="metodo-t" data-revela>Cómo se aprende <em>aquí</em></h2>
@@ -713,7 +714,7 @@
 </section>
 
 <!-- ============================ PROFESORADO · CARRIL LATERAL ============================ -->
-<section class="profes seccion fondo-verde" id="profesorado" aria-labelledby="profes-t">
+<section class="profes seccion fondo-negro" id="profesorado" aria-labelledby="profes-t">
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="profes-t" data-revela>Quién te da <em>clase</em></h2>
@@ -788,7 +789,7 @@
 </section>
 
 <!-- ============================ PREGUNTAS ============================ -->
-<section class="preguntas seccion fondo-verde" id="preguntas" aria-labelledby="preguntas-t">
+<section class="preguntas seccion fondo-negro" id="preguntas" aria-labelledby="preguntas-t">
   <div class="envoltura preguntas__int">
     <header class="cabeza">
       <h2 class="t-seccion" id="preguntas-t" data-revela>Antes de <em>empezar</em></h2>
@@ -831,7 +832,7 @@
 </section>
 
 <!-- ============================ ALUMNADO ============================ -->
-<section class="alumnado seccion fondo-verde" aria-labelledby="alumnado-t">
+<section class="alumnado seccion fondo-negro" aria-labelledby="alumnado-t">
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="alumnado-t" data-revela>Lo cuentan <em>quienes ya tocan</em></h2>
@@ -1216,9 +1217,9 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=6.0" defer></script>
-<script src="assets/js/main.js?v=6.0" defer></script>
-<script src="assets/js/secciones.js?v=6.0" defer></script>
-<script src="assets/js/paginas.js?v=6.0" defer></script>
+<script src="assets/js/riddim.js?v=6.1" defer></script>
+<script src="assets/js/main.js?v=6.1" defer></script>
+<script src="assets/js/secciones.js?v=6.1" defer></script>
+<script src="assets/js/paginas.js?v=6.1" defer></script>
 </body>
 </html>

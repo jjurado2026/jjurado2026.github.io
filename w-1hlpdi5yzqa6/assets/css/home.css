@@ -3,8 +3,8 @@
    Orden (20-11-2026, para la conversión): hero · presentación en vídeo · cursos ·
    con quién han tocado · tarifas · cómo se aprende · profesorado · preguntas ·
    opiniones · reserva · jams y talleres · noticias · redes.
-   Fondos por capítulo (global.css): negro hasta los artistas, verde de las tarifas
-   a la reserva, negro para lo de la comunidad.
+   Fondos (v6.1): un solo negro de la cabecera al pie; el verde, solo en las tarifas
+   y en la reserva.
    ===================================================================== */
 .hero:has(+ .fondo-negro) { padding-bottom: 0; }
 .hero + .fondo-negro::after { display: none; }
@@ -146,14 +146,14 @@
   .altavoz { --tam: min(29vw, 50svh, 460px); margin: 0; }
 }
 
-/* La banda de cursos: el verde de la bandera, a lo ancho, al pie de la primera pantalla */
+/* La banda de cursos: del mismo negro que el hero, separada por un filete */
 .banda {
   position: relative;
   flex: none;
   overflow: hidden;
-  background: var(--verde);
+  background: var(--negro);
   color: var(--crudo);
-  border-top: 2px solid var(--oro);
+  border-top: 1px solid var(--linea);
 }
 .banda__pista {
   display: flex;
@@ -175,12 +175,12 @@
   line-height: 1.1;
   white-space: nowrap;
 }
-/* Separador: un disco negro con el agujero blanco, como un single */
+/* Separador: un punto de oro */
 .banda__lista li::after {
   content: "";
-  width: .5em; height: .5em;
+  width: .3em; height: .3em;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--blanco) 0 22%, var(--negro) 26%);
+  background: var(--oro);
 }
 @keyframes banda { to { transform: translateX(-50%); } }
 .ss .banda__pista { animation: none; }
@@ -190,17 +190,20 @@
    LA PRESENTACIÓN EN VÍDEO — lo primero tras el hero, a todo el ancho.
    La portada reacciona al cursor; el botón late a tempo (ondas a 75 BPM).
    ===================================================================== */
+/* El vídeo a la izquierda y el texto a la derecha, como en la v3.3 */
+.escuela__int { display: grid; gap: clamp(28px, 4vw, 48px); align-items: center; }
+@media (min-width: 1000px) { .escuela__int { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); column-gap: clamp(48px, 6vw, 96px); } }
+.escuela__texto { display: grid; gap: var(--e-5); }
 .escuela__frase {
-  max-width: 31em;
+  max-width: 30em;
   font-family: var(--f-display);
   font-weight: 420;
-  font-size: clamp(1.1rem, 1rem + .45vw, 1.38rem);
+  font-size: clamp(1.1rem, 1rem + .45vw, 1.34rem);
   line-height: 1.5;
   color: var(--blanco);
   text-wrap: pretty;
 }
 .escuela__frase em { font-weight: 600; }
-@media (min-width: 1000px) { .escuela .cabeza--doble .escuela__frase { justify-self: end; } }
 
 .video { position: relative; }
 .video__btn {
@@ -236,7 +239,7 @@
   left: 50%; top: 50%;
   display: grid;
   place-items: center;
-  width: clamp(76px, 7vw, 104px);
+  width: clamp(68px, 5.6vw, 84px);
   aspect-ratio: 1;
   border-radius: 50%;
   border: 2px solid var(--crudo);

@@ -43,19 +43,18 @@
 
 /* ---------- Tokens ----------
    v6 (20-11-2026): cada color de la bandera tiene un trabajo, en toda la web.
-   · Negro (su negro) = el escenario: la música, los cursos, los artistas, la agenda.
-   · Verde (uno solo) = empezar: tarifas, cómo se empieza, quién te da clase, dudas,
-     opiniones y reserva; en las páginas, sus cierres y formularios. Siempre a sangre,
-     en tramos seguidos, nunca alterno sección a sección.
+   · Negro (uno solo, el mismo de la cabecera al pie) = el escenario: casi toda la web.
+   · Verde (uno solo) = empezar: en la home, solo las tarifas y la reserva; en las páginas,
+     las tarifas, la tarjeta regalo y el cierre. Dos momentos, nunca un tramo largo.
    · Oro = la luz: la cursiva de los titulares, los nombres que brillan y el relleno
      de los botones al pasar. Nunca de fondo.
    · Crudo = el texto y el papel (entradas, formulario). */
 :root {
-  --negro: #1d1e1e;          /* su negro, literal */
-  --negro-2: #191a1a;
-  --negro-3: #141515;        /* pie y menú */
-  --carbon: #272928;         /* tarjetas sobre negro */
-  --carbon-2: #323433;
+  --negro: #131313;          /* un solo negro en toda la web: cabecera, hero, secciones y pie */
+  --negro-2: var(--negro);
+  --negro-3: var(--negro);
+  --carbon: #1f2020;         /* tarjetas sobre negro */
+  --carbon-2: #2a2b2b;
   --verde: #175634;          /* EL verde: crudo encima 7,2:1, oro 5,2:1 */
   --verde-3: #12452a;        /* tarjetas y superficies sobre verde */
   --verde-oscuro: #145230;   /* verde para texto sobre oro */
@@ -340,9 +339,7 @@ em { font-style: italic; }
   inset: 0 0 auto;
   z-index: 60;
   height: var(--cab-alto);
-  background: rgba(29, 30, 30, .88);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  backdrop-filter: blur(14px) saturate(1.2);
+  background: var(--negro);
 }
 .cab::after {
   content: "";
@@ -473,7 +470,8 @@ body.menu-abierto .cab::after { opacity: 0; }
 
 /* ---------- Pie: simétrico ---------- */
 .pie {
-  background: var(--negro-3);
+  background: var(--negro);
+  border-top: 1px solid var(--linea);
   color: var(--texto-suave);
   padding-block: var(--e-9) calc(var(--e-6) + 76px);
   font-size: .95rem;
@@ -551,9 +549,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   inset: auto 0 0;
   z-index: 50;
   padding: 10px var(--gutter) max(10px, env(safe-area-inset-bottom));
-  background: rgba(29, 30, 30, .94);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background: var(--negro);
   box-shadow: 0 -1px 0 var(--linea);
   transform: translateY(110%);
   transition: transform 460ms var(--salida);
@@ -641,7 +637,7 @@ body.menu-abierto .cab::after { opacity: 0; }
    un filete fino entre ellas.
    ===================================================================== */
 .fondo-negro { background: var(--negro); }
-.fondo-verde, .tarifas, .comun, .cierre, .regalo {
+.fondo-verde, .tarifas, .cierre, .regalo {
   background: var(--verde);
   --texto-suave: #d3dccb;      /* crudo con un punto de verde: 6:1 */
   --linea: rgba(241, 233, 214, .2);
@@ -649,7 +645,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   --carbon-2: #0f3b24;
   --fondo-seccion: var(--verde);
 }
-:is(.fondo-verde, .tarifas, .comun, .cierre, .regalo) ::selection { background: var(--oro); color: var(--tinta); }
+:is(.fondo-verde, .tarifas, .cierre, .regalo) ::selection { background: var(--oro); color: var(--tinta); }
 .fondo-verde:has(+ .fondo-verde), .fondo-negro:has(+ .fondo-negro) { padding-bottom: calc(var(--seccion) * .82); }
 .fondo-verde + .fondo-verde, .fondo-negro + .fondo-negro { padding-top: calc(var(--seccion) * .82); }
 .fondo-verde + .fondo-verde::after, .fondo-negro + .fondo-negro::after {
