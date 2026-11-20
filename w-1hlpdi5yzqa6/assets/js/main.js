@@ -114,7 +114,7 @@
       if (e.key === 'Escape' && !menu.hidden) cerrarMenu();
       // Foco atrapado entre el botón y el menú mientras está abierto
       if (e.key === 'Tab' && !menu.hidden) {
-        const enfocables = [menuBtn, ...$$('a, button', menu)];
+        const enfocables = [menuBtn, ...$$('a, button, summary', menu)];
         const i = enfocables.indexOf(document.activeElement);
         if (e.shiftKey && i <= 0) { e.preventDefault(); enfocables[enfocables.length - 1].focus(); }
         else if (!e.shiftKey && i === enfocables.length - 1) { e.preventDefault(); enfocables[0].focus(); }

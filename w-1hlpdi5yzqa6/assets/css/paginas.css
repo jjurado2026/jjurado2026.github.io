@@ -29,33 +29,12 @@
   color: rgba(241, 233, 214, .84);
   text-decoration: none;
   cursor: pointer;
-  transition: color 220ms var(--salida);
+  transition: color 220ms var(--salida), background-color 220ms var(--salida);
   -webkit-tap-highlight-color: transparent;
 }
-.nav__enlace::after, .nav__padre::after {
-  content: "";
-  position: absolute;
-  left: 14px; right: 14px; bottom: 5px;
-  height: 1.5px;
-  background: var(--oro);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 460ms var(--salida);
-}
-.nav__padre::after { right: 30px; }
-.nav__enlace:hover, .nav__padre:hover, .nav__item.abierto .nav__padre { color: var(--crudo); }
-.nav__enlace:hover::after, .nav__padre:hover::after, .nav__item.abierto .nav__padre::after { transform: scaleX(1); }
+.nav__enlace:hover, .nav__padre:hover, .nav__item.abierto .nav__padre { color: var(--crudo); background: rgba(241, 233, 214, .08); }
 .nav__enlace:active, .nav__padre:active { opacity: .7; }
-.nav__enlace[aria-current="page"]::before, .nav__padre[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  left: 50%; top: 0;
-  width: 4px; height: 4px;
-  margin-left: -2px;
-  border-radius: 50%;
-  background: var(--oro);
-}
-.nav__padre[aria-current="page"]::before { margin-left: -10px; }
+.nav__enlace[aria-current="page"], .nav__padre[aria-current="page"] { color: var(--crudo); }
 .nav__flecha { transition: transform 420ms var(--muelle); }
 .nav__item.abierto .nav__flecha { transform: rotate(180deg); }
 
@@ -85,50 +64,23 @@ html:not(.js) .nav__item:focus-within .nav__sub { opacity: 1; transform: none; p
 .nav__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1000ms var(--salida); }
 .nav__grupo:hover .nav__foto img, .nav__sub--escuela:hover .nav__foto img { transform: scale(1.06); }
 .nav__grupo-t { margin: 0 0 6px; font-family: var(--f-display); font-weight: 700; font-size: 1.08rem; line-height: 1.2; color: var(--crudo); }
-a.nav__grupo-t {
-  display: inline-block;
-  text-decoration: underline;
-  text-decoration-color: rgba(242, 193, 78, .45);
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: .22em;
-  transition: color 200ms var(--salida), text-decoration-color 200ms var(--salida);
-}
-a.nav__grupo-t:hover { color: var(--oro-texto); text-decoration-color: var(--oro-texto); }
+a.nav__grupo-t { display: inline-block; text-decoration: none; transition: color 200ms var(--salida); }
+a.nav__grupo-t:hover { color: var(--oro-texto); }
 .nav__grupo-d { font-size: .88rem; line-height: 1.45; color: var(--texto-suave); }
 .nav__sub ul { display: grid; }
 .nav__sub ul a {
-  position: relative;
   display: block;
-  padding: 6px 0;
+  margin-inline: -10px;
+  padding: 7px 10px;
+  border-radius: 9px;
   font-size: .93rem;
   font-weight: 500;
   color: var(--texto-suave);
   text-decoration: none;
-  transition: color 200ms var(--salida);
+  transition: color 200ms var(--salida), background-color 200ms var(--salida);
 }
-.nav__sub ul a::before {
-  content: "";
-  position: absolute;
-  left: -14px; top: 50%;
-  width: 8px; height: 1.5px;
-  background: var(--oro);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 360ms var(--salida);
-}
-.nav__sub ul a:hover { color: var(--crudo); }
-.nav__sub ul a:hover::before, .nav__sub ul a:focus-visible::before { transform: scaleX(1); }
+.nav__sub ul a:hover { color: var(--crudo); background: rgba(241, 233, 214, .08); }
 .nav__sub ul a:active { opacity: .7; }
-/* En el móvil, Cursos y La escuela son rótulos (no enlazan): más pequeños y en tono suave */
-.menu__padre {
-  padding: 10px 0 2px;
-  font-family: var(--f-display);
-  font-style: italic;
-  font-weight: 700;
-  font-size: clamp(1.6rem, 7.4vw, 2.4rem);
-  line-height: 1.1;
-  color: var(--texto-suave);
-}
 .menu__pie .boton { justify-content: center; }
 
 /* Pie: redes con enlace y legales */
@@ -551,16 +503,6 @@ a.nav__grupo-t:hover { color: var(--oro-texto); text-decoration-color: var(--oro
 /* =====================================================================
    WEB COMPLETA (sitemap final, 18-11-2026)
    ===================================================================== */
-
-/* ---------- Menú del móvil: los cursos y la escuela, como enlaces pequeños bajo su apartado ---------- */
-.menu__sub { display: flex; flex-wrap: wrap; gap: 2px 16px; margin: 2px 0 8px; }
-.menu__lista .menu__sub a {
-  font-family: var(--f-texto);
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--texto-suave);
-}
 
 /* ---------- Apertura de página (ph): titular grande y su pieza ---------- */
 .ph {

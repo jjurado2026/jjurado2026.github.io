@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=6.2">
-<link rel="stylesheet" href="assets/css/home.css?v=6.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=6.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=6.2">
+<link rel="stylesheet" href="assets/css/global.css?v=6.3">
+<link rel="stylesheet" href="assets/css/home.css?v=6.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=6.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=6.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -151,9 +151,11 @@
 <div class="menu" id="menu" data-menu hidden>
   <div class="menu__int envoltura">
     <ul class="menu__lista">
-      <li style="--i:0"><a href="index.html" data-menu-enlace>Inicio</a></li>
-      <li style="--i:1"><p class="menu__padre">Cursos</p>
-        <ul class="menu__sub">
+      <li style="--i:0"><a class="menu__fila" href="index.html" data-menu-enlace>Inicio <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:1">
+        <details class="menu__grupo">
+          <summary class="menu__fila">Cursos <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <ul class="menu__sub menu__sub--dos">
           <li><a href="instrumento-y-canto.html#guitarra" data-menu-enlace>Guitarra</a></li>
           <li><a href="instrumento-y-canto.html#bajo" data-menu-enlace>Bajo</a></li>
           <li><a href="instrumento-y-canto.html#bateria" data-menu-enlace>Batería</a></li>
@@ -163,19 +165,23 @@
           <li><a href="produccion-y-mezcla.html" data-menu-enlace>Producción y Mezcla</a></li>
           <li><a href="grupal.html#combo-rsm" data-menu-enlace>Combo RSM</a></li>
           <li><a href="grupal.html#armonia-online" data-menu-enlace>Armonía Online</a></li>
-        </ul>
+          </ul>
+        </details>
       </li>
-      <li style="--i:2"><a href="talleres-y-eventos.html" data-menu-enlace>Talleres y eventos</a></li>
-      <li style="--i:3"><p class="menu__padre">La escuela</p>
-        <ul class="menu__sub">
-          <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
-          <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
-          <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
-        </ul>
+      <li style="--i:2"><a class="menu__fila" href="talleres-y-eventos.html" data-menu-enlace>Talleres y eventos <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:3">
+        <details class="menu__grupo">
+          <summary class="menu__fila">La escuela <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <ul class="menu__sub">
+            <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
+            <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
+            <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
+          </ul>
+        </details>
       </li>
-      <li style="--i:4"><a href="noticias.html" data-menu-enlace>Noticias</a></li>
-      <li style="--i:5"><a href="tienda.html" data-menu-enlace>Tienda</a></li>
-      <li style="--i:6"><a href="contacto.html" data-menu-enlace>Contacto</a></li>
+      <li style="--i:4"><a class="menu__fila" href="noticias.html" data-menu-enlace>Noticias <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:5"><a class="menu__fila" href="tienda.html" data-menu-enlace>Tienda <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:6"><a class="menu__fila" href="contacto.html" data-menu-enlace>Contacto <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     </ul>
     <div class="menu__pie" style="--i:7">
       <a class="boton boton--oro boton--ancho" href="#" data-menu-enlace data-pronto="El botón abrirá la carpeta de Drive con las grabaciones de Armonía y el material en cuanto nos paséis el enlace.">Área de alumnos <svg class="boton__ico" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M6.5 13.5l7-7M8 6.5h5.5V12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -367,8 +373,8 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=6.2" defer></script>
-<script src="assets/js/main.js?v=6.2" defer></script>
-<script src="assets/js/paginas.js?v=6.2" defer></script>
+<script src="assets/js/riddim.js?v=6.3" defer></script>
+<script src="assets/js/main.js?v=6.3" defer></script>
+<script src="assets/js/paginas.js?v=6.3" defer></script>
 </body>
 </html>

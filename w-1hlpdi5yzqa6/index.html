@@ -16,11 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/esc-banda-900.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=6.2">
-<link rel="stylesheet" href="assets/css/home.css?v=6.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=6.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=6.2">
+<link rel="stylesheet" href="assets/css/global.css?v=6.3">
+<link rel="stylesheet" href="assets/css/home.css?v=6.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=6.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=6.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -144,9 +143,11 @@
 <div class="menu" id="menu" data-menu hidden>
   <div class="menu__int envoltura">
     <ul class="menu__lista">
-      <li style="--i:0"><a href="index.html" data-menu-enlace>Inicio</a></li>
-      <li style="--i:1"><p class="menu__padre">Cursos</p>
-        <ul class="menu__sub">
+      <li style="--i:0"><a class="menu__fila" href="index.html" data-menu-enlace>Inicio <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:1">
+        <details class="menu__grupo">
+          <summary class="menu__fila">Cursos <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <ul class="menu__sub menu__sub--dos">
           <li><a href="instrumento-y-canto.html#guitarra" data-menu-enlace>Guitarra</a></li>
           <li><a href="instrumento-y-canto.html#bajo" data-menu-enlace>Bajo</a></li>
           <li><a href="instrumento-y-canto.html#bateria" data-menu-enlace>Batería</a></li>
@@ -156,19 +157,23 @@
           <li><a href="produccion-y-mezcla.html" data-menu-enlace>Producción y Mezcla</a></li>
           <li><a href="grupal.html#combo-rsm" data-menu-enlace>Combo RSM</a></li>
           <li><a href="grupal.html#armonia-online" data-menu-enlace>Armonía Online</a></li>
-        </ul>
+          </ul>
+        </details>
       </li>
-      <li style="--i:2"><a href="talleres-y-eventos.html" data-menu-enlace>Talleres y eventos</a></li>
-      <li style="--i:3"><p class="menu__padre">La escuela</p>
-        <ul class="menu__sub">
-          <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
-          <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
-          <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
-        </ul>
+      <li style="--i:2"><a class="menu__fila" href="talleres-y-eventos.html" data-menu-enlace>Talleres y eventos <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:3">
+        <details class="menu__grupo">
+          <summary class="menu__fila">La escuela <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <ul class="menu__sub">
+            <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
+            <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
+            <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
+          </ul>
+        </details>
       </li>
-      <li style="--i:4"><a href="noticias.html" data-menu-enlace>Noticias</a></li>
-      <li style="--i:5"><a href="tienda.html" data-menu-enlace>Tienda</a></li>
-      <li style="--i:6"><a href="contacto.html" data-menu-enlace>Contacto</a></li>
+      <li style="--i:4"><a class="menu__fila" href="noticias.html" data-menu-enlace>Noticias <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:5"><a class="menu__fila" href="tienda.html" data-menu-enlace>Tienda <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li style="--i:6"><a class="menu__fila" href="contacto.html" data-menu-enlace>Contacto <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
     </ul>
     <div class="menu__pie" style="--i:7">
       <a class="boton boton--oro boton--ancho" href="#" data-menu-enlace data-pronto="El botón abrirá la carpeta de Drive con las grabaciones de Armonía y el material en cuanto nos paséis el enlace.">Área de alumnos <svg class="boton__ico" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M6.5 13.5l7-7M8 6.5h5.5V12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -178,9 +183,10 @@
 
 <main id="contenido">
 <!-- ============================ HERO ============================ -->
-<section class="hero grano fondo-negro" aria-labelledby="h1">
+<!-- v6.3 (20-11-2026): el texto sobre su negro y, al lado, su estudio: tres fotos suyas que se funden despacio
+     (el vúmetro de /guitarra/, la mesa de /produccion-y-mezcla/ y el escritorio con el logo de /contacto-2/) -->
+<section class="hero fondo-negro" aria-labelledby="h1" data-hero>
   <div class="hero__int envoltura">
-
     <div class="hero__texto">
       <h1 class="t-mega hero__h1" id="h1">
         <span class="linea" data-entra style="--i:0">Aprende reggae</span>
@@ -189,8 +195,8 @@
       </h1>
 
       <p class="hero__apoyo" data-entra style="--i:3">
-        Guitarra, bajo, canto, saxo, teclado, batería, producción y banda. Online o presencial en
-        Madrid, con profesores que han colaborado con <strong>Ky-Mani Marley</strong> y han
+        <span class="hero__cursos">Guitarra, bajo, canto, saxo, teclado, batería, producción y banda. </span>Online o
+        presencial en Madrid, con profesores que han colaborado con <strong>Ky-Mani Marley</strong> y han
         grabado con <strong>Ska-P</strong>.
       </p>
 
@@ -199,30 +205,18 @@
           Reserva tu sesión de prueba
           <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="boton boton--grande" href="#presentacion" data-ver-video>
+        <a class="boton boton--grande hero__ver" href="#presentacion" data-ver-video>
           <svg class="boton__ico" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M6.5 4.2v11.6L16 10z" fill="currentColor"/></svg>
           Ver la presentación
         </a>
       </div>
     </div>
 
-    <!-- El altavoz: foto en el cono y el logo como pegatina -->
-    <div class="hero__altavoz" data-entra style="--i:1">
-      <div class="altavoz">
-        <span class="altavoz__anillo" aria-hidden="true"></span>
-        <span class="altavoz__anillo" aria-hidden="true"></span>
-        <span class="altavoz__anillo" aria-hidden="true"></span>
-        <div class="altavoz__cono" data-cono>
-          <img src="assets/img/esc-banda-900.webp"
-               srcset="assets/img/esc-banda-900.webp 900w, assets/img/esc-banda-1400.webp 1400w"
-               sizes="(min-width: 1000px) 32vw, 60vw" width="900" height="506"
-               alt="Dos profesores de la escuela tocando en directo, guitarra y voz, con luces de escenario"
-               fetchpriority="high" decoding="async">
-        </div>
-        <img class="altavoz__sello" src="assets/img/logo-240.webp" width="120" height="120" alt="" decoding="async" data-sello>
-      </div>
+    <div class="hero__foto" data-entra style="--i:1" aria-hidden="true">
+      <picture><source media="(max-width: 999px)" srcset="assets/img/hero-vumetro-cerca-800.webp" width="800" height="640"><img class="hero__diapo" src="assets/img/hero-vumetro-1000.webp" srcset="assets/img/hero-vumetro-1000.webp 1000w, assets/img/hero-vumetro-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1600" height="1067" alt="" fetchpriority="high" decoding="async" style="--n:0; --x:40%; --y:62%"></picture>
+      <img class="hero__diapo" src="assets/img/hero-mesa-1000.webp" srcset="assets/img/hero-mesa-1000.webp 1000w, assets/img/hero-mesa-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1600" height="1067" alt="" fetchpriority="low" decoding="async" style="--n:1; --x:42%; --y:58%">
+      <img class="hero__diapo" src="assets/img/hero-estudio-1000.webp" srcset="assets/img/hero-estudio-1000.webp 1000w, assets/img/hero-estudio-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1600" height="1067" alt="" fetchpriority="low" decoding="async" style="--n:2; --x:56%; --y:34%">
     </div>
-
   </div>
 
   <!-- Banda con los ocho cursos: cierra la primera pantalla -->
@@ -270,7 +264,7 @@
 <!-- ============================ NUESTROS CURSOS · LA MESA ============================ -->
 <section class="cursos seccion fondo-negro" id="cursos" aria-labelledby="cursos-t">
   <div class="envoltura">
-    <header class="cabeza cabeza--centro">
+    <header class="cabeza cabeza--apilada">
       <h2 class="t-seccion" id="cursos-t" data-revela>Nuestros <em>cursos</em></h2>
       <p class="cabeza__guia" data-revela>
         Cursos online o presenciales <strong>estructurados en módulos temáticos</strong> que
@@ -580,7 +574,7 @@
       <p class="cabeza__guia" data-revela>Discos, giras y escenarios de quienes te dan clase.</p>
     </header>
   </div>
-  <div class="artistas__cintas" data-revela>
+  <div class="artistas__cintas artistas__cintas--escritorio" data-revela>
     <div class="cinta-a">
       <div class="cinta-a__pista">
         <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (1 de 2)"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
@@ -591,6 +585,32 @@
       <div class="cinta-a__pista">
         <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (2 de 2)"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
         <ul class="cinta-a__lista" aria-hidden="true"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="artistas__cintas artistas__cintas--movil" data-revela>
+    <div class="cinta-a cinta-a--m1">
+      <div class="cinta-a__pista">
+        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (1 de 4)"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li></ul>
+        <ul class="cinta-a__lista" aria-hidden="true"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li></ul>
+      </div>
+    </div>
+    <div class="cinta-a cinta-a--m2">
+      <div class="cinta-a__pista">
+        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (2 de 4)"><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
+        <ul class="cinta-a__lista" aria-hidden="true"><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
+      </div>
+    </div>
+    <div class="cinta-a cinta-a--m3">
+      <div class="cinta-a__pista">
+        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (3 de 4)"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li></ul>
+        <ul class="cinta-a__lista" aria-hidden="true"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li></ul>
+      </div>
+    </div>
+    <div class="cinta-a cinta-a--m4">
+      <div class="cinta-a__pista">
+        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (4 de 4)"><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
+        <ul class="cinta-a__lista" aria-hidden="true"><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
       </div>
     </div>
   </div>
@@ -1182,9 +1202,9 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=6.2" defer></script>
-<script src="assets/js/main.js?v=6.2" defer></script>
-<script src="assets/js/secciones.js?v=6.2" defer></script>
-<script src="assets/js/paginas.js?v=6.2" defer></script>
+<script src="assets/js/riddim.js?v=6.3" defer></script>
+<script src="assets/js/main.js?v=6.3" defer></script>
+<script src="assets/js/secciones.js?v=6.3" defer></script>
+<script src="assets/js/paginas.js?v=6.3" defer></script>
 </body>
 </html>
