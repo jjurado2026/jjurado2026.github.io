@@ -93,55 +93,47 @@
     revela.forEach((el) => io.observe(el));
   }
 
-  /* ════════ HERO ════════ */
+  /* ════════ HERO: sus mejores estancias, en fundido con un zoom lento ════════ */
   const hero = $('[data-hero]');
-  /* Letras del titular, en las dos capas (la máscara y el contorno) con el mismo retraso */
-  $$('.titulo__l1, .titulo__l2', hero).forEach((linea) => {
-    const base = linea.classList.contains('titulo__l2') ? 8 : 0;
-    const txt = linea.textContent;
-    linea.textContent = '';
-    [...txt].forEach((ch, i) => { const s = document.createElement('span'); s.className = 'letra'; s.style.setProperty('--n', base + i); s.textContent = ch; linea.appendChild(s); });
-    linea.setAttribute('aria-label', txt);
-  });
-  /* El titular ocupa el ancho de la caja: se mide «INTEGRALES» y se ajusta el tamaño */
-  const ajustaTitulo = () => {
-    const l2 = $('.hero__mascara .titulo__l2', hero);
-    const caja = $('.hero__mascara .hero__caja', hero);
-    hero.style.setProperty('--t', '100px');
-    const ancho = l2.scrollWidth;
-    const disponible = caja.clientWidth;
-    let t = Math.min(100 * disponible / ancho, 260);
-    hero.style.setProperty('--t', t.toFixed(2) + 'px');
-    /* Si el hero no cabe en la primera pantalla, el titular se reduce lo justo */
+  if (/[?&]hero=sangre\b/.test(location.search)) d.classList.add('hero-sangre');
+  const heroIn = $('.hero__in', hero);
+  const titulo = $('.titulo', hero);
+  /* Hero entero en la primera pantalla: si no cabe, primero se reduce la foto (móvil) y luego el titular */
+  const encaja = () => {
+    hero.style.removeProperty('--t');
+    heroIn.style.removeProperty('--hv');
     const barra = $('[data-barra]');
     const util = innerHeight - (barra && getComputedStyle(barra).display !== 'none' ? barra.offsetHeight : 0);
-    for (let n = 0; n < 12; n++) {
-      const ult = [$('.datos', hero), $('.hero__pie', hero)].filter((e) => e && getComputedStyle(e).display !== 'none');
-      const fondo = Math.max(...ult.map((e) => e.getBoundingClientRect().bottom + scrollY));
-      const datos = $('.datos', hero);
-      const libre = getComputedStyle(datos).display !== 'none' ? datos.getBoundingClientRect().top - $('.hero__pie', hero).getBoundingClientRect().bottom : 1;
-      if (fondo <= util + 1 && libre >= 0) break;
-      t *= .93;
-      hero.style.setProperty('--t', t.toFixed(2) + 'px');
+    const apilado = getComputedStyle(heroIn).gridTemplateColumns.trim().split(/\s+/).length === 1;
+    for (let n = 0; n < 16; n++) {
+      const ult = [$('.datos', hero), $('.hero__botones', hero)].filter((e) => getComputedStyle(e).display !== 'none')[0];
+      const fondo = ult.getBoundingClientRect().bottom + scrollY + 12;
+      const sobra = fondo - util;
+      if (sobra <= 0) break;
+      const vis = $('.hero__visual', hero);
+      if (apilado && !d.classList.contains('hero-sangre') && vis.offsetHeight > 132) {
+        heroIn.style.setProperty('--hv', Math.max(130, vis.offsetHeight - sobra - 4) + 'px');
+      } else {
+        const t = parseFloat(getComputedStyle(titulo).fontSize);
+        if (t < 26) break;
+        hero.style.setProperty('--t', (t * .94).toFixed(2) + 'px');
+      }
     }
   };
-  ajustaTitulo();
-  if (document.fonts) document.fonts.ready.then(ajustaTitulo);
+  encaja();
+  if (document.fonts) document.fonts.ready.then(encaja);
   let tAj; let anchoAntes = innerWidth; let altoAntes = innerHeight;
   addEventListener('resize', () => {
     if (innerWidth === anchoAntes && Math.abs(innerHeight - altoAntes) < 140) return;
     anchoAntes = innerWidth; altoAntes = innerHeight;
-    clearTimeout(tAj); tAj = setTimeout(ajustaTitulo, 120);
+    clearTimeout(tAj); tAj = setTimeout(encaja, 120);
   });
 
-  /* Fotos de fondo: la siguiente se abre en un círculo desde la ficha; las letras la enseñan entera */
   const fondos = $$('.fondo', hero);
   const ficha = $('[data-ficha-hero]');
   const barras = $$('.ficha-hero__barras i', ficha);
   const nombre = $('.ficha-hero__nombre', ficha);
-  const DUR = 6500;
-  let iF = 0; let ocupado = false; let pausaHero = false;
-  const circuloHero = $('#c-hero circle');
+  let iF = 0; let pausaHero = false;
   const pinta = (n) => {
     const f = fondos[n];
     barras.forEach((b, j) => { b.classList.toggle('hecha', j < n); b.classList.remove('ahora'); });
@@ -155,47 +147,28 @@
       nombre.classList.remove('cambia');
     }, quieto ? 0 : 300);
   };
-  const vaA = async (n) => {
+  const vaA = (n) => {
     n = (n + fondos.length) % fondos.length;
-    if (n === iF || ocupado) return;
-    ocupado = true;
+    if (n === iF) return;
     const antes = fondos[iF]; const luego = fondos[n];
-    if (quieto) { antes.classList.remove('is-activa'); luego.classList.add('is-activa'); iF = n; pinta(n); ocupado = false; return; }
-    /* centro del círculo: la ficha (de donde «sale» la foto) */
-    const rh = hero.getBoundingClientRect(); const rf = ficha.getBoundingClientRect();
-    const cx = rf.left + rf.width / 2 - rh.left; const cy = rf.top + rf.height / 2 - rh.top;
-    const r = Math.max(Math.hypot(cx, cy), Math.hypot(rh.width - cx, cy), Math.hypot(cx, rh.height - cy), Math.hypot(rh.width - cx, rh.height - cy)) * 1.15;
-    /* el recorte va en el sistema de la foto (que está escalada por la deriva): se compensa */
-    const esc = 1.04;
-    const ox = rh.width / 2; const oy = rh.height / 2;
-    circuloHero.setAttribute('cx', (ox + (cx - ox) / esc).toFixed(1));
-    circuloHero.setAttribute('cy', (oy + (cy - oy) / esc).toFixed(1));
-    circuloHero.setAttribute('r', (r / esc).toFixed(1));
-    circuloHero.style.transformBox = 'view-box';
-    circuloHero.style.transformOrigin = `${(ox + (cx - ox) / esc).toFixed(1)}px ${(oy + (cy - oy) / esc).toFixed(1)}px`;
-    circuloHero.style.transform = 'scale(0)';
-    luego.style.clipPath = 'url(#c-hero)';
-    luego.classList.remove('deriva', 'primera');
-    void luego.offsetWidth;
-    luego.classList.add('entra', 'deriva');
+    fondos.forEach((f) => f.classList.remove('encima'));
+    luego.classList.remove('zoom'); void luego.offsetWidth;
+    luego.classList.add('encima', 'is-activa');
+    fondos.forEach((f) => f.setAttribute('aria-hidden', String(f !== luego)));
+    if (!quieto) luego.classList.add('zoom');
+    iF = n;
     pinta(n);
-    await abre(circuloHero, 1500, 0, 'cubic-bezier(.65,0,.35,1)');
-    antes.classList.remove('is-activa', 'deriva', 'primera');
-    luego.classList.remove('entra'); luego.classList.add('is-activa');
-    luego.style.clipPath = '';
-    circuloHero.getAnimations().forEach((a) => a.cancel());
-    iF = n; ocupado = false;
+    setTimeout(() => { if (antes !== fondos[iF]) antes.classList.remove('is-activa', 'zoom'); }, quieto ? 0 : 1700);
   };
-  fondos[0].classList.add(quieto ? 'is-activa' : 'primera');
-  if (!quieto) fondos[0].classList.add('deriva');
-  /* precarga las siguientes cuando el hero ya está pintado */
+  fondos.forEach((f, j) => f.setAttribute('aria-hidden', String(j !== 0)));
+  if (!quieto) fondos[0].classList.add('zoom');
   addEventListener('load', () => fondos.forEach((f) => { f.loading = 'eager'; }));
   barras.forEach((b) => b.addEventListener('animationend', () => { if (b.classList.contains('ahora') && !pausaHero) vaA(iF + 1); }));
   $$('[data-h-paso]', ficha).forEach((b) => b.addEventListener('click', () => vaA(iF + Number(b.dataset.hPaso))));
   if (!quieto) {
     pausable(ficha, (p) => { pausaHero = p; ficha.classList.toggle('pausa', p); });
     vigila(hero, (dentro) => { if (!dentro) { pausaHero = true; ficha.classList.add('pausa'); } else if (!ficha.matches(':hover')) { pausaHero = false; ficha.classList.remove('pausa'); } });
-    setTimeout(() => pinta(0), 1500);
+    setTimeout(() => pinta(0), 1300);
   } else pinta(0);
 
   /* ── Cinta: se duplica para que no tenga fin ── */
