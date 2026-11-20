@@ -276,6 +276,7 @@
   /* ════════ En obra → terminado: el círculo se abre, se queda, se cierra ════════ */
   $$('[data-obra]').forEach((marco, k) => {
     const despues = $('.obra__despues', marco);
+    const antes = $('.obra__antes', marco);
     if (quieto) { despues.setAttribute('aria-hidden', 'true'); return; }
     const c = clipCaja(despues, .5, .5);
     despues.classList.add('lista');
@@ -289,7 +290,9 @@
         await esperaLibre(); await espera(1600);
         marco.classList.add('fin');
         await abre(c, 1500, 0, 'cubic-bezier(.65,0,.35,1)', 0, 1);
+        antes.classList.add('fuera');
         await espera(2800); await esperaLibre();
+        antes.classList.remove('fuera'); await espera(350);
         marco.classList.remove('fin');
         await abre(c, 1100, 0, 'cubic-bezier(.65,0,.35,1)', 1, 0);
       }

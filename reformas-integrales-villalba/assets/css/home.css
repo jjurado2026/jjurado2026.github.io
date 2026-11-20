@@ -669,3 +669,6 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 .obra__sello { transform-origin: 0 0; transition: transform .5s var(--muelle); }
 @media (max-width: 599px) { .ficha-hero__paso { width: 40px; height: 40px; } .ficha-hero__acciones { gap: 6px; } }
 .quieto .servicio { margin-bottom: 32px; }
+
+.obra__antes { transition: opacity .35s linear; }
+.obra__antes.fuera { opacity: 0; }
