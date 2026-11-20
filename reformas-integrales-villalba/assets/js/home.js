@@ -192,19 +192,23 @@
     setTimeout(() => pinta(0), 1300);
   } else pinta(0);
 
-  const capas = $('[data-capas]');
-  if (capas && !quieto) {
+  /* Transición hero → servicios: un círculo blanco se abre desde el borde inferior del hero al bajar */
+  const apertura = $('.hero__apertura', hero);
+  if (apertura && !quieto) {
     let pedido = false;
-    const capa = () => {
+    const mide = () => hero.style.setProperty('--d', (2 * Math.hypot(hero.offsetWidth / 2, hero.offsetHeight) + 8).toFixed(0) + 'px');
+    const abreCirculo = () => {
       pedido = false;
-      const p = Math.min(1, Math.max(0, scrollY / (hero.offsetHeight || innerHeight)));
-      hero.style.setProperty('--tapa', (p * .6).toFixed(3));
-      heroIn.style.transform = p > 0 ? `scale(${(1 - .08 * p).toFixed(4)}) translateY(${(-3 * p).toFixed(2)}vh)` : '';
+      const p = Math.min(1, Math.max(0, scrollY / ((hero.offsetHeight || innerHeight) * .82)));
+      const e = p * p * (3 - 2 * p);   /* suave al principio y al final */
+      apertura.style.transform = `scale(${e.toFixed(4)})`;
       if (p > .92 && !pausaHero) { pausaHero = true; ficha.classList.add('pausa'); }
       else if (p <= .9 && pausaHero && !ficha.matches(':hover') && !document.hidden) { pausaHero = false; ficha.classList.remove('pausa'); }
     };
-    addEventListener('scroll', () => { if (!pedido) { pedido = true; requestAnimationFrame(capa); } }, { passive: true });
-    capa();
+    mide();
+    addEventListener('resize', () => { mide(); abreCirculo(); });
+    addEventListener('scroll', () => { if (!pedido) { pedido = true; requestAnimationFrame(abreCirculo); } }, { passive: true });
+    abreCirculo();
   }
 
   /* ── Cinta: se duplica para que no tenga fin ── */

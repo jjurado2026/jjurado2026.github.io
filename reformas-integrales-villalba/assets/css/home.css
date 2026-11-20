@@ -83,23 +83,22 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 .btn:active .btn__fondo { background: var(--naranja-hondo); }
 .btn:focus-visible { outline-offset: 4px; }
 @keyframes flecha { 0% { transform: none; } 40% { transform: translate(150%, -150%); opacity: 0; } 41% { transform: translate(-150%, 150%); opacity: 0; } 100% { transform: none; opacity: 1; } }
-.btn--claro { background: var(--blanco); color: var(--negro); }
-.btn--claro .btn__ico { background: var(--negro); color: var(--blanco); }
-.btn--oscuro { background: var(--negro); color: var(--blanco); }
-.btn--oscuro .btn__ico { background: var(--blanco); color: var(--negro); }
-.btn--linea { border-color: rgba(255, 255, 255, .55); color: var(--blanco); }
-.btn--linea .btn__ico { background: rgba(255, 255, 255, .14); }
-.btn--linea-oscuro { border-color: var(--negro); color: var(--negro); }
-.btn--linea-oscuro .btn__ico { background: rgba(26, 26, 26, .08); }
+/* En reposo ningún botón va relleno (ni el principal): todos con borde; el relleno entra solo con el cursor o el foco.
+   --claro y --linea son los de fondo oscuro; --oscuro y --linea-oscuro, los de fondo claro. */
+.btn--claro, .btn--linea { border-color: rgba(255, 255, 255, .7); color: var(--blanco); }
+.btn--claro .btn__ico, .btn--linea .btn__ico { background: rgba(255, 255, 255, .14); }
+.btn--oscuro, .btn--linea-oscuro { border-color: var(--negro); color: var(--negro); }
+.btn--oscuro .btn__ico, .btn--linea-oscuro .btn__ico { background: rgba(26, 26, 26, .08); }
 .btn:hover .btn__ico, .btn:focus-visible .btn__ico { background: var(--negro); color: var(--blanco); }
-.btn--linea:hover, .btn--linea:focus-visible { border-color: var(--naranja); }
+.btn--linea:hover, .btn--linea:focus-visible, .btn--claro:hover, .btn--claro:focus-visible { border-color: var(--naranja); }
 .btn--cab { height: 48px; padding-left: 18px; gap: 12px; font-size: .95rem; }
 .btn--cab .btn__ico { width: 34px; height: 34px; }
 .btn--cab .btn__fondo { right: 25px; }
 /* brillo que cruza los botones de llamada principal */
 [data-brillo]::before { content: ''; position: absolute; z-index: 2; top: -20%; bottom: -20%; left: 0; width: 38%; pointer-events: none;
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55) 45%, rgba(255, 255, 255, .55) 55%, transparent); opacity: 0; transform: translateX(-120%) skewX(-18deg); }
-.btn--oscuro[data-brillo]::before { background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .22) 45%, rgba(255, 255, 255, .22) 55%, transparent); }
+.btn--oscuro[data-brillo]::before, .cab:not(.bajada) .btn--cab[data-brillo]::before { background: linear-gradient(100deg, transparent, rgba(255, 94, 20, .2) 45%, rgba(255, 94, 20, .2) 55%, transparent); }
+.banda .btn--oscuro[data-brillo]::before { background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45) 45%, rgba(255, 255, 255, .45) 55%, transparent); }
 .anima [data-brillo]::before { animation: brillo 5.5s var(--suave) 2.4s infinite; }
 .anima [data-brillo]:hover::before { animation: none; }
 @keyframes brillo { 0% { transform: translateX(-120%) skewX(-18deg); opacity: 1; } 22% { transform: translateX(320%) skewX(-18deg); opacity: 1; } 23%, 100% { transform: translateX(320%) skewX(-18deg); opacity: 0; } }
@@ -121,10 +120,10 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 .cab__logo img { height: clamp(18px, 1.15rem + .3vw, 24px); width: auto; }
 .cab__logo-b, .cab.bajada .cab__logo-n, .hero-sangre .cab .cab__logo-n { display: none; }
 .cab.bajada .cab__logo-b, .hero-sangre .cab .cab__logo-b { display: block; }
-.cab:not(.bajada) .btn--cab { background: var(--negro); color: var(--blanco); }
-.cab:not(.bajada) .btn--cab .btn__ico { background: var(--blanco); color: var(--negro); }
-.hero-sangre .cab:not(.bajada) .btn--cab { background: var(--blanco); color: var(--negro); }
-.hero-sangre .cab:not(.bajada) .btn--cab .btn__ico { background: var(--negro); color: var(--blanco); }
+.cab:not(.bajada) .btn--cab { border-color: var(--negro); color: var(--negro); }
+.cab:not(.bajada) .btn--cab .btn__ico { background: rgba(26, 26, 26, .08); }
+.hero-sangre .cab:not(.bajada) .btn--cab { border-color: rgba(255, 255, 255, .7); color: var(--blanco); }
+.hero-sangre .cab:not(.bajada) .btn--cab .btn__ico { background: rgba(255, 255, 255, .14); }
 .cab .btn--cab:hover .btn__ico { background: var(--negro); color: var(--blanco); }
 .menu { display: flex; gap: clamp(14px, 1.7vw, 30px); margin-left: auto; font-weight: 500; font-size: .98rem; }
 .menu a { position: relative; padding: 8px 0; opacity: .88; }
@@ -256,8 +255,8 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 .hero-sangre .hero__visual::after { display: none; }
 .hero-sangre .ficha-hero { left: auto; right: max(var(--canal), calc((100% - var(--ancho)) / 2)); bottom: clamp(20px, 4vh, 40px); }
 .hero-sangre .hero__lema { color: #E9E9E9; }
-.hero-sangre .hero .btn--oscuro { background: var(--blanco); color: var(--negro); }
-.hero-sangre .hero .btn--oscuro .btn__ico { background: var(--negro); color: var(--blanco); }
+.hero-sangre .hero .btn--oscuro { border-color: rgba(255, 255, 255, .7); color: var(--blanco); }
+.hero-sangre .hero .btn--oscuro .btn__ico { background: rgba(255, 255, 255, .14); }
 .hero-sangre .hero .btn--linea-oscuro { border-color: rgba(255, 255, 255, .6); color: var(--blanco); }
 .hero-sangre .hero .btn--linea-oscuro .btn__ico { background: rgba(255, 255, 255, .14); }
 .hero-sangre .hero .btn:hover .btn__ico { background: var(--negro); color: var(--blanco); }
@@ -292,11 +291,11 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 /* ════════ 30 años: servicios en pila (cada uno se queda arriba y el siguiente lo cubre) ════════ */
 .servicios { padding-bottom: clamp(60px, 7vw, 100px); }
 .capas { position: relative; }
-.anima .capas > .hero { position: sticky; top: 0; z-index: 0; }
-.hero::after { content: ''; position: absolute; inset: 0; z-index: 6; background: #0E0E0E; opacity: var(--tapa, 0); pointer-events: none; }
-.hero__in { transform-origin: 50% 30%; }
-.capas > .servicios { z-index: 1; background: var(--blanco); border-radius: clamp(26px, 3.4vw, 52px) clamp(26px, 3.4vw, 52px) 0 0; box-shadow: 0 -40px 90px -40px rgba(26, 26, 26, .45); }
-.capas > .servicios::before { content: ''; position: absolute; left: 50%; top: 16px; width: 64px; height: 5px; margin-left: -32px; border-radius: 3px; background: var(--acero); }
+/* Transición hero → servicios: desde el centro del borde inferior del hero se abre un círculo blanco que crece al bajar
+   hasta ser el fondo de «30 años de experiencia» (no se parece a la pila de los servicios) */
+.hero__apertura { position: absolute; z-index: 7; left: 50%; bottom: 0; width: var(--d, 200vmax); height: var(--d, 200vmax); margin: 0 0 calc(var(--d, 200vmax) / -2) calc(var(--d, 200vmax) / -2); border-radius: 50%; background: var(--blanco); transform: scale(0); pointer-events: none; }
+.quieto .hero__apertura { display: none; }
+.capas > .servicios { background: var(--blanco); }
 .pila { position: relative; }
 .servicio {
   position: sticky; top: calc(var(--cab) + 18px + var(--i) * 14px);
@@ -470,7 +469,7 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 .anima .banda::before { animation: respira 9s ease-in-out infinite; }
 @keyframes respira { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.12) translateX(-3%); opacity: 1; } }
 .banda__in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(32px, 6vw, 96px); align-items: center; }
-.banda h2 { max-width: 15ch; }
+.banda h2 { max-width: none; }
 .banda p { margin-top: 22px; font-size: clamp(1.15rem, 1rem + .6vw, 1.6rem); font-weight: 500; max-width: 34ch; }
 .banda__botones { display: flex; gap: 14px; flex-wrap: wrap; margin-top: clamp(28px, 3.4vw, 44px); }
 .banda .btn__fondo { background: var(--blanco); }
@@ -531,9 +530,9 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 
 /* ════════ Presupuesto sin compromiso: formulario ════════ */
 .presupuesto__rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 6vw, 112px); align-items: stretch; }
-.formulario { grid-template-rows: auto auto minmax(130px, 1fr) auto auto; align-content: stretch; }
-.campo--mensaje textarea { flex: 1; min-height: 130px; height: 100%; resize: none; }
-.formulario.enviado { grid-template-rows: 1fr; align-content: center; }
+/* el formulario llega a la altura de la columna izquierda repartiendo el aire entre las filas, no estirando el mensaje */
+.formulario { align-content: space-between; }
+.formulario.enviado { align-content: center; }
 .presupuesto__texto > p { margin-top: 26px; max-width: 44ch; color: var(--claro); font-size: clamp(1.05rem, 1rem + .3vw, 1.25rem); }
 .vias { margin-top: 36px; display: grid; gap: 12px; }
 .via { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; gap: 18px; padding: 16px 20px 16px 16px; border-radius: 10px; background: var(--negro-2); border: 1px solid var(--negro-3); }
@@ -555,15 +554,15 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
   font: 500 1.1rem/1.4 var(--f); color: var(--negro); background: transparent; border: 0; border-bottom: 2px solid var(--acero);
   padding: 26px 2px 10px; border-radius: 0; outline: none; resize: vertical; min-height: 62px;
 }
-.campo textarea { min-height: 130px; }
+.campo textarea { min-height: 148px; resize: none; }
 .campo input:not([type="checkbox"]):focus, .campo textarea:focus { border-color: var(--naranja); }
 .campo > label { position: absolute; left: 2px; top: 22px; font-weight: 500; color: var(--grafito); pointer-events: none; transform-origin: 0 0; transition: transform .35s var(--sale); }
-.campo input:focus + label, .campo input:not(:placeholder-shown) + label, .campo textarea:focus + label, .campo textarea:not(:placeholder-shown) + label { transform: translateY(-18px) scale(.8); }
+.campo input:not([type="checkbox"]):focus + label, .campo input:not([type="checkbox"]):not(:placeholder-shown) + label, .campo textarea:focus + label, .campo textarea:not(:placeholder-shown) + label { transform: translateY(-18px) scale(.8); }
 .campo__error { font-weight: 650; font-size: .9rem; color: #B3261E; }
 .campo__error:not(:empty) { margin-top: 6px; }
 .campo--casilla { flex-direction: row; flex-wrap: wrap; align-items: flex-start; margin-top: 4px; }
 .campo--casilla input { position: absolute; opacity: 0; width: 28px; height: 28px; margin: 0; }
-.campo--casilla label { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; font-size: .98rem; line-height: 1.5; cursor: pointer; min-height: 44px; }
+.campo--casilla > label { position: relative; left: auto; top: auto; pointer-events: auto; color: var(--negro); display: flex; gap: 14px; align-items: flex-start; font-weight: 500; font-size: .98rem; line-height: 1.5; cursor: pointer; min-height: 44px; }
 .casilla { flex: none; width: 28px; height: 28px; border: 2px solid var(--negro); border-radius: 4px; display: grid; place-items: center; position: relative; overflow: hidden; }
 .casilla::before { content: ''; position: absolute; inset: 0; background: var(--naranja); transform: scale(0); border-radius: 50%; transition: transform .4s var(--sale); }
 .casilla svg { position: relative; width: 18px; height: 18px; fill: none; stroke: var(--negro); stroke-width: 2.6; transform: scale(0); transition: transform .4s var(--muelle) .05s; }
@@ -571,7 +570,7 @@ h1, h2, h3 { font-weight: 750; font-stretch: 112%; line-height: 1; letter-spacin
 .campo--casilla input:checked + label .casilla svg { transform: none; }
 .campo--casilla input:focus-visible + label .casilla { outline: 2px solid var(--naranja); outline-offset: 3px; }
 .campo--casilla .campo__error { flex-basis: 100%; padding-left: 42px; }
-.formulario__pie { grid-column: 1 / -1; margin-top: 6px; align-self: end; }
+.formulario__pie { grid-column: 1 / -1; margin-top: clamp(16px, 2vw, 28px); }
 .formulario__pie .btn { width: 100%; justify-content: space-between; }
 .formulario__hecho { grid-column: 1 / -1; text-align: center; padding: 24px 8px; }
 .formulario__hecho[hidden] { display: none; }
