@@ -100,12 +100,26 @@
       return bien;
     };
     Object.keys(reglas).forEach((n) => fc.elements[n].addEventListener('change', () => revisar(n)));
-    fc.addEventListener('submit', (e) => {
+    fc.addEventListener('submit', async (e) => {
       e.preventDefault();
       const fallos = Object.keys(reglas).filter((n) => !revisar(n));
       if (fallos.length) { fc.elements[fallos[0]].focus(); return; }
+      const boton = fc.querySelector('[type="submit"]');
+      const fallo = $('[data-form-fallo]', fc);
+      boton.disabled = true;
+      if (fc.dataset.envio) {
+        try {
+          const r = await fetch(fc.dataset.envio, { method: 'POST', body: new FormData(fc), credentials: 'same-origin' });
+          const j = await r.json();
+          if (!j.success) throw new Error('rechazado');
+          if (fallo) fallo.hidden = true;
+        } catch (err) {
+          boton.disabled = false;
+          if (fallo) { fallo.hidden = false; fallo.focus(); }
+          return;
+        }
+      }
       if (ok) { ok.hidden = false; }
-      fc.querySelector('[type="submit"]').disabled = true;
     });
   }
 
@@ -183,7 +197,29 @@
     const estado = $$('[data-cookies-estado]');
     const pintarEstado = () => estado.forEach((e) => { e.textContent = { aceptadas: 'analíticas aceptadas', rechazadas: 'analíticas rechazadas' }[leer()] || 'sin elegir'; });
     const abrir = (si) => { avisoC.hidden = !si; document.body.classList.toggle('cookies-abierto', si); };
-    const guardar = (v) => { try { localStorage.setItem(CLAVE, v); } catch { /* sin almacenamiento: no se recuerda */ } abrir(false); pintarEstado(); };
+    /* Google Analytics 4: solo con el código puesto en «Datos de la escuela» y las analíticas aceptadas */
+    const GA = (window.RSM && /^G-[A-Z0-9]+$/.test(window.RSM.ga4 || '')) ? window.RSM.ga4 : '';
+    let gaCargado = false;
+    const cargarGA = () => {
+      if (!GA || captura) return;
+      window['ga-disable-' + GA] = false;
+      if (gaCargado) return;
+      gaCargado = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', GA);
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA);
+      document.head.appendChild(s);
+    };
+    const guardar = (v) => {
+      try { localStorage.setItem(CLAVE, v); } catch { /* sin almacenamiento: no se recuerda */ }
+      if (v === 'aceptadas') cargarGA(); else if (GA) window['ga-disable-' + GA] = true;
+      abrir(false); pintarEstado();
+    };
+    if (leer() === 'aceptadas') cargarGA();
     $('[data-cookies-aceptar]', avisoC).addEventListener('click', () => guardar('aceptadas'));
     $('[data-cookies-rechazar]', avisoC).addEventListener('click', () => guardar('rechazadas'));
     $$('[data-cookies-abrir]').forEach((b) => b.addEventListener('click', () => { abrir(true); $('[data-cookies-aceptar]', avisoC).focus(); }));

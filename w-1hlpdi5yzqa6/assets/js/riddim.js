@@ -26,7 +26,7 @@
   const PASOS = 64;                      // cuatro compases de 16
   const ANTICIPO = 0.12;
   const CAPAS = ['bateria', 'bajo', 'guitarra', 'teclado', 'saxo', 'canto', 'dj'];
-  const URL_AUDIO = 'assets/audio/riddim.wav';
+  const URL_AUDIO = (window.RSM && window.RSM.audio) || 'assets/audio/riddim.wav';
 
   const MEZCLA = {
     guitarra: ['guitarra'], bajo: ['bajo'], canto: ['canto'], saxo: ['saxo'],

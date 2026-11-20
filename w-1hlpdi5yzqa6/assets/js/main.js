@@ -357,6 +357,12 @@
     f.focus();
   }));
 
+  // «Ver la presentación» del hero: baja al vídeo y lo pone en marcha
+  $$('[data-ver-video]').forEach(a => a.addEventListener('click', () => {
+    const b = $('#presentacion [data-video]');
+    if (b) setTimeout(() => { if (b.isConnected) b.click(); }, quieto() ? 0 : 750);
+  }));
+
   /* ---------------- Formulario en tres pasos ---------------- */
   const form = $('[data-form]');
   if (form) {
@@ -427,10 +433,25 @@
       mostrar(actual - 1, -1);
       pasos[actual - 1].focus({ preventScroll: true });
     });
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (actual < 3) { bSig.click(); return; }
       if (!valido(3)) return;
+      // En WordPress (data-envio): se envía de verdad y solo se da por recibido si el servidor lo confirma
+      if (form.dataset.envio) {
+        const fallo = $('[data-form-fallo]', form);
+        bEnviar.disabled = true;
+        try {
+          const r = await fetch(form.dataset.envio, { method: 'POST', body: new FormData(form), credentials: 'same-origin' });
+          const j = await r.json();
+          if (!j.success) throw new Error('rechazado');
+          if (fallo) fallo.hidden = true;
+        } catch (err) {
+          bEnviar.disabled = false;
+          if (fallo) { fallo.hidden = false; fallo.focus(); }
+          return;
+        }
+      }
       const inst = valor('instrumento'), mod = valor('modalidad').toLowerCase(), frec = valor('frecuencia').toLowerCase();
       resumen.textContent = `Sesión de prueba de ${inst === 'Combo RSM' ? 'Combo RSM' : inst.toLowerCase()}, ${mod} y ${frec}. La escuela te escribirá a ${valor('email')} para cerrar día y hora.`;
       form.classList.add('enviado');

@@ -41,43 +41,45 @@
   font-display: swap;
 }
 
-/* ---------- Tokens ---------- */
+/* ---------- Tokens ----------
+   v6 (20-11-2026): cada color de la bandera tiene un trabajo, en toda la web.
+   · Negro (su negro) = el escenario: la música, los cursos, los artistas, la agenda.
+   · Verde (uno solo) = empezar: tarifas, cómo se empieza, quién te da clase, dudas,
+     opiniones y reserva; en las páginas, sus cierres y formularios. Siempre a sangre,
+     en tramos seguidos, nunca alterno sección a sección.
+   · Oro = la luz: la cursiva de los titulares, los nombres que brillan y el relleno
+     de los botones al pasar. Nunca de fondo.
+   · Crudo = el texto y el papel (entradas, formulario). */
 :root {
-  /* Negro de la bandera: su negro de siempre, con un punto de oliva en las variantes */
   --negro: #1d1e1e;          /* su negro, literal */
-  --negro-2: #171812;        /* secciones alternas */
-  --negro-3: #121310;        /* pie */
-  --carbon: #262822;         /* tarjetas sobre negro */
-  --carbon-2: #31342b;
-  /* Verde de la bandera: a sangre en cursos, alumnado y redes */
-  --verde: #185c36;          /* texto crudo encima: 6,6:1 */
-  --verde-2: #10432a;        /* hondo: agenda, cabecera */
-  --verde-3: #0d3822;        /* tarjetas sobre verde */
-  --verde-oscuro: #145230;   /* verde para texto sobre oro: 5:1 */
-  --verde-noche: #14261b;    /* fondo oscuro alterno, con el negro (17-11-2026) */
-  --verde-noche-2: #1c3325;  /* tarjetas sobre verde noche */
-  --verde-vivo: #1b6e3e;    /* verde bandera a sangre (cartel): crudo encima 5,2:1, oro 3,4:1 en titular */
-  --verde-bandera: #1f9d55;  /* detalles que no son texto: puntos, LED, líneas */
-  --verde-claro: #7cc48f;    /* datos sobre oscuro (fechas, instrumentos, siglas): 6,5 a 8:1 */
-  --verde-hoja: #8fbf72;     /* el verde vivo, solo en detalles sobre oscuro: 5,8:1 sobre --verde */
-  --verde-tinta: #185c36;    /* verde para texto y foco sobre crudo: 6,6:1 */
-  /* Tierra rojiza: la madera del Hammond y la tierra roja de la isla */
-  --tierra: #5a2d16;         /* escuela y método; texto crudo encima: 9,5:1 */
-  --tierra-2: #6e3a1e;
-  --tierra-tinta: #7a4a26;   /* texto tierra sobre crudo: 6,1:1 */
-  /* Oro de la bandera: el ámbar de los vúmetros */
-  --oro: #f2b531;            /* a sangre en hero y reserva; botones (texto en --tinta: 9,1:1) */
-  --oro-2: #f6c457;          /* hover */
-  --oro-texto: #f2c14e;      /* oro para texto sobre oscuro: 4,8:1 sobre verde, 10:1 sobre negro */
-  /* Crudo en lugar de blanco */
-  --crudo: #f1e9d6;          /* fijo: no cambia en los tramos claros */
-  --blanco: #f1e9d6;         /* el color del texto principal: en tramos claros pasa a --tinta */
+  --negro-2: #191a1a;
+  --negro-3: #141515;        /* pie y menú */
+  --carbon: #272928;         /* tarjetas sobre negro */
+  --carbon-2: #323433;
+  --verde: #175634;          /* EL verde: crudo encima 7,2:1, oro 5,2:1 */
+  --verde-3: #12452a;        /* tarjetas y superficies sobre verde */
+  --verde-oscuro: #145230;   /* verde para texto sobre oro */
+  --verde-bandera: #1f9d55;  /* LED y vúmetros de la mesa (objetos reales) */
+  --verde-claro: var(--oro-texto); /* los datos pequeños, en oro (antes verde claro) */
+  --verde-hoja: #8fbf72;
+  --verde-tinta: #175634;    /* verde para texto y foco sobre crudo: 7,2:1 */
+  /* Nombres antiguos, ya dentro del sistema: un solo verde y nada de verde noche ni tierra */
+  --verde-2: var(--verde);
+  --verde-vivo: var(--verde);
+  --verde-noche: var(--negro);
+  --verde-noche-2: var(--carbon);
+  --tierra-tinta: #6b4a2a;
+  --oro: #f2b531;            /* relleno de los botones al pasar (texto en --tinta: 9,1:1) */
+  --oro-2: #f6c457;
+  --oro-texto: #f2c14e;      /* oro para texto: 10:1 sobre negro, 5,2:1 sobre verde */
+  --crudo: #f1e9d6;
+  --blanco: #f1e9d6;         /* el color del texto principal: sobre papel pasa a --tinta */
   --gris-1: #e6dcc5;
   --tinta: #1d1e1e;          /* texto sobre crudo y sobre oro */
   --error: #a8261c;          /* errores de formulario sobre crudo: 5,9:1 */
 
   --texto: var(--blanco);
-  --texto-suave: #d6ccb4;    /* 5:1 sobre verde, 11:1 sobre negro */
+  --texto-suave: #d6ccb4;    /* 10,5:1 sobre negro */
   --linea: rgba(241, 233, 214, .14);
 
   /* Sombras profundas, en capas */
@@ -97,8 +99,8 @@
   /* Espaciado */
   --e-1: 4px;  --e-2: 8px;  --e-3: 12px; --e-4: 16px; --e-5: 24px;
   --e-6: 32px; --e-7: 48px; --e-8: 64px; --e-9: 96px; --e-10: 128px;
-  --gutter: clamp(16px, 4vw, 40px);
-  --ancho: 1240px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --ancho: 1320px;
   --seccion: clamp(80px, 10vw, 140px);
   --radio: 18px;
 
@@ -229,12 +231,18 @@ em { font-style: italic; }
 .enlace--blanco { text-decoration-color: rgba(241, 233, 214, .6); }
 .enlace--blanco:hover { color: var(--blanco); text-decoration-color: var(--oro-texto); }
 
-/* ---------- Botones ---------- */
+/* ---------- Botones ----------
+   En reposo, todos iguales: solo el borde (el principal, de oro). Al pasar el cursor o con
+   el foco, el oro entra desde la izquierda y el texto pasa a tinta. El botón no se mueve:
+   se animan su relleno, su flecha y un brillo que lo cruza de vez en cuando. */
 .boton {
-  --b-fondo: var(--oro);
-  --b-texto: var(--tinta);
-  --b-borde: var(--oro);
+  --b-borde: rgba(241, 233, 214, .62);
+  --b-texto: var(--crudo);
+  --b-luz: var(--oro);
+  --b-texto-luz: var(--tinta);
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -243,7 +251,7 @@ em { font-style: italic; }
   padding: 12px 22px;
   border: 1.5px solid var(--b-borde);
   border-radius: 999px;
-  background: var(--b-fondo);
+  background: transparent;
   color: var(--b-texto);
   font-family: var(--f-texto);
   font-size: .95rem;
@@ -253,26 +261,52 @@ em { font-style: italic; }
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  transition:
-    transform 420ms var(--muelle),
-    box-shadow 300ms var(--salida),
-    background-color 200ms var(--salida),
-    border-color 200ms var(--salida),
-    color 200ms var(--salida);
+  transition: color 280ms var(--salida), border-color 280ms var(--salida);
   -webkit-tap-highlight-color: transparent;
 }
-.boton:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(0, 0, 0, .55); }
-.boton:active { transform: translateY(0) scale(.97); box-shadow: none; transition-duration: 90ms; }
+.boton::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--b-luz);
+  transform: translateX(-102%);
+  transition: transform 560ms var(--salida);
+}
+.boton:hover, .boton:focus-visible { color: var(--b-texto-luz); border-color: var(--b-luz); }
+.boton:hover::before, .boton:focus-visible::before { transform: none; }
+.boton:active::before { opacity: .82; transition-duration: 90ms; }
 .boton:focus-visible { outline-offset: 4px; border-radius: 999px; }
 
-.boton__flecha { transition: transform 420ms var(--muelle); }
-.boton:hover .boton__flecha { transform: translateX(3px); }
+.boton__flecha, .boton__ico { flex: none; transition: transform 520ms var(--muelle); }
+.boton:hover .boton__flecha, .boton:focus-visible .boton__flecha { transform: translateX(4px); }
+.boton:hover .boton__ico, .boton:focus-visible .boton__ico { transform: scale(1.18); }
 
-.boton--oro:hover { --b-fondo: var(--oro-2); --b-borde: var(--oro-2); }
-/* Sobre blanco (formulario) */
-.boton--linea { --b-fondo: transparent; --b-texto: var(--tinta); --b-borde: var(--tinta); }
-.boton--linea:hover { --b-fondo: var(--tinta); --b-texto: var(--blanco); box-shadow: none; }
-.boton--grande { min-height: 56px; padding: 14px 26px; font-size: 1rem; }
+/* El principal: borde de oro y un brillo que lo cruza cada dos compases (6,4 s) */
+.boton--oro { --b-borde: var(--oro); }
+.boton--oro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 38%;
+  background: linear-gradient(100deg, transparent, rgba(242, 193, 78, .32), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+.js:not(.ss) .boton--oro::after { animation: brillo 6.4s var(--salida) infinite 1.6s; }
+.boton--oro:hover::after, .boton--oro:focus-visible::after { animation: none; opacity: 0; }
+@keyframes brillo {
+  0%, 72% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(330%) skewX(-18deg); }
+}
+
+/* Sobre papel (entradas, formulario): borde de tinta; al pasar, el mismo oro */
+.boton--linea, :is(.papel, .entrada, .form, .billete, .cookies, .dos__b--crudo) .boton { --b-borde: rgba(29, 30, 30, .6); --b-texto: var(--tinta); }
+:is(.papel, .entrada, .form, .billete, .cookies, .dos__b--crudo) .boton--oro { --b-borde: var(--tinta); }
+:is(.papel, .entrada, .form, .billete, .cookies, .dos__b--crudo) .boton--oro::after { background: linear-gradient(100deg, transparent, rgba(242, 181, 49, .45), transparent); }
+.boton--grande { min-height: 56px; padding: 14px 28px; font-size: 1rem; }
 .boton--ancho { width: 100%; }
 
 .redondo {
@@ -285,7 +319,7 @@ em { font-style: italic; }
   color: var(--blanco);
   transition: transform 420ms var(--muelle), background-color 200ms var(--salida), color 200ms var(--salida), border-color 200ms var(--salida);
 }
-.redondo:hover { background: var(--blanco); color: var(--tinta); border-color: var(--blanco); transform: translateY(-2px); }
+.redondo:hover { background: var(--oro); color: var(--tinta); border-color: var(--oro); }
 .redondo:active { transform: scale(.94); transition-duration: 90ms; }
 .redondo:disabled { opacity: .3; cursor: default; transform: none; background: transparent; color: var(--blanco); }
 
@@ -306,7 +340,7 @@ em { font-style: italic; }
   inset: 0 0 auto;
   z-index: 60;
   height: var(--cab-alto);
-  background: rgba(20, 38, 27, .9);
+  background: rgba(29, 30, 30, .88);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   backdrop-filter: blur(14px) saturate(1.2);
 }
@@ -371,7 +405,7 @@ em { font-style: italic; }
   transition: transform 420ms var(--muelle), background-color 200ms var(--salida), color 200ms var(--salida);
   -webkit-tap-highlight-color: transparent;
 }
-.menu-btn:hover { background: var(--blanco); color: var(--tinta); }
+.menu-btn:hover { border-color: var(--oro); }
 .menu-btn:active { transform: scale(.96); }
 .menu-btn__ico {
   position: relative;
@@ -379,7 +413,7 @@ em { font-style: italic; }
   border-radius: 50%;
   background: var(--blanco);
 }
-.menu-btn:hover .menu-btn__ico { background: var(--tinta); }
+.menu-btn:hover .menu-btn__ico { background: var(--oro); }
 .menu-btn__ico i {
   position: absolute;
   left: 8px; right: 8px;
@@ -388,7 +422,7 @@ em { font-style: italic; }
   border-radius: 2px;
   transition: transform 380ms var(--muelle);
 }
-.menu-btn:hover .menu-btn__ico i { background: var(--blanco); }
+
 .menu-btn__ico i:first-child { top: 11px; }
 .menu-btn__ico i:last-child { top: 15.5px; }
 .menu-btn[aria-expanded="true"] .menu-btn__ico i:first-child { transform: translateY(2.25px) rotate(45deg); }
@@ -517,7 +551,7 @@ body.menu-abierto .cab::after { opacity: 0; }
   inset: auto 0 0;
   z-index: 50;
   padding: 10px var(--gutter) max(10px, env(safe-area-inset-bottom));
-  background: rgba(20, 38, 27, .94);
+  background: rgba(29, 30, 30, .94);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   box-shadow: 0 -1px 0 var(--linea);
@@ -553,9 +587,10 @@ body.menu-abierto .cab::after { opacity: 0; }
 }
 .js:not(.ss) [data-revela].visto { opacity: 1; transform: none; }
 
-/* Eco dub: la palabra y sus repeticiones, que se alejan y se apagan */
+/* Eco dub: cada dos compases, la palabra suelta sus repeticiones en contorno de oro, que
+   se alejan a semicorchea y se apagan, como un delay. En reposo, la palabra limpia. */
 .eco { position: relative; display: inline-block; isolation: isolate; }
-.eco > em { position: relative; z-index: 3; }
+.eco > em, .eco > .eco__txt { position: relative; z-index: 3; }
 .eco__rep {
   position: absolute;
   left: 0; top: 0;
@@ -563,32 +598,28 @@ body.menu-abierto .cab::after { opacity: 0; }
   font-style: italic;
   font-weight: inherit;
   white-space: nowrap;
-  color: var(--oro-texto);
+  color: transparent;
+  -webkit-text-stroke: max(1.2px, .016em) var(--oro-texto);
   pointer-events: none;
   user-select: none;
-  --x: calc(var(--n) * .065em);
-  --y: calc(var(--n) * .05em);
-  transform: translate(var(--x), var(--y));
-  opacity: var(--o);
-}
-.t-mega .eco__rep { font-weight: 700; }
-.eco__rep:nth-of-type(1) { --n: 1; --o: .35; z-index: 2; }
-.eco__rep:nth-of-type(2) { --n: 2; --o: .18; z-index: 1; }
-.eco__rep:nth-of-type(3) { --n: 3; --o: .08; }
-.eco--suave .eco__rep { color: var(--blanco); }
-
-.js:not(.ss) .eco__rep {
+  --x: calc(var(--n) * .11em);
   opacity: 0;
-  transform: translate(0, 0);
-  transition:
-    opacity 700ms var(--salida),
-    transform var(--negra) var(--salida);
 }
+.eco__rep:nth-of-type(1) { --n: 1; --o: .9; z-index: 2; }
+.eco__rep:nth-of-type(2) { --n: 2; --o: .55; z-index: 1; }
+.eco__rep:nth-of-type(3) { --n: 3; --o: .25; }
+.eco--suave .eco__rep { -webkit-text-stroke-color: var(--blanco); }
 .js:not(.ss) .eco.suena .eco__rep {
-  opacity: var(--o);
-  transform: translate(var(--x), var(--y));
-  transition-delay: calc(var(--retardo, 0ms) + var(--n) * var(--semi));
+  animation: eco-delay 6.4s var(--salida) infinite;
+  animation-delay: calc(var(--retardo, 0ms) + var(--n) * var(--semi));
 }
+@keyframes eco-delay {
+  0% { opacity: 0; transform: translateX(0); }
+  6% { opacity: var(--o); }
+  30% { opacity: 0; transform: translateX(var(--x)); }
+  100% { opacity: 0; transform: translateX(var(--x)); }
+}
+.ss .eco__rep { display: none; }
 
 /* Movimiento reducido: estados finales, sin desplazamientos */
 @media (prefers-reduced-motion: reduce) {
@@ -600,5 +631,34 @@ body.menu-abierto .cab::after { opacity: 0; }
     transition-delay: 0ms !important;
   }
   .js [data-entra], .js [data-revela] { opacity: 1 !important; transform: none !important; }
-  .js .eco__rep { opacity: var(--o) !important; transform: translate(var(--x), var(--y)) !important; }
+  .eco__rep { display: none; }
+  .boton--oro::after { display: none; }
+}
+
+/* =====================================================================
+   FONDOS POR CAPÍTULO (v6). Una sección lleva .fondo-verde o .fondo-negro;
+   dos seguidas del mismo color se leen como un solo tramo: menos hueco y
+   un filete fino entre ellas.
+   ===================================================================== */
+.fondo-negro { background: var(--negro); }
+.fondo-verde, .tarifas, .comun, .cierre, .regalo {
+  background: var(--verde);
+  --texto-suave: #d3dccb;      /* crudo con un punto de verde: 6:1 */
+  --linea: rgba(241, 233, 214, .2);
+  --carbon: var(--verde-3);
+  --carbon-2: #0f3b24;
+  --fondo-seccion: var(--verde);
+}
+:is(.fondo-verde, .tarifas, .comun, .cierre, .regalo) ::selection { background: var(--oro); color: var(--tinta); }
+.fondo-verde:has(+ .fondo-verde), .fondo-negro:has(+ .fondo-negro) { padding-bottom: calc(var(--seccion) * .82); }
+.fondo-verde + .fondo-verde, .fondo-negro + .fondo-negro { padding-top: calc(var(--seccion) * .82); }
+.fondo-verde + .fondo-verde::after, .fondo-negro + .fondo-negro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: max(var(--gutter), calc((100% - var(--ancho)) / 2));
+  right: max(var(--gutter), calc((100% - var(--ancho)) / 2));
+  height: 1px;
+  background: var(--linea);
+  pointer-events: none;
 }
