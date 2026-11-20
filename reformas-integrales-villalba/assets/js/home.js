@@ -88,19 +88,15 @@
     if (lineas.length) lineas.forEach(parte); else parte(h);
   });
   /* Títulos en dos líneas exactas: si una línea no cabe en su columna, el título se reduce lo justo */
-  const ajustaLineas = () => $$('[data-lineas]').forEach((h) => {
-    const lineas = $$('.l', h);
-    if (!lineas.length) return;
-    h.style.fontSize = '';
+  const ajustaLineas = () => {
+    const hs = $$('[data-lineas]').filter((h) => h.querySelector('.l'));
+    hs.forEach((h) => { h.style.fontSize = ''; });
     if (innerWidth < 900) return;
-    for (let k = 0; k < 20; k++) {
-      const ancho = h.clientWidth;
-      if (Math.max(...lineas.map((l) => l.scrollWidth)) <= ancho + 1) break;
-      h.style.fontSize = (parseFloat(getComputedStyle(h).fontSize) * .96).toFixed(2) + 'px';
-    }
-  });
-  ajustaLineas();
-  if (document.fonts) document.fonts.ready.then(ajustaLineas);
+    /* se leen todas las medidas de una vez y luego se escribe: un solo cálculo de la página */
+    const medidas = hs.map((h) => ({ h, ancho: h.clientWidth, linea: Math.max(...$$('.l', h).map((l) => l.scrollWidth)), fs: parseFloat(getComputedStyle(h).fontSize) }));
+    medidas.forEach(({ h, ancho, linea, fs }) => { if (linea > ancho + 1) h.style.fontSize = (fs * ancho / linea * .985).toFixed(2) + 'px'; });
+  };
+  if (document.fonts) document.fonts.ready.then(() => requestAnimationFrame(ajustaLineas)); else ajustaLineas();
   let tLin;
   addEventListener('resize', () => { clearTimeout(tLin); tLin = setTimeout(ajustaLineas, 150); });
 
@@ -126,23 +122,23 @@
     const barra = $('[data-barra]');
     const util = innerHeight - (barra && getComputedStyle(barra).display !== 'none' ? barra.offsetHeight : 0);
     const apilado = getComputedStyle(heroIn).gridTemplateColumns.trim().split(/\s+/).length === 1;
-    for (let n = 0; n < 16; n++) {
+    for (let n = 0; n < 3; n++) {
       const ult = [$('.datos', hero), $('.hero__botones', hero)].filter((e) => getComputedStyle(e).display !== 'none')[0];
-      const fondo = ult.getBoundingClientRect().bottom + scrollY + 12;
-      const sobra = fondo - util;
+      const sobra = ult.getBoundingClientRect().bottom + scrollY + 12 - util;
       if (sobra <= 0) break;
       const vis = $('.hero__visual', hero);
       if (apilado && !d.classList.contains('hero-sangre') && vis.offsetHeight > 132) {
         heroIn.style.setProperty('--hv', Math.max(130, vis.offsetHeight - sobra - 4) + 'px');
       } else {
+        /* el titular ocupa tres líneas: se reduce lo que sobra, repartido entre ellas */
         const t = parseFloat(getComputedStyle(titulo).fontSize);
-        if (t < 26) break;
-        hero.style.setProperty('--t', (t * .94).toFixed(2) + 'px');
+        const nuevo = Math.max(24, t - sobra / 3.1);
+        hero.style.setProperty('--t', nuevo.toFixed(2) + 'px');
       }
     }
   };
   encaja();
-  if (document.fonts) document.fonts.ready.then(encaja);
+  if (document.fonts) document.fonts.ready.then(() => requestAnimationFrame(encaja));
   let tAj; let anchoAntes = innerWidth; let altoAntes = innerHeight;
   addEventListener('resize', () => {
     if (innerWidth === anchoAntes && Math.abs(innerHeight - altoAntes) < 140) return;
@@ -215,6 +211,7 @@
     cinta.insertAdjacentHTML('beforeend', copia.replace(/<a /g, '<a tabindex="-1" aria-hidden="true" '));
   }
 
+  const resto = () => {
   /* ════════ Servicios en pila ════════ */
   const pila = $('[data-pila]');
   const fichas = $$('.servicio', pila);
@@ -545,4 +542,7 @@
     if (!visto) setTimeout(() => { burbuja.hidden = false; try { sessionStorage.setItem('riv-wa', '1'); } catch (e) { /* nada */ } setTimeout(() => { burbuja.hidden = true; }, 12000); }, 9000);
     $('[data-wa-cerrar]').addEventListener('click', () => { burbuja.hidden = true; });
   }
+  };
+  /* primero se pinta la primera pantalla; después se prepara el resto */
+  if (document.readyState === 'complete') setTimeout(resto, 0); else requestAnimationFrame(() => setTimeout(resto, 0));
 })();
