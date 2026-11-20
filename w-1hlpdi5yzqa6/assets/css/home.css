@@ -18,6 +18,8 @@
   font-size: clamp(1rem, .96rem + .25vw, 1.12rem);
 }
 .cabeza__guia strong { color: var(--blanco); }
+.cabeza--centro { display: grid; justify-items: center; text-align: center; }
+.cabeza--centro .cabeza__guia { max-width: 46em; margin-inline: auto; }
 @media (min-width: 1000px) {
   .cabeza--doble {
     display: grid;

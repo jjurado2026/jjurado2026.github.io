@@ -9,6 +9,36 @@
   const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- Aviso: «esta página llega en la semana…» ---------- */
+  /* ---------- Menú: Cursos y La escuela abren su desplegable (no llevan enlace) ----------
+     Con el ratón, al pasar; con el dedo o el teclado, al pulsar. Se cierra al salir, con Escape
+     o al pulsar fuera. Las fotos del desplegable se cargan la primera vez que se abre. */
+  const desplegables = $$('[data-desplegable]');
+  const abrir = (item, si) => {
+    const btn = $('.nav__padre', item);
+    const sub = $('.nav__sub', item);
+    item.classList.toggle('abierto', si);
+    if (btn) btn.setAttribute('aria-expanded', String(si));
+    if (sub) sub.inert = !si;
+    if (si) {
+      $$('img[data-src]', item).forEach((img) => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+      desplegables.forEach((otro) => { if (otro !== item && otro.classList.contains('abierto')) abrir(otro, false); });
+    }
+  };
+  desplegables.forEach((item) => {
+    const btn = $('.nav__padre', item);
+    abrir(item, false);
+    item.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') abrir(item, true); });
+    item.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') abrir(item, false); });
+    if (btn) btn.addEventListener('click', () => abrir(item, !item.classList.contains('abierto')));
+    item.addEventListener('focusout', (e) => { if (!item.contains(e.relatedTarget)) abrir(item, false); });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && item.classList.contains('abierto')) { abrir(item, false); if (btn) btn.focus(); }
+    });
+  });
+  document.addEventListener('click', (e) => {
+    desplegables.forEach((item) => { if (item.classList.contains('abierto') && !item.contains(e.target)) abrir(item, false); });
+  });
+
   const aviso = $('[data-aviso-pronto]');
   let tAviso = 0;
   $$('[data-pronto]').forEach((a) => a.addEventListener('click', (e) => {

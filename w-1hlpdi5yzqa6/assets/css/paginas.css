@@ -5,60 +5,131 @@
    home: solo transform y opacity, a tempo de one drop.
    ===================================================================== */
 
-/* ---------- Cabecera: menú de la web completa ---------- */
-@media (min-width: 1000px) {
-  .nav--paginas .nav__lista { gap: 0; }
-  .nav--paginas .nav__lista > li > a { padding-inline: 10px; font-size: .92rem; }
-}
+/* =====================================================================
+   CABECERA (v6.2): logo · menú centrado · «Área de alumnos».
+   Cursos y La escuela no llevan enlace: abren su desplegable, con foto.
+   Un filete de oro crece bajo lo que señalas; la página actual, un punto.
+   ===================================================================== */
+.nav__lista { display: flex; align-items: center; gap: 2px; }
 .nav__item { position: relative; }
-.nav__lista .nav__con-sub { display: inline-flex; align-items: center; gap: 6px; }
-.nav__flecha { transition: transform 420ms var(--muelle); }
-.nav__item:hover .nav__flecha, .nav__item:focus-within .nav__flecha { transform: rotate(180deg); }
-.nav__lista a[aria-current="page"] { color: var(--oro-texto); }
-.nav__sub {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  z-index: 2;
-  display: grid;
-  min-width: 240px;
-  padding: 8px;
-  border-radius: 14px;
-  background: var(--negro-3);
-  box-shadow: inset 0 0 0 1px var(--linea), var(--sombra-3);
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: opacity 200ms var(--salida), transform 460ms var(--muelle);
-}
-.nav__sub::before { content: ""; position: absolute; inset: -12px 0 auto; height: 12px; }
-.nav__item:hover .nav__sub, .nav__item:focus-within .nav__sub { opacity: 1; transform: none; pointer-events: auto; }
-.nav__lista .nav__sub a {
-  display: block;
-  padding: 9px 12px;
+.nav__enlace, .nav__padre {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 0;
   border-radius: 8px;
+  background: none;
+  font-family: var(--f-texto);
   font-size: .95rem;
   font-weight: 500;
+  line-height: 1;
+  color: rgba(241, 233, 214, .84);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 220ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
 }
-.nav__lista .nav__sub a:hover { color: var(--oro-texto); }
-.cab__alumnos { display: none; }
-@media (min-width: 1240px) {
-  .cab__alumnos {
-    display: inline-block;
-    padding: 10px 2px;
-    font-size: .9rem;
-    font-weight: 550;
-    color: var(--texto-suave);
-    text-decoration: underline;
-    text-decoration-color: rgba(241, 233, 214, .3);
-    text-underline-offset: .28em;
-    transition: color 180ms var(--salida);
-  }
-  .cab__alumnos:hover { color: var(--oro-texto); }
-  .cab__alumnos:active { opacity: .7; }
+.nav__enlace::after, .nav__padre::after {
+  content: "";
+  position: absolute;
+  left: 14px; right: 14px; bottom: 5px;
+  height: 1.5px;
+  background: var(--oro);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 460ms var(--salida);
 }
-.menu__alumnos { color: var(--texto-suave); font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
-.menu__alumnos:hover { color: var(--oro-texto); }
+.nav__padre::after { right: 30px; }
+.nav__enlace:hover, .nav__padre:hover, .nav__item.abierto .nav__padre { color: var(--crudo); }
+.nav__enlace:hover::after, .nav__padre:hover::after, .nav__item.abierto .nav__padre::after { transform: scaleX(1); }
+.nav__enlace:active, .nav__padre:active { opacity: .7; }
+.nav__enlace[aria-current="page"]::before, .nav__padre[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 0;
+  width: 4px; height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--oro);
+}
+.nav__padre[aria-current="page"]::before { margin-left: -10px; }
+.nav__flecha { transition: transform 420ms var(--muelle); }
+.nav__item.abierto .nav__flecha { transform: rotate(180deg); }
+
+/* Desplegable: una tarjeta negra con filete, que cae y se funde */
+.nav__sub {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -8px;
+  z-index: 2;
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--negro);
+  box-shadow: inset 0 0 0 1px rgba(241, 233, 214, .13), 0 36px 70px -24px rgba(0, 0, 0, .95);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 220ms var(--salida), transform 520ms var(--muelle);
+}
+.nav__sub::before { content: ""; position: absolute; inset: -18px 0 auto; height: 18px; }
+.nav__item.abierto .nav__sub,
+html:not(.js) .nav__item:hover .nav__sub,
+html:not(.js) .nav__item:focus-within .nav__sub { opacity: 1; transform: none; pointer-events: auto; }
+.nav__sub--cursos { display: grid; grid-template-columns: repeat(3, 196px); gap: 26px; }
+.nav__sub--escuela { display: grid; grid-template-columns: 176px minmax(200px, auto); gap: 22px; align-items: center; }
+.nav__foto { display: block; aspect-ratio: 16 / 10; margin-bottom: 14px; border-radius: 10px; overflow: hidden; background: var(--carbon); }
+.nav__sub--escuela .nav__foto { margin: 0; }
+.nav__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1000ms var(--salida); }
+.nav__grupo:hover .nav__foto img, .nav__sub--escuela:hover .nav__foto img { transform: scale(1.06); }
+.nav__grupo-t { margin: 0 0 6px; font-family: var(--f-display); font-weight: 700; font-size: 1.08rem; line-height: 1.2; color: var(--crudo); }
+a.nav__grupo-t {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-color: rgba(242, 193, 78, .45);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .22em;
+  transition: color 200ms var(--salida), text-decoration-color 200ms var(--salida);
+}
+a.nav__grupo-t:hover { color: var(--oro-texto); text-decoration-color: var(--oro-texto); }
+.nav__grupo-d { font-size: .88rem; line-height: 1.45; color: var(--texto-suave); }
+.nav__sub ul { display: grid; }
+.nav__sub ul a {
+  position: relative;
+  display: block;
+  padding: 6px 0;
+  font-size: .93rem;
+  font-weight: 500;
+  color: var(--texto-suave);
+  text-decoration: none;
+  transition: color 200ms var(--salida);
+}
+.nav__sub ul a::before {
+  content: "";
+  position: absolute;
+  left: -14px; top: 50%;
+  width: 8px; height: 1.5px;
+  background: var(--oro);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 360ms var(--salida);
+}
+.nav__sub ul a:hover { color: var(--crudo); }
+.nav__sub ul a:hover::before, .nav__sub ul a:focus-visible::before { transform: scaleX(1); }
+.nav__sub ul a:active { opacity: .7; }
+/* En el móvil, Cursos y La escuela son rótulos (no enlazan): más pequeños y en tono suave */
+.menu__padre {
+  padding: 10px 0 2px;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 7.4vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--texto-suave);
+}
+.menu__pie .boton { justify-content: center; }
 
 /* Pie: redes con enlace y legales */
 .iconos a {
@@ -72,7 +143,6 @@
 }
 .iconos a:hover { background: var(--oro); border-color: var(--oro); color: var(--tinta); }
 .iconos a:active { transform: scale(.94); }
-.pie__col ul.pie__legal { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: var(--e-5); font-size: .9rem; }
 
 /* Aviso de «esta página llega en la semana…» (solo en el prototipo) */
 .aviso-pronto {
@@ -482,21 +552,7 @@
    WEB COMPLETA (sitemap final, 18-11-2026)
    ===================================================================== */
 
-/* ---------- Menú: desplegables de Cursos (dos columnas) y La escuela ---------- */
-.nav__sub ul { display: grid; }
-.nav__sub--cursos { grid-template-columns: repeat(2, minmax(200px, auto)); gap: 4px 18px; padding: 14px; }
-.nav__grupo { display: grid; align-content: start; gap: 2px; }
-.nav__lista .nav__grupo-t {
-  display: block;
-  padding: 8px 12px 4px;
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 1.02rem;
-  color: var(--crudo);
-}
-.nav__grupo ul { margin-bottom: 6px; }
-.nav__lista .nav__grupo ul a { padding-block: 6px; font-size: .92rem; color: var(--texto-suave); }
-.nav__lista .nav__grupo ul a:hover, .nav__lista .nav__grupo-t:hover { color: var(--oro-texto); }
+/* ---------- Menú del móvil: los cursos y la escuela, como enlaces pequeños bajo su apartado ---------- */
 .menu__sub { display: flex; flex-wrap: wrap; gap: 2px 16px; margin: 2px 0 8px; }
 .menu__lista .menu__sub a {
   font-family: var(--f-texto);
@@ -873,9 +929,6 @@ section[id], article[id] { scroll-margin-top: calc(var(--cab-alto) + 16px); }
 /* Dianas de 44 px en el móvil: migas, enlaces del pie y clases de cada profe */
 @media (max-width: 899px) {
   .ruta a { display: inline-block; padding-block: 10px; }
-  .pie__col li a { padding-block: 9px; }
-  .pie__col ul { gap: 0; }
-  .pie__col ul.pie__legal { gap: 0 18px; }
 }
 .profe-p__clases a { min-height: 44px; }
 .canal-c__redes a { display: inline-block; padding-block: 8px; }

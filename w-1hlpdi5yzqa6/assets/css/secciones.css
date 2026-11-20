@@ -6,21 +6,6 @@
    Solo se animan transform y opacity. Movimiento reducido respetado.
    ===================================================================== */
 
-/* ---------- Navegación: ya enlaza a las secciones ---------- */
-.nav__lista a {
-  display: inline-block;
-  padding: 10px 12px;
-  border-radius: 999px;
-  font-size: .95rem;
-  font-weight: 550;
-  color: rgba(241, 233, 214, .88);
-  text-decoration: none;
-  transition: color 180ms var(--salida);
-}
-.nav__lista a:hover { color: var(--oro-texto); }
-.nav__lista a:active { opacity: .7; }
-.nav__lista a[aria-current="true"] { color: var(--oro-texto); }
-
 .menu__lista a {
   display: block;
   padding: 6px 0;
@@ -244,70 +229,93 @@
 
 
 /* =====================================================================
-   CON QUIÉN HAN TOCADO — el cartel de un festival, sobre su negro (v6).
-   Los tres cabezas de cartel, en oro (los discos de oro de la escuela); el resto,
-   en crudo y por niveles, mezclando la Fraunces con la de texto como un cartel
-   impreso. Cada compás, el eco dub salta a un cabeza de cartel.
+   ARTISTAS CON LOS QUE HEMOS TOCADO (v6.2) — dos cintas sutiles que pasan solas,
+   en sentidos contrarios, en la letra de texto. Los tres cabezas, en oro.
+   Se paran con el ratón encima; con movimiento reducido, quietas y en filas.
    ===================================================================== */
-.cartel {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  padding-block: clamp(80px, 9vw, 136px);
-  color: var(--crudo);
+.artistas { overflow: hidden; }
+.artistas__cintas {
+  display: grid;
+  gap: clamp(8px, 1.2vw, 16px);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
-.cartel__int { display: grid; gap: clamp(40px, 4.6vw, 64px); }
-.cartel__cabeza { display: grid; gap: var(--e-4); justify-items: center; text-align: center; }
-.cartel__guia { max-width: 44ch; color: var(--texto-suave); font-size: clamp(1rem, .96rem + .25vw, 1.15rem); }
-.cartel__lineas { display: grid; gap: clamp(16px, 2vw, 30px); text-align: center; }
-.cartel__linea {
+.cinta-a { overflow: hidden; }
+.cinta-a__pista { display: flex; width: max-content; animation: cinta-a 72s linear infinite; }
+.cinta-a--b .cinta-a__pista { animation-duration: 88s; animation-direction: reverse; }
+.artistas__cintas:hover .cinta-a__pista { animation-play-state: paused; }
+.cinta-a__lista { display: flex; align-items: center; }
+.cinta-a__lista li {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  column-gap: .7em;
-  row-gap: .12em;
-  font-family: var(--f-display);
-  line-height: 1.04;
-  text-wrap: balance;
-}
-.cartel__linea--1 {
-  font-size: clamp(2.4rem, .6rem + 5vw, 6rem);
-  font-weight: 900;
-  color: var(--oro-texto);
-  column-gap: .5em;
-}
-.cartel__linea--2 { font-size: clamp(1.6rem, .8rem + 2.4vw, 3.3rem); font-weight: 700; font-style: italic; }
-.cartel__linea--3 { font-size: clamp(1.25rem, .85rem + 1.25vw, 2.1rem); font-weight: 600; }
-.cartel__linea--4 {
-  max-width: 62em;
-  margin-inline: auto;
+  align-items: center;
+  gap: clamp(22px, 2.6vw, 40px);
+  padding-right: clamp(22px, 2.6vw, 40px);
   font-family: var(--f-texto);
-  font-size: clamp(1rem, .9rem + .45vw, 1.3rem);
   font-weight: 500;
-  color: var(--texto-suave);
-  column-gap: 1.4em;
+  font-size: clamp(1.15rem, .95rem + .9vw, 1.75rem);
+  line-height: 1.35;
+  color: rgba(241, 233, 214, .8);
+  white-space: nowrap;
 }
-/* Un filete de oro entre los cabezas de cartel y el resto */
-.cartel__linea--2 { position: relative; padding-top: clamp(18px, 2.2vw, 30px); }
-.cartel__linea--2::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 50%;
-  width: 72px; height: 1.5px;
-  margin-left: -36px;
-  background: var(--oro);
+.cinta-a--b .cinta-a__lista li { font-size: clamp(1rem, .9rem + .5vw, 1.35rem); color: rgba(241, 233, 214, .6); }
+.cinta-a__lista li::after { content: ""; flex: none; width: 5px; height: 5px; border-radius: 50%; background: var(--oro); opacity: .75; }
+.cinta-a__lista .cinta-a__top { color: var(--oro-texto); font-weight: 600; }
+@keyframes cinta-a { to { transform: translateX(-50%); } }
+.ss .cinta-a__pista { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .cinta-a__pista { width: auto; animation: none; }
+  .cinta-a__lista { flex-wrap: wrap; justify-content: center; row-gap: 6px; }
+  .cinta-a__lista[aria-hidden="true"] { display: none; }
 }
-/* El eco: copias en contorno de oro que se alejan, como un delay */
-.cartel .eco__txt { position: relative; z-index: 3; transition: color 500ms var(--salida); }
-.cartel .eco__rep { font-style: normal; font-weight: inherit; }
-.cartel .eco.suena .eco__txt { color: var(--crudo); }
-/* El cartel entra entero, una línea por semicorchea, en cuanto se ve (JS añade .entra) */
-.js:not(.ss) .cartel .cartel__linea {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 700ms var(--salida), transform 900ms var(--muelle);
-  transition-delay: calc(var(--i, 0) * var(--semi));
+
+/* =====================================================================
+   JAMS, TALLERES Y NOTICIAS (v6.2) — en paralelo, dos columnas en lista
+   ===================================================================== */
+.comunidad__int { display: grid; gap: clamp(56px, 7vw, 96px); }
+@media (min-width: 1000px) { .comunidad__int { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(48px, 6vw, 96px); align-items: stretch; } }
+.comunidad__int > div { display: flex; flex-direction: column; }
+.comunidad__cabeza { margin-bottom: clamp(22px, 2.8vw, 32px); }
+.comunidad__cabeza .cabeza__guia { margin-top: var(--e-4); }
+.comunidad .t-seccion { font-size: clamp(2rem, 1.3rem + 2.2vw, 3.1rem); }
+.comunidad__mas { align-self: flex-start; margin-top: auto; padding-top: var(--e-5); }
+.formatos.formatos--lista, .notas.notas--lista {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border-top: 1px solid var(--linea);
 }
-.js:not(.ss) .cartel.entra .cartel__linea { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .js .cartel .cartel__linea { opacity: 1 !important; transform: none !important; } }
+.formatos--lista .formato {
+  grid-template-rows: none;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding-block: 20px;
+  border-radius: 0;
+  background: none;
+  border-bottom: 1px solid var(--linea);
+  overflow: visible;
+}
+.formatos--lista .formato__foto, .notas--lista .nota__foto { width: 104px; aspect-ratio: 1; border-radius: 12px; overflow: hidden; }
+.formatos--lista .formato__foto img { transition: transform 900ms var(--salida); }
+.formatos--lista .formato:hover .formato__foto img { transform: scale(1.05); }
+.formatos--lista .formato__texto { padding: 0; gap: 6px; }
+.formatos--lista .formato__t { font-size: clamp(1.3rem, 1.15rem + .45vw, 1.55rem); }
+.formatos--lista .formato__d { display: none; }
+.formatos--lista .formato__dato { display: none; }
+.formatos--lista .formato__fecha { padding-top: 2px; border: 0; font-size: .92rem; }
+.notas--lista .nota { flex: none; border-bottom: 1px solid var(--linea); }
+.notas--lista .nota__enlace {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 20px;
+  row-gap: 6px;
+  padding-block: 20px;
+  height: auto;
+}
+.notas--lista .nota__foto { grid-row: 1 / span 3; }
+.notas--lista .nota__d { display: none; }
+.notas--lista .nota__t { font-size: clamp(1.15rem, 1.02rem + .4vw, 1.35rem); }
