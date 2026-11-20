@@ -73,15 +73,36 @@
 
   /* ── Títulos: cada palabra sube desde su línea ── */
   $$('[data-lineas]').forEach((h) => {
-    const palabras = h.textContent.trim().split(/\s+/);
-    h.textContent = '';
-    palabras.forEach((p, i) => {
-      const caja = document.createElement('span'); caja.className = 'pal';
-      const dentro = document.createElement('span'); dentro.style.setProperty('--i', i); dentro.textContent = p;
-      caja.appendChild(dentro); h.appendChild(caja);
-      if (i < palabras.length - 1) h.appendChild(document.createTextNode(' '));
-    });
+    let n = 0;
+    const parte = (cont) => {
+      const palabras = cont.textContent.trim().split(/\s+/);
+      cont.textContent = '';
+      palabras.forEach((p, i) => {
+        const caja = document.createElement('span'); caja.className = 'pal';
+        const dentro = document.createElement('span'); dentro.style.setProperty('--i', n++); dentro.textContent = p;
+        caja.appendChild(dentro); cont.appendChild(caja);
+        if (i < palabras.length - 1) cont.appendChild(document.createTextNode(' '));
+      });
+    };
+    const lineas = $$('.l', h);
+    if (lineas.length) lineas.forEach(parte); else parte(h);
   });
+  /* Títulos en dos líneas exactas: si una línea no cabe en su columna, el título se reduce lo justo */
+  const ajustaLineas = () => $$('[data-lineas]').forEach((h) => {
+    const lineas = $$('.l', h);
+    if (!lineas.length) return;
+    h.style.fontSize = '';
+    if (innerWidth < 900) return;
+    for (let k = 0; k < 20; k++) {
+      const ancho = h.clientWidth;
+      if (Math.max(...lineas.map((l) => l.scrollWidth)) <= ancho + 1) break;
+      h.style.fontSize = (parseFloat(getComputedStyle(h).fontSize) * .96).toFixed(2) + 'px';
+    }
+  });
+  ajustaLineas();
+  if (document.fonts) document.fonts.ready.then(ajustaLineas);
+  let tLin;
+  addEventListener('resize', () => { clearTimeout(tLin); tLin = setTimeout(ajustaLineas, 150); });
 
   /* ── Entradas al aparecer ── */
   const revela = $$('[data-revela]');
@@ -170,6 +191,21 @@
     vigila(hero, (dentro) => { if (!dentro) { pausaHero = true; ficha.classList.add('pausa'); } else if (!ficha.matches(':hover')) { pausaHero = false; ficha.classList.remove('pausa'); } });
     setTimeout(() => pinta(0), 1300);
   } else pinta(0);
+
+  const capas = $('[data-capas]');
+  if (capas && !quieto) {
+    let pedido = false;
+    const capa = () => {
+      pedido = false;
+      const p = Math.min(1, Math.max(0, scrollY / (hero.offsetHeight || innerHeight)));
+      hero.style.setProperty('--tapa', (p * .6).toFixed(3));
+      heroIn.style.transform = p > 0 ? `scale(${(1 - .08 * p).toFixed(4)}) translateY(${(-3 * p).toFixed(2)}vh)` : '';
+      if (p > .92 && !pausaHero) { pausaHero = true; ficha.classList.add('pausa'); }
+      else if (p <= .9 && pausaHero && !ficha.matches(':hover') && !document.hidden) { pausaHero = false; ficha.classList.remove('pausa'); }
+    };
+    addEventListener('scroll', () => { if (!pedido) { pedido = true; requestAnimationFrame(capa); } }, { passive: true });
+    capa();
+  }
 
   /* ── Cinta: se duplica para que no tenga fin ── */
   const cinta = $('[data-cinta]');

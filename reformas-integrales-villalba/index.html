@@ -23,7 +23,7 @@
 <script>
   /* Caducidad: a partir de esta fecha la página lleva al aviso. En local no caduca; ?caducada lo simula. */
   (function () {
-    var fin = Date.UTC(2026, 10, 28, 23, 0);
+    var fin = Date.UTC(2026, 10, 29, 23, 0);
     if (/[?&]caducada\b/.test(location.search) || (location.protocol !== 'file:' && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && Date.now() >= fin)) {
       document.documentElement.style.display = 'none';
       location.replace('caducada.html');
@@ -115,6 +115,7 @@
 
 <main id="contenido">
 
+<div class="capas" data-capas>
 <!-- ═════════ HERO: luz, sus mejores estancias y el nombre bien escrito ═════════ -->
 <section class="hero" data-hero aria-labelledby="hero-titulo">
   <div class="hero__in">
@@ -156,19 +157,6 @@
   </div>
 </section>
 
-<!-- Cinta de sus servicios, que no para -->
-<div class="cinta" aria-label="Servicios">
-  <div class="cinta__pista" data-cinta>
-    <a href="#s-arquitectura">Arquitectura</a><span aria-hidden="true">●</span>
-    <a href="#s-vivienda">Vivienda</a><span aria-hidden="true">●</span>
-    <a href="#s-rehabilitacion">Rehabilitación</a><span aria-hidden="true">●</span>
-    <a href="#s-proyectos">Proyectos</a><span aria-hidden="true">●</span>
-    <a href="#s-local">Local comercial</a><span aria-hidden="true">●</span>
-    <a href="#s-diseno">Diseño espacios</a><span aria-hidden="true">●</span>
-    <a href="#presupuesto" data-asunto="">Presupuesto sin compromiso</a><span aria-hidden="true">●</span>
-  </div>
-</div>
-
 <!-- ═════════ 30 AÑOS: SERVICIOS EN PILA ═════════ -->
 <section class="seccion seccion--niebla servicios" id="servicios" aria-labelledby="servicios-titulo">
   <div class="caja">
@@ -185,7 +173,7 @@
         <div class="servicio__texto">
           <span class="servicio__ico" aria-hidden="true"><svg viewBox="0 0 48 48" class="dib dib--compas"><circle cx="24" cy="9" r="3.2" class="t n"/><path class="pata pata--i" d="M22.6 11.8 13 38"/><path class="pata pata--d" d="M25.4 11.8 35 38"/><path d="M15.5 30.5h17" class="t"/><path d="M8 41h32" class="t"/></svg></span>
           <h3 id="t-arq">Arquitectura</h3>
-          <p>Equipo de técnicos, arquitectos, aparejadores etc.</p>
+          <p>Equipo de técnicos, arquitectos, aparejadores e ingenieros industriales, para cualquier tipo de proyecto y asesoramiento urbanístico y técnico.</p>
           <div class="servicio__botones">
             <a class="btn btn--oscuro" href="#presupuesto" data-asunto="Arquitectura"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Pedir presupuesto"><span>Pedir presupuesto</span></span><span class="btn__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span></a>
             <a class="servicio__tel" href="tel:+34608208374"><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608 208 374</a>
@@ -198,7 +186,7 @@
         <div class="servicio__texto">
           <span class="servicio__ico" aria-hidden="true"><svg viewBox="0 0 48 48" class="dib dib--casa"><path class="tejado t" d="M6 22 24 8l18 14"/><path d="M11 19v21h26V19" class="t"/><path class="puerta t n" d="M20 40V28h8v12"/><path d="M32 13V9h4v7" class="t"/></svg></span>
           <h3 id="t-viv">Vivienda</h3>
-          <p>Reforma integral de tu hogar, a tu gusto y a tu medida.</p>
+          <p>Reforma integral de tu hogar, a tu gusto y a tu medida. Un jefe/encargado supervisará diariamente su reforma y ofrecemos 2 años de garantía sobre nuestros trabajos.</p>
           <div class="servicio__botones">
             <a class="btn btn--claro" href="#presupuesto" data-asunto="Vivienda"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Pedir presupuesto"><span>Pedir presupuesto</span></span><span class="btn__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span></a>
             <a class="servicio__tel" href="tel:+34608208374"><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608 208 374</a>
@@ -211,7 +199,7 @@
         <div class="servicio__texto">
           <span class="servicio__ico" aria-hidden="true"><svg viewBox="0 0 48 48" class="dib dib--edificio"><path d="M12 41V8h24v33" class="t"/><path d="M6 41h36" class="t"/><g class="ventanas"><rect x="17" y="13" width="4" height="5" class="t v1"/><rect x="27" y="13" width="4" height="5" class="t v2"/><rect x="17" y="23" width="4" height="5" class="t v3"/><rect x="27" y="23" width="4" height="5" class="t v4"/></g><path d="M21 41v-6h6v6" class="t"/></svg></span>
           <h3 id="t-reh">Rehabilitación</h3>
-          <p>De edificios. En interior y exterior.</p>
+          <p>De edificios. En interior y exterior. Rehabilitamos casas, edificios, etc., con materiales de gran calidad y profesionales especializados.</p>
           <div class="servicio__botones">
             <a class="btn btn--oscuro" href="#presupuesto" data-asunto="Rehabilitación"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Pedir presupuesto"><span>Pedir presupuesto</span></span><span class="btn__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span></a>
             <a class="servicio__tel" href="tel:+34608208374"><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608 208 374</a>
@@ -224,7 +212,7 @@
         <div class="servicio__texto">
           <span class="servicio__ico" aria-hidden="true"><svg viewBox="0 0 48 48" class="dib dib--plano"><path d="M7 10h26v30H7z" class="t"/><path d="M7 22h12v18M19 30h14" class="t"/><g class="lapiz"><path d="m30 33 10-17 3 1.8-10 17-3.6 1.6z" class="t n"/></g></svg></span>
           <h3 id="t-pro">Proyectos</h3>
-          <p>De cualquier tipo, asesoramiento urbanístico y técnico.</p>
+          <p>De cualquier tipo, asesoramiento urbanístico y técnico. Proyectamos cada reforma individualmente, comprometiéndonos por escrito a avanzar según lo planificado.</p>
           <div class="servicio__botones">
             <a class="btn btn--oscuro" href="#presupuesto" data-asunto="Proyectos"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Pedir presupuesto"><span>Pedir presupuesto</span></span><span class="btn__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span></a>
             <a class="servicio__tel" href="tel:+34608208374"><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608 208 374</a>
@@ -237,7 +225,7 @@
         <div class="servicio__texto">
           <span class="servicio__ico" aria-hidden="true"><svg viewBox="0 0 48 48" class="dib dib--local"><path d="M8 18v22h32V18" class="t"/><path d="M6 10h36v8H6z" class="t n"/><path d="M12 24h13v10H12z" class="t"/><path d="M30 40V24h6v16" class="t"/><path class="hoja t" d="M30 24h6v16h-6z"/><path d="M4 40h40" class="t"/></svg></span>
           <h3 id="t-loc">Local comercial</h3>
-          <p>Construcción de obra nueva o reforma</p>
+          <p>Construcción de obra nueva o reforma. Precio cerrado: precios competitivos y ¡sin sorpresas!, y plazos establecidos por contrato.</p>
           <div class="servicio__botones">
             <a class="btn btn--claro" href="#presupuesto" data-asunto="Local comercial"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Pedir presupuesto"><span>Pedir presupuesto</span></span><span class="btn__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span></a>
             <a class="servicio__tel" href="tel:+34608208374"><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608 208 374</a>
@@ -250,7 +238,7 @@
         <div class="servicio__texto">
           <span class="servicio__ico" aria-hidden="true"><svg viewBox="0 0 48 48" class="dib dib--lampara"><g class="cuelga"><path d="M24 4v12" class="t"/><path d="M14 26a10 10 0 0 1 20 0z" class="t"/><path d="M21 30a3 3 0 0 0 6 0" class="t"/></g><path d="M8 44h32M12 44v-6h24v6" class="t"/></svg></span>
           <h3 id="t-dis">Diseño espacios</h3>
-          <p>Te asesoramos de las nuevas tendencias.</p>
+          <p>Te asesoramos de las nuevas tendencias. Partiendo de sus gustos personales, te aconsejamos sobre nuevas tendencias, diseño de espacios, etc.</p>
           <div class="servicio__botones">
             <a class="btn btn--oscuro" href="#presupuesto" data-asunto="Diseño de espacios"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Pedir presupuesto"><span>Pedir presupuesto</span></span><span class="btn__ico" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span></a>
             <a class="servicio__tel" href="tel:+34608208374"><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608 208 374</a>
@@ -262,11 +250,13 @@
   </div>
 </section>
 
+</div>
+
 <!-- ═════════ EL MEJOR EQUIPO DE TRABAJO ═════════ -->
 <section class="seccion seccion--negra equipo" id="equipo" aria-labelledby="equipo-titulo">
   <div class="caja">
     <div class="equipo__cab" data-revela>
-      <h2 id="equipo-titulo" data-lineas>El mejor equipo de trabajo</h2>
+      <h2 id="equipo-titulo" data-lineas><span class="l">El mejor equipo</span> <span class="l">de trabajo</span></h2>
       <h3 class="equipo__sub">Realizamos cualquier tipo de proyecto</h3>
     </div>
     <p class="leido" data-leido>Somos una empresa constructora especialista en reformas integrales, tanto de viviendas como de locales comerciales; construcción de obra nueva, contando con técnicos, arquitectos, aparejadores e ingenieros industriales, para cualquier tipo de proyecto y asesoramiento urbanístico y técnico.</p>
@@ -371,18 +361,24 @@
         <a class="btn btn--linea-oscuro btn--grande" href="tel:+34608208374"><span class="btn__fondo" aria-hidden="true"></span><span class="btn__texto" data-t="Llámenos hoy"><span>Llámenos hoy</span></span><span class="btn__ico" aria-hidden="true"><svg class="ico--tel"><use href="#i-tel"/></svg></span></a>
       </div>
     </div>
-    <a class="sello" href="#presupuesto" data-asunto="" aria-label="Reserve una cita">
-      <svg class="sello__aro" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="aro" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#aro" startOffset="0" textLength="486">Reserve una cita · Presupuesto sin compromiso ·</textPath></text></svg>
-      <span class="sello__centro" aria-hidden="true"><svg><use href="#i-flecha"/></svg></span>
-    </a>
+    <aside class="garantias" data-garantias data-revela aria-label="Con nuestra empresa">
+      <ul data-ola>
+        <li><span class="garantias__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Materiales de gran calidad</li>
+        <li><span class="garantias__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Precio cerrado, ¡sin sorpresas!</li>
+        <li><span class="garantias__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Profesionales especializados</li>
+        <li><span class="garantias__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Plazos establecidos por contrato</li>
+        <li><span class="garantias__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>2 años de garantía sobre nuestros trabajos</li>
+      </ul>
+      <a class="garantias__tel" href="tel:+34608208374"><span>Llámenos hoy</span><strong><svg class="ico ico--tel" aria-hidden="true"><use href="#i-tel"/></svg>608.208.374</strong></a>
+    </aside>
   </div>
 </section>
 
 <!-- ═════════ OPINIONES ═════════ -->
 <section class="seccion seccion--blanca opiniones" id="opiniones" aria-labelledby="opiniones-titulo">
   <div class="caja">
-    <div class="cabecera" data-revela>
-      <h2 id="opiniones-titulo" data-lineas>Nuestros clientes opinan...</h2>
+    <div class="cabecera cabecera--ancha" data-revela>
+      <h2 id="opiniones-titulo" data-lineas><span class="l">Nuestros clientes</span> <span class="l">opinan...</span></h2>
       <div class="cabecera__texto">
         <p>Puedes ver más opiniones, o dejarnos la tuya, en nuestra <a class="enlace-texto" href="https://goo.gl/maps/8DYUtqV375posC9k6" target="_blank" rel="noopener">ficha de Google</a>.</p>
       </div>
@@ -417,7 +413,7 @@
 <section class="seccion seccion--negra presupuesto" id="presupuesto" aria-labelledby="presupuesto-titulo">
   <div class="caja presupuesto__rejilla">
     <div class="presupuesto__texto" data-revela>
-      <h2 id="presupuesto-titulo" data-lineas>Presupuesto sin compromiso</h2>
+      <h2 id="presupuesto-titulo" data-lineas><span class="l">Presupuesto</span> <span class="l">sin compromiso</span></h2>
       <p>Partiendo de sus gustos personales, proporcionamos el mejor asesoramiento, aconsejando sobre las nuevas tendencias, diseños de espacios, etc.</p>
       <div class="vias">
         <a class="via" href="tel:+34608208374"><span class="via__ico" aria-hidden="true"><svg class="ico--tel"><use href="#i-tel"/></svg></span><span class="via__t"><small>Llámenos hoy</small>608.208.374</span><svg class="via__f" aria-hidden="true"><use href="#i-flecha"/></svg></a>
@@ -440,7 +436,7 @@
         <input id="f-asunto" name="asunto" type="text" placeholder=" ">
         <label for="f-asunto">Asunto</label>
       </div>
-      <div class="campo campo--ancho">
+      <div class="campo campo--ancho campo--mensaje">
         <textarea id="f-mensaje" name="mensaje" rows="4" required aria-describedby="e-mensaje" placeholder=" "></textarea>
         <label for="f-mensaje">Mensaje *</label>
         <span class="campo__error" id="e-mensaje"></span>
