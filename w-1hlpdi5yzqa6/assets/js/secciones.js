@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const captura = document.documentElement.classList.contains('ss');
+  const yo = document.currentScript ? document.currentScript.src : '';
   const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- Carril del profesorado: avanza solo, sin flechas ----------
@@ -45,44 +46,362 @@
   };
   const quieto = () => captura || reducido.matches || document.hidden;
 
-  /* ---------- Artistas: el foco con eco pasa por los 25 nombres (uno cada 2,4 s) ----------
-     Al pasar el ratón (o el foco) por un nombre de la lista, el foco salta a él y espera. */
-  const foco = document.querySelector('[data-foco]');
-  if (foco) {
-    const escenario = foco.querySelector('[data-foco-escenario]');
-    const nombres = [...foco.querySelectorAll('[data-foco-n]')];
-    let actual = -1, enPantalla = false, parado = false;
-    const pintar = (k) => {
-      if (k === actual) return;
-      actual = (k + nombres.length) % nombres.length;
-      const b = nombres[actual];
-      const nombre = b.textContent.trim();
-      nombres.forEach((x, j) => x.classList.toggle('activo', j === actual));
-      escenario.querySelectorAll('.foco__nombre:not(.sale)').forEach((v) => {
-        v.classList.add('sale');
-        setTimeout(() => v.remove(), captura || reducido.matches ? 0 : 650);
-      });
-      const n = document.createElement('p');
-      n.className = 'foco__nombre' + (b.classList.contains('foco__n--top') ? ' top' : '');
-      n.style.setProperty('--largo', nombre.length);
-      [[3, .22], [2, .42], [1, .7]].forEach(([k2, o]) => {
-        const e = document.createElement('span');
-        e.className = 'foco__eco'; e.style.setProperty('--n', k2); e.style.setProperty('--o', o); e.textContent = nombre;
-        n.appendChild(e);
-      });
-      const t = document.createElement('span'); t.className = 'foco__txt'; t.textContent = nombre; n.appendChild(t);
-      escenario.appendChild(n);
+  /* ---------- Hero (v8): la historia ----------
+     Pasa sola cuando se llena su barrita: la animación CSS de 4,8 s marca el tiempo, así que pausar la
+     animación pausa la historia. Tocar a la derecha o a la izquierda (o las flechas, o ← →) va adelante
+     o atrás; deslizar de lado, también; mantener pulsado la para. Fuera de pantalla o con la pestaña
+     oculta, quieta. Con movimiento reducido o en captura no pasa sola (no hay animación que termine). */
+  const historia = document.querySelector('[data-historia]');
+  if (historia) {
+    const fotos = [...historia.querySelectorAll('[data-historia-foto]')];
+    const barras = [...historia.querySelectorAll('.historia__barras span')];
+    const cursos = [...historia.querySelectorAll('[data-historia-curso]')];
+    const total = fotos.length;
+    const estado = { fuera: false, oculta: document.hidden, sostenida: false };
+    const pausar = () => historia.classList.toggle('pausa', estado.fuera || estado.oculta || estado.sostenida);
+    const precargar = (k) => {
+      const img = fotos[((k % total) + total) % total].querySelector('img');
+      if (img && img.loading === 'lazy') img.loading = 'eager';
     };
-    pintar(0);
-    nombres.forEach((b, j) => {
-      b.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { parado = true; pintar(j); } });
-      b.addEventListener('pointerleave', () => { parado = false; });
-      b.addEventListener('focus', () => { parado = true; pintar(j); });
-      b.addEventListener('blur', () => { parado = false; });
-      b.addEventListener('click', () => pintar(j));
+    let actual = 0;
+    const ir = (k, cargarSiguiente = true) => {
+      const antes = actual;
+      actual = ((k % total) + total) % total;
+      fotos.forEach((f, n) => {
+        f.classList.toggle('activa', n === actual);
+        f.classList.toggle('sale', n === antes && antes !== actual);
+        if (n === actual) f.removeAttribute('aria-hidden'); else f.setAttribute('aria-hidden', 'true');
+      });
+      if (antes !== actual) setTimeout(() => fotos[antes].classList.remove('sale'), 800);
+      barras.forEach((b, n) => { b.classList.remove('activa'); b.classList.toggle('vista', n < actual); });
+      void barras[actual].offsetWidth; // reinicia la animación de la barrita
+      barras[actual].classList.add('activa');
+      cursos.forEach((c, n) => { c.classList.toggle('activa', n === actual); c.tabIndex = n === actual ? 0 : -1; });
+      if (cargarSiguiente) precargar(actual + 1);
+    };
+    ir(0, false);
+    if (document.readyState === 'complete') precargar(1);
+    else window.addEventListener('load', () => precargar(1), { once: true });
+
+    historia.addEventListener('animationend', (e) => {
+      if (e.animationName === 'historia-barra' && e.target.parentElement === barras[actual]) ir(actual + 1);
     });
-    visibleEn(foco, 0.25, (v) => { enPantalla = v; });
-    setInterval(() => { if (enPantalla && !parado && !quieto()) pintar(actual + 1); }, 2400);
+    visibleEn(historia, 0.15, (v) => { estado.fuera = !v; pausar(); });
+    document.addEventListener('visibilitychange', () => { estado.oculta = document.hidden; pausar(); });
+    historia.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); ir(actual + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); ir(actual - 1); }
+    });
+
+    let pulsado = null, sinClic = false;
+    const anularClic = () => { sinClic = true; setTimeout(() => { sinClic = false; }, 0); };
+    historia.querySelectorAll('[data-historia-paso]').forEach((b) => {
+      const paso = Number(b.dataset.historiaPaso);
+      b.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0) return;
+        const pp = { id: e.pointerId, x: e.clientX, ux: e.clientX };
+        // Mantener pulsado (sin mover el dedo) la para, como en Instagram
+        pp.reloj = setTimeout(() => { if (pulsado === pp && Math.abs(pp.ux - pp.x) < 12) { estado.sostenida = true; pausar(); } }, 280);
+        pulsado = pp;
+        try { b.setPointerCapture(e.pointerId); } catch (_) { /* sin captura también vale */ }
+      });
+      b.addEventListener('pointermove', (e) => { if (pulsado && pulsado.id === e.pointerId) pulsado.ux = e.clientX; });
+      const soltar = (e, cancelado) => {
+        const pp = pulsado;
+        if (!pp || pp.id !== e.pointerId) return;
+        pulsado = null;
+        clearTimeout(pp.reloj);
+        const eraPausa = estado.sostenida;
+        if (eraPausa) { estado.sostenida = false; pausar(); }
+        const dx = pp.ux - pp.x;
+        if (!cancelado && Math.abs(dx) > 40) { ir(actual + (dx < 0 ? 1 : -1)); anularClic(); return; }
+        if (eraPausa) anularClic();
+      };
+      b.addEventListener('pointerup', (e) => soltar(e, false));
+      b.addEventListener('pointercancel', (e) => soltar(e, true));
+      b.addEventListener('click', () => { if (!sinClic) ir(actual + paso); });
+    });
+  }
+
+  /* ---------- Artistas (v8): los nombres caen y se amontonan; cada compás uno salta y se enciende ----------
+     Física con Matter.js (vendor/matter.min.js, MIT), que solo se carga al acercarse a la sección. Con quién
+     tocó cada artista se saca del «Ha tocado con» de los profes del carrusel, así en WordPress va solo.
+     Móvil: se tocan (sin bloquear el scroll). Ratón: al pasar se encienden, y se cogen y se lanzan.
+     Sin JS, con movimiento reducido o en captura: la lista quieta; al tocar un nombre igualmente se ve con quién. */
+  const escena = document.querySelector('[data-escenario]');
+  if (escena) {
+    const caja = escena.querySelector('.escenario');
+    const foco = escena.querySelector('[data-escenario-foco]');
+    const botones = [...escena.querySelectorAll('[data-nombre]')];
+    const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/\band\b/g, '&').replace(/^the\s+/, '').replace(/\s+/g, ' ').trim();
+    const profes = [...document.querySelectorAll('[data-flow-carta]')].map((c) => ({
+      nombre: (c.querySelector('.flow__nombre') || {}).textContent?.trim() || '',
+      clases: ((c.querySelector('.flow__clases') || {}).textContent || '').split('.')[0].trim(),
+      con: norm((c.querySelector('.flow__con') || {}).textContent || ''),
+      foto: c.querySelector('.flow__foto img'),
+    }));
+    const datos = botones.map((b) => {
+      const nombre = b.textContent.trim();
+      return { nombre, top: b.classList.contains('nombre--top'), profes: profes.filter((pr) => pr.nombre && pr.con.includes(norm(nombre))) };
+    });
+    const esc = (t) => t.replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+    const minus = (t) => (/^Combo\b/.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1));
+    const pintarFoco = (k) => {
+      const d = datos[k];
+      let con;
+      if (!d.profes.length) con = 'con el equipo de la escuela';
+      else if (d.profes.length === 1) con = `con <strong>${esc(d.profes[0].nombre)}</strong>${d.profes[0].clases ? `, profe de ${esc(minus(d.profes[0].clases))}` : ''}`;
+      else con = `con ${d.profes.map((pr) => `<strong>${esc(pr.nombre)}</strong>`).join(', ').replace(/, (?!.*, )/, ' y ')}`;
+      const caras = d.profes.slice(0, 3).map((pr) => (pr.foto ? `<img src="${esc(pr.foto.currentSrc || pr.foto.src)}" alt="" width="44" height="44" decoding="async">` : '')).join('');
+      foco.innerHTML = `<p class="escenario__artista${d.top ? ' top' : ''}" style="--largo:${d.nombre.length}">${esc(d.nombre)}</p>`
+        + `<p class="escenario__con">${caras ? `<span class="escenario__caras" aria-hidden="true">${caras}</span>` : ''}<span>${con}</span></p>`;
+    };
+
+    let mundo = null, manual = -1e9, sobreNombre = false, enPantalla = false;
+    const elegir = (k, saltar, aMano) => {
+      botones.forEach((b, n) => b.classList.toggle('elegido', n === k));
+      pintarFoco(k);
+      if (aMano) { manual = performance.now(); foco.setAttribute('aria-live', 'polite'); }
+      if (saltar && mundo) mundo.saltar(k);
+    };
+    foco.setAttribute('aria-live', 'off'); // el paso automático no se anuncia; lo que elige la persona, sí
+    elegir(0, false, false);
+
+    // Paso automático: un compás (3,2 s) por artista; los tres cabezas, primero
+    const orden = [...datos.keys()].sort((x, y) => (datos[y].top - datos[x].top) || (x - y));
+    let turno = 0;
+    visibleEn(caja, 0.2, (v) => { enPantalla = v; });
+    setInterval(() => {
+      if (!enPantalla || quieto() || sobreNombre || performance.now() - manual < 9600) return;
+      turno = (turno + 1) % orden.length;
+      elegir(orden[turno], true, false);
+    }, 3200);
+
+    let sinClic = false;
+    botones.forEach((b, k) => {
+      b.addEventListener('click', () => { if (!sinClic) elegir(k, true, true); });
+      b.addEventListener('focus', () => { let teclado = true; try { teclado = b.matches(':focus-visible'); } catch (_) { /* */ } if (teclado) elegir(k, false, true); });
+      // Al pasar el ratón: se enciende y espera mientras sigue encima (solo ese nombre, no todo el bloque)
+      b.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && !(mundo && mundo.cogido())) { sobreNombre = true; elegir(k, false, true); } });
+      b.addEventListener('pointerleave', () => { sobreNombre = false; });
+    });
+
+    const conFisica = !captura && !reducido.matches && 'IntersectionObserver' in window && 'requestAnimationFrame' in window;
+    if (conFisica) {
+      caja.classList.add('fisica');
+      const rutaMatter = yo ? yo.replace(/secciones\.js(\?.*)?$/, 'vendor/matter.min.js$1') : 'assets/js/vendor/matter.min.js';
+      const cargarMatter = () => new Promise((ok, ko) => {
+        if (window.Matter) { ok(window.Matter); return; }
+        const sc = document.createElement('script');
+        sc.src = rutaMatter; sc.async = true;
+        sc.onload = () => (window.Matter ? ok(window.Matter) : ko(new Error('Matter')));
+        sc.onerror = ko;
+        document.head.appendChild(sc);
+      });
+      const sinFisica = () => { caja.classList.remove('fisica'); caja.style.removeProperty('--alto'); };
+
+      const crearMundo = (M) => {
+        const { Engine, Bodies, Body, Composite, Constraint, Query, Sleeping } = M;
+        const lis = botones.map((b) => b.parentElement);
+        const PASO = 1000 / 60;
+        let motor = null, cuerpos = [], muelle = null, raf = 0, ultimo = 0, resto = 0, ancho = 0, alto = 0, vivo = false, caido = false;
+
+        const pintar = () => {
+          for (const c of cuerpos) {
+            if (!c.dentro) continue;
+            const pz = c.pieza;
+            pz.li.style.transform = `translate3d(${(c.position.x - pz.w / 2).toFixed(1)}px, ${(c.position.y - pz.h / 2).toFixed(1)}px, 0) rotate(${c.angle.toFixed(4)}rad)`;
+          }
+        };
+        const bucle = (t) => {
+          if (!ultimo) ultimo = t - PASO;
+          resto = Math.min(resto + (t - ultimo), PASO * 4);
+          ultimo = t;
+          while (resto >= PASO) { Engine.update(motor, PASO); resto -= PASO; }
+          pintar();
+          const quietos = !muelle && cuerpos.every((c) => !c.dentro || c.isSleeping);
+          if (vivo && !quietos) raf = requestAnimationFrame(bucle);
+          else { raf = 0; ultimo = 0; }
+        };
+        const despertar = () => { if (vivo && !raf && motor) raf = requestAnimationFrame(bucle); };
+        const despertarTodos = () => cuerpos.forEach((c) => { if (c.dentro) Sleeping.set(c, false); });
+
+        // Píldora: cápsula de su tamaño; giran poco (inercia x3) para que los nombres se lean
+        const pildora = (pz) => {
+          const c = Bodies.rectangle(-999, -999, pz.w, pz.h, {
+            chamfer: { radius: Math.max(1, pz.h / 2 - 1) }, restitution: 0.3, friction: 0.45, frictionAir: 0.015, density: 0.0018,
+          });
+          Body.setInertia(c, c.inertia * 3);
+          return c;
+        };
+        const MARGEN = 8;
+        const paredes = (m, h) => {
+          const g = 400;
+          Composite.add(m.world, [
+            Bodies.rectangle(ancho / 2, h - MARGEN + g / 2, ancho + g * 2, g, { isStatic: true }),
+            Bodies.rectangle(MARGEN - g / 2, h / 2 - 800, g, h + 1600 + g, { isStatic: true }),
+            Bodies.rectangle(ancho - MARGEN + g / 2, h / 2 - 800, g, h + 1600 + g, { isStatic: true }),
+          ]);
+        };
+        // Mide las píldoras y monta el mundo: suelo, paredes altas y un cuerpo por nombre (aún fuera).
+        // El alto sale de un ensayo sin pintar: se dejan caer todas y se mide lo que ocupa el montón.
+        const preparar = () => {
+          ancho = caja.clientWidth;
+          const piezas = lis.map((li) => ({ li, w: li.offsetWidth, h: li.offsetHeight }));
+          if (!ancho || piezas.some((pz) => !pz.w || !pz.h)) return false;
+          const H = 3000;
+          const ensayo = Engine.create();
+          ensayo.gravity.y = 1.15;
+          paredes(ensayo, H);
+          piezas.forEach((pz, n) => {
+            const c = pildora(pz);
+            Body.setPosition(c, { x: MARGEN + pz.w / 2 + Math.random() * Math.max(1, ancho - 2 * MARGEN - pz.w), y: H - 120 - n * 48 });
+            Body.setAngle(c, (Math.random() - 0.5) * 0.6);
+            Composite.add(ensayo.world, c);
+          });
+          for (let k = 0; k < 900; k++) Engine.update(ensayo, PASO);
+          const cima = Math.min(...Composite.allBodies(ensayo.world).filter((c) => !c.isStatic).map((c) => c.bounds.min.y));
+          Composite.clear(ensayo.world, false);
+          Engine.clear(ensayo);
+          alto = Math.round(foco.offsetHeight + Math.max(90, H - cima) * 1.1 + 24);
+          caja.style.setProperty('--alto', `${alto}px`);
+          motor = Engine.create({ enableSleeping: true });
+          motor.gravity.y = 1.15;
+          paredes(motor, alto);
+          cuerpos = piezas.map((pz, n) => {
+            const c = pildora(pz);
+            c.pieza = pz; c.indice = n; c.dentro = false;
+            pz.li.classList.remove('dentro');
+            return c;
+          });
+          return true;
+        };
+        // Orden de caída: los tres cabezas, los últimos, para que queden encima, a la vista
+        const ordenCaida = () => [...cuerpos.keys()].sort((x, y) => (datos[x].top - datos[y].top) || (Math.random() - 0.5));
+        const entrar = (c) => {
+          const pz = c.pieza;
+          Body.setPosition(c, { x: MARGEN + pz.w / 2 + Math.random() * Math.max(1, ancho - 2 * MARGEN - pz.w), y: -pz.h - 20 });
+          Body.setAngle(c, (Math.random() - 0.5) * 0.6);
+          Composite.add(motor.world, c);
+          c.dentro = true;
+          pz.li.classList.add('dentro');
+        };
+        const caer = () => {
+          caido = true;
+          ordenCaida().forEach((n, k) => setTimeout(() => { entrar(cuerpos[n]); despertar(); }, k * 80));
+        };
+        const colocar = () => { // tras un cambio de tamaño: caen de golpe y se asientan sin verse
+          ordenCaida().forEach((n) => entrar(cuerpos[n]));
+          for (let k = 0; k < 420; k++) Engine.update(motor, PASO);
+          pintar();
+        };
+
+        if (!preparar()) return null;
+        new IntersectionObserver((es) => es.forEach((e) => {
+          vivo = e.isIntersecting;
+          if (vivo && !caido && e.intersectionRatio >= 0.25) caer();
+          if (vivo) despertar();
+        }), { threshold: [0, 0.25] }).observe(caja);
+
+        let reajuste = 0;
+        window.addEventListener('resize', () => {
+          clearTimeout(reajuste);
+          reajuste = setTimeout(() => {
+            if (Math.abs(caja.clientWidth - ancho) < 24) return;
+            if (muelle) muelle = null;
+            Composite.clear(motor.world, false);
+            Engine.clear(motor);
+            if (preparar() && caido) colocar();
+          }, 260);
+        });
+
+        return {
+          saltar(k) {
+            const c = cuerpos[k];
+            if (!c || !c.dentro) return;
+            despertarTodos();
+            Body.setVelocity(c, { x: (Math.random() - 0.5) * 3, y: -8.5 });
+            Body.setAngularVelocity(c, (Math.random() - 0.5) * 0.16);
+            despertar();
+          },
+          punto(e) { const r = caja.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; },
+          cuerpoEn(pt) { return Query.point(cuerpos.filter((c) => c.dentro), pt)[0] || null; },
+          coger(c, pt) {
+            despertarTodos();
+            muelle = Constraint.create({ pointA: { x: pt.x, y: pt.y }, bodyB: c, pointB: { x: pt.x - c.position.x, y: pt.y - c.position.y }, stiffness: 0.2, damping: 0.1, length: 0 });
+            Composite.add(motor.world, muelle);
+            despertar();
+          },
+          mover(pt) { if (muelle) { muelle.pointA.x = pt.x; muelle.pointA.y = pt.y; } },
+          soltar() {
+            if (!muelle) return;
+            const c = muelle.bodyB;
+            Composite.remove(motor.world, muelle);
+            muelle = null;
+            const v = c.velocity, max = 28, n = Math.hypot(v.x, v.y);
+            if (n > max) Body.setVelocity(c, { x: (v.x / n) * max, y: (v.y / n) * max });
+            despertar();
+          },
+          cogido() { return !!muelle; },
+        };
+      };
+
+      // Coger y lanzar con el ratón (con el dedo no: así el scroll del móvil no se bloquea)
+      let arrastre = null;
+      caja.addEventListener('pointerdown', (e) => {
+        if (!mundo || e.pointerType !== 'mouse' || e.button !== 0) return;
+        const pt = mundo.punto(e);
+        const c = mundo.cuerpoEn(pt);
+        if (c) arrastre = { id: e.pointerId, x0: e.clientX, y0: e.clientY, movido: false, c, pt };
+      });
+      const soltarArrastre = (e) => {
+        if (!arrastre || e.pointerId !== arrastre.id) return;
+        const { movido } = arrastre;
+        arrastre = null;
+        if (!movido) return;
+        mundo.soltar();
+        caja.classList.remove('arrastrando');
+        sinClic = true;
+        setTimeout(() => { sinClic = false; }, 0);
+      };
+      caja.addEventListener('pointermove', (e) => {
+        if (!arrastre || e.pointerId !== arrastre.id) return;
+        if (!(e.buttons & 1)) { soltarArrastre(e); return; }
+        if (!arrastre.movido) {
+          if (Math.hypot(e.clientX - arrastre.x0, e.clientY - arrastre.y0) < 6) return;
+          arrastre.movido = true;
+          mundo.coger(arrastre.c, arrastre.pt);
+          caja.classList.add('arrastrando');
+          try { caja.setPointerCapture(e.pointerId); } catch (_) { /* sin captura también vale */ }
+        }
+        mundo.mover(mundo.punto(e));
+      });
+      caja.addEventListener('pointerup', soltarArrastre);
+      caja.addEventListener('pointercancel', soltarArrastre);
+      caja.addEventListener('lostpointercapture', (e) => { if (e.target === caja) soltarArrastre(e); });
+      caja.addEventListener('click', (e) => { if (sinClic) { e.preventDefault(); e.stopPropagation(); } }, true);
+      caja.addEventListener('dragstart', (e) => e.preventDefault());
+
+      // Se carga Matter al acercarse; se monta cuando la sección ya se maqueta (fuentes listas)
+      let pedido = false;
+      new IntersectionObserver((es, ob) => {
+        if (pedido || !es.some((e) => e.isIntersecting)) return;
+        pedido = true;
+        ob.disconnect();
+        Promise.all([cargarMatter(), document.fonts ? document.fonts.ready : Promise.resolve()])
+          .then(([M]) => {
+            // Si aún no se puede medir (sección sin maquetar por content-visibility), se reintenta al verla
+            const intentar = () => { mundo = crearMundo(M); return !!mundo; };
+            if (!intentar()) {
+              new IntersectionObserver((es2, ob2) => {
+                if (es2.some((e) => e.isIntersecting) && intentar()) ob2.disconnect();
+              }).observe(caja);
+            }
+          })
+          .catch(sinFisica);
+      }, { rootMargin: '700px 0px' }).observe(caja);
+    }
   }
 
   /* ---------- Cómo se aprende: la luz recorre los cuatro pads a 75 BPM (uno por negra) ---------- */

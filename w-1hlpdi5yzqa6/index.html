@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=7.1">
-<link rel="stylesheet" href="assets/css/home.css?v=7.1">
-<link rel="stylesheet" href="assets/css/secciones.css?v=7.1">
-<link rel="stylesheet" href="assets/css/paginas.css?v=7.1">
+<link rel="stylesheet" href="assets/css/global.css?v=8.0">
+<link rel="stylesheet" href="assets/css/home.css?v=8.0">
+<link rel="stylesheet" href="assets/css/secciones.css?v=8.0">
+<link rel="stylesheet" href="assets/css/paginas.css?v=8.0">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -183,48 +183,74 @@
 
 <main id="contenido">
 <!-- ============================ HERO ============================ -->
-<!-- v7 (23-11-2026): el texto y, al lado, sus músicos tocando en tres cápsulas que se mueven a tempo -->
+<!-- v8 (23-11-2026): pensado primero para el móvil, porque la mayoría llegará desde las historias de Instagram.
+     Sus profesores tocando a pantalla completa, en formato historia: barritas arriba, pasa sola cada 4,8 s, se
+     toca a la derecha o a la izquierda (o se desliza) para ir adelante o atrás y se mantiene pulsada para pararla.
+     Fotogramas de los vídeos de su web (/canto/, /saxo/, /bateria/, /teclado/ y la sesión de la home), en vertical
+     para el móvil y en horizontal para tableta y ordenador. Ninguno sale en otro bloque. -->
 <section class="hero fondo-negro" aria-labelledby="h1" data-hero>
-  <div class="hero__int envoltura">
-    <div class="hero__texto">
-      <h1 class="t-mega hero__h1" id="h1">
-        <span class="linea" data-entra style="--i:0">Aprende reggae</span>
-        <span class="linea" data-entra style="--i:1">con los músicos</span>
-        <span class="linea" data-entra style="--i:2">que lo <span class="eco" data-eco><em>tocan</em><span class="eco__rep" aria-hidden="true">tocan</span><span class="eco__rep" aria-hidden="true">tocan</span><span class="eco__rep" aria-hidden="true">tocan</span></span>.</span>
-      </h1>
+  <div class="historia" data-historia>
+    <div class="historia__fotos">
+      <picture class="historia__foto activa" style="--x:60%" data-historia-foto>
+        <source media="(max-width: 699px)" srcset="assets/img/hero-saxo-v540.webp 540w, assets/img/hero-saxo-v800.webp 800w" sizes="100vw" width="800" height="1600">
+        <img src="assets/img/hero-saxo-h1600.webp" srcset="assets/img/hero-saxo-h1600.webp 1600w, assets/img/hero-saxo-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Saxo y trompeta grabando en el estudio" fetchpriority="high" decoding="async">
+      </picture>
+      <picture class="historia__foto" style="--x:45%" data-historia-foto aria-hidden="true">
+        <source media="(max-width: 699px)" srcset="assets/img/hero-bateria-v540.webp 540w, assets/img/hero-bateria-v800.webp 800w" sizes="100vw" width="800" height="1600">
+        <img src="assets/img/hero-bateria-h1600.webp" srcset="assets/img/hero-bateria-h1600.webp 1600w, assets/img/hero-bateria-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Un batería con cascos tocando en el estudio" loading="lazy" decoding="async">
+      </picture>
+      <picture class="historia__foto" style="--x:50%" data-historia-foto aria-hidden="true">
+        <source media="(max-width: 699px)" srcset="assets/img/hero-canto-v540.webp 540w, assets/img/hero-canto-v800.webp 800w" sizes="100vw" width="800" height="1600">
+        <img src="assets/img/hero-canto-h1600.webp" srcset="assets/img/hero-canto-h1600.webp 1600w, assets/img/hero-canto-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Javier Ochoa cantando con los ojos cerrados" loading="lazy" decoding="async">
+      </picture>
+      <picture class="historia__foto" style="--x:38%" data-historia-foto aria-hidden="true">
+        <source media="(max-width: 699px)" srcset="assets/img/hero-teclado-v540.webp 540w, assets/img/hero-teclado-v800.webp 800w" sizes="100vw" width="800" height="1600">
+        <img src="assets/img/hero-teclado-h1600.webp" srcset="assets/img/hero-teclado-h1600.webp 1600w, assets/img/hero-teclado-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Manos tocando un órgano Hammond" loading="lazy" decoding="async">
+      </picture>
+      <picture class="historia__foto" style="--x:68%" data-historia-foto aria-hidden="true">
+        <source media="(max-width: 699px)" srcset="assets/img/hero-bajo-v540.webp 540w, assets/img/hero-bajo-v800.webp 800w" sizes="100vw" width="800" height="1600">
+        <img src="assets/img/hero-bajo-h1600.webp" srcset="assets/img/hero-bajo-h1600.webp 1600w, assets/img/hero-bajo-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Bajo y teclado grabando juntos en el estudio" loading="lazy" decoding="async">
+      </picture>
+    </div>
 
-      <p class="hero__apoyo" data-entra style="--i:3">
-        <span class="hero__cursos">Guitarra, bajo, canto, saxo, teclado, batería, producción y banda. </span>Online o
-        presencial en Madrid, con profesores que han colaborado con <strong>Ky-Mani Marley</strong> y han
-        grabado con <strong>Ska-P</strong>.
-      </p>
-
-      <div class="hero__ctas" data-entra style="--i:4">
-        <a class="boton boton--oro boton--grande boton--luz" href="#reserva" data-reserva>
-          Reserva tu sesión de prueba
-          <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="boton boton--grande hero__ver" href="#presentacion" data-ver-video>
-          <svg class="boton__ico" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M6.5 4.2v11.6L16 10z" fill="currentColor"/></svg>
-          Ver la presentación
-        </a>
+    <div class="historia__arriba envoltura">
+      <div class="historia__barras" aria-hidden="true"><span class="activa"><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+      <div class="historia__cursos">
+        <a class="historia__curso activa" href="instrumento-y-canto.html#saxo" data-historia-curso>Saxo <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="historia__curso" href="instrumento-y-canto.html#bateria" data-historia-curso>Batería <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="historia__curso" href="instrumento-y-canto.html#canto" data-historia-curso>Canto <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="historia__curso" href="instrumento-y-canto.html#teclado" data-historia-curso>Teclado <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="historia__curso" href="instrumento-y-canto.html#bajo" data-historia-curso>Bajo <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
 
-    <!-- Sus músicos tocando, en tres cápsulas que se mueven a tempo y cambian de foto (de /saxo/, /bateria/,
-         /canto/, la home, /teclado/ y /combo-rsm/ de su web) -->
-    <div class="hero__musicos" data-entra style="--i:1" aria-hidden="true">
-      <div class="capsula" style="--c:0">
-        <img class="capsula__f" src="assets/img/hero-c1a.webp" width="480" height="1152" alt="" decoding="async" style="--f:0">
-        <img class="capsula__f" src="assets/img/hero-c1b.webp" width="480" height="1152" alt="" loading="lazy" decoding="async" style="--f:1">
-      </div>
-      <div class="capsula" style="--c:1">
-        <img class="capsula__f" src="assets/img/hero-c2a.webp" width="480" height="1152" alt="" fetchpriority="high" decoding="async" style="--f:0">
-        <img class="capsula__f" src="assets/img/hero-c2b.webp" width="480" height="1152" alt="" loading="lazy" decoding="async" style="--f:1">
-      </div>
-      <div class="capsula" style="--c:2">
-        <img class="capsula__f" src="assets/img/hero-c3a.webp" width="480" height="1152" alt="" decoding="async" style="--f:0">
-        <img class="capsula__f" src="assets/img/hero-c3b.webp" width="480" height="1152" alt="" loading="lazy" decoding="async" style="--f:1">
+    <button class="historia__paso historia__paso--atras" type="button" data-historia-paso="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="historia__paso historia__paso--adelante" type="button" data-historia-paso="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+    <div class="hero__int envoltura">
+      <div class="hero__texto">
+        <h1 class="t-mega hero__h1" id="h1">
+          <span class="linea" data-entra style="--i:0">Aprende reggae</span>
+          <span class="linea" data-entra style="--i:1">con los músicos</span>
+          <span class="linea" data-entra style="--i:2">que lo <span class="eco" data-eco><em>tocan</em><span class="eco__rep" aria-hidden="true">tocan</span><span class="eco__rep" aria-hidden="true">tocan</span><span class="eco__rep" aria-hidden="true">tocan</span></span>.</span>
+        </h1>
+
+        <p class="hero__apoyo" data-entra style="--i:3">
+          <span class="hero__cursos">Guitarra, bajo, canto, saxo, teclado, batería, producción y banda. </span>Online o
+          presencial en Madrid, con profesores que han colaborado con <strong>Ky-Mani Marley</strong> y han
+          grabado con <strong>Ska-P</strong>.
+        </p>
+
+        <div class="hero__ctas" data-entra style="--i:4">
+          <a class="boton boton--oro boton--grande boton--luz" href="#reserva" data-reserva>
+            Reserva tu sesión de prueba
+            <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="boton boton--grande hero__ver" href="#presentacion" data-ver-video>
+            <svg class="boton__ico" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M6.5 4.2v11.6L16 10z" fill="currentColor"/></svg>
+            Ver la presentación
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -576,46 +602,49 @@
 </section>
 
 <!-- ============================ ARTISTAS · CON QUIÉN HAN TOCADO ============================ -->
-<!-- v7 (23-11-2026): un foco que pasa por los 25 nombres, en grande y con su eco dub (las copias que se alejan,
-     como un delay); debajo, la lista entera: al pasar por un nombre, el foco salta a él. Los tres cabezas, en oro.
-     Salen de las bios de /equipo/; Swan Fyahbwoy e Iseo & Dodosound los confirma Juan -->
-<section class="artistas seccion fondo-negro" id="con-quien" aria-labelledby="artistas-t" data-foco>
+<!-- v8 (23-11-2026): los 25 nombres caen y se amontonan en el escenario (física con Matter.js, que se carga al
+     acercarse). Cada compás uno salta y se enciende, y arriba sale qué profe tocó con él: se saca del «Ha tocado
+     con» de cada profe del carrusel, así en WordPress va solo. En el móvil se tocan; en el ordenador, al pasar el
+     ratón se encienden y se pueden coger y lanzar. Sin JS o con movimiento reducido, la lista quieta. Los tres
+     cabezas, en oro. Salen de las bios de /equipo/; con quién tocaron Swan Fyahbwoy e Iseo & Dodosound lo confirma Juan -->
+<section class="artistas seccion fondo-negro" id="con-quien" aria-labelledby="artistas-t" data-escenario>
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="artistas-t" data-revela>Artistas con los que <em>hemos tocado</em></h2>
-      <p class="cabeza__guia" data-revela>Discos, giras y escenarios de quienes te dan clase.</p>
+      <p class="cabeza__guia" data-revela>Discos, giras y escenarios de quienes te dan clase.
+        <span class="escenario__pista escenario__pista--tactil">Toca un nombre y verás qué profe tocó con ese artista.</span><span class="escenario__pista escenario__pista--raton">Pasa el ratón por un nombre y verás qué profe tocó con ese artista. También puedes cogerlos y lanzarlos.</span></p>
     </header>
-  </div>
-  <div class="foco" data-foco-escenario aria-hidden="true"></div>
-  <div class="envoltura">
-    <ul class="foco__lista" aria-label="Artistas y bandas con los que han tocado" data-revela>
-        <li><button class="foco__n foco__n--top" type="button" data-foco-n>Ky-Mani Marley</button></li>
-        <li><button class="foco__n foco__n--top" type="button" data-foco-n>Ska-P</button></li>
-        <li><button class="foco__n foco__n--top" type="button" data-foco-n>Morodo</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Brian Travers (UB40)</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Clinton Fearon</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Luciano</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Macaco</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Swan Fyahbwoy</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Iseo &amp; Dodosound</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Xoel López</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Al Campbell</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Michael Prophet</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Hermano L</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Mellow Mood</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Freedonia</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Chalart 58</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Alpheus</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Emeterians</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>J.P. Bimeni &amp; The Black Belts</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>The Rootskank</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Downtown Beat</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Shirley Davis &amp; the Silverbacks</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Skalone</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Echo Chamber Roots Hi-Fi</button></li>
-        <li><button class="foco__n" type="button" data-foco-n>Alamedadosoulna</button></li>
-    </ul>
-    <p class="foco__cta" data-revela><a class="boton boton--oro boton--grande boton--luz" href="#reserva" data-reserva>Aprende con músicos que han tocado con ellos <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+    <div class="escenario" data-revela>
+      <div class="escenario__foco" data-escenario-foco aria-live="polite"></div>
+      <ul class="escenario__nombres" aria-label="Artistas y bandas con los que han tocado">
+        <li><button class="nombre nombre--top" type="button" data-nombre><span>Ky-Mani Marley</span></button></li>
+        <li><button class="nombre nombre--top" type="button" data-nombre><span>Ska-P</span></button></li>
+        <li><button class="nombre nombre--top" type="button" data-nombre><span>Morodo</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Brian Travers (UB40)</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Clinton Fearon</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Luciano</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Macaco</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Swan Fyahbwoy</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Iseo &amp; Dodosound</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Xoel López</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Al Campbell</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Michael Prophet</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Hermano L</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Mellow Mood</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Freedonia</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Chalart 58</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Alpheus</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Emeterians</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>J.P. Bimeni &amp; The Black Belts</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>The Rootskank</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Downtown Beat</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Shirley Davis &amp; the Silverbacks</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Skalone</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Echo Chamber Roots Hi-Fi</span></button></li>
+        <li><button class="nombre" type="button" data-nombre><span>Alamedadosoulna</span></button></li>
+      </ul>
+    </div>
+    <p class="escenario__cta" data-revela><a class="boton boton--oro boton--grande boton--luz" href="#reserva" data-reserva>Aprende con músicos que han tocado con ellos <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
   </div>
 </section>
 
@@ -1186,9 +1215,9 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=7.1" defer></script>
-<script src="assets/js/main.js?v=7.1" defer></script>
-<script src="assets/js/secciones.js?v=7.1" defer></script>
-<script src="assets/js/paginas.js?v=7.1" defer></script>
+<script src="assets/js/riddim.js?v=8.0" defer></script>
+<script src="assets/js/main.js?v=8.0" defer></script>
+<script src="assets/js/secciones.js?v=8.0" defer></script>
+<script src="assets/js/paginas.js?v=8.0" defer></script>
 </body>
 </html>

@@ -226,9 +226,8 @@
   :root { --cab-alto: 56px; --seccion: clamp(56px, 8vw, 96px); }
   .marca__logo { width: 40px; height: 40px; }
   .menu-btn { min-height: 40px; }
-  .hero__int { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-content: stretch; column-gap: clamp(20px, 4vw, 40px); }
-  .hero__musicos { order: 0; height: auto; }
-  .hero__texto { align-content: center; gap: 10px; }
+  .hero__texto { gap: 10px; }
+  .historia__arriba { top: 8px; gap: 8px; }
   .hero__h1 { font-size: min(5.6vw, 10svh); }
   .hero__apoyo { font-size: clamp(.8rem, 3.4svh, .95rem); }
   .hero__cursos { display: none; }
@@ -314,73 +313,111 @@
 .notas--lista .nota__t { font-size: clamp(1.15rem, 1.02rem + .4vw, 1.35rem); }
 
 /* =====================================================================
-   v7 · ARTISTAS — el foco con eco dub: un nombre cada vez, enorme, con sus copias
-   en contorno que se alejan y se apagan (un delay). Los tres cabezas, en oro.
-   Debajo, la lista entera: al pasar por un nombre, el foco salta a él.
+   v8 · ARTISTAS — los 25 nombres caen y se amontonan en el escenario (física);
+   cada compás uno salta y se enciende en oro, y arriba sale qué profe tocó con él.
+   Los tres cabezas, en Fraunces y oro. Sin física, la misma lista quieta.
    ===================================================================== */
-.foco {
-  position: relative;
-  display: grid;
-  place-items: center;
-  height: clamp(150px, 17vw, 250px);
-  margin-block: clamp(4px, 1.6vw, 20px) clamp(16px, 2.6vw, 32px);
-  overflow: hidden;
+.escenario__pista--raton { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .escenario__pista--raton { display: inline; }
+  .escenario__pista--tactil { display: none; }
 }
-.foco__nombre {
-  --tinta-eco: var(--crudo);
-  grid-area: 1 / 1;
+.escenario { position: relative; margin-top: clamp(4px, 1.4vw, 16px); }
+.escenario__foco {
+  position: relative;
+  z-index: 2;
   display: grid;
   justify-items: center;
-  margin: 0;
-  padding-inline: var(--gutter);
-  font-family: var(--f-texto);
-  font-stretch: 75%;
-  font-weight: 700;
-  font-size: min(clamp(2.6rem, 9vw, 8.4rem), calc((100vw - 2 * var(--gutter)) / (var(--largo, 12) * .52)));
-  line-height: .95;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--crudo);
+  align-content: center;
+  gap: clamp(10px, 1.4vw, 16px);
+  min-height: clamp(150px, 15vw, 196px);
+  padding: 8px 4px 20px;
   text-align: center;
+  pointer-events: none;
 }
-.foco__nombre.top { --tinta-eco: var(--oro-texto); color: var(--oro-texto); }
-.foco__nombre > span { grid-area: 1 / 1; }
-.foco__txt { position: relative; z-index: 3; }
-.foco__eco { color: transparent; -webkit-text-stroke: max(1.2px, .012em) var(--tinta-eco); opacity: 0; }
-.js:not(.ss) .foco__nombre .foco__txt { animation: foco-entra 900ms var(--salida) both; }
-.js:not(.ss) .foco__nombre .foco__eco { animation: foco-eco 1700ms var(--salida) both; animation-delay: calc(140ms + var(--n) * var(--semi)); }
-.js:not(.ss) .foco__nombre.sale .foco__txt { animation: foco-sale 600ms var(--salida) both; }
-.js:not(.ss) .foco__nombre.sale .foco__eco { animation: none; opacity: 0; }
-@keyframes foco-entra { from { opacity: 0; transform: translateX(.14em) scale(.97); } to { opacity: 1; transform: none; } }
-@keyframes foco-sale { to { opacity: 0; transform: translateX(-.18em); } }
-@keyframes foco-eco {
-  0% { opacity: 0; transform: translateX(0); }
-  18% { opacity: var(--o); }
-  100% { opacity: 0; transform: translateX(calc(var(--n) * .1em)); }
+.escenario__foco:empty { display: none; }
+.escenario__artista {
+  max-width: 100%;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: min(clamp(2.3rem, 6.6vw, 5.4rem), calc((100vw - 2 * var(--gutter)) / (var(--largo, 12) * .5)));
+  line-height: .98;
+  letter-spacing: -.01em;
+  color: var(--crudo);
+  text-wrap: balance;
 }
-.foco__lista { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 2px; max-width: 66em; margin: 0 auto; }
-.foco__n {
-  min-height: 40px;
-  padding: 8px 12px;
-  border: 0;
+.escenario__artista.top { color: var(--oro-texto); }
+.escenario__con {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 34em;
+  color: var(--texto-suave);
+  font-size: clamp(.95rem, .9rem + .3vw, 1.1rem);
+  line-height: 1.35;
+  text-align: left;
+}
+.escenario__con strong { color: var(--crudo); font-weight: 650; }
+.escenario__caras { display: inline-flex; flex: none; }
+.escenario__caras img { width: 56px; height: 56px; border: 2px solid var(--negro); border-radius: 50%; object-fit: cover; object-position: 50% 15%; }
+.escenario__caras img + img { margin-left: -14px; }
+.js:not(.ss) .escenario__artista { animation: artista-entra 650ms var(--salida) both; }
+.js:not(.ss) .escenario__con { animation: artista-entra 650ms 110ms var(--salida) both; }
+@keyframes artista-entra { from { opacity: 0; transform: translateY(.35em) scale(.96); } }
+
+/* Las píldoras (también la lista quieta, sin física) */
+.escenario__nombres { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 8px; max-width: 64em; margin: 0 auto; }
+.nombre {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 19px;
+  border: 1px solid rgba(241, 233, 214, .24);
   border-radius: 999px;
-  background: none;
+  background: var(--carbon);
+  color: var(--crudo);
   font-family: var(--f-texto);
-  font-size: .97rem;
-  font-weight: 500;
-  line-height: 1.2;
-  color: rgba(241, 233, 214, .62);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
   cursor: pointer;
-  transition: color 220ms var(--salida), background-color 220ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 260ms var(--salida), border-color 260ms var(--salida), color 260ms var(--salida);
 }
-.foco__n--top { color: var(--oro-texto); font-weight: 650; }
-.foco__n:hover, .foco__n.activo { color: var(--crudo); background: rgba(241, 233, 214, .09); }
-.foco__n--top:hover, .foco__n--top.activo { color: var(--oro-texto); background: rgba(242, 193, 78, .13); }
-.foco__cta { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 48px); }
+.nombre > span { display: block; transition: transform 460ms var(--rebote); }
+.nombre--top {
+  padding: 12px 24px;
+  border-color: rgba(242, 193, 78, .62);
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--oro-texto);
+}
+.nombre:hover { border-color: var(--oro); }
+.nombre:hover > span { transform: scale(1.08) rotate(-2deg); }
+.nombre.elegido { border-color: var(--oro); background: var(--oro); color: var(--tinta); }
+.nombre:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: 3px; }
+
+/* Con física: el escenario tiene su alto y las píldoras, sueltas, las mueve el JS */
+.escenario.fisica { height: var(--alto, 520px); overflow: hidden; touch-action: pan-y; }
+.escenario.fisica .escenario__foco { position: absolute; inset: 0 0 auto; }
+.escenario.fisica .escenario__nombres { position: absolute; inset: 0; display: block; max-width: none; margin: 0; }
+.escenario.fisica .escenario__nombres li { position: absolute; top: 0; left: 0; visibility: hidden; will-change: transform; }
+.escenario.fisica .escenario__nombres li.dentro { visibility: visible; }
+@media (hover: hover) and (pointer: fine) { .escenario.fisica .nombre { cursor: grab; } }
+.escenario.fisica.arrastrando, .escenario.fisica.arrastrando .nombre { cursor: grabbing; }
+.escenario.fisica.arrastrando .nombre > span { transform: none; }
+.escenario__cta { display: flex; justify-content: center; margin-top: clamp(24px, 3.4vw, 44px); }
 @media (max-width: 699px) {
-  .foco { height: clamp(120px, 36vw, 170px); }
-  .foco__nombre { white-space: normal; font-size: clamp(2.1rem, 10vw, 3.2rem); text-wrap: balance; }
-  .foco__n { min-height: 44px; }
+  .escenario.fisica { height: var(--alto, 560px); }
+  .escenario__foco { min-height: 156px; }
+  .nombre { min-height: 38px; padding: 7px 13px; font-size: .86rem; }
+  .nombre--top { padding: 8px 16px; font-size: 1.14rem; }
+  .escenario__caras img { width: 48px; height: 48px; }
 }
 
 /* =====================================================================
@@ -591,3 +628,20 @@
 .boton:hover .boton__luz, .boton:focus-visible .boton__luz { opacity: 0; }
 .boton--luz::after { display: none; }
 @media (prefers-reduced-motion: reduce) { .boton__luz { display: none; } }
+
+/* =====================================================================
+   v8 · EN EL MÓVIL, LO DEL CURSOR — en pantallas táctiles, las fotos y tarjetas
+   que reaccionan al pasar el ratón reaccionan solas al cruzar el centro de la
+   pantalla (main.js les pone .en-foco). Con ratón, nada cambia.
+   ===================================================================== */
+@media (hover: none) {
+  .video__btn.en-foco img, .nota__enlace.en-foco .nota__foto img, .mosaico.en-foco img { transform: scale(1.05); }
+  .formatos--lista .formato.en-foco .formato__foto img { transform: scale(1.06); }
+  .video__btn.en-foco .video__play { color: var(--tinta); border-color: var(--oro); }
+  .video__btn.en-foco .video__play::before { transform: scale(1); }
+  .mosaico.en-foco .mosaico__pie { background: var(--oro); }
+  .red.en-foco .red__ico { background: var(--oro); color: var(--tinta); }
+  .voces__cara.en-foco img { transform: scale(1.08); }
+  .flow__carta.activa.en-foco .flow__foto img { transform: scale(1.05); }
+  .entrada.visto.en-foco .sello { transform: rotate(-4deg) scale(1.08); }
+}
