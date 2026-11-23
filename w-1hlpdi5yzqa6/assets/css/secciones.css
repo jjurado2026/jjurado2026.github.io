@@ -227,7 +227,7 @@
   .marca__logo { width: 40px; height: 40px; }
   .menu-btn { min-height: 40px; }
   .hero__int { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-content: stretch; column-gap: clamp(20px, 4vw, 40px); }
-  .hero__foto { order: 0; height: auto; }
+  .hero__musicos { order: 0; height: auto; }
   .hero__texto { align-content: center; gap: 10px; }
   .hero__h1 { font-size: min(5.6vw, 10svh); }
   .hero__apoyo { font-size: clamp(.8rem, 3.4svh, .95rem); }
@@ -260,46 +260,6 @@
 }
 .formato__fecha > span:first-child { display: block; margin-bottom: 2px; color: var(--oro-texto); font-size: .82rem; font-weight: 700; }
 
-
-/* =====================================================================
-   ARTISTAS CON LOS QUE HEMOS TOCADO (v6.2) — dos cintas sutiles que pasan solas,
-   en sentidos contrarios, en la letra de texto. Los tres cabezas, en oro.
-   Se paran con el ratón encima; con movimiento reducido, quietas y en filas.
-   ===================================================================== */
-.artistas { overflow: hidden; }
-.artistas__cintas {
-  display: grid;
-  gap: clamp(8px, 1.2vw, 16px);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-}
-.cinta-a { overflow: hidden; }
-.cinta-a__pista { display: flex; width: max-content; animation: cinta-a 72s linear infinite; }
-.cinta-a--b .cinta-a__pista { animation-duration: 88s; animation-direction: reverse; }
-.artistas__cintas:hover .cinta-a__pista { animation-play-state: paused; }
-.cinta-a__lista { display: flex; align-items: center; }
-.cinta-a__lista li {
-  display: flex;
-  align-items: center;
-  gap: clamp(22px, 2.6vw, 40px);
-  padding-right: clamp(22px, 2.6vw, 40px);
-  font-family: var(--f-texto);
-  font-weight: 500;
-  font-size: clamp(1.15rem, .95rem + .9vw, 1.75rem);
-  line-height: 1.35;
-  color: rgba(241, 233, 214, .8);
-  white-space: nowrap;
-}
-.cinta-a--b .cinta-a__lista li { font-size: clamp(1rem, .9rem + .5vw, 1.35rem); color: rgba(241, 233, 214, .6); }
-.cinta-a__lista li::after { content: ""; flex: none; width: 5px; height: 5px; border-radius: 50%; background: var(--oro); opacity: .75; }
-.cinta-a__lista .cinta-a__top { color: var(--oro-texto); font-weight: 600; }
-@keyframes cinta-a { to { transform: translateX(-50%); } }
-.ss .cinta-a__pista { animation: none; }
-@media (prefers-reduced-motion: reduce) {
-  .cinta-a__pista { width: auto; animation: none; }
-  .cinta-a__lista { flex-wrap: wrap; justify-content: center; row-gap: 6px; }
-  .cinta-a__lista[aria-hidden="true"] { display: none; }
-}
 
 /* =====================================================================
    JAMS, TALLERES Y NOTICIAS (v6.2) — en paralelo, dos columnas en lista
@@ -353,15 +313,261 @@
 .notas--lista .nota__d { display: none; }
 .notas--lista .nota__t { font-size: clamp(1.15rem, 1.02rem + .4vw, 1.35rem); }
 
-/* Artistas en el móvil (v6.3): cuatro cintas más grandes y juntas, para ver muchos nombres de un vistazo */
-.artistas__cintas--movil { display: none; }
-@media (max-width: 699px) {
-  .artistas__cintas--escritorio { display: none; }
-  .artistas__cintas--movil { display: grid; gap: 6px; }
-  .artistas__cintas--movil .cinta-a__lista li { font-size: 1.22rem; font-weight: 600; color: rgba(241, 233, 214, .9); gap: 18px; padding-right: 18px; }
-  .artistas__cintas--movil .cinta-a--m1 .cinta-a__lista li { font-size: 1.45rem; }
-  .artistas__cintas--movil .cinta-a--m1 .cinta-a__pista { animation-duration: 34s; }
-  .artistas__cintas--movil .cinta-a--m2 .cinta-a__pista { animation-duration: 40s; animation-direction: reverse; }
-  .artistas__cintas--movil .cinta-a--m3 .cinta-a__pista { animation-duration: 36s; }
-  .artistas__cintas--movil .cinta-a--m4 .cinta-a__pista { animation-duration: 46s; animation-direction: reverse; }
+/* =====================================================================
+   v7 · ARTISTAS — el foco con eco dub: un nombre cada vez, enorme, con sus copias
+   en contorno que se alejan y se apagan (un delay). Los tres cabezas, en oro.
+   Debajo, la lista entera: al pasar por un nombre, el foco salta a él.
+   ===================================================================== */
+.foco {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: clamp(150px, 17vw, 250px);
+  margin-block: clamp(4px, 1.6vw, 20px) clamp(16px, 2.6vw, 32px);
+  overflow: hidden;
 }
+.foco__nombre {
+  --tinta-eco: var(--crudo);
+  grid-area: 1 / 1;
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  padding-inline: var(--gutter);
+  font-family: var(--f-texto);
+  font-stretch: 75%;
+  font-weight: 700;
+  font-size: min(clamp(2.6rem, 9vw, 8.4rem), calc((100vw - 2 * var(--gutter)) / (var(--largo, 12) * .52)));
+  line-height: .95;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--crudo);
+  text-align: center;
+}
+.foco__nombre.top { --tinta-eco: var(--oro-texto); color: var(--oro-texto); }
+.foco__nombre > span { grid-area: 1 / 1; }
+.foco__txt { position: relative; z-index: 3; }
+.foco__eco { color: transparent; -webkit-text-stroke: max(1.2px, .012em) var(--tinta-eco); opacity: 0; }
+.js:not(.ss) .foco__nombre .foco__txt { animation: foco-entra 900ms var(--salida) both; }
+.js:not(.ss) .foco__nombre .foco__eco { animation: foco-eco 1700ms var(--salida) both; animation-delay: calc(140ms + var(--n) * var(--semi)); }
+.js:not(.ss) .foco__nombre.sale .foco__txt { animation: foco-sale 600ms var(--salida) both; }
+.js:not(.ss) .foco__nombre.sale .foco__eco { animation: none; opacity: 0; }
+@keyframes foco-entra { from { opacity: 0; transform: translateX(.14em) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes foco-sale { to { opacity: 0; transform: translateX(-.18em); } }
+@keyframes foco-eco {
+  0% { opacity: 0; transform: translateX(0); }
+  18% { opacity: var(--o); }
+  100% { opacity: 0; transform: translateX(calc(var(--n) * .1em)); }
+}
+.foco__lista { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 2px; max-width: 66em; margin: 0 auto; }
+.foco__n {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  font-family: var(--f-texto);
+  font-size: .97rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(241, 233, 214, .62);
+  cursor: pointer;
+  transition: color 220ms var(--salida), background-color 220ms var(--salida);
+}
+.foco__n--top { color: var(--oro-texto); font-weight: 650; }
+.foco__n:hover, .foco__n.activo { color: var(--crudo); background: rgba(241, 233, 214, .09); }
+.foco__n--top:hover, .foco__n--top.activo { color: var(--oro-texto); background: rgba(242, 193, 78, .13); }
+.foco__cta { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 48px); }
+@media (max-width: 699px) {
+  .foco { height: clamp(120px, 36vw, 170px); }
+  .foco__nombre { white-space: normal; font-size: clamp(2.1rem, 10vw, 3.2rem); text-wrap: balance; }
+  .foco__n { min-height: 44px; }
+}
+
+/* =====================================================================
+   v7 · CÓMO SE APRENDE — un secuenciador de cuatro pasos: la luz recorre los
+   pads a 75 BPM (uno por negra) y el 3, el golpe del one drop, se enciende en oro
+   ===================================================================== */
+.pads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 18px); }
+@media (min-width: 900px) { .pads { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.pad {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+  min-height: clamp(220px, 24vw, 330px);
+  padding: clamp(18px, 2vw, 28px);
+  border-radius: 22px;
+  background: var(--carbon);
+  box-shadow: inset 0 0 0 1px var(--linea);
+}
+.pad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(130% 100% at 0% 0%, rgba(241, 233, 214, .16), transparent 62%);
+  opacity: 0;
+  transition: opacity 700ms var(--salida);
+}
+.pad--golpe::before { background: radial-gradient(130% 100% at 0% 0%, rgba(242, 181, 49, .34), transparent 64%); }
+.pad.suena::before, .pad:hover::before { opacity: 1; transition-duration: 80ms; }
+.pad__n {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(4.2rem, 7.4vw, 7.6rem);
+  line-height: .8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(241, 233, 214, .45);
+  transform-origin: left bottom;
+  transition: transform 520ms var(--rebote), color 160ms var(--salida);
+}
+.pad.suena .pad__n { color: var(--crudo); transform: scale(1.06); }
+.pad--golpe .pad__n { -webkit-text-stroke-color: var(--oro-texto); }
+.pad--golpe.suena .pad__n { color: var(--oro-texto); transform: scale(1.13); }
+.ss .pad--golpe .pad__n { color: var(--oro-texto); }
+.pad__t { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.2rem, 1rem + .7vw, 1.55rem); line-height: 1.12; text-wrap: balance; }
+.pad__d { margin-top: 8px; color: var(--texto-suave); font-size: .95rem; line-height: 1.5; }
+.pads__pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: clamp(24px, 3vw, 36px); }
+.pads__nota { max-width: 46em; color: var(--texto-suave); font-style: italic; }
+
+/* =====================================================================
+   v7 · QUIÉN TE DA CLASE — carrusel en 3D: la carta del centro, de frente y con su
+   ficha y su botón; las de los lados, giradas y al fondo. Pasa solo cada dos compases.
+   ===================================================================== */
+.flow { --ancho: clamp(230px, 24vw, 330px); position: relative; height: calc(var(--ancho) * 1.25 + 270px); perspective: 1600px; overflow: hidden; touch-action: pan-y; }
+.flow__pista { position: relative; height: 100%; transform-style: preserve-3d; }
+.flow__carta {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--ancho);
+  margin-left: calc(var(--ancho) / -2);
+  transform: translateX(calc(var(--o, 0) * 84%)) translateZ(calc(var(--d, 0) * -200px)) rotateY(calc(var(--o, 0) * -30deg));
+  opacity: var(--op, 1);
+  z-index: var(--z, 1);
+  transition: transform 1000ms var(--salida), opacity 700ms var(--salida);
+}
+.flow__foto {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--carbon);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.flow__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--salida); }
+.flow__carta.activa .flow__foto { cursor: default; }
+.flow__carta.activa .flow__foto:hover img { transform: scale(1.05); }
+.flow__ficha {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  width: 170%;
+  margin: 20px 0 0 -35%;
+  text-align: center;
+  transition: opacity 500ms var(--salida);
+}
+.flow__carta:not(.activa) .flow__ficha { opacity: 0; pointer-events: none; }
+.flow__nombre { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); line-height: 1.05; }
+.flow__clases { color: var(--oro-texto); font-weight: 600; font-size: .95rem; }
+.flow__con { max-width: 34em; color: var(--texto-suave); font-size: .95rem; line-height: 1.5; }
+.flow__con strong { color: var(--crudo); font-weight: 600; }
+.flow__ficha .boton { margin-top: 8px; }
+@media (max-width: 699px) {
+  .flow { --ancho: 60vw; height: calc(var(--ancho) * 1.25 + 330px); }
+  .flow__carta { transform: translateX(calc(var(--o, 0) * 74%)) translateZ(calc(var(--d, 0) * -160px)) rotateY(calc(var(--o, 0) * -28deg)); }
+  .flow__ficha { width: 150%; margin-left: -25%; }
+}
+@media (prefers-reduced-motion: reduce) { .flow__carta { transition: opacity 1ms; opacity: max(var(--op, 1), .18); } }
+
+/* =====================================================================
+   v7 · LO CUENTAN QUIENES YA TOCAN — una voz cada vez, en grande; las palabras
+   entran una a una. Las caras eligen; pasa sola cada 9 s.
+   ===================================================================== */
+.voces { display: grid; gap: clamp(28px, 4vw, 56px); align-items: start; }
+@media (min-width: 1000px) { .voces { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); column-gap: clamp(48px, 7vw, 120px); } }
+.voces__caras { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px, 3vw, 36px); }
+.voces__cara { padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; opacity: .42; transition: opacity 300ms var(--salida); }
+.voces__cara img { display: block; width: 62px; height: 62px; border-radius: 50%; object-fit: cover; transition: transform 520ms var(--muelle); }
+.voces__cara[aria-selected="true"], .voces__cara:hover { opacity: 1; }
+.voces__cara:hover img { transform: scale(1.08); }
+.voces__cara:focus-visible { outline-offset: 4px; border-radius: 50%; }
+.voces__cta { margin-top: clamp(24px, 3vw, 36px); }
+.voz[hidden] { display: none; }
+.voz__cita {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 420;
+  font-size: clamp(1.18rem, .98rem + .8vw, 1.62rem);
+  line-height: 1.45;
+  color: var(--crudo);
+}
+.voz__cita::before { content: "\201C"; font-style: normal; font-weight: 900; font-size: 5rem; line-height: .5; height: .36em; color: var(--oro-texto); }
+.voz__cita strong { font-weight: 650; }
+.voz__quien { margin-top: 22px; color: var(--texto-suave); }
+.voz__quien strong { color: var(--crudo); font-weight: 650; }
+.js:not(.ss) .voz .w { display: inline-block; opacity: 0; transform: translateY(.45em); animation: voz-palabra 700ms var(--salida) forwards; animation-delay: calc(min(var(--w), 70) * 13ms); }
+@keyframes voz-palabra { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .js .voz .w { opacity: 1 !important; transform: none !important; animation: none !important; } }
+
+/* v7 · Llamadas a la acción nuevas */
+.escuela__cta { margin-top: var(--e-2); }
+.preguntas__cta { display: grid; gap: 16px; justify-items: start; margin-top: var(--e-5); color: var(--texto-suave); }
+
+/* v7 · Tarifas: las entradas caen como repartidas y el sello se estampa al verlas */
+.js:not(.ss) .entradas .entrada[data-revela] { transform: translateY(56px) rotate(-5deg); }
+.js:not(.ss) .entradas .entrada--b[data-revela] { transform: translateY(56px) rotate(5deg); }
+.js:not(.ss) .entradas .entrada.visto { transform: rotate(-.6deg); }
+.js:not(.ss) .entradas .entrada--b.visto { transform: rotate(.6deg); }
+.js:not(.ss) .entrada .sello { opacity: 0; transform: rotate(-14deg) scale(1.8); }
+.js:not(.ss) .entrada.visto .sello { opacity: 1; transform: rotate(-14deg) scale(1); transition: transform 700ms var(--rebote) 650ms, opacity 120ms linear 650ms; }
+@media (hover: hover) { .js:not(.ss) .entrada.visto:hover .sello { transform: rotate(-4deg) scale(1.08); transition-delay: 0ms; } }
+@media (prefers-reduced-motion: reduce) { .js .entrada .sello { opacity: 1 !important; } }
+
+/* =====================================================================
+   v7 · Titulares que entran palabra a palabra (JS las envuelve) y una luz de oro que
+   recorre el borde de las llamadas principales. Solo transform y opacity.
+   ===================================================================== */
+.pal { display: inline-block; overflow: hidden; vertical-align: bottom; padding: .08em .07em .16em; margin: -.08em -.07em -.16em; }
+.pal__i { display: inline-block; }
+.js:not(.ss) .t-partido[data-revela] { opacity: 1; transform: none; }
+.js:not(.ss) .t-partido .pal__i { transform: translateY(112%); transition: transform 1000ms var(--salida); transition-delay: calc(var(--p) * 55ms); }
+.js:not(.ss) .t-partido.visto .pal__i { transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .t-partido .pal__i { transform: none !important; } }
+.boton__luz {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1.5px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  transition: opacity 280ms var(--salida);
+}
+.boton__luz > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 260%;
+  aspect-ratio: 1;
+  margin: -130% 0 0 -130%;
+  background: conic-gradient(from 0deg, transparent 0 60%, rgba(246, 196, 87, 0) 66%, rgba(246, 196, 87, .95) 86%, transparent 94%);
+}
+.js:not(.ss) .boton__luz > span { animation: luz-gira 3.2s linear infinite; }
+@keyframes luz-gira { to { transform: rotate(1turn); } }
+.boton:hover .boton__luz, .boton:focus-visible .boton__luz { opacity: 0; }
+.boton--luz::after { display: none; }
+@media (prefers-reduced-motion: reduce) { .boton__luz { display: none; } }

@@ -9,6 +9,34 @@
   const reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- Aviso: «esta página llega en la semana…» ---------- */
+  /* ---------- Titulares que entran palabra a palabra ----------
+     Cada palabra va en su máscara y sube al verse el titular (main.js le pone .visto).
+     Los que llevan eco dub se quedan enteros. */
+  const partir = (h) => {
+    let p = 0;
+    const envolver = (nodo) => [...nodo.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach((t) => {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+          const a = document.createElement('span'); a.className = 'pal';
+          const b = document.createElement('span'); b.className = 'pal__i'; b.style.setProperty('--p', p++); b.textContent = t;
+          a.appendChild(b); frag.appendChild(a);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && n.tagName !== 'BR') envolver(n);
+    });
+    envolver(h);
+    h.classList.add('t-partido');
+  };
+  $$('h2.t-seccion[data-revela]').forEach((h) => { if (!h.querySelector('.eco')) partir(h); });
+
+  /* ---------- Luz de oro que recorre el borde de las llamadas principales ---------- */
+  $$('.boton--luz').forEach((b) => {
+    if (!b.querySelector('.boton__luz')) b.insertAdjacentHTML('beforeend', '<span class="boton__luz" aria-hidden="true"><span></span></span>');
+  });
+
   /* ---------- Menú: Cursos y La escuela abren su desplegable (no llevan enlace) ----------
      Con el ratón, al pasar; con el dedo o el teclado, al pulsar. Se cierra al salir, con Escape
      o al pulsar fuera. Las fotos del desplegable se cargan la primera vez que se abre. */

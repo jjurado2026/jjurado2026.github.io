@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=6.3">
-<link rel="stylesheet" href="assets/css/home.css?v=6.3">
-<link rel="stylesheet" href="assets/css/secciones.css?v=6.3">
-<link rel="stylesheet" href="assets/css/paginas.css?v=6.3">
+<link rel="stylesheet" href="assets/css/global.css?v=7.0">
+<link rel="stylesheet" href="assets/css/home.css?v=7.0">
+<link rel="stylesheet" href="assets/css/secciones.css?v=7.0">
+<link rel="stylesheet" href="assets/css/paginas.css?v=7.0">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -183,8 +183,7 @@
 
 <main id="contenido">
 <!-- ============================ HERO ============================ -->
-<!-- v6.3 (20-11-2026): el texto sobre su negro y, al lado, su estudio: tres fotos suyas que se funden despacio
-     (el vúmetro de /guitarra/, la mesa de /produccion-y-mezcla/ y el escritorio con el logo de /contacto-2/) -->
+<!-- v7 (23-11-2026): el texto y, al lado, sus músicos tocando en tres cápsulas que se mueven a tempo -->
 <section class="hero fondo-negro" aria-labelledby="h1" data-hero>
   <div class="hero__int envoltura">
     <div class="hero__texto">
@@ -201,7 +200,7 @@
       </p>
 
       <div class="hero__ctas" data-entra style="--i:4">
-        <a class="boton boton--oro boton--grande" href="#reserva" data-reserva>
+        <a class="boton boton--oro boton--grande boton--luz" href="#reserva" data-reserva>
           Reserva tu sesión de prueba
           <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -212,10 +211,21 @@
       </div>
     </div>
 
-    <div class="hero__foto" data-entra style="--i:1" aria-hidden="true">
-      <picture><source media="(max-width: 999px)" srcset="assets/img/hero-vumetro-cerca-800.webp" width="800" height="640"><img class="hero__diapo" src="assets/img/hero-vumetro-1000.webp" srcset="assets/img/hero-vumetro-1000.webp 1000w, assets/img/hero-vumetro-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1600" height="1067" alt="" fetchpriority="high" decoding="async" style="--n:0; --x:40%; --y:62%"></picture>
-      <img class="hero__diapo" src="assets/img/hero-mesa-1000.webp" srcset="assets/img/hero-mesa-1000.webp 1000w, assets/img/hero-mesa-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1600" height="1067" alt="" fetchpriority="low" decoding="async" style="--n:1; --x:42%; --y:58%">
-      <img class="hero__diapo" src="assets/img/hero-estudio-1000.webp" srcset="assets/img/hero-estudio-1000.webp 1000w, assets/img/hero-estudio-1600.webp 1600w" sizes="(min-width: 1000px) 50vw, 100vw" width="1600" height="1067" alt="" fetchpriority="low" decoding="async" style="--n:2; --x:56%; --y:34%">
+    <!-- Sus músicos tocando, en tres cápsulas que se mueven a tempo y cambian de foto (de /saxo/, /bateria/,
+         /canto/, la home, /teclado/ y /combo-rsm/ de su web) -->
+    <div class="hero__musicos" data-entra style="--i:1" aria-hidden="true">
+      <div class="capsula" style="--c:0">
+        <img class="capsula__f" src="assets/img/hero-c1a.webp" width="480" height="1152" alt="" decoding="async" style="--f:0">
+        <img class="capsula__f" src="assets/img/hero-c1b.webp" width="480" height="1152" alt="" loading="lazy" decoding="async" style="--f:1">
+      </div>
+      <div class="capsula" style="--c:1">
+        <img class="capsula__f" src="assets/img/hero-c2a.webp" width="480" height="1152" alt="" fetchpriority="high" decoding="async" style="--f:0">
+        <img class="capsula__f" src="assets/img/hero-c2b.webp" width="480" height="1152" alt="" loading="lazy" decoding="async" style="--f:1">
+      </div>
+      <div class="capsula" style="--c:2">
+        <img class="capsula__f" src="assets/img/hero-c3a.webp" width="480" height="1152" alt="" decoding="async" style="--f:0">
+        <img class="capsula__f" src="assets/img/hero-c3b.webp" width="480" height="1152" alt="" loading="lazy" decoding="async" style="--f:1">
+      </div>
     </div>
   </div>
 
@@ -257,6 +267,7 @@
         desde el Reggae</em>, con profesores experimentados en el género y donde tú eres el
         protagonista de tu propio aprendizaje.
       </p>
+      <p class="escuela__cta" data-revela style="--i:3"><a class="boton boton--oro" href="#reserva" data-reserva>Reserva tu sesión de prueba <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
     </div>
   </div>
 </section>
@@ -565,59 +576,53 @@
 </section>
 
 <!-- ============================ ARTISTAS · CON QUIÉN HAN TOCADO ============================ -->
-<!-- 20-11-2026: dos cintas sutiles que pasan solas (se paran con el ratón encima); los nombres, en la letra de texto.
+<!-- v7 (23-11-2026): un foco que pasa por los 25 nombres, en grande y con su eco dub (las copias que se alejan,
+     como un delay); debajo, la lista entera: al pasar por un nombre, el foco salta a él. Los tres cabezas, en oro.
      Salen de las bios de /equipo/; Swan Fyahbwoy e Iseo & Dodosound los confirma Juan -->
-<section class="artistas seccion fondo-negro" id="con-quien" aria-labelledby="artistas-t">
+<section class="artistas seccion fondo-negro" id="con-quien" aria-labelledby="artistas-t" data-foco>
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="artistas-t" data-revela>Artistas con los que <em>hemos tocado</em></h2>
       <p class="cabeza__guia" data-revela>Discos, giras y escenarios de quienes te dan clase.</p>
     </header>
   </div>
-  <div class="artistas__cintas artistas__cintas--escritorio" data-revela>
-    <div class="cinta-a">
-      <div class="cinta-a__pista">
-        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (1 de 2)"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
-        <ul class="cinta-a__lista" aria-hidden="true"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
-      </div>
-    </div>
-    <div class="cinta-a cinta-a--b">
-      <div class="cinta-a__pista">
-        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (2 de 2)"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
-        <ul class="cinta-a__lista" aria-hidden="true"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
-      </div>
-    </div>
-  </div>
-  <div class="artistas__cintas artistas__cintas--movil" data-revela>
-    <div class="cinta-a cinta-a--m1">
-      <div class="cinta-a__pista">
-        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (1 de 4)"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li></ul>
-        <ul class="cinta-a__lista" aria-hidden="true"><li class="cinta-a__top">Ky-Mani Marley</li><li class="cinta-a__top">Ska-P</li><li class="cinta-a__top">Morodo</li><li>Brian Travers (UB40)</li><li>Clinton Fearon</li><li>Luciano</li></ul>
-      </div>
-    </div>
-    <div class="cinta-a cinta-a--m2">
-      <div class="cinta-a__pista">
-        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (2 de 4)"><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
-        <ul class="cinta-a__lista" aria-hidden="true"><li>Macaco</li><li>Swan Fyahbwoy</li><li>Iseo &amp; Dodosound</li><li>Xoel López</li><li>Al Campbell</li><li>Michael Prophet</li></ul>
-      </div>
-    </div>
-    <div class="cinta-a cinta-a--m3">
-      <div class="cinta-a__pista">
-        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (3 de 4)"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li></ul>
-        <ul class="cinta-a__lista" aria-hidden="true"><li>Hermano L</li><li>Mellow Mood</li><li>Freedonia</li><li>Chalart 58</li><li>Alpheus</li><li>Emeterians</li></ul>
-      </div>
-    </div>
-    <div class="cinta-a cinta-a--m4">
-      <div class="cinta-a__pista">
-        <ul class="cinta-a__lista" aria-label="Artistas con los que han tocado (4 de 4)"><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
-        <ul class="cinta-a__lista" aria-hidden="true"><li>J.P. Bimeni &amp; The Black Belts</li><li>The Rootskank</li><li>Downtown Beat</li><li>Shirley Davis &amp; the Silverbacks</li><li>Skalone</li><li>Echo Chamber Roots Hi-Fi</li><li>Alamedadosoulna</li></ul>
-      </div>
-    </div>
+  <div class="foco" data-foco-escenario aria-hidden="true"></div>
+  <div class="envoltura">
+    <ul class="foco__lista" aria-label="Artistas y bandas con los que han tocado" data-revela>
+        <li><button class="foco__n foco__n--top" type="button" data-foco-n>Ky-Mani Marley</button></li>
+        <li><button class="foco__n foco__n--top" type="button" data-foco-n>Ska-P</button></li>
+        <li><button class="foco__n foco__n--top" type="button" data-foco-n>Morodo</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Brian Travers (UB40)</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Clinton Fearon</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Luciano</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Macaco</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Swan Fyahbwoy</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Iseo &amp; Dodosound</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Xoel López</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Al Campbell</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Michael Prophet</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Hermano L</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Mellow Mood</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Freedonia</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Chalart 58</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Alpheus</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Emeterians</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>J.P. Bimeni &amp; The Black Belts</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>The Rootskank</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Downtown Beat</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Shirley Davis &amp; the Silverbacks</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Skalone</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Echo Chamber Roots Hi-Fi</button></li>
+        <li><button class="foco__n" type="button" data-foco-n>Alamedadosoulna</button></li>
+    </ul>
+    <p class="foco__cta" data-revela><a class="boton boton--oro boton--grande boton--luz" href="#reserva" data-reserva>Aprende con quien ha tocado con ellos <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
   </div>
 </section>
 
-<!-- ============================ MÉTODO · UN COMPÁS ============================ -->
-<section class="metodo seccion fondo-negro" aria-labelledby="metodo-t" data-compas>
+<!-- ============================ MÉTODO · SECUENCIADOR DE CUATRO PASOS ============================ -->
+<!-- v7: los cuatro tiempos como los pads de una caja de ritmos; la luz los recorre a 75 BPM y el 3, el golpe del
+     one drop, se enciende en oro -->
+<section class="metodo seccion fondo-negro" aria-labelledby="metodo-t" data-secuencia>
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="metodo-t" data-revela>Cómo se aprende <em>aquí</em></h2>
@@ -626,38 +631,31 @@
         teoría que esas canciones necesitan. El material se adapta a tu nivel.
       </p>
     </header>
-
-    <div class="compas">
-      <div class="compas__linea" aria-hidden="true">
-        <span class="compas__cabezal" data-cabezal></span>
-      </div>
-      <ol class="compas__tiempos">
-        <li class="tiempo" data-tiempo>
-          <span class="tiempo__marca" aria-hidden="true"></span>
-          <span class="tiempo__n">Tiempo 1</span>
-          <h3 class="tiempo__t">Reservas una sesión de prueba</h3>
-          <p>Cuentas qué instrumento te interesa, tu nivel y tus horarios.</p>
-        </li>
-        <li class="tiempo" data-tiempo>
-          <span class="tiempo__marca" aria-hidden="true"></span>
-          <span class="tiempo__n">Tiempo 2</span>
-          <h3 class="tiempo__t">Eliges formato</h3>
-          <p>Online o presencial, semanal o quincenal.</p>
-        </li>
-        <li class="tiempo tiempo--acento" data-tiempo>
-          <span class="tiempo__marca" aria-hidden="true"></span>
-          <span class="tiempo__n">Tiempo 3, el golpe</span>
-          <h3 class="tiempo__t">Tocas tus canciones</h3>
-          <p>El profesor construye el material a partir de la música que te gusta.</p>
-        </li>
-        <li class="tiempo" data-tiempo>
-          <span class="tiempo__marca" aria-hidden="true"></span>
-          <span class="tiempo__n">Tiempo 4</span>
-          <h3 class="tiempo__t">Te subes a una jam</h3>
-          <p>La escuela organiza <a class="enlace" href="#agenda">jam sessions</a> para que toques con otros alumnos.</p>
-        </li>
-      </ol>
-      <p class="compas__nota" data-revela>En el one drop el bombo no cae en el 1: cae en el 3. Aquí el acento también está en lo tuyo.</p>
+    <ol class="pads">
+      <li class="pad" data-pad data-revela style="--i:0">
+        <span class="pad__n" aria-hidden="true">1</span>
+        <h3 class="pad__t">Reservas una sesión de prueba</h3>
+        <p class="pad__d">Cuentas qué instrumento te interesa, tu nivel y tus horarios.</p>
+      </li>
+      <li class="pad" data-pad data-revela style="--i:1">
+        <span class="pad__n" aria-hidden="true">2</span>
+        <h3 class="pad__t">Eliges formato</h3>
+        <p class="pad__d">Online o presencial, semanal o quincenal.</p>
+      </li>
+      <li class="pad pad--golpe" data-pad data-revela style="--i:2">
+        <span class="pad__n" aria-hidden="true">3</span>
+        <h3 class="pad__t">Tocas tus canciones</h3>
+        <p class="pad__d">El profesor construye el material a partir de la música que te gusta.</p>
+      </li>
+      <li class="pad" data-pad data-revela style="--i:3">
+        <span class="pad__n" aria-hidden="true">4</span>
+        <h3 class="pad__t">Te subes a una jam</h3>
+        <p class="pad__d">La escuela organiza <a class="enlace" href="#agenda">jam sessions</a> para que toques con otros alumnos.</p>
+      </li>
+    </ol>
+    <div class="pads__pie" data-revela>
+      <p class="pads__nota">En el one drop el bombo no cae en el 1: cae en el 3. Aquí el acento también está en lo tuyo.</p>
+      <a class="boton boton--oro boton--luz" href="#reserva" data-reserva>Empieza por el tiempo 1 <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
@@ -721,7 +719,7 @@
     <div class="prueba" data-revela>
       <h3 class="prueba__t">Sesión de prueba</h3>
       <p class="prueba__d">Para conocer al profesor de tu instrumento y el método antes de apuntarte.</p>
-      <a class="boton boton--oro" href="#reserva" data-reserva>Reservar la sesión</a>
+      <a class="boton boton--oro boton--luz" href="#reserva" data-reserva>Reservar la sesión <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
 
   </div>
@@ -740,136 +738,119 @@
     </header>
   </div>
 
-  <div class="carril" data-carril tabindex="0" role="region" aria-label="Profesorado: desliza para ver a los siete">
-    <ul class="carril__pista">
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-javier-480.webp" srcset="assets/img/prof4-javier-480.webp 480w, assets/img/prof4-javier-720.webp 720w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Javier Ochoa tocando una guitarra eléctrica con cascos en el estudio" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">Javier Ochoa</h3>
-          <p class="profe__clases">Guitarra, canto y producción. Fundador y director</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</p>
+  <!-- v7: carrusel en 3D. Pasa solo (cada dos compases); se para con el ratón encima o el foco, y se arrastra en el móvil -->
+  <div class="flow" data-flow>
+    <ul class="flow__pista" aria-label="Profesorado">
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a Javier Ochoa"><img src="assets/img/prof4-javier-480.webp" srcset="assets/img/prof4-javier-480.webp 480w, assets/img/prof4-javier-720.webp 720w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Javier Ochoa tocando una guitarra eléctrica con cascos en el estudio" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">Javier Ochoa</h3>
+          <p class="flow__clases">Guitarra, canto y producción. Fundador y director</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con Javier <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-maga-480.webp" srcset="assets/img/prof4-maga-480.webp 480w, assets/img/prof4-maga-720.webp 720w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Retrato de Maga Lion con gorro amarillo y los brazos cruzados" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">Maga Lion</h3>
-          <p class="profe__clases">Combo RSM</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> Ky-Mani Marley, Brian Travers (UB40), Clinton Fearon, Luciano, Mellow Mood, Macaco, Morodo y Chalart 58. Fundador de Emeterians.</p>
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a Maga Lion"><img src="assets/img/prof4-maga-480.webp" srcset="assets/img/prof4-maga-480.webp 480w, assets/img/prof4-maga-720.webp 720w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Retrato de Maga Lion con gorro amarillo y los brazos cruzados" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">Maga Lion</h3>
+          <p class="flow__clases">Combo RSM</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> Ky-Mani Marley, Brian Travers (UB40), Clinton Fearon, Luciano, Mellow Mood, Macaco, Morodo y Chalart 58. Fundador de Emeterians.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con Maga <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-jorge-480.webp" srcset="assets/img/prof4-jorge-480.webp 480w, assets/img/prof4-jorge-720.webp 720w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Jorge Rodríguez tocando el saxo en directo con una camisa estampada" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">Jorge Rodríguez</h3>
-          <p class="profe__clases">Saxo</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> Ska-P (grabó sus dos últimos discos), Xoel López, Freedonia, Michael Prophet y Alpheus. Fundador de Skalone.</p>
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a Jorge Rodríguez"><img src="assets/img/prof4-jorge-480.webp" srcset="assets/img/prof4-jorge-480.webp 480w, assets/img/prof4-jorge-720.webp 720w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Jorge Rodríguez tocando el saxo en directo con una camisa estampada" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">Jorge Rodríguez</h3>
+          <p class="flow__clases">Saxo</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> Ska-P (grabó sus dos últimos discos), Xoel López, Freedonia, Michael Prophet y Alpheus. Fundador de Skalone.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con Jorge <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-pablo-480.webp" srcset="assets/img/prof4-pablo-480.webp 480w, assets/img/prof4-pablo-720.webp 720w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Pablo Cano grabando con el bajo y cascos en el estudio" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">Pablo Cano</h3>
-          <p class="profe__clases">Bajo</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> J.P. Bimeni &amp; The Black Belts, donde es director musical, Shirley Davis and the Silverbacks, Emeterians y Alamedadosoulna.</p>
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a Pablo Cano"><img src="assets/img/prof4-pablo-480.webp" srcset="assets/img/prof4-pablo-480.webp 480w, assets/img/prof4-pablo-720.webp 720w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Pablo Cano grabando con el bajo y cascos en el estudio" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">Pablo Cano</h3>
+          <p class="flow__clases">Bajo</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> J.P. Bimeni &amp; The Black Belts, donde es director musical, Shirley Davis and the Silverbacks, Emeterians y Alamedadosoulna.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con Pablo <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-david-480.webp" srcset="assets/img/prof4-david-480.webp 480w, assets/img/prof4-david-720.webp 720w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Retrato de David Arribas sentado en un taburete" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">David Arribas</h3>
-          <p class="profe__clases">Teclado y Combo RSM</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> Hotdrop, Blueskank y Rootskank. Desde 2012 lleva Downtown Beat, con Emeterians, Payoh SoulRebel y Natty Nature.</p>
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a David Arribas"><img src="assets/img/prof4-david-480.webp" srcset="assets/img/prof4-david-480.webp 480w, assets/img/prof4-david-720.webp 720w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Retrato de David Arribas sentado en un taburete" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">David Arribas</h3>
+          <p class="flow__clases">Teclado y Combo RSM</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> Hotdrop, Blueskank y Rootskank. Desde 2012 lleva Downtown Beat, con Emeterians, Payoh SoulRebel y Natty Nature.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con David <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-miguelv-480.webp" srcset="assets/img/prof4-miguelv-480.webp 480w, assets/img/prof4-miguelv-640.webp 640w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Miguel Valenciano tocando en directo con luz morada" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">Miguel Valenciano</h3>
-          <p class="profe__clases">Batería</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> The Rootskank (Nytto Dread, Al Campbell, Hermano L, Michael Prophet), Blueskank y RioMente. Produce en Kovan Music Studio.</p>
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a Miguel Valenciano"><img src="assets/img/prof4-miguelv-480.webp" srcset="assets/img/prof4-miguelv-480.webp 480w, assets/img/prof4-miguelv-640.webp 640w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Miguel Valenciano tocando en directo con luz morada" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">Miguel Valenciano</h3>
+          <p class="flow__clases">Batería</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> The Rootskank (Nytto Dread, Al Campbell, Hermano L, Michael Prophet), Blueskank y RioMente. Produce en Kovan Music Studio.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con Miguel <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
-      <li class="profe">
-        <figure class="profe__foto"><img src="assets/img/prof4-miguelm-480.webp" srcset="assets/img/prof4-miguelm-480.webp 480w, assets/img/prof4-miguelm-720.webp 720w" sizes="(min-width: 1000px) 340px, 260px" width="480" height="600" alt="Miguel Moreno tocando la batería al aire libre" loading="lazy" decoding="async"></figure>
-        <div class="profe__texto">
-          <h3 class="profe__nombre">Miguel Moreno</h3>
-          <p class="profe__clases">Batería</p>
-          <p class="profe__con"><strong>Ha tocado con</strong> Blueskank, Los Ministers del Ronsteady, Begoña Bangmatu y Hammond York.</p>
+      <li class="flow__carta" data-flow-carta>
+        <button class="flow__foto" type="button" aria-label="Ver a Miguel Moreno"><img src="assets/img/prof4-miguelm-480.webp" srcset="assets/img/prof4-miguelm-480.webp 480w, assets/img/prof4-miguelm-720.webp 720w" sizes="(min-width: 1000px) 320px, 62vw" width="480" height="600" alt="Miguel Moreno tocando la batería al aire libre" decoding="async"></button>
+        <div class="flow__ficha">
+          <h3 class="flow__nombre">Miguel Moreno</h3>
+          <p class="flow__clases">Batería</p>
+          <p class="flow__con"><strong>Ha tocado con</strong> Blueskank, Los Ministers del Ronsteady, Begoña Bangmatu y Hammond York.</p>
+          <a class="boton boton--oro" href="#reserva" data-reserva>Prueba una clase con Miguel <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- ============================ ALUMNADO ============================ -->
-<section class="alumnado seccion fondo-negro" aria-labelledby="alumnado-t">
-  <div class="envoltura">
-    <header class="cabeza cabeza--doble">
+<!-- ============================ ALUMNADO · UNA VOZ CADA VEZ ============================ -->
+<!-- v7: una opinión cada vez, en grande; las caras eligen. Pasa sola cada 9 s y se para con el ratón encima -->
+<section class="alumnado seccion fondo-negro" aria-labelledby="alumnado-t" data-voces>
+  <div class="envoltura voces">
+    <div class="voces__lado">
       <h2 class="t-seccion" id="alumnado-t" data-revela>Lo cuentan <em>quienes ya tocan</em></h2>
-      <div class="opiniones__nav" data-opiniones-nav hidden>
-        <button class="redondo" type="button" data-opiniones-ir="-1" aria-label="Opinión anterior">
-          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <p class="mono" data-opiniones-cuenta aria-live="polite">1 / 4</p>
-        <button class="redondo" type="button" data-opiniones-ir="1" aria-label="Opinión siguiente">
-          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </header>
-
-    <div class="opiniones" data-opiniones tabindex="0" aria-label="Opiniones del alumnado, desplazables">
-      <figure class="opinion" data-revela style="--i:0">
-        <blockquote>
-          <p>Soy afortunado de haber encontrado esta opción online ya que <strong>vivo en
+      <ul class="voces__caras" role="tablist" aria-label="Opiniones del alumnado" data-revela>
+        <li><button class="voces__cara" type="button" role="tab" id="cara-1" aria-controls="voz-1" aria-selected="true"><img src="assets/img/alumno-oscar-120.webp" width="48" height="48" alt="" decoding="async"><span class="visually-hidden">Oscar Villar</span></button></li>
+        <li><button class="voces__cara" type="button" role="tab" id="cara-2" aria-controls="voz-2" aria-selected="false" tabindex="-1"><img src="assets/img/alumno-sergio-120.webp" width="48" height="48" alt="" decoding="async"><span class="visually-hidden">Sergio Caño</span></button></li>
+        <li><button class="voces__cara" type="button" role="tab" id="cara-3" aria-controls="voz-3" aria-selected="false" tabindex="-1"><img src="assets/img/alumno-truekes-120.webp" width="48" height="48" alt="" decoding="async"><span class="visually-hidden">Dr. Truekes</span></button></li>
+        <li><button class="voces__cara" type="button" role="tab" id="cara-4" aria-controls="voz-4" aria-selected="false" tabindex="-1"><img src="assets/img/alumno-natalia-120.webp" width="48" height="48" alt="" decoding="async"><span class="visually-hidden">Natalia Nazo</span></button></li>
+      </ul>
+      <p class="voces__cta" data-revela><a class="boton boton--oro boton--luz" href="#reserva" data-reserva>Empieza como ellos <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+    </div>
+    <div class="voces__citas" data-revela>
+      <figure class="voz" id="voz-1" role="tabpanel" aria-labelledby="cara-1">
+        <blockquote class="voz__cita"><p>Soy afortunado de haber encontrado esta opción online ya que <strong>vivo en
           Alemania</strong>. Con total cercanía y dinamismo, a través de Javier Ochoa, estoy
           aprendiendo a tocar el teclado con la música que más me gusta, el reggae.</p>
           <p>Todo un acierto. Siempre flexible y con las clases preparadas hacen que una hora pase
-          volando. 100% recomendable.</p>
-        </blockquote>
-        <figcaption>
-          <img src="assets/img/alumno-oscar-120.webp" width="48" height="48" alt="" loading="lazy" decoding="async">
-          <span><strong>Oscar Villar</strong><span>Teclado, online desde Alemania</span></span>
-        </figcaption>
+          volando. 100% recomendable.</p></blockquote>
+        <figcaption class="voz__quien"><strong>Oscar Villar</strong> <span>Teclado, online desde Alemania</span></figcaption>
       </figure>
-
-      <figure class="opinion" data-revela style="--i:1">
-        <blockquote>
-          <p>Muy agradecido con este proyecto. Se nota que el equipo es apasionado en el género y
+      <figure class="voz" id="voz-2" role="tabpanel" aria-labelledby="cara-2" hidden>
+        <blockquote class="voz__cita"><p>Muy agradecido con este proyecto. Se nota que el equipo es apasionado en el género y
           profesional en la docencia. En apenas dos meses con Javier Ochoa, he notado mucha mejora,
           soltura y seguridad en las teclas. Hace que disfrutes a la hora de aprender y tengas ganas
-          de seguir formándote. El próximo curso sigo sin dudarlo.</p>
-        </blockquote>
-        <figcaption>
-          <img src="assets/img/alumno-sergio-120.webp" width="48" height="48" alt="" loading="lazy" decoding="async">
-          <span><strong>Sergio Caño</strong><span>Teclado</span></span>
-        </figcaption>
+          de seguir formándote. El próximo curso sigo sin dudarlo.</p></blockquote>
+        <figcaption class="voz__quien"><strong>Sergio Caño</strong> <span>Teclado</span></figcaption>
       </figure>
-
-      <figure class="opinion" data-revela style="--i:2">
-        <blockquote>
-          <p>Las clases de producción en Reggae School Madrid te brindan la oportunidad de conocer y
+      <figure class="voz" id="voz-3" role="tabpanel" aria-labelledby="cara-3" hidden>
+        <blockquote class="voz__cita"><p>Las clases de producción en Reggae School Madrid te brindan la oportunidad de conocer y
           asimilar toda la teoría y práctica de este estilo musical y de la música en general.</p>
           <p>Ves todo el proceso desde antes de empezar el tema hasta que lo escuchas, lo que hace
-          imprescindible para cualquier persona que quiera componer.</p>
-        </blockquote>
-        <figcaption>
-          <img src="assets/img/alumno-truekes-120.webp" width="48" height="48" alt="" loading="lazy" decoding="async">
-          <span><strong>Dr. Truekes</strong><span>Producción</span></span>
-        </figcaption>
+          imprescindible para cualquier persona que quiera componer.</p></blockquote>
+        <figcaption class="voz__quien"><strong>Dr. Truekes</strong> <span>Producción</span></figcaption>
       </figure>
-
-      <figure class="opinion" data-revela style="--i:3">
-        <blockquote>
-          <p>Reggae School Madrid ha sido lo mejor que me ha pasado en mi proceso musical.</p>
+      <figure class="voz" id="voz-4" role="tabpanel" aria-labelledby="cara-4" hidden>
+        <blockquote class="voz__cita"><p>Reggae School Madrid ha sido lo mejor que me ha pasado en mi proceso musical.</p>
           <p>Te acompañan profesores excelentes que comparten sus experiencias y todo su
           conocimiento para que tu camino por el Reggae sea más fácil y satisfactorio. ¡Te saben
-          enseñar, animar y sacar lo mejor de ti!</p>
-        </blockquote>
-        <figcaption>
-          <img src="assets/img/alumno-natalia-120.webp" width="48" height="48" alt="" loading="lazy" decoding="async">
-          <span><strong>Natalia Nazo</strong><span>Alumna</span></span>
-        </figcaption>
+          enseñar, animar y sacar lo mejor de ti!</p></blockquote>
+        <figcaption class="voz__quien"><strong>Natalia Nazo</strong> <span>Alumna</span></figcaption>
       </figure>
     </div>
   </div>
@@ -880,8 +861,10 @@
   <div class="envoltura preguntas__int">
     <header class="cabeza">
       <h2 class="t-seccion" id="preguntas-t" data-revela>Antes de <em>empezar</em></h2>
-      <p class="cabeza__guia" data-revela>¿Otra duda? Escribe a
-        <a class="enlace" href="mailto:reggaeschoolmadrid@gmail.com">reggaeschoolmadrid@gmail.com</a>.</p>
+      <div class="preguntas__cta" data-revela>
+        <p>¿Otra duda? Escribe a <a class="enlace" href="mailto:reggaeschoolmadrid@gmail.com">reggaeschoolmadrid@gmail.com</a>.</p>
+        <a class="boton boton--oro boton--luz" href="#reserva" data-reserva>Reserva tu sesión de prueba <svg class="boton__flecha" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
     </header>
 
     <div class="faq" data-revela>
@@ -1202,9 +1185,9 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=6.3" defer></script>
-<script src="assets/js/main.js?v=6.3" defer></script>
-<script src="assets/js/secciones.js?v=6.3" defer></script>
-<script src="assets/js/paginas.js?v=6.3" defer></script>
+<script src="assets/js/riddim.js?v=7.0" defer></script>
+<script src="assets/js/main.js?v=7.0" defer></script>
+<script src="assets/js/secciones.js?v=7.0" defer></script>
+<script src="assets/js/paginas.js?v=7.0" defer></script>
 </body>
 </html>
