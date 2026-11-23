@@ -99,46 +99,122 @@
   }
 
   /* ---------- Quién te da clase: carrusel en 3D ----------
-     Pasa solo cada dos compases (6,4 s); se para con el ratón encima o con el foco dentro.
-     Se elige pulsando una carta o arrastrando de lado (móvil). */
+     Pasa solo cada seis negras (4,8 s). Solo se para con el ratón sobre la ficha (para que el botón no
+     se escape) o con el foco de teclado dentro. Se cambia de profe:
+     · arrastrando con el ratón o el dedo: las cartas siguen al cursor y al soltar se quedan en la más
+       cercana (un tirón corto también pasa al siguiente);
+     · deslizando de lado en el trackpad (un gesto = un profe);
+     · pulsando una carta o con las flechas del teclado.
+     Tras cambiar a mano, la cuenta de 4,8 s vuelve a empezar. */
   const flow = document.querySelector('[data-flow]');
   if (flow) {
     const cartas = [...flow.querySelectorAll('[data-flow-carta]')];
     const total = cartas.length;
-    let activo = 0, parado = false, enPantalla = false;
-    const pintar = () => cartas.forEach((c, k) => {
-      let o = ((k - activo) % total + total) % total;
+    let activo = 0, enPantalla = false, sobreFicha = false, porTeclado = false, reloj = 0;
+    let arrastre = null, sinClic = false;
+    // Opacidad según la distancia al centro (1 · 0,72 · 0,38 · 0), continua para el arrastre
+    const opacidad = (d) => (d < 1 ? 1 - 0.28 * d : d < 2 ? 0.72 - 0.34 * (d - 1) : d < 3 ? 0.38 * (3 - d) : 0);
+    // f: desplazamiento en cartas mientras se arrastra (positivo = hacia el siguiente)
+    const pintar = (f = 0) => cartas.forEach((c, k) => {
+      let o = (((k - activo - f) % total) + total) % total;
       if (o > total / 2) o -= total;
       const d = Math.abs(o);
-      c.style.setProperty('--o', o);
-      c.style.setProperty('--d', d);
-      c.style.setProperty('--op', d === 0 ? 1 : d === 1 ? 0.72 : d === 2 ? 0.38 : 0);
-      c.style.setProperty('--z', 10 - d);
-      c.classList.toggle('activa', d === 0);
+      c.style.setProperty('--o', o.toFixed(3));
+      c.style.setProperty('--d', d.toFixed(3));
+      c.style.setProperty('--op', opacidad(d).toFixed(3));
+      c.style.setProperty('--z', Math.round(100 - d * 10));
+      c.classList.toggle('activa', d < 0.5);
+      if (f) return;
       c.querySelectorAll('.flow__ficha a').forEach((a) => { a.tabIndex = d === 0 ? 0 : -1; });
       c.querySelector('.flow__ficha').setAttribute('aria-hidden', String(d !== 0));
       c.querySelector('.flow__foto').tabIndex = d > 2 ? -1 : 0;
     });
-    const ir = (k) => { activo = (k + total) % total; pintar(); };
+    const programar = () => {
+      clearTimeout(reloj);
+      reloj = setTimeout(() => {
+        if (enPantalla && !arrastre && !sobreFicha && !porTeclado && !quieto()) { activo = (activo + 1) % total; pintar(); }
+        programar();
+      }, 4800);
+    };
+    const ir = (k) => { activo = ((k % total) + total) % total; pintar(); programar(); };
+
     cartas.forEach((c, k) => c.querySelector('.flow__foto').addEventListener('click', () => ir(k)));
-    flow.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') parado = true; });
-    flow.addEventListener('pointerleave', () => { parado = false; });
-    flow.addEventListener('focusin', () => { parado = true; });
-    flow.addEventListener('focusout', () => { parado = false; });
+    flow.addEventListener('pointerover', (e) => {
+      if (e.pointerType === 'mouse') sobreFicha = !!e.target.closest('.flow__carta.activa .flow__ficha');
+    });
+    flow.addEventListener('pointerleave', () => { sobreFicha = false; });
+    const deTeclado = (el) => { try { return el.matches(':focus-visible'); } catch (_) { return true; } };
+    flow.addEventListener('focusin', (e) => { porTeclado = deTeclado(e.target); });
+    flow.addEventListener('focusout', (e) => { if (!flow.contains(e.relatedTarget)) porTeclado = false; });
     flow.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); ir(activo + 1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); ir(activo - 1); }
     });
-    let x0 = null;
-    flow.addEventListener('pointerdown', (e) => { x0 = e.clientX; });
-    flow.addEventListener('pointerup', (e) => {
-      if (x0 === null) return;
-      const dx = e.clientX - x0; x0 = null;
-      if (Math.abs(dx) > 44) ir(activo + (dx < 0 ? 1 : -1));
+
+    // Arrastre con ratón, dedo o lápiz. Un paso = lo que se separan en pantalla dos cartas vecinas.
+    const pasoPx = () => {
+      const cs = getComputedStyle(flow);
+      const persp = parseFloat(cs.perspective) || 1600;
+      const fondo = parseFloat(cs.getPropertyValue('--fondo')) || 200;
+      const paso = parseFloat(cs.getPropertyValue('--paso')) || 0.84;
+      return Math.max(80, (cartas[0].offsetWidth * paso * persp) / (persp + fondo));
+    };
+    const soltar = (e) => {
+      if (!arrastre || e.pointerId !== arrastre.id) return;
+      const { movido, f, dx } = arrastre;
+      arrastre = null;
+      if (!movido) return;
+      flow.classList.remove('arrastrando');
+      sinClic = true;
+      setTimeout(() => { sinClic = false; }, 0);
+      let n = Math.round(f);
+      if (!n && Math.abs(dx) > 40) n = f > 0 ? 1 : -1;
+      ir(activo + n);
+    };
+    flow.addEventListener('pointerdown', (e) => {
+      if (!e.isPrimary || e.button !== 0) return;
+      arrastre = { id: e.pointerId, x0: e.clientX, y0: e.clientY, dx: 0, f: 0, movido: false, paso: 0 };
     });
+    flow.addEventListener('pointermove', (e) => {
+      if (!arrastre || e.pointerId !== arrastre.id) return;
+      if (e.pointerType === 'mouse' && !(e.buttons & 1)) { soltar(e); return; }
+      const dx = e.clientX - arrastre.x0, dy = e.clientY - arrastre.y0;
+      if (!arrastre.movido) {
+        if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { arrastre = null; return; }
+        if (Math.abs(dx) < 8) return;
+        arrastre.movido = true;
+        arrastre.paso = pasoPx();
+        flow.classList.add('arrastrando');
+        try { flow.setPointerCapture(e.pointerId); } catch (_) { /* sin captura también funciona */ }
+      }
+      arrastre.dx = dx;
+      arrastre.f = Math.max(-3, Math.min(3, -dx / arrastre.paso));
+      pintar(arrastre.f);
+    });
+    flow.addEventListener('pointerup', soltar);
+    flow.addEventListener('pointercancel', soltar);
+    // Solo cuando la pierde el propio carrusel: al tomarla él, el dedo la quita a la carta de debajo
+    flow.addEventListener('lostpointercapture', (e) => { if (e.target === flow) soltar(e); });
+    // Tras arrastrar no vale como clic (ni elige carta ni abre la reserva)
+    flow.addEventListener('click', (e) => { if (sinClic) { e.preventDefault(); e.stopPropagation(); } }, true);
+    flow.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // Trackpad: un deslizamiento de lado = un profe (la inercia del mismo gesto no cuenta)
+    let ruedaUltima = 0, ruedaSuma = 0, ruedaUsada = false;
+    flow.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const ahora = performance.now();
+      if (ahora - ruedaUltima > 260) { ruedaSuma = 0; ruedaUsada = false; }
+      ruedaUltima = ahora;
+      if (ruedaUsada) return;
+      ruedaSuma += e.deltaX;
+      if (Math.abs(ruedaSuma) > 36) { ruedaUsada = true; ir(activo + (ruedaSuma > 0 ? 1 : -1)); }
+    }, { passive: false });
+
     visibleEn(flow, 0.35, (v) => { enPantalla = v; });
-    setInterval(() => { if (enPantalla && !parado && !quieto()) ir(activo + 1); }, 6400);
     pintar();
+    programar();
   }
 
   /* ---------- Lo cuentan quienes ya tocan: una voz cada vez, que entra palabra a palabra ---------- */

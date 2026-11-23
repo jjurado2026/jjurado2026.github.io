@@ -434,21 +434,38 @@
 .pads__nota { max-width: 46em; color: var(--texto-suave); font-style: italic; }
 
 /* =====================================================================
-   v7 · QUIÉN TE DA CLASE — carrusel en 3D: la carta del centro, de frente y con su
-   ficha y su botón; las de los lados, giradas y al fondo. Pasa solo cada dos compases.
+   v7.1 · QUIÉN TE DA CLASE — carrusel en 3D: la carta del centro, de frente y con su
+   ficha y su botón; las de los lados, giradas y al fondo. Pasa solo cada 4,8 s y se
+   arrastra con el ratón o el dedo: las cartas siguen al cursor y al soltar se quedan en
+   la más cercana. --paso, --fondo y --giro los lee también el JS para medir el arrastre.
    ===================================================================== */
-.flow { --ancho: clamp(230px, 24vw, 330px); position: relative; height: calc(var(--ancho) * 1.25 + 270px); perspective: 1600px; overflow: hidden; touch-action: pan-y; }
-.flow__pista { position: relative; height: 100%; transform-style: preserve-3d; }
+.flow {
+  --ancho: clamp(230px, 24vw, 330px);
+  --paso: .84;
+  --fondo: 200px;
+  --giro: -30deg;
+  position: relative;
+  height: calc(var(--ancho) * 1.25 + 270px);
+  perspective: 1600px;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* La pista no recoge el ratón: en 3D su plano queda delante de las cartas del fondo y les robaba el clic */
+.flow__pista { position: relative; height: 100%; transform-style: preserve-3d; pointer-events: none; }
 .flow__carta {
+  pointer-events: auto;
   position: absolute;
   left: 50%;
   top: 0;
   width: var(--ancho);
   margin-left: calc(var(--ancho) / -2);
-  transform: translateX(calc(var(--o, 0) * 84%)) translateZ(calc(var(--d, 0) * -200px)) rotateY(calc(var(--o, 0) * -30deg));
+  transform: translateX(calc(var(--o, 0) * var(--paso) * 100%)) translateZ(calc(var(--d, 0) * var(--fondo) * -1)) rotateY(calc(var(--o, 0) * var(--giro)));
   opacity: var(--op, 1);
   z-index: var(--z, 1);
-  transition: transform 1000ms var(--salida), opacity 700ms var(--salida);
+  transition: transform 800ms var(--salida), opacity 600ms var(--salida);
 }
 .flow__foto {
   display: block;
@@ -462,8 +479,8 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-.flow__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--salida); }
-.flow__carta.activa .flow__foto { cursor: default; }
+.flow__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--salida); -webkit-user-drag: none; }
+.flow__carta.activa .flow__foto { cursor: grab; }
 .flow__carta.activa .flow__foto:hover img { transform: scale(1.05); }
 .flow__ficha {
   display: grid;
@@ -480,9 +497,12 @@
 .flow__con { max-width: 34em; color: var(--texto-suave); font-size: .95rem; line-height: 1.5; }
 .flow__con strong { color: var(--crudo); font-weight: 600; }
 .flow__ficha .boton { margin-top: 8px; }
+/* Mientras se arrastra: las cartas van pegadas al cursor (sin transición) y las fichas se apartan */
+.flow.arrastrando, .flow.arrastrando .flow__pista * { cursor: grabbing; }
+.flow.arrastrando .flow__carta { transition: none; }
+.flow.arrastrando .flow__ficha { opacity: 0; transition-duration: 160ms; }
 @media (max-width: 699px) {
-  .flow { --ancho: 60vw; height: calc(var(--ancho) * 1.25 + 330px); }
-  .flow__carta { transform: translateX(calc(var(--o, 0) * 74%)) translateZ(calc(var(--d, 0) * -160px)) rotateY(calc(var(--o, 0) * -28deg)); }
+  .flow { --ancho: 60vw; --paso: .74; --fondo: 160px; --giro: -28deg; height: calc(var(--ancho) * 1.25 + 330px); }
   .flow__ficha { width: 150%; margin-left: -25%; }
 }
 @media (prefers-reduced-motion: reduce) { .flow__carta { transition: opacity 1ms; opacity: max(var(--op, 1), .18); } }
