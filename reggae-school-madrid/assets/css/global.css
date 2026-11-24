@@ -1,0 +1,634 @@
+/* =====================================================================
+   Reggae School Madrid — v4 "RIDDIM", desarrollo
+   Global: tokens, fuentes, base, tipografía, botones, cabecera, menú,
+   pie, barra fija y sistema de movimiento.
+   Paleta (feedback del cliente, 12-11-2026): la bandera jamaicana en tonos
+   crudos y de tierra, sacada de su propio estudio. Oro = el ámbar de sus
+   vúmetros; verde = la bandera y su vinilo; negro = el estudio en penumbra;
+   tierra = la madera del Hammond; crudo en lugar de blanco.
+   Mobile-first. Solo se animan transform y opacity.
+   ===================================================================== */
+
+/* ---------- Fuentes autoalojadas ---------- */
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-italic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/instrument-sans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("../fonts/martian-mono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 112.5%;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Tokens ----------
+   v6 (20-11-2026): cada color de la bandera tiene un trabajo, en toda la web.
+   · Negro (uno solo, el mismo de la cabecera al pie) = el escenario: casi toda la web.
+   · Verde (uno solo) = empezar: en la home, solo las tarifas y la reserva; en las páginas,
+     las tarifas, la tarjeta regalo y el cierre. Dos momentos, nunca un tramo largo.
+   · Oro = la luz: la cursiva de los titulares, los nombres que brillan y el relleno
+     de los botones al pasar. Nunca de fondo.
+   · Crudo = el texto y el papel (entradas, formulario). */
+:root {
+  --negro: #131313;          /* un solo negro en toda la web: cabecera, hero, secciones y pie */
+  --negro-2: var(--negro);
+  --negro-3: var(--negro);
+  --carbon: #1f2020;         /* tarjetas sobre negro */
+  --carbon-2: #2a2b2b;
+  --verde: #175634;          /* EL verde: crudo encima 7,2:1, oro 5,2:1 */
+  --verde-3: #12452a;        /* tarjetas y superficies sobre verde */
+  --verde-oscuro: #145230;   /* verde para texto sobre oro */
+  --verde-bandera: #1f9d55;  /* LED y vúmetros de la mesa (objetos reales) */
+  --verde-claro: var(--oro-texto); /* los datos pequeños, en oro (antes verde claro) */
+  --verde-hoja: #8fbf72;
+  --verde-tinta: #175634;    /* verde para texto y foco sobre crudo: 7,2:1 */
+  /* Nombres antiguos, ya dentro del sistema: un solo verde y nada de verde noche ni tierra */
+  --verde-2: var(--verde);
+  --verde-vivo: var(--verde);
+  --verde-noche: var(--negro);
+  --verde-noche-2: var(--carbon);
+  --tierra-tinta: #6b4a2a;
+  --oro: #f2b531;            /* relleno de los botones al pasar (texto en --tinta: 9,1:1) */
+  --oro-2: #f6c457;
+  --oro-texto: #f2c14e;      /* oro para texto: 10:1 sobre negro, 5,2:1 sobre verde */
+  --crudo: #f1e9d6;
+  --blanco: #f1e9d6;         /* el color del texto principal: sobre papel pasa a --tinta */
+  --gris-1: #e6dcc5;
+  --tinta: #1d1e1e;          /* texto sobre crudo y sobre oro */
+  --error: #a8261c;          /* errores de formulario sobre crudo: 5,9:1 */
+
+  --texto: var(--blanco);
+  --texto-suave: #d6ccb4;    /* 10,5:1 sobre negro */
+  --linea: rgba(241, 233, 214, .14);
+
+  /* Sombras profundas, en capas */
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, .3), 0 2px 8px -2px rgba(0, 0, 0, .35);
+  --sombra-2: 0 2px 4px rgba(0, 0, 0, .3), 0 16px 34px -12px rgba(0, 0, 0, .6);
+  --sombra-3: 0 4px 10px rgba(0, 0, 0, .35), 0 34px 70px -22px rgba(0, 0, 0, .75);
+
+  /* Tipografía */
+  --f-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --f-texto: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --t-seccion: clamp(2.15rem, 1.25rem + 3.4vw, 4.1rem);
+  --t-cuerpo: 1.0625rem;
+  --t-mono: .72rem;
+
+  /* Espaciado */
+  --e-1: 4px;  --e-2: 8px;  --e-3: 12px; --e-4: 16px; --e-5: 24px;
+  --e-6: 32px; --e-7: 48px; --e-8: 64px; --e-9: 96px; --e-10: 128px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --ancho: 1320px;
+  --seccion: clamp(80px, 10vw, 140px);
+  --radio: 18px;
+
+  /* Tempo: one drop a 75 BPM. Negra = 800 ms; semicorchea = 200 */
+  --negra: 800ms;
+  --semi: 200ms;
+
+  --salida: cubic-bezier(.22, 1, .36, 1);
+  --muelle: linear(0, .006, .025 2.8%, .101 6.1%, .539 18.9%, .721 25.3%, .849 31.5%, .937 38.1%, .968 41.8%, .991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001 85.4%, 1);
+  --rebote: linear(0, .009, .035 2.1%, .141 4.4%, .723 12.9%, .938 16.7%, 1.017 19.4%, 1.067, 1.099 24.3%, 1.108 26%, 1.103, 1.09 30.7%, 1.017 39.2%, .996 43.7%, .989 48.4%, .998 60%, 1.001 71.5%, 1);
+
+  --cab-alto: 64px;
+}
+@media (min-width: 1000px) { :root { --cab-alto: 76px; } }
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--cab-alto) + 16px);
+  background: var(--negro);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--negro);
+  color: var(--texto);
+  font-family: var(--f-texto);
+  font-size: var(--t-cuerpo);
+  line-height: 1.7;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
+strong { font-weight: 650; }
+em { font-style: italic; }
+
+::selection { background: var(--oro); color: var(--tinta); }
+
+:focus-visible {
+  outline: 3px solid var(--oro-texto);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.salto {
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--blanco);
+  color: var(--tinta);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 200ms var(--salida);
+}
+.salto:focus-visible { transform: translateY(0); }
+
+.envoltura {
+  width: 100%;
+  max-width: calc(var(--ancho) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.seccion { padding-block: var(--seccion); position: relative; }
+
+/* ---------- Tipografía ---------- */
+.t-mega, .t-seccion {
+  font-family: var(--f-display);
+  font-optical-sizing: auto;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--blanco);
+}
+.t-mega { line-height: .98; }
+.t-seccion { font-size: var(--t-seccion); line-height: 1.02; text-wrap: balance; }
+.t-mega em, .t-seccion em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--oro-texto);
+}
+
+.mono {
+  font-family: var(--f-mono);
+  font-size: var(--t-mono);
+  font-weight: 500;
+  font-stretch: 87.5%;
+  line-height: 1.4;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.enlace {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .22em;
+  text-decoration-color: var(--oro-texto);
+  transition: color 180ms var(--salida);
+}
+.enlace:hover { color: var(--oro-texto); }
+.enlace:active { opacity: .7; }
+.enlace--blanco { text-decoration-color: rgba(241, 233, 214, .6); }
+.enlace--blanco:hover { color: var(--blanco); text-decoration-color: var(--oro-texto); }
+
+/* ---------- Botones ----------
+   En reposo, todos iguales: solo el borde (el principal, de oro). Al pasar el cursor o con
+   el foco, el oro entra desde la izquierda y el texto pasa a tinta. El botón no se mueve:
+   se animan su relleno, su flecha y un brillo que lo cruza de vez en cuando. */
+.boton {
+  --b-borde: rgba(241, 233, 214, .62);
+  --b-texto: var(--crudo);
+  --b-luz: var(--oro);
+  --b-texto-luz: var(--tinta);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 1.5px solid var(--b-borde);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--b-texto);
+  font-family: var(--f-texto);
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .01em;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: color 280ms var(--salida), border-color 280ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
+}
+.boton::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--b-luz);
+  transform: translateX(-102%);
+  transition: transform 560ms var(--salida);
+}
+.boton:hover, .boton:focus-visible { color: var(--b-texto-luz); border-color: var(--b-luz); }
+.boton:hover::before, .boton:focus-visible::before { transform: none; }
+.boton:active::before { opacity: .82; transition-duration: 90ms; }
+.boton:focus-visible { outline-offset: 4px; border-radius: 999px; }
+
+.boton__flecha, .boton__ico { flex: none; transition: transform 520ms var(--muelle); }
+.boton:hover .boton__flecha, .boton:focus-visible .boton__flecha { transform: translateX(4px); }
+.boton:hover .boton__ico, .boton:focus-visible .boton__ico { transform: scale(1.18); }
+
+/* El principal: borde de oro y un brillo que lo cruza cada dos compases (6,4 s) */
+.boton--oro { --b-borde: var(--oro); }
+.boton--oro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 38%;
+  background: linear-gradient(100deg, transparent, rgba(242, 193, 78, .32), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+.js:not(.ss) .boton--oro::after { animation: brillo 6.4s var(--salida) infinite 1.6s; }
+.boton--oro:hover::after, .boton--oro:focus-visible::after { animation: none; opacity: 0; }
+@keyframes brillo {
+  0%, 72% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(330%) skewX(-18deg); }
+}
+
+/* Sobre papel (entradas, formulario): borde de tinta; al pasar, el mismo oro */
+.boton--linea, :is(.papel, .entrada, .form, .billete, .cookies, .dos__b--crudo) .boton { --b-borde: rgba(29, 30, 30, .6); --b-texto: var(--tinta); }
+:is(.papel, .entrada, .form, .billete, .cookies, .dos__b--crudo) .boton--oro { --b-borde: var(--tinta); }
+:is(.papel, .entrada, .form, .billete, .cookies, .dos__b--crudo) .boton--oro::after { background: linear-gradient(100deg, transparent, rgba(242, 181, 49, .45), transparent); }
+.boton--grande { min-height: 56px; padding: 14px 28px; font-size: 1rem; }
+.boton--ancho { width: 100%; }
+
+.redondo {
+  display: inline-grid;
+  place-items: center;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(241, 233, 214, .5);
+  background: transparent;
+  color: var(--blanco);
+  transition: transform 420ms var(--muelle), background-color 200ms var(--salida), color 200ms var(--salida), border-color 200ms var(--salida);
+}
+.redondo:hover { background: var(--oro); color: var(--tinta); border-color: var(--oro); }
+.redondo:active { transform: scale(.94); transition-duration: 90ms; }
+.redondo:disabled { opacity: .3; cursor: default; transform: none; background: transparent; color: var(--blanco); }
+
+/* Iconos de redes (menú móvil y pie): informativos, sin enlace en la propuesta */
+.iconos { display: flex; gap: 10px; }
+.iconos span {
+  display: inline-grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(241, 233, 214, .3);
+  color: var(--blanco);
+}
+
+/* ---------- Cabecera: siempre fija ---------- */
+.cab {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  height: var(--cab-alto);
+  background: var(--negro);
+}
+.cab::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: var(--linea);
+  opacity: 0;
+  transition: opacity 300ms var(--salida);
+}
+.cab.con-fondo::after { opacity: 1; }
+
+.cab__int {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--e-5);
+}
+
+.marca {
+  display: inline-flex;
+  margin-right: auto;
+  border-radius: 50%;
+}
+@media (min-width: 1000px) { .marca { margin-right: 0; } .nav { margin-inline: auto; } }
+.marca__logo {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px rgba(241, 233, 214, .28);
+  transition: transform 600ms var(--muelle);
+}
+.marca:hover .marca__logo { transform: rotate(-12deg); }
+@media (min-width: 1000px) { .marca__logo { width: 56px; height: 56px; } }
+
+.nav { display: none; }
+.cab__cta { display: none; min-height: 44px; padding: 10px 18px; }
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 8px 8px 16px;
+  border: 1.5px solid rgba(241, 233, 214, .55);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--blanco);
+  font-weight: 600;
+  font-size: .92rem;
+  transition: transform 420ms var(--muelle), background-color 200ms var(--salida), color 200ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-btn:hover { border-color: var(--oro); }
+.menu-btn:active { transform: scale(.96); }
+.menu-btn__ico {
+  position: relative;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--blanco);
+}
+.menu-btn:hover .menu-btn__ico { background: var(--oro); }
+.menu-btn__ico i {
+  position: absolute;
+  left: 8px; right: 8px;
+  height: 1.8px;
+  background: var(--tinta);
+  border-radius: 2px;
+  transition: transform 380ms var(--muelle);
+}
+
+.menu-btn__ico i:first-child { top: 11px; }
+.menu-btn__ico i:last-child { top: 15.5px; }
+.menu-btn[aria-expanded="true"] .menu-btn__ico i:first-child { transform: translateY(2.25px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-btn__ico i:last-child { transform: translateY(-2.25px) rotate(-45deg); }
+
+@media (min-width: 1000px) {
+  .nav { display: block; }
+  .cab__cta { display: inline-flex; }
+  .menu-btn { display: none; }
+}
+
+/* ---------- Menú móvil ---------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: var(--negro-3);
+  color: var(--blanco);
+  padding-top: calc(var(--cab-alto) + 24px);
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 220ms var(--salida);
+}
+.menu.abierto { opacity: 1; }
+.menu__int { display: flex; flex-direction: column; min-height: 100%; gap: var(--e-7); }
+.menu__lista li, .menu__pie {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 360ms var(--salida), transform 520ms var(--muelle);
+  transition-delay: calc(60ms + var(--i, 0) * 45ms);
+}
+.menu.abierto .menu__lista li,
+.menu.abierto .menu__pie { opacity: 1; transform: none; }
+.menu__pie { margin-top: auto; display: grid; gap: var(--e-4); }
+.menu__mail { color: var(--texto-suave); font-weight: 600; }
+body.menu-abierto { overflow: hidden; }
+body.menu-abierto .cab { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.menu-abierto .cab::after { opacity: 0; }
+
+/* ---------- Pie compacto (v6.2): marca y redes · páginas y correo · legales ---------- */
+.pie {
+  background: var(--negro);
+  border-top: 1px solid var(--linea);
+  color: var(--texto-suave);
+  padding-block: clamp(36px, 4.4vw, 56px) calc(var(--e-5) + 76px);
+  font-size: .95rem;
+}
+@media (min-width: 900px) { .pie { padding-bottom: var(--e-5); } }
+.pie__arriba, .pie__medio, .pie__abajo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+.pie__arriba { padding-bottom: clamp(22px, 2.6vw, 32px); border-bottom: 1px solid var(--linea); }
+.pie__medio { padding-block: clamp(18px, 2.2vw, 26px); border-bottom: 1px solid var(--linea); }
+.pie__abajo { padding-top: 18px; font-size: .85rem; color: rgba(241, 233, 214, .58); }
+.pie__marca { display: inline-flex; align-items: center; gap: 16px; color: var(--crudo); text-decoration: none; border-radius: 999px; }
+.pie__marca img { width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(241, 233, 214, .25); transition: transform 600ms var(--muelle); }
+.pie__marca:hover img { transform: rotate(-12deg); }
+.pie__lema { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.15rem, 1rem + .55vw, 1.4rem); line-height: 1.15; }
+.pie__nav ul, .pie__legal { display: flex; flex-wrap: wrap; gap: 2px 24px; }
+.pie__nav a, .pie__legal a, .pie__mail {
+  display: inline-block;
+  padding-block: 4px;
+  color: var(--crudo);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .3em;
+  transition: color 200ms var(--salida), text-decoration-color 200ms var(--salida);
+}
+.pie__legal a { color: rgba(241, 233, 214, .72); font-weight: 400; }
+.pie__mail { font-weight: 600; text-decoration-color: var(--oro-texto); overflow-wrap: anywhere; }
+.pie__nav a:hover, .pie__legal a:hover, .pie__mail:hover { color: var(--oro-texto); text-decoration-color: var(--oro-texto); }
+.pie__nav a:active, .pie__legal a:active, .pie__mail:active { opacity: .7; }
+@media (max-width: 899px) {
+  .pie__nav a, .pie__legal a, .pie__mail { padding-block: 10px; }
+  .pie__nav ul { gap: 0 20px; }
+}
+
+/* ---------- Barra fija (móvil) ---------- */
+/* Botón flotante de reserva (v9), en el móvil y en el ordenador: siempre a mano en cuanto se deja atrás
+   la apertura de la página (en el hero ya están sus botones). Se aparta en el formulario de reserva, en el
+   pie, con el menú abierto y mientras está el aviso de cookies. Solo el botón recoge el dedo. */
+.fija {
+  --fija-fuera: translate(-50%, calc(100% + 32px));
+  --fija-dentro: translate(-50%, 0);
+  position: fixed;
+  left: 50%;
+  bottom: max(14px, calc(env(safe-area-inset-bottom) + 8px));
+  z-index: 50;
+  width: min(calc(100% - var(--gutter) * 2), 400px);
+  transform: var(--fija-fuera);
+  transition: transform 520ms var(--salida);
+  pointer-events: none;
+}
+.fija.visible { transform: var(--fija-dentro); }
+.fija .boton {
+  width: 100%;
+  pointer-events: auto;
+  background: rgba(19, 19, 19, .88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--sombra-2);
+}
+@media (min-width: 900px), (orientation: landscape) and (max-height: 520px) {
+  .fija {
+    --fija-fuera: translateY(calc(100% + 40px));
+    --fija-dentro: none;
+    left: auto;
+    right: var(--gutter);
+    bottom: max(26px, calc(env(safe-area-inset-bottom) + 14px));
+    width: auto;
+  }
+}
+
+/* =====================================================================
+   Sistema de movimiento
+   - [data-entra]: entrada del hero al cargar, escalonada por --i.
+   - [data-revela]: aparece al entrar en pantalla (IntersectionObserver).
+   - .eco: eco dub sobre una palabra (repeticiones a semicorchea).
+   Sin JS, en modo captura (?ss) o con movimiento reducido: todo visible.
+   ===================================================================== */
+.js:not(.ss) [data-entra] {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.js:not(.ss) body.cargada [data-entra] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 700ms var(--salida), transform 900ms var(--muelle);
+  transition-delay: calc(80ms + var(--i, 0) * 110ms);
+}
+
+.js:not(.ss) [data-revela] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 700ms var(--salida), transform 900ms var(--muelle);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js:not(.ss) [data-revela].visto { opacity: 1; transform: none; }
+
+/* Eco dub: cada dos compases, la palabra suelta sus repeticiones en contorno de oro, que
+   se alejan a semicorchea y se apagan, como un delay. En reposo, la palabra limpia. */
+.eco { position: relative; display: inline-block; isolation: isolate; }
+.eco > em, .eco > .eco__txt { position: relative; z-index: 3; }
+.eco__rep {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 0;
+  font-style: italic;
+  font-weight: inherit;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: max(1.2px, .016em) var(--oro-texto);
+  pointer-events: none;
+  user-select: none;
+  --x: calc(var(--n) * .11em);
+  opacity: 0;
+}
+.eco__rep:nth-of-type(1) { --n: 1; --o: .9; z-index: 2; }
+.eco__rep:nth-of-type(2) { --n: 2; --o: .55; z-index: 1; }
+.eco__rep:nth-of-type(3) { --n: 3; --o: .25; }
+.eco--suave .eco__rep { -webkit-text-stroke-color: var(--blanco); }
+.js:not(.ss) .eco.suena .eco__rep {
+  animation: eco-delay 6.4s var(--salida) infinite;
+  animation-delay: calc(var(--retardo, 0ms) + var(--n) * var(--semi));
+}
+@keyframes eco-delay {
+  0% { opacity: 0; transform: translateX(0); }
+  6% { opacity: var(--o); }
+  30% { opacity: 0; transform: translateX(var(--x)); }
+  100% { opacity: 0; transform: translateX(var(--x)); }
+}
+.ss .eco__rep { display: none; }
+
+/* Movimiento reducido: estados finales, sin desplazamientos */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .js [data-entra], .js [data-revela] { opacity: 1 !important; transform: none !important; }
+  .eco__rep { display: none; }
+  .boton--oro::after { display: none; }
+}
+
+/* =====================================================================
+   FONDOS POR CAPÍTULO (v6). Una sección lleva .fondo-verde o .fondo-negro;
+   dos seguidas del mismo color se leen como un solo tramo: menos hueco y
+   un filete fino entre ellas.
+   ===================================================================== */
+.fondo-negro { background: var(--negro); }
+.fondo-verde, .tarifas, .cierre, .regalo {
+  background: var(--verde);
+  --texto-suave: #d3dccb;      /* crudo con un punto de verde: 6:1 */
+  --linea: rgba(241, 233, 214, .2);
+  --carbon: var(--verde-3);
+  --carbon-2: #0f3b24;
+  --fondo-seccion: var(--verde);
+}
+:is(.fondo-verde, .tarifas, .cierre, .regalo) ::selection { background: var(--oro); color: var(--tinta); }
+.fondo-verde:has(+ .fondo-verde), .fondo-negro:has(+ .fondo-negro) { padding-bottom: calc(var(--seccion) * .82); }
+.fondo-verde + .fondo-verde, .fondo-negro + .fondo-negro { padding-top: calc(var(--seccion) * .82); }
+.fondo-verde + .fondo-verde::after, .fondo-negro + .fondo-negro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: max(var(--gutter), calc((100% - var(--ancho)) / 2));
+  right: max(var(--gutter), calc((100% - var(--ancho)) / 2));
+  height: 1px;
+  background: var(--linea);
+  pointer-events: none;
+}

@@ -1,0 +1,726 @@
+/* =====================================================================
+   Reggae School Madrid — v4 · Lo nuevo tras el feedback del cliente
+   Con quién han tocado (cartel) · profesorado · agenda (jams, talleres,
+   clases grupales) · noticias · sesión de prueba de pago · navegación con
+   enlaces · móvil en horizontal.
+   Solo se animan transform y opacity. Movimiento reducido respetado.
+   ===================================================================== */
+
+/* Menú del móvil (v6.3): una sola lista de filas iguales, con su flecha; los apartados con
+   páginas debajo se despliegan ahí mismo. Dos tamaños: el de las filas y el de lo que cuelga. */
+.menu__lista { display: grid; border-top: 1px solid var(--linea); }
+.menu__lista > li { border-bottom: 1px solid var(--linea); }
+.menu__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 58px;
+  padding: 12px 2px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: var(--crudo);
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+  transition: color 180ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
+}
+.menu__fila::-webkit-details-marker { display: none; }
+.menu__fila:hover { color: var(--oro-texto); }
+.menu__fila:active { opacity: .7; }
+.menu__ico { flex: none; color: var(--oro-texto); transition: transform 420ms var(--muelle); }
+.menu__grupo[open] .menu__ico--abre { transform: rotate(180deg); }
+.menu__sub { display: grid; padding: 0 2px 12px; }
+.menu__sub--dos { grid-template-columns: 1fr 1fr; column-gap: 16px; }
+.menu__sub a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--f-texto);
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  color: var(--texto-suave);
+  text-decoration: none;
+  transition: color 180ms var(--salida);
+}
+.menu__sub a:hover { color: var(--crudo); }
+.menu__sub a:active { opacity: .7; }
+.menu__grupo[open] .menu__sub { animation: faq-abre 360ms var(--salida) both; }
+
+.escuela .video__btn { box-shadow: 0 0 0 1px rgba(241, 233, 214, .1); }
+
+/* Un dato que falta: se ve como pendiente, no como texto acabado */
+.pendiente {
+  display: inline-block;
+  margin-inline: 4px;
+  padding: 0 6px;
+  border-radius: 4px;
+  outline: 1.5px dashed currentColor;
+  outline-offset: 2px;
+  font-weight: 600;
+}
+
+/* =====================================================================
+   PROFESORADO — carril lateral que avanza solo (sin flechas). Se para
+   con el ratón encima, con el foco y con movimiento reducido.
+   ===================================================================== */
+.carril {
+  --borde: max(var(--gutter), calc((100% - var(--ancho)) / 2));
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--borde);
+  padding-inline: var(--borde);
+  scrollbar-width: none;
+}
+.carril::-webkit-scrollbar { display: none; }
+.carril:focus-visible { outline-offset: -3px; }
+.carril__pista { display: flex; gap: clamp(14px, 1.8vw, 24px); width: max-content; }
+.profe {
+  flex: 0 0 clamp(260px, 26vw, 340px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+.profe__foto {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radio);
+  overflow: hidden;
+  background: var(--carbon);
+}
+.profe__foto img { width: 100%; height: 100%; object-fit: cover; }
+.profe__texto { display: grid; gap: var(--e-3); align-content: start; }
+.profe__nombre {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 1.25rem + .8vw, 1.95rem);
+  line-height: 1.04;
+  color: var(--blanco);
+}
+.profe__clases { color: var(--oro-texto); font-weight: 600; font-size: .95rem; }
+.profe__con { color: var(--texto-suave); font-size: .95rem; line-height: 1.55; }
+.profe__con strong { color: var(--blanco); font-weight: 600; }
+.profes__pie {
+  margin-top: clamp(28px, 4vw, 44px);
+  color: var(--texto-suave);
+  font-size: .95rem;
+}
+
+/* =====================================================================
+   AGENDA — jams, talleres y clases grupales.
+   Las fechas: opciones 3a (en cada formato) y 3b (agenda en lista), al final.
+   ===================================================================== */
+.formatos { display: grid; gap: var(--e-5); }
+@media (min-width: 820px) { .formatos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.formato {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-radius: var(--radio);
+  overflow: hidden;
+  background: var(--carbon);
+}
+.formato__foto { aspect-ratio: 4 / 3; overflow: hidden; }
+.formato__foto img { width: 100%; height: 100%; object-fit: cover; }
+.formato__texto { display: flex; flex-direction: column; gap: var(--e-3); padding: clamp(20px, 2.4vw, 28px); }
+.formato__t {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.7rem, 1.3rem + 1.1vw, 2.35rem);
+  line-height: 1;
+  color: var(--blanco);
+}
+.formato__d { color: var(--texto-suave); }
+.formato__dato { margin-top: auto; padding-top: var(--e-2); color: var(--oro-texto); font-weight: 600; font-size: .95rem; }
+
+.fechas__t {
+  margin-bottom: var(--e-5);
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 1.15rem + .6vw, 1.75rem);
+  line-height: 1.1;
+  color: var(--blanco);
+}
+
+/* =====================================================================
+   TARIFAS — la sesión de prueba, ya de pago
+   ===================================================================== */
+.prueba {
+  display: grid;
+  gap: var(--e-4);
+  align-items: center;
+  margin-top: var(--e-6);
+  padding: clamp(22px, 3vw, 32px);
+  border-radius: 18px;
+  border: 1.5px dashed rgba(236, 189, 76, .55);
+}
+@media (min-width: 900px) { .prueba { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: var(--e-7); } }
+.prueba__t {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  line-height: 1.05;
+  color: var(--blanco);
+}
+.prueba__precio { margin-top: 6px; color: var(--oro-texto); font-size: .95rem; }
+.prueba__d { max-width: 52ch; color: var(--texto-suave); }
+.reserva__pago { max-width: 34em; margin-top: var(--e-3); color: var(--texto-suave); font-size: .95rem; }
+
+/* =====================================================================
+   NOTICIAS — tres entradas; en móvil, de lado
+   ===================================================================== */
+.notas {
+  display: flex;
+  gap: var(--e-5);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: 4px var(--gutter);
+  scrollbar-width: none;
+}
+.notas::-webkit-scrollbar { display: none; }
+.nota { flex: 0 0 min(82vw, 380px); scroll-snap-align: start; }
+@media (min-width: 900px) {
+  .notas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; margin-inline: 0; padding-inline: 0; }
+}
+.nota__enlace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radio);
+}
+.nota__foto { aspect-ratio: 3 / 2; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
+.nota__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--salida); }
+.nota__enlace:hover .nota__foto img { transform: scale(1.04); }
+.nota__enlace:active { opacity: .8; }
+.nota__fecha { color: var(--oro-texto); font-size: .9rem; font-weight: 600; }
+.nota__t {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.12rem + .55vw, 1.6rem);
+  line-height: 1.15;
+  color: var(--blanco);
+  text-wrap: balance;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: .16em;
+  text-decoration-thickness: 1.5px;
+  transition: text-decoration-color 200ms var(--salida);
+}
+.nota__enlace:hover .nota__t { text-decoration-color: var(--oro-texto); }
+.nota__d { color: var(--texto-suave); font-size: .97rem; }
+
+/* =====================================================================
+   MÓVIL EN HORIZONTAL — poca altura: todo cabe sin escenas fijadas
+   ===================================================================== */
+@media (orientation: landscape) and (max-height: 520px) {
+  :root { --cab-alto: 56px; --seccion: clamp(56px, 8vw, 96px); }
+  .marca__logo { width: 40px; height: 40px; }
+  .menu-btn { min-height: 40px; }
+  .hero__texto { gap: 10px; }
+  .hero__int { padding-bottom: 16px; }
+  .hero__h1 { font-size: min(5.6vw, 10svh); }
+  .hero__apoyo { font-size: clamp(.8rem, 3.4svh, .95rem); }
+  .hero__cursos { display: none; }
+  .hero__ctas { display: flex; flex-wrap: nowrap; gap: 8px; }
+  .hero__ctas .boton { width: auto; min-height: 44px; padding: 8px 14px; font-size: .84rem; }
+  .banda__lista li { padding-block: 6px; }
+  .menu { padding-top: calc(var(--cab-alto) + 12px); }
+  .menu__int { gap: var(--e-5); }
+  .menu__lista { grid-template-columns: 1fr 1fr; column-gap: var(--e-5); }
+  .menu__fila { min-height: 48px; font-size: 1.15rem; }
+  .profe { flex-basis: clamp(220px, 30vw, 280px); }
+  .t-seccion { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.8rem); }
+}
+
+/* El grano de serigrafía se quitó en la v6.1: el negro, limpio */
+.grano::before { content: none; }
+
+/* Escuela y método comparten fondo: un solo capítulo, sin doble hueco */
+.escuela + .metodo { padding-top: clamp(16px, 3vw, 40px); }
+
+/* ---------- 3a · La fecha, dentro de cada formato ---------- */
+.formato__fecha {
+  padding-top: var(--e-3);
+  border-top: 1px solid rgba(241, 233, 214, .16);
+  color: var(--crudo);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.formato__fecha > span:first-child { display: block; margin-bottom: 2px; color: var(--oro-texto); font-size: .82rem; font-weight: 700; }
+
+
+/* =====================================================================
+   JAMS, TALLERES Y NOTICIAS (v6.2) — en paralelo, dos columnas en lista
+   ===================================================================== */
+.comunidad__int { display: grid; gap: clamp(56px, 7vw, 96px); }
+@media (min-width: 1000px) { .comunidad__int { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(48px, 6vw, 96px); align-items: stretch; } }
+.comunidad__int > div { display: flex; flex-direction: column; }
+.comunidad__cabeza { margin-bottom: clamp(22px, 2.8vw, 32px); }
+.comunidad__cabeza .cabeza__guia { margin-top: var(--e-4); }
+.comunidad .t-seccion { font-size: clamp(2rem, 1.3rem + 2.2vw, 3.1rem); }
+.comunidad__mas { align-self: flex-start; margin-top: auto; padding-top: var(--e-5); }
+.formatos.formatos--lista, .notas.notas--lista {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border-top: 1px solid var(--linea);
+}
+.formatos--lista .formato {
+  grid-template-rows: none;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding-block: 20px;
+  border-radius: 0;
+  background: none;
+  border-bottom: 1px solid var(--linea);
+  overflow: visible;
+}
+.formatos--lista .formato__foto, .notas--lista .nota__foto { width: 104px; aspect-ratio: 1; border-radius: 12px; overflow: hidden; }
+.formatos--lista .formato__foto img { transition: transform 900ms var(--salida); }
+.formatos--lista .formato:hover .formato__foto img { transform: scale(1.05); }
+.formatos--lista .formato__texto { padding: 0; gap: 6px; }
+.formatos--lista .formato__t { font-size: clamp(1.3rem, 1.15rem + .45vw, 1.55rem); }
+.formatos--lista .formato__d { display: none; }
+.formatos--lista .formato__dato { display: none; }
+.formatos--lista .formato__fecha { padding-top: 2px; border: 0; font-size: .92rem; }
+.notas--lista .nota { flex: none; border-bottom: 1px solid var(--linea); }
+.notas--lista .nota__enlace {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 20px;
+  row-gap: 6px;
+  padding-block: 20px;
+  height: auto;
+}
+.notas--lista .nota__foto { grid-row: 1 / span 3; }
+.notas--lista .nota__d { display: none; }
+.notas--lista .nota__t { font-size: clamp(1.15rem, 1.02rem + .4vw, 1.35rem); }
+
+/* =====================================================================
+   v9 · ARTISTAS — dos cintas de créditos que pasan solas en sentidos contrarios.
+   Cada artista, con la cara y el nombre del profe que tocó con él. Sin tanto
+   bombo: todos del mismo tamaño y los tres cabezas en oro. Con el ratón encima,
+   la cinta se para y el crédito se enciende (se animan sus hijos, no él).
+   Sin JS, en captura o con movimiento reducido: la lista quieta y centrada.
+   ===================================================================== */
+.creditos__lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: calc(var(--ancho) + var(--gutter) * 2);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.credito {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 8px 24px;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--carbon);
+  white-space: nowrap;
+  transition: border-color 300ms var(--salida);
+}
+.credito--cara { padding-left: 8px; }
+.credito__caras { display: inline-flex; flex: none; }
+.credito__caras img {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--carbon);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  transition: transform 460ms var(--muelle);
+}
+.credito__caras img + img { margin-left: -14px; }
+.credito__texto { display: grid; gap: 3px; }
+.credito__artista {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1.14rem;
+  line-height: 1.1;
+  color: var(--crudo);
+  transition: color 300ms var(--salida);
+}
+.credito--top .credito__artista { color: var(--oro-texto); font-style: italic; font-weight: 800; }
+.credito__con { font-size: .8rem; line-height: 1.2; color: var(--texto-suave); }
+@media (hover: hover) {
+  .credito:hover { border-color: var(--oro); }
+  .credito:hover .credito__caras img { transform: scale(1.12); }
+  .credito:hover .credito__artista { color: var(--oro-texto); }
+}
+
+/* Las cintas: copias para el ojo; la lista de verdad queda para los lectores de pantalla */
+.creditos__cinta { display: none; }
+.creditos.en-cinta .creditos__lista {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.creditos.en-cinta .creditos__cinta { display: grid; gap: 12px; }
+.creditos__fila {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.creditos__pista { display: flex; width: max-content; animation: creditos var(--dur, 60s) linear infinite; }
+.creditos__fila--b .creditos__pista { animation-direction: reverse; }
+.creditos__pista > ul { display: flex; gap: 12px; padding-right: 12px; }
+.creditos__fila:hover .creditos__pista,
+.creditos.pausa .creditos__pista { animation-play-state: paused; }
+@keyframes creditos { to { transform: translateX(-50%); } }
+@media (max-width: 699px) {
+  .credito { min-height: 54px; gap: 10px; padding-right: 18px; }
+  .credito:not(.credito--cara) { padding-left: 18px; }
+  .credito__caras img { width: 38px; height: 38px; }
+  .credito__artista { font-size: 1rem; }
+  .creditos.en-cinta .creditos__cinta, .creditos__pista > ul { gap: 10px; }
+}
+
+/* =====================================================================
+   v7 · CÓMO SE APRENDE — un secuenciador de cuatro pasos: la luz recorre los
+   pads a 75 BPM (uno por negra) y el 3, el golpe del one drop, se enciende en oro
+   ===================================================================== */
+.pads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 18px); }
+@media (min-width: 900px) { .pads { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.pad {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+  min-height: clamp(220px, 24vw, 330px);
+  padding: clamp(18px, 2vw, 28px);
+  border-radius: 22px;
+  background: var(--carbon);
+  box-shadow: inset 0 0 0 1px var(--linea);
+}
+.pad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(130% 100% at 0% 0%, rgba(241, 233, 214, .16), transparent 62%);
+  opacity: 0;
+  transition: opacity 700ms var(--salida);
+}
+.pad--golpe::before { background: radial-gradient(130% 100% at 0% 0%, rgba(242, 181, 49, .34), transparent 64%); }
+.pad.suena::before, .pad:hover::before { opacity: 1; transition-duration: 80ms; }
+.pad__n {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(4.2rem, 7.4vw, 7.6rem);
+  line-height: .8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(241, 233, 214, .45);
+  transform-origin: left bottom;
+  transition: transform 520ms var(--rebote), color 160ms var(--salida);
+}
+.pad.suena .pad__n { color: var(--crudo); transform: scale(1.06); }
+.pad--golpe .pad__n { -webkit-text-stroke-color: var(--oro-texto); }
+.pad--golpe.suena .pad__n { color: var(--oro-texto); transform: scale(1.13); }
+.ss .pad--golpe .pad__n { color: var(--oro-texto); }
+.pad__t { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.2rem, 1rem + .7vw, 1.55rem); line-height: 1.12; text-wrap: balance; }
+.pad__d { margin-top: 8px; color: var(--texto-suave); font-size: .95rem; line-height: 1.5; }
+.pads__pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-top: clamp(24px, 3vw, 36px); }
+.pads__nota { max-width: 46em; color: var(--texto-suave); font-style: italic; }
+
+/* =====================================================================
+   v7.1 · QUIÉN TE DA CLASE — carrusel en 3D: la carta del centro, de frente y con su
+   ficha y su botón; las de los lados, giradas y al fondo. Pasa solo cada 4,8 s y se
+   arrastra con el ratón o el dedo: las cartas siguen al cursor y al soltar se quedan en
+   la más cercana. --paso, --fondo y --giro los lee también el JS para medir el arrastre.
+   ===================================================================== */
+.flow {
+  --ancho: clamp(230px, 24vw, 330px);
+  --paso: .84;
+  --fondo: 200px;
+  --giro: -30deg;
+  position: relative;
+  height: calc(var(--ancho) * 1.25 + 270px);
+  perspective: 1600px;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* La pista no recoge el ratón: en 3D su plano queda delante de las cartas del fondo y les robaba el clic */
+.flow__pista { position: relative; height: 100%; transform-style: preserve-3d; pointer-events: none; }
+.flow__carta {
+  pointer-events: auto;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--ancho);
+  margin-left: calc(var(--ancho) / -2);
+  transform: translateX(calc(var(--o, 0) * var(--paso) * 100%)) translateZ(calc(var(--d, 0) * var(--fondo) * -1)) rotateY(calc(var(--o, 0) * var(--giro)));
+  opacity: var(--op, 1);
+  z-index: var(--z, 1);
+  transition: transform 800ms var(--salida), opacity 600ms var(--salida);
+}
+.flow__foto {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--carbon);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.flow__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--salida); -webkit-user-drag: none; }
+.flow__carta.activa .flow__foto { cursor: grab; }
+.flow__carta.activa .flow__foto:hover img { transform: scale(1.05); }
+.flow__ficha {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  width: 170%;
+  margin: 20px 0 0 -35%;
+  text-align: center;
+  transition: opacity 500ms var(--salida);
+}
+.flow__carta:not(.activa) .flow__ficha { opacity: 0; pointer-events: none; }
+.flow__nombre { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); line-height: 1.05; }
+.flow__clases { color: var(--oro-texto); font-weight: 600; font-size: .95rem; }
+.flow__con { max-width: 34em; color: var(--texto-suave); font-size: .95rem; line-height: 1.5; }
+.flow__con strong { color: var(--crudo); font-weight: 600; }
+.flow__probar { display: inline-flex; align-items: center; min-height: 44px; color: var(--oro-texto); }
+.flow__probar:hover { color: var(--crudo); }
+/* Mientras se arrastra: las cartas van pegadas al cursor (sin transición) y las fichas se apartan */
+.flow.arrastrando, .flow.arrastrando .flow__pista * { cursor: grabbing; }
+.flow.arrastrando .flow__carta { transition: none; }
+.flow.arrastrando .flow__ficha { opacity: 0; transition-duration: 160ms; }
+@media (max-width: 699px) {
+  .flow { --ancho: 60vw; --paso: .74; --fondo: 160px; --giro: -28deg; height: calc(var(--ancho) * 1.25 + 330px); }
+  .flow__ficha { width: 150%; margin-left: -25%; }
+}
+@media (prefers-reduced-motion: reduce) { .flow__carta { transition: opacity 1ms; opacity: max(var(--op, 1), .18); } }
+
+/* v9 · Flechas sutiles a los lados (con ratón) y, debajo, las caras de todos para elegir cualquiera */
+.flow__flecha,
+.voces__flecha {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(241, 233, 214, .28);
+  border-radius: 50%;
+  background: rgba(19, 19, 19, .55);
+  color: var(--crudo);
+  cursor: pointer;
+  transition: border-color 220ms var(--salida), background-color 220ms var(--salida), color 220ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
+}
+.flow__flecha svg, .voces__flecha svg { transition: transform 300ms var(--salida); }
+.flow__flecha:hover, .voces__flecha:hover { border-color: var(--oro); background: var(--oro); color: var(--tinta); }
+.flow__flecha[data-flow-paso="-1"]:hover svg, .voces__flecha[data-voces-paso="-1"]:hover svg { transform: translateX(-3px); }
+.flow__flecha[data-flow-paso="1"]:hover svg, .voces__flecha[data-voces-paso="1"]:hover svg { transform: translateX(3px); }
+.flow__flecha {
+  position: absolute;
+  z-index: 200;
+  top: calc(var(--ancho) * 1.25 / 2 - 26px);
+  display: none;
+}
+.flow__flecha--atras { left: max(var(--gutter), calc((100% - var(--ancho-max, 1320px)) / 2)); }
+.flow__flecha--adelante { right: max(var(--gutter), calc((100% - var(--ancho-max, 1320px)) / 2)); }
+@media (hover: hover) and (pointer: fine) { .js .flow__flecha { display: grid; } }
+
+.flow__caras { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: clamp(4px, 1vw, 12px); }
+.flow__cara,
+.voces__cara {
+  padding: 2px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity 300ms var(--salida);
+  -webkit-tap-highlight-color: transparent;
+}
+.flow__cara img,
+.voces__cara img {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  transition: transform 460ms var(--muelle), box-shadow 300ms var(--salida);
+}
+.flow__cara:hover, .flow__cara[aria-current="true"],
+.voces__cara:hover, .voces__cara[aria-current="true"] { opacity: 1; }
+.flow__cara[aria-current="true"] img,
+.voces__cara[aria-current="true"] img { box-shadow: 0 0 0 2px var(--negro), 0 0 0 4px var(--oro); }
+.flow__cara:hover img, .voces__cara:hover img { transform: scale(1.1); }
+.flow__cara:focus-visible, .voces__cara:focus-visible { outline-offset: 3px; }
+@media (max-width: 699px) {
+  .flow__caras { gap: 4px; }
+  .flow__cara img, .voces__cara img { width: 40px; height: 40px; }
+}
+
+/* =====================================================================
+   v9 · LO CUENTAN QUIENES YA TOCAN — tarjetas de papel en fila; la siguiente asoma
+   para que se vea que siguen. Se deslizan (dedo, trackpad o arrastrando con el
+   ratón) y encajan una a una; debajo, las caras y las flechas. Pasan solas cada
+   6,4 s mientras nadie las toca. Distinta de «Antes de empezar», que va después.
+   ===================================================================== */
+.voces__carril {
+  --borde: max(var(--gutter), (100% - var(--ancho)) / 2);
+  position: relative;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--borde);
+  scrollbar-width: none;
+}
+.voces__carril::-webkit-scrollbar { display: none; }
+@media (hover: hover) and (pointer: fine) { .voces__carril { cursor: grab; } }
+.voces__carril.arrastrando { cursor: grabbing; scroll-snap-type: none; -webkit-user-select: none; user-select: none; }
+.voces__carril:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: -2px; }
+.voces__pista {
+  display: flex;
+  gap: clamp(14px, 1.6vw, 24px);
+  width: max-content;
+  padding: 6px var(--borde) 12px;
+}
+.voz { flex: none; display: flex; width: min(84vw, 470px); scroll-snap-align: start; }
+.voz__fig {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  width: 100%;
+  margin: 0;
+  padding: clamp(24px, 2.6vw, 34px);
+  border-radius: var(--radio);
+  background: var(--crudo);
+  color: var(--tinta);
+  box-shadow: var(--sombra-2);
+}
+.voz__cita {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 420;
+  font-size: clamp(1.04rem, .96rem + .34vw, 1.2rem);
+  line-height: 1.5;
+  color: var(--tinta);
+}
+.voz__cita::before { content: "\201C"; font-style: normal; font-weight: 900; font-size: 4.2rem; line-height: .5; height: .34em; color: var(--verde-tinta); }
+.voz__cita strong { font-weight: 650; }
+.voz__quien {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(29, 30, 30, .14);
+  color: #4a4436;
+  font-size: .92rem;
+  line-height: 1.35;
+}
+.voz__quien img { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; transition: transform 460ms var(--muelle); -webkit-user-drag: none; }
+.voz__quien strong { display: block; color: var(--tinta); font-weight: 700; font-size: 1rem; }
+@media (hover: hover) { .voz:hover .voz__quien img { transform: scale(1.08); } }
+
+.voces__mando { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: clamp(18px, 2.2vw, 30px); }
+.voces__caras { display: flex; flex-wrap: wrap; gap: 6px; }
+.voces__flechas { display: flex; gap: 10px; }
+html:not(.js) .voces__mando { display: none; }
+/* En el ordenador, flechas junto a las caras: a la derecha queda el botón flotante y no se pisan */
+@media (min-width: 900px) { .voces__mando { justify-content: flex-start; gap: 32px; } }
+@media (max-width: 699px) { .voces__flecha { width: 46px; height: 46px; } }
+
+/* v7 · Llamadas a la acción nuevas */
+.preguntas__cta { display: grid; gap: 16px; justify-items: start; margin-top: var(--e-5); color: var(--texto-suave); }
+
+/* v7 · Tarifas: las entradas caen como repartidas y el sello se estampa al verlas */
+.js:not(.ss) .entradas .entrada[data-revela] { transform: translateY(56px) rotate(-5deg); }
+.js:not(.ss) .entradas .entrada--b[data-revela] { transform: translateY(56px) rotate(5deg); }
+.js:not(.ss) .entradas .entrada.visto { transform: rotate(-.6deg); }
+.js:not(.ss) .entradas .entrada--b.visto { transform: rotate(.6deg); }
+.js:not(.ss) .entrada .sello { opacity: 0; transform: rotate(-14deg) scale(1.8); }
+.js:not(.ss) .entrada.visto .sello { opacity: 1; transform: rotate(-14deg) scale(1); transition: transform 700ms var(--rebote) 650ms, opacity 120ms linear 650ms; }
+@media (hover: hover) { .js:not(.ss) .entrada.visto:hover .sello { transform: rotate(-4deg) scale(1.08); transition-delay: 0ms; } }
+@media (prefers-reduced-motion: reduce) { .js .entrada .sello { opacity: 1 !important; } }
+
+/* =====================================================================
+   v7 · Titulares que entran palabra a palabra (JS las envuelve) y una luz de oro que
+   recorre el borde de las llamadas principales. Solo transform y opacity.
+   ===================================================================== */
+.pal { display: inline-block; overflow: hidden; vertical-align: bottom; padding: .08em .07em .16em; margin: -.08em -.07em -.16em; }
+.pal__i { display: inline-block; }
+.js:not(.ss) .t-partido[data-revela] { opacity: 1; transform: none; }
+.js:not(.ss) .t-partido .pal__i { transform: translateY(112%); transition: transform 1000ms var(--salida); transition-delay: calc(var(--p) * 55ms); }
+.js:not(.ss) .t-partido.visto .pal__i { transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .t-partido .pal__i { transform: none !important; } }
+.boton__luz {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1.5px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  transition: opacity 280ms var(--salida);
+}
+.boton__luz > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 260%;
+  aspect-ratio: 1;
+  margin: -130% 0 0 -130%;
+  background: conic-gradient(from 0deg, transparent 0 60%, rgba(246, 196, 87, 0) 66%, rgba(246, 196, 87, .95) 86%, transparent 94%);
+}
+.js:not(.ss) .boton__luz > span { animation: luz-gira 3.2s linear infinite; }
+@keyframes luz-gira { to { transform: rotate(1turn); } }
+.boton:hover .boton__luz, .boton:focus-visible .boton__luz { opacity: 0; }
+.boton--luz::after { display: none; }
+@media (prefers-reduced-motion: reduce) { .boton__luz { display: none; } }
+
+/* =====================================================================
+   v8 · EN EL MÓVIL, LO DEL CURSOR — en pantallas táctiles, las fotos y tarjetas
+   que reaccionan al pasar el ratón reaccionan solas al cruzar el centro de la
+   pantalla (main.js les pone .en-foco). Con ratón, nada cambia.
+   ===================================================================== */
+@media (hover: none) {
+  .video__btn.en-foco img, .nota__enlace.en-foco .nota__foto img, .mosaico.en-foco img { transform: scale(1.05); }
+  .formatos--lista .formato.en-foco .formato__foto img { transform: scale(1.06); }
+  .video__btn.en-foco .video__play { color: var(--tinta); border-color: var(--oro); }
+  .video__btn.en-foco .video__play::before { transform: scale(1); }
+  .mosaico.en-foco .mosaico__pie { background: var(--oro); }
+  .red.en-foco .red__ico { background: var(--oro); color: var(--tinta); }
+  .voz.en-foco .voz__quien img { transform: scale(1.08); }
+  .flow__carta.activa.en-foco .flow__foto img { transform: scale(1.05); }
+  .entrada.visto.en-foco .sello { transform: rotate(-4deg) scale(1.08); }
+}
