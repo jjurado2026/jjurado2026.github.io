@@ -496,18 +496,40 @@ body.menu-abierto .cab::after { opacity: 0; }
 }
 
 /* ---------- Barra fija (móvil) ---------- */
+/* Botón flotante de reserva (v9), en el móvil y en el ordenador: siempre a mano en cuanto se deja atrás
+   la apertura de la página (en el hero ya están sus botones). Se aparta en el formulario de reserva, en el
+   pie, con el menú abierto y mientras está el aviso de cookies. Solo el botón recoge el dedo. */
 .fija {
+  --fija-fuera: translate(-50%, calc(100% + 32px));
+  --fija-dentro: translate(-50%, 0);
   position: fixed;
-  inset: auto 0 0;
+  left: 50%;
+  bottom: max(14px, calc(env(safe-area-inset-bottom) + 8px));
   z-index: 50;
-  padding: 10px var(--gutter) max(10px, env(safe-area-inset-bottom));
-  background: var(--negro);
-  box-shadow: 0 -1px 0 var(--linea);
-  transform: translateY(110%);
-  transition: transform 460ms var(--salida);
+  width: min(calc(100% - var(--gutter) * 2), 400px);
+  transform: var(--fija-fuera);
+  transition: transform 520ms var(--salida);
+  pointer-events: none;
 }
-.fija.visible { transform: translateY(0); }
-@media (min-width: 900px) { .fija { display: none; } }
+.fija.visible { transform: var(--fija-dentro); }
+.fija .boton {
+  width: 100%;
+  pointer-events: auto;
+  background: rgba(19, 19, 19, .88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--sombra-2);
+}
+@media (min-width: 900px), (orientation: landscape) and (max-height: 520px) {
+  .fija {
+    --fija-fuera: translateY(calc(100% + 40px));
+    --fija-dentro: none;
+    left: auto;
+    right: var(--gutter);
+    bottom: max(26px, calc(env(safe-area-inset-bottom) + 14px));
+    width: auto;
+  }
+}
 
 /* =====================================================================
    Sistema de movimiento

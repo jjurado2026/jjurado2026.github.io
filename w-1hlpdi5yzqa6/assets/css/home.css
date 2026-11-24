@@ -31,12 +31,11 @@
 }
 
 /* =====================================================================
-   HERO (v8) — formato historia, pensado primero para el móvil (llegan desde
-   las historias de Instagram): sus profesores tocando a pantalla completa,
-   barritas arriba que se llenan (4,8 s por foto, seis negras a 75 BPM) y el
-   titular y los botones abajo, sobre un velo de su negro que se funde con la
-   banda. En el móvil se toca a los lados, como en Instagram; en el ordenador,
-   flechas a los lados. Cabe entero en cualquier pantalla.
+   HERO (v9) — sus profesores tocando a pantalla completa, pensado primero para
+   el móvil (llegan desde las historias de Instagram). Las fotos pasan solas en
+   fundido con un zoom lento (4,8 s, seis negras a 75 BPM); sin barritas, sin
+   etiquetas y sin flechas. El titular y los botones, abajo pero con aire, sobre
+   un velo de su negro que se funde con la banda. Cabe entero en cualquier pantalla.
    ===================================================================== */
 .hero {
   position: relative;
@@ -69,7 +68,7 @@
 .js:not(.ss) .historia.pausa .historia__foto.activa img { animation-play-state: paused; }
 @keyframes historia-zoom { from { transform: scale(1.07); } to { transform: scale(1); } }
 
-/* Velo: un poco arriba para las barritas y su negro abajo para el titular (se funde con la banda) */
+/* Velo: un toque arriba, junto a la cabecera, y su negro abajo para el titular (se funde con la banda) */
 .historia::before {
   content: "";
   position: absolute;
@@ -77,97 +76,12 @@
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, rgba(19, 19, 19, .66) 0%, rgba(19, 19, 19, 0) 20%),
+    linear-gradient(to bottom, rgba(19, 19, 19, .42) 0%, rgba(19, 19, 19, 0) 16%),
     linear-gradient(to top, var(--negro) 0%, rgba(19, 19, 19, .92) 24%, rgba(19, 19, 19, .6) 46%, rgba(19, 19, 19, 0) 70%);
 }
 
-/* Barritas y curso de la foto (enlaza a su curso, como la pegatina de enlace de una historia) */
-.historia__arriba {
-  position: absolute;
-  top: clamp(10px, 1.6svh, 18px);
-  left: 0;
-  right: 0;
-  z-index: 3;
-  display: grid;
-  gap: 12px;
-  pointer-events: none;
-}
-.historia__barras { display: flex; gap: 5px; }
-.historia__barras span { flex: 1; height: 3px; border-radius: 3px; overflow: hidden; background: rgba(241, 233, 214, .3); }
-.historia__barras i { display: block; height: 100%; background: var(--crudo); transform: scaleX(0); transform-origin: 0 50%; }
-.historia__barras .vista i, .ss .historia__barras .activa i { transform: none; }
-.js:not(.ss) .historia__barras .activa i { animation: historia-barra 4.8s linear both; }
-.js:not(.ss) .historia.pausa .historia__barras .activa i { animation-play-state: paused; }
-@keyframes historia-barra { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.historia__cursos { justify-self: start; pointer-events: auto; }
-.historia__curso {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 36px;
-  padding: 6px 13px 6px 15px;
-  border: 1px solid rgba(241, 233, 214, .34);
-  border-radius: 999px;
-  background: rgba(19, 19, 19, .4);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  color: var(--crudo);
-  font-size: .92rem;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  transition: border-color 220ms var(--salida), background-color 220ms var(--salida), color 220ms var(--salida);
-}
-.historia__curso:not(.activa) { display: none; }
-.js:not(.ss) .historia__curso.activa { animation: historia-curso 520ms var(--salida) both; }
-@keyframes historia-curso { from { opacity: 0; transform: translateY(-6px); } }
-.historia__curso svg { transition: transform 300ms var(--salida); }
-.historia__curso:hover { border-color: var(--oro); background: var(--oro); color: var(--tinta); }
-.historia__curso:hover svg { transform: translate(2px, -2px); }
-
-/* Adelante y atrás: en el móvil, zonas invisibles a los lados (un tercio atrás, dos adelante);
-   con ratón, dos flechas redondas a los lados */
-.historia__paso {
-  position: absolute;
-  z-index: 2;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--crudo);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: pan-y;
-}
-.historia__paso svg { display: none; }
-@media (hover: none), (max-width: 699px) {
-  .historia__paso { top: 0; bottom: 40%; }
-  .historia__paso--atras { left: 0; width: 32%; }
-  .historia__paso--adelante { right: 0; width: 68%; }
-}
-@media (hover: hover) and (min-width: 700px) {
-  .historia__paso {
-    top: 40%;
-    display: grid;
-    place-items: center;
-    width: 54px;
-    height: 54px;
-    margin-top: -27px;
-    border: 1px solid rgba(241, 233, 214, .4);
-    border-radius: 50%;
-    background: rgba(19, 19, 19, .3);
-    transition: border-color 220ms var(--salida), background-color 220ms var(--salida), color 220ms var(--salida);
-  }
-  .historia__paso svg { display: block; transition: transform 300ms var(--salida); }
-  .historia__paso--atras { left: var(--gutter); }
-  .historia__paso--adelante { right: var(--gutter); }
-  .historia__paso:hover { border-color: var(--oro); background: var(--oro); color: var(--tinta); }
-  .historia__paso--atras:hover svg { transform: translateX(-3px); }
-  .historia__paso--adelante:hover svg { transform: translateX(3px); }
-}
-.historia__paso:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: -6px; }
-
 /* El titular, el apoyo y los botones, abajo y por encima de todo */
-.hero__int { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(18px, 3.2svh, 40px); }
+.hero__int { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(40px, 9svh, 108px); }
 .hero__texto { display: grid; gap: clamp(10px, 1.8svh, 20px); }
 .hero__h1 { font-size: min(10.6vw, 5.5svh); text-shadow: 0 2px 24px rgba(0, 0, 0, .35); }
 .hero__h1 .linea { display: block; }
@@ -196,8 +110,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .historia__foto { transition-duration: 1ms; }
-  .historia__foto img, .historia__barras .activa i, .historia__curso.activa { animation: none !important; }
-  .historia__barras .activa i { transform: none; }
+  .historia__foto img { animation: none !important; }
 }
 
 /* La banda de cursos: del mismo negro que el hero, separada por un filete */

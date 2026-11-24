@@ -909,7 +909,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--cab-alto) + 16px); }
 .cookies__d { font-size: .92rem; line-height: 1.55; color: #3a352a; }
 .cookies__acciones { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
 .cookies :focus-visible { outline-color: var(--verde-tinta); }
-.cookies-abierto .fija.visible { transform: translateY(110%); }
+.cookies-abierto .fija.visible { transform: var(--fija-fuera); }
 /* v8: en el móvil, una franja baja que no tapa el hero (la mayoría entra desde el móvil) */
 @media (max-width: 699px) {
   .cookies {

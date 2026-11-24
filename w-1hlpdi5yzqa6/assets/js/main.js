@@ -482,7 +482,7 @@
      En pantallas táctiles no hay «pasar el ratón»: las fotos y tarjetas que reaccionan al cursor
      reaccionan solas al cruzar la franja central de la pantalla (.en-foco). Con ratón, nada cambia. */
   if (window.matchMedia('(hover: none)').matches && !reducido.matches && !document.documentElement.classList.contains('ss') && 'IntersectionObserver' in window) {
-    const enFoco = $$('.video__btn, .nota__enlace, .mosaico, .formatos--lista .formato, .red, .voces__cara, .flow__carta, .entrada');
+    const enFoco = $$('.video__btn, .nota__enlace, .mosaico, .formatos--lista .formato, .red, .voz, .flow__carta, .entrada');
     if (enFoco.length) {
       const ob = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('en-foco', e.isIntersecting)), { rootMargin: '-38% 0px -38% 0px' });
       enFoco.forEach((el) => ob.observe(el));
