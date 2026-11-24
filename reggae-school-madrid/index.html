@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=9.0">
-<link rel="stylesheet" href="assets/css/home.css?v=9.0">
-<link rel="stylesheet" href="assets/css/secciones.css?v=9.0">
-<link rel="stylesheet" href="assets/css/paginas.css?v=9.0">
+<link rel="stylesheet" href="assets/css/global.css?v=9.1">
+<link rel="stylesheet" href="assets/css/home.css?v=9.1">
+<link rel="stylesheet" href="assets/css/secciones.css?v=9.1">
+<link rel="stylesheet" href="assets/css/paginas.css?v=9.1">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -185,8 +185,10 @@
 <!-- ============================ HERO ============================ -->
 <!-- v9 (24-11-2026): sus profesores tocando a pantalla completa; las fotos pasan solas en fundido con un zoom
      lento (4,8 s cada una). Sin barritas, etiquetas ni flechas: solo la foto, el titular y los botones, algo más
-     arriba que en la v8. Fotogramas de los vídeos de su web (/canto/, /saxo/, /bateria/, /teclado/ y la sesión de
-     la home), en vertical para el móvil y en horizontal para tableta y ordenador. Ninguno sale en otro bloque. -->
+     arriba que en la v8. Fotogramas de los vídeos de su web (/saxo/, /bateria/, /teclado/ y la sesión de la home)
+     y, en lugar del primer plano cantando (v9.1), los profes tocando en su estand al aire libre (foto de /equipo/,
+     ampliada con Real-ESRGAN). En vertical para el móvil y en horizontal para tableta y ordenador. Ninguna sale en
+     otro bloque. -->
 <section class="hero fondo-negro" aria-labelledby="h1" data-hero>
   <div class="historia" data-historia>
     <div class="historia__fotos">
@@ -198,9 +200,9 @@
         <source media="(max-width: 699px)" srcset="assets/img/hero-bateria-v540.webp 540w, assets/img/hero-bateria-v800.webp 800w" sizes="100vw" width="800" height="1600">
         <img src="assets/img/hero-bateria-h1600.webp" srcset="assets/img/hero-bateria-h1600.webp 1600w, assets/img/hero-bateria-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Un batería con cascos tocando en el estudio" loading="lazy" decoding="async">
       </picture>
-      <picture class="historia__foto" style="--x:50%" data-historia-foto aria-hidden="true">
-        <source media="(max-width: 699px)" srcset="assets/img/hero-canto-v540.webp 540w, assets/img/hero-canto-v800.webp 800w" sizes="100vw" width="800" height="1600">
-        <img src="assets/img/hero-canto-h1600.webp" srcset="assets/img/hero-canto-h1600.webp 1600w, assets/img/hero-canto-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Javier Ochoa cantando con los ojos cerrados" loading="lazy" decoding="async">
+      <picture class="historia__foto" style="--x:56%" data-historia-foto aria-hidden="true">
+        <source media="(max-width: 699px)" srcset="assets/img/hero-directo-v540.webp 540w, assets/img/hero-directo-v800.webp 800w" sizes="100vw" width="800" height="1600">
+        <img src="assets/img/hero-directo-h1600.webp" srcset="assets/img/hero-directo-h1600.webp 1600w, assets/img/hero-directo-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Dos profesores tocando la guitarra al aire libre, junto a la lona de Reggae School Madrid" loading="lazy" decoding="async">
       </picture>
       <picture class="historia__foto" style="--x:38%" data-historia-foto aria-hidden="true">
         <source media="(max-width: 699px)" srcset="assets/img/hero-teclado-v540.webp 540w, assets/img/hero-teclado-v800.webp 800w" sizes="100vw" width="800" height="1600">
@@ -588,8 +590,8 @@
 </section>
 
 <!-- ============================ ARTISTAS · CON QUIÉN HAN TOCADO ============================ -->
-<!-- v9 (24-11-2026): sin tanto bombo. Dos cintas de créditos que pasan solas en sentidos contrarios; cada artista
-     lleva la cara y el nombre del profe que tocó con él (el JS lo saca del «Ha tocado con» de cada profe del
+<!-- v9.1 (24-11-2026): cuatro cintas de créditos, más grandes, que pasan solas en sentidos alternos; cada artista
+     lleva el nombre del profe que tocó con él, sin su cara (el JS lo saca del «Ha tocado con» de cada profe del
      carrusel, así en WordPress va solo). Se paran con el ratón encima. Sin JS, en captura o con movimiento reducido,
      la lista quieta. Los tres cabezas, en oro. Con quién tocaron Swan Fyahbwoy e Iseo & Dodosound lo confirma Juan -->
 <section class="artistas seccion fondo-negro" id="con-quien" aria-labelledby="artistas-t" data-creditos>
@@ -749,7 +751,7 @@
 
   <!-- v9: carrusel en 3D. Pasa solo cada 4,8 s (se para con el ratón sobre la ficha o con el foco de teclado);
        se arrastra con el ratón o el dedo, se desliza en el trackpad, se pasa con las flechas de los lados y se
-       elige pulsando una carta o una de las caras de abajo -->
+       elige pulsando una carta -->
   <div class="flow" data-flow>
     <ul class="flow__pista" aria-label="Profesorado">
       <li class="flow__carta" data-flow-carta>
@@ -819,12 +821,11 @@
     <button class="flow__flecha flow__flecha--atras" type="button" data-flow-paso="-1" aria-label="Profesor anterior"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="flow__flecha flow__flecha--adelante" type="button" data-flow-paso="1" aria-label="Profesor siguiente"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
-  <!-- Las caras de todos: se elige cualquier profe de un toque (las monta el JS a partir de las cartas) -->
-  <div class="envoltura"><div class="flow__caras" data-flow-caras></div></div>
 </section>
 
 <!-- ============================ ALUMNADO · OPINIONES ============================ -->
-<!-- v9 (24-11-2026): tarjetas de papel en fila, que se ve que siguen (la siguiente asoma). Se deslizan con el dedo
+<!-- v9.1 (24-11-2026): tarjetas oscuras en fila, que se ve que siguen (la siguiente asoma); las opiniones largas
+     se recortan a cinco líneas con «Ver más», que las despliega. Se deslizan con el dedo
      o el trackpad, se arrastran con el ratón o se pasan con las flechas; las caras de abajo llevan a cada una. Pasan
      solas cada 6,4 s mientras nadie las toca. Distinta de «Antes de empezar», que va justo después -->
 <section class="alumnado seccion fondo-negro" aria-labelledby="alumnado-t" data-voces>
@@ -1211,9 +1212,9 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=9.0" defer></script>
-<script src="assets/js/main.js?v=9.0" defer></script>
-<script src="assets/js/secciones.js?v=9.0" defer></script>
-<script src="assets/js/paginas.js?v=9.0" defer></script>
+<script src="assets/js/riddim.js?v=9.1" defer></script>
+<script src="assets/js/main.js?v=9.1" defer></script>
+<script src="assets/js/secciones.js?v=9.1" defer></script>
+<script src="assets/js/paginas.js?v=9.1" defer></script>
 </body>
 </html>

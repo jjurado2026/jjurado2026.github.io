@@ -80,8 +80,8 @@
     document.addEventListener('visibilitychange', () => { estado.oculta = document.hidden; pausar(); });
   }
 
-  /* ---------- Artistas (v9): dos cintas de créditos ----------
-     Cada artista, con la cara y el nombre del profe que tocó con él: se saca del «Ha tocado con» de los
+  /* ---------- Artistas (v9.1): cuatro cintas de créditos ----------
+     Cada artista, con el nombre del profe que tocó con él: se saca del «Ha tocado con» de los
      profes del carrusel, así en WordPress va solo. Las cintas son copias (aria-hidden): la lista de verdad
      queda para los lectores de pantalla. Con movimiento reducido o en captura, la lista quieta. */
   const creditos = document.querySelector('[data-creditos]');
@@ -103,46 +103,38 @@
       const art = li.querySelector('.credito__artista');
       const quien = profes.filter((pr) => pr.con.includes(norm(art.textContent)));
       if (!quien.length) return;
-      const caras = document.createElement('span');
-      caras.className = 'credito__caras';
-      caras.setAttribute('aria-hidden', 'true');
-      quien.slice(0, 3).forEach((pr) => {
-        if (!pr.foto || !pr.foto.getAttribute('src')) return;
-        const img = document.createElement('img');
-        Object.assign(img, { src: pr.foto.getAttribute('src'), alt: '', width: 44, height: 44, decoding: 'async', loading: 'lazy' });
-        caras.appendChild(img);
-      });
       const con = document.createElement('span');
       con.className = 'credito__con';
       con.textContent = `con ${quien.length === 1 ? quien[0].nombre : y(quien.map(corto))}`;
       const texto = document.createElement('span');
       texto.className = 'credito__texto';
       texto.append(art, con);
-      li.replaceChildren(...(caras.childElementCount ? [caras] : []), texto);
-      if (caras.childElementCount) li.classList.add('credito--cara');
+      li.replaceChildren(texto);
     });
 
     if (caja && !captura && !reducido.matches && items.length) {
       const cinta = document.createElement('div');
       cinta.className = 'creditos__cinta';
       cinta.setAttribute('aria-hidden', 'true');
-      [0, 1].forEach((fila) => {
+      const FILAS = 4;
+      [...Array(FILAS).keys()].forEach((fila) => {
         const f = document.createElement('div');
-        f.className = `creditos__fila${fila ? ' creditos__fila--b' : ''}`;
+        f.className = `creditos__fila${fila % 2 ? ' creditos__fila--b' : ''}`;
         const pista = document.createElement('div');
         pista.className = 'creditos__pista';
         const grupo = document.createElement('ul');
-        items.filter((_, k) => k % 2 === fila).forEach((li) => grupo.appendChild(li.cloneNode(true)));
-        pista.append(grupo, grupo.cloneNode(true));
+        items.filter((_, k) => k % FILAS === fila).forEach((li) => grupo.appendChild(li.cloneNode(true)));
+        // Tres copias: con pocos nombres por fila, así nunca queda hueco ni en pantallas muy anchas
+        pista.append(grupo, grupo.cloneNode(true), grupo.cloneNode(true));
         f.appendChild(pista);
         cinta.appendChild(f);
       });
       caja.appendChild(cinta);
       caja.classList.add('en-cinta');
-      // La misma velocidad en las dos filas (unos 38 px por segundo), mida lo que mida cada una
+      // La misma velocidad en todas las filas (unos 38 px por segundo), mida lo que mida cada una
       const medir = () => cinta.querySelectorAll('.creditos__pista').forEach((p) => {
-        const ancho = p.scrollWidth / 2;
-        if (ancho > 0) p.style.setProperty('--dur', `${Math.max(30, ancho / 38).toFixed(1)}s`);
+        const ancho = p.scrollWidth / 3;
+        if (ancho > 0) p.style.setProperty('--dur', `${Math.max(24, ancho / 38).toFixed(1)}s`);
       });
       let medida = false;
       visibleEn(caja, 0, (v) => {
@@ -158,7 +150,7 @@
      · arrastrando con el ratón o el dedo: las cartas siguen al cursor y al soltar se quedan en la más
        cercana (un tirón corto también pasa al siguiente);
      · deslizando de lado en el trackpad (un gesto = un profe);
-     · pulsando una carta, una de las caras de debajo, las flechas de los lados (v9) o las del teclado.
+     · pulsando una carta, con las flechas de los lados (v9) o con las del teclado.
      Tras cambiar a mano, la cuenta de 4,8 s vuelve a empezar. */
   const flow = document.querySelector('[data-flow]');
   if (flow) {
@@ -166,7 +158,6 @@
     const total = cartas.length;
     let activo = 0, enPantalla = false, sobreFicha = false, porTeclado = false, reloj = 0;
     let arrastre = null, sinClic = false;
-    const caras = [];
     // Opacidad según la distancia al centro (1 · 0,72 · 0,38 · 0), continua para el arrastre
     const opacidad = (d) => (d < 1 ? 1 - 0.28 * d : d < 2 ? 0.72 - 0.34 * (d - 1) : d < 3 ? 0.38 * (3 - d) : 0);
     // f: desplazamiento en cartas mientras se arrastra (positivo = hacia el siguiente)
@@ -183,7 +174,6 @@
       c.querySelectorAll('.flow__ficha a').forEach((a) => { a.tabIndex = d === 0 ? 0 : -1; });
       c.querySelector('.flow__ficha').setAttribute('aria-hidden', String(d !== 0));
       c.querySelector('.flow__foto').tabIndex = d > 2 ? -1 : 0;
-      if (caras[k]) caras[k].setAttribute('aria-current', String(d === 0));
     });
     const programar = () => {
       clearTimeout(reloj);
@@ -196,26 +186,6 @@
 
     cartas.forEach((c, k) => c.querySelector('.flow__foto').addEventListener('click', () => ir(k)));
     flow.querySelectorAll('[data-flow-paso]').forEach((b) => b.addEventListener('click', () => ir(activo + Number(b.dataset.flowPaso))));
-    // Las caras de todos, debajo: se elige cualquier profe de un toque
-    const tira = flow.closest('section') && flow.closest('section').querySelector('[data-flow-caras]');
-    if (tira) {
-      cartas.forEach((c, k) => {
-        const foto = c.querySelector('.flow__foto img');
-        const nombre = ((c.querySelector('.flow__nombre') || {}).textContent || '').trim();
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'flow__cara';
-        b.setAttribute('aria-label', `Ver a ${nombre}`);
-        if (foto && foto.getAttribute('src')) {
-          const img = document.createElement('img');
-          Object.assign(img, { src: foto.getAttribute('src'), alt: '', width: 46, height: 46, decoding: 'async', loading: 'lazy' });
-          b.appendChild(img);
-        }
-        b.addEventListener('click', () => ir(k));
-        tira.appendChild(b);
-        caras.push(b);
-      });
-    }
     flow.addEventListener('pointerover', (e) => {
       if (e.pointerType === 'mouse') sobreFicha = !!e.target.closest('.flow__carta.activa .flow__ficha');
     });
@@ -343,6 +313,36 @@
       });
       marcar(0);
     }
+    // «Ver más» (v9.1): las opiniones largas, recortadas a cinco líneas, se despliegan en su tarjeta
+    tarjetas.forEach((t) => {
+      const cita = t.querySelector('.voz__cita');
+      if (!cita) return;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'voz__mas';
+      b.setAttribute('aria-expanded', 'false');
+      b.innerHTML = '<span>Ver más</span><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      cita.after(b);
+      b.addEventListener('click', () => {
+        const abre = !t.classList.contains('abierta');
+        t.classList.toggle('abierta', abre);
+        b.setAttribute('aria-expanded', String(abre));
+        b.firstElementChild.textContent = abre ? 'Ver menos' : 'Ver más';
+        tocado();
+      });
+    });
+    // Solo llevan «Ver más» las que no caben (se mide al verlas: fuera de pantalla no hay medidas)
+    const medirCitas = () => tarjetas.forEach((t) => {
+      const cita = t.querySelector('.voz__cita');
+      const b = t.querySelector('.voz__mas');
+      if (!cita || !b || t.classList.contains('abierta') || !cita.clientHeight) return;
+      const sobra = cita.scrollHeight > cita.clientHeight + 2;
+      b.classList.toggle('oculto', !sobra);
+      b.tabIndex = sobra ? 0 : -1;
+      b.setAttribute('aria-hidden', String(!sobra));
+      t.classList.toggle('recortada', sobra);
+    });
+    window.addEventListener('resize', medirCitas);
     voces.querySelectorAll('[data-voces-paso]').forEach((b) => b.addEventListener('click', () => {
       tocado();
       if (Number(b.dataset.vocesPaso) > 0) siguiente(); else anterior();
@@ -395,9 +395,10 @@
     ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach((ev) => riel.addEventListener(ev, tocado, { passive: true }));
     riel.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') encima = true; });
     riel.addEventListener('pointerleave', () => { encima = false; });
-    visibleEn(riel, 0.4, (v) => { enPantalla = v; });
+    visibleEn(riel, 0.4, (v) => { enPantalla = v; if (v) medirCitas(); });
     setInterval(() => {
       if (!enPantalla || encima || quieto() || arr || performance.now() - ultimoToque < 12000) return;
+      if (tarjetas.some((t) => t.classList.contains('abierta'))) return;
       const f = document.activeElement;
       try { if (f && voces.contains(f) && f.matches(':focus-visible')) return; } catch (_) { /* sin :focus-visible */ }
       siguiente();
