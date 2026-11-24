@@ -312,10 +312,10 @@
 .notas--lista .nota__t { font-size: clamp(1.15rem, 1.02rem + .4vw, 1.35rem); }
 
 /* =====================================================================
-   v9 · ARTISTAS — dos cintas de créditos que pasan solas en sentidos contrarios.
-   Cada artista, con la cara y el nombre del profe que tocó con él. Sin tanto
-   bombo: todos del mismo tamaño y los tres cabezas en oro. Con el ratón encima,
-   la cinta se para y el crédito se enciende (se animan sus hijos, no él).
+   v9.1 · ARTISTAS — cuatro cintas de créditos que pasan solas en sentidos alternos.
+   Cada artista, con el nombre del profe que tocó con él (sin caras). Todos del
+   mismo tamaño y los tres cabezas en oro. Con el ratón encima, la cinta se para y
+   el crédito se enciende (se animan sus hijos, no él).
    Sin JS, en captura o con movimiento reducido: la lista quieta y centrada.
    ===================================================================== */
 .creditos__lista {
@@ -331,41 +331,28 @@
   flex: none;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  min-height: 62px;
-  padding: 8px 24px;
+  min-height: 74px;
+  padding: 12px 30px;
   border: 1px solid var(--linea);
   border-radius: 999px;
   background: var(--carbon);
   white-space: nowrap;
   transition: border-color 300ms var(--salida);
 }
-.credito--cara { padding-left: 8px; }
-.credito__caras { display: inline-flex; flex: none; }
-.credito__caras img {
-  width: 44px;
-  height: 44px;
-  border: 2px solid var(--carbon);
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 15%;
-  transition: transform 460ms var(--muelle);
-}
-.credito__caras img + img { margin-left: -14px; }
-.credito__texto { display: grid; gap: 3px; }
+.credito__texto { display: grid; gap: 4px; justify-items: center; transition: transform 460ms var(--muelle); }
 .credito__artista {
   font-family: var(--f-display);
   font-weight: 700;
-  font-size: 1.14rem;
+  font-size: 1.36rem;
   line-height: 1.1;
   color: var(--crudo);
   transition: color 300ms var(--salida);
 }
 .credito--top .credito__artista { color: var(--oro-texto); font-style: italic; font-weight: 800; }
-.credito__con { font-size: .8rem; line-height: 1.2; color: var(--texto-suave); }
+.credito__con { font-size: .86rem; line-height: 1.2; color: var(--texto-suave); }
 @media (hover: hover) {
   .credito:hover { border-color: var(--oro); }
-  .credito:hover .credito__caras img { transform: scale(1.12); }
+  .credito:hover .credito__texto { transform: scale(1.05); }
   .credito:hover .credito__artista { color: var(--oro-texto); }
 }
 
@@ -375,7 +362,7 @@
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
-.creditos.en-cinta .creditos__cinta { display: grid; gap: 12px; }
+.creditos.en-cinta .creditos__cinta { display: grid; gap: 14px; }
 .creditos__fila {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
@@ -383,16 +370,16 @@
 }
 .creditos__pista { display: flex; width: max-content; animation: creditos var(--dur, 60s) linear infinite; }
 .creditos__fila--b .creditos__pista { animation-direction: reverse; }
-.creditos__pista > ul { display: flex; gap: 12px; padding-right: 12px; }
+.creditos__pista > ul { display: flex; gap: 14px; padding-right: 14px; }
 .creditos__fila:hover .creditos__pista,
 .creditos.pausa .creditos__pista { animation-play-state: paused; }
-@keyframes creditos { to { transform: translateX(-50%); } }
+@keyframes creditos { to { transform: translateX(calc(-100% / 3)); } }
 @media (max-width: 699px) {
-  .credito { min-height: 54px; gap: 10px; padding-right: 18px; }
-  .credito:not(.credito--cara) { padding-left: 18px; }
-  .credito__caras img { width: 38px; height: 38px; }
-  .credito__artista { font-size: 1rem; }
+  .credito { min-height: 62px; padding: 10px 22px; }
+  .credito__artista { font-size: 1.12rem; }
+  .credito__con { font-size: .8rem; }
   .creditos.en-cinta .creditos__cinta, .creditos__pista > ul { gap: 10px; }
+  .creditos__pista > ul { padding-right: 10px; }
 }
 
 /* =====================================================================
@@ -520,7 +507,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .flow__carta { transition: opacity 1ms; opacity: max(var(--op, 1), .18); } }
 
-/* v9 · Flechas sutiles a los lados (con ratón) y, debajo, las caras de todos para elegir cualquiera */
+/* v9 · Flechas sutiles a los lados (con ratón); debajo de las opiniones, las caras para elegir */
 .flow__flecha,
 .voces__flecha {
   display: grid;
@@ -550,8 +537,6 @@
 .flow__flecha--adelante { right: max(var(--gutter), calc((100% - var(--ancho-max, 1320px)) / 2)); }
 @media (hover: hover) and (pointer: fine) { .js .flow__flecha { display: grid; } }
 
-.flow__caras { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: clamp(4px, 1vw, 12px); }
-.flow__cara,
 .voces__cara {
   padding: 2px;
   border: 0;
@@ -562,7 +547,6 @@
   transition: opacity 300ms var(--salida);
   -webkit-tap-highlight-color: transparent;
 }
-.flow__cara img,
 .voces__cara img {
   display: block;
   width: 46px;
@@ -572,19 +556,14 @@
   object-position: 50% 20%;
   transition: transform 460ms var(--muelle), box-shadow 300ms var(--salida);
 }
-.flow__cara:hover, .flow__cara[aria-current="true"],
 .voces__cara:hover, .voces__cara[aria-current="true"] { opacity: 1; }
-.flow__cara[aria-current="true"] img,
 .voces__cara[aria-current="true"] img { box-shadow: 0 0 0 2px var(--negro), 0 0 0 4px var(--oro); }
-.flow__cara:hover img, .voces__cara:hover img { transform: scale(1.1); }
-.flow__cara:focus-visible, .voces__cara:focus-visible { outline-offset: 3px; }
-@media (max-width: 699px) {
-  .flow__caras { gap: 4px; }
-  .flow__cara img, .voces__cara img { width: 40px; height: 40px; }
-}
+.voces__cara:hover img { transform: scale(1.1); }
+.voces__cara:focus-visible { outline-offset: 3px; }
+@media (max-width: 699px) { .voces__cara img { width: 40px; height: 40px; } }
 
 /* =====================================================================
-   v9 · LO CUENTAN QUIENES YA TOCAN — tarjetas de papel en fila; la siguiente asoma
+   v9.1 · LO CUENTAN QUIENES YA TOCAN — tarjetas oscuras en fila; la siguiente asoma
    para que se vea que siguen. Se deslizan (dedo, trackpad o arrastrando con el
    ratón) y encajan una a una; debajo, las caras y las flechas. Pasan solas cada
    6,4 s mientras nadie las toca. Distinta de «Antes de empezar», que va después.
@@ -605,6 +584,7 @@
 .voces__pista {
   display: flex;
   gap: clamp(14px, 1.6vw, 24px);
+  align-items: flex-start;
   width: max-content;
   padding: 6px var(--borde) 12px;
 }
@@ -612,16 +592,17 @@
 .voz__fig {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 22px;
+  gap: 18px;
   width: 100%;
   margin: 0;
   padding: clamp(24px, 2.6vw, 34px);
+  border: 1px solid var(--linea);
   border-radius: var(--radio);
-  background: var(--crudo);
-  color: var(--tinta);
-  box-shadow: var(--sombra-2);
+  background: var(--carbon);
+  color: var(--crudo);
+  transition: border-color 300ms var(--salida);
 }
+.voz__fig::before { content: "\201C"; font-family: var(--f-display); font-weight: 900; font-size: 4.2rem; line-height: .5; height: .34em; color: var(--oro-texto); }
 .voz__cita {
   display: grid;
   gap: 12px;
@@ -631,23 +612,53 @@
   font-weight: 420;
   font-size: clamp(1.04rem, .96rem + .34vw, 1.2rem);
   line-height: 1.5;
-  color: var(--tinta);
+  color: var(--crudo);
 }
-.voz__cita::before { content: "\201C"; font-style: normal; font-weight: 900; font-size: 4.2rem; line-height: .5; height: .34em; color: var(--verde-tinta); }
 .voz__cita strong { font-weight: 650; }
+/* Cinco líneas y «Ver más»; todas las tarjetas cerradas, del mismo alto */
+.js .voz__cita { height: 7.5em; overflow: hidden; }
+.js .voz.recortada:not(.abierta) .voz__cita {
+  -webkit-mask-image: linear-gradient(#000 66%, transparent);
+  mask-image: linear-gradient(#000 66%, transparent);
+}
+.js .voz.abierta .voz__cita { height: auto; }
+.voz__mas {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: -10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--oro-texto);
+  font-family: var(--f-texto);
+  font-size: .92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.voz__mas.oculto { visibility: hidden; }
+.voz__mas svg { transition: transform 360ms var(--salida); }
+.voz.abierta .voz__mas svg { transform: rotate(180deg); }
+.voz__mas:hover { color: var(--crudo); }
 .voz__quien {
   display: flex;
   align-items: center;
   gap: 14px;
   padding-top: 18px;
-  border-top: 1px solid rgba(29, 30, 30, .14);
-  color: #4a4436;
+  border-top: 1px solid var(--linea);
+  min-height: 80px; /* el pie de todas, del mismo alto aunque el detalle ocupe dos líneas */
+  color: var(--texto-suave);
   font-size: .92rem;
   line-height: 1.35;
 }
 .voz__quien img { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; transition: transform 460ms var(--muelle); -webkit-user-drag: none; }
-.voz__quien strong { display: block; color: var(--tinta); font-weight: 700; font-size: 1rem; }
-@media (hover: hover) { .voz:hover .voz__quien img { transform: scale(1.08); } }
+.voz__quien strong { display: block; color: var(--crudo); font-weight: 700; font-size: 1rem; }
+@media (hover: hover) {
+  .voz:hover .voz__fig { border-color: rgba(242, 181, 49, .5); }
+  .voz:hover .voz__quien img { transform: scale(1.08); }
+}
 
 .voces__mando { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: clamp(18px, 2.2vw, 30px); }
 .voces__caras { display: flex; flex-wrap: wrap; gap: 6px; }

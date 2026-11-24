@@ -32,15 +32,20 @@
     revelables.forEach(el => el.classList.add('visto'));
     ecos.forEach(el => el.classList.add('suena'));
   } else {
+    // v9.1: cada vez que se vuelve a una sección, sus animaciones se repiten. Entran al asomar (con margen
+    // abajo) y se rearman solo cuando el bloque ha salido entero de la pantalla, para que nada parpadee.
+    const clase = (el) => (el.hasAttribute('data-eco') ? 'suena' : 'visto');
     const io = new IntersectionObserver((entradas) => {
-      entradas.forEach(e => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add(e.target.hasAttribute('data-eco') ? 'suena' : 'visto');
-        io.unobserve(e.target);
-      });
+      entradas.forEach(e => { if (e.isIntersecting) e.target.classList.add(clase(e.target)); });
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0 }); // vale para bloques más altos que la pantalla (móvil en horizontal)
-    revelables.forEach(el => io.observe(el));
-    ecos.forEach(el => { el.style.setProperty('--retardo', '300ms'); io.observe(el); });
+    const fuera = new IntersectionObserver((entradas) => {
+      entradas.forEach(e => { if (!e.isIntersecting) e.target.classList.remove(clase(e.target)); });
+    }, { threshold: 0 });
+    revelables.forEach(el => { io.observe(el); fuera.observe(el); });
+    ecos.forEach(el => { el.style.setProperty('--retardo', '300ms'); io.observe(el); fuera.observe(el); });
+    // El hero, igual: al volver arriba, el titular y los botones entran otra vez
+    const heroSec = $('.hero');
+    if (heroSec) new IntersectionObserver(([e]) => heroSec.classList.toggle('fuera', !e.isIntersecting), { threshold: 0 }).observe(heroSec);
   }
 
   /* ---------------- Cabecera fija y barra móvil ---------------- */

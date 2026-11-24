@@ -556,6 +556,8 @@ body.menu-abierto .cab::after { opacity: 0; }
   transition-delay: calc(var(--i, 0) * 90ms);
 }
 .js:not(.ss) [data-revela].visto { opacity: 1; transform: none; }
+/* v9.1: al volver arriba, el hero entra otra vez (main.js le pone .fuera cuando sale entero de pantalla) */
+.js:not(.ss) body.cargada .hero.fuera [data-entra] { opacity: 0; transform: translateY(22px); transition: none; }
 
 /* Eco dub: cada dos compases, la palabra suelta sus repeticiones en contorno de oro, que
    se alejan a semicorchea y se apagan, como un delay. En reposo, la palabra limpia. */
