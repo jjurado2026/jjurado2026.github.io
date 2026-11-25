@@ -735,3 +735,49 @@ html:not(.js) .voces__mando { display: none; }
   .flow__carta.activa.en-foco .flow__foto img { transform: scale(1.05); }
   .entrada.visto.en-foco .sello { transform: rotate(-4deg) scale(1.08); }
 }
+
+/* =====================================================================
+   v10 · VERMUT REGGAE JAM — la jam, con peso propio en la portada: la foto
+   grande del directo, el nombre con el eco dub en «Jam», dónde, cuándo y quién
+   toca, y la última fecha con un punto de oro que late.
+   ===================================================================== */
+.jam__int { display: grid; gap: clamp(22px, 3vw, 34px); grid-template-areas: "cabeza" "foto" "resto"; }
+@media (min-width: 1000px) {
+  .jam__int { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "foto cabeza" "foto resto"; column-gap: clamp(48px, 6vw, 96px); row-gap: clamp(24px, 3vw, 36px); align-items: start; }
+}
+.jam__cabeza { grid-area: cabeza; display: grid; gap: 18px; }
+.jam__t { font-size: clamp(2.6rem, 1.1rem + 5.2vw, 5.8rem); line-height: .95; }
+.jam__lede { max-width: 32em; font-size: clamp(1.1rem, 1rem + .5vw, 1.36rem); line-height: 1.55; color: var(--crudo); }
+.jam__foto { grid-area: foto; position: relative; margin: 0; aspect-ratio: 4 / 5; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
+.jam__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transition: transform 1400ms var(--salida); }
+.jam__foto:hover img { transform: scale(1.05); }
+@media (max-width: 699px) { .jam__foto { aspect-ratio: 4 / 3; } }
+@media (min-width: 1000px) { .jam__foto { position: sticky; top: calc(var(--cab-alto) + 24px); } }
+.jam__resto { grid-area: resto; display: grid; gap: clamp(18px, 2.4vw, 28px); }
+.jam__datos { display: grid; gap: 14px; margin: 0; }
+@media (min-width: 700px) { .jam__datos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; } }
+.jam__datos div { padding-top: 14px; border-top: 2px solid var(--oro); }
+.jam__datos dt { color: var(--oro-texto); font-weight: 700; font-size: .9rem; }
+.jam__datos dd { margin: 6px 0 0; color: var(--crudo); line-height: 1.45; }
+.jam__p { max-width: 40em; color: var(--texto-suave); line-height: 1.7; }
+.jam__fecha { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; color: var(--crudo); }
+.jam__fecha > span:nth-child(2) { color: var(--oro-texto); font-weight: 700; }
+.jam__punto { position: relative; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--oro); }
+.jam__punto::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--oro); }
+.js:not(.ss) .jam__punto::after { animation: jam-late 1.6s var(--salida) infinite; }
+@keyframes jam-late { from { transform: scale(1); opacity: .7; } to { transform: scale(2.8); opacity: 0; } }
+.jam__enlaces { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+@media (prefers-reduced-motion: reduce) { .jam__punto::after { animation: none !important; } }
+
+/* =====================================================================
+   v10 · RSM PRODUCTIONS — del escenario al estudio: el texto de la escuela y dos
+   producciones de alumnos que se ven ahí mismo.
+   ===================================================================== */
+.prodh__int { display: grid; gap: clamp(20px, 2.4vw, 28px); }
+@media (min-width: 700px) { .prodh__int { grid-template-columns: repeat(2, minmax(0, 1fr)); } .prodh__texto { grid-column: 1 / -1; } }
+@media (min-width: 1100px) { .prodh__int { grid-template-columns: minmax(0, .82fr) minmax(0, 1fr) minmax(0, 1fr); align-items: start; } .prodh__texto { grid-column: auto; } }
+.prodh__texto { display: grid; gap: 16px; justify-items: start; max-width: 40em; color: var(--texto-suave); line-height: 1.7; }
+.prodh__int figure { margin: 0; }
+.prodh__int figcaption { margin-top: 10px; color: var(--texto-suave); font-size: .92rem; }
+.prodh__int figcaption strong { margin-right: 6px; color: var(--crudo); font-weight: 650; }
+.prodh__int .video__btn { border-radius: var(--radio); }

@@ -78,6 +78,58 @@
     tAviso = setTimeout(() => aviso.classList.remove('visible'), 3200);
   }));
 
+  /* ---------- Páginas de cursos (v10): un curso cada vez ----------
+     Las fotos de la apertura y la barra fija eligen el curso; se ve su ficha y las demás se ocultan.
+     La dirección lleva el curso (#guitarra…), así que los enlaces del menú y las redirecciones de las
+     direcciones antiguas abren el suyo. Sin JS, todas las fichas seguidas y los enlaces son anclas. */
+  const fichas = $$('[data-ficha]');
+  if (fichas.length > 1) {
+    const pestanas = $$('[data-ficha-tab]');
+    const cab = $('[data-cab]');
+    const barra = $('.cu-selector');
+    const ids = fichas.map((f) => f.id);
+    const mostrar = (id, desplazar) => {
+      const f = fichas.find((x) => x.id === id) || fichas[0];
+      fichas.forEach((x) => { x.hidden = x !== f; });
+      pestanas.forEach((t) => {
+        const si = t.dataset.fichaTab === f.id;
+        t.setAttribute('aria-selected', String(si));
+        t.tabIndex = si || !t.closest('.cu-selector') ? 0 : -1;
+      });
+      // La barra lleva a la vista su curso (solo de lado: la barra ya está a la vista)
+      const chip = barra && $(`[data-ficha-tab="${f.id}"]`, barra);
+      if (chip) {
+        const lista = chip.parentElement;
+        lista.scrollTo({ left: chip.offsetLeft - (lista.clientWidth - chip.offsetWidth) / 2, behavior: reducido.matches ? 'auto' : 'smooth' });
+      }
+      if (desplazar) {
+        const arriba = (cab ? cab.offsetHeight : 64) + (barra ? barra.offsetHeight : 0) - 1;
+        const y = f.getBoundingClientRect().top + window.scrollY - arriba;
+        window.scrollTo({ top: Math.max(0, y), behavior: reducido.matches ? 'auto' : 'smooth' });
+      }
+      // La dirección cambia solo cuando la persona elige (al cargar sin #, nada: si no, otro script bajaría a la ficha)
+      if (desplazar && location.hash.slice(1) !== f.id) history.replaceState(null, '', `#${f.id}`);
+    };
+    pestanas.forEach((t) => t.addEventListener('click', (e) => { e.preventDefault(); mostrar(t.dataset.fichaTab, true); }));
+    // Flechas del teclado dentro de la barra
+    if (barra) barra.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const chips = $$('[data-ficha-tab]', barra);
+      const k = chips.indexOf(document.activeElement);
+      if (k < 0) return;
+      e.preventDefault();
+      const sig = chips[(k + (e.key === 'ArrowRight' ? 1 : -1) + chips.length) % chips.length];
+      mostrar(sig.dataset.fichaTab, false);
+      sig.focus();
+    });
+    const pedido = location.hash.slice(1);
+    const deEntrada = ids.includes(pedido);
+    mostrar(deEntrada ? pedido : ids[0], false);
+    // Con #curso en la dirección, al curso (tras pintar, que el navegador ya habrá saltado a la ficha)
+    if (deEntrada) requestAnimationFrame(() => mostrar(pedido, true));
+    window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (ids.includes(id)) mostrar(id, true); });
+  }
+
   /* ---------- Barra fija del móvil: aparece al dejar atrás la cabecera de la página ---------- */
   const fija = $('[data-fija-pag]');
   const apertura = $('main > section');

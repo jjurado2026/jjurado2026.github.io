@@ -17,10 +17,10 @@
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/est-mesa-1600.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=9.1">
-<link rel="stylesheet" href="assets/css/home.css?v=9.1">
-<link rel="stylesheet" href="assets/css/secciones.css?v=9.1">
-<link rel="stylesheet" href="assets/css/paginas.css?v=9.1">
+<link rel="stylesheet" href="assets/css/global.css?v=10.0">
+<link rel="stylesheet" href="assets/css/home.css?v=10.0">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.0">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.0">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -190,79 +190,76 @@
 </div>
 
 <main id="contenido">
-<!-- ============================ APERTURA: LA MESA DEL ESTUDIO ============================ -->
-<section class="ph ph--foto" aria-labelledby="h1">
-  <img class="ph__fondo" src="assets/img/est-mesa-1600.webp" srcset="assets/img/est-mesa-900.webp 900w, assets/img/est-mesa-1600.webp 1600w" sizes="100vw" width="1600" height="1067" alt="" fetchpriority="high" decoding="async">
-  <div class="envoltura ph__int">
-    <div class="ph__texto">
+<!-- ============================ APERTURA: EL ESTUDIO A LO ANCHO ============================ -->
+<section class="cu-hero" aria-labelledby="h1">
+  <div class="envoltura">
+    <div class="cu-hero__cabeza">
       <nav class="ruta" aria-label="Estás en">
         <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
         <a href="instrumento-y-canto.html">Cursos</a><span aria-hidden="true">/</span>
         <span aria-current="page">Producción y mezcla</span>
       </nav>
-      <h1 class="t-mega ph__h1" id="h1">Producción <em>y mezcla</em></h1>
-      <p class="ph__lema">Haz que suene como quieres que suene</p>
-      <div class="fh__ctas">
-        <a class="boton boton--oro" href="index.html?instrumento=Producción y mezcla#reserva">Prueba una clase de producción</a>
-        <button class="boton boton--borde solo-btn" type="button" data-solo="produccion" aria-pressed="false">
-          <svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-          <svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
-          <span>Escucha la mezcla dub</span>
-        </button>
+      <h1 class="t-mega cu-hero__h1" id="h1">Producción <em>y mezcla</em></h1>
+      <p class="cu-hero__lema">Haz que suene como quieres que suene</p>
+    </div>
+    <figure class="cu-foto"><img src="assets/img/est-mesa-1600.webp" srcset="assets/img/est-mesa-900.webp 900w, assets/img/est-mesa-1600.webp 1600w" sizes="(min-width: 1360px) 1320px, 92vw" width="1600" height="1067" alt="La mesa de mezclas del estudio" fetchpriority="high" decoding="async"></figure>
+  </div>
+</section>
+
+<!-- ============================ LA FICHA ============================ -->
+<section class="cu-ficha" id="produccion" aria-labelledby="produccion-t">
+  <div class="envoltura">
+    <div class="cu-ficha__cabeza">
+      <div class="cu-ficha__intro">
+        <h2 class="t-seccion" id="produccion-t">El <em>objetivo</em></h2>
+        <ul class="cu-chips"><li>Online</li><li>Presencial en Madrid</li><li>Cubase, Pro Tools, Ableton y Logic Pro</li><li>Mezcla analógica y digital</li></ul>
+        <div class="cu-ficha__texto">
+          <p>Poder decidir rápidamente lo que quieres (y lo que no) de tu producción con un conocimiento basado en la experiencia. Trabajaremos poco a poco los diversos campos del mundo de la producción siempre sobre composiciones propias o ejemplos prácticos y estudiaremos las técnicas y sonidos clásicos del género.</p>
+        </div>
+      <div class="cu-profes">
+        <div class="cu-profe"><img src="assets/img/prof4-javier-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Javier Ochoa</strong><span>Ha tocado con The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</span></div></div>
+      </div>
+      </div>
+      <div class="cu-media">
+        <figure class="cu-media__foto"><img src="assets/img/est-vumetros-1200.webp" srcset="assets/img/est-vumetros-720.webp 720w, assets/img/est-vumetros-1200.webp 1200w" sizes="(min-width: 1000px) 40vw, 92vw" width="1200" height="800" alt="Vúmetros de la mesa iluminados en naranja" loading="lazy" decoding="async"></figure>
+        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="produccion" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la mezcla dub</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="produccion"></span></span></div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============================ EL OBJETIVO ============================ -->
-<section class="objetivo seccion" aria-labelledby="objetivo-t">
-  <div class="envoltura objetivo__int">
-    <div data-revela>
-      <h2 class="t-seccion" id="objetivo-t">El <em>objetivo</em></h2>
-      <p class="objetivo__grande">Poder decidir rápidamente lo que quieres (y lo que no) de tu producción con un conocimiento
-      basado en la experiencia. Trabajaremos poco a poco los diversos campos del mundo de la producción siempre sobre
-      composiciones propias o ejemplos prácticos y estudiaremos las técnicas y sonidos clásicos del género.</p>
+    <div class="cu-ficha__bloque">
+      <h3 class="cu-h3">Lo que vas a trabajar</h3>
+        <ul class="cu-puntos" data-revela>
+          <li style="--i:0">Aprende técnicas de composición y arreglos musicales orientado a la producción discográfica.</li>
+          <li style="--i:1">Realizaremos un detallado estudio de cada instrumento y su rol en la canción.</li>
+          <li style="--i:2">Te instruiremos sobre el proceso de preproducción.</li>
+          <li style="--i:3">Aprende técnicas de grabación de instrumentos.</li>
+          <li style="--i:4">Trabajamos con Cubase, Pro Tools, Ableton y Logic pro.</li>
+          <li style="--i:5">Técnicas de edición y preparación para la mezcla.</li>
+          <li style="--i:6">Mezcla analógica / mezcla digital.</li>
+        </ul>
     </div>
-    <div class="objetivo__lado" data-revela style="--i:1">
-      <p>Aprende técnicas de composición y arreglos musicales orientado a la producción discográfica. Realizaremos un
-      detallado estudio de cada instrumento y su rol en la canción. Te instruiremos sobre el proceso de preproducción.
-      Aprende técnicas de grabación de instrumentos. Trabajamos con Cubase, Pro Tools, Ableton y Logic pro. Técnicas de
-      edición y preparación para la mezcla. Mezcla analógica / mezcla digital.</p>
-      <dl class="fh__datos">
-        <div><dt>Con</dt><dd>Javier Ochoa</dd></div>
-        <div><dt>Modalidad</dt><dd>Online o presencial en Madrid</dd></div>
-        <div><dt>Cuota</dt><dd>100 €/mes semanal<br>60 €/mes quincenal</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
 
-<!-- ============================ PRODUCCIONES DE LA ESCUELA ============================ -->
-<section class="producciones seccion" aria-labelledby="producciones-t">
-  <div class="envoltura">
-    <header class="cabeza cabeza--doble">
-      <h2 class="t-seccion" id="producciones-t" data-revela>Hecho en <em>RSM</em></h2>
-      <p class="cabeza__guia" data-revela>Producciones de la escuela.</p>
-    </header>
-    <div class="videos">
-      <figure class="video-c" data-revela>
-        <div class="video">
-          <button class="video__btn" type="button" data-video="Q55itMVZBt4" aria-label="Reproducir el vídeo Música, de Irie Cruz">
-            <img src="assets/img/video-irie-cruz-960.webp" srcset="assets/img/video-irie-cruz-480.webp 480w, assets/img/video-irie-cruz-960.webp 960w" sizes="(min-width: 760px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async">
-            <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          </button>
+    <div class="cu-ficha__bloque" id="producciones">
+      <h3 class="cu-h3">Hecho en <em>RSM</em></h3>
+      <div class="cu-videos">
+        <figure><div class="video"><button class="video__btn" type="button" data-video="Q55itMVZBt4" aria-label="Reproducir el vídeo Música, de Irie Cruz"><img src="assets/img/video-irie-cruz-960.webp" srcset="assets/img/video-irie-cruz-480.webp 480w, assets/img/video-irie-cruz-960.webp 960w" sizes="(min-width: 760px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><figcaption><strong>Música</strong> Irie Cruz</figcaption></figure>
+        <figure><div class="video"><button class="video__btn" type="button" data-video="mZm4YYsOJ8g" aria-label="Reproducir el vídeo Danger, de Nico Gardenie"><img src="assets/img/video-nico-gardenie-960.webp" srcset="assets/img/video-nico-gardenie-480.webp 480w, assets/img/video-nico-gardenie-960.webp 960w" sizes="(min-width: 760px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><figcaption><strong>Danger</strong> Nico Gardenie [RSM Productions] 2025</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="cu-ficha__bloque cu-bloques cu-bloques--2">
+        <div class="cu-bloque">
+          <h3>En un estudio de verdad</h3>
+          <p>Mesas Studer y Mackie, grabadora de cinta Fostex, Space Echo, Hammond con Leslie y Fender Rhodes.</p>
+          <a class="enlace" href="#estudio-t">Ver todo el equipo</a>
         </div>
-        <figcaption><strong>Música</strong> Irie Cruz</figcaption>
-      </figure>
-      <figure class="video-c" data-revela style="--i:1">
-        <div class="video">
-          <button class="video__btn" type="button" data-video="mZm4YYsOJ8g" aria-label="Reproducir el vídeo Danger, de Nico Gardenie">
-            <img src="assets/img/video-nico-gardenie-960.webp" srcset="assets/img/video-nico-gardenie-480.webp 480w, assets/img/video-nico-gardenie-960.webp 960w" sizes="(min-width: 760px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async">
-            <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-          </button>
+        <div class="cu-bloque cu-bloque--prueba">
+          <h3>Prueba una clase</h3>
+          <p class="cu-precio">100 €<span> /mes con clase semanal</span></p>
+          <p class="cu-precio">60 €<span> /mes con clase quincenal</span></p>
+          <p>Mismo precio online y presencial. <a class="enlace" href="la-escuela.html#tarifas-y-matricula">Tarifas y matrícula</a></p>
+          <a class="boton boton--oro" href="index.html?instrumento=Producción y mezcla#reserva">Prueba una clase de producción</a>
         </div>
-        <figcaption><strong>Danger</strong> Nico Gardenie [RSM Productions] 2025</figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -277,12 +274,12 @@
   </div>
   <div class="carril tira" tabindex="0" aria-label="Fotos del estudio" data-carril>
     <ul class="carril__pista">
-      <li class="tira__f"><img src="assets/img/est-vumetros-720.webp" width="720" height="480" alt="Vúmetros iluminados en naranja" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-eco-cinta-720.webp" width="720" height="480" alt="Eco de cinta Korg Stage Echo" loading="lazy" decoding="async"></li>
-      <li class="tira__f tira__f--v"><img src="assets/img/est-pedales-600.webp" width="600" height="900" alt="Pedales y unidades de efectos" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-bobina-720.webp" width="720" height="480" alt="Bobina de cinta Fostex con la pegatina de Estudios Estrella" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-hammond-720.webp" width="720" height="480" alt="Órgano Hammond con luz cálida" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-piano-720.webp" width="720" height="480" alt="Teclas de un piano de pared" loading="lazy" decoding="async"></li>
+        <li class="tira__f"><img src="assets/img/est-vumetros-720.webp" width="720" height="480" alt="Vúmetros iluminados en naranja" loading="lazy" decoding="async"></li>
+        <li class="tira__f"><img src="assets/img/est-eco-cinta-720.webp" width="720" height="480" alt="Eco de cinta Korg Stage Echo" loading="lazy" decoding="async"></li>
+        <li class="tira__f tira__f--v"><img src="assets/img/est-pedales-600.webp" width="600" height="900" alt="Pedales y unidades de efectos" loading="lazy" decoding="async"></li>
+        <li class="tira__f"><img src="assets/img/est-bobina-720.webp" width="720" height="480" alt="Bobina de cinta Fostex con la pegatina de Estudios Estrella" loading="lazy" decoding="async"></li>
+        <li class="tira__f"><img src="assets/img/est-hammond-720.webp" width="720" height="480" alt="Órgano Hammond con luz cálida" loading="lazy" decoding="async"></li>
+        <li class="tira__f"><img src="assets/img/est-piano-720.webp" width="720" height="480" alt="Teclas de un piano de pared" loading="lazy" decoding="async"></li>
     </ul>
   </div>
   <div class="envoltura rack">
@@ -323,21 +320,18 @@
   </div>
 </section>
 
-<!-- ============================ CIERRE ============================ -->
-<section class="cierre" aria-labelledby="cierre-t">
-  <div class="envoltura cierre__int">
-    <div data-revela>
-      <h2 class="t-seccion" id="cierre-t">Prueba una clase <em>de producción</em></h2>
-      <p class="cierre__ctas"><a class="boton boton--tinta boton--grande" href="index.html?instrumento=Producción y mezcla#reserva">Reservar la sesión de prueba</a></p>
+<!-- ============================ MÁS CURSOS (en fotos, sin la franja verde) ============================ -->
+<section class="cu-mas" aria-labelledby="mas-t">
+  <div class="envoltura">
+    <div class="cu-mas__cabeza">
+      <h2 class="t-seccion" id="mas-t">Más <em>cursos</em></h2>
+      <p>100 €/mes con clase semanal o 60 €/mes con clase quincenal, online o presencial.</p>
     </div>
-    <nav class="otros" aria-labelledby="otros-t" data-revela style="--i:1">
-      <h3 class="otros__t" id="otros-t">Más cursos</h3>
-      <ul>
-        <li><a href="instrumento-y-canto.html">Instrumento y canto</a></li>
-        <li><a href="grupal.html#combo-rsm">Combo RSM</a></li>
-        <li><a href="grupal.html#armonia-online">Curso de Armonía Online</a></li>
-      </ul>
-    </nav>
+    <div class="cu-cartas cu-cartas--anchas">
+      <a class="cu-carta" href="instrumento-y-canto.html"><img src="assets/img/curso-guitarra-892.webp" sizes="(min-width: 900px) 30vw, 78vw" width="892" height="1190" alt="Guitarrista tocando una guitarra eléctrica" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Instrumento y canto</span><span class="cu-carta__dato">Guitarra, bajo, batería, teclado, saxo y canto</span></span></a>
+      <a class="cu-carta" href="grupal.html#combo-rsm"><img src="assets/img/agenda-grupales-720.webp" sizes="(min-width: 900px) 30vw, 78vw" width="720" height="900" alt="La banda de la escuela en directo, seis músicos con camisetas de Reggae School" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Combo RSM</span><span class="cu-carta__dato">Clases grupales presenciales, con Maga Lion y David Arribas</span></span></a>
+      <a class="cu-carta" href="grupal.html#armonia-online"><img src="assets/img/est-piano-1200.webp" sizes="(min-width: 900px) 30vw, 78vw" width="1200" height="800" alt="Teclas de un piano de pared con luz lateral" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Curso de Armonía Online</span><span class="cu-carta__dato">Clases online que quedan grabadas</span></span></a>
+    </div>
   </div>
 </section>
 
@@ -397,8 +391,8 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=9.1" defer></script>
-<script src="assets/js/main.js?v=9.1" defer></script>
-<script src="assets/js/paginas.js?v=9.1" defer></script>
+<script src="assets/js/riddim.js?v=10.0" defer></script>
+<script src="assets/js/main.js?v=10.0" defer></script>
+<script src="assets/js/paginas.js?v=10.0" defer></script>
 </body>
 </html>

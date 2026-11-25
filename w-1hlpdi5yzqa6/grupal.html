@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=9.1">
-<link rel="stylesheet" href="assets/css/home.css?v=9.1">
-<link rel="stylesheet" href="assets/css/secciones.css?v=9.1">
-<link rel="stylesheet" href="assets/css/paginas.css?v=9.1">
+<link rel="stylesheet" href="assets/css/global.css?v=10.0">
+<link rel="stylesheet" href="assets/css/home.css?v=10.0">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.0">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.0">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -190,130 +190,141 @@
 </div>
 
 <main id="contenido">
-<!-- ============================ APERTURA ============================ -->
-<section class="ph ph--grupal grano" aria-labelledby="h1">
-  <div class="envoltura ph__int">
-    <div class="ph__texto">
+<!-- ============================ APERTURA: LOS DOS CURSOS EN FOTOS ============================ -->
+<section class="cu-hero" aria-labelledby="h1">
+  <div class="envoltura">
+    <div class="cu-hero__cabeza">
       <nav class="ruta" aria-label="Estás en">
         <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
         <a href="instrumento-y-canto.html">Cursos</a><span aria-hidden="true">/</span>
         <span aria-current="page">Grupal</span>
       </nav>
-      <h1 class="t-mega ph__h1" id="h1">Clases <em>grupales</em></h1>
-      <p class="ph__lede">Creemos que juntos llegamos más lejos y disfrutamos más en el proceso.</p>
-      <ul class="anclas" aria-label="En esta página">
-        <li><a href="#combo-rsm">Combo RSM</a></li>
-        <li><a href="#armonia-online">Curso de Armonía Online</a></li>
-      </ul>
+      <h1 class="t-mega cu-hero__h1" id="h1">Clases <em>grupales</em></h1>
+      <p class="cu-hero__lede">Creemos que juntos llegamos más lejos y disfrutamos más en el proceso.</p>
     </div>
-    <figure class="ph__cartel">
-      <img src="assets/img/cartel-combo-900.webp" srcset="assets/img/cartel-combo-560.webp 560w, assets/img/cartel-combo-900.webp 900w" sizes="(min-width: 960px) 40vw, 88vw" width="900" height="931" alt="Cartel del Combo RSM" fetchpriority="high" decoding="async">
-    </figure>
+    <div class="cu-cartas cu-cartas--anchas" role="tablist" aria-label="Elige tu curso" style="--n:2">
+      <a class="cu-carta" href="#combo-rsm" role="tab" aria-selected="false" aria-controls="combo-rsm" data-ficha-tab="combo-rsm"><img src="assets/img/agenda-grupales-720.webp" srcset="assets/img/agenda-grupales-480.webp 480w, assets/img/agenda-grupales-720.webp 720w" sizes="(min-width: 900px) 46vw, 78vw" width="720" height="900" alt="La banda de la escuela en directo, seis músicos con camisetas de Reggae School" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Combo RSM</span><span class="cu-carta__dato">Clases grupales presenciales, con Maga Lion y David Arribas</span></span></a>
+      <a class="cu-carta" href="#armonia-online" role="tab" aria-selected="false" aria-controls="armonia-online" data-ficha-tab="armonia-online"><img src="assets/img/est-piano-1200.webp" srcset="assets/img/est-piano-720.webp 720w, assets/img/est-piano-1200.webp 1200w" sizes="(min-width: 900px) 46vw, 78vw" width="1200" height="800" alt="Teclas de un piano de pared con luz lateral" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Curso de Armonía Online</span><span class="cu-carta__dato">Online, con las clases grabadas</span></span></a>
+    </div>
   </div>
 </section>
+
+<!-- La barra de cursos: se queda fija bajo la cabecera mientras se lee una ficha -->
+<nav class="cu-selector" aria-label="Cursos de esta página">
+  <div class="envoltura">
+    <div class="cu-selector__lista" role="tablist">
+      <a class="cu-selector__b" href="#combo-rsm" role="tab" aria-selected="false" aria-controls="combo-rsm" data-ficha-tab="combo-rsm">Combo RSM</a>
+      <a class="cu-selector__b" href="#armonia-online" role="tab" aria-selected="false" aria-controls="armonia-online" data-ficha-tab="armonia-online">Curso de Armonía Online</a>
+    </div>
+  </div>
+</nav>
+
+<div class="cu-tabs">
 
 <!-- ============================ COMBO RSM ============================ -->
-<section class="combo-p seccion" id="combo-rsm" aria-labelledby="combo-t">
-  <div class="envoltura combo-p__int">
-    <div class="combo-p__texto" data-revela>
-      <p class="inst__modo">Presencial en Madrid</p>
-      <h2 class="t-seccion" id="combo-t">Combo <em>RSM</em></h2>
-      <p class="inst__profe"><span class="inst__caras"><img src="assets/img/prof4-maga-480.webp" width="40" height="50" alt="" loading="lazy" decoding="async"><img src="assets/img/prof4-david-480.webp" width="40" height="50" alt="" loading="lazy" decoding="async"></span>con Maga Lion y David Arribas</p>
-      <h3 class="inst__lema">Un combo con mucho flow</h3>
-      <p class="inst__p">El «Combo de RSM» consiste en un curso de clases presenciales grupales en el que podrás formar parte de
-      una banda de reggae y estar acompañado de dos profesores con una larga trayectoria en el género y en la educación
-      musical. Si siempre has tenido ganas de tener un grupo musical de reggae y no sabías por dónde empezar, este es tu curso.</p>
-      <div class="fh__ctas">
-        <a class="boton boton--oro" href="index.html?instrumento=Combo RSM#reserva">Quiero entrar en el Combo</a>
-        <button class="boton boton--borde solo-btn" type="button" data-solo="combo" aria-pressed="false">
-          <svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-          <svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
-          <span>Escucha la banda entera</span>
-        </button>
+<section class="cu-ficha" id="combo-rsm" aria-labelledby="combo-t" data-ficha>
+  <div class="envoltura">
+    <div class="cu-ficha__cabeza">
+      <div class="cu-ficha__intro">
+        <h2 class="t-seccion" id="combo-t">Combo <em>RSM</em></h2>
+        <p class="cu-ficha__lema">Un combo con mucho flow</p>
+        <ul class="cu-chips"><li>Presencial en Madrid</li><li>Clases grupales</li><li>Clase semanal de 2 h</li><li>Centro de Madrid</li><li>Backline incluido</li></ul>
+        <div class="cu-ficha__texto">
+          <p>El «Combo de RSM» consiste en un curso de clases presenciales grupales en el que podrás formar parte de una banda de reggae y estar acompañado de dos profesores con una larga trayectoria en el género y en la educación musical. Si siempre has tenido ganas de tener un grupo musical de reggae y no sabías por dónde empezar, este es tu curso.</p>
+        </div>
+      <div class="cu-profes">
+        <div class="cu-profe"><img src="assets/img/prof4-maga-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Maga Lion</strong><span>Ha tocado con Ky-Mani Marley, Brian Travers (UB40), Clinton Fearon, Luciano, Mellow Mood, Macaco, Morodo y Chalart 58. Fundador de Emeterians.</span></div></div>
+        <div class="cu-profe"><img src="assets/img/prof4-david-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>David Arribas</strong><span>Ha tocado con Hotdrop, Blueskank y Rootskank. Desde 2012 lleva Downtown Beat, con Emeterians, Payoh SoulRebel y Natty Nature.</span></div></div>
+      </div>
+      </div>
+      <div class="cu-media">
+        <div class="video"><button class="video__btn" type="button" data-video="aUIB3xT4Ur0" aria-label="Reproducir el vídeo del Combo RSM"><img src="assets/img/video-combo-960.webp" srcset="assets/img/video-combo-480.webp 480w, assets/img/video-combo-960.webp 960w" sizes="(min-width: 1000px) 40vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div>
+        <figure class="cu-media__cartel"><img src="assets/img/cartel-combo-900.webp" srcset="assets/img/cartel-combo-560.webp 560w, assets/img/cartel-combo-900.webp 900w" sizes="(min-width: 1000px) 40vw, 92vw" width="900" height="931" alt="Cartel del Combo RSM: curso de combo con Maga Lion y David Arribas, clase semanal de dos horas en el centro de Madrid, backline incluido" loading="lazy" decoding="async"></figure>
+        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="combo" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la banda entera</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="combo"></span></span></div>
       </div>
     </div>
-    <div class="combo-p__media" data-revela style="--i:1">
-      <div class="video">
-        <button class="video__btn" type="button" data-video="aUIB3xT4Ur0" aria-label="Reproducir el vídeo del Combo RSM">
-          <img src="assets/img/video-combo-960.webp" srcset="assets/img/video-combo-480.webp 480w, assets/img/video-combo-960.webp 960w" sizes="(min-width: 760px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async">
-          <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
-        </button>
-      </div>
-      <dl class="fh__datos">
-        <div><dt>Cuándo</dt><dd>Una clase semanal de 2 h</dd></div>
-        <div><dt>Dónde</dt><dd>Centro de Madrid</dd></div>
-        <div><dt>Cuota</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-      </dl>
+
+    <div class="cu-ficha__bloque">
+      <h3 class="cu-h3">¿Qué voy a aprender?</h3>
+        <ul class="cu-puntos" data-revela>
+          <li style="--i:0">Desarrollar la escucha de los demás instrumentos.</li>
+          <li style="--i:1">Conocer cómo se gestiona una banda.</li>
+          <li style="--i:2">Valorar la importancia de la práctica grupal.</li>
+          <li style="--i:3">Repertorio de grandes clásicos del reggae.</li>
+          <li style="--i:4">Explorar las posibilidades creativas de la banda.</li>
+        </ul>
     </div>
-  </div>
 
-  <div class="envoltura combo-p__mas">
-    <article class="dos__b" data-revela>
-      <h3 class="dos__t">Together we rise</h3>
-      <p>Creemos que juntos llegamos más lejos y disfrutamos más en el proceso, por ello creamos este combo que te brinda
-      la oportunidad de aprender música reggae en el contexto real de una banda. El esfuerzo común y la escucha, el
-      control del sonido y los arreglos musicales, todo suma hacia el desarrollo artístico individual y grupal.</p>
-    </article>
-    <article class="dos__b" data-revela style="--i:1">
-      <h3 class="dos__t">¿Qué voy a aprender?</h3>
-      <ul class="leds">
-        <li style="--i:0">Desarrollar la escucha de los demás instrumentos.</li>
-        <li style="--i:1">Conocer cómo se gestiona una banda.</li>
-        <li style="--i:2">Valorar la importancia de la práctica grupal.</li>
-        <li style="--i:3">Repertorio de grandes clásicos del reggae.</li>
-        <li style="--i:4">Explorar las posibilidades creativas de la banda.</li>
-      </ul>
-    </article>
-    <article class="dos__b dos__b--crudo" data-revela style="--i:2">
-      <h3 class="dos__t">¿Qué necesito para empezar?</h3>
-      <ul class="requisitos">
-        <li>Dos horas libres a la semana.</li>
-        <li>Vivir en Madrid.</li>
-        <li>Instrumento propio.</li>
-        <li>Conocimientos básicos del instrumento.</li>
-      </ul>
-    </article>
-  </div>
-</section>
+    <div class="cu-ficha__bloque cu-bloques">
+        <div class="cu-bloque">
+          <h3>Together we rise</h3>
+          <p>Creemos que juntos llegamos más lejos y disfrutamos más en el proceso, por ello creamos este combo que te brinda la oportunidad de aprender música reggae en el contexto real de una banda. El esfuerzo común y la escucha, el control del sonido y los arreglos musicales, todo suma hacia el desarrollo artístico individual y grupal.</p>
+        </div>
+        <div class="cu-bloque">
+          <h3>¿Qué necesito para empezar?</h3>
+          <ul><li>Dos horas libres a la semana.</li><li>Vivir en Madrid.</li><li>Instrumento propio.</li><li>Conocimientos básicos del instrumento.</li></ul>
+        </div>
+        <div class="cu-bloque cu-bloque--prueba">
+          <h3>Entra en la banda</h3>
+          <p>Una clase semanal de dos horas en el centro de Madrid, con el backline incluido.</p>
+          <a class="boton boton--oro" href="index.html?instrumento=Combo RSM#reserva">Tengo interés por el Combo de RSM</a>
+        </div>
+    </div>
 
-<!-- ============================ CURSO DE ARMONÍA ONLINE ============================ -->
-<section class="armonia seccion" id="armonia-online" aria-labelledby="armonia-t">
-  <div class="envoltura armonia__int">
-    <figure class="armonia__foto" data-revela>
-      <img src="assets/img/est-piano-1200.webp" srcset="assets/img/est-piano-720.webp 720w, assets/img/est-piano-1200.webp 1200w" sizes="(min-width: 900px) 46vw, 92vw" width="1200" height="800" alt="Teclas de un piano de pared con luz lateral" loading="lazy" decoding="async">
-    </figure>
-    <div class="armonia__texto" data-revela style="--i:1">
-      <p class="inst__modo">Online</p>
-      <h2 class="t-seccion" id="armonia-t">Curso de Armonía <em>Online</em></h2>
-      <p class="inst__p">Las clases quedan grabadas: las tienes en el Área de alumnos, junto con el material descargable.</p>
-      <dl class="fh__datos">
-        <div><dt>Profesor</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-        <div><dt>Horario</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-        <div><dt>Cuota</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-      </dl>
-      <p class="armonia__nota"><span class="pendiente">Texto del curso por llegar</span></p>
-      <div class="fh__ctas">
-        <a class="boton boton--oro" href="contacto.html?instrumento=Armonía online">Me interesa</a>
-      </div>
+    <div class="cu-ficha__bloque">
+      <h3 class="cu-h3">Además aprenderás</h3>
+        <ul class="cu-etiquetas">
+          <li style="--i:0">Usar la voz y desarrollar el oído interno.</li>
+          <li style="--i:1">Conceptos básicos de armonía.</li>
+          <li style="--i:2">Técnicas de composición e improvisación.</li>
+          <li style="--i:3">Historia del Reggae.</li>
+          <li style="--i:4">Teoría musical básica.</li>
+          <li style="--i:5">Puesta a punto de tu instrumento.</li>
+          <li style="--i:6">Gestionar y emprender artísticamente.</li>
+          <li style="--i:7">Interpretación en estudio o directo.</li>
+        </ul>
     </div>
   </div>
 </section>
 
-<!-- ============================ CIERRE ============================ -->
-<section class="cierre" aria-labelledby="cierre-t">
-  <div class="envoltura cierre__int">
-    <div data-revela>
-      <h2 class="t-seccion" id="cierre-t">Toca <em>en banda</em></h2>
-      <p class="cierre__ctas"><a class="boton boton--tinta boton--grande" href="index.html?instrumento=Combo RSM#reserva">Quiero entrar en el Combo</a></p>
+<!-- ============================ CURSO DE ARMONÍA ONLINE (textos por llegar de la escuela) ============================ -->
+<section class="cu-ficha" id="armonia-online" aria-labelledby="armonia-t" data-ficha>
+  <div class="envoltura">
+    <div class="cu-ficha__cabeza">
+      <div class="cu-ficha__intro">
+        <h2 class="t-seccion" id="armonia-t">Curso de Armonía <em>Online</em></h2>
+        <ul class="cu-chips"><li>Online</li><li>Clases grabadas</li><li>Material descargable</li></ul>
+        <div class="cu-ficha__texto">
+          <p>Las clases quedan grabadas: las tienes en el Área de alumnos, junto con el material descargable.</p>
+        </div>
+      </div>
+      <div class="cu-media">
+        <figure class="cu-media__foto"><img src="assets/img/est-piano-1200.webp" srcset="assets/img/est-piano-720.webp 720w, assets/img/est-piano-1200.webp 1200w" sizes="(min-width: 1000px) 40vw, 92vw" width="1200" height="800" alt="Teclas de un piano de pared con luz lateral" loading="lazy" decoding="async"></figure>
+      </div>
     </div>
-    <nav class="otros" aria-labelledby="otros-t" data-revela style="--i:1">
-      <h3 class="otros__t" id="otros-t">Más cursos</h3>
-      <ul>
-        <li><a href="instrumento-y-canto.html">Instrumento y canto</a></li>
-        <li><a href="produccion-y-mezcla.html">Producción y Mezcla</a></li>
-        <li><a href="talleres-y-eventos.html">Talleres y eventos</a></li>
-      </ul>
-    </nav>
+    <div class="cu-ficha__bloque cu-bloques cu-bloques--2">
+        <div class="cu-bloque cu-bloque--prueba">
+          <h3>¿Te interesa?</h3>
+          <p>Escríbenos y te contamos todo sobre el curso.</p>
+          <a class="boton boton--oro" href="contacto.html?instrumento=Armonía online">Me interesa</a>
+        </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============================ MÁS CURSOS (en fotos, sin la franja verde) ============================ -->
+<section class="cu-mas" aria-labelledby="mas-t">
+  <div class="envoltura">
+    <div class="cu-mas__cabeza">
+      <h2 class="t-seccion" id="mas-t">Más <em>cursos</em></h2>
+      <p>100 €/mes con clase semanal o 60 €/mes con clase quincenal, online o presencial.</p>
+    </div>
+    <div class="cu-cartas cu-cartas--anchas">
+      <a class="cu-carta" href="instrumento-y-canto.html"><img src="assets/img/curso-guitarra-892.webp" sizes="(min-width: 900px) 30vw, 78vw" width="892" height="1190" alt="Guitarrista tocando una guitarra eléctrica" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Instrumento y canto</span><span class="cu-carta__dato">Guitarra, bajo, batería, teclado, saxo y canto</span></span></a>
+      <a class="cu-carta" href="produccion-y-mezcla.html"><img src="assets/img/est-mesa-900.webp" sizes="(min-width: 900px) 30vw, 78vw" width="900" height="600" alt="La mesa de mezclas del estudio" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Producción y mezcla</span><span class="cu-carta__dato">Online o presencial en Madrid, con Javier Ochoa</span></span></a>
+      <a class="cu-carta" href="talleres-y-eventos.html"><img src="assets/img/agenda-jams-720.webp" sizes="(min-width: 900px) 30vw, 78vw" width="720" height="900" alt="La banda de la escuela tocando en Madreams Music, con el público delante" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Talleres y eventos</span><span class="cu-carta__dato">Jams, talleres y conciertos de la escuela</span></span></a>
+    </div>
   </div>
 </section>
 
@@ -373,8 +384,8 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=9.1" defer></script>
-<script src="assets/js/main.js?v=9.1" defer></script>
-<script src="assets/js/paginas.js?v=9.1" defer></script>
+<script src="assets/js/riddim.js?v=10.0" defer></script>
+<script src="assets/js/main.js?v=10.0" defer></script>
+<script src="assets/js/paginas.js?v=10.0" defer></script>
 </body>
 </html>

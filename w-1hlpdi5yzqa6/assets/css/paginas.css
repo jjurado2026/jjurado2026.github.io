@@ -1001,3 +1001,277 @@ main > section:not(:first-child), main > article:not(:first-child) {
   background: var(--linea);
   pointer-events: none;
 }
+
+/* =====================================================================
+   v10 · PÁGINAS DE CURSOS (25-11-2026) — Instrumento y canto, Producción y
+   mezcla y Grupal. Ya no es todo hacia abajo:
+   · la apertura son los cursos en fotos grandes (eligen el curso);
+   · debajo, una barra fija con los cursos para cambiar sin subir;
+   · cada curso es una ficha (uno cada vez con JS; sin JS, todos seguidos):
+     cabecera con el texto y el vídeo o la foto, lo que vas a aprender en
+     tarjetas, tres bloques (niveles, qué necesito, la prueba) y «Además
+     aprenderás» en etiquetas;
+   · al final, «Más cursos» en fotos, sin la franja verde.
+   En el móvil, las fotos de la apertura y las tarjetas se deslizan de lado.
+   ===================================================================== */
+
+/* ---------- Apertura ---------- */
+.cu-hero {
+  padding-top: calc(var(--cab-alto) + clamp(24px, 4vw, 56px));
+  padding-bottom: clamp(32px, 4vw, 56px);
+  background: var(--negro);
+  overflow-x: clip;
+}
+.cu-hero__cabeza { display: grid; gap: clamp(14px, 2vw, 22px); margin-bottom: clamp(26px, 3.6vw, 48px); }
+@media (min-width: 1000px) {
+  .cu-hero__cabeza { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: end; column-gap: clamp(40px, 6vw, 96px); }
+  .cu-hero__cabeza .ruta { grid-column: 1 / -1; }
+}
+.cu-hero__h1 { font-size: clamp(2.9rem, 1.3rem + 5.6vw, 6.6rem); line-height: .94; }
+.cu-hero__lede { max-width: 34em; font-size: clamp(1.04rem, .98rem + .35vw, 1.22rem); line-height: 1.6; color: var(--texto-suave); }
+.cu-hero__lede strong { color: var(--crudo); font-weight: 600; }
+.cu-hero__lema { font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: clamp(1.3rem, 1rem + 1.2vw, 2.1rem); line-height: 1.15; color: var(--oro-texto); }
+
+/* Las fotos de los cursos: eligen el curso */
+.cu-cartas { display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); gap: clamp(10px, 1.1vw, 16px); }
+.cu-carta {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radio);
+  overflow: hidden;
+  background: var(--carbon);
+  color: var(--crudo);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.cu-cartas--anchas .cu-carta { aspect-ratio: 16 / 10; }
+.cu-carta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1100ms var(--salida); }
+.cu-carta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(19, 19, 19, .9) 0%, rgba(19, 19, 19, .35) 42%, rgba(19, 19, 19, 0) 70%);
+}
+.cu-carta__pie { position: absolute; left: clamp(12px, 1.4vw, 20px); right: clamp(12px, 1.4vw, 20px); bottom: clamp(12px, 1.4vw, 18px); z-index: 2; display: grid; gap: 6px; }
+.cu-carta__nombre {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.25rem, .9rem + 1vw, 1.9rem);
+  line-height: 1;
+  transition: color 300ms var(--salida);
+}
+.cu-carta__dato { font-size: .82rem; line-height: 1.35; color: var(--texto-suave); }
+/* La raya de oro crece bajo el nombre al pasar (y se queda en el curso elegido) */
+.cu-carta__pie::after { content: ""; height: 2px; width: 100%; background: var(--oro); transform: scaleX(0); transform-origin: left; transition: transform 520ms var(--salida); }
+.cu-carta:hover img, .cu-carta:focus-visible img { transform: scale(1.07); }
+.cu-carta:hover .cu-carta__nombre, .cu-carta:focus-visible .cu-carta__nombre { color: var(--oro-texto); }
+.cu-carta:hover .cu-carta__pie::after, .cu-carta[aria-selected="true"] .cu-carta__pie::after { transform: none; }
+.cu-carta[aria-selected="true"] .cu-carta__nombre { color: var(--oro-texto); }
+.cu-carta:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: 3px; }
+@media (max-width: 899px) {
+  .cu-cartas {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .cu-cartas::-webkit-scrollbar { display: none; }
+  .cu-carta { flex: 0 0 min(44vw, 230px); scroll-snap-align: start; }
+  .cu-cartas--anchas .cu-carta { flex-basis: min(78vw, 420px); }
+}
+/* Una sola foto, a lo ancho (Producción y mezcla) */
+.cu-foto { position: relative; margin: 0; aspect-ratio: 21 / 9; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
+.cu-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1400ms var(--salida); }
+.cu-foto:hover img { transform: scale(1.03); }
+@media (max-width: 699px) { .cu-foto { aspect-ratio: 4 / 3; } }
+
+/* ---------- La barra de cursos: fija bajo la cabecera mientras se lee ---------- */
+.cu-selector {
+  position: sticky;
+  top: var(--cab-alto);
+  z-index: 30;
+  background: rgba(19, 19, 19, .94);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-block: 1px solid var(--linea);
+}
+.cu-selector__lista { display: flex; gap: 4px; overflow-x: auto; padding-block: 8px; scrollbar-width: none; }
+.cu-selector__lista::-webkit-scrollbar { display: none; }
+.cu-selector__b {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: .94rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 220ms var(--salida), border-color 220ms var(--salida);
+}
+.cu-selector__b:hover { color: var(--crudo); }
+.cu-selector__b[aria-selected="true"] { color: var(--crudo); border-color: var(--oro); }
+@media (max-width: 699px) { .cu-selector__b { padding-inline: 13px; font-size: .9rem; } }
+
+/* ---------- La ficha de cada curso ---------- */
+.cu-ficha { padding-block: clamp(44px, 6vw, 96px); background: var(--negro); scroll-margin-top: calc(var(--cab-alto) + 62px); }
+.cu-ficha + .cu-ficha { border-top: 1px solid var(--linea); }
+.js .cu-tabs .cu-ficha + .cu-ficha { border-top: 0; }
+.cu-ficha[hidden] { display: none; }
+.cu-ficha__cabeza { display: grid; gap: clamp(28px, 4vw, 60px); align-items: start; }
+@media (min-width: 1000px) { .cu-ficha__cabeza { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); } }
+.cu-ficha__intro { display: grid; gap: 14px; justify-items: start; }
+.cu-ficha__lema { font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: clamp(1.2rem, 1rem + .8vw, 1.7rem); line-height: 1.15; color: var(--oro-texto); }
+.cu-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.cu-chips li { padding: 6px 13px; border: 1px solid var(--linea); border-radius: 999px; font-size: .86rem; line-height: 1.3; color: var(--texto-suave); }
+.cu-ficha__texto { display: grid; gap: 12px; max-width: 38em; margin-top: 6px; font-size: clamp(1.02rem, .98rem + .25vw, 1.15rem); line-height: 1.7; color: var(--crudo); }
+
+/* Quién da el curso: foto rectangular, nombre y con quién ha tocado */
+.cu-profes { display: grid; gap: 10px; width: 100%; margin-top: 10px; }
+.cu-profe {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 10px 14px 10px 10px;
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  background: var(--carbon);
+}
+.cu-profe img { width: 58px; height: 72px; border-radius: 9px; object-fit: cover; object-position: 50% 20%; }
+.cu-profe strong { display: block; font-family: var(--f-display); font-weight: 800; font-size: 1.12rem; line-height: 1.1; color: var(--crudo); }
+.cu-profe span { display: block; margin-top: 4px; font-size: .86rem; line-height: 1.45; color: var(--texto-suave); }
+
+/* El vídeo o la foto, y el canal en solo */
+.cu-media { display: grid; gap: 14px; }
+@media (min-width: 1000px) { .cu-media { position: sticky; top: calc(var(--cab-alto) + 86px); } }
+.cu-media .video__btn { border-radius: var(--radio); }
+.cu-media__foto { margin: 0; aspect-ratio: 4 / 5; max-height: 620px; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
+.cu-media__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--salida); }
+.cu-media__foto:hover img { transform: scale(1.04); }
+.cu-media__cartel { margin: 0; border-radius: var(--radio); overflow: hidden; }
+.cu-media__cartel img { display: block; width: 100%; height: auto; }
+.cu-escucha { display: flex; align-items: center; gap: 12px; }
+.cu-escucha .vu { flex: none; width: 16px; height: 46px; border-radius: 6px; }
+.cu-escucha .vu::after { background: repeating-linear-gradient(to top, transparent 0 5px, var(--negro) 5px 7px); }
+
+/* Bloques de la ficha */
+.cu-ficha__bloque { margin-top: clamp(40px, 5vw, 72px); }
+.cu-h3 { margin-bottom: clamp(16px, 2vw, 24px); font-family: var(--f-display); font-weight: 800; font-size: clamp(1.5rem, 1.15rem + 1.1vw, 2.2rem); line-height: 1.05; color: var(--crudo); }
+
+/* Lo que vas a aprender: tarjetas (en el móvil, de lado) */
+.cu-puntos { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
+.cu-puntos li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 18px 20px;
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  background: var(--carbon);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--crudo);
+  transition: border-color 300ms var(--salida);
+}
+.cu-puntos li::before {
+  content: "\2713";
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--oro);
+  color: var(--tinta);
+  font-weight: 800;
+  font-size: .82rem;
+  transition: transform 460ms var(--rebote);
+}
+@media (hover: hover) {
+  .cu-puntos li:hover { border-color: rgba(242, 181, 49, .55); }
+  .cu-puntos li:hover::before { transform: scale(1.15) rotate(-8deg); }
+}
+.js:not(.ss) .cu-puntos[data-revela] li { opacity: 0; transform: translateY(18px); }
+.js:not(.ss) .cu-puntos.visto li { opacity: 1; transform: none; transition: opacity 600ms var(--salida), transform 800ms var(--muelle); transition-delay: calc(var(--i, 0) * 70ms); }
+.js:not(.ss) .cu-puntos[data-revela] { opacity: 1; transform: none; }
+@media (max-width: 699px) {
+  .cu-puntos {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 2px var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .cu-puntos::-webkit-scrollbar { display: none; }
+  .cu-puntos li { flex: 0 0 74vw; scroll-snap-align: start; grid-template-columns: 1fr; gap: 14px; align-content: start; }
+}
+
+/* Tres bloques: niveles, qué necesito y la prueba */
+.cu-bloques { display: grid; gap: 12px; }
+@media (min-width: 900px) { .cu-bloques { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .cu-bloques--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cu-bloque {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: clamp(20px, 2.2vw, 28px);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  background: var(--carbon);
+}
+.cu-bloque h3 { font-family: var(--f-display); font-weight: 800; font-size: 1.32rem; line-height: 1.1; color: var(--crudo); }
+.cu-bloque p { color: var(--texto-suave); line-height: 1.6; }
+.cu-bloque ul { display: grid; gap: 8px; }
+.cu-bloque li { position: relative; padding-left: 20px; color: var(--texto-suave); line-height: 1.5; }
+.cu-bloque li::before { content: ""; position: absolute; left: 2px; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--oro); }
+.cu-bloque--prueba { border-color: rgba(242, 181, 49, .6); }
+.cu-bloque--prueba .cu-precio { font-family: var(--f-display); font-weight: 800; font-size: 1.5rem; line-height: 1.1; color: var(--crudo); }
+.cu-bloque--prueba .cu-precio span { font-family: var(--f-texto); font-weight: 400; font-size: .9rem; color: var(--texto-suave); }
+.cu-bloque--prueba .boton { justify-self: start; margin-top: 6px; }
+
+/* Además aprenderás: etiquetas */
+.cu-etiquetas { display: flex; flex-wrap: wrap; gap: 10px; }
+.cu-etiquetas li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  font-size: .96rem;
+  line-height: 1.3;
+  color: var(--crudo);
+  transition: border-color 300ms var(--salida);
+}
+.cu-etiquetas li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--oro); transition: transform 400ms var(--rebote); }
+@media (hover: hover) { .cu-etiquetas li:hover { border-color: rgba(242, 181, 49, .55); } .cu-etiquetas li:hover::before { transform: scale(1.6); } }
+
+/* Vídeos dentro de la ficha (producciones de la escuela) */
+.cu-videos { display: grid; gap: 14px; }
+@media (min-width: 760px) { .cu-videos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cu-videos figcaption { margin-top: 10px; color: var(--texto-suave); font-size: .92rem; }
+.cu-videos figcaption strong { color: var(--crudo); font-weight: 650; margin-right: 6px; }
+.cu-videos figure { margin: 0; }
+
+/* ---------- Más cursos: en fotos, sin la franja verde ---------- */
+.cu-mas { padding-block: clamp(56px, 7vw, 112px); background: var(--negro); border-top: 1px solid var(--linea); }
+.cu-mas__cabeza { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 32px; margin-bottom: clamp(22px, 3vw, 36px); }
+.cu-mas__cabeza p { color: var(--texto-suave); }
+.cu-mas .cu-cartas { --n: 3; }
+@media (prefers-reduced-motion: reduce) {
+  .js .cu-puntos li { opacity: 1 !important; transform: none !important; }
+  .cu-carta img, .cu-foto img, .cu-media__foto img { transition: none; }
+}
