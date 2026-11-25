@@ -82,6 +82,47 @@
      Las fotos de la apertura y la barra fija eligen el curso; se ve su ficha y las demás se ocultan.
      La dirección lleva el curso (#guitarra…), así que los enlaces del menú y las redirecciones de las
      direcciones antiguas abren el suyo. Sin JS, todas las fichas seguidas y los enlaces son anclas. */
+  /* ---------- v10.2: vídeos que vuelven a su portada ----------
+     Un vídeo que se oculta (al cambiar de curso, o de «Vídeo» a «Cartel») deja de sonar: el iframe vuelve
+     a ser la portada con su botón. */
+  const portadas = new Map();
+  $$('.cu-ficha .video').forEach((v) => { const b = $('[data-video]', v); if (b) portadas.set(v, b.cloneNode(true)); });
+  const ponerVideo = (btn) => btn.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0`;
+    f.title = (btn.getAttribute('aria-label') || 'Vídeo').replace(/^Reproducir /, '');
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    btn.replaceWith(f);
+    f.focus();
+  });
+  const apagarVideos = (zona) => $$('.video', zona).forEach((v) => {
+    const f = $('iframe', v);
+    const copia = portadas.get(v);
+    if (!f || !copia) return;
+    const b = copia.cloneNode(true);
+    ponerVideo(b);
+    f.replaceWith(b);
+  });
+
+  /* ---------- v10.2: con dos vídeos (batería) o vídeo y cartel (Combo), uno cada vez ---------- */
+  $$('[data-medios]').forEach((m) => {
+    const items = $$('[data-medio]', m);
+    const botones = $$('[data-medio-b]', m);
+    m.classList.add('con-pase');
+    const elegir = (k) => {
+      items.forEach((it, j) => {
+        const si = j === k;
+        it.classList.toggle('activo', si);
+        if (si) it.removeAttribute('inert');
+        else { it.setAttribute('inert', ''); apagarVideos(it); }
+      });
+      botones.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k)));
+    };
+    botones.forEach((b, j) => b.addEventListener('click', () => elegir(j)));
+    elegir(0);
+  });
+
   const fichas = $$('[data-ficha]');
   if (fichas.length > 1) {
     const pestanas = $$('[data-ficha-tab]');
@@ -90,7 +131,7 @@
     const ids = fichas.map((f) => f.id);
     const mostrar = (id, desplazar) => {
       const f = fichas.find((x) => x.id === id) || fichas[0];
-      fichas.forEach((x) => { x.hidden = x !== f; });
+      fichas.forEach((x) => { x.hidden = x !== f; if (x !== f) apagarVideos(x); });
       pestanas.forEach((t) => {
         const si = t.dataset.fichaTab === f.id;
         t.setAttribute('aria-selected', String(si));
@@ -122,6 +163,19 @@
       mostrar(sig.dataset.fichaTab, false);
       sig.focus();
     });
+    // v10.2: al pasar el ratón, la píldora de cada curso sigue un poco al cursor (se mueve la píldora y el
+    // texto, no el enlace)
+    if (barra && window.matchMedia('(hover: hover)').matches && !reducido.matches) {
+      $$('.cu-selector__b', barra).forEach((b) => {
+        b.addEventListener('pointermove', (e) => {
+          if (e.pointerType !== 'mouse') return;
+          const r = b.getBoundingClientRect();
+          b.style.setProperty('--mx', `${(((e.clientX - r.left) / r.width) - 0.5) * 10}px`);
+          b.style.setProperty('--my', `${(((e.clientY - r.top) / r.height) - 0.5) * 6}px`);
+        });
+        b.addEventListener('pointerleave', () => { b.style.removeProperty('--mx'); b.style.removeProperty('--my'); });
+      });
+    }
     const pedido = location.hash.slice(1);
     const deEntrada = ids.includes(pedido);
     mostrar(deEntrada ? pedido : ids[0], false);

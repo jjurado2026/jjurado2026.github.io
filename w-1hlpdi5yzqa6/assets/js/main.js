@@ -355,7 +355,7 @@
     if (R && R.sonando) R.parar();
     const f = document.createElement('iframe');
     f.src = `https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0`;
-    f.title = 'Presentación de Reggae School Madrid, con Javier Ochoa';
+    f.title = (btn.getAttribute('aria-label') || 'Presentación de Reggae School Madrid, con Javier Ochoa').replace(/^Reproducir /, '');
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
     btn.replaceWith(f);
