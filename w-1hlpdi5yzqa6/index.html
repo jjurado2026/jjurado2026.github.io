@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.0">
-<link rel="stylesheet" href="assets/css/home.css?v=10.0">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.0">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.0">
+<link rel="stylesheet" href="assets/css/global.css?v=10.1">
+<link rel="stylesheet" href="assets/css/home.css?v=10.1">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.1">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.1">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -593,8 +593,9 @@
 <!-- v9.1 (24-11-2026): cuatro cintas de créditos, más grandes, que pasan solas en sentidos alternos; cada artista
      lleva el nombre del profe que tocó con él, sin su cara (el JS lo saca del «Ha tocado con» de cada profe del
      carrusel, así en WordPress va solo). Se paran con el ratón encima. Sin JS, en captura o con movimiento reducido,
-     la lista quieta. Los tres cabezas, en oro. Con quién tocaron Swan Fyahbwoy e Iseo & Dodosound lo confirma Juan -->
-<section class="artistas seccion fondo-negro" id="con-quien" aria-labelledby="artistas-t" data-creditos>
+     la lista quieta. Los tres cabezas, en oro. v10.1 (25-11): fondo verde y por orden alfabético (lo ordena también
+     el JS, así en WordPress da igual en qué orden se escriban), de la A a la Z de la primera cinta a la cuarta. Con quién tocaron Swan Fyahbwoy e Iseo & Dodosound lo confirma Juan -->
+<section class="artistas seccion fondo-verde" id="con-quien" aria-labelledby="artistas-t" data-creditos>
   <div class="envoltura">
     <header class="cabeza cabeza--doble">
       <h2 class="t-seccion" id="artistas-t" data-revela>Artistas con los que <em>hemos tocado</em></h2>
@@ -603,31 +604,31 @@
   </div>
   <div class="creditos" data-revela>
     <ul class="creditos__lista" aria-label="Artistas y bandas con los que han tocado">
-      <li class="credito credito--top"><span class="credito__artista">Ky-Mani Marley</span></li>
-      <li class="credito credito--top"><span class="credito__artista">Ska-P</span></li>
-      <li class="credito credito--top"><span class="credito__artista">Morodo</span></li>
+      <li class="credito"><span class="credito__artista">Al Campbell</span></li>
+      <li class="credito"><span class="credito__artista">Alamedadosoulna</span></li>
+      <li class="credito"><span class="credito__artista">Alpheus</span></li>
       <li class="credito"><span class="credito__artista">Brian Travers (UB40)</span></li>
+      <li class="credito"><span class="credito__artista">Chalart 58</span></li>
       <li class="credito"><span class="credito__artista">Clinton Fearon</span></li>
+      <li class="credito"><span class="credito__artista">Downtown Beat</span></li>
+      <li class="credito"><span class="credito__artista">Echo Chamber Roots Hi-Fi</span></li>
+      <li class="credito"><span class="credito__artista">Emeterians</span></li>
+      <li class="credito"><span class="credito__artista">Freedonia</span></li>
+      <li class="credito"><span class="credito__artista">Hermano L</span></li>
+      <li class="credito"><span class="credito__artista">Iseo &amp; Dodosound</span></li>
+      <li class="credito"><span class="credito__artista">J.P. Bimeni &amp; The Black Belts</span></li>
+      <li class="credito credito--top"><span class="credito__artista">Ky-Mani Marley</span></li>
       <li class="credito"><span class="credito__artista">Luciano</span></li>
       <li class="credito"><span class="credito__artista">Macaco</span></li>
-      <li class="credito"><span class="credito__artista">Swan Fyahbwoy</span></li>
-      <li class="credito"><span class="credito__artista">Iseo &amp; Dodosound</span></li>
-      <li class="credito"><span class="credito__artista">Xoel López</span></li>
-      <li class="credito"><span class="credito__artista">Al Campbell</span></li>
-      <li class="credito"><span class="credito__artista">Michael Prophet</span></li>
-      <li class="credito"><span class="credito__artista">Hermano L</span></li>
       <li class="credito"><span class="credito__artista">Mellow Mood</span></li>
-      <li class="credito"><span class="credito__artista">Freedonia</span></li>
-      <li class="credito"><span class="credito__artista">Chalart 58</span></li>
-      <li class="credito"><span class="credito__artista">Alpheus</span></li>
-      <li class="credito"><span class="credito__artista">Emeterians</span></li>
-      <li class="credito"><span class="credito__artista">J.P. Bimeni &amp; The Black Belts</span></li>
-      <li class="credito"><span class="credito__artista">The Rootskank</span></li>
-      <li class="credito"><span class="credito__artista">Downtown Beat</span></li>
+      <li class="credito"><span class="credito__artista">Michael Prophet</span></li>
+      <li class="credito credito--top"><span class="credito__artista">Morodo</span></li>
       <li class="credito"><span class="credito__artista">Shirley Davis &amp; the Silverbacks</span></li>
+      <li class="credito credito--top"><span class="credito__artista">Ska-P</span></li>
       <li class="credito"><span class="credito__artista">Skalone</span></li>
-      <li class="credito"><span class="credito__artista">Echo Chamber Roots Hi-Fi</span></li>
-      <li class="credito"><span class="credito__artista">Alamedadosoulna</span></li>
+      <li class="credito"><span class="credito__artista">Swan Fyahbwoy</span></li>
+      <li class="credito"><span class="credito__artista">The Rootskank</span></li>
+      <li class="credito"><span class="credito__artista">Xoel López</span></li>
     </ul>
   </div>
 </section>
@@ -653,27 +654,26 @@
       </dl>
       <p class="jam__p" data-revela style="--i:3">Es un momento muy valioso para que los alumnos puedan conocerse, subirse al escenario y evolucionar en su formación artística y profesional. Al tener la banda base de profesores con músicos que se quieran sumar, se genera un espacio seguro: generar una experiencia positiva para el alumno es fundamental para ganar confianza sobre el escenario.</p>
       <p class="jam__fecha" data-revela style="--i:4"><span class="jam__punto" aria-hidden="true"></span><span>Última</span> Vermut Reggae Jam, domingo 25 de octubre, en Madreams Music.</p>
-      <p class="jam__enlaces" data-revela style="--i:5"><a class="enlace" href="talleres-y-eventos.html#vermut-reggae-jam">Ver la jam en la agenda</a><a class="enlace" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Próximas fechas, en Instagram</a></p>
     </div>
   </div>
 </section>
 
 <!-- ============================ RSM PRODUCTIONS ============================ -->
 <!-- v10 (25-11-2026): del escenario al estudio. Texto de la escuela (25-11); el «aquí» del catálogo lleva, de momento,
-     a las producciones de la página de Producción y mezcla (falta el enlace del catálogo: lo confirma Juan). -->
+     a las producciones de la página de Producción y mezcla (falta el enlace del catálogo: lo confirma Juan).
+     v10.1: el orden de lectura era lioso (título a la izquierda, texto arriba a la derecha y otro debajo). Ahora todo
+     el texto a la izquierda, de arriba abajo, y las dos producciones, una encima de la otra, a la derecha. -->
 <section class="prodh seccion fondo-negro" id="rsm-productions" aria-labelledby="prodh-t">
-  <div class="envoltura">
-    <header class="cabeza cabeza--doble">
-      <h2 class="t-seccion" id="prodh-t" data-revela>RSM <em>Productions</em></h2>
-      <p class="cabeza__guia" data-revela>Además de preparar las canciones para presentarlas sobre un escenario, en la escuela damos importancia al contexto estudio. Muchos de nuestros profesores cuentan con un estudio profesional donde desarrollan las clases.</p>
-    </header>
-    <div class="prodh__int">
-      <div class="prodh__texto" data-revela>
-        <p>Por ello, impartimos la composición como asignatura transversal en todos los instrumentos, la composición lírica en voz, y preparamos al alumno o alumna para la situación de poder grabar en un estudio, produciendo una composición propia. Se acompaña en todos los procesos de producción para sacar un single.</p>
-        <a class="enlace" href="produccion-y-mezcla.html#producciones">Escucha nuestro catálogo de producciones de alumnos</a>
-      </div>
-      <figure data-revela style="--i:1"><div class="video"><button class="video__btn" type="button" data-video="Q55itMVZBt4" aria-label="Reproducir el vídeo Música, de Irie Cruz"><img src="assets/img/video-irie-cruz-960.webp" srcset="assets/img/video-irie-cruz-480.webp 480w, assets/img/video-irie-cruz-960.webp 960w" sizes="(min-width: 1000px) 30vw, (min-width: 700px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><figcaption><strong>Música</strong> Irie Cruz</figcaption></figure>
-      <figure data-revela style="--i:2"><div class="video"><button class="video__btn" type="button" data-video="mZm4YYsOJ8g" aria-label="Reproducir el vídeo Danger, de Nico Gardenie"><img src="assets/img/video-nico-gardenie-960.webp" srcset="assets/img/video-nico-gardenie-480.webp 480w, assets/img/video-nico-gardenie-960.webp 960w" sizes="(min-width: 1000px) 30vw, (min-width: 700px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><figcaption><strong>Danger</strong> Nico Gardenie [RSM Productions] 2025</figcaption></figure>
+  <div class="envoltura prodh__int">
+    <div class="prodh__texto">
+      <h2 class="t-seccion prodh__t" id="prodh-t" data-revela>RSM <em>Productions</em></h2>
+      <p class="prodh__lede" data-revela style="--i:1">Además de preparar las canciones para presentarlas sobre un escenario, en la escuela damos importancia al contexto estudio. Muchos de nuestros profesores cuentan con un estudio profesional donde desarrollan las clases.</p>
+      <p class="prodh__p" data-revela style="--i:2">Por ello, impartimos la composición como asignatura transversal en todos los instrumentos, la composición lírica en voz, y preparamos al alumno o alumna para la situación de poder grabar en un estudio, produciendo una composición propia. Se acompaña en todos los procesos de producción para sacar un single.</p>
+      <p data-revela style="--i:3"><a class="enlace" href="produccion-y-mezcla.html#producciones">Escucha nuestro catálogo de producciones de alumnos</a></p>
+    </div>
+    <div class="prodh__videos">
+      <figure data-revela><div class="video"><button class="video__btn" type="button" data-video="Q55itMVZBt4" aria-label="Reproducir el vídeo Música, de Irie Cruz"><img src="assets/img/video-irie-cruz-960.webp" srcset="assets/img/video-irie-cruz-480.webp 480w, assets/img/video-irie-cruz-960.webp 960w" sizes="(min-width: 900px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><figcaption><strong>Música</strong> Irie Cruz</figcaption></figure>
+      <figure data-revela style="--i:1"><div class="video"><button class="video__btn" type="button" data-video="mZm4YYsOJ8g" aria-label="Reproducir el vídeo Danger, de Nico Gardenie"><img src="assets/img/video-nico-gardenie-960.webp" srcset="assets/img/video-nico-gardenie-480.webp 480w, assets/img/video-nico-gardenie-960.webp 960w" sizes="(min-width: 900px) 46vw, 92vw" width="960" height="540" alt="" loading="lazy" decoding="async"><span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button></div><figcaption><strong>Danger</strong> Nico Gardenie [RSM Productions] 2025</figcaption></figure>
     </div>
   </div>
 </section>
@@ -1249,9 +1249,9 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=10.0" defer></script>
-<script src="assets/js/main.js?v=10.0" defer></script>
-<script src="assets/js/secciones.js?v=10.0" defer></script>
-<script src="assets/js/paginas.js?v=10.0" defer></script>
+<script src="assets/js/riddim.js?v=10.1" defer></script>
+<script src="assets/js/main.js?v=10.1" defer></script>
+<script src="assets/js/secciones.js?v=10.1" defer></script>
+<script src="assets/js/paginas.js?v=10.1" defer></script>
 </body>
 </html>

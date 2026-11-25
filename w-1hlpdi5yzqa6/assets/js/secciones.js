@@ -87,7 +87,12 @@
   const creditos = document.querySelector('[data-creditos]');
   if (creditos) {
     const caja = creditos.querySelector('.creditos');
-    const items = [...creditos.querySelectorAll('.creditos__lista .credito')];
+    // v10.1: por orden alfabético, para encontrar a cada artista de un vistazo (también la lista quieta)
+    const nombreDe = (li) => (li.querySelector('.credito__artista') || li).textContent.trim();
+    const items = [...creditos.querySelectorAll('.creditos__lista .credito')]
+      .sort((a, b) => nombreDe(a).localeCompare(nombreDe(b), 'es', { sensitivity: 'base' }));
+    const listaQuieta = creditos.querySelector('.creditos__lista');
+    if (listaQuieta) listaQuieta.append(...items);
     const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
       .replace(/\band\b/g, '&').replace(/^the\s+/, '').replace(/\s+/g, ' ').trim();
     const profes = [...document.querySelectorAll('[data-flow-carta]')].map((c) => ({
@@ -117,13 +122,17 @@
       cinta.className = 'creditos__cinta';
       cinta.setAttribute('aria-hidden', 'true');
       const FILAS = 4;
+      // Seguidos de la A a la Z: la primera cinta empieza por la A y la cuarta acaba en la Z (7, 6, 6, 6)
+      const base = Math.floor(items.length / FILAS);
+      const sobra = items.length % FILAS;
+      const desde = (fila) => fila * base + Math.min(fila, sobra);
       [...Array(FILAS).keys()].forEach((fila) => {
         const f = document.createElement('div');
         f.className = `creditos__fila${fila % 2 ? ' creditos__fila--b' : ''}`;
         const pista = document.createElement('div');
         pista.className = 'creditos__pista';
         const grupo = document.createElement('ul');
-        items.filter((_, k) => k % FILAS === fila).forEach((li) => grupo.appendChild(li.cloneNode(true)));
+        items.slice(desde(fila), desde(fila + 1)).forEach((li) => grupo.appendChild(li.cloneNode(true)));
         // Tres copias: con pocos nombres por fila, así nunca queda hueco ni en pantallas muy anchas
         pista.append(grupo, grupo.cloneNode(true), grupo.cloneNode(true));
         f.appendChild(pista);
