@@ -273,19 +273,49 @@
     }, 12800);
   });
 
-  /* ---------- Tiras de fotos (data-carril): avanzan solas cada dos compases ---------- */
+  /* ---------- Tiras de fotos (data-carril): avanzan solas cada dos compases ----------
+     v10.4: las tiras del estudio llevan debajo dos flechas centradas, como las opiniones. Tras usarlas, la
+     tira espera 12 s antes de volver a pasar sola. */
+  const FLECHA = (d) => `<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   $$('[data-carril]').forEach((carril) => {
     if (document.body.classList.contains('inicio') && carril.closest('.profes')) return; // la home ya lo hace en secciones.js
     const pista = $('.carril__pista', carril);
     if (!pista) return;
-    let parado = false, visible = false, t = 0;
+    let parado = false, visible = false, t = 0, ultimoToque = -1e9;
     const parar = () => { parado = true; clearTimeout(t); };
     const seguir = () => { clearTimeout(t); t = setTimeout(() => { parado = false; }, 2400); };
     ['pointerenter', 'focusin', 'pointerdown', 'wheel'].forEach((ev) => carril.addEventListener(ev, parar, { passive: true }));
     ['pointerleave', 'focusout', 'pointerup'].forEach((ev) => carril.addEventListener(ev, seguir, { passive: true }));
     if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: .4 }).observe(carril);
+    if (carril.classList.contains('tira')) {
+      const mando = document.createElement('div');
+      mando.className = 'envoltura voces__mando tira__mando';
+      mando.innerHTML = '<div class="voces__flechas">'
+        + `<button class="voces__flecha" type="button" data-tira-paso="-1" aria-label="Foto anterior">${FLECHA('M14.5 5.5L8 12l6.5 6.5')}</button>`
+        + `<button class="voces__flecha" type="button" data-tira-paso="1" aria-label="Foto siguiente">${FLECHA('M9.5 5.5L16 12l-6.5 6.5')}</button></div>`;
+      carril.after(mando);
+      const mover = (d) => {
+        const max = carril.scrollWidth - carril.clientWidth;
+        if (max <= 4) return;
+        const como = reducido.matches ? 'auto' : 'smooth';
+        const ahora = carril.scrollLeft;
+        if (d > 0 && ahora >= max - 4) { carril.scrollTo({ left: 0, behavior: como }); return; }
+        if (d < 0 && ahora <= 4) { carril.scrollTo({ left: max, behavior: como }); return; }
+        const base = carril.getBoundingClientRect().left + (parseFloat(getComputedStyle(carril).paddingLeft) || 0);
+        const xs = [...pista.children].map((li) => ahora + li.getBoundingClientRect().left - base);
+        const x = d > 0 ? xs.find((v) => v > ahora + 4) : xs.reverse().find((v) => v < ahora - 4);
+        carril.scrollTo({ left: Math.max(0, Math.min(x ?? (d > 0 ? max : 0), max)), behavior: como });
+      };
+      mando.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-tira-paso]');
+        if (!b) return;
+        ultimoToque = performance.now();
+        mover(Number(b.dataset.tiraPaso));
+      });
+    }
     setInterval(() => {
       if (parado || !visible || captura || reducido.matches || document.hidden) return;
+      if (performance.now() - ultimoToque < 12000) return;
       const max = carril.scrollWidth - carril.clientWidth;
       if (max <= 4) return;
       const paso = pista.firstElementChild.offsetWidth + (parseFloat(getComputedStyle(pista).columnGap) || 0);

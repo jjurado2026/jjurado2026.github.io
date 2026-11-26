@@ -694,6 +694,12 @@ a.nav__grupo-t:hover { color: var(--oro-texto); }
 .tira__f--v { flex-basis: clamp(180px, 18vw, 280px); }
 .tira__f img { width: 100%; height: clamp(220px, 26vw, 400px); object-fit: cover; transition: transform 1200ms var(--salida); }
 .tira__f:hover img { transform: scale(1.04); }
+/* v10.4 · Flechas centradas bajo la tira del estudio, como en las opiniones (las pone paginas.js) */
+.tira:has(+ .tira__mando) { margin-bottom: 0; }
+.tira__mando { margin-bottom: clamp(40px, 6vw, 72px); }
+.tira__mando:last-child { margin-bottom: 0; }
+.voces__flecha[data-tira-paso="-1"]:hover svg { transform: translateX(-3px); }
+.voces__flecha[data-tira-paso="1"]:hover svg { transform: translateX(3px); }
 .rack { display: grid; gap: clamp(32px, 4vw, 64px); }
 @media (min-width: 900px) { .rack { grid-template-columns: 1fr 1fr; } }
 .rack__t { padding-bottom: 12px; border-bottom: 2px solid var(--oro); font-family: var(--f-display); font-weight: 800; font-size: clamp(1.5rem, 1.25rem + .9vw, 2.1rem); color: var(--crudo); }
