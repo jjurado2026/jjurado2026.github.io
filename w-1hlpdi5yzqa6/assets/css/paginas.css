@@ -1034,15 +1034,6 @@ main > section:not(:first-child), main > article:not(:first-child) {
 .cu-hero__lede strong { color: var(--crudo); font-weight: 600; }
 .cu-hero__lema { font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: clamp(1.3rem, 1rem + 1.2vw, 2.1rem); line-height: 1.15; color: var(--oro-texto); }
 
-/* El ecualizador: el curso que se está viendo «suena» (en su foto de arriba y en la barra) */
-.cu-eq { box-sizing: content-box; display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
-.cu-eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--oro); transform-origin: 50% 100%; transform: scaleY(.45); }
-.cu-eq i:nth-child(2) { transform: scaleY(.8); }
-.js:not(.ss) [aria-selected="true"] .cu-eq i { animation: cu-eq 900ms ease-in-out infinite alternate; }
-.js:not(.ss) [aria-selected="true"] .cu-eq i:nth-child(2) { animation-duration: 640ms; animation-delay: -260ms; }
-.js:not(.ss) [aria-selected="true"] .cu-eq i:nth-child(3) { animation-duration: 1080ms; animation-delay: -520ms; }
-@keyframes cu-eq { from { transform: scaleY(.22); } to { transform: scaleY(1); } }
-
 /* Las fotos de los cursos: eligen el curso */
 .cu-cartas { display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); gap: clamp(10px, 1.1vw, 16px); }
 .cu-carta {
@@ -1104,19 +1095,6 @@ main > section:not(:first-child), main > article:not(:first-child) {
 .cu-carta:hover .cu-carta__pie::after, .cu-carta[aria-selected="true"] .cu-carta__pie::after { transform: none; }
 .cu-carta[aria-selected="true"] .cu-carta__nombre { color: var(--oro-texto); }
 .cu-carta:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: 3px; }
-.cu-carta .cu-eq {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 3;
-  padding: 7px 8px;
-  border-radius: 999px;
-  background: rgba(19, 19, 19, .62);
-  opacity: 0;
-  transform: scale(.4);
-  transition: opacity 260ms var(--salida), transform 560ms var(--rebote);
-}
-.cu-carta[aria-selected="true"] .cu-eq { opacity: 1; transform: none; }
 /* Al cargar, las fotos entran repartidas, como cartas sobre la mesa */
 .js:not(.ss) .cu-carta[data-entra] { transform: translateY(64px) rotate(var(--giro, 0deg)); }
 .cu-carta:nth-child(odd) { --giro: -3deg; }
@@ -1136,82 +1114,42 @@ main > section:not(:first-child), main > article:not(:first-child) {
   .cu-carta { flex: 0 0 min(44vw, 230px); scroll-snap-align: start; }
   .cu-cartas--anchas .cu-carta { flex-basis: min(78vw, 420px); }
 }
+/* v10.3: las tarjetas ya no llevan foto ni profe: el icono del instrumento y su nombre, más bajas.
+   En el móvil, en rejilla (3 y 3, o 2), todas a la vista sin deslizar. */
+.cu-cartas--ico { gap: clamp(10px, 1.1vw, 14px); }
+.cu-cartas--dos { max-width: 720px; margin-inline: auto; }
+.cu-carta--ico {
+  aspect-ratio: auto;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: clamp(10px, 1.2vw, 16px);
+  padding: clamp(20px, 2.4vw, 30px) 10px clamp(18px, 2vw, 24px);
+  border: 1px solid var(--linea);
+  transition: border-color 300ms var(--salida);
+}
+.cu-carta--ico::after { display: none; }
+.cu-carta--ico .ico { width: clamp(46px, 4.6vw, 72px); height: auto; }
+.cu-carta--ico .cu-carta__nombre { font-size: clamp(1.02rem, .9rem + .6vw, 1.5rem); line-height: 1.1; text-align: center; }
+.cu-carta--ico:hover { border-color: rgba(241, 233, 214, .4); }
+.cu-carta--ico[aria-selected="true"] { border-color: var(--oro); }
+@media (max-width: 899px) {
+  .cu-cartas--ico { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; overflow: visible; margin-inline: 0; padding: 0; }
+  .cu-cartas--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cu-carta--ico { padding: 18px 6px 16px; }
+}
+/* Producción no lleva tarjetas: la apertura es solo el título, pegada a la ficha */
+.cu-hero:not(:has(.cu-cartas)) { padding-bottom: 0; }
+.cu-hero:not(:has(.cu-cartas)) .cu-hero__cabeza { margin-bottom: 0; }
+
 /* Una sola foto, a lo ancho (Producción y mezcla) */
 .cu-foto { position: relative; margin: 0; aspect-ratio: 21 / 9; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
 .cu-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1400ms var(--salida); }
 .cu-foto:hover img { transform: scale(1.03); }
 @media (max-width: 699px) { .cu-foto { aspect-ratio: 4 / 3; } }
 
-/* ---------- La barra de cursos: fija bajo la cabecera y centrada ----------
-   Al pasar el cursor, cada curso se redondea en una píldora que salta con muelle y sigue un poco al
-   ratón (paginas.js le da --mx/--my); el elegido, en oro y con el ecualizador. Se anima la píldora
-   (un ::before) y el texto, nunca el enlace, para que no se escape de debajo del cursor. */
-.cu-selector {
-  position: sticky;
-  top: var(--cab-alto);
-  z-index: 30;
-  background: rgba(19, 19, 19, .94);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-block: 1px solid var(--linea);
-}
-.cu-selector__lista { display: flex; gap: 6px; overflow-x: auto; padding-block: 9px; scrollbar-width: none; }
-.cu-selector__lista::-webkit-scrollbar { display: none; }
-/* Centrada cuando cabe; si no cabe (móvil), empieza por la izquierda y se desliza */
-.cu-selector__lista > :first-child { margin-left: auto; }
-.cu-selector__lista > :last-child { margin-right: auto; }
-.cu-selector__b {
-  position: relative;
-  isolation: isolate;
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 8px 28px;
-  border-radius: 999px;
-  color: var(--texto-suave);
-  font-weight: 600;
-  font-size: .94rem;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 220ms var(--salida);
-  -webkit-tap-highlight-color: transparent;
-}
-.cu-selector__b::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border: 1.5px solid rgba(241, 233, 214, .36);
-  border-radius: 999px;
-  background: rgba(241, 233, 214, .07);
-  opacity: 0;
-  transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--sx, .5), var(--sy, .3));
-  transition: opacity 240ms var(--salida), transform 680ms var(--rebote), border-color 300ms var(--salida), background-color 300ms var(--salida);
-}
-.cu-selector__txt { display: inline-block; transform: translate(calc(var(--tx, 0px) + var(--mx, 0px) * .45), var(--ty, 0px)); transition: transform 560ms var(--muelle); }
-.cu-selector__b .cu-eq {
-  position: absolute;
-  left: 13px;
-  top: 50%;
-  margin-top: -6px;
-  opacity: 0;
-  transform: scale(.3);
-  transition: opacity 200ms var(--salida), transform 560ms var(--rebote);
-}
-.cu-selector__b:hover, .cu-selector__b:focus-visible { color: var(--crudo); }
-.cu-selector__b:hover::before, .cu-selector__b:focus-visible::before { opacity: 1; --sx: 1; --sy: 1; }
-.cu-selector__b:hover .cu-selector__txt { --ty: -1px; }
-.cu-selector__b[aria-selected="true"] { color: var(--crudo); }
-.cu-selector__b[aria-selected="true"]::before { opacity: 1; --sx: 1; --sy: 1; border-color: var(--oro); background-color: rgba(242, 181, 49, 0); }
-.cu-selector__b[aria-selected="true"]:hover::before { background-color: rgba(242, 181, 49, .08); }
-.cu-selector__b[aria-selected="true"] .cu-selector__txt { --tx: 9px; }
-.cu-selector__b[aria-selected="true"] .cu-eq { opacity: 1; transform: none; }
-.cu-selector__b:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: 2px; }
-@media (max-width: 699px) { .cu-selector__b { padding-inline: 24px; font-size: .9rem; } .cu-selector__b .cu-eq { left: 10px; } .cu-selector__b[aria-selected="true"] .cu-selector__txt { --tx: 8px; } }
-
 /* ---------- La ficha de cada curso ---------- */
-.cu-ficha { padding-block: clamp(36px, 4.4vw, 68px); background: var(--negro); scroll-margin-top: calc(var(--cab-alto) + 62px); }
+.cu-ficha { padding-block: clamp(36px, 4.4vw, 68px); background: var(--negro); scroll-margin-top: calc(var(--cab-alto) + 8px); }
 .cu-ficha + .cu-ficha { border-top: 1px solid var(--linea); }
 .js .cu-tabs .cu-ficha + .cu-ficha { border-top: 0; }
 .cu-ficha[hidden] { display: none; }
@@ -1264,9 +1202,6 @@ main > section:not(:first-child), main > article:not(:first-child) {
 .cu-media__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--salida); }
 .cu-media__foto:hover img { transform: scale(1.04); }
 .cu-media__cartel img { width: 100%; height: 100%; object-fit: contain; }
-.js .con-pase .cu-media__marco { grid-template-areas: "m"; }
-.js .con-pase .cu-media__item { grid-area: m; opacity: 0; transform: scale(.96); pointer-events: none; transition: opacity 420ms var(--salida), transform 640ms var(--muelle); }
-.js .con-pase .cu-media__item.activo { opacity: 1; transform: none; pointer-events: auto; }
 .cu-media__elige { display: none; }
 .js .cu-media__elige { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .cu-media__b {
@@ -1285,10 +1220,6 @@ main > section:not(:first-child), main > article:not(:first-child) {
 .cu-media__b:hover { color: var(--crudo); border-color: rgba(241, 233, 214, .5); }
 .cu-media__b[aria-pressed="true"] { color: var(--crudo); border-color: var(--oro); }
 .cu-media__b:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: 2px; }
-.cu-escucha { display: flex; align-items: center; gap: 12px; }
-.cu-escucha .vu { flex: none; width: 16px; height: 46px; border-radius: 6px; }
-.cu-escucha .vu::after { background: repeating-linear-gradient(to top, transparent 0 5px, var(--negro) 5px 7px); }
-
 /* Bloques de la ficha */
 .cu-ficha__bloque { margin-top: clamp(36px, 4.4vw, 60px); }
 .cu-centro { text-align: center; }
@@ -1430,17 +1361,334 @@ main > section:not(:first-child), main > article:not(:first-child) {
 
 /* El estudio, pegado a la ficha de Producción (sin el hueco doble de dos secciones seguidas) */
 .cu-ficha + .estudio { padding-top: clamp(28px, 3.4vw, 52px); }
-.estudio:has(+ .cu-mas) { padding-bottom: clamp(48px, 5.6vw, 88px); }
+.cu-ficha + .estudio { padding-bottom: clamp(56px, 6vw, 96px); }
 
-/* ---------- Más cursos: en fotos, centrado ---------- */
-.cu-mas { padding-block: clamp(48px, 5.6vw, 88px); background: var(--negro); border-top: 1px solid var(--linea); }
-.cu-mas__cabeza { display: grid; justify-items: center; gap: 10px; margin-bottom: clamp(22px, 3vw, 34px); text-align: center; }
-.cu-mas__cabeza p { color: var(--texto-suave); }
-.cu-mas .cu-cartas { --n: 3; }
 
 @media (prefers-reduced-motion: reduce) {
   .js .cu-puntos li, .js .cu-etiquetas li { opacity: 1 !important; transform: none !important; animation: none !important; }
   .cu-puntos li::before, .cu-puntos li::after, .cu-eq i { animation: none !important; }
   .cu-carta img, .cu-foto img, .cu-media__foto img, .cu-profe img { transition: none; }
-  .js .con-pase .cu-media__item { transition: none; }
+}
+
+/* =====================================================================
+   v10.3 · ICONOS DE LOS CURSOS (26-11-2026) — las tarjetas que eligen curso ya no
+   llevan foto ni profe: un icono de línea por instrumento (iconos_cursos.py), más
+   bajas. En reposo, quietos y del color del texto; al pasar o en el curso elegido,
+   de oro y «suenan» a tempo (75 BPM): la guitarra y el bajo se mecen, las baquetas
+   golpean por turnos, las teclas se encienden en arpegio, del saxo salen notas, el
+   micro y el ampli echan ondas y el acorde se enciende nota a nota.
+   ===================================================================== */
+.ico { display: block; overflow: visible; color: var(--crudo); transition: color 300ms var(--salida); }
+.ico * { fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.ico g { stroke: none; }
+.ico .ico__fina { stroke-width: 1.25; }
+.ico .ico__lleno { fill: currentColor; stroke: none; }
+.ico .ico__tecla { fill: var(--oro); stroke: none; opacity: 0; }
+.ico .ico__nota-c { fill: currentColor; stroke: none; transform-box: fill-box; transform-origin: center; transform: rotate(-22deg); }
+.ico .ico__ondas, .ico .ico__nota { opacity: 0; }
+.ico .ico__mece, .ico .ico__parche, .ico .ico__baqueta, .ico .ico__cono, .ico .ico__onda, .ico .ico__nota { transform-box: fill-box; }
+.ico .ico__mece { transform-origin: 50% 92%; }
+.ico .ico__parche { transform-origin: 50% 100%; }
+.ico .ico__baqueta--i { transform-origin: 0% 0%; }
+.ico .ico__baqueta--d { transform-origin: 100% 0%; }
+.ico .ico__cono, .ico .ico__onda { transform-origin: center; }
+.ico--bajo .ico__ondas .ico__onda, .ico--guitarra .ico__ondas .ico__onda { transform-origin: 0% 50%; }
+.ico--bajo .ico__ondas .ico__onda { transform-origin: 100% 50%; }
+
+/* Suena: al pasar, con el foco o en el curso elegido */
+.suena .ico, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"]) .ico { color: var(--oro-texto); }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico {
+  --pulso: 1600ms;
+}
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__ondas { opacity: 1; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__mece { animation: ico-mece var(--pulso) ease-in-out infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__onda { animation: ico-onda var(--pulso) var(--salida) infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__onda--2 { animation-delay: 200ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico--bateria .ico__baqueta--i { animation: ico-golpe-i 800ms ease-in-out infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico--bateria .ico__baqueta--d { animation: ico-golpe-d 800ms ease-in-out infinite 400ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico--bateria .ico__parche { animation: ico-parche 400ms ease-out infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico--bateria .ico__onda { animation: ico-chispa 400ms ease-out infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__tecla { animation: ico-tecla var(--pulso) linear infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__tecla--2 { animation-delay: 200ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__tecla--3 { animation-delay: 400ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__tecla--4 { animation-delay: 600ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota { animation: ico-nota var(--pulso) var(--salida) infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota--2 { animation-delay: 800ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__cono { animation: ico-cono 800ms var(--salida) infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota-c { animation: ico-acorde var(--pulso) var(--salida) infinite; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota-c--2 { animation-delay: 130ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota-c--3 { animation-delay: 260ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota-c--4 { animation-delay: 800ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota-c--5 { animation-delay: 930ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico .ico__nota-c--6 { animation-delay: 1060ms; }
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico--canto .ico__mece,
+.js:not(.ss) :is(.suena, .cu-carta:is(:hover, :focus-visible, [aria-selected="true"])) .ico--armonia .ico__mece { animation-name: ico-flota; }
+@keyframes ico-mece { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes ico-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+@keyframes ico-onda { 0% { opacity: 0; transform: scale(.7); } 30% { opacity: 1; } 100% { opacity: 0; transform: scale(1.18); } }
+@keyframes ico-chispa { 0%, 30% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ico-golpe-i { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-20deg); } 50% { transform: rotate(0); } }
+@keyframes ico-golpe-d { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(20deg); } 50% { transform: rotate(0); } }
+@keyframes ico-parche { 0%, 40%, 100% { transform: scaleY(1); } 52% { transform: scaleY(.93); } }
+@keyframes ico-tecla { 0%, 100% { opacity: 0; } 6%, 18% { opacity: .95; } 30% { opacity: 0; } }
+@keyframes ico-nota { 0% { opacity: 0; transform: translate(0, 4px); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -13px); } }
+@keyframes ico-cono { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.1); } 34% { transform: scale(1); } }
+@keyframes ico-acorde { 0%, 100% { transform: rotate(-22deg) scale(1); } 12% { transform: rotate(-22deg) scale(1.38); } 28% { transform: rotate(-22deg) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .ico * { animation: none !important; } }
+
+/* =====================================================================
+   v10.3 · PÁGINAS INTERIORES (26-11-2026) — batería de Pablo: simetría de alturas y
+   bloques en todas las secciones, sin huecos libres («RSM Shop: muchísimo hueco donde el
+   título, horrible»), sin antetítulos, más movimiento, llamadas y estética.
+   · Aperturas centradas y del alto de su contenido (.ih), con el eco dub en el título.
+   · Cabeceras de sección centradas (.cabeza-c): título y guía debajo.
+   · Talleres y eventos: la jam con su foto y, al lado y de la misma altura, la entrada de
+     la próxima (papel crudo, talón de oro troquelado, sello que gira, brillo que la recorre).
+   · Contacto: una carta que se rellena (frase con huecos) y tres tarjetas iguales.
+   · Noticias: las filas incompletas, centradas; las fechas, debajo del título.
+   · Cierres en verde, centrados (título, botón y enlaces en una línea).
+   ===================================================================== */
+
+/* Botón oscuro para fondos claros (papel crudo, oro): borde y texto de tinta; al pasar, se rellena */
+.boton--oscuro { --b-borde: var(--tinta); --b-texto: var(--tinta); --b-luz: var(--tinta); --b-texto-luz: var(--crudo); }
+
+/* ---------- Aperturas centradas ---------- */
+.ih { position: relative; padding-top: calc(var(--cab-alto) + clamp(22px, 3.4vw, 48px)); padding-bottom: clamp(28px, 3.6vw, 52px); background: var(--negro); overflow-x: clip; }
+.ih__int { display: grid; justify-items: center; gap: clamp(12px, 1.6vw, 18px); text-align: center; }
+.ih .ruta { justify-content: center; }
+.ih__h1 { font-size: clamp(2.9rem, 1.3rem + 5.6vw, 6.6rem); line-height: .94; }
+.ih__lede { max-width: 40em; font-size: clamp(1.04rem, .98rem + .35vw, 1.22rem); line-height: 1.6; color: var(--texto-suave); text-wrap: balance; }
+.ih .anclas { justify-content: center; margin-top: 4px; }
+.ih + .seccion, .ih + section { padding-top: clamp(32px, 4vw, 60px); }
+/* La escuela conserva su foto: las dos columnas, centradas en vertical y sin colchón de más */
+.ph { padding-bottom: clamp(32px, 4vw, 56px); }
+.ph__int { align-items: center; }
+.ph + .seccion { padding-top: clamp(40px, 5vw, 72px); }
+
+/* ---------- Cabeceras de sección centradas ---------- */
+.cabeza-c { display: grid; justify-items: center; gap: 12px; margin-bottom: clamp(26px, 3.6vw, 46px); text-align: center; }
+.cabeza-c__guia { max-width: 46em; color: var(--texto-suave); font-size: clamp(1rem, .96rem + .25vw, 1.12rem); line-height: 1.65; text-wrap: balance; }
+.cabeza-c__guia .pendiente { margin-left: 6px; }
+
+/* ---------- Vermut Reggae Jam: foto y entrada, de la misma altura ---------- */
+.jamt { background: var(--negro); }
+.jamt__fila { display: grid; gap: clamp(14px, 1.8vw, 22px); }
+@media (min-width: 960px) { .jamt__fila { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: stretch; } }
+.jamt__foto { position: relative; margin: 0; min-height: 300px; border-radius: var(--radio); overflow: hidden; background: var(--carbon); }
+.jamt__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; transition: transform 1400ms var(--salida); }
+.jamt__foto:hover img { transform: scale(1.05); }
+@media (max-width: 959px) { .jamt__foto { aspect-ratio: 4 / 3; min-height: 0; } }
+
+.entrada-j {
+  --muesca: 30px;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(190px, 32%, 250px);
+  border-radius: var(--radio);
+  background: var(--crudo);
+  color: var(--tinta);
+  overflow: hidden;
+}
+/* El brillo que recorre la entrada de vez en cuando */
+.entrada-j::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .55) 50%, transparent 62%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.js:not(.ss) .entrada-j.visto::after { animation: jam-brillo 7s var(--salida) infinite 1.4s; }
+@keyframes jam-brillo { 0% { transform: translateX(-120%); } 22%, 100% { transform: translateX(120%); } }
+.entrada-j__cuerpo { display: grid; align-content: center; gap: clamp(16px, 2vw, 24px); padding: clamp(24px, 3.4vw, 44px); }
+.entrada-j__t { font-family: var(--f-display); font-weight: 800; font-size: clamp(2rem, 1.4rem + 2.2vw, 3.4rem); line-height: .95; color: var(--tinta); }
+.entrada-j__t em { font-style: italic; color: var(--verde-tinta); }
+.entrada-j__datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 22px; margin: 0; }
+.entrada-j__datos div { display: grid; gap: 4px; padding-top: 10px; border-top: 1.5px solid rgba(29, 30, 30, .16); }
+.entrada-j__ancho { grid-column: 1 / -1; }
+.entrada-j__datos dt { font-size: .84rem; font-weight: 600; color: #4f4839; }
+.entrada-j__datos dd { margin: 0; font-weight: 650; line-height: 1.35; }
+/* El talón: de oro, troquelado (línea de puntos y dos muescas del color de la página) */
+.entrada-j__talon {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 16px;
+  padding: clamp(22px, 3vw, 34px) 20px;
+  border-left: 2px dashed rgba(29, 30, 30, .38);
+  background: var(--oro);
+  text-align: center;
+}
+.entrada-j__talon::before, .entrada-j__talon::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--muesca) / -2 - 1px);
+  width: var(--muesca);
+  height: var(--muesca);
+  border-radius: 50%;
+  background: var(--negro);
+}
+.entrada-j__talon::before { top: calc(var(--muesca) / -2); }
+.entrada-j__talon::after { bottom: calc(var(--muesca) / -2); }
+.entrada-j__sello { position: relative; display: grid; place-items: center; width: 112px; height: 112px; }
+.entrada-j__sello svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.entrada-j__sello text { fill: var(--tinta); font-family: var(--f-texto); font-size: 10.4px; font-weight: 700; letter-spacing: .08em; }
+.js:not(.ss) .entrada-j.visto .entrada-j__sello svg { animation: sello-gira 22s linear infinite; }
+@keyframes sello-gira { to { transform: rotate(360deg); } }
+.entrada-j__logo { width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 0 0 2px var(--tinta); }
+.js:not(.ss) .entrada-j .entrada-j__logo { transform: scale(0) rotate(-90deg); }
+.js:not(.ss) .entrada-j.visto .entrada-j__logo { transform: none; transition: transform 800ms var(--rebote) 600ms; }
+.entrada-j__ultima { display: flex; align-items: baseline; justify-content: center; gap: 8px; max-width: 16em; font-size: .92rem; font-weight: 600; line-height: 1.4; }
+.entrada-j__punto { position: relative; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--verde-tinta); transform: translateY(-1px); }
+.entrada-j__punto::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--verde-tinta); }
+.js:not(.ss) .entrada-j__punto::after { animation: jam-late 1.6s var(--salida) infinite; }
+@media (max-width: 699px) {
+  .entrada-j { grid-template-columns: minmax(0, 1fr); }
+  .entrada-j__talon { border-left: 0; border-top: 2px dashed rgba(29, 30, 30, .38); }
+  .entrada-j__talon::before, .entrada-j__talon::after { top: calc(var(--muesca) / -2 - 1px); bottom: auto; }
+  .entrada-j__talon::before { left: calc(var(--muesca) / -2); }
+  .entrada-j__talon::after { left: auto; right: calc(var(--muesca) / -2); }
+  .entrada-j__datos { gap: 12px 16px; }
+}
+
+/* ---------- Talleres de la escuela: tarjetas iguales, con su aviso abajo ---------- */
+.talleres__rejilla { align-items: stretch; }
+.taller { border: 1px solid var(--linea); transition: border-color 300ms var(--salida); }
+.taller__texto { grid-template-rows: auto auto 1fr auto; }
+.taller__aviso { justify-self: start; }
+.taller__t { transition: color 300ms var(--salida); }
+@media (hover: hover) { .taller:hover { border-color: rgba(242, 181, 49, .55); } .taller:hover .taller__t { color: var(--oro-texto); } }
+.js:not(.ss) .talleres__rejilla .taller[data-revela] { transform: translateY(40px) rotate(var(--giro, 0deg)); }
+.js:not(.ss) .talleres__rejilla .taller[data-revela].visto { transform: none; }
+.talleres__rejilla .taller:nth-child(odd) { --giro: -2deg; }
+.talleres__rejilla .taller:nth-child(even) { --giro: 2deg; }
+
+/* ---------- Cierres en verde, centrados ---------- */
+.cierre { padding-block: clamp(56px, 7vw, 104px); }
+.cierre--centro .cierre__int { grid-template-columns: minmax(0, 1fr) !important; justify-items: center; gap: clamp(18px, 2.4vw, 28px); text-align: center; }
+.cierre--centro .cierre__ctas { margin-top: 0; }
+.cierre--centro .otros ul { justify-content: center; align-items: center; }
+.otros__lead { margin-right: 4px; color: var(--crudo); font-weight: 600; }
+
+/* ---------- Contacto: la carta que se rellena ---------- */
+.carta-s { padding-bottom: clamp(56px, 7vw, 104px); background: var(--negro); }
+.carta {
+  max-width: 1000px;
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+  gap: clamp(16px, 2vw, 24px);
+  padding: clamp(26px, 4.4vw, 60px) clamp(20px, 4.4vw, 64px);
+  border-radius: calc(var(--radio) + 6px);
+  background: var(--crudo);
+  color: var(--tinta);
+  text-align: center;
+}
+.carta__t { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.7rem, 1.2rem + 1.6vw, 2.6rem); line-height: 1; color: var(--tinta); }
+.carta__frase { max-width: 30em; font-family: var(--f-display); font-weight: 500; font-size: clamp(1.25rem, .95rem + 1.25vw, 2rem); line-height: 1.95; color: var(--tinta); text-wrap: balance; }
+.hueco { position: relative; display: inline-block; max-width: 100%; vertical-align: baseline; }
+.hueco-p { white-space: nowrap; }  /* el punto no se queda solo al principio de la línea */
+.hueco input, .hueco select {
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 4px 2px;
+  border: 0;
+  border-bottom: 2px solid rgba(29, 30, 30, .32);
+  border-radius: 0;
+  background: transparent;
+  color: var(--verde-tinta);
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+.hueco input::placeholder { color: rgba(29, 30, 30, .42); font-weight: 500; font-style: italic; }
+.hueco select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 26px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%23175634' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  background-size: 18px;
+}
+.hueco select:invalid { color: rgba(29, 30, 30, .42); font-style: italic; font-weight: 500; }
+.hueco select option { color: var(--tinta); font-style: normal; }
+/* Al escribir, la raya del hueco se pinta de verde de izquierda a derecha */
+.hueco::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--verde-tinta); transform: scaleX(0); transform-origin: left; transition: transform 520ms var(--salida); pointer-events: none; }
+.hueco:focus-within::after { transform: none; }
+.hueco [aria-invalid="true"] { border-bottom-color: var(--error); }
+.carta__errores { display: grid; gap: 4px; }
+.carta__errores:not(:has(:not([hidden]))) { display: none; }
+.carta .campo__error { margin: 0; color: var(--error); }
+.carta__mas { display: grid; gap: 8px; width: min(100%, 720px); text-align: left; }
+.carta__mas label { font-weight: 700; color: var(--tinta); }
+.carta__mas textarea { width: 100%; min-height: 96px; padding: 14px 16px; border: 1.5px solid rgba(29, 30, 30, .22); border-radius: 14px; background: rgba(255, 255, 255, .45); color: var(--tinta); font: inherit; line-height: 1.5; resize: vertical; transition: border-color 220ms var(--salida); }
+.carta__mas textarea:focus { border-color: var(--verde-tinta); outline: none; }
+.carta__mas textarea::placeholder { color: rgba(29, 30, 30, .45); }
+.carta__check { width: min(100%, 720px); margin-top: 0; text-align: left; color: var(--tinta); }
+.carta__enviar { min-width: min(100%, 280px); }
+.carta__info { max-width: 44em; font-size: .84rem; color: #4f4839; }
+.carta__ok { font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; color: var(--verde-tinta); }
+.canales-c { display: grid; gap: 12px; max-width: 1000px; margin: clamp(14px, 1.8vw, 20px) auto 0; }
+@media (min-width: 760px) { .canales-c { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.canal-k { display: grid; gap: 10px; align-content: start; justify-items: center; padding: clamp(20px, 2.4vw, 28px); border: 1px solid var(--linea); border-radius: var(--radio); background: var(--carbon); text-align: center; transition: border-color 300ms var(--salida); }
+@media (hover: hover) { .canal-k:hover { border-color: rgba(242, 181, 49, .5); } }
+.canal-k__t { font-family: var(--f-display); font-weight: 800; font-size: 1.3rem; line-height: 1.1; color: var(--crudo); }
+.canal-k__lista { display: grid; gap: 6px; color: var(--texto-suave); }
+.canal-k__lista strong { margin-right: 6px; color: var(--oro-texto); }
+
+/* ---------- Redes (contacto): centradas, tres tarjetas y la tira de fotos ---------- */
+.red-lista--fila { display: grid; gap: 12px; margin: 0 0 clamp(14px, 1.8vw, 20px); }
+@media (min-width: 760px) { .red-lista--fila { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.mosaico--tira { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.mosaico--tira img { aspect-ratio: 3 / 4; height: auto; }
+@media (max-width: 699px) { .mosaico--tira { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---------- Tienda: tarjeta regalo centrada, con su brillo ---------- */
+.regalo--centro .regalo__int { grid-template-columns: minmax(0, 1fr) !important; justify-items: center; gap: clamp(14px, 2vw, 22px); text-align: center; }
+.regalo--centro .regalo__p { margin: 0; }
+.regalo--centro .tarjeta-r { position: relative; width: min(440px, 100%); margin-block: 8px; overflow: hidden; text-align: left; }
+.regalo--centro .tarjeta-r::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .22) 50%, transparent 62%); transform: translateX(-120%); pointer-events: none; }
+.js:not(.ss) .regalo--centro .tarjeta-r.visto::after { animation: jam-brillo 6s var(--salida) infinite 1s; }
+.regalo__datos { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 0; }
+.regalo__datos div { display: flex; align-items: center; gap: 10px; }
+.regalo__datos dt { color: var(--texto-suave); font-weight: 600; }
+.regalo__datos dd { margin: 0; }
+
+/* ---------- Noticias: filas centradas ---------- */
+.notas--centro { --g: clamp(16px, 2vw, 28px); display: flex !important; flex-wrap: wrap; justify-content: center; gap: var(--g); }
+.notas--centro .nota { flex: 0 1 calc((100% - 2 * var(--g)) / 3); }
+@media (max-width: 899px) { .notas--centro .nota { flex-basis: calc((100% - var(--g)) / 2); } }
+@media (max-width: 599px) { .notas--centro .nota { flex-basis: 100%; } }
+.nota__t + .nota__fecha { margin-top: -2px; }
+.destacada__foto img { object-position: 50% 30%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .entrada-j::after, .regalo--centro .tarjeta-r::after, .entrada-j__sello svg, .entrada-j__punto::after { animation: none !important; }
+  .js .entrada-j__logo, .js .talleres__rejilla .taller[data-revela] { transform: none !important; }
+}
+
+/* ---------- v10.3 · Sin huecos: colchones más cortos en las páginas interiores ----------
+   Dos secciones negras seguidas se separan con poco aire (y su filete); las de color (tarifas,
+   regalo, cierre) conservan el suyo. La ficha de cada profe, centrada en vertical y con la foto
+   cuadrada, para que foto y texto queden de alto parecido. */
+body.pagina { --seccion: clamp(60px, 7.4vw, 104px); }
+.pagina .seccion:not(.tarifas, .regalo, .cierre, .fondo-verde) + .seccion:not(.tarifas, .regalo, .cierre, .fondo-verde) { padding-top: calc(var(--seccion) * .6); }
+.pagina .seccion:not(.tarifas, .regalo, .cierre, .fondo-verde):has(+ .seccion:not(.tarifas, .regalo, .cierre, .fondo-verde)) { padding-bottom: calc(var(--seccion) * .6); }
+.archivo .t-seccion { margin-bottom: 0; }
+.profe-p { align-items: center; }
+.profe-p__foto { aspect-ratio: 1; }
+.profe-p__foto img { object-position: 50% 22%; }
+/* Contacto en el móvil: cada hueco ocupa su línea (la frase partida en trozos cortos se leía mal) */
+@media (max-width: 699px) {
+  .carta__frase { font-size: 1.22rem; line-height: 1.6; }
+  .hueco-p { white-space: normal; }
+  .hueco { display: block; width: 100%; margin: 6px 0 14px; }
+  .hueco input, .hueco select { width: 100%; padding-block: 4px 6px; }
+  .hueco-punto { display: none; }
 }

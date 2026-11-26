@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.2">
-<link rel="stylesheet" href="assets/css/home.css?v=10.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.2">
+<link rel="stylesheet" href="assets/css/global.css?v=10.3">
+<link rel="stylesheet" href="assets/css/home.css?v=10.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -217,7 +217,7 @@
         <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
         <span aria-current="page">La escuela</span>
       </nav>
-      <h1 class="t-mega ph__h1" id="h1">La <em>escuela</em></h1>
+      <h1 class="t-mega ph__h1" id="h1" data-entra>La <span class="eco" data-eco><em>escuela</em><span class="eco__rep" aria-hidden="true">escuela</span><span class="eco__rep" aria-hidden="true">escuela</span></span></h1>
       <p class="ph__lema">We are one</p>
       <p class="ph__lede">Desde que Javier Ochoa fundó Reggae School Madrid en 2020, su idea perseguía el sueño de formar un
       equipo de docentes músicos especializados en el género. Poco a poco fueron incorporándose los que hoy forman un
@@ -238,9 +238,9 @@
 <!-- ============================ EQUIPO DOCENTE ============================ -->
 <section class="equipo-p seccion" id="equipo-docente" aria-labelledby="equipo-t">
   <div class="envoltura">
-    <header class="cabeza cabeza--doble">
+    <header class="cabeza-c">
       <h2 class="t-seccion" id="equipo-t" data-revela>Equipo <em>docente</em></h2>
-      <p class="cabeza__guia" data-revela>Elige un profesor para leer su trayectoria.</p>
+      <p class="cabeza-c__guia" data-revela style="--i:1">Elige un profesor para leer su trayectoria.</p>
     </header>
     <div class="pestas" role="tablist" aria-label="Profesorado" data-pestas>
         <button class="pesta" type="button" role="tab" id="tab-javier-ochoa" aria-controls="javier-ochoa" aria-selected="true"><img src="assets/img/prof4-javier-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Javier Ochoa</span></button>
@@ -357,9 +357,9 @@
 <!-- ============================ INSTALACIONES Y ESTUDIOS ============================ -->
 <section class="estudio seccion" id="instalaciones-y-estudios" aria-labelledby="inst-t">
   <div class="envoltura">
-    <header class="cabeza cabeza--doble">
+    <header class="cabeza-c">
       <h2 class="t-seccion" id="inst-t" data-revela>Instalaciones <em>y estudios</em></h2>
-      <p class="cabeza__guia" data-revela>Las clases presenciales se dan en el estudio de cada profesor, en Madrid.
+      <p class="cabeza-c__guia" data-revela style="--i:1">Las clases presenciales se dan en el estudio de cada profesor, en Madrid.
       <span class="pendiente">Fotos de cada estudio por llegar</span></p>
     </header>
   </div>
@@ -380,9 +380,9 @@
 <!-- ============================ TARIFAS Y MATRÍCULA ============================ -->
 <section class="tarifas seccion" id="tarifas-y-matricula" aria-labelledby="tarifas-t">
   <div class="envoltura">
-    <header class="cabeza cabeza--doble">
+    <header class="cabeza-c">
       <h2 class="t-seccion" id="tarifas-t" data-revela>Tarifas <em>y matrícula</em></h2>
-      <p class="cabeza__guia" data-revela>Estas son las tarifas de nuestros cursos online y presenciales. Las clases
+      <p class="cabeza-c__guia" data-revela style="--i:1">Estas son las tarifas de nuestros cursos online y presenciales. Las clases
       presenciales se imparten en Madrid o Barcelona (saxo o piano).</p>
     </header>
     <div class="entradas">
@@ -431,15 +431,13 @@
 </section>
 
 <!-- ============================ CIERRE ============================ -->
-<section class="cierre" aria-labelledby="cierre-t">
+<section class="cierre cierre--centro" aria-labelledby="cierre-t">
   <div class="envoltura cierre__int">
-    <div data-revela>
-      <h2 class="t-seccion" id="cierre-t">Empieza <em>por una clase</em></h2>
-      <p class="cierre__ctas"><a class="boton boton--tinta boton--grande" href="index.html#reserva">Reservar la sesión de prueba</a></p>
-    </div>
-    <nav class="otros" aria-labelledby="otros-t" data-revela style="--i:1">
-      <h3 class="otros__t" id="otros-t">Los cursos</h3>
+    <h2 class="t-seccion" id="cierre-t" data-revela>Empieza <em>por una clase</em></h2>
+    <p class="cierre__ctas" data-revela style="--i:1"><a class="boton boton--tinta boton--grande" href="index.html#reserva">Reservar la sesión de prueba</a></p>
+    <nav class="otros" aria-label="Los cursos" data-revela style="--i:2">
       <ul>
+        <li class="otros__lead">Los cursos:</li>
         <li><a href="instrumento-y-canto.html">Instrumento y canto</a></li>
         <li><a href="produccion-y-mezcla.html">Producción y Mezcla</a></li>
         <li><a href="grupal.html">Grupal</a></li>
@@ -504,7 +502,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.2" defer></script>
-<script src="assets/js/paginas.js?v=10.2" defer></script>
+<script src="assets/js/main.js?v=10.3" defer></script>
+<script src="assets/js/paginas.js?v=10.3" defer></script>
 </body>
 </html>

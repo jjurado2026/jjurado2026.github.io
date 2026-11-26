@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.2">
-<link rel="stylesheet" href="assets/css/home.css?v=10.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.2">
+<link rel="stylesheet" href="assets/css/global.css?v=10.3">
+<link rel="stylesheet" href="assets/css/home.css?v=10.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -162,100 +162,107 @@
 <main id="contenido">
 <!-- En WordPress, cada fecha publicada añade su JSON-LD «Event» (startDate, location, offers):
      sin fecha confirmada no se publica, porque Google lo leería como un evento real -->
+<!-- v10.3 (26-11-2026), batería de Pablo: «más originalidad, movimiento y estética» en toda la página; la foto azul de
+     la jam fuera; «Próxima jam» mucho más estético y original; sin antetítulos («Jam», «Taller», «Toca todo el año»);
+     el cierre sin huecos. Apertura centrada, como el resto de páginas interiores. -->
 <!-- ============================ APERTURA ============================ -->
-<section class="fh fh--evento grano" aria-labelledby="h1">
-  <img class="fh__fondo" src="assets/img/noticia-jam2-900.webp" width="900" height="600" alt="" decoding="async">
-  <div class="envoltura ph__int">
-    <div class="ph__texto">
-      <nav class="ruta" aria-label="Estás en">
-        <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
-        <span aria-current="page">Talleres y eventos</span>
-      </nav>
-      <h1 class="t-mega ph__h1" id="h1">Talleres <em>y eventos</em></h1>
-      <p class="ph__lede ph__lede--claro">Jams, talleres y encuentros para tocar con más gente. Las fechas se anuncian aquí y en Instagram.</p>
-      <ul class="anclas" aria-label="En esta página">
-        <li><a href="#vermut-reggae-jam">Vermut Reggae Jam</a></li>
-        <li><a href="#reggae-for-kids">Reggae for Kids</a></li>
-        <li><a href="#taller-de-groove">Taller de Groove</a></li>
-        <li><a href="#taller-de-guitarra-acustica">Guitarra Acústica</a></li>
-        <li><a href="#taller-de-composicion-lirica">Composición Lírica</a></li>
-      </ul>
-    </div>
+<section class="ih" aria-labelledby="h1">
+  <div class="envoltura ih__int">
+    <nav class="ruta" aria-label="Estás en">
+      <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Talleres y eventos</span>
+    </nav>
+    <h1 class="t-mega ih__h1" id="h1" data-entra>Talleres <span class="eco" data-eco><em>y eventos</em><span class="eco__rep" aria-hidden="true">y eventos</span><span class="eco__rep" aria-hidden="true">y eventos</span></span></h1>
+    <p class="ih__lede" data-entra style="--i:1">Jams, talleres y encuentros para tocar con más gente. Las fechas se anuncian aquí y en Instagram.</p>
+    <ul class="anclas" aria-label="En esta página" data-entra style="--i:2">
+      <li><a href="#vermut-reggae-jam">Vermut Reggae Jam</a></li>
+      <li><a href="#reggae-for-kids">Reggae for Kids</a></li>
+      <li><a href="#taller-de-groove">Taller de Groove</a></li>
+      <li><a href="#taller-de-guitarra-acustica">Guitarra Acústica</a></li>
+      <li><a href="#taller-de-composicion-lirica">Composición Lírica</a></li>
+    </ul>
   </div>
 </section>
 
 <!-- ============================ VERMUT REGGAE JAM ============================ -->
-<section class="como-es seccion" id="vermut-reggae-jam" aria-labelledby="jam-t">
-  <div class="envoltura como-es__int">
-    <div data-revela>
-      <p class="inst__modo">Jam</p>
-      <h2 class="t-seccion" id="jam-t">Vermut <em>Reggae Jam</em></h2>
-      <p class="como-es__p">Un evento a la hora del vermú muy especial en forma de Jam al que te invitamos a venir,
+<!-- La foto de la banda en directo en Madreams y, a su lado y de la misma altura, la entrada de la próxima jam: papel
+     crudo, talón troquelado con la última fecha y el aviso, un sello que gira y un brillo que la recorre de vez en cuando -->
+<section class="jamt seccion" id="vermut-reggae-jam" aria-labelledby="jam-t">
+  <div class="envoltura">
+    <header class="cabeza-c">
+      <h2 class="t-seccion" id="jam-t" data-revela>Vermut <em>Reggae Jam</em></h2>
+      <p class="cabeza-c__guia" data-revela style="--i:1">Un evento a la hora del vermú muy especial en forma de Jam al que te invitamos a venir,
       tocar, cantar y apoyar este proyecto educativo y cultural de la ciudad de Madrid. Estaremos como banda
       base el equipo de RSM haciendo un repaso de clásicos del reggae acompañado con un set de Live dub
       (mezcla en directo) en el escenario.</p>
-      <figure class="como-es__foto">
-        <img src="assets/img/noticia-vermut-720.webp" srcset="assets/img/noticia-vermut-480.webp 480w, assets/img/noticia-vermut-720.webp 720w" sizes="(min-width: 900px) 40vw, 92vw" width="720" height="480" alt="Cantante en el escenario de Madreams Music con luz azul, en la primera Vermut Reggae Jam del curso" loading="lazy" decoding="async">
-        <figcaption>La primera del curso, en Madreams Music.</figcaption>
+    </header>
+    <div class="jamt__fila">
+      <figure class="jamt__foto" data-revela style="--i:2">
+        <img src="assets/img/agenda-jams-720.webp" srcset="assets/img/agenda-jams-480.webp 480w, assets/img/agenda-jams-720.webp 720w" sizes="(min-width: 960px) 46vw, 92vw" width="720" height="900" alt="La banda de la escuela tocando en Madreams Music, con el público delante" loading="lazy" decoding="async">
       </figure>
+      <aside class="entrada-j" aria-labelledby="billete-t" data-revela style="--i:3">
+        <div class="entrada-j__cuerpo">
+          <h3 class="entrada-j__t" id="billete-t">Próxima <em>jam</em></h3>
+          <dl class="entrada-j__datos">
+            <div><dt>Fecha</dt><dd><span class="pendiente">Por anunciar</span></dd></div>
+            <div><dt>Hora</dt><dd><span class="pendiente">Por anunciar</span></dd></div>
+            <div><dt>Lugar</dt><dd>La última, en Madreams Music</dd></div>
+            <div><dt>Entrada</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
+            <div class="entrada-j__ancho"><dt>Para</dt><dd>Alumnos y quien quiera subirse</dd></div>
+          </dl>
+        </div>
+        <div class="entrada-j__talon">
+          <span class="entrada-j__sello" aria-hidden="true"><svg viewBox="0 0 100 100" width="100" height="100"><defs><path id="sello-j" d="M50 50m-36 0a36 36 0 1 1 72 0a36 36 0 1 1-72 0"/></defs><text><textPath href="#sello-j">Vermut Reggae Jam · Madreams Music ·</textPath></text></svg><img class="entrada-j__logo" src="assets/img/logo-120.webp" width="120" height="120" alt="" loading="lazy" decoding="async"></span>
+          <p class="entrada-j__ultima"><span class="entrada-j__punto" aria-hidden="true"></span>Última: domingo 25 de octubre, la primera del curso.</p>
+          <a class="boton boton--oscuro" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Avísame en Instagram</a>
+        </div>
+      </aside>
     </div>
-    <aside class="billete" aria-labelledby="billete-t" data-revela style="--i:1">
-      <h3 class="billete__t" id="billete-t">Próxima jam</h3>
-      <dl class="billete__datos">
-        <div><dt>Fecha</dt><dd><span class="pendiente">Por anunciar</span></dd></div>
-        <div><dt>Hora</dt><dd><span class="pendiente">Por anunciar</span></dd></div>
-        <div><dt>Lugar</dt><dd>La última, en Madreams Music</dd></div>
-        <div><dt>Entrada</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-        <div><dt>Para</dt><dd>Alumnos y quien quiera subirse</dd></div>
-      </dl>
-      <p class="billete__ultima"><span>Última</span> Domingo 25 de octubre, la primera del curso.</p>
-      <a class="boton boton--tinta boton--ancho" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Avísame en Instagram</a>
-    </aside>
   </div>
 </section>
 
 <!-- ============================ TALLERES ============================ -->
 <section class="talleres seccion" aria-labelledby="talleres-t">
   <div class="envoltura">
-    <header class="cabeza cabeza--doble">
+    <header class="cabeza-c">
       <h2 class="t-seccion" id="talleres-t" data-revela>Talleres <em>de la escuela</em></h2>
-      <p class="cabeza__guia" data-revela>Cada uno tendrá su fecha, lugar, precio y el botón para apuntarte.</p>
+      <p class="cabeza-c__guia" data-revela style="--i:1">Cada uno tendrá su fecha, lugar, precio y el botón para apuntarte.</p>
     </header>
     <div class="talleres__rejilla">
       <article class="taller" id="reggae-for-kids" aria-labelledby="kids-t" data-revela>
         <div class="taller__foto"><img src="assets/img/agenda-grupales-720.webp" srcset="assets/img/agenda-grupales-480.webp 480w, assets/img/agenda-grupales-720.webp 720w" sizes="(min-width: 900px) 22vw, 88vw" width="720" height="900" alt="Banda tocando en el escenario" loading="lazy" decoding="async"></div>
         <div class="taller__texto">
-          <p class="taller__tipo">Taller</p>
           <h3 class="taller__t" id="kids-t">Reggae for Kids</h3>
           <dl class="taller__datos"><div><dt>Fecha</dt><dd><span class="pendiente">Por anunciar</span></dd></div><div><dt>Precio</dt><dd><span class="pendiente">Por confirmar</span></dd></div></dl>
           <p class="taller__nota"><span class="pendiente">Texto por llegar</span></p>
+          <a class="enlace taller__aviso" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Avísame de la fecha</a>
         </div>
       </article>
       <article class="taller" id="taller-de-groove" aria-labelledby="groove-t" data-revela style="--i:1">
         <div class="taller__foto"><img src="assets/img/est-bateria-720.webp" srcset="assets/img/est-bateria-720.webp 720w, assets/img/est-bateria-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 88vw" width="720" height="480" alt="Batería y baquetas en el estudio, con luz cálida" loading="lazy" decoding="async"></div>
         <div class="taller__texto">
-          <p class="taller__tipo">Taller</p>
           <h3 class="taller__t" id="groove-t">Taller de Groove</h3>
           <dl class="taller__datos"><div><dt>Fecha</dt><dd><span class="pendiente">Por anunciar</span></dd></div><div><dt>Precio</dt><dd><span class="pendiente">Por confirmar</span></dd></div></dl>
           <p class="taller__nota"><span class="pendiente">Texto por llegar</span></p>
+          <a class="enlace taller__aviso" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Avísame de la fecha</a>
         </div>
       </article>
       <article class="taller" id="taller-de-guitarra-acustica" aria-labelledby="acustica-t" data-revela style="--i:2">
         <div class="taller__foto"><img src="assets/img/est-guitarras-720.webp" srcset="assets/img/est-guitarras-720.webp 720w, assets/img/est-guitarras-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 88vw" width="720" height="480" alt="Guitarras colgadas en la pared, con luz cálida" loading="lazy" decoding="async"></div>
         <div class="taller__texto">
-          <p class="taller__tipo">Taller</p>
           <h3 class="taller__t" id="acustica-t">Taller de Guitarra Acústica</h3>
           <dl class="taller__datos"><div><dt>Fecha</dt><dd><span class="pendiente">Por anunciar</span></dd></div><div><dt>Precio</dt><dd><span class="pendiente">Por confirmar</span></dd></div></dl>
           <p class="taller__nota"><span class="pendiente">Texto por llegar</span></p>
+          <a class="enlace taller__aviso" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Avísame de la fecha</a>
         </div>
       </article>
       <article class="taller" id="taller-de-composicion-lirica" aria-labelledby="lirica-t" data-revela style="--i:3">
         <div class="taller__foto"><img src="assets/img/est-libros-720.webp" srcset="assets/img/est-libros-720.webp 720w, assets/img/est-libros-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 88vw" width="720" height="480" alt="Libros de música en una estantería" loading="lazy" decoding="async"></div>
         <div class="taller__texto">
-          <p class="taller__tipo">Taller</p>
           <h3 class="taller__t" id="lirica-t">Taller de Composición Lírica</h3>
           <dl class="taller__datos"><div><dt>Fecha</dt><dd><span class="pendiente">Por anunciar</span></dd></div><div><dt>Precio</dt><dd><span class="pendiente">Por confirmar</span></dd></div></dl>
           <p class="taller__nota"><span class="pendiente">Texto por llegar</span></p>
+          <a class="enlace taller__aviso" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Avísame de la fecha</a>
         </div>
       </article>
     </div>
@@ -263,15 +270,13 @@
 </section>
 
 <!-- ============================ CIERRE ============================ -->
-<section class="cierre" aria-labelledby="cierre-t">
+<section class="cierre cierre--centro" aria-labelledby="cierre-t">
   <div class="envoltura cierre__int">
-    <div data-revela>
-      <h2 class="t-seccion" id="cierre-t">La próxima, <em>en Instagram</em></h2>
-      <p class="cierre__ctas"><a class="boton boton--tinta boton--grande" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Seguir a @reggaeschoolmadrid</a></p>
-    </div>
-    <nav class="otros" aria-labelledby="otros-t" data-revela style="--i:1">
-      <h3 class="otros__t" id="otros-t">Toca todo el año</h3>
+    <h2 class="t-seccion" id="cierre-t" data-revela>La próxima, <em>en Instagram</em></h2>
+    <p class="cierre__ctas" data-revela style="--i:1"><a class="boton boton--tinta boton--grande" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Seguir a @reggaeschoolmadrid</a></p>
+    <nav class="otros" aria-label="Para tocar todo el año" data-revela style="--i:2">
       <ul>
+        <li class="otros__lead">Y todo el año:</li>
         <li><a href="grupal.html#combo-rsm">Combo RSM</a></li>
         <li><a href="instrumento-y-canto.html">Instrumento y canto</a></li>
         <li><a href="noticias.html">Noticias</a></li>
@@ -336,7 +341,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.2" defer></script>
-<script src="assets/js/paginas.js?v=10.2" defer></script>
+<script src="assets/js/main.js?v=10.3" defer></script>
+<script src="assets/js/paginas.js?v=10.3" defer></script>
 </body>
 </html>

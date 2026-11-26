@@ -622,8 +622,9 @@ body.menu-abierto .cab::after { opacity: 0; }
   --fondo-seccion: var(--verde);
 }
 :is(.fondo-verde, .tarifas, .cierre, .regalo) ::selection { background: var(--oro); color: var(--tinta); }
-.fondo-verde:has(+ .fondo-verde), .fondo-negro:has(+ .fondo-negro) { padding-bottom: calc(var(--seccion) * .82); }
-.fondo-verde + .fondo-verde, .fondo-negro + .fondo-negro { padding-top: calc(var(--seccion) * .82); }
+/* v10.3: menos colchón entre dos secciones del mismo color (Pablo: «no dejes tantos huecos libres antiestéticos») */
+.fondo-verde:has(+ .fondo-verde), .fondo-negro:has(+ .fondo-negro) { padding-bottom: calc(var(--seccion) * .6); }
+.fondo-verde + .fondo-verde, .fondo-negro + .fondo-negro { padding-top: calc(var(--seccion) * .6); }
 .fondo-verde + .fondo-verde::after, .fondo-negro + .fondo-negro::after {
   content: "";
   position: absolute;
@@ -634,3 +635,12 @@ body.menu-abierto .cab::after { opacity: 0; }
   background: var(--linea);
   pointer-events: none;
 }
+
+/* =====================================================================
+   v10.3 · UNO CADA VEZ (main.js, [data-medios]): dos vídeos, o vídeo y cartel, en el
+   mismo sitio; el elegido aparece con un fundido. Lo usan los cursos y RSM Productions.
+   ===================================================================== */
+.js .con-pase .cu-media__marco { display: grid; grid-template-areas: "m"; }
+.js .con-pase .cu-media__item { grid-area: m; min-width: 0; opacity: 0; transform: scale(.96); pointer-events: none; transition: opacity 420ms var(--salida), transform 640ms var(--muelle); }
+.js .con-pase .cu-media__item.activo { opacity: 1; transform: none; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) { .js .con-pase .cu-media__item { transition: none; } }

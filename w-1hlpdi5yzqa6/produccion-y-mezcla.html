@@ -16,11 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/est-mesa-1600.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/global.css?v=10.2">
-<link rel="stylesheet" href="assets/css/home.css?v=10.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.2">
+<link rel="stylesheet" href="assets/css/global.css?v=10.3">
+<link rel="stylesheet" href="assets/css/home.css?v=10.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -190,7 +189,7 @@
 </div>
 
 <main id="contenido">
-<!-- ============================ APERTURA: EL ESTUDIO A LO ANCHO ============================ -->
+<!-- ============================ APERTURA (v10.3: sin la foto de la mesa a lo ancho) ============================ -->
 <section class="cu-hero" aria-labelledby="h1">
   <div class="envoltura">
     <div class="cu-hero__cabeza">
@@ -202,7 +201,6 @@
       <h1 class="t-mega cu-hero__h1" id="h1" data-entra>Producción <em>y mezcla</em></h1>
       <p class="cu-hero__lema" data-entra style="--i:1">Haz que suene como quieres que suene</p>
     </div>
-    <figure class="cu-foto" data-entra style="--i:2"><img src="assets/img/est-mesa-1600.webp" srcset="assets/img/est-mesa-900.webp 900w, assets/img/est-mesa-1600.webp 1600w" sizes="(min-width: 1360px) 1320px, 92vw" width="1600" height="1067" alt="La mesa de mezclas del estudio" fetchpriority="high" decoding="async"></figure>
   </div>
 </section>
 
@@ -226,7 +224,6 @@
       <div class="cu-profes">
         <div class="cu-profe"><img src="assets/img/prof4-javier-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Javier Ochoa</strong><span>Ha tocado con The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="produccion" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la mezcla dub</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="produccion"></span></span></div>
       </div>
     </div>
 
@@ -323,21 +320,6 @@
   </div>
 </section>
 
-<!-- ============================ MÁS CURSOS (en fotos, sin la franja verde) ============================ -->
-<section class="cu-mas" aria-labelledby="mas-t">
-  <div class="envoltura">
-    <div class="cu-mas__cabeza">
-      <h2 class="t-seccion" id="mas-t" data-revela>Más <em>cursos</em></h2>
-      <p data-revela style="--i:1">100 €/mes con clase semanal o 60 €/mes con clase quincenal, online o presencial.</p>
-    </div>
-    <div class="cu-cartas cu-cartas--anchas" data-revela style="--i:2">
-      <a class="cu-carta" href="instrumento-y-canto.html"><img src="assets/img/curso-guitarra-892.webp" sizes="(min-width: 900px) 30vw, 78vw" width="892" height="1190" alt="Guitarrista tocando una guitarra eléctrica" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Instrumento y canto</span><span class="cu-carta__dato">Guitarra, bajo, batería, teclado, saxo y canto</span></span></a>
-      <a class="cu-carta" href="grupal.html#combo-rsm"><img src="assets/img/agenda-grupales-720.webp" sizes="(min-width: 900px) 30vw, 78vw" width="720" height="900" alt="La banda de la escuela en directo, seis músicos con camisetas de Reggae School" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Combo RSM</span><span class="cu-carta__dato">Clases grupales presenciales, con Maga Lion y David Arribas</span></span></a>
-      <a class="cu-carta" href="grupal.html#armonia-online"><img src="assets/img/est-piano-1200.webp" sizes="(min-width: 900px) 30vw, 78vw" width="1200" height="800" alt="Teclas de un piano de pared con luz lateral" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Curso de Armonía Online</span><span class="cu-carta__dato">Clases online que quedan grabadas</span></span></a>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer class="pie">
@@ -394,8 +376,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=10.2" defer></script>
-<script src="assets/js/main.js?v=10.2" defer></script>
-<script src="assets/js/paginas.js?v=10.2" defer></script>
+<script src="assets/js/main.js?v=10.3" defer></script>
+<script src="assets/js/paginas.js?v=10.3" defer></script>
 </body>
 </html>

@@ -444,7 +444,7 @@
   --fondo: 200px;
   --giro: -30deg;
   position: relative;
-  height: calc(var(--ancho) * 1.25 + 270px);
+  height: calc(var(--ancho) * 1.25 + 212px);
   perspective: 1600px;
   overflow: hidden;
   touch-action: pan-y;
@@ -495,14 +495,12 @@
 .flow__clases { color: var(--oro-texto); font-weight: 600; font-size: .95rem; }
 .flow__con { max-width: 34em; color: var(--texto-suave); font-size: .95rem; line-height: 1.5; }
 .flow__con strong { color: var(--crudo); font-weight: 600; }
-.flow__probar { display: inline-flex; align-items: center; min-height: 44px; color: var(--oro-texto); }
-.flow__probar:hover { color: var(--crudo); }
 /* Mientras se arrastra: las cartas van pegadas al cursor (sin transición) y las fichas se apartan */
 .flow.arrastrando, .flow.arrastrando .flow__pista * { cursor: grabbing; }
 .flow.arrastrando .flow__carta { transition: none; }
 .flow.arrastrando .flow__ficha { opacity: 0; transition-duration: 160ms; }
 @media (max-width: 699px) {
-  .flow { --ancho: 60vw; --paso: .74; --fondo: 160px; --giro: -28deg; height: calc(var(--ancho) * 1.25 + 330px); }
+  .flow { --ancho: 60vw; --paso: .74; --fondo: 160px; --giro: -28deg; height: calc(var(--ancho) * 1.25 + 262px); }
   .flow__ficha { width: 150%; margin-left: -25%; }
 }
 @media (prefers-reduced-motion: reduce) { .flow__carta { transition: opacity 1ms; opacity: max(var(--op, 1), .18); } }
@@ -660,12 +658,11 @@
   .voz:hover .voz__quien img { transform: scale(1.08); }
 }
 
-.voces__mando { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: clamp(18px, 2.2vw, 30px); }
+/* v10.3: sin las caras; las flechas, centradas */
+.voces__mando { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: clamp(18px, 2.2vw, 30px); }
 .voces__caras { display: flex; flex-wrap: wrap; gap: 6px; }
 .voces__flechas { display: flex; gap: 10px; }
 html:not(.js) .voces__mando { display: none; }
-/* En el ordenador, flechas junto a las caras: a la derecha queda el botón flotante y no se pisan */
-@media (min-width: 900px) { .voces__mando { justify-content: flex-start; gap: 32px; } }
 @media (max-width: 699px) { .voces__flecha { width: 46px; height: 46px; } }
 
 /* v7 · Llamadas a la acción nuevas */
@@ -769,23 +766,89 @@ html:not(.js) .voces__mando { display: none; }
 @media (prefers-reduced-motion: reduce) { .jam__punto::after { animation: none !important; } }
 
 /* =====================================================================
-   v10.1 · RSM PRODUCTIONS — un solo orden de lectura: el texto entero a la
-   izquierda (título, entrada, texto y enlace) y las dos producciones de alumnos,
-   una encima de la otra, a la derecha. En el móvil, el texto y luego los vídeos.
+   v10.3 · RSM PRODUCTIONS — el texto entero a la izquierda y, a la derecha, un vídeo
+   cada vez con su lista de pistas (como un reproductor): las dos columnas, igual de
+   altas. La pista que suena lleva el ecualizador.
    ===================================================================== */
 .prodh__int { display: grid; gap: clamp(32px, 5vw, 44px); }
 @media (min-width: 900px) {
   .prodh__int { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(48px, 6vw, 96px); align-items: center; }
 }
-/* En pantallas anchas, los vídeos no crecen más (si no, la columna doblaba en alto a la del texto) */
-@media (min-width: 1200px) { .prodh__int { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); } }
-/* El título, del tamaño del de la jam: son las dos secciones de la escuela fuera del aula, el escenario y el estudio */
 .prodh__t { font-size: clamp(2.6rem, 1.1rem + 5.2vw, 5.8rem); line-height: .95; }
 .prodh__texto { display: grid; gap: 18px; justify-items: start; }
 .prodh__lede { max-width: 32em; font-size: clamp(1.1rem, 1rem + .5vw, 1.36rem); line-height: 1.55; color: var(--crudo); }
 .prodh__p { max-width: 40em; color: var(--texto-suave); line-height: 1.7; }
-.prodh__videos { display: grid; gap: clamp(22px, 2.6vw, 30px); }
-.prodh__videos figure { margin: 0; }
-.prodh__videos figcaption { margin-top: 10px; color: var(--texto-suave); font-size: .92rem; }
-.prodh__videos figcaption strong { margin-right: 6px; color: var(--crudo); font-weight: 650; }
-.prodh__videos .video__btn { border-radius: var(--radio); }
+.prodh__player { display: grid; gap: 12px; min-width: 0; }
+.prodh__player .video__btn { border-radius: var(--radio); }
+.prodh__pistas { display: grid; gap: 8px; }
+html:not(.js) .prodh__pistas { display: none; }
+.prodh__pista {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 10px 18px;
+  border: 1.5px solid var(--linea);
+  border-radius: 14px;
+  background: none;
+  color: var(--texto-suave);
+  font: inherit;
+  font-size: .95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 260ms var(--salida), color 260ms var(--salida);
+}
+.prodh__pista:hover { border-color: rgba(241, 233, 214, .45); color: var(--crudo); }
+.prodh__pista[aria-pressed="true"] { border-color: var(--oro); color: var(--crudo); }
+.prodh__pista:focus-visible { outline: 2px solid var(--oro-texto); outline-offset: 2px; }
+.prodh__n { font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; color: var(--oro-texto); }
+.prodh__nombre strong { margin-right: 6px; color: var(--crudo); font-weight: 650; }
+.prodh__pista .cu-eq { opacity: 0; transform: scale(.4); transition: opacity 220ms var(--salida), transform 520ms var(--rebote); }
+.prodh__pista[aria-pressed="true"] .cu-eq { opacity: 1; transform: none; }
+/* El ecualizador de la pista que suena */
+.cu-eq { box-sizing: content-box; display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+.cu-eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--oro); transform-origin: 50% 100%; transform: scaleY(.45); }
+.js:not(.ss) [aria-pressed="true"] > .cu-eq i { animation: cu-eq 900ms ease-in-out infinite alternate; }
+.js:not(.ss) [aria-pressed="true"] > .cu-eq i:nth-child(2) { animation-duration: 640ms; animation-delay: -260ms; }
+.js:not(.ss) [aria-pressed="true"] > .cu-eq i:nth-child(3) { animation-duration: 1080ms; animation-delay: -520ms; }
+@keyframes cu-eq { from { transform: scaleY(.22); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .cu-eq i { animation: none !important; } }
+
+/* v10.3 · Tarifas: el tipo de clase ya no es una etiqueta pequeña encima del precio, sino el título de la entrada */
+.entrada__tipo { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.3rem, 1.1rem + .6vw, 1.7rem); line-height: 1.05; color: var(--tinta); }
+
+/* =====================================================================
+   v10.3 · SIMETRÍA EN LA PORTADA (26-11-2026). Pablo: «quiero que la simetría de alturas y
+   de bloques se dé en todas las secciones» y «no dejes tantos huecos libres antiestéticos».
+   · Todas las cabeceras, centradas: el título y su guía debajo (antes, título a un lado
+     y guía al otro, con un hueco en medio).
+   · Preguntas: título, lista y «¿Otra duda?», centrados en una columna.
+   · Reserva: el texto, centrado en vertical junto al formulario.
+   · Redes: tres tarjetas en fila y la tira de seis fotos (como en Contacto).
+   · En el panel de cursos, «Canal 0X · …» va debajo del nombre, no encima.
+   ===================================================================== */
+.cabeza, .cabeza--doble, .cabeza--apilada { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; justify-items: center; gap: 12px; text-align: center; }
+.cabeza .cabeza__guia { margin-top: 0; justify-self: center; max-width: 46em; text-wrap: balance; }
+.cabeza-c { display: grid; justify-items: center; gap: 12px; margin-bottom: clamp(26px, 3.6vw, 46px); text-align: center; }
+.cabeza-c__guia { max-width: 46em; color: var(--texto-suave); font-size: clamp(1rem, .96rem + .25vw, 1.12rem); line-height: 1.65; text-wrap: balance; }
+.cabeza--centro { display: grid; justify-items: center; gap: 12px; text-align: center; }
+.preguntas__int { grid-template-columns: minmax(0, 1fr) !important; justify-items: center; }
+.preguntas .cabeza { margin-bottom: 0; }
+.preguntas .faq { width: min(100%, 860px); }
+.preguntas__cta { justify-items: center; margin-top: 0; }
+.reserva__int { align-items: center; }
+.curso__t { padding-right: 96px; }
+.curso__canal { margin: 6px 0 var(--e-3); padding-right: 0; }
+.red-lista--fila { display: grid; gap: 12px; margin: 0 0 clamp(14px, 1.8vw, 20px); }
+@media (min-width: 760px) { .red-lista--fila { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.mosaico--tira { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.mosaico--tira img { aspect-ratio: 3 / 4; height: auto; }
+@media (max-width: 699px) { .mosaico--tira { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.preguntas .cabeza { position: static; }
+/* Talleres y noticias, lado a lado: cabecera, lista y enlace alineados fila a fila (subgrid) */
+@media (min-width: 1000px) {
+  .comunidad__int { grid-template-rows: auto auto auto; }
+  .comunidad__int > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
+  .comunidad__mas { align-self: start; margin-top: 0; }
+}

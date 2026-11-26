@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.2">
-<link rel="stylesheet" href="assets/css/home.css?v=10.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.2">
+<link rel="stylesheet" href="assets/css/global.css?v=10.3">
+<link rel="stylesheet" href="assets/css/home.css?v=10.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -237,34 +237,30 @@
 
 <main id="contenido">
 <!-- ============================ APERTURA ============================ -->
-<section class="ph ph--tienda grano" aria-labelledby="h1">
-  <div class="envoltura ph__int">
-    <div class="ph__texto">
-      <nav class="ruta" aria-label="Estás en">
-        <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
-        <span aria-current="page">Tienda</span>
-      </nav>
-      <h1 class="t-mega ph__h1" id="h1">RSM <em>Shop</em></h1>
-      <p class="ph__lede">Merchandising oficial, vinilos y música, material didáctico y tarjetas regalo.</p>
-      <ul class="anclas" aria-label="En esta página">
-        <li><a href="#merchandising">Merchandising</a></li>
-        <li><a href="#vinilos-y-musica">Vinilos y música</a></li>
-        <li><a href="#material-didactico">Material didáctico</a></li>
-        <li><a href="#tarjetas-regalo">Tarjetas regalo y bonos</a></li>
-      </ul>
-    </div>
-    <figure class="ph__foto ph__foto--alta">
-      <img src="assets/img/tienda-tote-foto-900.webp" srcset="assets/img/tienda-tote-foto-600.webp 600w, assets/img/tienda-tote-foto-900.webp 900w" sizes="(min-width: 960px) 34vw, 88vw" width="900" height="1200" alt="Tote bag negra de Reggae School apoyada en una estantería con vinilos y una guitarra" fetchpriority="high" decoding="async">
-    </figure>
+<!-- v10.3: centrada y sin la foto alta (dejaba un hueco enorme encima del título) -->
+<section class="ih" aria-labelledby="h1">
+  <div class="envoltura ih__int">
+    <nav class="ruta" aria-label="Estás en">
+      <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Tienda</span>
+    </nav>
+    <h1 class="t-mega ih__h1" id="h1" data-entra>RSM <span class="eco" data-eco><em>Shop</em><span class="eco__rep" aria-hidden="true">Shop</span><span class="eco__rep" aria-hidden="true">Shop</span></span></h1>
+    <p class="ih__lede" data-entra style="--i:1">Merchandising oficial, vinilos y música, material didáctico y tarjetas regalo.</p>
+    <ul class="anclas" aria-label="En esta página" data-entra style="--i:2">
+      <li><a href="#merchandising">Merchandising</a></li>
+      <li><a href="#vinilos-y-musica">Vinilos y música</a></li>
+      <li><a href="#material-didactico">Material didáctico</a></li>
+      <li><a href="#tarjetas-regalo">Tarjetas regalo y bonos</a></li>
+    </ul>
   </div>
 </section>
 
 <!-- ============================ MERCHANDISING OFICIAL ============================ -->
 <section class="merch seccion" id="merchandising" aria-labelledby="merch-t">
   <div class="envoltura">
-    <header class="cabeza cabeza--doble">
+    <header class="cabeza-c">
       <h2 class="t-seccion" id="merch-t" data-revela>Merchandising <em>oficial</em></h2>
-      <p class="cabeza__guia" data-revela>Gastos de envío: 5 € a la Península, 10 € al resto.</p>
+      <p class="cabeza-c__guia" data-revela style="--i:1">Gastos de envío: 5 € a la Península, 10 € al resto.</p>
     </header>
     <ul class="productos">
       <li class="producto" data-revela style="--i:0">
@@ -326,23 +322,21 @@
 </section>
 
 <!-- ============================ TARJETAS REGALO Y BONOS ============================ -->
-<section class="regalo seccion" id="tarjetas-regalo" aria-labelledby="regalo-t">
+<section class="regalo seccion regalo--centro" id="tarjetas-regalo" aria-labelledby="regalo-t">
   <div class="envoltura regalo__int">
-    <div class="tarjeta-r" aria-hidden="true" data-revela>
+    <h2 class="t-seccion" id="regalo-t" data-revela>Tarjetas regalo <em>y bonos de clases</em></h2>
+    <p class="regalo__p" data-revela style="--i:1">Regala una clase o un bono de clases, online o presencial.</p>
+    <div class="tarjeta-r" aria-hidden="true" data-revela style="--i:2">
       <img class="tarjeta-r__logo" src="assets/img/logo-240.webp" width="72" height="72" alt="" loading="lazy" decoding="async">
       <span class="tarjeta-r__t">Tarjeta regalo</span>
       <span class="tarjeta-r__d">Una clase de reggae, para quien tú quieras</span>
       <span class="tarjeta-r__pie">Reggae School Madrid</span>
     </div>
-    <div data-revela style="--i:1">
-      <h2 class="t-seccion" id="regalo-t">Tarjetas regalo <em>y bonos de clases</em></h2>
-      <p class="regalo__p">Regala una clase o un bono de clases, online o presencial.</p>
-      <dl class="fh__datos">
-        <div><dt>Importes</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-        <div><dt>Pago</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
-      </dl>
-      <div class="fh__ctas"><a class="boton boton--oro" href="contacto.html">Pedir una tarjeta regalo</a></div>
-    </div>
+    <dl class="regalo__datos" data-revela style="--i:3">
+      <div><dt>Importes</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
+      <div><dt>Pago</dt><dd><span class="pendiente">Por confirmar</span></dd></div>
+    </dl>
+    <p data-revela style="--i:4"><a class="boton boton--oro" href="contacto.html">Pedir una tarjeta regalo</a></p>
   </div>
 </section>
 
@@ -402,7 +396,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.2" defer></script>
-<script src="assets/js/paginas.js?v=10.2" defer></script>
+<script src="assets/js/main.js?v=10.3" defer></script>
+<script src="assets/js/paginas.js?v=10.3" defer></script>
 </body>
 </html>

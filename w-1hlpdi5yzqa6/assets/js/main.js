@@ -351,7 +351,7 @@
   }
 
   /* ---------------- Vídeo: fachada ligera hasta el clic ---------------- */
-  $$('[data-video]').forEach(btn => btn.addEventListener('click', () => {
+  const ponerVideo = (btn) => btn.addEventListener('click', () => {
     if (R && R.sonando) R.parar();
     const f = document.createElement('iframe');
     f.src = `https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0`;
@@ -360,7 +360,42 @@
     f.allowFullscreen = true;
     btn.replaceWith(f);
     f.focus();
-  }));
+  });
+  // Cada vídeo guarda su portada: el que se oculta (otra pista, otro curso) vuelve a ella y deja de sonar
+  const portadas = new Map();
+  $$('[data-video]').forEach((btn) => {
+    const v = btn.closest('.video');
+    if (v) portadas.set(v, btn.cloneNode(true));
+    ponerVideo(btn);
+  });
+  const apagarVideos = (zona) => $$('.video', zona).forEach((v) => {
+    const f = $('iframe', v);
+    const copia = portadas.get(v);
+    if (!f || !copia) return;
+    const b = copia.cloneNode(true);
+    ponerVideo(b);
+    f.replaceWith(b);
+  });
+  window.RSMVideos = { apagar: apagarVideos };
+
+  /* ---------------- Uno cada vez (v10.2-v10.3): dos vídeos, o vídeo y cartel, con botones para elegir ----------------
+     En los cursos (batería, Combo) y en RSM Productions de la portada (las dos producciones, como una lista de pistas). */
+  $$('[data-medios]').forEach((m) => {
+    const items = $$('[data-medio]', m);
+    const botones = $$('[data-medio-b]', m);
+    m.classList.add('con-pase');
+    const elegir = (k) => {
+      items.forEach((it, j) => {
+        const si = j === k;
+        it.classList.toggle('activo', si);
+        if (si) it.removeAttribute('inert');
+        else { it.setAttribute('inert', ''); apagarVideos(it); }
+      });
+      botones.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k)));
+    };
+    botones.forEach((b, j) => b.addEventListener('click', () => elegir(j)));
+    elegir(0);
+  });
 
   // «Ver la presentación» del hero: baja al vídeo y lo pone en marcha
   $$('[data-ver-video]').forEach(a => a.addEventListener('click', () => {

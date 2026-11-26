@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.2">
-<link rel="stylesheet" href="assets/css/home.css?v=10.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.2">
+<link rel="stylesheet" href="assets/css/global.css?v=10.3">
+<link rel="stylesheet" href="assets/css/home.css?v=10.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -175,57 +175,33 @@
 </div>
 
 <main id="contenido">
-<!-- ============================ CONTACTO ============================ -->
-<section class="fh fh--contacto grano" aria-labelledby="h1">
-  <div class="envoltura contacto__int">
-    <div class="fh__texto">
-      <nav class="ruta" aria-label="Estás en">
-        <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
-        <span aria-current="page">Contacto</span>
-      </nav>
-      <h1 class="t-mega fh__h1" id="h1">Contacto</h1>
-      <p class="contacto__intro">Cuéntanos en qué curso tienes interés y cuál es tu experiencia previa. Te contestaremos lo antes posible.</p>
+<!-- v10.3 (26-11-2026), Pablo: «dale más originalidad al apartado de Contacto, tanto al formulario como a todo».
+     El formulario es ahora una carta que se rellena: una frase con huecos (los mismos campos de siempre, cada uno con
+     su etiqueta para lectores de pantalla), los comentarios, el permiso y un solo botón. Debajo, tres tarjetas iguales
+     (correo, WhatsApp, dónde damos clase) y las redes. Todo centrado y sin huecos. -->
+<!-- ============================ APERTURA ============================ -->
+<section class="ih" aria-labelledby="h1">
+  <div class="envoltura ih__int">
+    <nav class="ruta" aria-label="Estás en">
+      <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Contacto</span>
+    </nav>
+    <h1 class="t-mega ih__h1" id="h1" data-entra>Contacto</h1>
+    <p class="ih__lede" data-entra style="--i:1">Cuéntanos en qué curso tienes interés y cuál es tu experiencia previa. Te contestaremos lo antes posible.</p>
+  </div>
+</section>
 
-      <dl class="canales">
-        <div class="canal-c"><dt>Correo</dt><dd><span class="canal-c__dato">reggaeschoolmadrid@gmail.com</span></dd></div>
-        <div class="canal-c"><dt>WhatsApp</dt><dd><span class="pendiente">Número por confirmar</span></dd></div>
-        <div class="canal-c"><dt>Redes</dt><dd class="canal-c__redes">
-          <a class="enlace" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">Instagram</a>
-          <a class="enlace" href="https://www.youtube.com/channel/UCNSFSKC_9hNB4wqtihIZoTg" target="_blank" rel="noopener">YouTube</a>
-          <a class="enlace" href="https://www.facebook.com/reggaeschoolmadrid" target="_blank" rel="noopener">Facebook</a>
-        </dd></div>
-      </dl>
-
-      <div class="donde">
-        <h2 class="donde__t">Dónde damos clase</h2>
-        <ul class="donde__lista">
-          <li><strong>Online</strong> Desde cualquier sitio.</li>
-          <li><strong>Madrid</strong> En el estudio de cada profesor.</li>
-          <li><strong>Barcelona</strong> Saxo o piano.</li>
-        </ul>
-      </div>
-    </div>
-
-    <form class="form tarjeta-form" data-form-contacto novalidate aria-labelledby="form-t">
-      <h2 class="tarjeta-form__t" id="form-t">Escríbenos</h2>
-      <div class="campo">
-        <label for="c-nombre">Nombre <span>(obligatorio)</span></label>
-        <input id="c-nombre" name="nombre" type="text" required autocomplete="name">
-        <p class="campo__error" data-error-c="nombre" hidden>Escribe tu nombre.</p>
-      </div>
-      <div class="campo">
-        <label for="c-mail">Correo <span>(obligatorio)</span></label>
-        <input id="c-mail" name="email" type="email" required autocomplete="email" inputmode="email">
-        <p class="campo__error" data-error-c="email" hidden>Escribe un correo válido, por ejemplo nombre@correo.com.</p>
-      </div>
-      <div class="campo">
-        <label for="c-tel">Teléfono</label>
-        <input id="c-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel">
-      </div>
-      <div class="campo">
-        <label for="c-inst">Instrumento <span>(obligatorio)</span></label>
-        <select id="c-inst" name="instrumento" required>
-          <option value="">Elige uno</option>
+<!-- ============================ LA CARTA (formulario) ============================ -->
+<section class="carta-s" aria-labelledby="form-t">
+  <div class="envoltura">
+    <form class="form carta" data-form-contacto novalidate aria-labelledby="form-t" data-revela>
+      <h2 class="carta__t" id="form-t">Escríbenos</h2>
+      <p class="carta__frase">
+        Hola, me llamo
+        <span class="hueco"><label class="visually-hidden" for="c-nombre">Nombre (obligatorio)</label><input id="c-nombre" name="nombre" type="text" required autocomplete="name" placeholder="tu nombre" size="12"></span>
+        y me interesa
+        <span class="hueco-p"><span class="hueco hueco--lista"><label class="visually-hidden" for="c-inst">Instrumento (obligatorio)</label><select id="c-inst" name="instrumento" required>
+          <option value="">elige un curso</option>
           <option>Canto</option>
           <option>Guitarra</option>
           <option>Teclado</option>
@@ -235,66 +211,89 @@
           <option>Producción y mezcla</option>
           <option>Combo RSM</option>
           <option>Armonía online</option>
-        </select>
+        </select></span><span class="hueco-punto">.</span></span>
+        Estoy en
+        <span class="hueco-p"><span class="hueco"><label class="visually-hidden" for="c-loc">Localización</label><input id="c-loc" name="localizacion" type="text" autocomplete="address-level2" placeholder="ciudad o país" size="11"></span><span class="hueco-punto">.</span></span>
+        Podéis escribirme a
+        <span class="hueco hueco--ancho"><label class="visually-hidden" for="c-mail">Correo (obligatorio)</label><input id="c-mail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="tu correo" size="18"></span>
+        o llamarme al
+        <span class="hueco-p"><span class="hueco"><label class="visually-hidden" for="c-tel">Teléfono</label><input id="c-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="teléfono (si quieres)" size="15"></span><span class="hueco-punto">.</span></span>
+      </p>
+      <div class="carta__errores" aria-live="polite">
+        <p class="campo__error" data-error-c="nombre" hidden>Escribe tu nombre.</p>
         <p class="campo__error" data-error-c="instrumento" hidden>Elige el instrumento que te interesa.</p>
+        <p class="campo__error" data-error-c="email" hidden>Escribe un correo válido, por ejemplo nombre@correo.com.</p>
       </div>
-      <div class="campo">
-        <label for="c-loc">Localización</label>
-        <input id="c-loc" name="localizacion" type="text" autocomplete="address-level2" placeholder="Ciudad o país">
-      </div>
-      <div class="campo">
+      <div class="carta__mas">
         <label for="c-com">Comentarios</label>
-        <textarea id="c-com" name="comentarios" rows="4" placeholder="Tu nivel, tus horarios, qué música te gusta…"></textarea>
+        <textarea id="c-com" name="comentarios" rows="3" placeholder="Tu nivel, tus horarios, qué música te gusta…"></textarea>
       </div>
-      <div class="campo campo--check">
+      <div class="campo campo--check carta__check">
         <input id="c-rgpd" name="rgpd" type="checkbox" required>
         <label for="c-rgpd">He leído la <a class="enlace" href="privacidad.html">política de privacidad</a> y acepto que Reggae School Madrid use mis datos para contestarme.</label>
         <p class="campo__error" data-error-c="rgpd" hidden>Necesitamos tu permiso para poder contestarte.</p>
       </div>
-      <p class="tarjeta-form__info">Responsable: Reggae School Madrid (<span class="pendiente">titular y NIF por confirmar</span>). Finalidad: contestar a tu consulta. No se ceden datos a terceros.</p>
-      <button class="boton boton--tinta boton--ancho boton--grande" type="submit">Enviar</button>
-      <p class="tarjeta-form__ok" data-form-contacto-ok hidden role="status">Recibido. Te contestamos lo antes posible.</p>
+      <button class="boton boton--oscuro boton--grande carta__enviar" type="submit">Enviar</button>
+      <p class="carta__info">Responsable: Reggae School Madrid (<span class="pendiente">titular y NIF por confirmar</span>). Finalidad: contestar a tu consulta. No se ceden datos a terceros.</p>
+      <p class="carta__ok" data-form-contacto-ok hidden role="status">Recibido. Te contestamos lo antes posible.</p>
     </form>
+
+    <ul class="canales-c">
+      <li class="canal-k" data-revela>
+        <h2 class="canal-k__t">Correo</h2>
+        <a class="enlace" href="mailto:reggaeschoolmadrid@gmail.com">reggaeschoolmadrid@gmail.com</a>
+      </li>
+      <li class="canal-k" data-revela style="--i:1">
+        <h2 class="canal-k__t">WhatsApp</h2>
+        <p><span class="pendiente">Número por confirmar</span></p>
+      </li>
+      <li class="canal-k" data-revela style="--i:2">
+        <h2 class="canal-k__t">Dónde damos clase</h2>
+        <ul class="canal-k__lista">
+          <li><strong>Online</strong> Desde cualquier sitio.</li>
+          <li><strong>Madrid</strong> En el estudio de cada profesor.</li>
+          <li><strong>Barcelona</strong> Saxo o piano.</li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </section>
 
 <!-- ============================ REDES ============================ -->
-<section class="redes seccion" aria-labelledby="redes-t">
-  <div class="envoltura redes__int">
-    <div class="redes__texto">
+<section class="redes seccion redes--centro" aria-labelledby="redes-t">
+  <div class="envoltura">
+    <header class="cabeza-c">
       <h2 class="t-seccion" id="redes-t" data-revela>Síguenos en <em>redes</em></h2>
-      <p class="cabeza__guia" data-revela>Lo último de la escuela, en Instagram, YouTube y Facebook.</p>
-
-      <ul class="red-lista" data-revela>
-        <li>
-          <a class="red" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">
-            <span class="red__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span>
-            <span class="red__txt"><strong>Instagram</strong><span>@reggaeschoolmadrid</span></span>
-            <span class="red__accion">Seguir</span>
-          </a>
-        </li>
-        <li>
-          <a class="red" href="https://www.youtube.com/channel/UCNSFSKC_9hNB4wqtihIZoTg" target="_blank" rel="noopener">
-            <span class="red__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.5a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.5a2.5 2.5 0 0 0 1.8-1.8C22 15.2 22 12 22 12zM10 15V9l5.2 3L10 15z"/></svg></span>
-            <span class="red__txt"><strong>YouTube</strong><span>Reggae School Madrid</span></span>
-            <span class="red__accion">Ver el canal</span>
-          </a>
-        </li>
-        <li>
-          <a class="red" href="https://www.facebook.com/reggaeschoolmadrid" target="_blank" rel="noopener">
-            <span class="red__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></span>
-            <span class="red__txt"><strong>Facebook</strong><span>reggaeschoolmadrid</span></span>
-            <span class="red__accion">Seguir</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <a class="mosaico" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener" aria-label="Ver más fotos de la escuela en Instagram" data-revela>
+      <p class="cabeza-c__guia" data-revela style="--i:1">Lo último de la escuela, en Instagram, YouTube y Facebook.</p>
+    </header>
+    <ul class="red-lista red-lista--fila">
+      <li data-revela>
+        <a class="red" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener">
+          <span class="red__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="red__txt"><strong>Instagram</strong><span>@reggaeschoolmadrid</span></span>
+          <span class="red__accion">Seguir</span>
+        </a>
+      </li>
+      <li data-revela style="--i:1">
+        <a class="red" href="https://www.youtube.com/channel/UCNSFSKC_9hNB4wqtihIZoTg" target="_blank" rel="noopener">
+          <span class="red__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.5a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.5a2.5 2.5 0 0 0 1.8-1.8C22 15.2 22 12 22 12zM10 15V9l5.2 3L10 15z"/></svg></span>
+          <span class="red__txt"><strong>YouTube</strong><span>Reggae School Madrid</span></span>
+          <span class="red__accion">Ver el canal</span>
+        </a>
+      </li>
+      <li data-revela style="--i:2">
+        <a class="red" href="https://www.facebook.com/reggaeschoolmadrid" target="_blank" rel="noopener">
+          <span class="red__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></span>
+          <span class="red__txt"><strong>Facebook</strong><span>reggaeschoolmadrid</span></span>
+          <span class="red__accion">Seguir</span>
+        </a>
+      </li>
+    </ul>
+    <a class="mosaico mosaico--tira" href="https://www.instagram.com/reggaeschoolmadrid/" target="_blank" rel="noopener" aria-label="Ver más fotos de la escuela en Instagram" data-revela>
       <img src="assets/img/curso-canto-400.webp" width="400" height="533" alt="" loading="lazy" decoding="async">
       <img src="assets/img/curso-saxo-400.webp" width="400" height="533" alt="" loading="lazy" decoding="async">
       <img src="assets/img/curso-guitarra-400.webp" width="400" height="533" alt="" loading="lazy" decoding="async">
-      <img src="assets/img/prof-maga-280.webp" width="280" height="280" alt="" loading="lazy" decoding="async">
+      <img src="assets/img/prof4-maga-480.webp" width="480" height="600" alt="" loading="lazy" decoding="async">
       <img src="assets/img/curso-bateria-400.webp" width="400" height="533" alt="" loading="lazy" decoding="async">
       <img src="assets/img/curso-produccion-400.webp" width="400" height="533" alt="" loading="lazy" decoding="async">
       <span class="mosaico__pie">
@@ -361,7 +360,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.2" defer></script>
-<script src="assets/js/paginas.js?v=10.2" defer></script>
+<script src="assets/js/main.js?v=10.3" defer></script>
+<script src="assets/js/paginas.js?v=10.3" defer></script>
 </body>
 </html>

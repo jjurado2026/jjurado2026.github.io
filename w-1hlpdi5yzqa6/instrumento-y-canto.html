@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.2">
-<link rel="stylesheet" href="assets/css/home.css?v=10.2">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.2">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.2">
+<link rel="stylesheet" href="assets/css/global.css?v=10.3">
+<link rel="stylesheet" href="assets/css/home.css?v=10.3">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.3">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.3">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -386,7 +386,7 @@
 </div>
 
 <main id="contenido">
-<!-- ============================ APERTURA: LOS SEIS CURSOS EN FOTOS (eligen el curso) ============================ -->
+<!-- ============================ APERTURA: LOS SEIS CURSOS, CADA UNO CON SU ICONO (eligen el curso) ============================ -->
 <section class="cu-hero" aria-labelledby="h1">
   <div class="envoltura">
     <div class="cu-hero__cabeza">
@@ -400,30 +400,16 @@
       <strong>se adaptan</strong> perfectamente a tus <strong>horarios y a tu nivel</strong>, para acompañarte hacia
       el músico que quieres llegar a ser.</p>
     </div>
-    <div class="cu-cartas" role="tablist" aria-label="Elige tu curso" style="--n:6">
-      <a class="cu-carta" href="#guitarra" role="tab" aria-selected="false" aria-controls="guitarra" data-ficha-tab="guitarra" data-entra style="--i:2"><img src="assets/img/curso-guitarra-600.webp" sizes="(min-width: 900px) 16vw, 44vw" width="600" height="800" alt="Guitarrista tocando una guitarra eléctrica" loading="lazy" decoding="async"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-carta__pie"><span class="cu-carta__nombre">Guitarra</span><span class="cu-carta__dato">con Javier Ochoa</span></span></a>
-      <a class="cu-carta" href="#bajo" role="tab" aria-selected="false" aria-controls="bajo" data-ficha-tab="bajo" data-entra style="--i:3"><img src="assets/img/curso-bajo-600.webp" sizes="(min-width: 900px) 16vw, 44vw" width="600" height="800" alt="Bajo eléctrico de cuatro cuerdas" loading="lazy" decoding="async"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-carta__pie"><span class="cu-carta__nombre">Bajo</span><span class="cu-carta__dato">con Pablo Cano</span></span></a>
-      <a class="cu-carta" href="#bateria" role="tab" aria-selected="false" aria-controls="bateria" data-ficha-tab="bateria" data-entra style="--i:4"><img src="assets/img/curso-bateria-600.webp" sizes="(min-width: 900px) 16vw, 44vw" width="600" height="801" alt="Batería en el estudio" loading="lazy" decoding="async"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-carta__pie"><span class="cu-carta__nombre">Batería</span><span class="cu-carta__dato">con Miguel Valenciano y Miguel Moreno</span></span></a>
-      <a class="cu-carta" href="#teclado" role="tab" aria-selected="false" aria-controls="teclado" data-ficha-tab="teclado" data-entra style="--i:5"><img src="assets/img/curso-teclado-600.webp" sizes="(min-width: 900px) 16vw, 44vw" width="600" height="800" alt="Teclas de un piano" loading="lazy" decoding="async"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-carta__pie"><span class="cu-carta__nombre">Teclado</span><span class="cu-carta__dato">con David Arribas</span></span></a>
-      <a class="cu-carta" href="#saxo" role="tab" aria-selected="false" aria-controls="saxo" data-ficha-tab="saxo" data-entra style="--i:6"><img src="assets/img/curso-saxo-600.webp" sizes="(min-width: 900px) 16vw, 44vw" width="600" height="800" alt="Saxofonista tocando en directo" loading="lazy" decoding="async"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-carta__pie"><span class="cu-carta__nombre">Saxo</span><span class="cu-carta__dato">con Jorge Rodríguez</span></span></a>
-      <a class="cu-carta" href="#canto" role="tab" aria-selected="false" aria-controls="canto" data-ficha-tab="canto" data-entra style="--i:7"><img src="assets/img/curso-canto-600.webp" sizes="(min-width: 900px) 16vw, 44vw" width="600" height="801" alt="Cantante con micrófono en directo" loading="lazy" decoding="async"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-carta__pie"><span class="cu-carta__nombre">Canto</span><span class="cu-carta__dato">con Javier Ochoa</span></span></a>
+    <div class="cu-cartas cu-cartas--ico" role="tablist" aria-label="Elige tu curso" style="--n:6">
+      <a class="cu-carta cu-carta--ico" href="#guitarra" role="tab" aria-selected="false" aria-controls="guitarra" data-ficha-tab="guitarra" data-entra style="--i:2"><svg class="ico ico--guitarra" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g transform="rotate(-32 32 36)"><g class="ico__mece"><path d="M32 21C38 21 41 25 40 30C39.5 33 38 34.5 40.5 37C45 40 45 52 38 55.5C35 57 29 57 26 55.5C19 52 19 40 23.5 37C26 34.5 24.5 33 24 30C23 25 26 21 32 21Z"/><circle cx="32" cy="41" r="3.6"/><path d="M30 21.5V7h4v14.5"/><path d="M29.4 7l-.6-4.6h6.4l-.6 4.6"/><path d="M28 50h8"/><path class="ico__fina" d="M31.3 7v43M32.7 7v43"/></g></g><g class="ico__ondas"><path class="ico__onda" d="M48 13c2.6 2.6 2.6 7.4 0 10"/><path class="ico__onda ico__onda--2" d="M52.5 9c4.6 4.6 4.6 13.4 0 18"/></g></svg><span class="cu-carta__nombre">Guitarra</span></a>
+      <a class="cu-carta cu-carta--ico" href="#bajo" role="tab" aria-selected="false" aria-controls="bajo" data-ficha-tab="bajo" data-entra style="--i:3"><svg class="ico ico--bajo" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g transform="rotate(30 32 36)"><g class="ico__mece"><path d="M30 33C27.5 29 23 28 21.5 30.5C20 33 23 35.5 23 38.5C22.5 42.5 18.5 46 19.5 51.5C20.5 57 26 60 32 60C38 60 43.5 57.5 44.5 52.5C45.5 47 41.5 43.5 41 39.5C40.5 36.5 43.5 34 42.5 29.5C41.5 25.5 36.5 27 34 33"/><path d="M30 33V5h4v28"/><path d="M29.4 5l-.8-3.4h6.8l-.8 3.4"/><rect x="27.5" y="42" width="9" height="3.4" rx="1.2"/><path d="M28 51.5h8"/><path class="ico__fina" d="M31 5v46.5M32.3 5v46.5M33.6 5v46.5"/></g></g><g class="ico__ondas"><path class="ico__onda" d="M16 13c-2.6 2.6-2.6 7.4 0 10"/><path class="ico__onda ico__onda--2" d="M11.5 9c-4.6 4.6-4.6 13.4 0 18"/></g></svg><span class="cu-carta__nombre">Bajo</span></a>
+      <a class="cu-carta cu-carta--ico" href="#bateria" role="tab" aria-selected="false" aria-controls="bateria" data-ficha-tab="bateria" data-entra style="--i:4"><svg class="ico ico--bateria" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__parche"><ellipse cx="32" cy="38" rx="16" ry="5"/><path d="M16 38v10c0 3 7.2 5.6 16 5.6s16-2.6 16-5.6V38"/><path class="ico__fina" d="M21 42.4v9M27 43.2v9.6M37 43.2v9.6M43 42.4v9"/></g><g class="ico__baqueta ico__baqueta--i"><path d="M11 11l15.6 21.4"/><circle class="ico__lleno" cx="27" cy="33" r="1.9"/></g><g class="ico__baqueta ico__baqueta--d"><path d="M53 11L37.4 32.4"/><circle class="ico__lleno" cx="37" cy="33" r="1.9"/></g><g class="ico__ondas"><path class="ico__onda" d="M22 26.5l-2.6-2.4M32 24.5v-3.4M42 26.5l2.6-2.4"/></g></svg><span class="cu-carta__nombre">Batería</span></a>
+      <a class="cu-carta cu-carta--ico" href="#teclado" role="tab" aria-selected="false" aria-controls="teclado" data-ficha-tab="teclado" data-entra style="--i:5"><svg class="ico ico--teclado" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><rect x="5" y="16" width="54" height="33" rx="3.5"/><path class="ico__fina" d="M5 24.5h54"/><circle class="ico__lleno" cx="11" cy="20.3" r="1.5"/><circle class="ico__lleno" cx="16.5" cy="20.3" r="1.5"/><path class="ico__fina" d="M40 20.3h14"/><rect class="ico__tecla" x="5.8" y="25.3" width="6.9" height="23" rx="1"/><rect class="ico__tecla ico__tecla--2" x="20.4" y="25.3" width="6.9" height="23" rx="1"/><rect class="ico__tecla ico__tecla--3" x="35" y="25.3" width="6.9" height="23" rx="1"/><rect class="ico__tecla ico__tecla--4" x="49.6" y="25.3" width="6.9" height="23" rx="1"/><path class="ico__fina" d="M12.7 24.5v24.5M20.4 24.5v24.5M27.7 24.5v24.5M35 24.5v24.5M42.3 24.5v24.5M49.6 24.5v24.5"/><path class="ico__lleno" d="M10.8 24.5h3.8v11h-3.8zM18.5 24.5h3.8v11h-3.8zM33.1 24.5h3.8v11h-3.8zM40.4 24.5h3.8v11h-3.8zM47.7 24.5h3.8v11h-3.8z"/></svg><span class="cu-carta__nombre">Teclado</span></a>
+      <a class="cu-carta cu-carta--ico" href="#saxo" role="tab" aria-selected="false" aria-controls="saxo" data-ficha-tab="saxo" data-entra style="--i:6"><svg class="ico ico--saxo" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__mece"><path d="M12 11.5L15 9h9C29 9 33 12 33 18v26.5c0 4 3 7 7 7s5-2.5 5-6.5v-4.5l-2.2-4.5h12l-3.8 4.5v6.5c0 6-4.4 11-11 11s-12.2-5-12.2-12V17.5c0-2.6-1.4-4.2-3.8-4.2h-9z"/><circle class="ico__lleno" cx="30" cy="22" r="1.5"/><circle class="ico__lleno" cx="30" cy="28" r="1.5"/><circle class="ico__lleno" cx="30" cy="34" r="1.5"/><circle class="ico__lleno" cx="30" cy="40" r="1.5"/></g><g class="ico__nota"><ellipse class="ico__lleno" cx="54" cy="27" rx="2.6" ry="2" transform="rotate(-22 54 27)"/><path d="M56.4 26V17l3.6 1.8"/></g><g class="ico__nota ico__nota--2"><ellipse class="ico__lleno" cx="45" cy="24" rx="2.4" ry="1.8" transform="rotate(-22 45 24)"/><path d="M47.2 23.2V15.5"/></g></svg><span class="cu-carta__nombre">Saxo</span></a>
+      <a class="cu-carta cu-carta--ico" href="#canto" role="tab" aria-selected="false" aria-controls="canto" data-ficha-tab="canto" data-entra style="--i:7"><svg class="ico ico--canto" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__mece"><rect x="24" y="5" width="16" height="27" rx="8"/><path class="ico__fina" d="M24.6 15h14.8M24.6 20h14.8M24.6 25h14.8"/><path d="M18.5 24v2.5a13.5 13.5 0 0 0 27 0V24"/><path d="M32 40v13M24 53.5h16"/></g><g class="ico__ondas"><path class="ico__onda" d="M13 13c-3 4-3 10.5 0 14.5"/><path class="ico__onda ico__onda--2" d="M8 9c-5.4 6.2-5.4 16.4 0 22.6"/><path class="ico__onda" d="M51 13c3 4 3 10.5 0 14.5"/><path class="ico__onda ico__onda--2" d="M56 9c5.4 6.2 5.4 16.4 0 22.6"/></g></svg><span class="cu-carta__nombre">Canto</span></a>
     </div>
   </div>
 </section>
-
-<!-- La barra de cursos: se queda fija bajo la cabecera mientras se lee una ficha -->
-<nav class="cu-selector" aria-label="Cursos de esta página">
-  <div class="envoltura">
-    <div class="cu-selector__lista" role="tablist">
-      <a class="cu-selector__b" href="#guitarra" role="tab" aria-selected="false" aria-controls="guitarra" data-ficha-tab="guitarra"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-selector__txt">Guitarra</span></a>
-      <a class="cu-selector__b" href="#bajo" role="tab" aria-selected="false" aria-controls="bajo" data-ficha-tab="bajo"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-selector__txt">Bajo</span></a>
-      <a class="cu-selector__b" href="#bateria" role="tab" aria-selected="false" aria-controls="bateria" data-ficha-tab="bateria"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-selector__txt">Batería</span></a>
-      <a class="cu-selector__b" href="#teclado" role="tab" aria-selected="false" aria-controls="teclado" data-ficha-tab="teclado"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-selector__txt">Teclado</span></a>
-      <a class="cu-selector__b" href="#saxo" role="tab" aria-selected="false" aria-controls="saxo" data-ficha-tab="saxo"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-selector__txt">Saxo</span></a>
-      <a class="cu-selector__b" href="#canto" role="tab" aria-selected="false" aria-controls="canto" data-ficha-tab="canto"><span class="cu-eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="cu-selector__txt">Canto</span></a>
-    </div>
-  </div>
-</nav>
 
 <div class="cu-tabs">
 
@@ -448,7 +434,6 @@
       <div class="cu-profes">
         <div class="cu-profe"><img src="assets/img/prof4-javier-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Javier Ochoa</strong><span>Ha tocado con The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="guitarra" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la guitarra</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="guitarra"></span></span></div>
       </div>
     </div>
 
@@ -516,7 +501,6 @@
       <div class="cu-profes">
         <div class="cu-profe"><img src="assets/img/prof4-pablo-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Pablo Cano</strong><span>Ha tocado con J.P. Bimeni &amp; The Black Belts, donde es director musical, Shirley Davis and the Silverbacks, Emeterians y Alamedadosoulna.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="bajo" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la línea de bajo</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="bajo"></span></span></div>
       </div>
     </div>
 
@@ -588,7 +572,6 @@
         <div class="cu-profe"><img src="assets/img/prof4-miguelv-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Miguel Valenciano</strong><span>Ha tocado con The Rootskank (Nytto Dread, Al Campbell, Hermano L, Michael Prophet), Blueskank y RioMente. Produce en Kovan Music Studio.</span></div></div>
         <div class="cu-profe"><img src="assets/img/prof4-miguelm-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Miguel Moreno</strong><span>Ha tocado con Blueskank, Los Ministers del Ronsteady, Begoña Bangmatu y Hammond York.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="bateria" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la batería</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="bateria"></span></span></div>
       </div>
     </div>
 
@@ -658,7 +641,6 @@
       <div class="cu-profes">
         <div class="cu-profe"><img src="assets/img/prof4-david-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>David Arribas</strong><span>Ha tocado con Hotdrop, Blueskank y Rootskank. Desde 2012 lleva Downtown Beat, con Emeterians, Payoh SoulRebel y Natty Nature.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="teclado" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha el teclado</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="teclado"></span></span></div>
       </div>
     </div>
 
@@ -727,7 +709,6 @@
       <div class="cu-profes">
         <div class="cu-profe"><img src="assets/img/prof4-jorge-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Jorge Rodríguez</strong><span>Ha tocado con Ska-P (grabó sus dos últimos discos), Xoel López, Freedonia, Michael Prophet y Alpheus. Fundador de Skalone.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="saxo" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha el saxo</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="saxo"></span></span></div>
       </div>
     </div>
 
@@ -797,7 +778,6 @@
       <div class="cu-profes">
         <div class="cu-profe"><img src="assets/img/prof4-javier-480.webp" width="58" height="72" alt="" loading="lazy" decoding="async"><div><strong>Javier Ochoa</strong><span>Ha tocado con The Rootskank (Nytto Dread, Payoh SoulRebel), Blueskank, Hotdrop y el sound system Echo Chamber Roots Hi-Fi. Produce en el sello Estudios Estrella.</span></div></div>
       </div>
-        <div class="cu-escucha"><button class="boton boton--borde solo-btn" type="button" data-solo="canto" aria-pressed="false"><svg class="ico-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="ico-pausa" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Escucha la voz</span></button><span class="vu" aria-hidden="true"><span class="vu__tapa" data-vu-tapa="canto"></span></span></div>
       </div>
     </div>
 
@@ -847,21 +827,6 @@
   </div>
 </section>
 </div>
-
-<!-- ============================ MÁS CURSOS (en fotos, sin la franja verde) ============================ -->
-<section class="cu-mas" aria-labelledby="mas-t">
-  <div class="envoltura">
-    <div class="cu-mas__cabeza">
-      <h2 class="t-seccion" id="mas-t" data-revela>Más <em>cursos</em></h2>
-      <p data-revela style="--i:1">100 €/mes con clase semanal o 60 €/mes con clase quincenal, online o presencial.</p>
-    </div>
-    <div class="cu-cartas cu-cartas--anchas" data-revela style="--i:2">
-      <a class="cu-carta" href="produccion-y-mezcla.html"><img src="assets/img/est-mesa-900.webp" sizes="(min-width: 900px) 30vw, 78vw" width="900" height="600" alt="La mesa de mezclas del estudio" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Producción y mezcla</span><span class="cu-carta__dato">Online o presencial en Madrid, con Javier Ochoa</span></span></a>
-      <a class="cu-carta" href="grupal.html#combo-rsm"><img src="assets/img/agenda-grupales-720.webp" sizes="(min-width: 900px) 30vw, 78vw" width="720" height="900" alt="La banda de la escuela en directo, seis músicos con camisetas de Reggae School" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Combo RSM</span><span class="cu-carta__dato">Clases grupales presenciales, con Maga Lion y David Arribas</span></span></a>
-      <a class="cu-carta" href="grupal.html#armonia-online"><img src="assets/img/est-piano-1200.webp" sizes="(min-width: 900px) 30vw, 78vw" width="1200" height="800" alt="Teclas de un piano de pared con luz lateral" loading="lazy" decoding="async"><span class="cu-carta__pie"><span class="cu-carta__nombre">Curso de Armonía Online</span><span class="cu-carta__dato">Clases online que quedan grabadas</span></span></a>
-    </div>
-  </div>
-</section>
 
 </main>
 
@@ -919,8 +884,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/riddim.js?v=10.2" defer></script>
-<script src="assets/js/main.js?v=10.2" defer></script>
-<script src="assets/js/paginas.js?v=10.2" defer></script>
+<script src="assets/js/main.js?v=10.3" defer></script>
+<script src="assets/js/paginas.js?v=10.3" defer></script>
 </body>
 </html>
