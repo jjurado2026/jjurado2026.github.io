@@ -262,7 +262,7 @@
       t.addEventListener('click', () => { fijo = true; elegir(i); });
       t.addEventListener('keydown', (e) => {
         const n = tabs.length;
-        const k = { ArrowRight: i + 1, ArrowLeft: i - 1 + n, Home: 0, End: n - 1 }[e.key];
+        const k = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1 + n, ArrowUp: i - 1 + n, Home: 0, End: n - 1 }[e.key];
         if (k === undefined) return;
         e.preventDefault(); fijo = true; elegir(k % n, true);
       });
@@ -329,6 +329,87 @@
       const paso = pista.firstElementChild.offsetWidth + (parseFloat(getComputedStyle(pista).columnGap) || 0);
       if (carril.scrollLeft >= max - 4) carril.scrollTo({ left: 0, behavior: 'smooth' });
       else carril.scrollBy({ left: paso, behavior: 'smooth' });
+    }, 6400);
+  });
+
+  /* ---------- Talleres y eventos (v10.6): en la cartelera, la foto de cada fila sigue al cursor ----------
+     Solo con ratón y sin movimiento reducido. Se mueve con transform (rAF, con un poco de inercia y de giro);
+     se enciende al pasar por una fila y se apaga al salir de la lista. Si el cursor va por la derecha, la foto
+     sale a su izquierda, para no tapar la llamada. */
+  const cartel = $('[data-cartel]');
+  const flota = $('[data-cartel-flota]');
+  if (cartel && flota && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reducido.matches && !captura) {
+    const caja = cartel.parentElement;
+    const foto = $('img', flota);
+    $$('[data-foto]', cartel).forEach((a) => { const i = new Image(); i.src = a.dataset.foto; });
+    let x = 0, y = 0, tx = 0, ty = 0, giro = 0, raf = 0, encendida = false;
+    const pintar = () => {
+      x += (tx - x) * 0.16;
+      y += (ty - y) * 0.16;
+      giro += (Math.max(-9, Math.min(9, (tx - x) * 0.05)) - giro) * 0.2;
+      flota.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) rotate(${giro.toFixed(2)}deg)`;
+      raf = (encendida || Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5) ? requestAnimationFrame(pintar) : 0;
+    };
+    caja.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const fila = e.target.closest('[data-foto]');
+      if (!fila || !cartel.contains(fila)) { encendida = false; flota.classList.remove('ver'); return; }
+      const r = caja.getBoundingClientRect();
+      const cx = e.clientX - r.left, cy = e.clientY - r.top;
+      tx = cx > r.width * 0.55 ? cx - flota.offsetWidth - 36 : cx + 36;
+      ty = cy - flota.offsetHeight / 2;
+      if (!encendida) { x = tx; y = ty; }
+      if (foto.getAttribute('src') !== fila.dataset.foto) foto.src = fila.dataset.foto;
+      encendida = true;
+      flota.classList.add('ver');
+      if (!raf) raf = requestAnimationFrame(pintar);
+    });
+    caja.addEventListener('pointerleave', () => { encendida = false; flota.classList.remove('ver'); });
+  }
+
+  /* ---------- La escuela (v10.6): al pulsar un retrato de la banda, se abre su trayectoria ---------- */
+  $$('[data-liston]').forEach((a) => a.addEventListener('click', (e) => {
+    const tab = document.getElementById(`tab-${a.dataset.liston}`);
+    const zona = document.getElementById('equipo-docente');
+    if (!tab || !zona) return;
+    e.preventDefault();
+    tab.click();
+    zona.scrollIntoView({ behavior: reducido.matches ? 'auto' : 'smooth', block: 'start' });
+  }));
+
+  /* ---------- La escuela (v10.6): el visor de las instalaciones ----------
+     La foto en grande con el título encima; las miniaturas eligen y las flechas pasan (en la última, vuelve a la
+     primera). Pasa sola cada 6,4 s mientras se ve; tras tocarla, espera 12 s. Con el dedo, se desliza de lado. */
+  $$('[data-visor]').forEach((v) => {
+    const fotos = $$('[data-visor-foto]', v);
+    const minis = $$('[data-visor-ir]', v);
+    const cuenta = $('[data-visor-n]', v);
+    const n = fotos.length;
+    if (n < 2) return;
+    let i = 0, toque = -1e9, visible = false;
+    const irA = (k) => {
+      i = ((k % n) + n) % n;
+      fotos.forEach((f, j) => { f.classList.toggle('activa', j === i); if (j === i) f.removeAttribute('aria-hidden'); else f.setAttribute('aria-hidden', 'true'); });
+      minis.forEach((m, j) => { if (j === i) m.setAttribute('aria-current', 'true'); else m.removeAttribute('aria-current'); });
+      if (cuenta) cuenta.textContent = String(i + 1);
+      const sig = $('img', fotos[(i + 1) % n]);
+      if (sig && sig.loading === 'lazy') sig.loading = 'eager';
+    };
+    const tocar = (k) => { toque = performance.now(); irA(k); };
+    minis.forEach((m) => m.addEventListener('click', () => tocar(Number(m.dataset.visorIr))));
+    $$('[data-visor-paso]', v).forEach((b) => b.addEventListener('click', () => tocar(i + Number(b.dataset.visorPaso))));
+    const escena = $('.visor__escena', v);
+    let x0 = null;
+    escena.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') x0 = e.clientX; }, { passive: true });
+    escena.addEventListener('pointerup', (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) tocar(i + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.4 }).observe(v);
+    setInterval(() => {
+      if (!visible || captura || reducido.matches || document.hidden || performance.now() - toque < 12000) return;
+      irA(i + 1);
     }, 6400);
   });
 

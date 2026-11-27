@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.5">
-<link rel="stylesheet" href="assets/css/home.css?v=10.5">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.5">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.5">
+<link rel="stylesheet" href="assets/css/global.css?v=10.6">
+<link rel="stylesheet" href="assets/css/home.css?v=10.6">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.6">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.6">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -211,41 +211,53 @@
 </div>
 
 <main id="contenido">
-<!-- v10.5 (27-11-2026), jefe de Pablo: el título general y el de la primera sección tenían casi el mismo tamaño
-     («no me cuadra nada este rollo, mira referencias»). Como en las webs de escuelas de música (BIMM, School of
-     Rock), la página abre con una cabecera: una foto suya a lo ancho con el título encima; las secciones, más
-     pequeñas. Sin las anclas en píldoras. -->
-<!-- ============================ CABECERA ============================ -->
-<section class="cp cp--directo" aria-labelledby="h1">
-  <div class="cp__foto">
-    <picture>
-      <source media="(max-width: 699px)" srcset="assets/img/hero-directo-v540.webp 540w, assets/img/hero-directo-v800.webp 800w" sizes="100vw" width="800" height="1600">
-      <img src="assets/img/hero-directo-h1600.webp" srcset="assets/img/hero-directo-h1600.webp 1600w, assets/img/hero-directo-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Dos profesores tocando la guitarra al aire libre, junto a la lona de Reggae School Madrid" fetchpriority="high" decoding="async">
-    </picture>
+<!-- v10.6 (27-11-2026), Pablo: «sigue sin gustarme nada, poco original, muy parecido a lo de antes; básate en otras
+     plantillas y webs del estilo». Referencias: las escuelas que ponen a su gente delante (School of Rock, Étude) y las
+     salas de los estudios (Abbey Road: la sala en grande, con el título encima). Aquí: la cabecera es la banda, los siete
+     profes en retratos verticales con «La escuela · We are one» encima (al pasar, el retrato se enciende y dice quién es;
+     al pulsar, abre su trayectoria); el equipo, como una lista de temas con la bio al lado; las instalaciones, en un visor
+     grande con miniaturas y flechas centradas. -->
+<!-- ============================ CABECERA: LA BANDA ============================ -->
+<section class="banda" aria-labelledby="h1">
+  <div class="banda__listones" data-banda>
+    <a class="liston" href="#javier-ochoa" data-liston="javier-ochoa" aria-label="Javier Ochoa: leer su trayectoria" style="--i:0; --pos: 72% 16%">
+      <img src="assets/img/prof4-javier-720.webp" srcset="assets/img/prof4-javier-480.webp 480w, assets/img/prof4-javier-720.webp 720w" sizes="(min-width: 700px) 15vw, 40vw" width="720" height="900" alt="" fetchpriority="high" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">Javier Ochoa</span><span class="liston__inst">Guitarra · Canto · Producción</span></span>
+    </a>
+    <a class="liston" href="#maga-lion" data-liston="maga-lion" aria-label="Maga Lion: leer su trayectoria" style="--i:1; --pos: 55% 18%">
+      <img src="assets/img/prof4-maga-720.webp" srcset="assets/img/prof4-maga-480.webp 480w, assets/img/prof4-maga-720.webp 713w" sizes="(min-width: 700px) 15vw, 40vw" width="713" height="891" alt="" fetchpriority="high" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">Maga Lion</span><span class="liston__inst">Combo RSM</span></span>
+    </a>
+    <a class="liston" href="#jorge-rodriguez" data-liston="jorge-rodriguez" aria-label="Jorge Rodríguez: leer su trayectoria" style="--i:2; --pos: 46% 20%">
+      <img src="assets/img/prof4-jorge-720.webp" srcset="assets/img/prof4-jorge-480.webp 480w, assets/img/prof4-jorge-720.webp 720w" sizes="(min-width: 700px) 15vw, 40vw" width="720" height="900" alt="" fetchpriority="high" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">Jorge Rodríguez</span><span class="liston__inst">Saxo</span></span>
+    </a>
+    <a class="liston" href="#pablo-cano" data-liston="pablo-cano" aria-label="Pablo Cano: leer su trayectoria" style="--i:3; --pos: 42% 16%">
+      <img src="assets/img/prof4-pablo-720.webp" srcset="assets/img/prof4-pablo-480.webp 480w, assets/img/prof4-pablo-720.webp 720w" sizes="(min-width: 700px) 15vw, 40vw" width="720" height="900" alt="" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">Pablo Cano</span><span class="liston__inst">Bajo</span></span>
+    </a>
+    <a class="liston" href="#david-arribas" data-liston="david-arribas" aria-label="David Arribas: leer su trayectoria" style="--i:4; --pos: 46% 18%">
+      <img src="assets/img/prof4-david-720.webp" srcset="assets/img/prof4-david-480.webp 480w, assets/img/prof4-david-720.webp 720w" sizes="(min-width: 700px) 15vw, 40vw" width="720" height="900" alt="" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">David Arribas</span><span class="liston__inst">Teclado · Combo RSM</span></span>
+    </a>
+    <a class="liston" href="#miguel-valenciano" data-liston="miguel-valenciano" aria-label="Miguel Valenciano: leer su trayectoria" style="--i:5; --pos: 40% 24%">
+      <img src="assets/img/prof4-miguelv-640.webp" srcset="assets/img/prof4-miguelv-480.webp 480w, assets/img/prof4-miguelv-640.webp 640w" sizes="(min-width: 700px) 15vw, 40vw" width="640" height="800" alt="" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">Miguel Valenciano</span><span class="liston__inst">Batería</span></span>
+    </a>
+    <a class="liston" href="#miguel-moreno" data-liston="miguel-moreno" aria-label="Miguel Moreno: leer su trayectoria" style="--i:6; --pos: 76% 18%">
+      <img src="assets/img/prof4-miguelm-720.webp" srcset="assets/img/prof4-miguelm-480.webp 480w, assets/img/prof4-miguelm-720.webp 720w" sizes="(min-width: 700px) 15vw, 40vw" width="720" height="900" alt="" decoding="async">
+      <span class="liston__pie"><span class="liston__nombre">Miguel Moreno</span><span class="liston__inst">Batería</span></span>
+    </a>
   </div>
-  <div class="envoltura cp__int">
-    <nav class="ruta" aria-label="Estás en">
-      <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
-      <span aria-current="page">La escuela</span>
-    </nav>
-    <h1 class="t-mega cp__h1" id="h1" data-entra>La <span class="eco" data-eco><em>escuela</em><span class="eco__rep" aria-hidden="true">escuela</span><span class="eco__rep" aria-hidden="true">escuela</span></span></h1>
-  </div>
-</section>
-
-<!-- ============================ WE ARE ONE ============================ -->
-<!-- El lema y la historia de la escuela, al lado de la foto del equipo en Radio 3: las dos columnas, de la misma altura -->
-<section class="uno seccion" aria-labelledby="uno-t">
-  <div class="envoltura uno__int">
-    <div class="uno__texto">
-      <h2 class="t-seccion" id="uno-t" data-revela>We are <em>one</em></h2>
-      <p class="uno__p" data-revela style="--i:1">Desde que Javier Ochoa fundó Reggae School Madrid en 2020, su idea perseguía el sueño de formar un
-      equipo de docentes músicos especializados en el género. Poco a poco fueron incorporándose los que hoy forman un
-      equipo multidisciplinar que trabaja para ofrecer la mejor experiencia educativa.</p>
+  <div class="banda__texto">
+    <div class="envoltura banda__int">
+      <nav class="ruta" aria-label="Estás en">
+        <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
+        <span aria-current="page">La escuela</span>
+      </nav>
+      <h1 class="t-mega banda__h1" id="h1" data-entra>La <span class="eco" data-eco><em>escuela</em><span class="eco__rep" aria-hidden="true">escuela</span><span class="eco__rep" aria-hidden="true">escuela</span></span></h1>
+      <p class="banda__lema" data-entra style="--i:1">We are one</p>
     </div>
-    <figure class="uno__foto" data-revela style="--i:2">
-      <img src="assets/img/noticia-radio3-900.webp" srcset="assets/img/noticia-radio3-480.webp 480w, assets/img/noticia-radio3-900.webp 900w" sizes="(min-width: 960px) 46vw, 92vw" width="900" height="600" alt="El equipo de Reggae School Madrid en el estudio de Radio 3" loading="lazy" decoding="async">
-      <figcaption>El equipo, en Alma de León (Radio 3).</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -254,140 +266,139 @@
   <div class="envoltura">
     <header class="cabeza-c">
       <h2 class="t-seccion" id="equipo-t" data-revela>Equipo <em>docente</em></h2>
-      <p class="cabeza-c__guia" data-revela style="--i:1">Elige un profesor para leer su trayectoria.</p>
+      <p class="cabeza-c__guia" data-revela style="--i:1">Desde que Javier Ochoa fundó Reggae School Madrid en 2020, su idea perseguía el sueño de formar un
+      equipo de docentes músicos especializados en el género. Poco a poco fueron incorporándose los que hoy forman un
+      equipo multidisciplinar que trabaja para ofrecer la mejor experiencia educativa.</p>
     </header>
-    <div class="pestas" role="tablist" aria-label="Profesorado" data-pestas>
-        <button class="pesta" type="button" role="tab" id="tab-javier-ochoa" aria-controls="javier-ochoa" aria-selected="true"><img src="assets/img/prof4-javier-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Javier Ochoa</span></button>
-        <button class="pesta" type="button" role="tab" id="tab-maga-lion" aria-controls="maga-lion" aria-selected="false" tabindex="-1"><img src="assets/img/prof4-maga-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Maga Lion</span></button>
-        <button class="pesta" type="button" role="tab" id="tab-jorge-rodriguez" aria-controls="jorge-rodriguez" aria-selected="false" tabindex="-1"><img src="assets/img/prof4-jorge-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Jorge Rodríguez</span></button>
-        <button class="pesta" type="button" role="tab" id="tab-pablo-cano" aria-controls="pablo-cano" aria-selected="false" tabindex="-1"><img src="assets/img/prof4-pablo-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Pablo Cano</span></button>
-        <button class="pesta" type="button" role="tab" id="tab-david-arribas" aria-controls="david-arribas" aria-selected="false" tabindex="-1"><img src="assets/img/prof4-david-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>David Arribas</span></button>
-        <button class="pesta" type="button" role="tab" id="tab-miguel-valenciano" aria-controls="miguel-valenciano" aria-selected="false" tabindex="-1"><img src="assets/img/prof4-miguelv-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Miguel Valenciano</span></button>
-        <button class="pesta" type="button" role="tab" id="tab-miguel-moreno" aria-controls="miguel-moreno" aria-selected="false" tabindex="-1"><img src="assets/img/prof4-miguelm-480.webp" width="56" height="70" alt="" loading="lazy" decoding="async"><span>Miguel Moreno</span></button>
-    </div>
-    <div class="paneles">
-      <div class="profe-p" id="javier-ochoa" role="tabpanel" aria-labelledby="tab-javier-ochoa" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-javier-720.webp" srcset="assets/img/prof4-javier-480.webp 480w, assets/img/prof4-javier-720.webp 720w" sizes="(min-width: 900px) 30vw, 88vw" width="720" height="900" alt="Javier Ochoa" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">Javier Ochoa</h3>
-          <p class="profe-p__cargo">Músico, productor y director / profesor de guitarra, voz y producción RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#guitarra">Guitarra</a></li><li><a href="instrumento-y-canto.html#canto">Canto</a></li><li><a href="produccion-y-mezcla.html">Producción</a></li></ul></div>
-          <div class="profe-p__bio">
+    <div class="temas">
+      <div class="pistas" role="tablist" aria-label="Profesorado" aria-orientation="vertical" data-pestas data-revela>
+        <button class="pista" type="button" role="tab" id="tab-javier-ochoa" aria-controls="javier-ochoa" aria-selected="true"><img class="pista__cara" src="assets/img/prof4-javier-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">Javier Ochoa</span><span class="pista__i">Guitarra · Canto · Producción</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="pista" type="button" role="tab" id="tab-maga-lion" aria-controls="maga-lion" aria-selected="false" tabindex="-1"><img class="pista__cara" src="assets/img/prof4-maga-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">Maga Lion</span><span class="pista__i">Combo RSM</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="pista" type="button" role="tab" id="tab-jorge-rodriguez" aria-controls="jorge-rodriguez" aria-selected="false" tabindex="-1"><img class="pista__cara" src="assets/img/prof4-jorge-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">Jorge Rodríguez</span><span class="pista__i">Saxo</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="pista" type="button" role="tab" id="tab-pablo-cano" aria-controls="pablo-cano" aria-selected="false" tabindex="-1"><img class="pista__cara" src="assets/img/prof4-pablo-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">Pablo Cano</span><span class="pista__i">Bajo</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="pista" type="button" role="tab" id="tab-david-arribas" aria-controls="david-arribas" aria-selected="false" tabindex="-1"><img class="pista__cara" src="assets/img/prof4-david-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">David Arribas</span><span class="pista__i">Teclado · Combo RSM</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="pista" type="button" role="tab" id="tab-miguel-valenciano" aria-controls="miguel-valenciano" aria-selected="false" tabindex="-1"><img class="pista__cara" src="assets/img/prof4-miguelv-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">Miguel Valenciano</span><span class="pista__i">Batería</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <button class="pista" type="button" role="tab" id="tab-miguel-moreno" aria-controls="miguel-moreno" aria-selected="false" tabindex="-1"><img class="pista__cara" src="assets/img/prof4-miguelm-480.webp" width="48" height="60" alt="" loading="lazy" decoding="async"><span class="pista__txt"><span class="pista__n">Miguel Moreno</span><span class="pista__i">Batería</span></span><span class="pista__eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      </div>
+      <div class="paneles temas__bio" data-revela style="--i:1">
+      <div class="profe-p profe-p--texto" id="javier-ochoa" role="tabpanel" aria-labelledby="tab-javier-ochoa" tabindex="0">
+        <h3 class="profe-p__nombre">Javier Ochoa</h3>
+        <p class="profe-p__cargo">Músico, productor y director / profesor de guitarra, voz y producción RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#guitarra">Guitarra</a></li><li><a href="instrumento-y-canto.html#canto">Canto</a></li><li><a href="produccion-y-mezcla.html">Producción</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Músico de la escena madrileña que desde hace más de 20 años pertenece y ha pertenecido a colectivos musicales como Hotdrop, Blueskank, The Rootskank (Nytto Dread, Virginia Rivera, Payoh SoulRebel), Mango Wood, o el sound system Echo Chamber Roots Hi-Fi.</p>
           <p>Compagina su trabajo como músico y director de la escuela, con el de productor bajo el sello independiente Estudios Estrella.</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Guitarra#reserva">Prueba una clase con Javier</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Guitarra#reserva">Prueba una clase con Javier</a>
       </div>
-      <div class="profe-p" id="maga-lion" role="tabpanel" aria-labelledby="tab-maga-lion" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-maga-720.webp" srcset="assets/img/prof4-maga-480.webp 480w, assets/img/prof4-maga-720.webp 720w" sizes="(min-width: 900px) 30vw, 88vw" width="720" height="900" alt="Maga Lion" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">Maga Lion</h3>
-          <p class="profe-p__cargo">Felipe Martins aka Maga Lion · Productor, compositor, intérprete, profesor de combo RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="grupal.html#combo-rsm">Combo RSM</a></li></ul></div>
-          <div class="profe-p__bio">
+      <div class="profe-p profe-p--texto" id="maga-lion" role="tabpanel" aria-labelledby="tab-maga-lion" tabindex="0">
+        <h3 class="profe-p__nombre">Maga Lion</h3>
+        <p class="profe-p__cargo">Felipe Martins aka Maga Lion · Productor, compositor, intérprete, profesor de combo RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="grupal.html#combo-rsm">Combo RSM</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Felipe Martins aka Maga Lion productor, cantante y multi-instrumentista, empezó por estudiar violín y piano clásico desde niño. Se forma vocalmente con Braulio y Dani Reus (Gospel Factory) y estudia mezcla y grabación con Saúl Pariente (Boxer Studios, Zion Studios) y se profesionaliza con la MPC (Music Production Centre).</p>
           <p>Miembro fundador de la banda Emeterians (2004-actualidad) con la que ha grabado 7 discos de estudio, algunos de ellos con grandes productores londinenses como Dilly Stingray o Chris Peckings.</p>
           <p>Ha colaborado con grandes artistas internacionales como Ky-Mani Marley, Brian Travers (UB40), Clinton Fearon, Luciano, Mellow Mood, y con artistas nacionales de la talla de Macaco, Morodo o Chalart 58.</p>
           <p>Tiene más de 150 canciones registradas con la editorial Jack Russell Music y distribuye gran parte de su música con el sello americano VPAL Records.</p>
           <p>En la actualidad Felipe Martins está trabajando en el 8º disco de Emeterians, al mismo tiempo que produce a otros artistas y graba instrumentales (riddims) para muchos otros. También es profesor de combo en RSM (Reggae School Madrid).</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Combo RSM#reserva">Prueba una clase con Maga</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Combo RSM#reserva">Prueba una clase con Maga</a>
       </div>
-      <div class="profe-p" id="jorge-rodriguez" role="tabpanel" aria-labelledby="tab-jorge-rodriguez" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-jorge-720.webp" srcset="assets/img/prof4-jorge-480.webp 480w, assets/img/prof4-jorge-720.webp 720w" sizes="(min-width: 900px) 30vw, 88vw" width="720" height="900" alt="Jorge Rodríguez" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">Jorge Rodríguez</h3>
-          <p class="profe-p__cargo">Músico y profesor de saxo RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#saxo">Saxo</a></li></ul></div>
-          <div class="profe-p__bio">
+      <div class="profe-p profe-p--texto" id="jorge-rodriguez" role="tabpanel" aria-labelledby="tab-jorge-rodriguez" tabindex="0">
+        <h3 class="profe-p__nombre">Jorge Rodríguez</h3>
+        <p class="profe-p__cargo">Músico y profesor de saxo RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#saxo">Saxo</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Estudia en la Escuela de Música Creativa de Madrid, donde recibe clases de Saxofón, Combo, Improvisación, Armonía etc. Después completa sus estudios superiores de Interpretación en Música Moderna en la Universidad Alfonso X (Instrumento, Combo, Armonía, Composición y Arreglos, Big band, Improvisación). De forma extracurricular recibe clases de Educación Auditiva y de Composición y Arreglos, entre otros.</p>
           <p>Como músico profesional ha trabajado con grupos y artistas de los más variados estilos, que comprenden desde el Jazz y las Big Bands, Reggae, Ska, Funk, Soul, Afrobeat y Mestizaje. Algunos de los artistas o grupos con los que ha trabajado en estos años son Xoel López, Freedonia, Ska-P, LaZurda, El Sombrero del Abuelo, o Tito Ramírez.</p>
           <p>En el ámbito de la música jamaicana es miembro fundador de la banda de Ska Jazz Skalone (habiendo compartido escenario con New York Ska Jazz Ensemble y Skatalites), además de haber trabajado con artistas o bandas como Michael Prophet, Alpheus, Forward Ever Band, Jahsta, Mighty Megatons, Hammond York, Madrid Ska Foundation, o Ska-P (grabación de sus dos últimos discos), lo que le ha llevado a girar por los festivales y escenarios de toda España y parte del extranjero.</p>
           <p>Como profesor lleva impartiendo clases de música desde hace más de 20 años, tanto a nivel particular como en diversas escuelas de música tanto públicas como privadas.</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Saxo#reserva">Prueba una clase con Jorge</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Saxo#reserva">Prueba una clase con Jorge</a>
       </div>
-      <div class="profe-p" id="pablo-cano" role="tabpanel" aria-labelledby="tab-pablo-cano" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-pablo-720.webp" srcset="assets/img/prof4-pablo-480.webp 480w, assets/img/prof4-pablo-720.webp 720w" sizes="(min-width: 900px) 30vw, 88vw" width="720" height="900" alt="Pablo Cano" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">Pablo Cano</h3>
-          <p class="profe-p__cargo">Músico y profesor de bajo RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#bajo">Bajo</a></li></ul></div>
-          <div class="profe-p__bio">
+      <div class="profe-p profe-p--texto" id="pablo-cano" role="tabpanel" aria-labelledby="tab-pablo-cano" tabindex="0">
+        <h3 class="profe-p__nombre">Pablo Cano</h3>
+        <p class="profe-p__cargo">Músico y profesor de bajo RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#bajo">Bajo</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Ha participado o participa como bajista en bandas como Alamedadosoulna (Ska-jazz), Emeterians, Blueskank, The Rootskank, Tasty Grooves, Phyton Dojo y Tucxone Army (Reggae), Pyramid Blue (Afrobeat-Latin-Funk), y Shirley Davis and the Silverbacks (Soul).</p>
           <p>En la actualidad compagina el trabajo de bajista y director musical en J.P. Bimeni &amp; The Black Belts (Soul), con la docencia y la dirección en la plataforma educativa BajoCuerdas y Reggae School Madrid.</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Bajo#reserva">Prueba una clase con Pablo</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Bajo#reserva">Prueba una clase con Pablo</a>
       </div>
-      <div class="profe-p" id="david-arribas" role="tabpanel" aria-labelledby="tab-david-arribas" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-david-720.webp" srcset="assets/img/prof4-david-480.webp 480w, assets/img/prof4-david-720.webp 720w" sizes="(min-width: 900px) 30vw, 88vw" width="720" height="900" alt="David Arribas" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">David Arribas</h3>
-          <p class="profe-p__cargo">Productor, compositor, intérprete, profesor de combo y teclado RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#teclado">Teclado</a></li><li><a href="grupal.html#combo-rsm">Combo RSM</a></li></ul></div>
-          <div class="profe-p__bio">
+      <div class="profe-p profe-p--texto" id="david-arribas" role="tabpanel" aria-labelledby="tab-david-arribas" tabindex="0">
+        <h3 class="profe-p__nombre">David Arribas</h3>
+        <p class="profe-p__cargo">Productor, compositor, intérprete, profesor de combo y teclado RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#teclado">Teclado</a></li><li><a href="grupal.html#combo-rsm">Combo RSM</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Desde que cayó en sus manos una guitarra con 14 años, la música ha sido su mundo, su propósito, su salvación y la manera más certera de comunicarse y expresar, además de un refugio desde el que compartir y conocer a personas maravillosas.</p>
           <p>Como músico ha participado en bandas de diferentes estilos (principalmente Reggae y Soul) como Hotdrop, Mood Rakers, Blueskank, Sunnare, Bass Culture Players, Saravah, Rootskank, Un Cuento Propio… y comanda desde 2012 su proyecto personal Downtown Beat, donde aglutina a cantantes y músicos de la escena Reggae estatal de la talla de Emeterians, Payoh SoulRebel, Yeyo Pérez, High Paw, Natty Nature.</p>
           <p>Actualmente, además, trabaja junto a Miguel Valenciano en el estudio Kovan Music Studio, grabando y produciendo a multitud de artistas. Compagina su trabajo de musicoterapeuta con su labor como terapeuta Gestalt y como profesor del Combo RSM, de teclado, músico de sesión y artista audiovisual en Reggae School Madrid.</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Teclado#reserva">Prueba una clase con David</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Teclado#reserva">Prueba una clase con David</a>
       </div>
-      <div class="profe-p" id="miguel-valenciano" role="tabpanel" aria-labelledby="tab-miguel-valenciano" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-miguelv-640.webp" srcset="assets/img/prof4-miguelv-480.webp 480w, assets/img/prof4-miguelv-640.webp 640w" sizes="(min-width: 900px) 30vw, 88vw" width="640" height="800" alt="Miguel Valenciano" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">Miguel Valenciano</h3>
-          <p class="profe-p__cargo">Músico, compositor, productor y profesor RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#bateria">Batería</a></li></ul></div>
-          <div class="profe-p__bio">
+      <div class="profe-p profe-p--texto" id="miguel-valenciano" role="tabpanel" aria-labelledby="tab-miguel-valenciano" tabindex="0">
+        <h3 class="profe-p__nombre">Miguel Valenciano</h3>
+        <p class="profe-p__cargo">Músico, compositor, productor y profesor RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#bateria">Batería</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Ha desempeñado su labor como músico, desde el año 2000, como cantante, guitarrista, batería y percusionista en proyectos como Blueskank, The Rootskank (Nytto Dread, Al Campbell, Hermano L, Michael Prophet, Downtown Beat…), RioMente, En LaCasa, Un Cuento Propio, etc. Actualmente desempeña las labores de dirección y producción musical en Kovan Music Studio.</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Batería#reserva">Prueba una clase con Miguel</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Batería#reserva">Prueba una clase con Miguel</a>
       </div>
-      <div class="profe-p" id="miguel-moreno" role="tabpanel" aria-labelledby="tab-miguel-moreno" tabindex="0">
-        <figure class="profe-p__foto"><img src="assets/img/prof4-miguelm-720.webp" srcset="assets/img/prof4-miguelm-480.webp 480w, assets/img/prof4-miguelm-720.webp 720w" sizes="(min-width: 900px) 30vw, 88vw" width="720" height="900" alt="Miguel Moreno" loading="lazy" decoding="async"></figure>
-        <div class="profe-p__texto">
-          <h3 class="profe-p__nombre">Miguel Moreno</h3>
-          <p class="profe-p__cargo">Músico, compositor, educador y profesor RSM</p>
-          <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#bateria">Batería</a></li></ul></div>
-          <div class="profe-p__bio">
+      <div class="profe-p profe-p--texto" id="miguel-moreno" role="tabpanel" aria-labelledby="tab-miguel-moreno" tabindex="0">
+        <h3 class="profe-p__nombre">Miguel Moreno</h3>
+        <p class="profe-p__cargo">Músico, compositor, educador y profesor RSM</p>
+        <div class="profe-p__clases"><span>Da clase de</span><ul><li><a href="instrumento-y-canto.html#bateria">Batería</a></li></ul></div>
+        <div class="profe-p__bio">
           <p>Desde bien pequeño dando palos en bandas relacionadas con la música jamaicana, habiendo tocado con bandas madrileñas del género como Blueskank, Los Ministers del Ronsteady, Begoña Bangmatu y Hammond York.</p>
           <p>Su formación musical basada fundamentalmente en el jazz y en músicas modernas aunque siempre con una tendencia hacia el ska, reggae y rocksteady.</p>
           <p>Además de la batería, tiene conocimientos de piano, percusión latina, armonía, composición e improvisación.</p>
           <p>Con más de 10 años de experiencia impartiendo clases del instrumento en diferentes escuelas se ha forjado un método pedagógico pensado para todos los niveles.</p>
-          </div>
-          <a class="boton boton--oro" href="index.html?instrumento=Batería#reserva">Prueba una clase con Miguel</a>
         </div>
+        <a class="boton boton--oro" href="index.html?instrumento=Batería#reserva">Prueba una clase con Miguel</a>
+      </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ INSTALACIONES Y ESTUDIOS ============================ -->
+<!-- ============================ INSTALACIONES Y ESTUDIOS: VISOR ============================ -->
+<!-- Como las salas de Abbey Road o RAK: la foto en grande, con el título encima; debajo, las miniaturas que eligen y
+     las flechas centradas (como en las opiniones). Pasa sola cada 6,4 s mientras se ve y nadie la toca. -->
 <section class="estudio seccion" id="instalaciones-y-estudios" aria-labelledby="inst-t">
   <div class="envoltura">
-    <header class="cabeza-c">
-      <h2 class="t-seccion" id="inst-t" data-revela>Instalaciones <em>y estudios</em></h2>
-      <p class="cabeza-c__guia" data-revela style="--i:1">Las clases presenciales se dan en el estudio de cada profesor, en Madrid.
-      <span class="pendiente">Fotos de cada estudio por llegar</span></p>
-    </header>
-  </div>
-  <div class="carril tira" tabindex="0" aria-label="Fotos del estudio" data-carril>
-    <ul class="carril__pista">
-      <li class="tira__f"><img src="assets/img/est-mesa-900.webp" width="900" height="600" alt="Mesa de mezclas grande en penumbra cálida" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-vumetros-720.webp" width="720" height="480" alt="Vúmetros iluminados en naranja" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-hammond-720.webp" width="720" height="480" alt="Órgano Hammond con luz cálida" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-guitarras-720.webp" width="720" height="480" alt="Guitarras colgadas en la pared" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-bateria-720.webp" width="720" height="480" alt="Batería en el estudio" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-tocadiscos-720.webp" width="720" height="480" alt="Tocadiscos con un vinilo verde" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-bajo-720.webp" width="720" height="480" alt="Bajo Fender junto a una estantería con libros" loading="lazy" decoding="async"></li>
-      <li class="tira__f"><img src="assets/img/est-vinilos-720.webp" width="720" height="480" alt="Discos de vinilo en una estantería" loading="lazy" decoding="async"></li>
-    </ul>
+    <div class="visor" data-visor>
+      <div class="visor__escena" data-revela>
+        <figure class="visor__foto activa" data-visor-foto><img src="assets/img/est-mesa-1600.webp" srcset="assets/img/est-mesa-900.webp 900w, assets/img/est-mesa-1600.webp 1600w" sizes="(min-width: 1360px) 1320px, 94vw" width="1600" height="1067" alt="Mesa de mezclas grande en penumbra cálida" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-vumetros-1200.webp" srcset="assets/img/est-vumetros-720.webp 720w, assets/img/est-vumetros-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Vúmetros iluminados en naranja" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-hammond-1200.webp" srcset="assets/img/est-hammond-720.webp 720w, assets/img/est-hammond-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Órgano Hammond con luz cálida" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-guitarras-1200.webp" srcset="assets/img/est-guitarras-720.webp 720w, assets/img/est-guitarras-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Guitarras colgadas en la pared" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-bateria-1200.webp" srcset="assets/img/est-bateria-720.webp 720w, assets/img/est-bateria-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Batería en el estudio" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-tocadiscos-1200.webp" srcset="assets/img/est-tocadiscos-720.webp 720w, assets/img/est-tocadiscos-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Tocadiscos con un vinilo verde" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-bajo-1200.webp" srcset="assets/img/est-bajo-720.webp 720w, assets/img/est-bajo-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Bajo Fender junto a una estantería con libros" loading="lazy" decoding="async"></figure>
+        <figure class="visor__foto" data-visor-foto aria-hidden="true"><img src="assets/img/est-vinilos-1200.webp" srcset="assets/img/est-vinilos-720.webp 720w, assets/img/est-vinilos-1200.webp 1200w" sizes="(min-width: 1360px) 1320px, 94vw" width="1200" height="800" alt="Discos de vinilo en una estantería" loading="lazy" decoding="async"></figure>
+        <div class="visor__texto">
+          <h2 class="t-seccion visor__t" id="inst-t">Instalaciones <em>y estudios</em></h2>
+          <p class="visor__p">Las clases presenciales se dan en el estudio de cada profesor, en Madrid. <span class="pendiente">Fotos de cada estudio por llegar</span></p>
+        </div>
+        <p class="visor__cuenta" aria-hidden="true"><span data-visor-n>1</span> / 8</p>
+      </div>
+      <div class="visor__mando">
+        <button class="voces__flecha" type="button" data-visor-paso="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ol class="visor__minis">
+        <li><button class="visor__mini" type="button" data-visor-ir="0" aria-label="Foto 1: Mesa de mezclas grande en penumbra cálida" aria-current="true"><img src="assets/img/est-mesa-900.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="1" aria-label="Foto 2: Vúmetros iluminados en naranja"><img src="assets/img/est-vumetros-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="2" aria-label="Foto 3: Órgano Hammond con luz cálida"><img src="assets/img/est-hammond-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="3" aria-label="Foto 4: Guitarras colgadas en la pared"><img src="assets/img/est-guitarras-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="4" aria-label="Foto 5: Batería en el estudio"><img src="assets/img/est-bateria-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="5" aria-label="Foto 6: Tocadiscos con un vinilo verde"><img src="assets/img/est-tocadiscos-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="6" aria-label="Foto 7: Bajo Fender junto a una estantería con libros"><img src="assets/img/est-bajo-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        <li><button class="visor__mini" type="button" data-visor-ir="7" aria-label="Foto 8: Discos de vinilo en una estantería"><img src="assets/img/est-vinilos-720.webp" width="120" height="80" alt="" loading="lazy" decoding="async"></button></li>
+        </ol>
+        <button class="voces__flecha" type="button" data-visor-paso="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -516,7 +527,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.5" defer></script>
-<script src="assets/js/paginas.js?v=10.5" defer></script>
+<script src="assets/js/main.js?v=10.6" defer></script>
+<script src="assets/js/paginas.js?v=10.6" defer></script>
 </body>
 </html>
