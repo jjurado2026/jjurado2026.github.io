@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.4">
-<link rel="stylesheet" href="assets/css/home.css?v=10.4">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.4">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.4">
+<link rel="stylesheet" href="assets/css/global.css?v=10.5">
+<link rel="stylesheet" href="assets/css/home.css?v=10.5">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.5">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.5">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -284,16 +284,16 @@
       <img class="marca__logo" src="assets/img/logo-120.webp" width="52" height="52" alt="Reggae School Madrid" decoding="async">
     </a>
 
-    <!-- Los apartados con páginas debajo (Cursos, La escuela) no llevan enlace: abren su desplegable -->
+    <!-- v10.5 (27-11-2026): sin fotos en los desplegables. «La escuela» lleva a su página y su flecha abre los
+         apartados; en Cursos, «Instrumento y canto», «Producción y mezcla» y «Grupal» también son enlaces. -->
     <nav class="nav nav--paginas" aria-label="Principal">
       <ul class="nav__lista">
         <li class="nav__item" data-desplegable>
           <button class="nav__padre" type="button" aria-expanded="false" aria-controls="sub-cursos" aria-current="page">Cursos <svg class="nav__flecha" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
           <div class="nav__sub nav__sub--cursos" id="sub-cursos">
-            <div class="nav__grupo">
-              <span class="nav__foto"><img data-src="assets/img/menu-instrumento-400.webp" width="400" height="250" alt=""></span>
-              <p class="nav__grupo-t">Instrumento y canto</p>
-              <ul>
+            <div class="nav__grupo nav__grupo--ancho">
+              <a class="nav__grupo-t" href="instrumento-y-canto.html">Instrumento y canto <svg class="nav__ir" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <ul class="nav__dos">
                 <li><a href="instrumento-y-canto.html#guitarra">Guitarra Reggae</a></li>
                 <li><a href="instrumento-y-canto.html#bajo">Bajo Reggae</a></li>
                 <li><a href="instrumento-y-canto.html#bateria">Batería Reggae</a></li>
@@ -302,26 +302,25 @@
                 <li><a href="instrumento-y-canto.html#canto">Canto y Composición</a></li>
               </ul>
             </div>
-            <div class="nav__grupo">
-              <span class="nav__foto"><img data-src="assets/img/menu-produccion-400.webp" width="400" height="250" alt=""></span>
-              <a class="nav__grupo-t nav__grupo-t--enlace" href="produccion-y-mezcla.html">Producción y mezcla</a>
-              <p class="nav__grupo-d">Haz que suene como quieres que suene.</p>
-            </div>
-            <div class="nav__grupo">
-              <span class="nav__foto"><img data-src="assets/img/menu-grupal-400.webp" width="400" height="250" alt=""></span>
-              <p class="nav__grupo-t">Grupal</p>
-              <ul>
-                <li><a href="grupal.html#combo-rsm">Combo RSM</a></li>
-                <li><a href="grupal.html#armonia-online">Curso de Armonía Online</a></li>
-              </ul>
+            <div class="nav__col">
+              <div class="nav__grupo">
+                <a class="nav__grupo-t" href="produccion-y-mezcla.html">Producción y mezcla <svg class="nav__ir" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <p class="nav__grupo-d">Haz que suene como quieres que suene.</p>
+              </div>
+              <div class="nav__grupo">
+                <a class="nav__grupo-t" href="grupal.html">Grupal <svg class="nav__ir" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <ul>
+                  <li><a href="grupal.html#combo-rsm">Combo RSM</a></li>
+                  <li><a href="grupal.html#armonia-online">Curso de Armonía Online</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </li>
         <li><a class="nav__enlace" href="talleres-y-eventos.html">Talleres y eventos</a></li>
-        <li class="nav__item" data-desplegable>
-          <button class="nav__padre" type="button" aria-expanded="false" aria-controls="sub-escuela">La escuela <svg class="nav__flecha" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        <li class="nav__item nav__item--doble" data-desplegable>
+          <a class="nav__padre nav__padre--enlace" href="la-escuela.html">La escuela</a><button class="nav__abre" type="button" aria-expanded="false" aria-controls="sub-escuela" aria-label="Apartados de La escuela"><svg class="nav__flecha" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
           <div class="nav__sub nav__sub--escuela" id="sub-escuela">
-            <span class="nav__foto"><img data-src="assets/img/menu-escuela-400.webp" width="400" height="250" alt=""></span>
             <ul>
               <li><a href="la-escuela.html#equipo-docente">Equipo docente</a></li>
               <li><a href="la-escuela.html#instalaciones-y-estudios">Instalaciones y estudios</a></li>
@@ -352,13 +351,15 @@
         <details class="menu__grupo">
           <summary class="menu__fila">Cursos <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <ul class="menu__sub menu__sub--dos">
+          <li class="menu__sub-t"><a href="instrumento-y-canto.html" data-menu-enlace>Instrumento y canto</a></li>
           <li><a href="instrumento-y-canto.html#guitarra" data-menu-enlace>Guitarra</a></li>
           <li><a href="instrumento-y-canto.html#bajo" data-menu-enlace>Bajo</a></li>
           <li><a href="instrumento-y-canto.html#bateria" data-menu-enlace>Batería</a></li>
           <li><a href="instrumento-y-canto.html#teclado" data-menu-enlace>Teclado y Órgano</a></li>
           <li><a href="instrumento-y-canto.html#saxo" data-menu-enlace>Saxofón Alto / Tenor</a></li>
           <li><a href="instrumento-y-canto.html#canto" data-menu-enlace>Canto y Composición</a></li>
-          <li><a href="produccion-y-mezcla.html" data-menu-enlace>Producción y Mezcla</a></li>
+          <li class="menu__sub-t"><a href="produccion-y-mezcla.html" data-menu-enlace>Producción y mezcla</a></li>
+          <li class="menu__sub-t"><a href="grupal.html" data-menu-enlace>Grupal</a></li>
           <li><a href="grupal.html#combo-rsm" data-menu-enlace>Combo RSM</a></li>
           <li><a href="grupal.html#armonia-online" data-menu-enlace>Armonía Online</a></li>
           </ul>
@@ -366,14 +367,15 @@
       </li>
       <li style="--i:2"><a class="menu__fila" href="talleres-y-eventos.html" data-menu-enlace>Talleres y eventos <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
       <li style="--i:3">
-        <details class="menu__grupo">
-          <summary class="menu__fila">La escuela <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <ul class="menu__sub">
-            <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
-            <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
-            <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
-          </ul>
-        </details>
+        <div class="menu__doble">
+          <a class="menu__fila" href="la-escuela.html" data-menu-enlace>La escuela</a>
+          <button class="menu__abre" type="button" aria-expanded="false" aria-controls="m-escuela" aria-label="Apartados de La escuela" data-menu-abre><svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <ul class="menu__sub" id="m-escuela" hidden>
+          <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
+          <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
+          <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
+        </ul>
       </li>
       <li style="--i:4"><a class="menu__fila" href="noticias.html" data-menu-enlace>Noticias <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
       <li style="--i:5"><a class="menu__fila" href="tienda.html" data-menu-enlace>Tienda <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -401,12 +403,12 @@
       el músico que quieres llegar a ser.</p>
     </div>
     <div class="cu-cartas cu-cartas--ico" role="tablist" aria-label="Elige tu curso" style="--n:6">
-      <a class="cu-carta cu-carta--ico" href="#guitarra" role="tab" aria-selected="false" aria-controls="guitarra" data-ficha-tab="guitarra" data-entra style="--i:2"><svg class="ico ico--guitarra" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g transform="rotate(-32 32 36)"><g class="ico__mece"><path d="M32 21C38 21 41 25 40 30C39.5 33 38 34.5 40.5 37C45 40 45 52 38 55.5C35 57 29 57 26 55.5C19 52 19 40 23.5 37C26 34.5 24.5 33 24 30C23 25 26 21 32 21Z"/><circle cx="32" cy="41" r="3.6"/><path d="M30 21.5V7h4v14.5"/><path d="M29.4 7l-.6-4.6h6.4l-.6 4.6"/><path d="M28 50h8"/><path class="ico__fina" d="M31.3 7v43M32.7 7v43"/></g></g><g class="ico__ondas"><path class="ico__onda" d="M48 13c2.6 2.6 2.6 7.4 0 10"/><path class="ico__onda ico__onda--2" d="M52.5 9c4.6 4.6 4.6 13.4 0 18"/></g></svg><span class="cu-carta__nombre">Guitarra</span></a>
-      <a class="cu-carta cu-carta--ico" href="#bajo" role="tab" aria-selected="false" aria-controls="bajo" data-ficha-tab="bajo" data-entra style="--i:3"><svg class="ico ico--bajo" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g transform="rotate(30 32 36)"><g class="ico__mece"><path d="M30 33C27.5 29 23 28 21.5 30.5C20 33 23 35.5 23 38.5C22.5 42.5 18.5 46 19.5 51.5C20.5 57 26 60 32 60C38 60 43.5 57.5 44.5 52.5C45.5 47 41.5 43.5 41 39.5C40.5 36.5 43.5 34 42.5 29.5C41.5 25.5 36.5 27 34 33"/><path d="M30 33V5h4v28"/><path d="M29.4 5l-.8-3.4h6.8l-.8 3.4"/><rect x="27.5" y="42" width="9" height="3.4" rx="1.2"/><path d="M28 51.5h8"/><path class="ico__fina" d="M31 5v46.5M32.3 5v46.5M33.6 5v46.5"/></g></g><g class="ico__ondas"><path class="ico__onda" d="M16 13c-2.6 2.6-2.6 7.4 0 10"/><path class="ico__onda ico__onda--2" d="M11.5 9c-4.6 4.6-4.6 13.4 0 18"/></g></svg><span class="cu-carta__nombre">Bajo</span></a>
-      <a class="cu-carta cu-carta--ico" href="#bateria" role="tab" aria-selected="false" aria-controls="bateria" data-ficha-tab="bateria" data-entra style="--i:4"><svg class="ico ico--bateria" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__parche"><ellipse cx="32" cy="38" rx="16" ry="5"/><path d="M16 38v10c0 3 7.2 5.6 16 5.6s16-2.6 16-5.6V38"/><path class="ico__fina" d="M21 42.4v9M27 43.2v9.6M37 43.2v9.6M43 42.4v9"/></g><g class="ico__baqueta ico__baqueta--i"><path d="M11 11l15.6 21.4"/><circle class="ico__lleno" cx="27" cy="33" r="1.9"/></g><g class="ico__baqueta ico__baqueta--d"><path d="M53 11L37.4 32.4"/><circle class="ico__lleno" cx="37" cy="33" r="1.9"/></g><g class="ico__ondas"><path class="ico__onda" d="M22 26.5l-2.6-2.4M32 24.5v-3.4M42 26.5l2.6-2.4"/></g></svg><span class="cu-carta__nombre">Batería</span></a>
-      <a class="cu-carta cu-carta--ico" href="#teclado" role="tab" aria-selected="false" aria-controls="teclado" data-ficha-tab="teclado" data-entra style="--i:5"><svg class="ico ico--teclado" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><rect x="5" y="16" width="54" height="33" rx="3.5"/><path class="ico__fina" d="M5 24.5h54"/><circle class="ico__lleno" cx="11" cy="20.3" r="1.5"/><circle class="ico__lleno" cx="16.5" cy="20.3" r="1.5"/><path class="ico__fina" d="M40 20.3h14"/><rect class="ico__tecla" x="5.8" y="25.3" width="6.9" height="23" rx="1"/><rect class="ico__tecla ico__tecla--2" x="20.4" y="25.3" width="6.9" height="23" rx="1"/><rect class="ico__tecla ico__tecla--3" x="35" y="25.3" width="6.9" height="23" rx="1"/><rect class="ico__tecla ico__tecla--4" x="49.6" y="25.3" width="6.9" height="23" rx="1"/><path class="ico__fina" d="M12.7 24.5v24.5M20.4 24.5v24.5M27.7 24.5v24.5M35 24.5v24.5M42.3 24.5v24.5M49.6 24.5v24.5"/><path class="ico__lleno" d="M10.8 24.5h3.8v11h-3.8zM18.5 24.5h3.8v11h-3.8zM33.1 24.5h3.8v11h-3.8zM40.4 24.5h3.8v11h-3.8zM47.7 24.5h3.8v11h-3.8z"/></svg><span class="cu-carta__nombre">Teclado</span></a>
-      <a class="cu-carta cu-carta--ico" href="#saxo" role="tab" aria-selected="false" aria-controls="saxo" data-ficha-tab="saxo" data-entra style="--i:6"><svg class="ico ico--saxo" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__mece"><path d="M12 11.5L15 9h9C29 9 33 12 33 18v26.5c0 4 3 7 7 7s5-2.5 5-6.5v-4.5l-2.2-4.5h12l-3.8 4.5v6.5c0 6-4.4 11-11 11s-12.2-5-12.2-12V17.5c0-2.6-1.4-4.2-3.8-4.2h-9z"/><circle class="ico__lleno" cx="30" cy="22" r="1.5"/><circle class="ico__lleno" cx="30" cy="28" r="1.5"/><circle class="ico__lleno" cx="30" cy="34" r="1.5"/><circle class="ico__lleno" cx="30" cy="40" r="1.5"/></g><g class="ico__nota"><ellipse class="ico__lleno" cx="54" cy="27" rx="2.6" ry="2" transform="rotate(-22 54 27)"/><path d="M56.4 26V17l3.6 1.8"/></g><g class="ico__nota ico__nota--2"><ellipse class="ico__lleno" cx="45" cy="24" rx="2.4" ry="1.8" transform="rotate(-22 45 24)"/><path d="M47.2 23.2V15.5"/></g></svg><span class="cu-carta__nombre">Saxo</span></a>
-      <a class="cu-carta cu-carta--ico" href="#canto" role="tab" aria-selected="false" aria-controls="canto" data-ficha-tab="canto" data-entra style="--i:7"><svg class="ico ico--canto" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__mece"><rect x="24" y="5" width="16" height="27" rx="8"/><path class="ico__fina" d="M24.6 15h14.8M24.6 20h14.8M24.6 25h14.8"/><path d="M18.5 24v2.5a13.5 13.5 0 0 0 27 0V24"/><path d="M32 40v13M24 53.5h16"/></g><g class="ico__ondas"><path class="ico__onda" d="M13 13c-3 4-3 10.5 0 14.5"/><path class="ico__onda ico__onda--2" d="M8 9c-5.4 6.2-5.4 16.4 0 22.6"/><path class="ico__onda" d="M51 13c3 4 3 10.5 0 14.5"/><path class="ico__onda ico__onda--2" d="M56 9c5.4 6.2 5.4 16.4 0 22.6"/></g></svg><span class="cu-carta__nombre">Canto</span></a>
+      <a class="cu-carta cu-carta--ico" href="#guitarra" role="tab" aria-selected="false" aria-controls="guitarra" data-ficha-tab="guitarra" data-entra style="--i:2"><svg class="ico ico--guitarra" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g transform="rotate(-32 32 34)"><g class="ico__mece"><path d="M32 30C37.6 30 40.2 33.4 39.4 37.4C39 39.2 38 40.2 40 42.2C44.6 45.4 44.8 54.4 39.4 57.4C36.8 58.8 27.2 58.8 24.6 57.4C19.2 54.4 19.4 45.4 24 42.2C26 40.2 25 39.2 24.6 37.4C23.8 33.4 26.4 30 32 30Z"/><circle cx="32" cy="43" r="3.1"/><circle class="ico__fina" cx="32" cy="43" r="4.6"/><path d="M27.6 52.4h8.8"/><path d="M30.2 30.4V10.6h3.6v19.8"/><path class="ico__fina" d="M30.2 14.2h3.6M30.2 17.8h3.6M30.2 21.4h3.6M30.2 25h3.6"/><path d="M29.7 10.6L28.9 3.6h6.2l-.8 7"/><circle class="ico__lleno" cx="27.3" cy="5.4" r="1.15"/><circle class="ico__lleno" cx="27.6" cy="8.6" r="1.15"/><circle class="ico__lleno" cx="36.7" cy="5.4" r="1.15"/><circle class="ico__lleno" cx="36.4" cy="8.6" r="1.15"/><path class="ico__fina" d="M31.3 10.6v41.8M32.7 10.6v41.8"/></g></g><g class="ico__ondas"><path class="ico__onda" d="M49 15c2.4 2.4 2.4 6.8 0 9.2"/><path class="ico__onda ico__onda--2" d="M53.4 11.2c4.4 4.4 4.4 12.4 0 16.8"/></g></svg><span class="cu-carta__nombre">Guitarra</span></a>
+      <a class="cu-carta cu-carta--ico" href="#bajo" role="tab" aria-selected="false" aria-controls="bajo" data-ficha-tab="bajo" data-entra style="--i:3"><svg class="ico ico--bajo" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g transform="rotate(28 32 34)"><g class="ico__mece"><path d="M29.8 36.4C27.6 32.6 23.4 31.8 22.2 34.2C21 36.6 23.6 38.8 23.6 41.6C23.2 45 19.6 48 20.4 52.6C21.2 57.2 26 60 32 60C38 60 42.8 57.8 43.6 53.4C44.4 48.8 40.8 45.8 40.4 42.4C40 39.6 42.6 37.4 41.8 33.4C41 30 36.6 31.2 34.2 36.4"/><path d="M30.2 36.6V7.4h3.6v29.2"/><path class="ico__fina" d="M30.2 11.4h3.6M30.2 15h3.6M30.2 18.6h3.6M30.2 22.2h3.6M30.2 25.8h3.6"/><path d="M29.5 7.4V2.6c0-.9.6-1.5 1.5-1.5h2c.9 0 1.5.6 1.5 1.5v4.8"/><circle class="ico__lleno" cx="27.4" cy="2.8" r="1.1"/><circle class="ico__lleno" cx="27.4" cy="5.8" r="1.1"/><circle class="ico__lleno" cx="36.6" cy="2.8" r="1.1"/><circle class="ico__lleno" cx="36.6" cy="5.8" r="1.1"/><rect x="27.9" y="42.4" width="8.2" height="3.2" rx="1.2"/><path d="M27.6 52.4h8.8"/><circle class="ico__lleno" cx="39.4" cy="50.2" r="1.35"/><circle class="ico__lleno" cx="40.2" cy="54" r="1.35"/><path class="ico__fina" d="M31 7.4v45M32.4 7.4v45M33.1 7.4v45M31.7 7.4v45"/></g></g><g class="ico__ondas"><path class="ico__onda" d="M15 15c-2.4 2.4-2.4 6.8 0 9.2"/><path class="ico__onda ico__onda--2" d="M10.6 11.2c-4.4 4.4-4.4 12.4 0 16.8"/></g></svg><span class="cu-carta__nombre">Bajo</span></a>
+      <a class="cu-carta cu-carta--ico" href="#bateria" role="tab" aria-selected="false" aria-controls="bateria" data-ficha-tab="bateria" data-entra style="--i:4"><svg class="ico ico--bateria" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><circle cx="32" cy="46" r="11"/><circle class="ico__fina" cx="32" cy="46" r="4.2"/><path class="ico__fina" d="M24.6 55.2l-2.6 3.4M39.4 55.2l2.6 3.4"/><g class="ico__parche"><ellipse cx="32" cy="25.6" rx="6.2" ry="1.9"/><path d="M25.8 25.6v5c0 1.5 2.8 2.8 6.2 2.8s6.2-1.3 6.2-2.8v-5"/></g><path class="ico__fina" d="M32 33.6v1.6"/><ellipse cx="13.5" cy="38" rx="7" ry="2"/><path d="M6.5 38v4.4c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V38"/><path class="ico__fina" d="M13.5 45v11.4M9 58.6l4.5-3.4 4.5 3.4"/><ellipse cx="51" cy="41" rx="7" ry="2"/><path d="M44 41v9.6c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V41"/><path class="ico__fina" d="M45.4 52.8l-.9 5.6M56.6 52.8l.9 5.6"/><path d="M5 19.6h15M6.2 22h12.6"/><path class="ico__fina" d="M12.5 22v13.8"/><path d="M44 17.8q7-3.4 14 0"/><path class="ico__fina" d="M51 16.4v22.4"/><g class="ico__baqueta ico__baqueta--i"><path d="M18 4.6l9.4 15"/><circle class="ico__lleno" cx="27.9" cy="20.4" r="1.6"/></g><g class="ico__baqueta ico__baqueta--d"><path d="M46 4.6l-9.4 15"/><circle class="ico__lleno" cx="36.1" cy="20.4" r="1.6"/></g><g class="ico__ondas"><path class="ico__onda" d="M23.4 21.6l-2.2-1.4M32 19.4v-2.4M40.6 21.6l2.2-1.4"/></g></svg><span class="cu-carta__nombre">Batería</span></a>
+      <a class="cu-carta cu-carta--ico" href="#teclado" role="tab" aria-selected="false" aria-controls="teclado" data-ficha-tab="teclado" data-entra style="--i:5"><svg class="ico ico--teclado" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><rect x="4" y="20" width="56" height="26" rx="3"/><path class="ico__fina" d="M4 30h56"/><path class="ico__fina" d="M10 22.6v2.6M13.6 22.6v4.6M17.2 22.6v1.8M20.8 22.6v3.8M24.4 22.6v3M28 22.6v1.6"/><circle class="ico__lleno" cx="10" cy="25.6" r="1.1"/><circle class="ico__lleno" cx="13.6" cy="27.6" r="1.1"/><circle class="ico__lleno" cx="17.2" cy="24.8" r="1.1"/><circle class="ico__lleno" cx="20.8" cy="26.8" r="1.1"/><circle class="ico__lleno" cx="24.4" cy="26" r="1.1"/><circle class="ico__lleno" cx="28" cy="24.6" r="1.1"/><circle class="ico__fina" cx="43" cy="25" r="2.2"/><circle class="ico__fina" cx="49.6" cy="25" r="2.2"/><circle class="ico__lleno" cx="55.4" cy="25" r="1"/><rect class="ico__tecla" x="4.9" y="39.8" width="2.9" height="5.4" rx=".6"/><rect class="ico__tecla ico__tecla--2" x="14.2" y="39.8" width="2.9" height="5.4" rx=".6"/><rect class="ico__tecla ico__tecla--3" x="23.5" y="39.8" width="2.9" height="5.4" rx=".6"/><rect class="ico__tecla ico__tecla--4" x="37.5" y="39.8" width="2.9" height="5.4" rx=".6"/><path class="ico__fina" d="M8.67 30v16M13.33 30v16M18 30v16M22.67 30v16M27.33 30v16M32 30v16M36.67 30v16M41.33 30v16M46 30v16M50.67 30v16M55.33 30v16"/><path class="ico__lleno" d="M7.17 30h3v9h-3zM11.83 30h3v9h-3zM21.17 30h3v9h-3zM25.83 30h3v9h-3zM30.5 30h3v9h-3zM39.83 30h3v9h-3zM44.5 30h3v9h-3zM53.83 30h3v9h-3z"/><path class="ico__fina" d="M15 46.4l34 11.6M49 46.4L15 58"/></svg><span class="cu-carta__nombre">Teclado</span></a>
+      <a class="cu-carta cu-carta--ico" href="#saxo" role="tab" aria-selected="false" aria-controls="saxo" data-ficha-tab="saxo" data-entra style="--i:6"><svg class="ico ico--saxo" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__mece"><path d="M12 11.5L15 9h9C29 9 33 12 33 18v26.5c0 4 3 7 7 7s5-2.5 5-6.5v-4.5l-2.2-4.5h12l-3.8 4.5v6.5c0 6-4.4 11-11 11s-12.2-5-12.2-12V17.5c0-2.6-1.4-4.2-3.8-4.2h-9z"/><path d="M12 11.5l-4 1.2"/><path class="ico__fina" d="M15.4 9v4.3"/><ellipse class="ico__fina" cx="48.8" cy="36" rx="6" ry="1.4"/><circle class="ico__lleno" cx="30.4" cy="21.5" r="1.45"/><circle class="ico__lleno" cx="30.4" cy="27" r="1.45"/><circle class="ico__lleno" cx="30.4" cy="32.5" r="1.45"/><circle class="ico__lleno" cx="30.4" cy="38" r="1.45"/><path class="ico__fina" d="M33 24h2.8M33 30h2.8M33 36h2.8M35.8 22.6v14.8"/><path class="ico__fina" d="M34.2 51c2.4 2.4 6.4 2.8 9.4.8"/></g><g class="ico__nota"><ellipse class="ico__lleno" cx="56" cy="26" rx="2.4" ry="1.8" transform="rotate(-22 56 26)"/><path d="M58.2 25.2V16.6l3.2 1.6"/></g><g class="ico__nota ico__nota--2"><ellipse class="ico__lleno" cx="46" cy="23" rx="2.2" ry="1.7" transform="rotate(-22 46 23)"/><path d="M48 22.2V14.8"/></g></svg><span class="cu-carta__nombre">Saxo</span></a>
+      <a class="cu-carta cu-carta--ico" href="#canto" role="tab" aria-selected="false" aria-controls="canto" data-ficha-tab="canto" data-entra style="--i:7"><svg class="ico ico--canto" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false"><g class="ico__mece"><path d="M22.5 12.5c0-4.4 4.3-7.3 9.5-7.3s9.5 2.9 9.5 7.3v11c0 4.4-4.3 7.3-9.5 7.3s-9.5-2.9-9.5-7.3z"/><path class="ico__fina" d="M23 13.2h18M22.6 17h18.8M22.6 20.8h18.8M23 24.6h18M32 5.4v25.2"/><path d="M17.6 19v3.2c0 7.9 6.4 14.3 14.4 14.3s14.4-6.4 14.4-14.3V19"/><path d="M32 36.6v13"/><path d="M25.4 49.6h13.2c1.2 0 2.2 1 2.2 2.2V54H23.2v-2.2c0-1.2 1-2.2 2.2-2.2z"/></g><g class="ico__ondas"><path class="ico__onda" d="M12.4 13.4c-3 4-3 10.4 0 14.4"/><path class="ico__onda ico__onda--2" d="M7.6 9.4c-5.4 6.2-5.4 16.2 0 22.4"/><path class="ico__onda" d="M51.6 13.4c3 4 3 10.4 0 14.4"/><path class="ico__onda ico__onda--2" d="M56.4 9.4c5.4 6.2 5.4 16.2 0 22.4"/></g></svg><span class="cu-carta__nombre">Canto</span></a>
     </div>
   </div>
 </section>
@@ -884,7 +886,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.4" defer></script>
-<script src="assets/js/paginas.js?v=10.4" defer></script>
+<script src="assets/js/main.js?v=10.5" defer></script>
+<script src="assets/js/paginas.js?v=10.5" defer></script>
 </body>
 </html>

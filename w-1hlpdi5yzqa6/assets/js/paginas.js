@@ -37,12 +37,12 @@
     if (!b.querySelector('.boton__luz')) b.insertAdjacentHTML('beforeend', '<span class="boton__luz" aria-hidden="true"><span></span></span>');
   });
 
-  /* ---------- Menú: Cursos y La escuela abren su desplegable (no llevan enlace) ----------
-     Con el ratón, al pasar; con el dedo o el teclado, al pulsar. Se cierra al salir, con Escape
-     o al pulsar fuera. Las fotos del desplegable se cargan la primera vez que se abre. */
+  /* ---------- Menú: Cursos y La escuela abren su desplegable ----------
+     Con el ratón, al pasar; con el dedo o el teclado, al pulsar su botón (en Cursos, el nombre; en
+     La escuela, la flecha: el nombre lleva a su página). Se cierra al salir, con Escape o al pulsar fuera. */
   const desplegables = $$('[data-desplegable]');
   const abrir = (item, si) => {
-    const btn = $('.nav__padre', item);
+    const btn = $('button[aria-controls]', item);
     const sub = $('.nav__sub', item);
     item.classList.toggle('abierto', si);
     if (btn) btn.setAttribute('aria-expanded', String(si));
@@ -53,7 +53,7 @@
     }
   };
   desplegables.forEach((item) => {
-    const btn = $('.nav__padre', item);
+    const btn = $('button[aria-controls]', item);
     abrir(item, false);
     item.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') abrir(item, true); });
     item.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') abrir(item, false); });
@@ -66,6 +66,14 @@
   document.addEventListener('click', (e) => {
     desplegables.forEach((item) => { if (item.classList.contains('abierto') && !item.contains(e.target)) abrir(item, false); });
   });
+  // Menú del móvil (v10.5): la flecha de «La escuela» despliega sus apartados
+  $$('[data-menu-abre]').forEach((b) => b.addEventListener('click', () => {
+    const sub = document.getElementById(b.getAttribute('aria-controls'));
+    if (!sub) return;
+    const si = sub.hidden;
+    sub.hidden = !si;
+    b.setAttribute('aria-expanded', String(si));
+  }));
 
   const aviso = $('[data-aviso-pronto]');
   let tAviso = 0;
@@ -322,6 +330,62 @@
       if (carril.scrollLeft >= max - 4) carril.scrollTo({ left: 0, behavior: 'smooth' });
       else carril.scrollBy({ left: paso, behavior: 'smooth' });
     }, 6400);
+  });
+
+  // Al aparecer (filtro o página nueva), las tarjetas entran escalonadas
+  const entrar = (els) => {
+    if (captura || reducido.matches) return;
+    els.forEach((el, k) => { el.classList.remove('entra'); void el.offsetWidth; el.style.setProperty('--k', k); el.classList.add('entra'); });
+  };
+
+  /* ---------- Tienda (v10.5): las categorías filtran la rejilla ----------
+     «Todo» enseña los ocho productos; cada categoría, solo los suyos (la fila incompleta queda centrada).
+     Si se llega con un ancla (#vinilos-y-musica…), se abre esa categoría. */
+  const filtros = $('[data-filtros]');
+  const rejilla = $('[data-rejilla]');
+  if (filtros && rejilla) {
+    const prods = $$('[data-cat]', rejilla);
+    const btns = $$('[data-filtro]', filtros);
+    const elegirCat = (cat, animar) => {
+      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtro === cat)));
+      prods.forEach((p) => { p.hidden = !(cat === 'todo' || p.dataset.cat === cat); });
+      if (animar) entrar(prods.filter((p) => !p.hidden));
+    };
+    btns.forEach((b) => b.addEventListener('click', () => elegirCat(b.dataset.filtro, true)));
+    const anclas = { '#merchandising': 'merchandising', '#vinilos-y-musica': 'vinilos', '#material-didactico': 'didactico', '#tarjetas-regalo': 'regalo' };
+    if (anclas[location.hash]) elegirCat(anclas[location.hash], false);
+    window.addEventListener('hashchange', () => { if (anclas[location.hash]) elegirCat(anclas[location.hash], true); });
+  }
+
+  /* ---------- Noticias (v10.5): las anteriores, de tres en tres, con paginación ----------
+     Flechas a los lados (las de las opiniones) y el número de cada página en medio. */
+  $$('[data-paginar]').forEach((lista) => {
+    const por = Number(lista.dataset.paginar) || 3;
+    const items = [...lista.children];
+    const total = Math.ceil(items.length / por);
+    if (total < 2) return;
+    const flecha = (d, nombre, trazo) => `<button class="voces__flecha paginas__flecha" type="button" data-pag-paso="${d}" aria-label="${nombre}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="${trazo}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+    const nav = document.createElement('nav');
+    nav.className = 'paginas';
+    nav.setAttribute('aria-label', 'Páginas de noticias');
+    nav.innerHTML = flecha(-1, 'Noticias más recientes', 'M14.5 5.5L8 12l6.5 6.5')
+      + `<ol class="paginas__n">${items.slice(0, total).map((_, k) => `<li><button class="paginas__b" type="button" data-pag="${k}" aria-label="Página ${k + 1}">${k + 1}</button></li>`).join('')}</ol>`
+      + flecha(1, 'Noticias anteriores', 'M9.5 5.5L16 12l-6.5 6.5');
+    lista.after(nav);
+    let actual = 0;
+    const irA = (k, animar) => {
+      actual = Math.max(0, Math.min(total - 1, k));
+      items.forEach((it, j) => { it.hidden = Math.floor(j / por) !== actual; });
+      $$('.paginas__b', nav).forEach((b, j) => { if (j === actual) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+      $$('[data-pag-paso]', nav).forEach((b) => { b.disabled = Number(b.dataset.pagPaso) < 0 ? actual === 0 : actual === total - 1; });
+      if (animar) entrar(items.filter((it) => !it.hidden));
+    };
+    nav.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b || b.disabled) return;
+      irA(b.dataset.pag !== undefined ? Number(b.dataset.pag) : actual + Number(b.dataset.pagPaso), true);
+    });
+    irA(0, false);
   });
 
   /* ---------- Contacto: llega con el curso elegido (?instrumento=Armonía online) ---------- */

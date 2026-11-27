@@ -50,6 +50,27 @@
 .menu__sub a:hover { color: var(--crudo); }
 .menu__sub a:active { opacity: .7; }
 .menu__grupo[open] .menu__sub { animation: faq-abre 360ms var(--salida) both; }
+/* v10.5: «La escuela» lleva a su página; la flecha de al lado despliega sus apartados. En Cursos, el
+   nombre de cada grupo es un enlace a su página, a lo ancho y con la letra de los títulos. */
+.menu__doble { display: flex; align-items: center; gap: 8px; }
+.menu__doble .menu__fila { flex: 1; }
+.menu__abre {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-right: -12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu__abre[aria-expanded="true"] .menu__ico--abre { transform: rotate(180deg); }
+.menu__doble + .menu__sub:not([hidden]) { animation: faq-abre 360ms var(--salida) both; }
+.menu__sub-t { grid-column: 1 / -1; }
+.menu__sub-t:not(:first-child) { margin-top: 4px; border-top: 1px solid var(--linea); }
+.menu__sub .menu__sub-t a { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; color: var(--crudo); }
 
 .escuela .video__btn { box-shadow: 0 0 0 1px rgba(241, 233, 214, .1); }
 

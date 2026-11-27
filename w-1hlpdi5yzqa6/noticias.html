@@ -16,10 +16,10 @@
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/global.css?v=10.4">
-<link rel="stylesheet" href="assets/css/home.css?v=10.4">
-<link rel="stylesheet" href="assets/css/secciones.css?v=10.4">
-<link rel="stylesheet" href="assets/css/paginas.css?v=10.4">
+<link rel="stylesheet" href="assets/css/global.css?v=10.5">
+<link rel="stylesheet" href="assets/css/home.css?v=10.5">
+<link rel="stylesheet" href="assets/css/secciones.css?v=10.5">
+<link rel="stylesheet" href="assets/css/paginas.css?v=10.5">
 <script>
   document.documentElement.classList.add('js');
   if (/[?&]ss\b/.test(location.search)) document.documentElement.classList.add('ss');
@@ -69,16 +69,16 @@
       <img class="marca__logo" src="assets/img/logo-120.webp" width="52" height="52" alt="Reggae School Madrid" decoding="async">
     </a>
 
-    <!-- Los apartados con páginas debajo (Cursos, La escuela) no llevan enlace: abren su desplegable -->
+    <!-- v10.5 (27-11-2026): sin fotos en los desplegables. «La escuela» lleva a su página y su flecha abre los
+         apartados; en Cursos, «Instrumento y canto», «Producción y mezcla» y «Grupal» también son enlaces. -->
     <nav class="nav nav--paginas" aria-label="Principal">
       <ul class="nav__lista">
         <li class="nav__item" data-desplegable>
           <button class="nav__padre" type="button" aria-expanded="false" aria-controls="sub-cursos">Cursos <svg class="nav__flecha" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
           <div class="nav__sub nav__sub--cursos" id="sub-cursos">
-            <div class="nav__grupo">
-              <span class="nav__foto"><img data-src="assets/img/menu-instrumento-400.webp" width="400" height="250" alt=""></span>
-              <p class="nav__grupo-t">Instrumento y canto</p>
-              <ul>
+            <div class="nav__grupo nav__grupo--ancho">
+              <a class="nav__grupo-t" href="instrumento-y-canto.html">Instrumento y canto <svg class="nav__ir" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <ul class="nav__dos">
                 <li><a href="instrumento-y-canto.html#guitarra">Guitarra Reggae</a></li>
                 <li><a href="instrumento-y-canto.html#bajo">Bajo Reggae</a></li>
                 <li><a href="instrumento-y-canto.html#bateria">Batería Reggae</a></li>
@@ -87,26 +87,25 @@
                 <li><a href="instrumento-y-canto.html#canto">Canto y Composición</a></li>
               </ul>
             </div>
-            <div class="nav__grupo">
-              <span class="nav__foto"><img data-src="assets/img/menu-produccion-400.webp" width="400" height="250" alt=""></span>
-              <a class="nav__grupo-t nav__grupo-t--enlace" href="produccion-y-mezcla.html">Producción y mezcla</a>
-              <p class="nav__grupo-d">Haz que suene como quieres que suene.</p>
-            </div>
-            <div class="nav__grupo">
-              <span class="nav__foto"><img data-src="assets/img/menu-grupal-400.webp" width="400" height="250" alt=""></span>
-              <p class="nav__grupo-t">Grupal</p>
-              <ul>
-                <li><a href="grupal.html#combo-rsm">Combo RSM</a></li>
-                <li><a href="grupal.html#armonia-online">Curso de Armonía Online</a></li>
-              </ul>
+            <div class="nav__col">
+              <div class="nav__grupo">
+                <a class="nav__grupo-t" href="produccion-y-mezcla.html">Producción y mezcla <svg class="nav__ir" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <p class="nav__grupo-d">Haz que suene como quieres que suene.</p>
+              </div>
+              <div class="nav__grupo">
+                <a class="nav__grupo-t" href="grupal.html">Grupal <svg class="nav__ir" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <ul>
+                  <li><a href="grupal.html#combo-rsm">Combo RSM</a></li>
+                  <li><a href="grupal.html#armonia-online">Curso de Armonía Online</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </li>
         <li><a class="nav__enlace" href="talleres-y-eventos.html">Talleres y eventos</a></li>
-        <li class="nav__item" data-desplegable>
-          <button class="nav__padre" type="button" aria-expanded="false" aria-controls="sub-escuela">La escuela <svg class="nav__flecha" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        <li class="nav__item nav__item--doble" data-desplegable>
+          <a class="nav__padre nav__padre--enlace" href="la-escuela.html">La escuela</a><button class="nav__abre" type="button" aria-expanded="false" aria-controls="sub-escuela" aria-label="Apartados de La escuela"><svg class="nav__flecha" viewBox="0 0 10 10" width="10" height="10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
           <div class="nav__sub nav__sub--escuela" id="sub-escuela">
-            <span class="nav__foto"><img data-src="assets/img/menu-escuela-400.webp" width="400" height="250" alt=""></span>
             <ul>
               <li><a href="la-escuela.html#equipo-docente">Equipo docente</a></li>
               <li><a href="la-escuela.html#instalaciones-y-estudios">Instalaciones y estudios</a></li>
@@ -137,13 +136,15 @@
         <details class="menu__grupo">
           <summary class="menu__fila">Cursos <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <ul class="menu__sub menu__sub--dos">
+          <li class="menu__sub-t"><a href="instrumento-y-canto.html" data-menu-enlace>Instrumento y canto</a></li>
           <li><a href="instrumento-y-canto.html#guitarra" data-menu-enlace>Guitarra</a></li>
           <li><a href="instrumento-y-canto.html#bajo" data-menu-enlace>Bajo</a></li>
           <li><a href="instrumento-y-canto.html#bateria" data-menu-enlace>Batería</a></li>
           <li><a href="instrumento-y-canto.html#teclado" data-menu-enlace>Teclado y Órgano</a></li>
           <li><a href="instrumento-y-canto.html#saxo" data-menu-enlace>Saxofón Alto / Tenor</a></li>
           <li><a href="instrumento-y-canto.html#canto" data-menu-enlace>Canto y Composición</a></li>
-          <li><a href="produccion-y-mezcla.html" data-menu-enlace>Producción y Mezcla</a></li>
+          <li class="menu__sub-t"><a href="produccion-y-mezcla.html" data-menu-enlace>Producción y mezcla</a></li>
+          <li class="menu__sub-t"><a href="grupal.html" data-menu-enlace>Grupal</a></li>
           <li><a href="grupal.html#combo-rsm" data-menu-enlace>Combo RSM</a></li>
           <li><a href="grupal.html#armonia-online" data-menu-enlace>Armonía Online</a></li>
           </ul>
@@ -151,14 +152,15 @@
       </li>
       <li style="--i:2"><a class="menu__fila" href="talleres-y-eventos.html" data-menu-enlace>Talleres y eventos <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
       <li style="--i:3">
-        <details class="menu__grupo">
-          <summary class="menu__fila">La escuela <svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <ul class="menu__sub">
-            <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
-            <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
-            <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
-          </ul>
-        </details>
+        <div class="menu__doble">
+          <a class="menu__fila" href="la-escuela.html" data-menu-enlace>La escuela</a>
+          <button class="menu__abre" type="button" aria-expanded="false" aria-controls="m-escuela" aria-label="Apartados de La escuela" data-menu-abre><svg class="menu__ico menu__ico--abre" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <ul class="menu__sub" id="m-escuela" hidden>
+          <li><a href="la-escuela.html#equipo-docente" data-menu-enlace>Equipo docente</a></li>
+          <li><a href="la-escuela.html#instalaciones-y-estudios" data-menu-enlace>Instalaciones y estudios</a></li>
+          <li><a href="la-escuela.html#tarifas-y-matricula" data-menu-enlace>Tarifas y matrícula</a></li>
+        </ul>
       </li>
       <li style="--i:4"><a class="menu__fila" href="noticias.html" data-menu-enlace>Noticias <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
       <li style="--i:5"><a class="menu__fila" href="tienda.html" data-menu-enlace>Tienda <svg class="menu__ico" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
@@ -171,15 +173,25 @@
 </div>
 
 <main id="contenido">
-<!-- ============================ APERTURA ============================ -->
-<section class="ih" aria-labelledby="h1">
-  <div class="envoltura ih__int">
+<!-- v10.5 (27-11-2026), jefe de Pablo: el título general y el de la primera sección tenían casi el mismo tamaño
+     («no me cuadra nada este rollo, mira referencias»). Como en las webs de escuelas de música (BIMM, School of
+     Rock), la página abre con una cabecera: una foto suya a lo ancho con el título encima; las secciones, más
+     pequeñas. Sin las anclas en píldoras. -->
+<!-- ============================ CABECERA ============================ -->
+<section class="cp cp--saxo" aria-labelledby="h1">
+  <div class="cp__foto">
+    <picture>
+      <source media="(max-width: 699px)" srcset="assets/img/hero-saxo-v540.webp 540w, assets/img/hero-saxo-v800.webp 800w" sizes="100vw" width="800" height="1600">
+      <img src="assets/img/hero-saxo-h1600.webp" srcset="assets/img/hero-saxo-h1600.webp 1600w, assets/img/hero-saxo-h2400.webp 2400w" sizes="100vw" width="1600" height="900" alt="Saxo y trompeta grabando en el estudio" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="envoltura cp__int">
     <nav class="ruta" aria-label="Estás en">
       <a href="index.html">Inicio</a><span aria-hidden="true">/</span>
       <span aria-current="page">Noticias</span>
     </nav>
-    <h1 class="t-mega ih__h1" id="h1" data-entra>Noticias <span class="eco" data-eco><em>de RSM</em><span class="eco__rep" aria-hidden="true">de RSM</span><span class="eco__rep" aria-hidden="true">de RSM</span></span></h1>
-    <p class="ih__lede" data-entra style="--i:1">Jams, talleres y novedades de la escuela.</p>
+    <h1 class="t-mega cp__h1" id="h1" data-entra>Noticias <span class="eco" data-eco><em>de RSM</em><span class="eco__rep" aria-hidden="true">de RSM</span><span class="eco__rep" aria-hidden="true">de RSM</span></span></h1>
+    <p class="cp__lede" data-entra style="--i:1">Jams, talleres y novedades de la escuela.</p>
   </div>
 </section>
 
@@ -199,12 +211,11 @@
 </section>
 
 <!-- ============================ ARCHIVO ============================ -->
-<section class="archivo seccion" aria-labelledby="archivo-t">
+<!-- v10.5, jefe de Pablo: sin el título «Lo anterior» («no aporta nada»); las noticias anteriores, debajo, en una
+     fila de tres con paginación (paginas.js: tres por página; sin JS se ven todas) -->
+<section class="archivo seccion" aria-label="Noticias anteriores">
   <div class="envoltura">
-    <header class="cabeza-c">
-      <h2 class="t-seccion" id="archivo-t" data-revela>Lo anterior</h2>
-    </header>
-    <ul class="notas notas--archivo notas--centro">
+    <ul class="notas notas--archivo notas--centro" id="archivo-lista" data-paginar="3">
       <li class="nota" data-revela style="--i:0">
         <a class="nota__enlace" href="https://reggaeschoolmadrid.com/2022/12/28/feliz-2023/" target="_blank" rel="noopener">
           <span class="nota__foto nota__foto--contener"><img src="assets/img/noticia-2023-480.webp" width="480" height="677" alt="Tarjeta de felicitación de Reggae School Madrid con fotos del año" loading="lazy" decoding="async"></span>
@@ -305,7 +316,7 @@
 
 <p class="aviso-pronto" role="status" aria-live="polite" data-aviso-pronto></p>
 
-<script src="assets/js/main.js?v=10.4" defer></script>
-<script src="assets/js/paginas.js?v=10.4" defer></script>
+<script src="assets/js/main.js?v=10.5" defer></script>
+<script src="assets/js/paginas.js?v=10.5" defer></script>
 </body>
 </html>
